@@ -1,0 +1,94 @@
+#include "HeatComponent.h"
+#include "Actor.h"
+#include "Factory.h"
+#include "Scene.h"
+#include "Collision.h"
+#include "StateEffect.h"
+
+REGISTER_COMPONENT(ComponentID::HeatTransfer, HeatTransfer)
+
+void HeatTransfer::OnAwake(float elapsedTime)
+{
+
+}
+
+void HeatTransfer::Update(float elapsedTime)
+{
+	auto thermal = owner->GetComponent<ThermalBody>();
+	auto scene = owner->GetScene();
+	if (!thermal) return;
+	for (auto& actor : scene->actors)
+	{
+		auto toThermal = actor->GetComponent<ThermalBody>();
+		if (!toThermal) continue;
+		if (toThermal == thermal) continue;
+		auto toTransform = actor->GetComponent<Transform>();
+		auto transform = owner->GetComponent<Transform>();
+
+		if (Collision::IntersectSphereVsSphere(transform->GetWorldPosition(),
+			thermal->GetRadius(),
+			toTransform->GetWorldPosition(),
+			toThermal->GetRadius()))
+		{
+			toThermal->AddHeat(thermal->GetHeat());
+			toThermal->SetHeat(std::clamp(toThermal->GetHeat(), -1, 1));
+		} 
+	}
+
+	if (InputC::KeyDown(VK_LBUTTON))
+	{
+		for (auto& actor : scene->actors)
+		{
+			auto Receiver = actor->GetComponent<HeatReceiver>();
+			if (!Receiver) continue;
+			auto toTransform = actor->GetComponent<Transform>();
+			auto transform = owner->GetComponent<Transform>();
+
+			if (Collision::IntersectSphereVsSphere(transform->GetWorldPosition(),
+				thermal->GetRadius(),
+				toTransform->GetWorldPosition(),
+				Receiver->GetRadius()))
+			{
+				thermal->AddHeat(Receiver->GetHeatNum());
+				thermal->SetHeat(std::clamp(thermal->GetHeat(), -1, 1));
+			}
+		}
+	}
+
+	auto effectstate = owner->GetComponent<StateEffect>();
+	switch (thermal->GetHeat())
+	{
+	case 0:
+		effectstate->SetState("normal");
+		break;
+	case 1:
+		effectstate->SetState("hot");
+		break;
+	case -1:
+		effectstate->SetState("cold");
+		break;
+	default:
+		break;
+	}
+
+}
+
+void HeatTransfer::DrawInspector()
+{
+
+}
+
+void HeatTransfer::Serialize(nlohmann::json& j) const
+{
+
+}
+
+void HeatTransfer::Deserialize(nlohmann::json& j)
+{
+
+}
+
+std::unique_ptr<Component> HeatTransfer::Clone() const
+{
+	return std::make_unique<HeatTransfer>();
+}

@@ -1,0 +1,628 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="External">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="External\imgui-docking">
+      <UniqueIdentifier>{c85446c9-90d2-4441-add5-5aac511d95ce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shader">
+      <UniqueIdentifier>{9f64f4ff-d9e0-43d7-88e1-13e6d3656a89}</UniqueIdentifier>
+      <Extensions>hlsl;hlsli</Extensions>
+    </Filter>
+    <Filter Include="Source\Camera">
+      <UniqueIdentifier>{bed0971e-e736-4de0-8cfc-39449d6ea1ab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\System">
+      <UniqueIdentifier>{bdca9bd5-7c86-4bde-986d-9cf51f91eb5a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\misc">
+      <UniqueIdentifier>{a361ae74-18f8-4fd0-a513-af383e883585}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Common">
+      <UniqueIdentifier>{5ea94a7d-0819-4511-8d4f-ff0c4be99448}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Scene">
+      <UniqueIdentifier>{b46ee522-8e85-4633-9b8d-ba22aaa92e6d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Stages">
+      <UniqueIdentifier>{ad541316-c403-40d5-88ec-ca372861e48f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Common\Effect">
+      <UniqueIdentifier>{d5b64214-b650-4b9b-9eb3-de810c3e3176}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Common\Collision">
+      <UniqueIdentifier>{302d91ce-663e-4075-aa37-84678861bbdf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Common\Math">
+      <UniqueIdentifier>{19177564-3fe0-49a2-bcdb-cfdca1eec8cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Common\Ray">
+      <UniqueIdentifier>{73391c88-5fd6-452f-acb2-ef080fcc41cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Common\Cursol">
+      <UniqueIdentifier>{b36fcf77-2932-4afd-a38f-688832464267}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Common\Menu">
+      <UniqueIdentifier>{38a3b42e-af9a-4431-826e-c0db21a3ce96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Common\Key">
+      <UniqueIdentifier>{2064fc4d-17f4-42e3-aeee-f8ac20eec688}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Common\Lerp">
+      <UniqueIdentifier>{00d8abf1-c871-4ef1-909e-df1918c76caa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Common\P&amp;C">
+      <UniqueIdentifier>{4d52ad01-0ae0-4e04-98a0-748f907186f0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Actor">
+      <UniqueIdentifier>{02cd79e9-cddd-4a0a-a597-b9172b7fb00a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Components">
+      <UniqueIdentifier>{b782d94d-d0b3-49fa-94a2-44a4b6fcae68}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Components\default">
+      <UniqueIdentifier>{3174a34f-b0e0-4d40-aea1-39a4a1bb9998}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Framework/Main">
+      <UniqueIdentifier>{8023c35c-b923-436d-968b-17bf96488f35}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\json">
+      <UniqueIdentifier>{bf96dd6d-8071-47f6-8867-ac9dd7bc3f4b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Inspector">
+      <UniqueIdentifier>{7e1a857f-c08b-4102-9b57-81f314bb5946}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Hierarchy">
+      <UniqueIdentifier>{7ccb91d2-aaa8-4b82-964c-4e51bf1871e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Components\Strage">
+      <UniqueIdentifier>{93b08093-5204-4b8e-9e18-7ffb437d1099}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Components\factory">
+      <UniqueIdentifier>{d00e4f5a-6d0a-4df8-81a1-8635ebdcdef0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Components\Collider">
+      <UniqueIdentifier>{72db6fdc-8e20-4f2e-8865-1252fd443f4d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Components\Collider\Physics">
+      <UniqueIdentifier>{463ada63-f552-4e85-a5a8-e2d320a36b15}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Editor">
+      <UniqueIdentifier>{a859bac9-a2a2-439b-9576-9732abf12fc3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Engine">
+      <UniqueIdentifier>{cf634db0-225a-47b0-adf9-b0f1e8125579}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Components\Temp">
+      <UniqueIdentifier>{a2a073d5-4a6d-4d1b-b058-f618b898fd17}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Components\Temp\TempObj">
+      <UniqueIdentifier>{c51fd68d-a32d-4c19-92b2-3bdafed12635}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Components\Temp\TempReciver">
+      <UniqueIdentifier>{a835a384-5ed1-4394-94d5-9f1166c38ee7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Skymap">
+      <UniqueIdentifier>{b9395a05-4cd2-4a9f-a09c-3073e11b2985}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="External\imgui-docking\imconfig.h">
+      <Filter>External\imgui-docking</Filter>
+    </ClInclude>
+    <ClInclude Include="External\imgui-docking\imgui.h">
+      <Filter>External\imgui-docking</Filter>
+    </ClInclude>
+    <ClInclude Include="External\imgui-docking\imgui_impl_dx11.h">
+      <Filter>External\imgui-docking</Filter>
+    </ClInclude>
+    <ClInclude Include="External\imgui-docking\imgui_impl_win32.h">
+      <Filter>External\imgui-docking</Filter>
+    </ClInclude>
+    <ClInclude Include="External\imgui-docking\imgui_internal.h">
+      <Filter>External\imgui-docking</Filter>
+    </ClInclude>
+    <ClInclude Include="External\imgui-docking\imstb_rectpack.h">
+      <Filter>External\imgui-docking</Filter>
+    </ClInclude>
+    <ClInclude Include="External\imgui-docking\imstb_textedit.h">
+      <Filter>External\imgui-docking</Filter>
+    </ClInclude>
+    <ClInclude Include="External\imgui-docking\imstb_truetype.h">
+      <Filter>External\imgui-docking</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\System\Audio.h">
+      <Filter>Source\System</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\System\AudioResource.h">
+      <Filter>Source\System</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\System\AudioSource.h">
+      <Filter>Source\System</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\System\BasicShader.h">
+      <Filter>Source\System</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\System\GamePad.h">
+      <Filter>Source\System</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\System\GpuResourceUtils.h">
+      <Filter>Source\System</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\System\Graphics.h">
+      <Filter>Source\System</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\System\HighResolutionTimer.h">
+      <Filter>Source\System</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\System\ImGuiRenderer.h">
+      <Filter>Source\System</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\System\Input.h">
+      <Filter>Source\System</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\System\LambertShader.h">
+      <Filter>Source\System</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\System\Misc.h">
+      <Filter>Source\System</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\System\Model.h">
+      <Filter>Source\System</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\System\ModelRenderer.h">
+      <Filter>Source\System</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\System\Mouse.h">
+      <Filter>Source\System</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\System\RenderContext.h">
+      <Filter>Source\System</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\System\RenderState.h">
+      <Filter>Source\System</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\System\Shader.h">
+      <Filter>Source\System</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\System\ShapeRenderer.h">
+      <Filter>Source\System</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\System\Sprite.h">
+      <Filter>Source\System</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Framework.h">
+      <Filter>Source\Framework/Main</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Scene.h">
+      <Filter>Source\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\LoadingController.h">
+      <Filter>Source\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\SceneManager.h">
+      <Filter>Source\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Stage.h">
+      <Filter>Source\Stages</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Effect.h">
+      <Filter>Source\Common\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\EffectManager.h">
+      <Filter>Source\Common\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Collision.h">
+      <Filter>Source\Common\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\MathUtils.h">
+      <Filter>Source\Common\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\team02_1\Source\CursorManager.h">
+      <Filter>Source\Common\Cursol</Filter>
+    </ClInclude>
+    <ClInclude Include="..\team02_1\Source\Button.h">
+      <Filter>Source\Common\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\team02_1\Source\ButtonManager.h">
+      <Filter>Source\Common\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\team02_1\Source\Menu.h">
+      <Filter>Source\Common\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\team02_1\Source\Lerp.h">
+      <Filter>Source\Common\Lerp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\team02_1\Source\ParentChild.h">
+      <Filter>Source\Common\P&amp;C</Filter>
+    </ClInclude>
+    <ClInclude Include="..\team02_1\Source\NumberRender.h">
+      <Filter>Source\misc</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\SpriteRender.h">
+      <Filter>Source\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Component.h">
+      <Filter>Source\Components\default</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\KeyInput.h">
+      <Filter>Source\Common\Key</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\LogManager.h">
+      <Filter>Source\Framework/Main</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ModelRender.h">
+      <Filter>Source\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Transform.h">
+      <Filter>Source\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Camera.h">
+      <Filter>Source\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ImGuizmo.h">
+      <Filter>Source\System</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ImLightRig.h">
+      <Filter>Source\System</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ImZoomSlider.h">
+      <Filter>Source\System</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\RayCast.h">
+      <Filter>Source\Common\Ray</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Screen.h">
+      <Filter>Source\misc</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\EditCamera.h">
+      <Filter>Source\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\DirectXCommon.h">
+      <Filter>Source\Common\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\CameraBase.h">
+      <Filter>Source\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Input.h">
+      <Filter>Source\Common\Key</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\SceneSerializer.h">
+      <Filter>Source\json</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\System\ModelResource.h">
+      <Filter>Source\System</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Inspector.h">
+      <Filter>Source\Inspector</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ComponentManager.h">
+      <Filter>Source\Components\Strage</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Factory.h">
+      <Filter>Source\Components\factory</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ResourceManager.h">
+      <Filter>Source\System</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Move.h">
+      <Filter>Source\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\BoxCollider.h">
+      <Filter>Source\Components\Collider</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\PhysicsSystem.h">
+      <Filter>Source\Components\Collider\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Actor.h">
+      <Filter>Source\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Collider.h">
+      <Filter>Source\Components\Collider</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\OpenDialog.h">
+      <Filter>Source\misc</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Engine.h">
+      <Filter>Source\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\CameraController.h">
+      <Filter>Source\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Editor.h">
+      <Filter>Source\Editor</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Lerp.h">
+      <Filter>Source\misc</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ComponentTemp.h">
+      <Filter>Source\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HeatComponent.h">
+      <Filter>Source\Components\Temp</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ThermalBody.h">
+      <Filter>Source\Components\Temp</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\wood.h">
+      <Filter>Source\Components\Temp\TempObj</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HeatReceiver.h">
+      <Filter>Source\Components\Temp\TempReciver</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\sky_map.h">
+      <Filter>Source\Skymap</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\EffectRender.h">
+      <Filter>Source\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\StateEffect.h">
+      <Filter>Source\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\water.h">
+      <Filter>Source\Components\Temp\TempObj</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\snowman.h">
+      <Filter>Source\Components\Temp\TempObj</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="External\imgui-docking\imgui.cpp">
+      <Filter>External\imgui-docking</Filter>
+    </ClCompile>
+    <ClCompile Include="External\imgui-docking\imgui_demo.cpp">
+      <Filter>External\imgui-docking</Filter>
+    </ClCompile>
+    <ClCompile Include="External\imgui-docking\imgui_draw.cpp">
+      <Filter>External\imgui-docking</Filter>
+    </ClCompile>
+    <ClCompile Include="External\imgui-docking\imgui_impl_dx11.cpp">
+      <Filter>External\imgui-docking</Filter>
+    </ClCompile>
+    <ClCompile Include="External\imgui-docking\imgui_impl_win32.cpp">
+      <Filter>External\imgui-docking</Filter>
+    </ClCompile>
+    <ClCompile Include="External\imgui-docking\imgui_widgets.cpp">
+      <Filter>External\imgui-docking</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\System\Audio.cpp">
+      <Filter>Source\System</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\System\AudioResource.cpp">
+      <Filter>Source\System</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\System\AudioSource.cpp">
+      <Filter>Source\System</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\System\BasicShader.cpp">
+      <Filter>Source\System</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\System\GamePad.cpp">
+      <Filter>Source\System</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\System\GpuResourceUtils.cpp">
+      <Filter>Source\System</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\System\Graphics.cpp">
+      <Filter>Source\System</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\System\ImGuiRenderer.cpp">
+      <Filter>Source\System</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\System\Input.cpp">
+      <Filter>Source\System</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\System\LambertShader.cpp">
+      <Filter>Source\System</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\System\Model.cpp">
+      <Filter>Source\System</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\System\ModelRenderer.cpp">
+      <Filter>Source\System</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\System\Mouse.cpp">
+      <Filter>Source\System</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\System\RenderState.cpp">
+      <Filter>Source\System</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\System\ShapeRenderer.cpp">
+      <Filter>Source\System</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\System\Sprite.cpp">
+      <Filter>Source\System</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Framework.cpp">
+      <Filter>Source\Framework/Main</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Main.cpp">
+      <Filter>Source\Framework/Main</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\LoadingController.cpp">
+      <Filter>Source\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\SceneManager.cpp">
+      <Filter>Source\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Stage.cpp">
+      <Filter>Source\Stages</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Effect.cpp">
+      <Filter>Source\Common\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\EffectManager.cpp">
+      <Filter>Source\Common\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Collision.cpp">
+      <Filter>Source\Common\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\MathUtils.cpp">
+      <Filter>Source\Common\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\team02_1\Source\Button.cpp">
+      <Filter>Source\Common\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\team02_1\Source\ButtonManager.cpp">
+      <Filter>Source\Common\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\team02_1\Source\Menu.cpp">
+      <Filter>Source\Common\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\team02_1\Source\ParentChild.cpp">
+      <Filter>Source\Common\P&amp;C</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\SpriteRender.cpp">
+      <Filter>Source\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ModelRender.cpp">
+      <Filter>Source\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Transform.cpp">
+      <Filter>Source\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ImGuizmo.cpp">
+      <Filter>Source\System</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\RayCast.cpp">
+      <Filter>Source\Common\Ray</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\EditCamera.cpp">
+      <Filter>Source\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\SceneSerializer.cpp">
+      <Filter>Source\json</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Camera.cpp">
+      <Filter>Source\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\System\ModelResource.cpp">
+      <Filter>Source\System</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ComponentManager.cpp">
+      <Filter>Source\Components\Strage</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ResourceManager.cpp">
+      <Filter>Source\System</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Move.cpp">
+      <Filter>Source\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\BoxCollider.cpp">
+      <Filter>Source\Components\Collider</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GroundCheckComponent.cpp">
+      <Filter>Source\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\PhysicsSystem.cpp">
+      <Filter>Source\Components\Collider\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Actor.cpp">
+      <Filter>Source\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Collider.cpp">
+      <Filter>Source\Components\Collider</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Scene.cpp">
+      <Filter>Source\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Editor.cpp">
+      <Filter>Source\Editor</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Engine.cpp">
+      <Filter>Source\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\CameraController.cpp">
+      <Filter>Source\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HeatComponent.cpp">
+      <Filter>Source\Components\Temp</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ThermalBody.cpp">
+      <Filter>Source\Components\Temp</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\wood.cpp">
+      <Filter>Source\Components\Temp\TempObj</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HeatReceiver.cpp">
+      <Filter>Source\Components\Temp\TempReciver</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\sky_map.cpp">
+      <Filter>Source\Skymap</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\EffectRender.cpp">
+      <Filter>Source\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\StateEffect.cpp">
+      <Filter>Source\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\water.cpp">
+      <Filter>Source\Components\Temp\TempObj</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\snowman.cpp">
+      <Filter>Source\Components\Temp\TempObj</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Shader\Sprite.hlsli">
+      <Filter>Shader</Filter>
+    </None>
+    <None Include="Shader\ShapeRenderer.hlsli">
+      <Filter>Shader</Filter>
+    </None>
+    <None Include="Shader\Skinning.hlsli">
+      <Filter>Shader</Filter>
+    </None>
+    <None Include="Shader\PrimitiveRenderer.hlsli">
+      <Filter>Shader</Filter>
+    </None>
+    <None Include="Shader\Basic.hlsli">
+      <Filter>Shader</Filter>
+    </None>
+    <None Include="Shader\Lambert.hlsli">
+      <Filter>Shader</Filter>
+    </None>
+    <None Include="Shader\Scene.hlsli">
+      <Filter>Shader</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="Shader\SpriteVS.hlsl">
+      <Filter>Shader</Filter>
+    </FxCompile>
+    <FxCompile Include="Shader\SpritePS.hlsl">
+      <Filter>Shader</Filter>
+    </FxCompile>
+    <FxCompile Include="Shader\ShapeRendererVS.hlsl">
+      <Filter>Shader</Filter>
+    </FxCompile>
+    <FxCompile Include="Shader\ShapeRendererPS.hlsl">
+      <Filter>Shader</Filter>
+    </FxCompile>
+    <FxCompile Include="Shader\PrimitiveRendererVS.hlsl">
+      <Filter>Shader</Filter>
+    </FxCompile>
+    <FxCompile Include="Shader\PrimitiveRendererPS.hlsl">
+      <Filter>Shader</Filter>
+    </FxCompile>
+    <FxCompile Include="Shader\BasicPS.hlsl">
+      <Filter>Shader</Filter>
+    </FxCompile>
+    <FxCompile Include="Shader\BasicVS.hlsl">
+      <Filter>Shader</Filter>
+    </FxCompile>
+    <FxCompile Include="Shader\LambertPS.hlsl">
+      <Filter>Shader</Filter>
+    </FxCompile>
+    <FxCompile Include="Shader\LambertVS.hlsl">
+      <Filter>Shader</Filter>
+    </FxCompile>
+  </ItemGroup>
+</Project>

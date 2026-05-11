@@ -1,0 +1,706 @@
+{
+    "scene": {
+        "actors": [
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                0.28939950466156006,
+                                18.121379852294922,
+                                -46.46931076049805
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "Camera": true
+                        },
+                        "type": "Camera"
+                    },
+                    {
+                        "data": null,
+                        "type": "CameraController"
+                    }
+                ],
+                "id": 1,
+                "name": "camera",
+                "parent": -1,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.008726532571017742,
+                                -0.0,
+                                0.9999619126319885
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/grass_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    },
+                    {
+                        "data": {
+                            "size": [
+                                10.0,
+                                10.0,
+                                10.0
+                            ]
+                        },
+                        "type": "BoxCollider"
+                    }
+                ],
+                "id": 2,
+                "name": "grass",
+                "parent": 15,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                2.0,
+                                5.0,
+                                0.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/player/test_motion_000.mdl"
+                        },
+                        "type": "ModelRender"
+                    },
+                    {
+                        "data": null,
+                        "type": "Move"
+                    },
+                    {
+                        "data": null,
+                        "type": "ThermalBody"
+                    },
+                    {
+                        "data": null,
+                        "type": "HeatTransfer"
+                    },
+                    {
+                        "data": null,
+                        "type": "EffectRender"
+                    },
+                    {
+                        "data": {
+                            "CurrentState": "",
+                            "States": {
+                                "cold": "Data/Effects/mode_ice.efk",
+                                "hot": "Data/Effects/mode_fire.efk",
+                                "normal": "Data/Effects/mode_normal.efk"
+                            }
+                        },
+                        "type": "StateEffect"
+                    }
+                ],
+                "id": 3,
+                "name": "player",
+                "parent": -1,
+                "tag": 1,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                10.0,
+                                0.0,
+                                20.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    },
+                    {
+                        "data": {
+                            "size": [
+                                10.0,
+                                10.0,
+                                10.0
+                            ]
+                        },
+                        "type": "BoxCollider"
+                    }
+                ],
+                "id": 4,
+                "name": "dirt",
+                "parent": 15,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                10.0,
+                                0.0,
+                                0.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    },
+                    {
+                        "data": {
+                            "size": [
+                                10.0,
+                                10.0,
+                                10.0
+                            ]
+                        },
+                        "type": "BoxCollider"
+                    }
+                ],
+                "id": 5,
+                "name": "dirt",
+                "parent": 15,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                0.0,
+                                0.0,
+                                10.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/grass_slope_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 6,
+                "name": "slope",
+                "parent": 15,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                10.0,
+                                0.0,
+                                10.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    },
+                    {
+                        "data": {
+                            "size": [
+                                10.0,
+                                10.0,
+                                10.0
+                            ]
+                        },
+                        "type": "BoxCollider"
+                    }
+                ],
+                "id": 7,
+                "name": "dirt",
+                "parent": 15,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                0.0,
+                                -1.999999761581421,
+                                -10.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/water_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 8,
+                "name": "water",
+                "parent": 15,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                10.0,
+                                0.0,
+                                -10.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/ice_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    },
+                    {
+                        "data": null,
+                        "type": "ThermalBody"
+                    },
+                    {
+                        "data": null,
+                        "type": "EffectRender"
+                    },
+                    {
+                        "data": {
+                            "CurrentState": "",
+                            "States": {
+                                "ice": "Data/Effects/ice_box.efk"
+                            }
+                        },
+                        "type": "StateEffect"
+                    },
+                    {
+                        "data": null,
+                        "type": "water"
+                    }
+                ],
+                "id": 9,
+                "name": "ice",
+                "parent": 15,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                -12.552850723266602,
+                                0.0,
+                                0.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/bud_obj.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 10,
+                "name": "bud",
+                "parent": -1,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                20.0,
+                                5.713814735412598,
+                                0.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/tree.mdl"
+                        },
+                        "type": "ModelRender"
+                    },
+                    {
+                        "data": {
+                            "size": [
+                                10.0,
+                                20.0,
+                                10.0
+                            ]
+                        },
+                        "type": "BoxCollider"
+                    },
+                    {
+                        "data": null,
+                        "type": "ThermalBody"
+                    },
+                    {
+                        "data": null,
+                        "type": "wood"
+                    }
+                ],
+                "id": 11,
+                "name": "tree",
+                "parent": -1,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                10.0,
+                                5.0,
+                                20.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/firewood.mdl"
+                        },
+                        "type": "ModelRender"
+                    },
+                    {
+                        "data": null,
+                        "type": "ThermalBody"
+                    },
+                    {
+                        "data": {
+                            "temperature": 1
+                        },
+                        "type": "HeatReceiver"
+                    }
+                ],
+                "id": 12,
+                "name": "firewood",
+                "parent": -1,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                -15.622471809387207,
+                                0.0,
+                                13.886409759521484
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/flower_obj.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 13,
+                "name": "flower",
+                "parent": -1,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                -24.082324981689453,
+                                0.0,
+                                13.886409759521484
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/stem_obj.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 14,
+                "name": "stem",
+                "parent": -1,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    }
+                ],
+                "id": 15,
+                "name": "stage",
+                "parent": -1,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                20.0,
+                                0.0,
+                                0.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    },
+                    {
+                        "data": {
+                            "size": [
+                                10.0,
+                                10.0,
+                                10.0
+                            ]
+                        },
+                        "type": "BoxCollider"
+                    }
+                ],
+                "id": 17,
+                "name": "stages",
+                "parent": -1,
+                "tag": 0,
+                "type": "Actor"
+            }
+        ]
+    }
+}
