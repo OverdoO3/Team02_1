@@ -112,6 +112,9 @@
     <Filter Include="Source\Skymap">
       <UniqueIdentifier>{b9395a05-4cd2-4a9f-a09c-3073e11b2985}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\Prefab">
+      <UniqueIdentifier>{04a0b721-0bda-453b-a6f5-e7c775f250a7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="External\imgui-docking\imconfig.h">
@@ -372,6 +375,12 @@
     <ClInclude Include="Source\snowman.h">
       <Filter>Source\Components\Temp\TempObj</Filter>
     </ClInclude>
+    <ClInclude Include="Source\PrefabManager.h">
+      <Filter>Source\Prefab</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Prefab.h">
+      <Filter>Source\Prefab</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="External\imgui-docking\imgui.cpp">
@@ -568,6 +577,9 @@
     </ClCompile>
     <ClCompile Include="Source\snowman.cpp">
       <Filter>Source\Components\Temp\TempObj</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\PrefabManager.cpp">
+      <Filter>Source\Prefab</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
