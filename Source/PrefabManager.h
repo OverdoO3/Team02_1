@@ -19,7 +19,6 @@ public:
 	~PrefabManager() = default;
 
 	void MakePrefab(Actor* actor);
-	//Actor* Instantiate(std::string prefabName, Scene* scene);
 
 	Actor* InstantiateFromFile(
 		const std::string& path,

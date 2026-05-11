@@ -245,6 +245,14 @@ void Editor::DrawHierarchy(Scene* scene)
 {
 	ImGui::Begin("Hierarchy");
 
+	ImGui::SameLine();
+	if (ImGui::Button("LoadPrefab"))
+	{
+		std::string path = OpenDialog::OpenLoadFileDialog();
+		if (path.empty())return;
+		PrefabManager::Instance().InstantiateFromFile(path, scene);
+	}
+
 	ImGui::BeginChild("HierarchyContent", ImVec2(0, 0), true);
 
 	for (auto& actor : scene->actors)
