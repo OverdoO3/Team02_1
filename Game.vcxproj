@@ -206,13 +206,6 @@
     </FxCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\team02_1\Source\Button.h" />
-    <ClInclude Include="..\team02_1\Source\ButtonManager.h" />
-    <ClInclude Include="..\team02_1\Source\CursorManager.h" />
-    <ClInclude Include="..\team02_1\Source\Lerp.h" />
-    <ClInclude Include="..\team02_1\Source\Menu.h" />
-    <ClInclude Include="..\team02_1\Source\ParentChild.h" />
-    <ClInclude Include="..\team02_1\Source\NumberRender.h" />
     <ClInclude Include="External\imgui-docking\imconfig.h" />
     <ClInclude Include="External\imgui-docking\imgui.h" />
     <ClInclude Include="External\imgui-docking\imgui_impl_dx11.h" />
@@ -323,10 +316,6 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\team02_1\Source\Button.cpp" />
-    <ClCompile Include="..\team02_1\Source\ButtonManager.cpp" />
-    <ClCompile Include="..\team02_1\Source\Menu.cpp" />
-    <ClCompile Include="..\team02_1\Source\ParentChild.cpp" />
     <ClCompile Include="External\imgui-docking\imgui.cpp" />
     <ClCompile Include="External\imgui-docking\imgui_demo.cpp" />
     <ClCompile Include="External\imgui-docking\imgui_draw.cpp" />
