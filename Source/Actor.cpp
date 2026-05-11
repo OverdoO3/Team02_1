@@ -131,6 +131,21 @@ std::unique_ptr<Actor> Actor::Clone() const
 	return copy;
 }
 
+bool Actor::IsDescendantOf(Actor* potentialParent)
+{
+	Actor* current = parent;
+
+	while (current)
+	{
+		if (current == potentialParent)
+			return true;
+
+		current = current->GetParent();
+	}
+
+	return false;
+}
+
 void Actor::RegisterComp(Component* comp)
 {
 	if (auto* col = dynamic_cast<Collider*>(comp))

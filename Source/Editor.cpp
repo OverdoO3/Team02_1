@@ -1,5 +1,6 @@
 #include "Editor.h"
 #include "ComponentManager.h"
+#include "PrefabManager.h"
 
 Actor* Editor::CreateActor(const std::string& name,Scene* scene)
 {
@@ -82,6 +83,18 @@ void Editor::DrawMenuBar()
 					ImGui::EndMainMenuBar();
 					selectedActor = nullptr;
 					return;
+				}
+			}
+			ImGui::EndMenu();
+		}
+
+		if (ImGui::BeginMenu("Prefab"))
+		{
+			if (ImGui::MenuItem("Make Prefab"))
+			{
+				if (selectedActor)
+				{
+					PrefabManager::Instance().MakePrefab(selectedActor);
 				}
 			}
 			ImGui::EndMenu();
@@ -230,21 +243,32 @@ void Editor::HandleGizmo(ImVec2 pos, ImVec2 size)
 
 void Editor::DrawHierarchy(Scene* scene)
 {
-	ImGui::Begin("Hierarchy", nullptr);
+	ImGui::Begin("Hierarchy");
 
-	if (ImGui::Button("NewActor"))
-	{
-		selectedActor = CreateActor("NewActor", scene);
-	}
+	ImGui::BeginChild("HierarchyContent", ImVec2(0, 0), true);
 
 	for (auto& actor : scene->actors)
 	{
 		if (actor->GetParent() == nullptr)
-		{
 			DrawActorNode(actor.get());
-		}
 	}
 
+	// ツリーの一番下に空白のドロップ領域を作る
+	ImGui::Dummy(ImGui::GetContentRegionAvail());
+
+	if (ImGui::BeginDragDropTarget())
+	{
+		if (const ImGuiPayload* payload =
+			ImGui::AcceptDragDropPayload("HIERARCHY_ACTOR"))
+		{
+			Actor* dropped = *(Actor**)payload->Data;
+			dropped->SetParent(nullptr);
+		}
+
+		ImGui::EndDragDropTarget();
+	}
+
+	ImGui::EndChild();
 	ImGui::End();
 }
 
