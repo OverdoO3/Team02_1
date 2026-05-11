@@ -42,3 +42,4 @@ Bin/
 # =========================
 .DS_Store
 Thumbs.db
+*.cso

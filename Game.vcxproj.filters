@@ -225,27 +225,6 @@
     <ClInclude Include="Source\MathUtils.h">
       <Filter>Source\Common\Math</Filter>
     </ClInclude>
-    <ClInclude Include="..\team02_1\Source\CursorManager.h">
-      <Filter>Source\Common\Cursol</Filter>
-    </ClInclude>
-    <ClInclude Include="..\team02_1\Source\Button.h">
-      <Filter>Source\Common\Menu</Filter>
-    </ClInclude>
-    <ClInclude Include="..\team02_1\Source\ButtonManager.h">
-      <Filter>Source\Common\Menu</Filter>
-    </ClInclude>
-    <ClInclude Include="..\team02_1\Source\Menu.h">
-      <Filter>Source\Common\Menu</Filter>
-    </ClInclude>
-    <ClInclude Include="..\team02_1\Source\Lerp.h">
-      <Filter>Source\Common\Lerp</Filter>
-    </ClInclude>
-    <ClInclude Include="..\team02_1\Source\ParentChild.h">
-      <Filter>Source\Common\P&amp;C</Filter>
-    </ClInclude>
-    <ClInclude Include="..\team02_1\Source\NumberRender.h">
-      <Filter>Source\misc</Filter>
-    </ClInclude>
     <ClInclude Include="Source\SpriteRender.h">
       <Filter>Source\Components</Filter>
     </ClInclude>
