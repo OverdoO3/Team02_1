@@ -60,6 +60,11 @@ void Actor::Update(float elapsedTime)
 
 void Actor::UpdateWithOutPlayed(float elapsedTime)
 {
+	if (parent&&parent->isDead)
+	{
+		this->isDead = true;
+		return;
+	}
 	GetComponent<Transform>()->UpdateTransform();
 
 	for (auto& comp : components)
@@ -129,6 +134,18 @@ std::unique_ptr<Actor> Actor::Clone() const
 		auto newComp = comp->Clone();
 		copy->AddComponent(std::move(newComp));
 	}
+
+	copy->transform = copy->GetComponent<Transform>();
+
+	if (children.empty()) return copy;
+	for (auto child : children)
+	{
+		auto childCopy = child->Clone();
+
+		childCopy->SetParent(copy.get());
+		scene->actors.emplace_back(std::move(childCopy));
+	}
+
 	return copy;
 }
 

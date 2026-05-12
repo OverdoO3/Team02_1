@@ -358,20 +358,15 @@ void Editor::DrawInspector(Scene* scene)
 			for (auto* a : selectedActors)
 			{
 				auto clone = a->Clone();
-
 				Actor* ptr = clone.get();
-
 				// ­‚µ‚¸‚ç‚·‚Æ‹CŽ‚¿‚¢‚¢
 				auto t = clone->GetComponent<Transform>();
-				clone->transform = t;
 				auto pos = t->GetLocalPosition();
 				pos.x += 1.0f;
 				t->SetLocalPosition(pos);
-
 				clone->SetParent(a->GetParent());
-				
 				scene->actors.emplace_back(std::move(clone));
-
+				
 				newSelection.push_back(ptr);
 				anchorActor = ptr;
 			}
