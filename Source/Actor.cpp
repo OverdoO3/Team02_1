@@ -115,11 +115,12 @@ std::unique_ptr<Actor> Actor::Clone() const
 
 	copy->SetScene(scene);
 
-	copy->name = name;
+	copy->name = name + "copy";
 	copy->tag = tag;
-	copy->parentid = parentid;
-	copy->parent = parent;
 	copy->setActive = setActive;
+
+	copy->parentid = 0;
+	copy->SetParent(nullptr);
 
 	for (auto& comp : components)
 	{

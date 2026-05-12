@@ -27,14 +27,15 @@ public:
 		bool usingGizmo = ImGuizmo::IsUsing();
 		bool overGizmo = ImGuizmo::IsOver();
 
-		editorCamera->Update(elapsedTime, true, selectedActor);
+		editorCamera->Update(elapsedTime, true, anchorActor);
 
 		//補助
-		if (selectedActor)
+		for(auto& a : selectedActors)
 		{
-			if (selectedActor->isDead)
+			if (a == nullptr)return;
+			if (a->isDead)
 			{
-				selectedActor = nullptr;
+				a = nullptr;
 			}
 		}
 	}
@@ -57,7 +58,8 @@ private:
 	Engine* engine = nullptr;
 
 	//選択されてるアクター
-	Actor* selectedActor = nullptr;
+	std::vector<Actor*> selectedActors;
+	Actor* anchorActor = nullptr;
 
 	//Gizmoのあれ
 	ImGuizmo::OPERATION operation = ImGuizmo::TRANSLATE;

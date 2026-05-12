@@ -65,8 +65,8 @@ void SceneManager::ChangeScene(std::unique_ptr<Scene> scene,const char* path)
 
 void SceneManager::NewScene()
 {
-	editorScene = std::make_unique<Scene>();
-	editorScene->Initialize();
+	nextScene = std::make_unique<Scene>();
+	nextScene->Initialize();
 
 	// Play中なら止める
 	runtimeScene.reset();

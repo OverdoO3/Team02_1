@@ -81,7 +81,7 @@ void Editor::DrawMenuBar()
 					sceneManager.LoadEditorScene(path);
 					ImGui::EndMenu();
 					ImGui::EndMainMenuBar();
-					selectedActor = nullptr;
+					selectedActors.clear();
 					return;
 				}
 			}
@@ -92,9 +92,9 @@ void Editor::DrawMenuBar()
 		{
 			if (ImGui::MenuItem("Make Prefab"))
 			{
-				if (selectedActor)
+				if (selectedActors.front())
 				{
-					PrefabManager::Instance().MakePrefab(selectedActor);
+					PrefabManager::Instance().MakePrefab(selectedActors.front());
 				}
 			}
 			ImGui::EndMenu();
@@ -125,7 +125,8 @@ void Editor::HandleSelection(Scene* scene, ImVec2 pos, ImVec2 size)
 
 				float minDist = FLT_MAX;
 				Actor* nowDistActor = nullptr;
-				DirectX::XMFLOAT3 hitPos, hitNormal;
+				DirectX::XMFLOAT3 hitPos {};
+				DirectX::XMFLOAT3 hitNormal{};
 				for (auto& actor : scene->actors)
 				{
 					if (actor->GetComponent<ModelRender>() != nullptr)
@@ -157,7 +158,25 @@ void Editor::HandleSelection(Scene* scene, ImVec2 pos, ImVec2 size)
 					}
 				}
 				hitp = hitPos;
-				selectedActor = nowDistActor;
+				if (nowDistActor)
+				{
+					if (InputC::KeyDown(VK_CONTROL))
+					{
+						selectedActors.push_back(nowDistActor);
+						anchorActor = nowDistActor;
+					}
+					else
+					{
+						selectedActors.clear();
+						selectedActors.push_back(nowDistActor);
+						anchorActor = nowDistActor;
+					}
+				}
+			}
+			else
+			{
+				selectedActors.clear();
+				anchorActor = nullptr;
 			}
 		}
 	}
@@ -165,25 +184,41 @@ void Editor::HandleSelection(Scene* scene, ImVec2 pos, ImVec2 size)
 
 void Editor::HandleGizmo(ImVec2 pos, ImVec2 size)
 {
+	if (selectedActors.empty() || anchorActor == nullptr)
+		return;
+
+	if (InputC::KeyDown(VK_DELETE))
+	{
+		for (auto& act : selectedActors)
+		{
+			act->SetParent(nullptr);
+			act->isDead = true;
+			anchorActor = nullptr;
+			selectedActors.clear();
+		}
+		return;
+	}
+
 	EditorCamera* camera = editorCamera.get();
-	if (!selectedActor) return;
 
-	if (ImGui::IsKeyPressed('W'))
-		operation = ImGuizmo::TRANSLATE;
-
-	if (ImGui::IsKeyPressed('E'))
-		operation = ImGuizmo::ROTATE;
-
-	if (ImGui::IsKeyPressed('R'))
-		operation = ImGuizmo::SCALE;
-
-	auto transform = selectedActor->GetComponent<Transform>();
+	Actor* anchor = anchorActor;
+	auto* anchorTransform = anchor->GetComponent<Transform>();
 
 	ImGuizmo::SetOrthographic(false);
+	ImGuizmo::SetRect(pos.x, pos.y, size.x, size.y);
 
-	ImGui::Separator();
+	DirectX::XMMATRIX view = camera->GetView();
+	DirectX::XMMATRIX proj = camera->GetProjection();
+
+	DirectX::XMFLOAT4X4 viewF, projF;
+	DirectX::XMStoreFloat4x4(&viewF, view);
+	DirectX::XMStoreFloat4x4(&projF, proj);
 
 	float snap[3] = {};
+
+	if (InputC::KeyPressed('W'))operation = ImGuizmo::TRANSLATE;
+	if (InputC::KeyPressed('E'))operation = ImGuizmo::ROTATE;
+	if (InputC::KeyPressed('R'))operation = ImGuizmo::SCALE;
 
 	if (useSnap)
 	{
@@ -197,47 +232,73 @@ void Editor::HandleGizmo(ImVec2 pos, ImVec2 size)
 			snap[0] = snap[1] = snap[2] = 0.1f;
 	}
 
-	ImGuizmo::SetRect(pos.x, pos.y, size.x, size.y);
+	//anchorの元ワールド
+	DirectX::XMFLOAT4X4 oldWorld = anchorTransform->GetWorldMatrix();
+	DirectX::XMFLOAT4X4 newWorld = oldWorld;
 
-	DirectX::XMMATRIX view = camera->GetView();
-	DirectX::XMMATRIX proj = camera->GetProjection();
-
-	DirectX::XMFLOAT4X4 viewF, projF;
-	DirectX::XMStoreFloat4x4(&viewF, view);
-	DirectX::XMStoreFloat4x4(&projF, proj);
-
-	DirectX::XMFLOAT4X4 world = transform->GetWorldMatrix();
-
+	// Guizmo操作
 	ImGuizmo::Manipulate(
 		&viewF._11,
 		&projF._11,
 		operation,
 		mode,
-		&world._11,
+		&newWorld._11,
 		nullptr,
 		useSnap ? snap : nullptr
 	);
 
 	if (ImGuizmo::IsUsing())
 	{
-		DirectX::XMVECTOR s, r, t;
+		// =========================
+		// ① delta計算
+		// =========================
+		DirectX::XMMATRIX oldM = XMLoadFloat4x4(&oldWorld);
+		DirectX::XMMATRIX newM = XMLoadFloat4x4(&newWorld);
 
-		DirectX::XMMatrixDecompose(
-			&s, &r, &t,
-			DirectX::XMLoadFloat4x4(&world)
-		);
+		DirectX::XMMATRIX delta =
+			newM * XMMatrixInverse(nullptr, oldM);
 
-		DirectX::XMFLOAT3 scale;
-		DirectX::XMFLOAT4 rotation;
-		DirectX::XMFLOAT3 position;
+		// =========================
+		// ② 全選択に適用
+		// =========================
+		for (auto* actor : selectedActors)
+		{
+			auto* t = actor->GetComponent<Transform>();
 
-		DirectX::XMStoreFloat3(&scale, s);
-		DirectX::XMStoreFloat4(&rotation, r);
-		DirectX::XMStoreFloat3(&position, t);
+			DirectX::XMMATRIX current =
+				XMLoadFloat4x4(&t->GetWorldMatrix());
 
-		transform->SetLocalPosition(position);
-		transform->SetLocalScale(scale);
-		transform->SetLocalRotation(rotation);
+			DirectX::XMMATRIX result =
+				delta * current;
+
+			// =========================
+			// ③ world → localへ戻す
+			// =========================
+			Actor* parent = actor->GetParent();
+
+			DirectX::XMMATRIX parentWorld =
+				parent
+				? XMLoadFloat4x4(&parent->GetComponent<Transform>()->GetWorldMatrix())
+				: DirectX::XMMatrixIdentity();
+
+			DirectX::XMMATRIX local =
+				result * XMMatrixInverse(nullptr, parentWorld);
+
+			DirectX::XMVECTOR s, r, t2;
+			XMMatrixDecompose(&s, &r, &t2, local);
+
+			DirectX::XMFLOAT3 pos;
+			DirectX::XMFLOAT4 rot;
+			DirectX::XMFLOAT3 scale;
+
+			XMStoreFloat3(&pos, t2);
+			XMStoreFloat4(&rot, r);
+			XMStoreFloat3(&scale, s);
+
+			t->SetLocalPosition(pos);
+			t->SetLocalRotation(rot);
+			t->SetLocalScale(scale);
+		}
 	}
 }
 
@@ -251,6 +312,12 @@ void Editor::DrawHierarchy(Scene* scene)
 		std::string path = OpenDialog::OpenLoadFileDialog();
 		if (path.empty())return;
 		PrefabManager::Instance().InstantiateFromFile(path, scene);
+	}
+
+	ImGui::SameLine();
+	if (ImGui::Button("NewActor"))
+	{
+		CreateActor("NewActor",scene);
 	}
 
 	ImGui::BeginChild("HierarchyContent", ImVec2(0, 0), true);
@@ -283,23 +350,44 @@ void Editor::DrawHierarchy(Scene* scene)
 void Editor::DrawInspector(Scene* scene)
 {
 	ImGui::Begin("Inspector");
-	if (selectedActor)
+	if (!selectedActors.empty()&&anchorActor != nullptr)
 	{
-		if (InputC::KeyDown('D') && InputC::KeyPressed(VK_CONTROL))
+		std::vector<Actor*> newSelection;
+		if (InputC::KeyPressed('D') && InputC::KeyDown(VK_CONTROL))
 		{
-			scene->adderActors.emplace_back(selectedActor->Clone());
+			for (auto* a : selectedActors)
+			{
+				auto clone = a->Clone();
+
+				Actor* ptr = clone.get();
+
+				// 少しずらすと気持ちいい
+				auto t = clone->GetComponent<Transform>();
+				clone->transform = t;
+				auto pos = t->GetLocalPosition();
+				pos.x += 1.0f;
+				t->SetLocalPosition(pos);
+
+				clone->SetParent(a->GetParent());
+				
+				scene->actors.emplace_back(std::move(clone));
+
+				newSelection.push_back(ptr);
+				anchorActor = ptr;
+			}
+			selectedActors = newSelection;
 		}
 
-		ImGui::Text("Name: %s", selectedActor->name.c_str());
+		ImGui::Text("Name: %s", anchorActor->name.c_str());
 		ImGui::SameLine();
-		ImGui::Checkbox("##enabled", &selectedActor->setActive);
+		ImGui::Checkbox("##enabled", &anchorActor->setActive);
 
-		Inspector::DrawActorHeader(selectedActor);
+		Inspector::DrawActorHeader(anchorActor);
 
-		for (auto& comp : selectedActor->GetComponents())
+		for (auto& comp : anchorActor->GetComponents())
 		{
 			if (!comp)continue;
-			if (Inspector::DrawComponentHeader(comp.get(), selectedActor))
+			if (Inspector::DrawComponentHeader(comp.get(), anchorActor))
 			{
 				comp->isDeleted = true;
 			}
@@ -312,15 +400,13 @@ void Editor::DrawInspector(Scene* scene)
 			{
 				if (ImGui::Selectable(ComponentFactory::GetName(info)))
 				{
-					selectedActor->AddComponentByID(info);
+					anchorActor->AddComponentByID(info);
 				}
 			}
 
 			ImGui::EndCombo();
 		}
-
 	}
-
 	ImGui::End();
 }
 
@@ -450,18 +536,25 @@ void Editor::DrawActorNode(Actor* actor)
 		return;
 	}
 
-	// これが選択表示
-	if (actor == selectedActor)
-		flags |= ImGuiTreeNodeFlags_Selected;
+	if (!selectedActors.empty())
+	{
+		// これが選択表示
+		if (actor == selectedActors.front())
+			flags |= ImGuiTreeNodeFlags_Selected;
+	}
+
+	DirectX::XMFLOAT4 color;
 
 	if (actor->setActive)
 	{
-		ImGui::PushStyleColor(ImGuiCol_Text, IM_COL32(255, 255, 255, 255));
+		color = { 255,255,255,255 };
 	}
 	else
 	{
-		ImGui::PushStyleColor(ImGuiCol_Text, IM_COL32(180, 180, 180, 180));
+		color = { 180,180,180,180, };
 	}
+
+	ImGui::PushStyleColor(ImGuiCol_Text, IM_COL32(color.x,color.y,color.z,color.w));
 
 	bool opened = ImGui::TreeNodeEx(
 		(void*)actor,
@@ -505,28 +598,46 @@ void Editor::DrawActorNode(Actor* actor)
 	// クリック判定
 	if (ImGui::IsItemClicked())
 	{
-		selectedActor = actor;
+		//if (selectedActors.empty())return;
+		if (InputC::KeyDown(VK_LCONTROL))
+		{
+			selectedActors.emplace_back(actor);
+			anchorActor = actor;
+		}
+		else
+		{
+			selectedActors.clear();
+			selectedActors.emplace_back(actor);
+			anchorActor = actor;
+		}
+
 	}
 
-	// ダブルクリックRename
-	if (actor == selectedActor &&
-		ImGui::IsItemHovered() &&
-		ImGui::IsMouseDoubleClicked(0))
+	if (!selectedActors.empty())
 	{
-		renameTarget = actor;
+		// ダブルクリックRename
+		if (actor == selectedActors.front() &&
+			ImGui::IsItemHovered() &&
+			ImGui::IsMouseDoubleClicked(0))
+		{
+			renameTarget = actor;
 
-		strcpy_s(renameBuffer,
-			actor->name.c_str());
+			strcpy_s(renameBuffer,
+				actor->name.c_str());
+		}
 	}
 
-	// F2 Rename
-	if (actor == selectedActor &&
-		InputC::KeyDown(VK_F2))
+	if (!selectedActors.empty())
 	{
-		renameTarget = actor;
+		// F2 Rename
+		if (actor == selectedActors.front() &&
+			InputC::KeyDown(VK_F2))
+		{
+			renameTarget = actor;
 
-		strcpy_s(renameBuffer,
-			actor->name.c_str());
+			strcpy_s(renameBuffer,
+				actor->name.c_str());
+		}
 	}
 
 	if (opened)

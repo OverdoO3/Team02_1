@@ -18,11 +18,6 @@ public:
             ImGui::OpenPopup("ActorMenu");
         }
 
-		if (InputC::KeyDown(VK_DELETE))
-		{
-			actor->isDead = true;
-		}
-
         if (ImGui::BeginPopup("ActorMenu"))
         {
 			if (ImGui::MenuItem("Delete"))
