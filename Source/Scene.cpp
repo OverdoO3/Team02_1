@@ -7,7 +7,6 @@ void Scene::Initialize(const char* path)
 {
 	SceneSerializer::Load(*this,path);
 	InitializeAfterLoad();
-	sky = std::make_unique<sky_map>(Graphics::Instance().GetDevice(), "Data/skymap/sky_cloud.hdr",false);
 }
 
 void Scene::Update(float elapsedTime)
@@ -76,6 +75,7 @@ void Scene::Update(float elapsedTime)
 				}),
 			actors.end()
 		);
+
 		physics.Flush();
 		adderActors.clear();
 	}

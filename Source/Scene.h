@@ -31,17 +31,37 @@ public:
 
 	std::unique_ptr<Scene> Clone() const
 	{
-		auto scene = std::make_unique<Scene>();
+		auto newScene = std::make_unique<Scene>();
 
-		for (const auto& actor : actors)
+		// original → copy の対応表
+		std::unordered_map<Actor*, Actor*> map;
+
+		// ① まず全部コピー作成
+		for (auto& actor : actors)
 		{
-			scene->actors.push_back(actor->Clone());
+			auto copy = actor->Clone(true);
+
+			map[actor.get()] = copy.get();
+
+			// まだSceneには入れない
+			newScene->actors.emplace_back(std::move(copy));
 		}
 
-		scene->InitializeAfterLoad();
+		// ② 親子関係を再構築
+		for (auto& [original, copy] : map)
+		{
+			if (original->GetParent())
+			{
+				Actor* parentCopy =
+					map[original->GetParent()];
 
-		scene->physics = this->physics;
-		return scene;
+				copy->SetParent(parentCopy);
+			}
+		}
+
+		newScene->InitializeAfterLoad();
+
+		return newScene;
 	}
 
 	void Initialize(const char* path = "");

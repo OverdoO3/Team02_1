@@ -220,6 +220,11 @@ void Editor::HandleGizmo(ImVec2 pos, ImVec2 size)
 	if (InputC::KeyPressed('E'))operation = ImGuizmo::ROTATE;
 	if (InputC::KeyPressed('R'))operation = ImGuizmo::SCALE;
 
+	if (InputC::KeyDown(VK_SHIFT))
+	{
+		useSnap = true;
+	}
+
 	if (useSnap)
 	{
 		if (operation == ImGuizmo::TRANSLATE)
@@ -362,7 +367,7 @@ void Editor::DrawInspector(Scene* scene)
 				// ­‚µ‚¸‚ç‚·‚Æ‹CŽ‚¿‚¢‚¢
 				auto t = clone->GetComponent<Transform>();
 				auto pos = t->GetLocalPosition();
-				pos.x += 1.0f;
+				pos.x += 10.0f;
 				t->SetLocalPosition(pos);
 				clone->SetParent(a->GetParent());
 				scene->actors.emplace_back(std::move(clone));

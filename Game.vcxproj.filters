@@ -455,18 +455,6 @@
     <ClCompile Include="Source\MathUtils.cpp">
       <Filter>Source\Common\Math</Filter>
     </ClCompile>
-    <ClCompile Include="..\team02_1\Source\Button.cpp">
-      <Filter>Source\Common\Menu</Filter>
-    </ClCompile>
-    <ClCompile Include="..\team02_1\Source\ButtonManager.cpp">
-      <Filter>Source\Common\Menu</Filter>
-    </ClCompile>
-    <ClCompile Include="..\team02_1\Source\Menu.cpp">
-      <Filter>Source\Common\Menu</Filter>
-    </ClCompile>
-    <ClCompile Include="..\team02_1\Source\ParentChild.cpp">
-      <Filter>Source\Common\P&amp;C</Filter>
-    </ClCompile>
     <ClCompile Include="Source\SpriteRender.cpp">
       <Filter>Source\Components</Filter>
     </ClCompile>

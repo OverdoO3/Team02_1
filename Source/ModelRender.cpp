@@ -76,6 +76,7 @@ void ModelRender::UpdateAnimation(float elapsedTime)
 		const ModelResource::Animation& animation = animations.at(animationIndex);
 
 		animationSeconds += elapsedTime;
+		blendRate *= blendRate;
 
 		if (animationSeconds >= animation.secondsLength)
 		{

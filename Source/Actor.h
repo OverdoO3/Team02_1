@@ -47,7 +47,7 @@ public:
 	void Render(RenderContext& rc, ModelRenderer* renderer);
 	void RenderDebug(RenderContext& rc, ShapeRenderer* renderer);
 
-	std::unique_ptr<Actor> Clone() const;
+	std::unique_ptr<Actor> Clone(bool play = false) const;
 
 	void SetScene(Scene* s) { scene = s; }
 	Scene* GetScene() { return scene; }

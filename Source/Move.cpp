@@ -48,6 +48,7 @@ void Move::Update(float elapsedTime)
     };
 
     float len = sqrtf(moveDir.x * moveDir.x + moveDir.z * moveDir.z);
+
     if (len > 0.0001f)
     {
         moveDir.x /= len;

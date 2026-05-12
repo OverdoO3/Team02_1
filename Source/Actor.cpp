@@ -114,17 +114,25 @@ void Actor::RenderDebug(RenderContext& rc, ShapeRenderer* renderer)
 	}
 }
 
-std::unique_ptr<Actor> Actor::Clone() const
+std::unique_ptr<Actor> Actor::Clone(bool play) const
 {
 	auto copy = std::make_unique<Actor>();
 
 	copy->SetScene(scene);
 
-	copy->name = name + "copy";
+	if (!play)
+	{
+		copy->name = name + "copy";
+	}
+	else
+	{
+		copy->name = name;
+	}
 	copy->tag = tag;
+	copy->id = id;
 	copy->setActive = setActive;
 
-	copy->parentid = 0;
+	copy->parentid = parentid;
 	copy->SetParent(nullptr);
 
 	for (auto& comp : components)
@@ -137,13 +145,15 @@ std::unique_ptr<Actor> Actor::Clone() const
 
 	copy->transform = copy->GetComponent<Transform>();
 
-	if (children.empty()) return copy;
-	for (auto child : children)
+	if (!play)
 	{
-		auto childCopy = child->Clone();
+		for (auto child : children)
+		{
+			auto childCopy = child->Clone();
 
-		childCopy->SetParent(copy.get());
-		scene->actors.emplace_back(std::move(childCopy));
+			childCopy->SetParent(copy.get());
+			scene->actors.emplace_back(std::move(childCopy));
+		}
 	}
 
 	return copy;
