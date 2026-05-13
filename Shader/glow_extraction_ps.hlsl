@@ -15,10 +15,10 @@ float4 main(float4 position : SV_POSITION, float2 texcoord : TEXCOORD) : SV_TARG
 
 //グレースケール方式
 //自然な抽出
-#if 0
-	return float4(step(bloom_extraction_threshold, dot(sampled_color.rgb, float3(0.299, 0.587, 0.114))) * sampled_color.rgb * effect_data.bloom_intensity, sampled_color.a);
+#if 1
+	return float4(step(bloom_extraction_threshold, dot(sampled_color.rgb, float3(0.299, 0.587, 0.114))) * sampled_color.rgb, sampled_color.a);
 
-#else	
+#else
     //RGB最大方式
     return float4(step(bloom_extraction_threshold, max(sampled_color.r, max(sampled_color.g, sampled_color.b))) * sampled_color.rgb, sampled_color.a);
 #endif	

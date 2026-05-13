@@ -83,7 +83,8 @@ RenderState::RenderState(ID3D11Device* device)
 		HRESULT hr = device->CreateSamplerState(&desc,
 			samplerStates[static_cast<int>(SamplerState::LinearClamp)].GetAddressOf());
 		_ASSERT_EXPR(SUCCEEDED(hr), HRTrace(hr));
-	}	// リニアサンプリング＆テクスチャ繰り返しなし黒
+	}
+	// リニアサンプリング＆テクスチャ繰り返しなし黒
 	{
 		D3D11_SAMPLER_DESC desc;
 		desc.MipLODBias = 0.0f;
@@ -95,9 +96,9 @@ RenderState::RenderState(ID3D11Device* device)
 		desc.BorderColor[1] = 0.0f;
 		desc.BorderColor[2] = 0.0f;
 		desc.BorderColor[3] = 0.0f;
-		desc.AddressU = D3D11_TEXTURE_ADDRESS_CLAMP;
-		desc.AddressV = D3D11_TEXTURE_ADDRESS_CLAMP;
-		desc.AddressW = D3D11_TEXTURE_ADDRESS_CLAMP;
+		desc.AddressU = D3D11_TEXTURE_ADDRESS_BORDER;
+		desc.AddressV = D3D11_TEXTURE_ADDRESS_BORDER;
+		desc.AddressW = D3D11_TEXTURE_ADDRESS_BORDER;
 		desc.Filter = D3D11_FILTER_MIN_MAG_MIP_LINEAR;
 		HRESULT hr = device->CreateSamplerState(&desc,
 			samplerStates[static_cast<int>(SamplerState::LinearBorderBlack)].GetAddressOf());

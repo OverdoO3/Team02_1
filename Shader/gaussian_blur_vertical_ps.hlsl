@@ -26,7 +26,7 @@ float4 main(float4 position : SV_POSITION, float2 texcoord : TEXCOORD) : SV_TARG
         sampled_color += hdr_color_buffer_texture.Sample(sampler_states[LINEAR_BORDER_BLACK], texcoord + float2(0.0, offset[i] / height)) * weight[i];
         sampled_color += hdr_color_buffer_texture.Sample(sampler_states[LINEAR_BORDER_BLACK], texcoord - float2(0.0, offset[i] / height)) * weight[i];
     }
-    sampled_color = isnan(sampled_color) ? 0 : sampled_color;
+    sampled_color = isnan(sampled_color) ? 0 : sampled_color; 
     
 #else
     	//https://software.intel.com/en-us/blogs/2014/07/15/an-investigation-of-fast-real-time-gpu-based-image-blur-algorithms
