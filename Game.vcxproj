@@ -260,6 +260,7 @@
     <ClInclude Include="Source\Move.h" />
     <ClInclude Include="Source\OpenDialog.h" />
     <ClInclude Include="Source\PhysicsSystem.h" />
+    <ClInclude Include="Source\PlayerUIRotator.h" />
     <ClInclude Include="Source\RayCast.h" />
     <ClInclude Include="Source\ResourceManager.h" />
     <ClInclude Include="Source\SceneSerializer.h" />
@@ -352,6 +353,7 @@
     <ClCompile Include="Source\ModelRender.cpp" />
     <ClCompile Include="Source\Move.cpp" />
     <ClCompile Include="Source\PhysicsSystem.cpp" />
+    <ClCompile Include="Source\PlayerUIRotator.cpp" />
     <ClCompile Include="Source\RayCast.cpp" />
     <ClCompile Include="Source\ResourceManager.cpp" />
     <ClCompile Include="Source\Scene.cpp" />

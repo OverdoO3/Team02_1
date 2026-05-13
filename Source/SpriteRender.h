@@ -2,6 +2,10 @@
 #include "Component.h"
 #include "System/Sprite.h"
 #include "OpenDialog.h"
+#include "ImGuizmo.h"
+#include "CameraBase.h"
+#include "Camera.h"
+
 
 class SpriteRender : public Component
 {
@@ -13,6 +17,9 @@ public:
     void Draw(RenderContext& rc) override;
     void Update(float elapsedTime) override;
     std::unique_ptr<Component> Clone() const override;
+
+    void SetAngle(float deg) { m_editorAngleDeg = deg; }
+    void SetScale(float scale) { m_editorScale = scale; }
 
     Sprite* GetSprite(){ return spr.get(); }
     void SetSprite(std::unique_ptr<Sprite> sp) { spr = std::move(sp); }
@@ -35,8 +42,12 @@ public:
         return "Data/" + normalized.generic_string();
     }
 
+
 private:
     std::unique_ptr<Sprite> spr;
 
     std::string texturepath;
+
+    float m_editorScale = 1.0f;
+    float m_editorAngleDeg = 0.0f;
 };

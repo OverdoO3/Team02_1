@@ -360,6 +360,9 @@
     <ClInclude Include="Source\System\bloom.h">
       <Filter>Source\System</Filter>
     </ClInclude>
+    <ClInclude Include="Source\PlayerUIRotator.h">
+      <Filter>Source\Components\Temp\TempObj</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="External\imgui-docking\imgui.cpp">
@@ -553,6 +556,9 @@
     </ClCompile>
     <ClCompile Include="Source\System\bloom.cpp">
       <Filter>Source\System</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\PlayerUIRotator.cpp">
+      <Filter>Source\Components\Temp\TempObj</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

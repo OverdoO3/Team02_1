@@ -80,7 +80,60 @@ void Scene::Update(float elapsedTime)
 		physics.Flush();
 		adderActors.clear();
 	}
+#ifdef _DEBUG
+    if (ImGui::Begin("Debug Settings"))
+    {
+        if (ImGui::CollapsingHeader("Light & Shadow", ImGuiTreeNodeFlags_DefaultOpen))
+        {
+            // ライト方向
+            ImGui::DragFloat3("Light Direction", &lightDir.x, 0.01f, -1.0f, 1.0f);
 
+            ImGui::SliderFloat("Shadow Range", &shadowRange, 0.1f, 200.0f);
+
+            ImGui::Checkbox("Follow Player", &followPlayer);
+
+            // 色設定
+            ImGui::ColorEdit4("Light Color", &lightCol.x);
+            ImGui::ColorEdit4("Ambient Color", &ambientCol.x);
+
+            ImGui::Text("Shadow editer");
+            ImGui::SliderFloat("Shadow Alpha", &m_shadowParams.shadow_color, 0.0f, 1.0f);
+            ImGui::DragFloat("Shadow Bias", &m_shadowParams.shadow_bias, 0.0001f, 0.0f, 0.01f, "%.4f");
+
+            // 平行光源の色設定
+            ImGui::ColorEdit3("Directional Light Color", &lightCol.x);
+
+            ImGui::Separator();
+            ImGui::Text("Light Settings"); // 新しいセクションのヘッダー
+
+            ImGui::SliderFloat("Light Intensity", &m_lightParams.lightIntensity, 0.0f, 5.0f);
+            ImGui::SliderFloat("Contrast Power", &m_lightParams.contrastPower, 0.1f, 3.0f);
+            ImGui::SliderFloat("PointLight Intensity", &m_lightParams.pointLightIntensity, 0.0f, 10.0f); // ←追加
+            ImGui::Separator();
+
+            ImGui::Text("OutLine Setting");
+            ImGui::ColorEdit4("Color", &m_outlineColor.x);
+            ImGui::SliderFloat("Thickness", &m_outlineThickness, 0.01f, 1.0f);
+
+            ImGui::Separator();
+            ImGui::Text("Bloom Settings");
+            ImGui::SliderFloat("Bloom Threshold", &bloomer->bloom_extraction_threshold, 0.0f, 5.0f);
+            ImGui::SliderFloat("Bloom Intensity", &bloomer->bloom_intensity, 0.0f, 5.0f);
+
+
+            // シャドウマップのプレビュー表示
+            ImGui::Separator();
+            ImGui::Text("Shadow Map Preview:");
+            ID3D11ShaderResourceView* shadowSRV = Graphics::Instance().GetShadowMapSRV();
+            if (shadowSRV) {
+                ImGui::Image((ImTextureID)shadowSRV, ImVec2(200, 200));
+            }
+        }
+    }
+    ImGui::End();
+
+
+#endif
 }
 
 void Scene::Render(CameraBase* camera, bool isEditor)

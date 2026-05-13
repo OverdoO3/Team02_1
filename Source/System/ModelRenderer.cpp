@@ -301,5 +301,20 @@ void ModelRenderer::Render(const RenderContext& rc, const DirectX::XMFLOAT4X4& w
 
 void ModelRenderer::DebugImGui()
 {
-
+	RenderContext rc;
+	if (ImGui::Begin("PointLights Debug"))
+	{
+		for (int i = 0; i < 8; i++)
+		{
+			ImGui::PushID(i);
+			if (ImGui::CollapsingHeader(("Light[" + std::to_string(i) + "]").c_str()))
+			{
+				ImGui::SliderFloat3("Position", &point_light[i].position.x, -50.0f, 50.0f);
+				ImGui::SliderFloat("Range", &point_light[i].range, 0.0f, 100.0f);
+				ImGui::ColorEdit4("Color", &point_light[i].color.x);
+			}
+			ImGui::PopID();
+		}
+	}
+	ImGui::End();
 }

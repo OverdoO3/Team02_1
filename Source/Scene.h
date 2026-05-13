@@ -27,7 +27,7 @@ using json = nlohmann::json;
 
 class SceneManager;
 
-// inspector用構造体
+// ImGui用
 struct SceneDebugParams
 {
 	DirectX::XMFLOAT3* lightDir;        
