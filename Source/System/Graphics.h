@@ -49,6 +49,12 @@ public:
 	// 画面表示
 	void Present(UINT syncInterval);
 
+	//影用バッファのクリア
+	void ClearShadowMap();
+
+	//影描画の開始
+	void BeginShadowMap();
+
 	// ウインドウハンドル取得
 	HWND GetWindowHandle() { return hWnd; }
 
@@ -74,12 +80,28 @@ public:
 	ModelRenderer* GetModelRenderer() const { return modelRenderer.get(); }
 
 	std::recursive_mutex& GetMutex() { return mutex; }
+	
+	void EndShadowMap();
 
 	bool CreateRenderTarget(RenderTarget& rt, int w, int h);
 
 	ID3D11RenderTargetView* GetBackBufferRTV() const { return renderTargetView.Get(); }
 	ID3D11DepthStencilView* GetDepthStencilView() const { return depthStencilView.Get(); }
 	D3D11_VIEWPORT GetViewport() const { return viewport; }
+
+	ID3D11ShaderResourceView* GetShadowMapSRV() const { return shadowMapSRV.Get(); }
+	ID3D11SamplerState* GetShadowSampler() const { return shadowSampler.Get(); }
+
+	struct scene_constants
+	{
+		DirectX::XMFLOAT4X4 view_projection;
+		DirectX::XMFLOAT4 options;	//	xy : マウスの座標値, z : タイマー, w : フラグ
+		DirectX::XMFLOAT4 camera_position;
+	};
+
+
+	Microsoft::WRL::ComPtr<ID3D11Buffer> scene_constant_buffer;
+
 
 private:
 	HWND											hWnd = nullptr;
@@ -98,4 +120,15 @@ private:
 	std::unique_ptr<ModelRenderer>					modelRenderer;
 
 	std::recursive_mutex mutex;
+
+	Microsoft::WRL::ComPtr<ID3D11ShaderResourceView> shadowMapSRV;
+	Microsoft::WRL::ComPtr<ID3D11DepthStencilView>	 shadowMapDSV;
+	D3D11_VIEWPORT									 shadowViewport;
+	Microsoft::WRL::ComPtr<ID3D11Texture2D>			 shadowTexture;
+	Microsoft::WRL::ComPtr<ID3D11SamplerState>		 shadowSampler;
+	//元のレンダーターゲットを一時的に保存するための変数
+	UINT viewport_count{ D3D11_VIEWPORT_AND_SCISSORRECT_OBJECT_COUNT_PER_PIPELINE };
+	D3D11_VIEWPORT cached_viewports[D3D11_VIEWPORT_AND_SCISSORRECT_OBJECT_COUNT_PER_PIPELINE];
+	Microsoft::WRL::ComPtr<ID3D11RenderTargetView> cached_render_target_view;
+	Microsoft::WRL::ComPtr<ID3D11DepthStencilView> cached_depth_stencil_view;
 };

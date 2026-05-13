@@ -351,6 +351,15 @@
     <ClInclude Include="Source\snowman.h">
       <Filter>Source\Components\Temp\TempObj</Filter>
     </ClInclude>
+    <ClInclude Include="Source\System\framebuffer.h">
+      <Filter>Source\System</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\System\fullscreen_quad.h">
+      <Filter>Source\System</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\System\bloom.h">
+      <Filter>Source\System</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="External\imgui-docking\imgui.cpp">
@@ -446,18 +455,6 @@
     <ClCompile Include="Source\MathUtils.cpp">
       <Filter>Source\Common\Math</Filter>
     </ClCompile>
-    <ClCompile Include="..\team02_1\Source\Button.cpp">
-      <Filter>Source\Common\Menu</Filter>
-    </ClCompile>
-    <ClCompile Include="..\team02_1\Source\ButtonManager.cpp">
-      <Filter>Source\Common\Menu</Filter>
-    </ClCompile>
-    <ClCompile Include="..\team02_1\Source\Menu.cpp">
-      <Filter>Source\Common\Menu</Filter>
-    </ClCompile>
-    <ClCompile Include="..\team02_1\Source\ParentChild.cpp">
-      <Filter>Source\Common\P&amp;C</Filter>
-    </ClCompile>
     <ClCompile Include="Source\SpriteRender.cpp">
       <Filter>Source\Components</Filter>
     </ClCompile>
@@ -548,6 +545,15 @@
     <ClCompile Include="Source\snowman.cpp">
       <Filter>Source\Components\Temp\TempObj</Filter>
     </ClCompile>
+    <ClCompile Include="Source\System\framebuffer.cpp">
+      <Filter>Source\System</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\System\fullscreen_quad.cpp">
+      <Filter>Source\System</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\System\bloom.cpp">
+      <Filter>Source\System</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Shader\Sprite.hlsli">
@@ -569,6 +575,15 @@
       <Filter>Shader</Filter>
     </None>
     <None Include="Shader\Scene.hlsli">
+      <Filter>Shader</Filter>
+    </None>
+    <None Include="Shader\bloom.hlsli">
+      <Filter>Shader</Filter>
+    </None>
+    <None Include="Shader\fullscreen_quad.hlsli">
+      <Filter>Shader</Filter>
+    </None>
+    <None Include="Shader\lights.hlsli">
       <Filter>Shader</Filter>
     </None>
   </ItemGroup>
@@ -601,6 +616,36 @@
       <Filter>Shader</Filter>
     </FxCompile>
     <FxCompile Include="Shader\LambertVS.hlsl">
+      <Filter>Shader</Filter>
+    </FxCompile>
+    <FxCompile Include="Shader\final_pass_ps.hlsl">
+      <Filter>Shader</Filter>
+    </FxCompile>
+    <FxCompile Include="Shader\fullscreen_quad_ps.hlsl">
+      <Filter>Shader</Filter>
+    </FxCompile>
+    <FxCompile Include="Shader\fullscreen_quad_vs.hlsl">
+      <Filter>Shader</Filter>
+    </FxCompile>
+    <FxCompile Include="Shader\gaussian_blur_downsampling_ps.hlsl">
+      <Filter>Shader</Filter>
+    </FxCompile>
+    <FxCompile Include="Shader\gaussian_blur_horizontal_ps.hlsl">
+      <Filter>Shader</Filter>
+    </FxCompile>
+    <FxCompile Include="Shader\gaussian_blur_upsampling_ps.hlsl">
+      <Filter>Shader</Filter>
+    </FxCompile>
+    <FxCompile Include="Shader\gaussian_blur_vertical_ps.hlsl">
+      <Filter>Shader</Filter>
+    </FxCompile>
+    <FxCompile Include="Shader\glow_extraction_ps.hlsl">
+      <Filter>Shader</Filter>
+    </FxCompile>
+    <FxCompile Include="Shader\out_line_ps.hlsl">
+      <Filter>Shader</Filter>
+    </FxCompile>
+    <FxCompile Include="Shader\out_line_vs.hlsl">
       <Filter>Shader</Filter>
     </FxCompile>
   </ItemGroup>

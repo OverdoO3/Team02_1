@@ -3,6 +3,10 @@
 #include <memory>
 #include "ComponentManager.h"
 #include "Input.h"
+#include "System/Graphics.h"
+#include "System/bloom.h"
+
+struct SceneDebugParams;
 
 class Inspector
 {
@@ -71,4 +75,5 @@ public:
 
         return false; // 何もしてない
     }
+
 };

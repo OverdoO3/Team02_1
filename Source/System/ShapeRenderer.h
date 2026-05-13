@@ -6,6 +6,48 @@
 #include <DirectXMath.h>
 #include "RenderContext.h"
 
+	struct Mesh
+	{
+		Microsoft::WRL::ComPtr<ID3D11Buffer>	vertexBuffer;
+		UINT									vertexCount;
+	};
+
+	struct point_lights
+	{
+		DirectX::XMFLOAT4 position{ 0,0,0,0 };
+		DirectX::XMFLOAT4 color{ 1,1,1,1 };
+		float range{ 0 };
+		DirectX::XMFLOAT3 dummy;
+	};
+
+	struct LightConstants {
+		DirectX::XMFLOAT4X4 lightViewProjection; // ライト視点の行列
+		DirectX::XMFLOAT4   lightDirection;      // ライトの向き
+		DirectX::XMFLOAT4   lightColor;          // ライトの色
+	};
+
+	struct CbMesh
+	{
+		DirectX::XMFLOAT4X4		worldViewProjection;
+		DirectX::XMFLOAT4		color;
+
+		DirectX::XMFLOAT4 ka;	//環境光係数
+		DirectX::XMFLOAT4 kd;	//拡散反射係数(今までのcolor)
+		DirectX::XMFLOAT4 ks;	//鏡面反射係数
+
+		float shadow_color;
+		float shadow_bias;
+		DirectX::XMFLOAT2 padding;
+	};
+
+	struct CbScene
+	{
+		DirectX::XMFLOAT4X4 viewProjection;
+
+		DirectX::XMFLOAT4 cameraPosition;
+	};
+
+
 class ShapeRenderer
 {
 public:
@@ -49,19 +91,14 @@ public:
 		const DirectX::XMFLOAT3& end,
 		const DirectX::XMFLOAT4& color)const;
 
+	// 定数バッファ自体を取得
+	ID3D11Buffer* GetLightConstantBuffer() const { return lightConstantBuffer.Get(); }
+
+	//ポイント配列のゲッター
+	point_lights* GetPointLights() { return point_light; }
+
+
 private:
-	struct Mesh
-	{
-		Microsoft::WRL::ComPtr<ID3D11Buffer>	vertexBuffer;
-		UINT									vertexCount;
-	};
-
-	struct CbMesh
-	{
-		DirectX::XMFLOAT4X4		worldViewProjection;
-		DirectX::XMFLOAT4		color;
-	};
-
 	// 描画実行
 	void Render(const RenderContext& rc, const Mesh& mesh, const DirectX::XMFLOAT4X4& transform, const DirectX::XMFLOAT4& color) const;
 
@@ -92,4 +129,14 @@ private:
 	Microsoft::WRL::ComPtr<ID3D11PixelShader>	pixelShader;
 	Microsoft::WRL::ComPtr<ID3D11InputLayout>	inputLayout;
 	Microsoft::WRL::ComPtr<ID3D11Buffer>		constantBuffer;
+	Microsoft::WRL::ComPtr<ID3D11Buffer>	    sceneConstantBuffer;
+	Microsoft::WRL::ComPtr<ID3D11Buffer>		lightConstantBuffer;
+	Microsoft::WRL::ComPtr<ID3D11Buffer>		meshDataConstantBuffer;
+	Microsoft::WRL::ComPtr<ID3D11Buffer>		shadowParamsConstantBuffer;
+	Microsoft::WRL::ComPtr<ID3D11Buffer>		light_constant_buffer;
+
+	DirectX::XMFLOAT4 ambient_color{ 0.2f,0.2f,0.2f,0.2f };
+	DirectX::XMFLOAT4 directional_light_direction{ 0.0f,-1.0f,1.0f,1.0f };
+	DirectX::XMFLOAT4 directional_light_color{ 1.0f,1.0f,1.0f,1.0f };
+	point_lights point_light[8];
 };

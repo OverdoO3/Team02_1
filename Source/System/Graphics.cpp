@@ -122,6 +122,72 @@ void Graphics::Initialize(HWND hWnd)
 		viewport.TopLeftY = 0.0f;
 	}
 
+	//シャドウマップのリソース生成
+	{
+		//影用の奥行きを記録するテクスチャを作る
+		D3D11_TEXTURE2D_DESC texDesc{};
+		texDesc.Width = 2048;
+		texDesc.Height = 2048;
+		//texDesc.Width = 2048;
+		//texDesc.Height = 2048;
+
+		texDesc.MipLevels = 1;
+		texDesc.ArraySize = 1;
+		texDesc.Format = DXGI_FORMAT_R32_TYPELESS;
+		texDesc.SampleDesc.Count = 1;
+		texDesc.Usage = D3D11_USAGE_DEFAULT;
+		texDesc.BindFlags = D3D11_BIND_DEPTH_STENCIL | D3D11_BIND_SHADER_RESOURCE;
+
+		hr = device->CreateTexture2D(&texDesc, nullptr, shadowTexture.GetAddressOf());
+		_ASSERT_EXPR(SUCCEEDED(hr), HRTrace(hr));
+
+		//影を書き込む窓口
+		D3D11_DEPTH_STENCIL_VIEW_DESC dsvDesc{};
+		dsvDesc.Format = DXGI_FORMAT_D32_FLOAT;
+		dsvDesc.ViewDimension = D3D11_DSV_DIMENSION_TEXTURE2D;
+
+		hr = device->CreateDepthStencilView(shadowTexture.Get(), &dsvDesc, shadowMapDSV.GetAddressOf());
+		_ASSERT_EXPR(SUCCEEDED(hr), HRTrace(hr));
+
+		//影をシェーダーで読み込む
+		D3D11_SHADER_RESOURCE_VIEW_DESC srvDesc{};
+		srvDesc.Format = DXGI_FORMAT_R32_FLOAT;
+		srvDesc.ViewDimension = D3D11_SRV_DIMENSION_TEXTURE2D;
+		srvDesc.Texture2D.MipLevels = 1;
+		hr = device->CreateShaderResourceView(shadowTexture.Get(), &srvDesc, shadowMapSRV.GetAddressOf());
+		_ASSERT_EXPR(SUCCEEDED(hr), HRTrace(hr));
+
+		shadowViewport.Width = 2048.0f;
+		shadowViewport.Height = 2048.0f;
+		//shadowViewport.Width =  4096.0f;
+		//shadowViewport.Height = 4096.0f;
+
+
+		shadowViewport.MinDepth = 0.0f;
+		shadowViewport.MaxDepth = 1.0f;
+		shadowViewport.TopLeftX = 0.0f;
+		shadowViewport.TopLeftY = 0.0f;
+
+		D3D11_SAMPLER_DESC samplerDesc{};
+		//samplerDesc.Filter = D3D11_FILTER_MIN_MAG_MIP_LINEAR; // 線形フィルタ
+		samplerDesc.Filter = D3D11_FILTER_COMPARISON_MIN_MAG_MIP_LINEAR;
+
+		samplerDesc.AddressU = D3D11_TEXTURE_ADDRESS_BORDER; // 範囲外は境界色
+		samplerDesc.AddressV = D3D11_TEXTURE_ADDRESS_BORDER;
+		samplerDesc.AddressW = D3D11_TEXTURE_ADDRESS_BORDER;
+		samplerDesc.BorderColor[0] = 1.0f; // 範囲外は白（＝影にならない）にする
+		samplerDesc.BorderColor[1] = 1.0f;
+		samplerDesc.BorderColor[2] = 1.0f;
+		samplerDesc.BorderColor[3] = 1.0f;
+
+		samplerDesc.ComparisonFunc = D3D11_COMPARISON_LESS_EQUAL;
+		samplerDesc.MaxLOD = D3D11_FLOAT32_MAX;
+
+		hr = device->CreateSamplerState(&samplerDesc, shadowSampler.GetAddressOf());
+		_ASSERT_EXPR(SUCCEEDED(hr), HRTrace(hr));
+	}
+
+
 	// レンダーステート生成
 	renderState = std::make_unique<RenderState>(device.Get());
 
@@ -206,4 +272,32 @@ bool Graphics::CreateRenderTarget(RenderTarget& rt, int width, int height)
 	if (FAILED(hr)) return false;
 
 	return true;
+}
+
+//影用バッファのクリア
+void Graphics::ClearShadowMap()
+{
+	//影用DSVを最大値(1.0)で塗りつぶす
+	immediateContext->ClearDepthStencilView(shadowMapDSV.Get(), D3D11_CLEAR_DEPTH, 1.0f, 0);
+}
+
+
+//影描画の開始
+void Graphics::BeginShadowMap()
+{
+	ClearShadowMap();
+	viewport_count = D3D11_VIEWPORT_AND_SCISSORRECT_OBJECT_COUNT_PER_PIPELINE;
+	immediateContext->RSGetViewports(&viewport_count, cached_viewports);
+	immediateContext->OMGetRenderTargets(1, cached_render_target_view.ReleaseAndGetAddressOf(), cached_depth_stencil_view.ReleaseAndGetAddressOf());
+
+	immediateContext->OMSetRenderTargets(0, renderTargetView.GetAddressOf(), shadowMapDSV.Get());
+	//影用ビューポートをセット
+	immediateContext->RSSetViewports(1, &shadowViewport);
+}
+
+
+void Graphics::EndShadowMap()
+{
+	immediateContext->RSSetViewports(viewport_count, cached_viewports);
+	immediateContext->OMSetRenderTargets(1, cached_render_target_view.GetAddressOf(), cached_depth_stencil_view.Get());
 }

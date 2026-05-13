@@ -10,6 +10,7 @@ enum class SamplerState
 	PointClamp,
 	LinearWrap,
 	LinearClamp,
+	LinearBorderBlack,
 
 	EnumCount
 };
@@ -79,9 +80,15 @@ public:
 		return rasterizerStates[static_cast<int>(state)].Get();
 	}
 
+	ID3D11RasterizerState* GetCullFrontRasterizerState()const
+	{
+		return cullFrontRasterizerState.Get();
+	}
+
 private:
 	Microsoft::WRL::ComPtr<ID3D11SamplerState>		samplerStates[static_cast<int>(SamplerState::EnumCount)];
 	Microsoft::WRL::ComPtr<ID3D11DepthStencilState> depthStencilStates[static_cast<int>(DepthState::EnumCount)];
 	Microsoft::WRL::ComPtr<ID3D11BlendState>		blendStates[static_cast<int>(BlendState::EnumCount)];
 	Microsoft::WRL::ComPtr<ID3D11RasterizerState>	rasterizerStates[static_cast<int>(RasterizerState::EnumCount)];
+	Microsoft::WRL::ComPtr<ID3D11RasterizerState>	cullFrontRasterizerState;
 };

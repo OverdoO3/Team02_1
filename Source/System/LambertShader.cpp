@@ -35,11 +35,10 @@ void LambertShader::Begin(const RenderContext& rc)
 	dc->IASetInputLayout(inputLayout.Get());
 	dc->VSSetShader(vertexShader.Get(), nullptr, 0);
 	dc->PSSetShader(pixelShader.Get(), nullptr, 0);
-
 	// 定数バッファ設定
 	ID3D11Buffer* cbs[] =
 	{
-		constantBuffer.Get(), 
+		constantBuffer.Get(),
 	};
 	dc->PSSetConstantBuffers(1, _countof(cbs), cbs);
 }
