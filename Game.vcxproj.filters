@@ -112,9 +112,6 @@
     <Filter Include="Source\Skymap">
       <UniqueIdentifier>{b9395a05-4cd2-4a9f-a09c-3073e11b2985}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\Prefab">
-      <UniqueIdentifier>{04a0b721-0bda-453b-a6f5-e7c775f250a7}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="External\imgui-docking\imconfig.h">
@@ -354,22 +351,19 @@
     <ClInclude Include="Source\snowman.h">
       <Filter>Source\Components\Temp\TempObj</Filter>
     </ClInclude>
-    <ClInclude Include="Source\PrefabManager.h">
-      <Filter>Source\Prefab</Filter>
+    <ClInclude Include="Source\Prefab.h" />
+    <ClInclude Include="Source\PrefabManager.h" />
+    <ClInclude Include="Source\System\bloom.h">
+      <Filter>Source\System</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Prefab.h">
-      <Filter>Source\Prefab</Filter>
     <ClInclude Include="Source\System\framebuffer.h">
       <Filter>Source\System</Filter>
     </ClInclude>
     <ClInclude Include="Source\System\fullscreen_quad.h">
       <Filter>Source\System</Filter>
     </ClInclude>
-    <ClInclude Include="Source\System\bloom.h">
-      <Filter>Source\System</Filter>
-    </ClInclude>
     <ClInclude Include="Source\PlayerUIRotator.h">
-      <Filter>Source\Components\Temp\TempObj</Filter>
+      <Filter>Source\System</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -557,18 +551,19 @@
       <Filter>Source\Components\Temp\TempObj</Filter>
     </ClCompile>
     <ClCompile Include="Source\PrefabManager.cpp">
-      <Filter>Source\Prefab</Filter>
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\System\bloom.cpp">
+      <Filter>Source\System</Filter>
+    </ClCompile>
     <ClCompile Include="Source\System\framebuffer.cpp">
       <Filter>Source\System</Filter>
     </ClCompile>
     <ClCompile Include="Source\System\fullscreen_quad.cpp">
       <Filter>Source\System</Filter>
     </ClCompile>
-    <ClCompile Include="Source\System\bloom.cpp">
-      <Filter>Source\System</Filter>
-    </ClCompile>
     <ClCompile Include="Source\PlayerUIRotator.cpp">
-      <Filter>Source\Components\Temp\TempObj</Filter>
+      <Filter>Source\System</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -138,7 +138,7 @@ void Scene::Update(float elapsedTime)
 
 void Scene::Render(CameraBase* camera, bool isEditor)
 {
-    if(!scene_framebuffer || !bloomer)return;
+    if (!scene_framebuffer || !bloomer)return;
     Graphics& graphics = Graphics::Instance();
     ID3D11DeviceContext* dc = graphics.GetDeviceContext();
     ShapeRenderer* shapeRenderer = graphics.GetShapeRenderer();
@@ -213,7 +213,6 @@ void Scene::Render(CameraBase* camera, bool isEditor)
 
 
 
-
     rc.shadowMap = graphics.GetShadowMapSRV();
     rc.shadowSampler = graphics.GetShadowSampler();
     if (isEditor)
@@ -276,8 +275,8 @@ void Scene::Render(CameraBase* camera, bool isEditor)
     // BLOOM
     if (bloomer)
     {
-         ID3D11ShaderResourceView* null_srvs[8] = { nullptr };
-         dc->PSSetShaderResources(0, 8, null_srvs);
+        ID3D11ShaderResourceView* null_srvs[8] = { nullptr };
+        dc->PSSetShaderResources(0, 8, null_srvs);
         auto rs = graphics.GetRenderState();
         auto sp = rs->GetSamplerState(SamplerState::LinearBorderBlack);
         dc->PSSetSamplers(3, 1, &sp);
@@ -296,20 +295,31 @@ void Scene::Render(CameraBase* camera, bool isEditor)
             bloomer->shader_resource_view(),
         };
         bloomer->draw(dc, srvs, 2, final_pass_ps.Get());
-    }
 
+        dc->OMSetBlendState(graphics.GetRenderState()->GetBlendState(BlendState::Transparency), nullptr, 0xFFFFFFFF);
+        dc->OMSetDepthStencilState(graphics.GetRenderState()->GetDepthStencilState(DepthState::NoTestNoWrite), 0);
 
-    // 2Dスプライト描画
-    for (auto& actor : actors)
-    {
-        bool active = actor->setActive && (!actor->GetParent() || actor->GetParent()->setActive);
-        if (active)
+        // 2. ビューポートも再設定
+        D3D11_VIEWPORT vp = graphics.GetViewport();
+        dc->RSSetViewports(1, &vp);
+
+        // 3. スプライトのソートと描画
+        std::vector<std::pair<int, Actor*>> spriteActors;
+        for (auto& actor : actors) {
+            bool active = actor->setActive && (!actor->GetParent() || actor->GetParent()->setActive);
+            if (!active) continue;
+            auto spr = actor->GetComponent<SpriteRender>();
+            if (spr && spr->enabled) spriteActors.push_back({ spr->GetSortOrder(), actor.get() });
+        }
+        std::sort(spriteActors.begin(), spriteActors.end(), [](const auto& a, const auto& b) { return a.first < b.first; });
+
+        for (auto& [order, actor] : spriteActors) {
             actor->Draw(rc);
+        }
     }
 
 
 }
-
 
 void Scene::DrawGUI()
 {

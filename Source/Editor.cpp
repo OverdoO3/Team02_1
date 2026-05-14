@@ -2,6 +2,16 @@
 #include "ComponentManager.h"
 #include "PrefabManager.h"
 
+// ImGUiのブレンドモードを切り替えるコールバック関数
+static void ImGuiDisableAlphaBlendCallBack(const ImDrawList* parent_list, const ImDrawCmd* cmd)
+{
+	auto& g = Graphics::Instance();
+	auto render_state = g.GetRenderState();
+	auto context = g.GetDeviceContext();
+	const float blend_factor[4] = { 0.0f, 0.0f, 0.0f, 0.0f };
+	context->OMSetBlendState(render_state->GetBlendState(BlendState::Opaque), blend_factor, 0xFFFFFFFF);
+}
+
 Actor* Editor::CreateActor(const std::string& name,Scene* scene)
 {
 	auto actor = std::make_unique<Actor>();
@@ -434,7 +444,9 @@ void Editor::DrawSceneWindow()
 	ImVec2 pos = ImGui::GetCursorScreenPos();
 	ImVec2 size = ImGui::GetContentRegionAvail();
 
+	ImGui::GetWindowDrawList()->AddCallback(ImGuiDisableAlphaBlendCallBack, nullptr);
 	ImGui::Image((ImTextureID)sceneRT.srv.Get(), size);
+	ImGui::GetWindowDrawList()->AddCallback(ImDrawCallback_ResetRenderState, nullptr);
 
 	Scene* scene = engine->GetSceneManager().GetCurrentScene();
 	HandleSelection(scene, pos, size);
@@ -480,7 +492,9 @@ void Editor::DrawGameWindow()
 
 	ImVec2 size = ImGui::GetContentRegionAvail();
 	// --- ゲーム画面 ---
+	ImGui::GetWindowDrawList()->AddCallback(ImGuiDisableAlphaBlendCallBack, nullptr);
 	ImGui::Image((ImTextureID)gameRT.srv.Get(), size);
+	ImGui::GetWindowDrawList()->AddCallback(ImDrawCallback_ResetRenderState, nullptr);
 	ImGui::End();
 }
 

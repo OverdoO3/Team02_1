@@ -194,8 +194,11 @@ void Sprite::Render(const RenderContext& rc,
 	// レンダーステート設定
 	dc->OMSetDepthStencilState(rc.renderState->GetDepthStencilState(DepthState::NoTestNoWrite), 0);
 	dc->RSSetState(rc.renderState->GetRasterizerState(RasterizerState::SolidCullNone));
-	dc->OMSetBlendState(rc.renderState->GetBlendState(BlendState::Transparency), nullptr, 0xFFFFFFFF);
-
+	dc->OMSetBlendState(
+		rc.renderState->GetBlendState(BlendState::Transparency),
+		nullptr,
+		0xFFFFFFFF
+	);
 	// サンプラーステート設定
 	ID3D11SamplerState* samplers[] = { rc.renderState->GetSamplerState(SamplerState::LinearWrap) };
 	dc->PSSetSamplers(0, _countof(samplers), samplers);

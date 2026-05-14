@@ -29,6 +29,7 @@ public:
     void Deserialize(nlohmann::json& j) override;
 
     void DrawInspector();
+    int GetSortOrder() const { return sortOrder; }
 
     std::string ToDataPath(const std::string& fullPath)
     {
@@ -50,4 +51,17 @@ private:
 
     float m_editorScale = 1.0f;
     float m_editorAngleDeg = 0.0f;
+
+    //切り抜きサイズ
+    float m_srcX = 0.0f;
+    float m_srcY = 0.0f;
+    float m_srcW = -1.0f;
+    float m_srcH = -1.0f;
+    int sortOrder = 0;
+    int m_splitX = 1;
+    int m_splitY = 1;
+    int m_spriteIndex = 0;
+
+    //色
+    DirectX::XMFLOAT4 color = { 1.0f,1.0f,1.0f,1.0f };
 };

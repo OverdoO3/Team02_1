@@ -79,6 +79,12 @@ public:
 	// モデルレンダラ取得
 	ModelRenderer* GetModelRenderer() const { return modelRenderer.get(); }
 
+	// 現在のレンダーターゲットビュー（バックバッファ）を取得
+	ID3D11RenderTargetView* GetRenderTargetView() const { return renderTargetView.Get(); }
+
+	// バックバッファのポインタを直接返す（OMSetRenderTargets用）
+	ID3D11RenderTargetView** GetRenderTargetViewAddressOf() { return renderTargetView.GetAddressOf(); }
+
 	std::recursive_mutex& GetMutex() { return mutex; }
 	
 	void EndShadowMap();

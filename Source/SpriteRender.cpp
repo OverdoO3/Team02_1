@@ -10,19 +10,25 @@ void SpriteRender::Draw(RenderContext& rc)
     if (spr && tran)
     {
         auto pos = tran->GetWorldPosition();
-
         float texW = spr->GetTextureWidth();
         float texH = spr->GetTextureHeight();
-
         float width = texW * m_editorScale;
         float height = texH * m_editorScale;
+
+        float sx = m_srcX;
+        float sy = m_srcY;
+        float sw = (m_srcW < 0.0f) ? texW : m_srcW;
+        float sh = (m_srcH < 0.0f) ? texH : m_srcH;
+
 
         spr->Render(
             rc,
             pos.x, pos.y, pos.z,
             width, height,
-            m_editorAngleDeg,      
-            1.0f, 1.0f, 1.0f, 1.0f
+            sx, sy,
+            sw, sh,
+            m_editorAngleDeg,
+            color.x,color.y,color.z,color.w
         );
     }
 }
@@ -50,6 +56,19 @@ std::unique_ptr<Component> SpriteRender::Clone() const
 void SpriteRender::Serialize(nlohmann::json& j) const
 {
 	j["TexturePath"] = texturepath;
+    j["SrcX"] = m_srcX;
+    j["SrcY"] = m_srcY;
+    j["SrcW"] = m_srcW;
+    j["SrcH"] = m_srcH;
+    j["ColorR"] = color.x;
+    j["ColorG"] = color.y;
+    j["ColorB"] = color.z;
+    j["ColorA"] = color.w;
+    j["SortOrder"] = sortOrder;
+    j["SplitX"] = m_splitX;
+    j["SplitY"] = m_splitY;
+    j["SpriteIndex"] = m_spriteIndex;
+
 }
 
 void SpriteRender::DrawInspector()
@@ -83,6 +102,55 @@ void SpriteRender::DrawInspector()
             spr = std::make_unique<Sprite>(texturepath.c_str());
         }
     }
+    ImGui::Separator();
+    ImGui::Text("Sprite Sheet Splitter");
+
+    //ï™äÑêî
+    ImGui::InputInt("Columns (Horizontal)", &m_splitX);
+    ImGui::InputInt("Rows (Horizontal)", &m_splitY);
+    ImGui::InputInt("Sprite Index", &m_spriteIndex);
+
+    //0à»â∫ñhé~
+    if (m_splitX < 1) m_splitX = 1;
+    if (m_splitY < 1) m_splitX = 1;
+    if (m_spriteIndex < 0)m_spriteIndex = 0;
+
+
+    if (spr && ImGui::Button("Apply Split"))
+    {
+        float texW = spr->GetTextureWidth();
+        float texH = spr->GetTextureHeight();
+
+        //àÍñáìñÇΩÇËÇÃÉTÉCÉYåvéZ
+        m_srcW = texW / static_cast<float>(m_splitX);
+        m_srcH = texH / static_cast<float>(m_splitY);
+
+        //IndexÇ©ÇÁç¿ïWÇåvéZ
+        int column = m_spriteIndex & m_splitX;
+        int row = m_spriteIndex / m_splitX;
+
+        m_srcX = static_cast<float>(column) * m_srcW;
+        m_srcY = static_cast<float>(row) * m_srcH;
+    }
+
+    ImGui::Separator();
+    ImGui::Text("UV Crop");
+    ImGui::DragFloat("Src X", &m_srcX, 1.0f, 0.0f, 4096.0f);
+    ImGui::DragFloat("Src Y", &m_srcY, 1.0f, 0.0f, 4096.0f);
+    ImGui::DragFloat("Src W", &m_srcW, 1.0f, -1.0f, 4096.0f);
+    ImGui::DragFloat("Src H", &m_srcH, 1.0f, -1.0f, 4096.0f);
+    ImGui::Text("(-1 = full texture)");
+
+    ImGui::Separator();
+    ImGui::Text("Color");
+    ImGui::ColorEdit4("Color", &color.x);
+
+    ImGui::Separator();
+    ImGui::InputInt("Sort Order", &sortOrder);
+
+
+
+
 }
 
 
@@ -90,6 +158,18 @@ void SpriteRender::DrawInspector()
 void SpriteRender::Deserialize(nlohmann::json& j)
 {
 	texturepath = j["TexturePath"];
+    m_srcX = j.value("SrcX", 0.0f);
+    m_srcY = j.value("SrcY", 0.0f);
+    m_srcW = j.value("SrcW", -1.0f);
+    m_srcH = j.value("SrcH", -1.0f);
+    color.x = j.value("ColorR", 1.0f);
+    color.y = j.value("ColorG", 1.0f);
+    color.z = j.value("ColorB", 1.0f);
+    color.w = j.value("ColorA", 1.0f);
+    sortOrder = j.value("SortOrder", 0);
+    m_splitX = j.value("SplitX", 1);
+    m_splitY = j.value("SplitY", 1);
+    m_spriteIndex = j.value("SpriteIndex", 0);
 
 	if (texturepath != "")
 	{
