@@ -10,7 +10,7 @@ void ModelRender::Render(RenderContext& rc, ModelRenderer* renderer)
 {
 	if (model)
 	{
-		renderer->Render(rc, owner->GetComponent<Transform>()->GetWorldMatrix(), model.get(), ShaderId::Lambert);
+		renderer->Render(rc, owner->GetComponent<Transform>()->GetWorldMatrix(), model.get(), shaderId);
 	}
 }
 

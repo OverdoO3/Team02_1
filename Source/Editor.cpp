@@ -155,6 +155,25 @@ void Editor::HandleSelection(Scene* scene, ImVec2 pos, ImVec2 size)
 								}
 							}
 						}
+
+					}
+					if (auto sprRender = actor->GetComponent<SpriteRender>())
+					{
+						auto tran = actor->GetComponent<Transform>();
+						auto worldPos = tran->GetWorldPosition();
+
+						float dx = worldPos.x - rayOrigin.x;
+						float dy = worldPos.y - rayOrigin.y;
+						float dz = worldPos.z - rayOrigin.z;
+						float dist = sqrtf(dx * dx + dy * dy + dz * dz);
+
+						if (dist < 30.0f && dist < minDist)
+						{
+							minDist = dist;
+							nowDistActor = actor.get();
+
+							hitPos = worldPos;
+						}
 					}
 				}
 				hitp = hitPos;

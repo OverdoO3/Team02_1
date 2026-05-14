@@ -23,6 +23,7 @@ enum class ComponentID
     StateEffect,
     water,
     snowman,
+    PlayerUIRotator,
     COUNT
 };
 

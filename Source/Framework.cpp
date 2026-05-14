@@ -73,6 +73,18 @@ Framework::~Framework()
 	LogManager::Instance().AddLog(LogCategory::system,LogEvent::Finalize, "GameEnd");
 
 	Audio::Instance().Finalize();
+
+#ifdef _DEBUG
+	Microsoft::WRL::ComPtr<ID3D11Debug> d3dDebug;
+	Graphics::Instance().GetDevice()->QueryInterface(
+		__uuidof(ID3D11Debug),
+		reinterpret_cast<void**>(d3dDebug.GetAddressOf())
+	);
+	if (d3dDebug)
+	{
+		d3dDebug->ReportLiveDeviceObjects(D3D11_RLDO_DETAIL);
+	}
+#endif
 }
 
 // çXêVèàóù

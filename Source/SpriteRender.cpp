@@ -7,11 +7,26 @@ REGISTER_COMPONENT(ComponentID::SpriteRender,SpriteRender)
 void SpriteRender::Draw(RenderContext& rc)
 {
     auto tran = owner->GetComponent<Transform>();
-	if (spr)
-	{
-		spr->Render(rc, tran->GetWorldPosition().x, tran->GetWorldPosition().y, 0, 120 * tran->GetWorldScale().x, 120 * tran->GetWorldScale().y, 0, 1, 1, 1, 1);
-	}
+    if (spr && tran)
+    {
+        auto pos = tran->GetWorldPosition();
+
+        float texW = spr->GetTextureWidth();
+        float texH = spr->GetTextureHeight();
+
+        float width = texW * m_editorScale;
+        float height = texH * m_editorScale;
+
+        spr->Render(
+            rc,
+            pos.x, pos.y, pos.z,
+            width, height,
+            m_editorAngleDeg,      
+            1.0f, 1.0f, 1.0f, 1.0f
+        );
+    }
 }
+
 
 void SpriteRender::Update(float elapsedTime)
 {
@@ -39,26 +54,38 @@ void SpriteRender::Serialize(nlohmann::json& j) const
 
 void SpriteRender::DrawInspector()
 {
-	ImGui::Checkbox("enabled", &enabled);
+    ImGui::Checkbox("enabled", &enabled);
 
-	if (!texturepath.empty())
-	{
-		std::string filename = std::filesystem::path(texturepath).filename().string();
-		ImGui::Text(filename.c_str());
-	}
+    auto tran = owner->GetComponent<Transform>();
+    if (!tran) return;
 
-	if (ImGui::Button("Select Sprite"))
-	{
-		std::string full = OpenDialog::OpenLoadFileDialog();
+    // ˆÊ’u’²®i‚±‚ê‚ÍTransform‚ð‚¢‚¶‚é‚×‚«j
+    DirectX::XMFLOAT3 pos = tran->GetLocalPosition();
+    if (ImGui::DragFloat3("Position", &pos.x, 1.0f)) {
+        tran->SetLocalPosition(pos);
+    }
 
-		if (!full.empty())
-		{
-			texturepath = ToDataPath(full);
+    ImGui::DragFloat("UI Rotation Z", &m_editorAngleDeg, 1.0f);
 
-			spr = std::make_unique<Sprite>(texturepath.c_str());
-		}
-	}
+    ImGui::DragFloat("UI Scale", &m_editorScale, 0.01f, 0.001f, 100.0f);
+
+    ImGui::Separator();
+
+    if (!texturepath.empty()) {
+        std::string filename = std::filesystem::path(texturepath).filename().string();
+        ImGui::Text("File: %s", filename.c_str());
+    }
+
+    if (ImGui::Button("Select Sprite")) {
+        std::string full = OpenDialog::OpenLoadFileDialog();
+        if (!full.empty()) {
+            texturepath = ToDataPath(full);
+            spr = std::make_unique<Sprite>(texturepath.c_str());
+        }
+    }
 }
+
+
 
 void SpriteRender::Deserialize(nlohmann::json& j)
 {

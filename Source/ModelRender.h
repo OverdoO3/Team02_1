@@ -59,9 +59,13 @@ public:
 
 	void Serialize(nlohmann::json& j)const override;
 	void Deserialize(nlohmann::json& j) override;
+
+	void SetShaderId(ShaderId id) { shaderId = id; }
+	ShaderId GetShaderId() const { return shaderId; }
 private:
 	std::unique_ptr<Model> model;
 	std::string modelpath;
+	ShaderId shaderId = ShaderId::Lambert;
 
 	int	animationIndex = -1;
 	float animationSeconds = 0.0f;
