@@ -54,6 +54,8 @@ public:
 
 	uint64_t GetID() const { return id; }
 
+	bool IsDescendantOf(Actor* potentialParent);
+
 	template<class T>
 	T* GetComponent()
 	{
@@ -113,13 +115,32 @@ public:
 
 	void SetParent(Actor* newParent)
 	{
+		if (newParent && newParent->IsDescendantOf(this))
+			return;
+		if (newParent == parent)
+			return;
+
+		if (parent)
+		{
+			auto& siblings = parent->children;
+			siblings.erase(
+				std::remove(siblings.begin(), siblings.end(), this),
+				siblings.end()
+			);
+		}
+
 		parent = newParent;
+
 		if (parent)
 		{
 			parent->children.push_back(this);
-			transform->SetParent(parent->GetComponent<Transform>());
+			transform->SetParent(
+				parent->GetComponent<Transform>());
 		}
-
+		else
+		{
+			transform->SetParent(nullptr);
+		}
 	}
 
 	Actor* GetParent() const { return parent; }

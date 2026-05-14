@@ -112,6 +112,9 @@
     <Filter Include="Source\Skymap">
       <UniqueIdentifier>{b9395a05-4cd2-4a9f-a09c-3073e11b2985}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\Prefab">
+      <UniqueIdentifier>{04a0b721-0bda-453b-a6f5-e7c775f250a7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="External\imgui-docking\imconfig.h">
@@ -351,17 +354,11 @@
     <ClInclude Include="Source\snowman.h">
       <Filter>Source\Components\Temp\TempObj</Filter>
     </ClInclude>
-    <ClInclude Include="Source\System\framebuffer.h">
-      <Filter>Source\System</Filter>
+    <ClInclude Include="Source\PrefabManager.h">
+      <Filter>Source\Prefab</Filter>
     </ClInclude>
-    <ClInclude Include="Source\System\fullscreen_quad.h">
-      <Filter>Source\System</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\System\bloom.h">
-      <Filter>Source\System</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\PlayerUIRotator.h">
-      <Filter>Source\Components\Temp\TempObj</Filter>
+    <ClInclude Include="Source\Prefab.h">
+      <Filter>Source\Prefab</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -458,6 +455,18 @@
     <ClCompile Include="Source\MathUtils.cpp">
       <Filter>Source\Common\Math</Filter>
     </ClCompile>
+    <ClCompile Include="..\team02_1\Source\Button.cpp">
+      <Filter>Source\Common\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\team02_1\Source\ButtonManager.cpp">
+      <Filter>Source\Common\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\team02_1\Source\Menu.cpp">
+      <Filter>Source\Common\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\team02_1\Source\ParentChild.cpp">
+      <Filter>Source\Common\P&amp;C</Filter>
+    </ClCompile>
     <ClCompile Include="Source\SpriteRender.cpp">
       <Filter>Source\Components</Filter>
     </ClCompile>
@@ -548,17 +557,8 @@
     <ClCompile Include="Source\snowman.cpp">
       <Filter>Source\Components\Temp\TempObj</Filter>
     </ClCompile>
-    <ClCompile Include="Source\System\framebuffer.cpp">
-      <Filter>Source\System</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\System\fullscreen_quad.cpp">
-      <Filter>Source\System</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\System\bloom.cpp">
-      <Filter>Source\System</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\PlayerUIRotator.cpp">
-      <Filter>Source\Components\Temp\TempObj</Filter>
+    <ClCompile Include="Source\PrefabManager.cpp">
+      <Filter>Source\Prefab</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -581,15 +581,6 @@
       <Filter>Shader</Filter>
     </None>
     <None Include="Shader\Scene.hlsli">
-      <Filter>Shader</Filter>
-    </None>
-    <None Include="Shader\bloom.hlsli">
-      <Filter>Shader</Filter>
-    </None>
-    <None Include="Shader\fullscreen_quad.hlsli">
-      <Filter>Shader</Filter>
-    </None>
-    <None Include="Shader\lights.hlsli">
       <Filter>Shader</Filter>
     </None>
   </ItemGroup>
@@ -622,36 +613,6 @@
       <Filter>Shader</Filter>
     </FxCompile>
     <FxCompile Include="Shader\LambertVS.hlsl">
-      <Filter>Shader</Filter>
-    </FxCompile>
-    <FxCompile Include="Shader\final_pass_ps.hlsl">
-      <Filter>Shader</Filter>
-    </FxCompile>
-    <FxCompile Include="Shader\fullscreen_quad_ps.hlsl">
-      <Filter>Shader</Filter>
-    </FxCompile>
-    <FxCompile Include="Shader\fullscreen_quad_vs.hlsl">
-      <Filter>Shader</Filter>
-    </FxCompile>
-    <FxCompile Include="Shader\gaussian_blur_downsampling_ps.hlsl">
-      <Filter>Shader</Filter>
-    </FxCompile>
-    <FxCompile Include="Shader\gaussian_blur_horizontal_ps.hlsl">
-      <Filter>Shader</Filter>
-    </FxCompile>
-    <FxCompile Include="Shader\gaussian_blur_upsampling_ps.hlsl">
-      <Filter>Shader</Filter>
-    </FxCompile>
-    <FxCompile Include="Shader\gaussian_blur_vertical_ps.hlsl">
-      <Filter>Shader</Filter>
-    </FxCompile>
-    <FxCompile Include="Shader\glow_extraction_ps.hlsl">
-      <Filter>Shader</Filter>
-    </FxCompile>
-    <FxCompile Include="Shader\out_line_ps.hlsl">
-      <Filter>Shader</Filter>
-    </FxCompile>
-    <FxCompile Include="Shader\out_line_vs.hlsl">
       <Filter>Shader</Filter>
     </FxCompile>
   </ItemGroup>
