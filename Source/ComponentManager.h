@@ -24,6 +24,8 @@ enum class ComponentID
     water,
     snowman,
     PlayerUIRotator,
+    Button,
+    ButtonComponent,
     COUNT
 };
 

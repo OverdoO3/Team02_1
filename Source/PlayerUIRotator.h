@@ -1,7 +1,9 @@
 #pragma once
 #include "Component.h"
 #include "ThermalBody.h"
+#include "nlohmann/json.hpp"
 
+using json = nlohmann::json;
 class PlayerUIRotator : public Component
 {
 public:
@@ -12,7 +14,10 @@ public:
 	void Serialize(nlohmann::json& j) const override;
 	void Deserialize(nlohmann::json& j) override;
 
-	ComponentID GetID() const override { return ComponentID::PlayerUIRotator; }
+	//ComponentID GetID() const override { return ComponentID::PlayerUIRotator; }
+
+	COMPONENT_ID(PlayerUIRotator)
+
 private:
 	float m_currentAngle = 0.0f;
 	float m_targetAngle = 0.0f;

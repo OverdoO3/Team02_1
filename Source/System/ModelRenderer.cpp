@@ -301,6 +301,9 @@ void ModelRenderer::Render(const RenderContext& rc, const DirectX::XMFLOAT4X4& w
 
 void ModelRenderer::DebugImGui()
 {
+#ifdef _DEBUG
+
+
 	RenderContext rc;
 	if (ImGui::Begin("PointLights Debug"))
 	{
@@ -317,4 +320,5 @@ void ModelRenderer::DebugImGui()
 		}
 	}
 	ImGui::End();
+#endif // _DEBUG
 }

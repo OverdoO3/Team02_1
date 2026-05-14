@@ -49,8 +49,8 @@ void Scene::Update(float elapsedTime)
 				}),
 			actors.end()
 		);
-
 		adderActors.clear();
+
 		physics.Flush();
 	}
 	else

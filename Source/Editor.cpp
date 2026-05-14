@@ -480,16 +480,25 @@ void Editor::DrawGameWindow()
 	}
 	else
 	{
-		if (ImGui::Button("|| Stop") || InputC::KeyPressed('P') && InputC::KeyDown(VK_LCONTROL))
+		if (!engine->GetSceneManager().IsPaused())
 		{
-			sm.StopPlay();
+			if (ImGui::Button("|| Stop") || InputC::KeyPressed('P') && InputC::KeyDown(VK_LCONTROL))
+			{
+				sm.StopPlay();
+			}
 		}
 	}
 
 	// ­‚µŒ©‚â‚·‚­
 	ImGui::SameLine();
-	ImGui::Text(sm.GetPlayState() ? "Running" : "Stopped");
-
+	if (engine->GetSceneManager().IsPaused())
+	{
+		ImGui::Text("Pause");
+	}
+	else
+	{
+		ImGui::Text(sm.GetPlayState() ? "Running" : "Stopped");
+	}
 	ImVec2 size = ImGui::GetContentRegionAvail();
 	// --- ƒQ[ƒ€‰æ–Ê ---
 	ImGui::GetWindowDrawList()->AddCallback(ImGuiDisableAlphaBlendCallBack, nullptr);

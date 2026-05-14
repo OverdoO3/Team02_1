@@ -68,7 +68,8 @@ void SpriteRender::Serialize(nlohmann::json& j) const
     j["SplitX"] = m_splitX;
     j["SplitY"] = m_splitY;
     j["SpriteIndex"] = m_spriteIndex;
-
+    j["TargetCol"] = m_targetCol;
+    j["TargetRow"] = m_targetRow;
 }
 
 void SpriteRender::DrawInspector()
@@ -108,6 +109,12 @@ void SpriteRender::DrawInspector()
     //分割数
     ImGui::InputInt("Columns (Horizontal)", &m_splitX);
     ImGui::InputInt("Rows (Horizontal)", &m_splitY);
+
+    //移したい場所を
+    ImGui::InputInt("Select Column (X)", &m_targetCol);
+    ImGui::InputInt("Select Row (Y)", &m_targetRow);
+
+
     ImGui::InputInt("Sprite Index", &m_spriteIndex);
 
     //0以下防止
@@ -115,23 +122,22 @@ void SpriteRender::DrawInspector()
     if (m_splitY < 1) m_splitX = 1;
     if (m_spriteIndex < 0)m_spriteIndex = 0;
 
+    m_targetCol = std::clamp(m_targetCol, 0, m_splitX - 1);
+    m_targetRow = std::clamp(m_targetRow, 0, m_splitY - 1);
 
-    if (spr && ImGui::Button("Apply Split"))
-    {
+    if (spr && ImGui::Button("Update Crop Area")) {
         float texW = spr->GetTextureWidth();
         float texH = spr->GetTextureHeight();
 
-        //一枚当たりのサイズ計算
-        m_srcW = texW / static_cast<float>(m_splitX);
-        m_srcH = texH / static_cast<float>(m_splitY);
+        // 1枚あたりのサイズ (Width, Height)
+        m_srcW = texW / (float)m_splitX;
+        m_srcH = texH / (float)m_splitY;
 
-        //Indexから座標を計算
-        int column = m_spriteIndex & m_splitX;
-        int row = m_spriteIndex / m_splitX;
-
-        m_srcX = static_cast<float>(column) * m_srcW;
-        m_srcY = static_cast<float>(row) * m_srcH;
+        // 指定された場所の座標 (Left, Top)
+        m_srcX = (float)m_targetCol * m_srcW;
+        m_srcY = (float)m_targetRow * m_srcH;
     }
+
 
     ImGui::Separator();
     ImGui::Text("UV Crop");
@@ -147,8 +153,6 @@ void SpriteRender::DrawInspector()
 
     ImGui::Separator();
     ImGui::InputInt("Sort Order", &sortOrder);
-
-
 
 
 }
@@ -169,6 +173,10 @@ void SpriteRender::Deserialize(nlohmann::json& j)
     sortOrder = j.value("SortOrder", 0);
     m_splitX = j.value("SplitX", 1);
     m_splitY = j.value("SplitY", 1);
+    m_targetCol = j.value("TargetCol", 0);
+    m_targetRow = j.value("TargetRow", 0);
+
+
     m_spriteIndex = j.value("SpriteIndex", 0);
 
 	if (texturepath != "")

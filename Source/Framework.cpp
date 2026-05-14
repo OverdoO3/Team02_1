@@ -90,25 +90,32 @@ Framework::~Framework()
 // 更新処理
 void Framework::Update(float elapsedTime)
 {
-	// インプット更新処理
+	// インプットの生更新とImGuiは常に動かす
 	Input::Instance().Update();
-
-	// IMGUIフレーム開始処理	
 	ImGuiRenderer::NewFrame();
 
-	//入力のアップデート
-	KeyInput::Instance().Update();
+	//ポーズ中か確認用
+	bool isPaused = engine.GetSceneManager().IsPaused();
 
-	//Logのアップデート
 	LogManager::Instance().DrawLogWindow();
 
-	EffectManager::Instance().Update(elapsedTime);
+	// ポーズ中でない場合のみゲームを更新
+	if (!isPaused)
+	{
+		// キー入力の状態を確定
+		KeyInput::Instance().Update();
 
-	// シーン更新処理
-	engine.Update(elapsedTime);
+		// パーティクルなどの更新
+		EffectManager::Instance().Update(elapsedTime);
 
-	editor.Update(elapsedTime,engine.GetSceneManager().GetCurrentScene());
+		// シーン・アクター・物理の更新
+		engine.Update(elapsedTime);
+	}
+
+	// エディタはポーズ中も動かせるように外に出す
+	editor.Update(elapsedTime, engine.GetSceneManager().GetCurrentScene());
 }
+
 
 // 描画処理
 void Framework::Render(float elapsedTime)
@@ -225,7 +232,11 @@ LRESULT CALLBACK Framework::HandleMessage(HWND hWnd, UINT msg, WPARAM wParam, LP
 	case WM_CREATE:
 		break;
 	case WM_KEYDOWN:
-		if (wParam == VK_ESCAPE) PostMessage(hWnd, WM_CLOSE, 0, 0);
+		if (wParam == VK_ESCAPE)
+		{
+			// ポーズ状態を反転させる
+			engine.GetSceneManager().TogglePause();
+		}
 		break;
 	case WM_ENTERSIZEMOVE:
 		// WM_EXITSIZEMOVE is sent when the user grabs the resize bars.

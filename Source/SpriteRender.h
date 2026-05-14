@@ -31,6 +31,18 @@ public:
     void DrawInspector();
     int GetSortOrder() const { return sortOrder; }
 
+    float GetSrcW() const { return m_srcW; }
+    float GetSrcH() const { return m_srcH; }
+
+    float GetEditorScale() const { return m_editorScale; }
+    float GetSrcX() const { return m_srcX; }
+    float GetSrcY() const { return m_srcY; }
+
+    void SetColor(DirectX::XMFLOAT4 color)
+    {
+        this->color = color;
+    }
+
     std::string ToDataPath(const std::string& fullPath)
     {
         std::filesystem::path base = std::filesystem::absolute("Data");
@@ -61,6 +73,8 @@ private:
     int m_splitX = 1;
     int m_splitY = 1;
     int m_spriteIndex = 0;
+    int m_targetCol = 0;
+    int m_targetRow = 0;
 
     //êF
     DirectX::XMFLOAT4 color = { 1.0f,1.0f,1.0f,1.0f };

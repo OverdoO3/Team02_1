@@ -54,6 +54,11 @@ public:
 		currentScene->physics.DeleteAllQueue();
 	}
 
+	void SetPause(bool pause) { isPaused = pause; }
+	bool IsPaused()const { return isPaused; }
+
+	void TogglePause() { isPaused = !isPaused; }
+
 private:
 	//編集用のシーン
 	std::unique_ptr<Scene> editorScene = nullptr;
@@ -64,6 +69,7 @@ private:
 	std::unique_ptr<Scene> nextScene = nullptr;
 
 	bool playState = false;
+	bool isPaused = false;
 
 	RenderTarget sceneRT;
 	RenderTarget gameRT;
