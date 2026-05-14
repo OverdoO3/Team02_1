@@ -213,6 +213,7 @@ void Scene::Render(CameraBase* camera, bool isEditor)
 
 
 
+
     rc.shadowMap = graphics.GetShadowMapSRV();
     rc.shadowSampler = graphics.GetShadowSampler();
     if (isEditor)
