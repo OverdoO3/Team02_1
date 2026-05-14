@@ -215,8 +215,10 @@ void Scene::Render(CameraBase* camera, bool isEditor)
 
     rc.shadowMap = graphics.GetShadowMapSRV();
     rc.shadowSampler = graphics.GetShadowSampler();
-    modelRenderer->DebugImGui();
-
+    if (isEditor)
+    {
+        modelRenderer->DebugImGui();
+    }
     dc->PSSetShaderResources(8, 1, &rc.shadowMap);
     dc->PSSetSamplers(8, 1, &rc.shadowSampler);
 
