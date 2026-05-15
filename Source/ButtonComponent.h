@@ -13,7 +13,6 @@ public:
     
     void Update(float elapsedTime) override;
 
-    void OnAwake(float elapsedTime) override;
 
     std::unique_ptr<Component> Clone() const override;
     void Serialize(nlohmann::json& j) const override;

@@ -3,6 +3,24 @@
 #include "System/Sprite.h"
 #include <memory>
 
+class MouseGuard
+{
+public:
+	//生成されたらマウスを隠す
+	MouseGuard() {
+		while (ShowCursor(FALSE) >= 0);
+	}
+
+	//破棄されたら見れるようにする
+	~MouseGuard() {
+		while (ShowCursor(TRUE) < 0);
+	}
+
+	// コピーされるとカウンタがおかしくなるので禁止
+	MouseGuard(const MouseGuard&) = delete;
+	MouseGuard& operator=(const MouseGuard&) = delete;
+};
+
 class MouseCursor
 {
 public:
@@ -22,4 +40,5 @@ private:
 	int m_textureID;	//テクスチャの番号
 	POINT m_pos;		//現在の座標
 	bool m_isPressed;	//クリック中かを判定
+	bool m_showCustomCursor = true;
 };

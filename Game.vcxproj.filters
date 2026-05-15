@@ -365,14 +365,11 @@
     <ClInclude Include="Source\PlayerUIRotator.h">
       <Filter>Source\System</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Button.h">
-      <Filter>Source\Components\Temp\TempObj</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\ButtonComponent.h">
-      <Filter>Source\Components\Temp</Filter>
-    </ClInclude>
     <ClInclude Include="Source\MouseCursor.h">
       <Filter>Source\System</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ButtonComponent.h">
+      <Filter>Source\Components\Temp\TempObj</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -573,9 +570,6 @@
     </ClCompile>
     <ClCompile Include="Source\PlayerUIRotator.cpp">
       <Filter>Source\System</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Button.cpp">
-      <Filter>Source\Components\Temp\TempObj</Filter>
     </ClCompile>
     <ClCompile Include="Source\ButtonComponent.cpp">
       <Filter>Source\Components\Temp\TempObj</Filter>

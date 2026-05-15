@@ -4,12 +4,26 @@
 //								↓に名前入れる
 REGISTER_COMPONENT(ComponentID::ButtonComponent, ButtonComponent)
 
-void ButtonComponent::OnAwake(float elapsedTime)
-{
-}
 
 void ButtonComponent::Update(float elapsedTime)
 {
+    // マウスがボタンの上にあるか確認
+    bool hovering = IsMouseOver();
+
+    auto spr = owner->GetComponent<SpriteRender>();
+    if (spr)
+    {
+        if (hovering)
+        {
+            // ホバー中：少し明るくするか、特定の色にする（例：黄色っぽく）
+            spr->SetColor(DirectX::XMFLOAT4(1.2f, 1.2f, 1.2f, 1.0f));
+
+        }
+        else
+        {
+            spr->SetColor(DirectX::XMFLOAT4(1.0f, 1.0f, 1.0f, 1.0f));
+        }
+    }
 }
 
 void ButtonComponent::DrawInspector()
@@ -27,8 +41,9 @@ void ButtonComponent::Deserialize(nlohmann::json& j)
 
 std::unique_ptr<Component> ButtonComponent::Clone() const
 {
+    auto c = std::make_unique<ButtonComponent>();
 
-	return std::unique_ptr<ButtonComponent>();
+    return c;
 }
 
 bool ButtonComponent::IsMouseOver()

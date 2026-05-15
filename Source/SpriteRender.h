@@ -75,6 +75,11 @@ private:
     int m_spriteIndex = 0;
     int m_targetCol = 0;
     int m_targetRow = 0;
+    bool m_isLoop = false;
+    float m_frameDuration = 0.1f;
+    float m_timer = 0.0f;
+    int m_animFrameCount = 1;
+    int m_currentFrame = 0;
 
     //êF
     DirectX::XMFLOAT4 color = { 1.0f,1.0f,1.0f,1.0f };

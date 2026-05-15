@@ -1,4 +1,5 @@
 #include "MouseCursor.h"
+#include "imgui.h"
 
 void MouseCursor::Initialize(const char* filepath)
 {
@@ -6,21 +7,44 @@ void MouseCursor::Initialize(const char* filepath)
 	
 	//画像をロード
 	//OSのカーソルを非表示
-	while (ShowCursor(FALSE) >= 0);
+    CURSORINFO ci = { sizeof(CURSORINFO) };
+    if (GetCursorInfo(&ci)) {
+        if (ci.flags & CURSOR_SHOWING) {
+            ShowCursor(FALSE);
+        }
+    }
 }
 
 void MouseCursor::Update(HWND hWnd)
 {
-	GetCursorPos(&m_pos);
-	ScreenToClient(hWnd, &m_pos);
+    POINT globalPos;
+    GetCursorPos(&globalPos);
+    POINT clientPos = globalPos;
+    ScreenToClient(hWnd, &clientPos);
 
-	//クリック判定
-	m_isPressed = (GetAsyncKeyState(VK_LBUTTON) & 0x8000) != 0;
+    RECT rect;
+    GetClientRect(hWnd, &rect);
 
+    bool isOutside = (clientPos.x < 0 || clientPos.x > rect.right ||
+        clientPos.y < 0 || clientPos.y > rect.bottom);
+
+    if (isOutside) {
+        while (ShowCursor(TRUE) < 0);
+        m_showCustomCursor = false;
+    }
+    else {
+        while (ShowCursor(FALSE) >= 0);
+        m_showCustomCursor = true;
+    }
+
+    m_pos = clientPos;
 }
 
 void MouseCursor::Draw(RenderContext& rc)
 {
+    if (!m_showCustomCursor || !spr) return;
+    if (!rc.deviceContext) return;
+
     if (spr)
     {
         float cursorDisplaySize = 32.0f;        

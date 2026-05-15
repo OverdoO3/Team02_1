@@ -78,6 +78,8 @@ Framework::~Framework()
 
 	Audio::Instance().Finalize();
 
+	mouseGuard = std::make_unique<MouseGuard>();
+
 #ifdef _DEBUG
 	Microsoft::WRL::ComPtr<ID3D11Debug> d3dDebug;
 	Graphics::Instance().GetDevice()->QueryInterface(
@@ -115,14 +117,14 @@ void Framework::Update(float elapsedTime)
 		// シーン・アクター・物理の更新
 		engine.Update(elapsedTime);
 	}
-
-	// エディタはポーズ中も動かせるように外に出す
-	editor.Update(elapsedTime, engine.GetSceneManager().GetCurrentScene());
-
 	if (mouseCursor)
 	{
 		mouseCursor->Update(hWnd);
 	}
+
+	// エディタはポーズ中も動かせるように外に出す
+	editor.Update(elapsedTime, engine.GetSceneManager().GetCurrentScene());
+
 }
 
 
@@ -165,11 +167,11 @@ void Framework::Render(float elapsedTime)
 	// IMGUI描画
 	ImGuiRenderer::Render(dc);
 
+
 	if (mouseCursor)
 	{
 		mouseCursor->Draw(rc);
 	}
-
 	// 画面表示
 	Graphics::Instance().Present(syncInterval);
 }
@@ -265,6 +267,12 @@ LRESULT CALLBACK Framework::HandleMessage(HWND hWnd, UINT msg, WPARAM wParam, LP
 		// Here we reset everything based on the new window dimensions.
 		timer.Start();
 		break;
+
+	//case WM_CLOSE: 
+	//	while (ShowCursor(TRUE) < 0);
+
+	//	DestroyWindow(hWnd);
+	//	break;
 	default:
 		return DefWindowProc(hWnd, msg, wParam, lParam);
 	}

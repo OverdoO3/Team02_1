@@ -33,5 +33,7 @@ private:
 
 	//マウスカーソル用
 	std::unique_ptr<MouseCursor> mouseCursor;
+	//警告防止用
+	std::unique_ptr<MouseGuard> mouseGuard;
 };
 
