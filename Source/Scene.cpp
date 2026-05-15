@@ -107,7 +107,7 @@ void Scene::Render(CameraBase* camera, bool isEditor)
 	DirectX::XMFLOAT3 pos = camera->GetEye();
 	sky->blit(rc, vp, { pos.x,pos.y,pos.z,1.0f });
 
-	// 3Dモデル描画
+	 //3Dモデル描画
 	{
 		for (auto& actor : actors)
 		{
@@ -116,6 +116,7 @@ void Scene::Render(CameraBase* camera, bool isEditor)
 			actor->Render(rc, modelRenderer);
 		}
 	}
+	modelRenderer->FlushAll(rc);
 
 	//エフェクト
 	{

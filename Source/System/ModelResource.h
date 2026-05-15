@@ -13,7 +13,6 @@ public:
 	virtual ~ModelResource() {}
 
 	static const std::vector<D3D11_INPUT_ELEMENT_DESC> InputElementDescs;
-
 	using NodeId = UINT64;
 
 	struct Node

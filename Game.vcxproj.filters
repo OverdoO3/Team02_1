@@ -31,9 +31,6 @@
     <Filter Include="Source\Scene">
       <UniqueIdentifier>{b46ee522-8e85-4633-9b8d-ba22aaa92e6d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\Stages">
-      <UniqueIdentifier>{ad541316-c403-40d5-88ec-ca372861e48f}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source\Common\Effect">
       <UniqueIdentifier>{d5b64214-b650-4b9b-9eb3-de810c3e3176}</UniqueIdentifier>
     </Filter>
@@ -212,9 +209,6 @@
     </ClInclude>
     <ClInclude Include="Source\SceneManager.h">
       <Filter>Source\Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Stage.h">
-      <Filter>Source\Stages</Filter>
     </ClInclude>
     <ClInclude Include="Source\Effect.h">
       <Filter>Source\Common\Effect</Filter>
@@ -439,9 +433,6 @@
     </ClCompile>
     <ClCompile Include="Source\SceneManager.cpp">
       <Filter>Source\Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Stage.cpp">
-      <Filter>Source\Stages</Filter>
     </ClCompile>
     <ClCompile Include="Source\Effect.cpp">
       <Filter>Source\Common\Effect</Filter>

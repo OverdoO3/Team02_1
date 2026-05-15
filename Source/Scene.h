@@ -47,7 +47,6 @@ public:
 			newScene->actors.emplace_back(std::move(copy));
 		}
 
-		// ② 親子関係を再構築
 		for (auto& [original, copy] : map)
 		{
 			if (original->GetParent())

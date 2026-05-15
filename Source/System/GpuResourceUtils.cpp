@@ -277,3 +277,17 @@ HRESULT GpuResourceUtils::CreateConstantBuffer(
 
 	return hr;
 }
+
+HRESULT GpuResourceUtils::CreateDynamicVertexBuffer(
+	ID3D11Device* device,
+	UINT size,
+	ID3D11Buffer** buffer)
+{
+	D3D11_BUFFER_DESC desc = {};
+	desc.ByteWidth = size;
+	desc.Usage = D3D11_USAGE_DYNAMIC;
+	desc.BindFlags = D3D11_BIND_VERTEX_BUFFER;
+	desc.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;
+
+	return device->CreateBuffer(&desc, nullptr, buffer);
+}

@@ -8,10 +8,13 @@ REGISTER_COMPONENT(ComponentID::ModelRender,ModelRender)
 
 void ModelRender::Render(RenderContext& rc, ModelRenderer* renderer)
 {
-	if (model)
-	{
-		renderer->Render(rc, owner->GetComponent<Transform>()->GetWorldMatrix(), model.get(), ShaderId::Lambert);
-	}
+	if (!owner || !model) return;
+
+	auto t = owner->GetComponent<Transform>();
+	if (!t) return;
+
+	// Instance“o˜^‚¾‚¯‚·‚éi•`‰æ‚Í‚µ‚È‚¢j
+	renderer->AddInstance(model.get(), owner);
 }
 
 void ModelRender::DrawInspector()
@@ -155,6 +158,11 @@ void ModelRender::UpdateAnimation(float elapsedTime)
 	}
 	//s—ñXV
 	model->UpdateTransform();
+}
+
+void ModelRender::Flush(const RenderContext& rc,ModelRenderer* renderer)
+{
+	renderer->FlushAll(rc);
 }
 
 std::unique_ptr<Component> ModelRender::Clone() const

@@ -2,7 +2,6 @@
 #include <memory>
 #include <assert.h>
 #include <tchar.h>
-
 #include "Framework.h"
 
 const LONG SCREEN_WIDTH = 1920;
