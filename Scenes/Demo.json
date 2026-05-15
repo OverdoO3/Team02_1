@@ -727,23 +727,29 @@
                     {
                         "data": {
                             "AnimFrameCount": 2,
+                            "ColHeight": 89.0,
+                            "ColOffsetX": 4.0,
+                            "ColOffsetY": 35.0,
+                            "ColWidth": 97.0,
                             "ColorA": 1.0,
                             "ColorB": 1.0,
                             "ColorG": 1.0,
                             "ColorR": 1.0,
+                            "EditorScale": 1.0,
                             "FrameDuration": 0.10000000149011612,
-                            "IsLoop": true,
+                            "IsLoop": false,
+                            "Pivot": 0,
                             "SortOrder": 0,
-                            "SplitX": 2,
+                            "SplitX": 1,
                             "SplitY": 1,
                             "SpriteIndex": 1,
-                            "SrcH": 209.0,
-                            "SrcW": 268.0,
+                            "SrcH": 110.0,
+                            "SrcW": 97.0,
                             "SrcX": 0.0,
                             "SrcY": 0.0,
                             "TargetCol": 0,
                             "TargetRow": 0,
-                            "TexturePath": "Data/Sprite/loading_chameleon.png"
+                            "TexturePath": "Data/Sprite/enemy.png"
                         },
                         "type": "SpriteRender"
                     }

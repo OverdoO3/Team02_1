@@ -55,6 +55,8 @@ public:
         return "Data/" + normalized.generic_string();
     }
 
+    enum class Pivot { TopLeft, Center };
+    Pivot m_pivot = Pivot::TopLeft;
 
 private:
     std::unique_ptr<Sprite> spr;
@@ -80,6 +82,19 @@ private:
     float m_timer = 0.0f;
     int m_animFrameCount = 1;
     int m_currentFrame = 0;
+
+    bool m_mouseWasDown = false;
+
+    //デバッグ矩形用(当たり判定も入れてます)
+    float m_lastDrawX = 0.0f;  // 実際に描画した左上X
+    float m_lastDrawY = 0.0f;  // 実際に描画した左上Y
+    float m_lastDrawW = 0.0f;
+    float m_lastDrawH = 0.0f;
+
+    float m_colliderOffsetX = 0.0f; // 判定の横ズレ
+    float m_colliderOffsetY = 0.0f; // 判定の縦ズレ
+    float m_colliderWidth = 100.0f; // 判定の横幅
+    float m_colliderHeight = 100.0f; // 判定の縦幅
 
     //色
     DirectX::XMFLOAT4 color = { 1.0f,1.0f,1.0f,1.0f };

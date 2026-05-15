@@ -19,49 +19,177 @@ void SpriteRender::Draw(RenderContext& rc)
         float width = sw * m_editorScale;
         float height = sh * m_editorScale;
 
-        float sx = m_srcX;
-        float sy = m_srcY;
+        // --- ここが重要：ImGuiのGameビューの中身（左上）のスクリーン座標を取得 ---
+        ImVec2 screenOffset = ImGui::GetCursorScreenPos();
 
+        // 描画座標をスクリーン絶対座標に変換
+        float drawX = screenOffset.x + pos.x;
+        float drawY = screenOffset.y + pos.y;
+
+        if (m_pivot == Pivot::Center)
+        {
+            drawX -= width * 0.5f;
+            drawY -= height * 0.5f;
+        }
+
+        // キャッシュ（Updateでの判定とデバッグ枠用）
+        m_lastDrawX = drawX;
+        m_lastDrawY = drawY;
+        m_lastDrawW = width;
+        m_lastDrawH = height;
+
+        // 実際の描画
         spr->Render(
             rc,
-            pos.x, pos.y, pos.z,
+            drawX, drawY, pos.z,
             width, height,
-            sx, sy,
+            m_srcX, m_srcY,
             sw, sh,
             m_editorAngleDeg,
             color.x, color.y, color.z, color.w
         );
+
+#ifdef _DEBUG
+        screenOffset = ImGui::GetCursorScreenPos();
+        float debugLeft = screenOffset.x + owner->GetComponent<Transform>()->GetWorldPosition().x + m_colliderOffsetX;
+        float debugTop = screenOffset.y + owner->GetComponent<Transform>()->GetWorldPosition().y + m_colliderOffsetY;
+
+        ImGui::GetForegroundDrawList()->AddRect(
+            ImVec2(debugLeft, debugTop),
+            ImVec2(debugLeft + m_colliderWidth, debugTop + m_colliderHeight),
+            IM_COL32(255, 255, 0, 255), // 判定枠は黄色にしてみる
+            0.0f, 0xF, 2.0f
+        );
+#endif
+
     }
 }
 
+
+//void SpriteRender::Update(float elapsedTime)
+//{
+//    // ── マウスクリック判定 ──────────────────────────────────────
+//    if (GetAsyncKeyState(VK_LBUTTON) & 0x8000)
+//    {
+//        if (!m_mouseWasDown)
+//        {
+//            m_mouseWasDown = true;
+//
+//            POINT mousePos;
+//            GetCursorPos(&mousePos);
+//            HWND hwnd = GetActiveWindow();
+//            ScreenToClient(hwnd, &mousePos);   // スクリーン→クライアント座標
+//
+//            auto tran = owner->GetComponent<Transform>();
+//            if (tran && spr)
+//            {
+//                auto pos = tran->GetWorldPosition(); // これがスプライト左上のピクセル座標
+//
+//                float texW = spr->GetTextureWidth();
+//                float texH = spr->GetTextureHeight();
+//                float sw = (m_srcW < 0.0f) ? texW : m_srcW;
+//                float sh = (m_srcH < 0.0f) ? texH : m_srcH;
+//                float width = sw * m_editorScale;
+//                float height = sh * m_editorScale;
+//
+//                // Sprite::Render は dx,dy を左上として描画している
+//                float left = m_lastDrawX;
+//                float top = m_lastDrawY;
+//                float right = m_lastDrawX + m_lastDrawW;
+//                float bottom = m_lastDrawY + m_lastDrawH;
+//
+//                if (mousePos.x >= left && mousePos.x <= right &&
+//                    mousePos.y >= top && mousePos.y <= bottom)
+//                {
+//                    color = { 1.0f, 0.0f, 0.0f, 1.0f };
+//                }
+//            }
+//        }
+//    }
+//    else
+//    {
+//        m_mouseWasDown = false;
+//    }
+//
+//
+//    if (!m_isLoop || m_animFrameCount <= 1) return;
+//
+//    m_timer += elapsedTime;
+//
+//    if (m_timer >= m_frameDuration)
+//    {
+//        m_timer = 0.0f;
+//        m_currentFrame++;
+//
+//        if (m_currentFrame >= m_animFrameCount)
+//        {
+//            m_currentFrame = 0;
+//        }
+//
+//        if (spr)
+//        {
+//            float texW = spr->GetTextureWidth();
+//            float singleFrameW = texW / (float)m_splitX;
+//
+//            m_srcW = singleFrameW;
+//
+//            int nextCol = (m_targetCol + m_currentFrame) % m_splitX;
+//            m_srcX = (float)nextCol * m_srcW;
+//        }
+//    }
+//}
 void SpriteRender::Update(float elapsedTime)
 {
+    // 1. マウス座標とウィンドウの開始位置を取得
+    ImVec2 mousePos = ImGui::GetMousePos();
+    ImVec2 screenOffset = ImGui::GetCursorScreenPos();
+
+    // 2. Transformから現在の世界座標を取得
+    auto tran = owner->GetComponent<Transform>();
+    if (tran)
+    {
+        DirectX::XMFLOAT3 worldPos = tran->GetWorldPosition();
+
+        // 3. 当たり判定の矩形範囲を計算 (スクリーン絶対座標系)
+        // worldPos.x/y(ゲーム内座標) + screenOffset(ウィンドウ位置) + colliderOffset(個別のズレ)
+        float colLeft = screenOffset.x + worldPos.x + m_colliderOffsetX;
+        float colTop = screenOffset.y + worldPos.y + m_colliderOffsetY;
+        float colRight = colLeft + m_colliderWidth;
+        float colBottom = colTop + m_colliderHeight;
+
+        // 4. 当たり判定（マウスが矩形の中に入っているか）
+        bool hovered = (mousePos.x >= colLeft && mousePos.x <= colRight &&
+            mousePos.y >= colTop && mousePos.y <= colBottom);
+
+        // 5. 結果を色に反映（デバッグ用）
+        color = hovered
+            ? DirectX::XMFLOAT4{ 1.0f, 0.0f, 0.0f, 1.0f }  // 重なったら赤
+        : DirectX::XMFLOAT4{ 1.0f, 1.0f, 1.0f, 1.0f }; // 通常は白
+    }
+
+    // --- 既存のアニメーション処理 -----------------------------------------
     if (!m_isLoop || m_animFrameCount <= 1) return;
 
     m_timer += elapsedTime;
-
     if (m_timer >= m_frameDuration)
     {
         m_timer = 0.0f;
         m_currentFrame++;
-
         if (m_currentFrame >= m_animFrameCount)
-        {
             m_currentFrame = 0;
-        }
 
         if (spr)
         {
             float texW = spr->GetTextureWidth();
             float singleFrameW = texW / (float)m_splitX;
-
             m_srcW = singleFrameW;
-
             int nextCol = (m_targetCol + m_currentFrame) % m_splitX;
             m_srcX = (float)nextCol * m_srcW;
         }
     }
 }
+
+
 
 
 std::unique_ptr<Component> SpriteRender::Clone() const
@@ -81,14 +209,19 @@ std::unique_ptr<Component> SpriteRender::Clone() const
     c->m_frameDuration = this->m_frameDuration;
     c->m_animFrameCount = this->m_animFrameCount;
     c->m_editorScale = this->m_editorScale;
-    c->color = this->color;
+    c->m_pivot = this->m_pivot;
+    c->sortOrder = this->sortOrder;
 
-	c->SetSprite(std::make_unique<Sprite>(texturepath.c_str()));
-	if (texturepath !="")
-	{ 
-		c->SetString(texturepath.c_str());
-	}
+    c->m_colliderOffsetX = this->m_colliderOffsetX;
+    c->m_colliderOffsetY = this->m_colliderOffsetY;
+    c->m_colliderWidth = this->m_colliderWidth;
+    c->m_colliderHeight = this->m_colliderHeight;
 
+    if (texturepath != "")
+    {
+        c->SetSprite(std::make_unique<Sprite>(texturepath.c_str()));
+        c->SetString(texturepath.c_str());
+    }
 
 	return c;
 }
@@ -113,6 +246,14 @@ void SpriteRender::Serialize(nlohmann::json& j) const
     j["IsLoop"] = m_isLoop;
     j["FrameDuration"] = m_frameDuration;
     j["AnimFrameCount"] = m_animFrameCount;
+    j["Pivot"] = (int)m_pivot;
+    j["EditorScale"] = m_editorScale;
+
+    j["ColOffsetX"] = m_colliderOffsetX;
+    j["ColOffsetY"] = m_colliderOffsetY;
+    j["ColWidth"] = m_colliderWidth;
+    j["ColHeight"] = m_colliderHeight;
+
 }
 
 void SpriteRender::DrawInspector()
@@ -197,6 +338,32 @@ void SpriteRender::DrawInspector()
             m_timer = 0.0f;
         }
     }
+
+    if (ImGui::CollapsingHeader("Pivot"))
+    {
+        const char* pivotItems[] = { "TopLeft", "Center" };
+        int pivotIndex = (int)m_pivot;
+        if (ImGui::Combo("Pivot", &pivotIndex, pivotItems, 2))
+        {
+            m_pivot = (Pivot)pivotIndex;
+        }
+    }
+
+    if (ImGui::CollapsingHeader("Box Collider 2D"))
+    {
+        ImGui::DragFloat("Offset X", &m_colliderOffsetX, 1.0f);
+        ImGui::DragFloat("Offset Y", &m_colliderOffsetY, 1.0f);
+        ImGui::DragFloat("Width", &m_colliderWidth, 1.0f, 1.0f, 2048.0f);
+        ImGui::DragFloat("Height", &m_colliderHeight, 1.0f, 1.0f, 2048.0f);
+
+        if (ImGui::Button("Fit to Sprite")) {
+            // ボタン一発でスプライトのサイズに合わせる機能
+            m_colliderWidth = m_lastDrawW;
+            m_colliderHeight = m_lastDrawH;
+            m_colliderOffsetX = (m_pivot == Pivot::Center) ? -(m_lastDrawW * 0.5f) : 0.0f;
+            m_colliderOffsetY = (m_pivot == Pivot::Center) ? -(m_lastDrawH * 0.5f) : 0.0f;
+        }
+    }
 }
 
 
@@ -227,4 +394,10 @@ void SpriteRender::Deserialize(nlohmann::json& j)
     m_isLoop = j.value("IsLoop", false);
     m_frameDuration = j.value("FrameDuration", 0.1f);
     m_animFrameCount = j.value("AnimFrameCount", 1);
+    m_pivot = (Pivot)j.value("Pivot", 0);
+
+    m_colliderOffsetX = j.value("ColOffsetX", 0.0f);
+    m_colliderOffsetY = j.value("ColOffsetY", 0.0f);
+    m_colliderWidth = j.value("ColWidth", 100.0f);
+    m_colliderHeight = j.value("ColHeight", 100.0f);
 }
