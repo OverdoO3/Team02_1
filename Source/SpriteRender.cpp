@@ -50,16 +50,19 @@ void SpriteRender::Draw(RenderContext& rc)
         );
 
 #ifdef _DEBUG
-        screenOffset = ImGui::GetCursorScreenPos();
-        float debugLeft = screenOffset.x + owner->GetComponent<Transform>()->GetWorldPosition().x + m_colliderOffsetX;
-        float debugTop = screenOffset.y + owner->GetComponent<Transform>()->GetWorldPosition().y + m_colliderOffsetY;
+        if (m_showCollider)
+        {
+            screenOffset = ImGui::GetCursorScreenPos();
+            float debugLeft = screenOffset.x + owner->GetComponent<Transform>()->GetWorldPosition().x + m_colliderOffsetX;
+            float debugTop = screenOffset.y + owner->GetComponent<Transform>()->GetWorldPosition().y + m_colliderOffsetY;
 
-        ImGui::GetForegroundDrawList()->AddRect(
-            ImVec2(debugLeft, debugTop),
-            ImVec2(debugLeft + m_colliderWidth, debugTop + m_colliderHeight),
-            IM_COL32(255, 255, 0, 255), // 判定枠は黄色にしてみる
-            0.0f, 0xF, 2.0f
-        );
+            ImGui::GetForegroundDrawList()->AddRect(
+                ImVec2(debugLeft, debugTop),
+                ImVec2(debugLeft + m_colliderWidth, debugTop + m_colliderHeight),
+                IM_COL32(0, 255, 0, 255), // 判定枠は黄色にしてみる
+                0.0f, 0xF, 2.0f
+            );
+        }
 #endif
 
     }
@@ -253,7 +256,7 @@ void SpriteRender::Serialize(nlohmann::json& j) const
     j["ColOffsetY"] = m_colliderOffsetY;
     j["ColWidth"] = m_colliderWidth;
     j["ColHeight"] = m_colliderHeight;
-
+    j["ShowCollider"] = m_showCollider;
 }
 
 void SpriteRender::DrawInspector()
@@ -351,6 +354,9 @@ void SpriteRender::DrawInspector()
 
     if (ImGui::CollapsingHeader("Box Collider 2D"))
     {
+        //表示・非表示のスイッチ
+        ImGui::Checkbox("Show Collider OutLine", &m_showCollider);
+
         ImGui::DragFloat("Offset X", &m_colliderOffsetX, 1.0f);
         ImGui::DragFloat("Offset Y", &m_colliderOffsetY, 1.0f);
         ImGui::DragFloat("Width", &m_colliderWidth, 1.0f, 1.0f, 2048.0f);
@@ -400,4 +406,5 @@ void SpriteRender::Deserialize(nlohmann::json& j)
     m_colliderOffsetY = j.value("ColOffsetY", 0.0f);
     m_colliderWidth = j.value("ColWidth", 100.0f);
     m_colliderHeight = j.value("ColHeight", 100.0f);
+    m_showCollider = j.value("ShowCollider", true);
 }

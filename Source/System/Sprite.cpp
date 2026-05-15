@@ -98,90 +98,84 @@ void Sprite::Render(const RenderContext& rc,
 {
 	ID3D11DeviceContext* dc = rc.deviceContext;
 
-	// 頂点座標
+	// --- 1. 中心(0,0)を基準としたローカル座標を作成 ---
+	// これにより、回転しても矩形が歪むのを防ぎます
+	float halfW = dw * 0.5f;
+	float halfH = dh * 0.5f;
+
 	DirectX::XMFLOAT2 positions[] = {
-		DirectX::XMFLOAT2(dx,      dy),			// 左上
-		DirectX::XMFLOAT2(dx + dw, dy),			// 右上
-		DirectX::XMFLOAT2(dx,      dy + dh),	// 左下
-		DirectX::XMFLOAT2(dx + dw, dy + dh),	// 右下
+		{ -halfW, -halfH }, // 左上
+		{  halfW, -halfH }, // 右上
+		{ -halfW,  halfH }, // 左下
+		{  halfW,  halfH }, // 右下
 	};
 
-	// テクスチャ座標
+	// テクスチャ座標 (UV)
 	DirectX::XMFLOAT2 texcoords[] = {
-		DirectX::XMFLOAT2(sx,      sy),			// 左上
-		DirectX::XMFLOAT2(sx + sw, sy),			// 右上
-		DirectX::XMFLOAT2(sx,      sy + sh),	// 左下
-		DirectX::XMFLOAT2(sx + sw, sy + sh),	// 右下
+		{ sx,      sy },      // 左上
+		{ sx + sw, sy },      // 右上
+		{ sx,      sy + sh }, // 左下
+		{ sx + sw, sy + sh }, // 右下
 	};
 
-	// スプライトの中心で回転させるために４頂点の中心位置が
-	// 原点(0, 0)になるように一旦頂点を移動させる。
-	float mx = dx + dw * 0.5f;
-	float my = dy + dh * 0.5f;
-	for (auto& p : positions)
-	{
-		p.x -= mx;
-		p.y -= my;
-	}
-
-	// 頂点を回転させる
+	// --- 2. 頂点を回転させる ---
 	float theta = DirectX::XMConvertToRadians(angle);
 	float c = cosf(theta);
 	float s = sinf(theta);
+
 	for (auto& p : positions)
 	{
-		DirectX::XMFLOAT2 r = p;
-		p.x = c * r.x + -s * r.y;
-		p.y = s * r.x + c * r.y;
+		float rx = p.x;
+		float ry = p.y;
+		p.x = c * rx - s * ry;
+		p.y = s * rx + c * ry;
 	}
 
-	// 回転のために移動させた頂点を元の位置に戻す
+	// --- 3. 指定された位置へ移動させる ---
+	// dx, dy は左上の位置を指しているため、中心(centerX, centerY)を求めて加算する
+	float centerX = dx + halfW;
+	float centerY = dy + halfH;
+
 	for (auto& p : positions)
 	{
-		p.x += mx;
-		p.y += my;
+		p.x += centerX;
+		p.y += centerY;
 	}
 
-	// 現在設定されているビューポートからスクリーンサイズを取得する。
+	// --- 4. スクリーン座標系からNDC座標系へ変換 ---
 	D3D11_VIEWPORT viewport;
 	UINT numViewports = 1;
 	dc->RSGetViewports(&numViewports, &viewport);
 	float screenWidth = viewport.Width;
 	float screenHeight = viewport.Height;
 
-	// スクリーン座標系からNDC座標系へ変換する。
 	for (DirectX::XMFLOAT2& p : positions)
 	{
 		p.x = 2.0f * p.x / screenWidth - 1.0f;
 		p.y = 1.0f - 2.0f * p.y / screenHeight;
 	}
 
-	// 頂点バッファの内容の編集を開始する。
+	// --- 5. 頂点バッファの更新 (Map/Unmap) ---
 	D3D11_MAPPED_SUBRESOURCE mappedSubresource;
 	HRESULT hr = dc->Map(vertexBuffer.Get(), 0, D3D11_MAP_WRITE_DISCARD, 0, &mappedSubresource);
-	_ASSERT_EXPR(SUCCEEDED(hr), HRTrace(hr));
-
-	// 頂点バッファの内容を編集
-	Vertex* v = static_cast<Vertex*>(mappedSubresource.pData);
-	for (int i = 0; i < 4; ++i)
+	if (SUCCEEDED(hr))
 	{
-		v[i].position.x = positions[i].x;
-		v[i].position.y = positions[i].y;
-		v[i].position.z = dz;
+		Vertex* v = static_cast<Vertex*>(mappedSubresource.pData);
+		for (int i = 0; i < 4; ++i)
+		{
+			v[i].position.x = positions[i].x;
+			v[i].position.y = positions[i].y;
+			v[i].position.z = dz;
 
-		v[i].color.x = r;
-		v[i].color.y = g;
-		v[i].color.z = b;
-		v[i].color.w = a;
+			v[i].color = { r, g, b, a };
 
-		v[i].texcoord.x = texcoords[i].x / textureWidth;
-		v[i].texcoord.y = texcoords[i].y / textureHeight;
+			v[i].texcoord.x = texcoords[i].x / textureWidth;
+			v[i].texcoord.y = texcoords[i].y / textureHeight;
+		}
+		dc->Unmap(vertexBuffer.Get(), 0);
 	}
 
-	// 頂点バッファの内容の編集を終了する。
-	dc->Unmap(vertexBuffer.Get(), 0);
-
-	// GPUに描画するためのデータを渡す
+	// --- 6. GPUへの描画命令 ---
 	UINT stride = sizeof(Vertex);
 	UINT offset = 0;
 	dc->IASetVertexBuffers(0, 1, vertexBuffer.GetAddressOf(), &stride, &offset);
@@ -191,19 +185,14 @@ void Sprite::Render(const RenderContext& rc,
 	dc->PSSetShader(pixelShader.Get(), nullptr, 0);
 	dc->PSSetShaderResources(0, 1, shaderResourceView.GetAddressOf());
 
-	// レンダーステート設定
+	// ステート設定
 	dc->OMSetDepthStencilState(rc.renderState->GetDepthStencilState(DepthState::NoTestNoWrite), 0);
 	dc->RSSetState(rc.renderState->GetRasterizerState(RasterizerState::SolidCullNone));
-	dc->OMSetBlendState(
-		rc.renderState->GetBlendState(BlendState::Transparency),
-		nullptr,
-		0xFFFFFFFF
-	);
-	// サンプラーステート設定
+	dc->OMSetBlendState(rc.renderState->GetBlendState(BlendState::Transparency), nullptr, 0xFFFFFFFF);
+
 	ID3D11SamplerState* samplers[] = { rc.renderState->GetSamplerState(SamplerState::LinearWrap) };
 	dc->PSSetSamplers(0, _countof(samplers), samplers);
 
-	// 描画
 	dc->Draw(4, 0);
 }
 

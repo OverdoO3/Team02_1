@@ -38,6 +38,7 @@ void MouseCursor::Update(HWND hWnd)
     }
 
     m_pos = clientPos;
+    m_isPressed = ImGui::IsMouseDown(0);
 }
 
 void MouseCursor::Draw(RenderContext& rc)

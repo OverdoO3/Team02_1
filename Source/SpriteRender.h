@@ -96,6 +96,10 @@ private:
     float m_colliderWidth = 100.0f; // ”»’è‚Ì‰¡•
     float m_colliderHeight = 100.0f; // ”»’è‚Ìc•
 
+    
+    bool m_showCollider = true;
+
+
     //F
     DirectX::XMFLOAT4 color = { 1.0f,1.0f,1.0f,1.0f };
 };
