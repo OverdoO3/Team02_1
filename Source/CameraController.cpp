@@ -13,34 +13,43 @@ void CameraController::OnAwake(float elapsedTime)
 
 void CameraController::Update(float elapsedTime)
 {
-	POINT pos;
-	GetCursorPos(&pos);
+	if(InputC::KeyPressed(VK_TAB))
+	{
+		mouseLocked = !mouseLocked;
+		ShowCursor(!mouseLocked);
+	}
+	
+	if (mouseLocked)
+	{
+		POINT pos;
+		GetCursorPos(&pos);
 
-	static POINT prev = pos;
+		static POINT prev = pos;
 
-	POINT center;
-	RECT rect;
-	HWND hwnd = GetActiveWindow();
+		POINT center;
+		RECT rect;
+		HWND hwnd = GetActiveWindow();
 
-	GetClientRect(hwnd, &rect);
+		GetClientRect(hwnd, &rect);
 
-	center.x = rect.right / 2;
-	center.y = rect.bottom / 2;
+		center.x = rect.right / 2;
+		center.y = rect.bottom / 2;
 
-	ClientToScreen(hwnd, &center);
+		ClientToScreen(hwnd, &center);
 
-	// 差分
-	float deltaX = pos.x - center.x;
-	float deltaY = pos.y - center.y;
+		// 差分
+		float deltaX = pos.x - center.x;
+		float deltaY = pos.y - center.y;
 
-	// 戻す
-	SetCursorPos(center.x, center.y);
+		// 戻す
+		SetCursorPos(center.x, center.y);
 
-	prev = pos;
+		prev = pos;
 
-	yaw += deltaX * 0.01f;
-	pitch += deltaY * 0.01f;
+		yaw += deltaX * 0.01f;
+		pitch += deltaY * 0.01f;
 
+	}
 	// 上下制限（めっちゃ重要）
 	pitch = std::clamp(pitch, -maxPitch, maxPitch);
 
