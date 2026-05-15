@@ -371,6 +371,9 @@
     <ClInclude Include="Source\ButtonComponent.h">
       <Filter>Source\Components\Temp</Filter>
     </ClInclude>
+    <ClInclude Include="Source\MouseCursor.h">
+      <Filter>Source\System</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="External\imgui-docking\imgui.cpp">
@@ -576,6 +579,9 @@
     </ClCompile>
     <ClCompile Include="Source\ButtonComponent.cpp">
       <Filter>Source\Components\Temp\TempObj</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\MouseCursor.cpp">
+      <Filter>Source\System</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

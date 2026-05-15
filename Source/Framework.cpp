@@ -49,6 +49,10 @@ Framework::Framework(HWND hWnd)
 	// シーン初期化
 	//SceneManager::Instance().ChangeScene(std::move(std::make_unique<Scene>()),"Scenes/scene.json");
 
+	//マウスカーソル初期化
+	mouseCursor = std::make_unique<MouseCursor>();
+	mouseCursor->Initialize("Data/Sprite/MouseCursor.png");
+
 	engine.Initialize();
 	editor.Initialize(&engine);
 }
@@ -114,6 +118,11 @@ void Framework::Update(float elapsedTime)
 
 	// エディタはポーズ中も動かせるように外に出す
 	editor.Update(elapsedTime, engine.GetSceneManager().GetCurrentScene());
+
+	if (mouseCursor)
+	{
+		mouseCursor->Update(hWnd);
+	}
 }
 
 
@@ -123,6 +132,9 @@ void Framework::Render(float elapsedTime)
 	std::lock_guard <std::recursive_mutex> lock(Graphics::Instance().GetMutex());
 
 	ID3D11DeviceContext* dc = Graphics::Instance().GetDeviceContext();
+	RenderContext rc;
+	rc.deviceContext = dc;
+	rc.renderState = Graphics::Instance().GetRenderState();
 
 	// 画面クリア
 	Graphics::Instance().Clear(0, 0, 1, 1);
@@ -152,6 +164,11 @@ void Framework::Render(float elapsedTime)
 	ImGui::Render();
 	// IMGUI描画
 	ImGuiRenderer::Render(dc);
+
+	if (mouseCursor)
+	{
+		mouseCursor->Draw(rc);
+	}
 
 	// 画面表示
 	Graphics::Instance().Present(syncInterval);
@@ -234,6 +251,7 @@ LRESULT CALLBACK Framework::HandleMessage(HWND hWnd, UINT msg, WPARAM wParam, LP
 	case WM_KEYDOWN:
 		if (wParam == VK_ESCAPE)
 		{
+			PostQuitMessage(0);
 			// ポーズ状態を反転させる
 			engine.GetSceneManager().TogglePause();
 		}

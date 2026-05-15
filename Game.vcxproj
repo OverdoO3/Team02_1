@@ -259,6 +259,7 @@
     <ClInclude Include="Source\LogManager.h" />
     <ClInclude Include="Source\MathUtils.h" />
     <ClInclude Include="Source\ModelRender.h" />
+    <ClInclude Include="Source\MouseCursor.h" />
     <ClInclude Include="Source\Move.h" />
     <ClInclude Include="Source\OpenDialog.h" />
     <ClInclude Include="Source\PhysicsSystem.h" />
@@ -357,6 +358,7 @@
     <ClCompile Include="Source\Main.cpp" />
     <ClCompile Include="Source\MathUtils.cpp" />
     <ClCompile Include="Source\ModelRender.cpp" />
+    <ClCompile Include="Source\MouseCursor.cpp" />
     <ClCompile Include="Source\Move.cpp" />
     <ClCompile Include="Source\PhysicsSystem.cpp" />
     <ClCompile Include="Source\PrefabManager.cpp" />

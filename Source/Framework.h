@@ -6,7 +6,7 @@
 
 #include "Engine.h"
 #include "Editor.h"
-
+#include "MouseCursor.h"
 
 class Framework
 {
@@ -30,5 +30,8 @@ private:
 
 	Engine engine;
 	Editor editor;
+
+	//マウスカーソル用
+	std::unique_ptr<MouseCursor> mouseCursor;
 };
 

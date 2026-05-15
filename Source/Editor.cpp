@@ -475,17 +475,22 @@ void Editor::DrawGameWindow()
 	{
 		if (ImGui::Button("|> Play")||InputC::KeyPressed('P')&&InputC::KeyDown(VK_LCONTROL))
 		{
+			//if (sm.IsPaused())
+			//{
+			//	sm.SetPause(false);
+			//}
 			sm.StartPlay();
 		}
 	}
 	else
 	{
-		if (!engine->GetSceneManager().IsPaused())
+		if (ImGui::Button("|| Stop") || InputC::KeyPressed('P') && InputC::KeyDown(VK_LCONTROL))
 		{
-			if (ImGui::Button("|| Stop") || InputC::KeyPressed('P') && InputC::KeyDown(VK_LCONTROL))
+			if (sm.IsPaused())
 			{
-				sm.StopPlay();
+				sm.SetPause(false);
 			}
+			sm.StopPlay();
 		}
 	}
 
