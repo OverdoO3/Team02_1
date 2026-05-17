@@ -9,6 +9,16 @@ void SceneManager::Initialize()
 
 void SceneManager::Update(float elapsedTime)
 {
+	// ペンディングのシーン遷移を処理
+	if (m_hasPendingScene)
+	{
+		m_hasPendingScene = false;
+		auto newScene = std::make_unique<Scene>();
+		newScene->sceneManager = this;
+		newScene->Initialize(m_pendingScenePath.c_str());
+		nextScene = std::move(newScene);
+		nextSceneIsRuntime = playState;
+	}
 
 	if (nextScene != nullptr)
 	{
@@ -90,15 +100,11 @@ void SceneManager::Clear()
 	}
 }
 
-void SceneManager::ChangeScene(std::unique_ptr<Scene> scene,const char* path)
+void SceneManager::ChangeScene(std::unique_ptr<Scene> scene, const char* path)
 {
-	//一回Scene遷移のために試しで作る
-	scene->sceneManager = this;
-
-	scene->Initialize(path);
-	nextScene = std::move(scene);
-
-	nextSceneIsRuntime = playState;
+	// 即実行せずパスだけ記録して次フレームに回す
+	m_pendingScenePath = path;
+	m_hasPendingScene = true;
 }
 
 void SceneManager::NewScene()

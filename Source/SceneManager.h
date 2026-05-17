@@ -61,6 +61,12 @@ public:
 
 	void TogglePause() { isPaused = !isPaused; }
 
+	void RequestSceneChange(const std::string& path)
+	{
+		m_pendingScenePath = path;
+		m_hasPendingScene = true;
+	}
+
 private:
 	//編集用のシーン
 	std::unique_ptr<Scene> editorScene = nullptr;
@@ -73,6 +79,8 @@ private:
 	bool playState = false;
 	bool isPaused = false;
 	bool nextSceneIsRuntime = false;
+	std::string m_pendingScenePath = "";
+	bool m_hasPendingScene = false;
 
 	RenderTarget sceneRT;
 	RenderTarget gameRT;

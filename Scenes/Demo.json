@@ -739,6 +739,7 @@
                             "FrameDuration": 0.10000000149011612,
                             "IsLoop": false,
                             "Pivot": 0,
+                            "ShowCollider": true,
                             "SortOrder": 0,
                             "SplitX": 1,
                             "SplitY": 1,
@@ -752,6 +753,12 @@
                             "TexturePath": "Data/Sprite/enemy.png"
                         },
                         "type": "SpriteRender"
+                    },
+                    {
+                        "data": {
+                            "NextSceneName": "Scenes/Demo2.json"
+                        },
+                        "type": "ButtonComponent"
                     }
                 ],
                 "id": 18,

@@ -56,6 +56,8 @@ void HeatTransfer::Update(float elapsedTime)
 	}
 
 	auto effectstate = owner->GetComponent<StateEffect>();
+	if (!effectstate) return;  // © ‚±‚ê‚ð’Ç‰Á
+
 	switch (thermal->GetHeat())
 	{
 	case 0:
@@ -70,7 +72,6 @@ void HeatTransfer::Update(float elapsedTime)
 	default:
 		break;
 	}
-
 }
 
 void HeatTransfer::DrawInspector()

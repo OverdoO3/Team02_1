@@ -24,6 +24,8 @@ public:
 private:
     void OnClick();
 
+    bool m_clickedThisFrame = false;
+
     std::string m_nextSceneName = "";
 public:
     COMPONENT_ID(ButtonComponent)

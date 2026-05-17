@@ -172,7 +172,9 @@ public:
 			json compJson;
 			
 			ComponentID id = comp->GetID();
-			std::string str = ComponentRegistry::IDToString(id);
+			const char* str = ComponentRegistry::IDToString(id);
+			if (!str) continue;
+
 			compJson["type"] = str;
 
 			json data;
