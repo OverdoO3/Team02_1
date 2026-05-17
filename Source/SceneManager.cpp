@@ -12,22 +12,31 @@ void SceneManager::Update(float elapsedTime)
 
 	if (nextScene != nullptr)
 	{
-		//古いシーンを終了
 		Clear();
-		//新しいシーンを設定
-		editorScene = std::move(nextScene);
-		editorScene->sceneManager = this;
-		nextScene = nullptr;
-		//シーン初期化
-		editorScene->Initialize();
 
+		if (nextSceneIsRuntime)
+		{
+			// Play中のシーン遷移：runtimeScene を差し替える
+			runtimeScene = std::move(nextScene);
+			runtimeScene->sceneManager = this;
+			runtimeScene->playState = true;
+		}
+		else
+		{
+			// 通常のシーン遷移：editorScene を差し替える
+			editorScene = std::move(nextScene);
+			editorScene->sceneManager = this;
+		}
+
+		nextScene = nullptr;
+		nextSceneIsRuntime = false;
 		currentScene = GetCurrentScene();
 
 		Graphics::Instance().CreateRenderTarget(sceneRT, 1280, 720);
 		Graphics::Instance().CreateRenderTarget(gameRT, 1280, 720);
 	}
 
-	
+
 	if (currentScene != nullptr)
 	{
 		if (isPaused)
@@ -83,8 +92,13 @@ void SceneManager::Clear()
 
 void SceneManager::ChangeScene(std::unique_ptr<Scene> scene,const char* path)
 {
+	//一回Scene遷移のために試しで作る
+	scene->sceneManager = this;
+
 	scene->Initialize(path);
 	nextScene = std::move(scene);
+
+	nextSceneIsRuntime = playState;
 }
 
 void SceneManager::NewScene()

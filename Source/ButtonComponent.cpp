@@ -1,5 +1,7 @@
 #include "ButtonComponent.h"
 #include "Factory.h"
+#include "Scene.h"
+#include "SceneManager.h"
 
 //								↓に名前入れる
 REGISTER_COMPONENT(ComponentID::ButtonComponent, ButtonComponent)
@@ -8,16 +10,24 @@ REGISTER_COMPONENT(ComponentID::ButtonComponent, ButtonComponent)
 void ButtonComponent::Update(float elapsedTime)
 {
     // マウスがボタンの上にあるか確認
-    bool hovering = IsMouseOver();
-
+    if (!owner)return;
     auto spr = owner->GetComponent<SpriteRender>();
     if (spr)
     {
+        bool hovering = spr->IsHovered();
         if (hovering)
         {
-            // ホバー中：少し明るくするか、特定の色にする（例：黄色っぽく）
             spr->SetColor(DirectX::XMFLOAT4(1.2f, 1.2f, 1.2f, 1.0f));
 
+            auto& gp = Input::Instance().GetGamePad();
+            if (gp.IsButtonDown(gp.BTN_LEFT))
+            {
+                OnClick();
+            }
+            if (GetAsyncKeyState(VK_LBUTTON) & 1)  // & 1 で押した瞬間だけ
+            {
+                OnClick();
+            }
         }
         else
         {
@@ -28,63 +38,61 @@ void ButtonComponent::Update(float elapsedTime)
 
 void ButtonComponent::DrawInspector()
 {
+    char buf[256];
+    strcpy_s(buf, m_nextSceneName.c_str());
+
+    if (ImGui::InputText("Next Scene JSON Path", buf, sizeof(buf)))
+    {
+        m_nextSceneName = buf;
+    }
+    ImGui::Text("Example: Scenes/Demo2.json");
 }
 
 void ButtonComponent::Serialize(nlohmann::json& j) const
-
 {
+    j["NextSceneName"] = m_nextSceneName;
 }
+
 
 void ButtonComponent::Deserialize(nlohmann::json& j)
 {
+    m_nextSceneName = j.value("NextSceneName", "");
 }
 
 std::unique_ptr<Component> ButtonComponent::Clone() const
 {
     auto c = std::make_unique<ButtonComponent>();
-
+    c->m_nextSceneName = this->m_nextSceneName;
     return c;
 }
 
-bool ButtonComponent::IsMouseOver()
-{
-    if (!owner) return false;
-    auto tran = owner->GetComponent<Transform>();
-    auto spr = owner->GetComponent<SpriteRender>();
-    if (!tran || !spr) return false;
-
-    auto& mouse = Input::Instance().GetMouse();
-    float mouseX = static_cast<float>(mouse.GetPositionX());
-    float mouseY = static_cast<float>(mouse.GetPositionY());
-
-    auto pos = tran->GetWorldPosition();
-    float texW = spr->GetSprite() ? spr->GetSprite()->GetTextureWidth() : 0.0f;
-    float texH = spr->GetSprite() ? spr->GetSprite()->GetTextureHeight() : 0.0f;
-    float srcW = (spr->GetSrcW() < 0.0f) ? texW : spr->GetSrcW();
-    float srcH = (spr->GetSrcH() < 0.0f) ? texH : spr->GetSrcH();
-    float width = srcW * spr->GetEditorScale();
-    float height = srcH * spr->GetEditorScale();
-
-    // 左上原点のスクリーン座標で判定
-    float left = pos.x;
-    float top = pos.y;
-    float right = pos.x + width;
-    float bottom = pos.y + height;
-
-    if (mouseX >= left && mouseX <= right &&
-        mouseY >= top && mouseY <= bottom)
-    {
-        return true;
-    }
-    return false;
-}
 
 void ButtonComponent::OnClick()
 {
     if (!owner) return;
-    auto spr = owner->GetComponent<SpriteRender>();
-    if (spr)
+    if (m_nextSceneName.empty())
     {
-        spr->SetColor(DirectX::XMFLOAT4(1.0f, 0.0f, 0.0f, 1.0f));
+        // インスペクターでパスが空欄のままボタンが押された場合
+        LogManager::Instance().AddLog(
+            LogCategory::scene,
+            LogEvent::Scene_Transition,
+            " [Error] NextSceneName is Empty! (Actor: " + owner->GetName() + ")"
+        );
+        return;
+    }
+
+    Scene* currentScene = owner->GetScene();
+    if (!currentScene)return;
+
+    //シーンが持ってるSceneManagerのポインタを取得
+    SceneManager* sceneManager = currentScene->sceneManager;
+    if (sceneManager)
+    {
+        //次のシーンオブジェクトを生成
+        auto nextSceneInstance = std::make_unique<Scene>();
+
+        //シーン遷移を実行(インスペクターで指定したJSONパスを渡す)
+        sceneManager->ChangeScene(std::move(nextSceneInstance), m_nextSceneName.c_str());
+
     }
 }

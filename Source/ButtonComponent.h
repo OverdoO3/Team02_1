@@ -15,16 +15,16 @@ public:
 
 
     std::unique_ptr<Component> Clone() const override;
+    bool IsMouseOver();
     void Serialize(nlohmann::json& j) const override;
     void Deserialize(nlohmann::json& j) override;
 
     void DrawInspector() override;
 
 private:
-    bool IsMouseOver();
     void OnClick();
 
-    std::string m_nextSceneName;
+    std::string m_nextSceneName = "";
 public:
     COMPONENT_ID(ButtonComponent)
 };

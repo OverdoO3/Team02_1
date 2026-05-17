@@ -51,6 +51,7 @@ public:
 
 	void SetScene(Scene* s) { scene = s; }
 	Scene* GetScene() { return scene; }
+	std::string GetName()const { return name; }
 
 	uint64_t GetID() const { return id; }
 

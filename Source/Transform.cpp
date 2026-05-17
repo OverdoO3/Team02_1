@@ -30,10 +30,23 @@ void Transform::UpdateTransform()
         XMMATRIX world = local * parentWorld;
 
         XMStoreFloat4x4(&worldMatrix, world);
+
+        worldScale.x = parent->worldScale.x * localScale.x;
+        worldScale.y = parent->worldScale.y * localScale.y;
+        worldScale.z = parent->worldScale.z * localScale.z;
+
+        // 回転（クォータニオン）も親のワールド回転と合成
+        XMVECTOR parentQ = XMLoadFloat4(&parent->worldRotation);
+        XMVECTOR worldQ = XMQuaternionMultiply(q, parentQ); // ローカル回転 * 親のワールド回転
+        XMStoreFloat4(&worldRotation, worldQ);
     }
     else
     {
         worldMatrix = localMatrix;
+
+        //親がいない場合はローカル値をそのままワールド値にする
+        worldScale = localScale;
+        worldRotation = localRotation;
     }
 
     for (auto child : children)

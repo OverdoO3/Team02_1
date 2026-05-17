@@ -6,25 +6,26 @@ REGISTER_COMPONENT(ComponentID::SpriteRender,SpriteRender)
 
 void SpriteRender::Draw(RenderContext& rc)
 {
+    if (!owner)return;
     auto tran = owner->GetComponent<Transform>();
     if (spr && tran)
     {
-        auto pos = tran->GetWorldPosition();
+        DirectX::XMFLOAT3 worldPos = tran->GetWorldPosition();
+        DirectX::XMFLOAT3 worldScale = tran->GetWorldScale();
+        DirectX::XMFLOAT3 worldRot = tran->GetWorldEulerAngles(); // オイラー角(Degree)を想定
+
         float texW = spr->GetTextureWidth();
         float texH = spr->GetTextureHeight();
-
         float sw = (m_srcW < 0.0f) ? texW : m_srcW;
         float sh = (m_srcH < 0.0f) ? texH : m_srcH;
 
-        float width = sw * m_editorScale;
-        float height = sh * m_editorScale;
+        float width = sw * m_editorScale * worldScale.x;
+        float height = sh * m_editorScale * worldScale.y;
 
-        // --- ここが重要：ImGuiのGameビューの中身（左上）のスクリーン座標を取得 ---
         ImVec2 screenOffset = ImGui::GetCursorScreenPos();
 
-        // 描画座標をスクリーン絶対座標に変換
-        float drawX = screenOffset.x + pos.x;
-        float drawY = screenOffset.y + pos.y;
+        float drawX = screenOffset.x + worldPos.x;
+        float drawY = screenOffset.y + worldPos.y;
 
         if (m_pivot == Pivot::Center)
         {
@@ -32,42 +33,59 @@ void SpriteRender::Draw(RenderContext& rc)
             drawY -= height * 0.5f;
         }
 
-        // キャッシュ（Updateでの判定とデバッグ枠用）
+        // キャッシュ（当たり判定用）
         m_lastDrawX = drawX;
         m_lastDrawY = drawY;
         m_lastDrawW = width;
         m_lastDrawH = height;
 
-        // 実際の描画
+        float totalAngle = m_editorAngleDeg + worldRot.z;
+
+        //描画に使う色を決定する(デバッグ用)
+        DirectX::XMFLOAT4 finalColor = color;
+
+#ifdef _DEBUG
+        // もしデバッグ中かつコライダー表示がONで、ホバー中なら描画色を赤にする
+        if (m_showCollider && m_isHovered)
+        {
+            finalColor = DirectX::XMFLOAT4(1.0f, 0.0f, 0.0f, 1.0f); // デバッグ用：赤
+        }
+#endif // _DEBUG
+
+
+        // 実際の描画呼び出し
         spr->Render(
             rc,
-            drawX, drawY, pos.z,
+            drawX, drawY, worldPos.z,
             width, height,
             m_srcX, m_srcY,
             sw, sh,
-            m_editorAngleDeg,
-            color.x, color.y, color.z, color.w
+            totalAngle,
+            finalColor.x, finalColor.y, finalColor.z, finalColor.w 
         );
-
 #ifdef _DEBUG
         if (m_showCollider)
         {
-            screenOffset = ImGui::GetCursorScreenPos();
-            float debugLeft = screenOffset.x + owner->GetComponent<Transform>()->GetWorldPosition().x + m_colliderOffsetX;
-            float debugTop = screenOffset.y + owner->GetComponent<Transform>()->GetWorldPosition().y + m_colliderOffsetY;
+            // 当たり判定の枠もスケールさせる
+            float debugLeft = screenOffset.x + worldPos.x + m_colliderOffsetX * worldScale.x;
+            float debugTop = screenOffset.y + worldPos.y + m_colliderOffsetY * worldScale.y;
+            float debugW = m_colliderWidth * worldScale.x;
+            float debugH = m_colliderHeight * worldScale.y;
+
+            ImU32 colliderColor = m_isHovered
+                ? IM_COL32(255, 0, 0, 255)   // マウスが乗ったら赤
+                : IM_COL32(0, 255, 0, 255);  // 通常時は緑
 
             ImGui::GetForegroundDrawList()->AddRect(
                 ImVec2(debugLeft, debugTop),
-                ImVec2(debugLeft + m_colliderWidth, debugTop + m_colliderHeight),
-                IM_COL32(0, 255, 0, 255), // 判定枠は黄色にしてみる
+                ImVec2(debugLeft + debugW, debugTop + debugH),
+                colliderColor, 
                 0.0f, 0xF, 2.0f
             );
         }
 #endif
-
     }
 }
-
 
 //void SpriteRender::Update(float elapsedTime)
 //{
@@ -143,6 +161,7 @@ void SpriteRender::Draw(RenderContext& rc)
 //}
 void SpriteRender::Update(float elapsedTime)
 {
+    if (!owner)return;
     // 1. マウス座標とウィンドウの開始位置を取得
     ImVec2 mousePos = ImGui::GetMousePos();
     ImVec2 screenOffset = ImGui::GetCursorScreenPos();
@@ -153,24 +172,18 @@ void SpriteRender::Update(float elapsedTime)
     {
         DirectX::XMFLOAT3 worldPos = tran->GetWorldPosition();
 
-        // 3. 当たり判定の矩形範囲を計算 (スクリーン絶対座標系)
-        // worldPos.x/y(ゲーム内座標) + screenOffset(ウィンドウ位置) + colliderOffset(個別のズレ)
+        // 当たり判定の矩形範囲を計算 (スクリーン絶対座標系)
         float colLeft = screenOffset.x + worldPos.x + m_colliderOffsetX;
         float colTop = screenOffset.y + worldPos.y + m_colliderOffsetY;
         float colRight = colLeft + m_colliderWidth;
         float colBottom = colTop + m_colliderHeight;
 
-        // 4. 当たり判定（マウスが矩形の中に入っているか）
-        bool hovered = (mousePos.x >= colLeft && mousePos.x <= colRight &&
+        m_isHovered = (mousePos.x >= colLeft && mousePos.x <= colRight &&
             mousePos.y >= colTop && mousePos.y <= colBottom);
 
-        // 5. 結果を色に反映（デバッグ用）
-        color = hovered
-            ? DirectX::XMFLOAT4{ 1.0f, 0.0f, 0.0f, 1.0f }  // 重なったら赤
-        : DirectX::XMFLOAT4{ 1.0f, 1.0f, 1.0f, 1.0f }; // 通常は白
     }
 
-    // --- 既存のアニメーション処理 -----------------------------------------
+    //アニメーション処理
     if (!m_isLoop || m_animFrameCount <= 1) return;
 
     m_timer += elapsedTime;
@@ -272,8 +285,22 @@ void SpriteRender::DrawInspector()
         if (ImGui::DragFloat3("Position", &pos.x, 1.0f)) {
             tran->SetLocalPosition(pos);
         }
-        ImGui::DragFloat("UI Rotation Z", &m_editorAngleDeg, 1.0f);
-        ImGui::DragFloat("UI Scale", &m_editorScale, 0.01f, 0.001f, 100.0f);
+
+        float rotZ = tran->GetLocalEulerAngles().z;
+        if (ImGui::DragFloat("UI Rotation Z", &rotZ, 1.0f)) {
+            // SetRotationEuler は Radians を期待しているはずなので変換してセット
+            tran->SetRotationEuler(
+                tran->GetEulerRotation().x, // X, Y は今の値を維持
+                tran->GetEulerRotation().y,
+                DirectX::XMConvertToRadians(rotZ)
+            );
+        }
+
+        float scaleVal = tran->GetLocalScale().x; 
+        if (ImGui::DragFloat("UI Scale", &scaleVal, 0.01f, 0.001f, 100.0f)) {
+            tran->SetLocalScale({ scaleVal, scaleVal, 1.0f });
+        }
+
 
         ImGui::Separator();
         ImGui::ColorEdit4("Color", &color.x);

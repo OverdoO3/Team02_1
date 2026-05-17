@@ -43,6 +43,8 @@ public:
         this->color = color;
     }
 
+    bool IsHovered()const { return m_isHovered; }
+
     std::string ToDataPath(const std::string& fullPath)
     {
         std::filesystem::path base = std::filesystem::absolute("Data");
@@ -98,6 +100,7 @@ private:
 
     
     bool m_showCollider = true;
+    bool m_isHovered = false;
 
 
     //êF

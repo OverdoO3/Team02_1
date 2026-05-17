@@ -47,6 +47,8 @@ public:
 	inline void StartPlay()
 	{
 		runtimeScene = editorScene->Clone();
+		//ƒV[ƒ“‘JˆÚ—pŽŽ‚µ
+		runtimeScene->sceneManager = this;
 		runtimeScene->playState = true;
 		playState = true;
 		editorScene->physics.DeleteAllQueue();
@@ -70,6 +72,7 @@ private:
 
 	bool playState = false;
 	bool isPaused = false;
+	bool nextSceneIsRuntime = false;
 
 	RenderTarget sceneRT;
 	RenderTarget gameRT;
