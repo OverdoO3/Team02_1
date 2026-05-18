@@ -1,6 +1,7 @@
 ﻿#include "SceneManager.h"
 #include "System/Graphics.h"
 #include "Engine.h"
+#include "SpriteRender.h"
 
 void SceneManager::Initialize()
 {
@@ -41,7 +42,7 @@ void SceneManager::Update(float elapsedTime)
 		nextScene = nullptr;
 		nextSceneIsRuntime = false;
 		currentScene = GetCurrentScene();
-
+		isPaused = false;
 		Graphics::Instance().CreateRenderTarget(sceneRT, 1280, 720);
 		Graphics::Instance().CreateRenderTarget(gameRT, 1280, 720);
 	}
@@ -52,7 +53,16 @@ void SceneManager::Update(float elapsedTime)
 		if (isPaused)
 		{
 			//Pause中の処理をここに入れる
+			for (auto& actor : currentScene->actors)
+			{
+				if (!actor->setActive) continue;
 
+				auto* sr = actor->GetComponent<SpriteRender>();
+				if (sr && sr->GetIsPauseUI())
+				{
+					actor->Update(0.0f);
+				}
+			}
 		}
 		else 
 		{

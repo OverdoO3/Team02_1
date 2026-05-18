@@ -60,6 +60,8 @@ public:
         return "Data/" + normalized.generic_string();
     }
 
+    bool GetIsPauseUI()const { return m_isPauseUI; }
+
     enum class Pivot { TopLeft, Center };
     Pivot m_pivot = Pivot::TopLeft;
 
@@ -110,4 +112,11 @@ private:
 
     //色
     DirectX::XMFLOAT4 color = { 1.0f,1.0f,1.0f,1.0f };
+
+    bool  m_hoverFade       = false;       // インスペクターでホバーでフェード出現させるかのスイッチ
+    float m_appearanceRatio = 0.0f;  // 現在の出現割合 (0.0f = 完全に透明/消滅、1.0f = 完全に表示)
+    float m_fadeSpeed       = 5.0f;        // フェードの速さ
+
+    bool m_hoverSpriteShift = false;
+    int m_hoverCollOffset = 1;
 };

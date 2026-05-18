@@ -51,10 +51,10 @@ public:
 		runtimeScene->playState = true;
 		playState = true;
 
-		// SceneManagerをセットし直す
+		//Pause中に画像を出す用
 		for (auto& actor : runtimeScene->actors)
 		{
-			actor->SetScene(runtimeScene.get()); // ← 追加
+			actor->SetScene(runtimeScene.get());
 		}
 
 		editorScene->physics.DeleteAllQueue();

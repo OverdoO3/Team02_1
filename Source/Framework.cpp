@@ -117,6 +117,11 @@ void Framework::Update(float elapsedTime)
 		// シーン・アクター・物理の更新
 		engine.Update(elapsedTime);
 	}
+	else
+	{
+		engine.GetSceneManager().Update(elapsedTime);
+	}
+
 	if (mouseCursor)
 	{
 		mouseCursor->Update(hWnd);

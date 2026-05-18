@@ -54,14 +54,10 @@ void SpriteRender::Draw(RenderContext& rc)
 
         //描画に使う色を決定する(デバッグ用)
         DirectX::XMFLOAT4 finalColor = color;
-
-#ifdef _DEBUG
-        // もしデバッグ中かつコライダー表示がONで、ホバー中なら描画色を赤にする
-        if (m_showCollider && m_isHovered)
+        if (m_hoverFade)
         {
-            finalColor = DirectX::XMFLOAT4(1.0f, 0.0f, 0.0f, 1.0f); // デバッグ用：赤
+            finalColor.w *= m_appearanceRatio;
         }
-#endif // _DEBUG
 
 
         // 実際の描画呼び出し
@@ -200,6 +196,46 @@ void SpriteRender::Update(float elapsedTime)
 
     }
 
+    if (m_hoverFade)
+    {
+        // マウスが乗っていれば 1.0f (全表示)、離れれば 0.0f (非表示) を目指す
+        float targetRatio = m_isHovered ? 1.0f : 0.0f;
+
+        // 線形補間（ラープ）
+        float t = m_fadeSpeed * elapsedTime;
+        if (t > 1.0f) t = 1.0f;
+
+        m_appearanceRatio += (targetRatio - m_appearanceRatio) * t;
+    }
+    else
+    {
+        // 機能がオフの場合は常に 1.0f（通常表示）
+        m_appearanceRatio = 1.0f;
+    }
+
+    if (spr)
+    {
+        int currentCol = m_targetCol;
+
+        // アニメーションが有効な場合は、現在のフレーム分を進める
+        if (m_isLoop && m_animFrameCount > 1)
+        {
+            currentCol = (m_targetCol + m_currentFrame) % m_splitX;
+        }
+
+        // ホバー時のスプライトシートずらし
+        if (m_hoverSpriteShift && m_isHovered)
+        {
+            currentCol = (currentCol + m_hoverCollOffset) % m_splitX;
+        }
+
+        float texW = spr->GetTextureWidth();
+        float cellW = (m_srcW < 0.0f) ? (texW / (float)m_splitX) : m_srcW;
+
+        m_srcX = (float)currentCol * cellW;
+    }
+
+
     //アニメーション処理
     if (!m_isLoop || m_animFrameCount <= 1) return;
 
@@ -211,14 +247,6 @@ void SpriteRender::Update(float elapsedTime)
         if (m_currentFrame >= m_animFrameCount)
             m_currentFrame = 0;
 
-        if (spr)
-        {
-            float texW = spr->GetTextureWidth();
-            float singleFrameW = texW / (float)m_splitX;
-            m_srcW = singleFrameW;
-            int nextCol = (m_targetCol + m_currentFrame) % m_splitX;
-            m_srcX = (float)nextCol * m_srcW;
-        }
     }
 }
 
@@ -229,28 +257,34 @@ std::unique_ptr<Component> SpriteRender::Clone() const
 {
 	auto c = std::make_unique<SpriteRender>();
 
-    c->texturepath = this->texturepath;
-    c->m_srcX = this->m_srcX;
-    c->m_srcY = this->m_srcY;
-    c->m_srcW = this->m_srcW;
-    c->m_srcH = this->m_srcH;
-    c->m_splitX = this->m_splitX;
-    c->m_splitY = this->m_splitY;
-    c->m_targetCol = this->m_targetCol;
-    c->m_targetRow = this->m_targetRow;
-    c->m_isLoop = this->m_isLoop;
-    c->m_frameDuration = this->m_frameDuration;
-    c->m_animFrameCount = this->m_animFrameCount;
-    c->m_editorScale = this->m_editorScale;
-    c->m_pivot = this->m_pivot;
-    c->sortOrder = this->sortOrder;
+    c->texturepath       = this->texturepath;
+    c->m_srcX            = this->m_srcX;
+    c->m_srcY            = this->m_srcY;
+    c->m_srcW            = this->m_srcW;
+    c->m_srcH            = this->m_srcH;
+    c->m_splitX          = this->m_splitX;
+    c->m_splitY          = this->m_splitY;
+    c->m_targetCol       = this->m_targetCol;
+    c->m_targetRow       = this->m_targetRow;
+    c->m_isLoop          = this->m_isLoop;
+    c->m_frameDuration   = this->m_frameDuration;
+    c->m_animFrameCount  = this->m_animFrameCount;
+    c->m_editorScale     = this->m_editorScale;
+    c->m_pivot           = this->m_pivot;
+    c->sortOrder         = this->sortOrder;
 
     c->m_colliderOffsetX = this->m_colliderOffsetX;
     c->m_colliderOffsetY = this->m_colliderOffsetY;
-    c->m_colliderWidth = this->m_colliderWidth;
-    c->m_colliderHeight = this->m_colliderHeight;
+    c->m_colliderWidth   = this->m_colliderWidth;
+    c->m_colliderHeight  = this->m_colliderHeight;
 
-    c->m_isPauseUI = this->m_isPauseUI;
+    c->m_isPauseUI       = this->m_isPauseUI;
+    c->m_hoverFade       = this->m_hoverFade;
+    c->m_fadeSpeed       = this->m_fadeSpeed;
+
+    c->m_hoverSpriteShift = this->m_hoverSpriteShift;
+    c->m_hoverCollOffset  = this->m_hoverCollOffset;
+    c->m_appearanceRatio  = 0.0;
 
     if (texturepath != "")
     {
@@ -290,12 +324,38 @@ void SpriteRender::Serialize(nlohmann::json& j) const
     j["ColHeight"] = m_colliderHeight;
     j["ShowCollider"] = m_showCollider;
     j["IsPauseUI"] = m_isPauseUI;
+    
+    j["HoverFade"] = m_hoverFade;
+    j["FadeSpeed"] = m_fadeSpeed;
+
+    j["HoverShift"] = m_hoverSpriteShift;
+    j["HoverColOffset"] = m_hoverCollOffset;
 }
 
 void SpriteRender::DrawInspector()
 {
     ImGui::Checkbox("Enabled", &enabled);
     ImGui::Checkbox("Pause UI Only", &m_isPauseUI);
+
+    if (ImGui::CollapsingHeader("Hover Fade Settings", ImGuiTreeNodeFlags_DefaultOpen))
+    {
+        ImGui::Checkbox("Use Hover Fade", &m_hoverFade);
+        if (m_hoverFade)
+        {
+            ImGui::DragFloat("Fade Speed", &m_fadeSpeed, 0.1f, 0.1f, 30.0f, "%.1f");
+        }
+    }
+    ImGui::Separator();
+
+    if (ImGui::CollapsingHeader("Hover Shift Settings", ImGuiTreeNodeFlags_DefaultOpen))
+    {
+        ImGui::Checkbox("Use Hover Shift", &m_hoverSpriteShift);
+        if (m_hoverSpriteShift)
+        {
+            ImGui::InputInt("Shift Column Offset", &m_hoverCollOffset);
+        }
+    }
+    ImGui::Separator();
 
     auto tran = owner->GetComponent<Transform>();
     if (!tran) return;
@@ -438,13 +498,24 @@ void SpriteRender::Deserialize(nlohmann::json& j)
     m_targetCol = j.value("TargetCol", 0);
     m_targetRow = j.value("TargetRow", 0);
 
-
-    m_spriteIndex = j.value("SpriteIndex", 0);
-
 	if (texturepath != "")
 	{
 		spr = std::make_unique<Sprite>(texturepath.c_str());
+
+        if (spr)
+        {
+            float texW = spr->GetTextureWidth();
+            float texH = spr->GetTextureHeight();
+            if (m_srcW < 0.0f) m_srcW = texW / (float)m_splitX;
+            if (m_srcH < 0.0f) m_srcH = texH / (float)m_splitY;
+
+            m_srcX = (float)m_targetCol * m_srcW;
+            m_srcY = (float)m_targetRow * m_srcH;
+        }
 	}
+
+    m_spriteIndex = j.value("SpriteIndex", 0);
+
     m_isLoop = j.value("IsLoop", false);
     m_frameDuration = j.value("FrameDuration", 0.1f);
     m_animFrameCount = j.value("AnimFrameCount", 1);
@@ -456,4 +527,11 @@ void SpriteRender::Deserialize(nlohmann::json& j)
     m_colliderHeight = j.value("ColHeight", 100.0f);
     m_showCollider = j.value("ShowCollider", true);
     m_isPauseUI = j.value("IsPauseUI", false);
+
+    m_hoverFade = j.value("HoverFade", false);
+    m_fadeSpeed = j.value("FadeSpeed", 5.0f);
+    m_appearanceRatio = 0.0f; 
+
+    m_hoverSpriteShift = j.value("HoverShift", false);
+    m_hoverCollOffset = j.value("HoverColOffset", 1);
 }
