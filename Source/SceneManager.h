@@ -74,6 +74,8 @@ public:
 	}
 
 	std::string GetCurrentScenePath() const { return m_currentScenePath; }
+	void LoadPauseUI(const std::string& path);  // ポーズUI読み込み
+
 
 private:
 	//編集用のシーン
@@ -90,6 +92,9 @@ private:
 	std::string m_pendingScenePath = "";
 	bool m_hasPendingScene = false;
 	std::string m_currentScenePath = "";
+
+	std::vector<std::unique_ptr<Actor>> pauseActors;
+	std::string m_pauseUIPath = "Scenes/PauseUI.json";
 
 	RenderTarget sceneRT;
 	RenderTarget gameRT;

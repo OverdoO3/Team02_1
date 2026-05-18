@@ -7,6 +7,7 @@
 void SceneManager::Initialize()
 {
 	ChangeScene(std::move(std::make_unique<Scene>()), "Scenes/Demo.json");
+	LoadPauseUI("Scenes/pause.json");
 }
 
 void SceneManager::Update(float elapsedTime)
@@ -47,6 +48,11 @@ void SceneManager::Update(float elapsedTime)
 		isPaused = false;
 		Graphics::Instance().CreateRenderTarget(sceneRT, 1280, 720);
 		Graphics::Instance().CreateRenderTarget(gameRT, 1280, 720);
+
+		for (auto& actor : pauseActors)
+		{
+			actor->SetScene(currentScene);
+		}
 	}
 
 
@@ -54,25 +60,19 @@ void SceneManager::Update(float elapsedTime)
 	{
 		if (isPaused)
 		{
-			//Pause中の処理をここに入れる
-			for (auto& actor : currentScene->actors)
+			// パス1: SpriteRenderホバー判定
+			for (auto& actor : pauseActors)
 			{
 				if (!actor->setActive) continue;
-
 				auto* sr = actor->GetComponent<SpriteRender>();
-				if (sr && sr->GetIsPauseUI())
-				{
-					actor->Update(0.0f);
-				}
+				if (sr) sr->Update(elapsedTime);
 			}
-			for (auto& actor : currentScene->actors)
+			// パス2: ButtonComponent
+			for (auto& actor : pauseActors)
 			{
 				if (!actor->setActive) continue;
 				auto* btn = actor->GetComponent<ButtonComponent>();
-				if (btn && btn->GetIsPauseButton())
-				{
-					btn->Update(elapsedTime);
-				}
+				if (btn) btn->Update(elapsedTime);
 			}
 		}
 		else 
@@ -87,6 +87,22 @@ void SceneManager::Render(CameraBase* camera,bool isEditor)
 	if (currentScene)
 	{
 		currentScene->Render(camera, isEditor);
+	}
+
+	if (isPaused)
+	{
+		for (auto& actor : pauseActors)
+		{
+			if (!actor->setActive) continue;
+			auto* sr = actor->GetComponent<SpriteRender>();
+			if (sr)
+			{
+				RenderContext rc;
+				rc.deviceContext = Graphics::Instance().GetDeviceContext();
+				rc.renderState = Graphics::Instance().GetRenderState();
+				sr->Draw(rc);
+			}
+		}
 	}
 }
 
@@ -160,5 +176,20 @@ void SceneManager::LoadEditorScene(const std::string& path)
 		playState = false;
 
 		currentScene = GetCurrentScene();
+	}
+}
+
+void SceneManager::LoadPauseUI(const std::string& path)
+{
+	// JSONからActorだけ読み込む
+	pauseActors.clear();
+	Scene temp;
+	temp.sceneManager = this;
+	SceneSerializer::Load(temp, path);
+
+	for (auto& actor : temp.actors)
+	{
+		actor->SetScene(currentScene);  // 現在シーンに紐付け
+		pauseActors.emplace_back(std::move(actor));
 	}
 }
