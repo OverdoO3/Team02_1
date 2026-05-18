@@ -12,9 +12,6 @@ void SpriteRender::Draw(RenderContext& rc)
     //ポーズUI制御
     if (m_isPauseUI)
     {
-        // ブレークポイントを置く
-        bool isNull = (m_sceneManager == nullptr);
-        bool isPaused = m_sceneManager ? m_sceneManager->IsPaused() : false;
         if (!m_sceneManager || !m_sceneManager->IsPaused()) return;
     }
 
@@ -179,17 +176,18 @@ void SpriteRender::Update(float elapsedTime)
     ImVec2 mousePos = ImGui::GetMousePos();
     ImVec2 screenOffset = ImGui::GetCursorScreenPos();
 
-    // 2. Transformから現在の世界座標を取得
     auto tran = owner->GetComponent<Transform>();
     if (tran)
     {
         DirectX::XMFLOAT3 worldPos = tran->GetWorldPosition();
 
-        // 当たり判定の矩形範囲を計算 (スクリーン絶対座標系)
-        float colLeft = screenOffset.x + worldPos.x + m_colliderOffsetX;
-        float colTop = screenOffset.y + worldPos.y + m_colliderOffsetY;
-        float colRight = colLeft + m_colliderWidth;
-        float colBottom = colTop + m_colliderHeight;
+        DirectX::XMFLOAT3 worldScale = tran->GetWorldScale();
+
+        float colLeft = screenOffset.x + worldPos.x + m_colliderOffsetX * worldScale.x;
+        float colTop = screenOffset.y + worldPos.y + m_colliderOffsetY * worldScale.y;
+        float colRight = colLeft + m_colliderWidth * m_editorScale * worldScale.x;
+        float colBottom = colTop + m_colliderHeight * m_editorScale * worldScale.y;
+
 
         m_isHovered = (mousePos.x >= colLeft && mousePos.x <= colRight &&
             mousePos.y >= colTop && mousePos.y <= colBottom);
@@ -216,23 +214,26 @@ void SpriteRender::Update(float elapsedTime)
     if (spr)
     {
         int currentCol = m_targetCol;
+        int currentRow = m_targetRow;
 
-        // アニメーションが有効な場合は、現在のフレーム分を進める
         if (m_isLoop && m_animFrameCount > 1)
         {
             currentCol = (m_targetCol + m_currentFrame) % m_splitX;
         }
 
-        // ホバー時のスプライトシートずらし
         if (m_hoverSpriteShift && m_isHovered)
         {
             currentCol = (currentCol + m_hoverCollOffset) % m_splitX;
+            currentRow = (currentRow + m_hoverRowOffset) % m_splitY;
         }
 
         float texW = spr->GetTextureWidth();
+        float texH = spr->GetTextureHeight();
         float cellW = (m_srcW < 0.0f) ? (texW / (float)m_splitX) : m_srcW;
+        float cellH = (m_srcH < 0.0f) ? (texH / (float)m_splitY) : m_srcH;
 
         m_srcX = (float)currentCol * cellW;
+        m_srcY = (float)currentRow * cellH;
     }
 
 
@@ -248,6 +249,9 @@ void SpriteRender::Update(float elapsedTime)
             m_currentFrame = 0;
 
     }
+
+
+
 }
 
 
@@ -284,6 +288,7 @@ std::unique_ptr<Component> SpriteRender::Clone() const
 
     c->m_hoverSpriteShift = this->m_hoverSpriteShift;
     c->m_hoverCollOffset  = this->m_hoverCollOffset;
+    c->m_hoverRowOffset = this->m_hoverRowOffset;
     c->m_appearanceRatio  = 0.0;
 
     if (texturepath != "")
@@ -330,6 +335,7 @@ void SpriteRender::Serialize(nlohmann::json& j) const
 
     j["HoverShift"] = m_hoverSpriteShift;
     j["HoverColOffset"] = m_hoverCollOffset;
+    j["HoverRowOffset"] = m_hoverRowOffset;
 }
 
 void SpriteRender::DrawInspector()
@@ -347,15 +353,17 @@ void SpriteRender::DrawInspector()
     }
     ImGui::Separator();
 
-    if (ImGui::CollapsingHeader("Hover Shift Settings", ImGuiTreeNodeFlags_DefaultOpen))
+    if(ImGui::CollapsingHeader("Hover Shift Settings", ImGuiTreeNodeFlags_DefaultOpen))
     {
         ImGui::Checkbox("Use Hover Shift", &m_hoverSpriteShift);
         if (m_hoverSpriteShift)
         {
-            ImGui::InputInt("Shift Column Offset", &m_hoverCollOffset);
+            ImGui::InputInt("Shift Column Offset (X)", &m_hoverCollOffset);
+            ImGui::InputInt("Shift Row Offset (Y)", &m_hoverRowOffset); 
         }
     }
     ImGui::Separator();
+
 
     auto tran = owner->GetComponent<Transform>();
     if (!tran) return;
@@ -534,4 +542,5 @@ void SpriteRender::Deserialize(nlohmann::json& j)
 
     m_hoverSpriteShift = j.value("HoverShift", false);
     m_hoverCollOffset = j.value("HoverColOffset", 1);
+    m_hoverRowOffset = j.value("HoverRowOffset", 0);
 }

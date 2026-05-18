@@ -119,4 +119,5 @@ private:
 
     bool m_hoverSpriteShift = false;
     int m_hoverCollOffset = 1;
+    int m_hoverRowOffset = 0;
 };

@@ -42,8 +42,8 @@
                     {
                         "data": {
                             "position": [
-                                0.0,
-                                0.0,
+                                -67.06700134277344,
+                                -18.01799964904785,
                                 0.0
                             ],
                             "rotation": [
@@ -53,38 +53,8 @@
                                 1.0
                             ],
                             "scale": [
-                                1.0,
-                                1.0,
-                                1.0
-                            ]
-                        },
-                        "type": "Transform"
-                    }
-                ],
-                "id": 55,
-                "name": "Sprite",
-                "parent": -1,
-                "tag": 0,
-                "type": "Actor"
-            },
-            {
-                "components": [
-                    {
-                        "data": {
-                            "position": [
-                                279.27899169921875,
-                                -88.08799743652344,
-                                0.0
-                            ],
-                            "rotation": [
-                                0.0,
-                                0.0,
-                                0.0,
-                                1.0
-                            ],
-                            "scale": [
-                                0.6800000071525574,
-                                0.6800000071525574,
+                                0.6700000166893005,
+                                0.6700000166893005,
                                 1.0
                             ]
                         },
@@ -116,20 +86,20 @@
                             "SplitX": 1,
                             "SplitY": 1,
                             "SpriteIndex": 0,
-                            "SrcH": 607.0,
-                            "SrcW": 945.0,
+                            "SrcH": 684.0,
+                            "SrcW": 1920.0,
                             "SrcX": 0.0,
                             "SrcY": 0.0,
                             "TargetCol": 0,
                             "TargetRow": 0,
-                            "TexturePath": "Data/Sprite/Title_logo.png"
+                            "TexturePath": "Data/Sprite/Select_background.png"
                         },
                         "type": "SpriteRender"
                     }
                 ],
-                "id": 56,
-                "name": "Logo",
-                "parent": 55,
+                "id": 55,
+                "name": "NewActor",
+                "parent": -1,
                 "tag": 0,
                 "type": "Actor"
             },
@@ -138,8 +108,304 @@
                     {
                         "data": {
                             "position": [
-                                451.45098876953125,
-                                374.3739929199219,
+                                -45.04499816894531,
+                                102.10199737548828,
+                                0.0
+                            ],
+                            "rotation": [
+                                0.0,
+                                0.0,
+                                0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                0.699999988079071,
+                                0.699999988079071,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "AnimFrameCount": 1,
+                            "ColHeight": 156.0,
+                            "ColOffsetX": 36.0,
+                            "ColOffsetY": 51.0,
+                            "ColWidth": 377.0,
+                            "ColorA": 1.0,
+                            "ColorB": 1.0,
+                            "ColorG": 1.0,
+                            "ColorR": 1.0,
+                            "EditorScale": 1.0,
+                            "FadeSpeed": 5.0,
+                            "FrameDuration": 0.10000000149011612,
+                            "HoverColOffset": 0,
+                            "HoverFade": false,
+                            "HoverRowOffset": -1,
+                            "HoverShift": true,
+                            "IsLoop": false,
+                            "IsPauseUI": false,
+                            "Pivot": 0,
+                            "ShowCollider": true,
+                            "SortOrder": 0,
+                            "SplitX": 8,
+                            "SplitY": 2,
+                            "SpriteIndex": 16,
+                            "SrcH": 280.0,
+                            "SrcW": 430.0,
+                            "SrcX": 0.0,
+                            "SrcY": 280.0,
+                            "TargetCol": 0,
+                            "TargetRow": 1,
+                            "TexturePath": "Data/Sprite/Select_stage.png"
+                        },
+                        "type": "SpriteRender"
+                    },
+                    {
+                        "data": {
+                            "ButtonMode": 0,
+                            "NextSceneName": "Scenes/",
+                            "TitleSceneName": "Scenes/title.json"
+                        },
+                        "type": "ButtonComponent"
+                    }
+                ],
+                "id": 56,
+                "name": "Stage1-1",
+                "parent": 82,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                267.2659912109375,
+                                102.10199737548828,
+                                0.0
+                            ],
+                            "rotation": [
+                                0.0,
+                                0.0,
+                                0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                0.699999988079071,
+                                0.699999988079071,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "AnimFrameCount": 1,
+                            "ColHeight": 156.0,
+                            "ColOffsetX": 3.0,
+                            "ColOffsetY": 51.0,
+                            "ColWidth": 377.0,
+                            "ColorA": 1.0,
+                            "ColorB": 1.0,
+                            "ColorG": 1.0,
+                            "ColorR": 1.0,
+                            "EditorScale": 1.0,
+                            "FadeSpeed": 5.0,
+                            "FrameDuration": 0.10000000149011612,
+                            "HoverColOffset": 0,
+                            "HoverFade": false,
+                            "HoverRowOffset": -1,
+                            "HoverShift": true,
+                            "IsLoop": false,
+                            "IsPauseUI": false,
+                            "Pivot": 0,
+                            "ShowCollider": true,
+                            "SortOrder": 0,
+                            "SplitX": 8,
+                            "SplitY": 2,
+                            "SpriteIndex": 0,
+                            "SrcH": 280.0,
+                            "SrcW": 430.0,
+                            "SrcX": 430.0,
+                            "SrcY": 280.0,
+                            "TargetCol": 1,
+                            "TargetRow": 1,
+                            "TexturePath": "Data/Sprite/Select_stage.png"
+                        },
+                        "type": "SpriteRender"
+                    },
+                    {
+                        "data": {
+                            "ButtonMode": 0,
+                            "NextSceneName": "Scenes/",
+                            "TitleSceneName": "Scenes/title.json"
+                        },
+                        "type": "ButtonComponent"
+                    }
+                ],
+                "id": 56,
+                "name": "Stage1-2",
+                "parent": 82,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                584.5819702148438,
+                                102.10199737548828,
+                                0.0
+                            ],
+                            "rotation": [
+                                0.0,
+                                0.0,
+                                0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                0.699999988079071,
+                                0.699999988079071,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "AnimFrameCount": 1,
+                            "ColHeight": 156.0,
+                            "ColOffsetX": -31.0,
+                            "ColOffsetY": 51.0,
+                            "ColWidth": 377.0,
+                            "ColorA": 1.0,
+                            "ColorB": 1.0,
+                            "ColorG": 1.0,
+                            "ColorR": 1.0,
+                            "EditorScale": 1.0,
+                            "FadeSpeed": 5.0,
+                            "FrameDuration": 0.10000000149011612,
+                            "HoverColOffset": 0,
+                            "HoverFade": false,
+                            "HoverRowOffset": -1,
+                            "HoverShift": true,
+                            "IsLoop": false,
+                            "IsPauseUI": false,
+                            "Pivot": 0,
+                            "ShowCollider": true,
+                            "SortOrder": 0,
+                            "SplitX": 8,
+                            "SplitY": 2,
+                            "SpriteIndex": 0,
+                            "SrcH": 280.0,
+                            "SrcW": 430.0,
+                            "SrcX": 860.0,
+                            "SrcY": 280.0,
+                            "TargetCol": 2,
+                            "TargetRow": 1,
+                            "TexturePath": "Data/Sprite/Select_stage.png"
+                        },
+                        "type": "SpriteRender"
+                    },
+                    {
+                        "data": {
+                            "ButtonMode": 0,
+                            "NextSceneName": "Scenes/",
+                            "TitleSceneName": "Scenes/title.json"
+                        },
+                        "type": "ButtonComponent"
+                    }
+                ],
+                "id": 56,
+                "name": "Stage1-3",
+                "parent": 82,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                897.8939819335938,
+                                102.10199737548828,
+                                0.0
+                            ],
+                            "rotation": [
+                                0.0,
+                                0.0,
+                                0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                0.699999988079071,
+                                0.699999988079071,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "AnimFrameCount": 1,
+                            "ColHeight": 156.0,
+                            "ColOffsetX": -60.0,
+                            "ColOffsetY": 52.0,
+                            "ColWidth": 377.0,
+                            "ColorA": 1.0,
+                            "ColorB": 1.0,
+                            "ColorG": 1.0,
+                            "ColorR": 1.0,
+                            "EditorScale": 1.0,
+                            "FadeSpeed": 5.0,
+                            "FrameDuration": 0.10000000149011612,
+                            "HoverColOffset": 0,
+                            "HoverFade": false,
+                            "HoverRowOffset": -1,
+                            "HoverShift": true,
+                            "IsLoop": false,
+                            "IsPauseUI": false,
+                            "Pivot": 0,
+                            "ShowCollider": true,
+                            "SortOrder": 0,
+                            "SplitX": 8,
+                            "SplitY": 2,
+                            "SpriteIndex": 0,
+                            "SrcH": 280.0,
+                            "SrcW": 430.0,
+                            "SrcX": 1290.0,
+                            "SrcY": 280.0,
+                            "TargetCol": 3,
+                            "TargetRow": 1,
+                            "TexturePath": "Data/Sprite/Select_stage.png"
+                        },
+                        "type": "SpriteRender"
+                    },
+                    {
+                        "data": {
+                            "ButtonMode": 0,
+                            "NextSceneName": "Scenes/",
+                            "TitleSceneName": "Scenes/title.json"
+                        },
+                        "type": "ButtonComponent"
+                    }
+                ],
+                "id": 56,
+                "name": "Stage1-4",
+                "parent": 82,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                -4.004000186920166,
+                                2.002000093460083,
                                 0.0
                             ],
                             "rotation": [
@@ -159,10 +425,76 @@
                     {
                         "data": {
                             "AnimFrameCount": 1,
-                            "ColHeight": 62.0,
-                            "ColOffsetX": -6.0,
-                            "ColOffsetY": -88.0,
-                            "ColWidth": 257.0,
+                            "ColHeight": 100.0,
+                            "ColOffsetX": 0.0,
+                            "ColOffsetY": 0.0,
+                            "ColWidth": 100.0,
+                            "ColorA": 1.0,
+                            "ColorB": 1.0,
+                            "ColorG": 1.0,
+                            "ColorR": 1.0,
+                            "EditorScale": 1.0,
+                            "FadeSpeed": 5.0,
+                            "FrameDuration": 0.10000000149011612,
+                            "HoverColOffset": 1,
+                            "HoverFade": false,
+                            "HoverRowOffset": 0,
+                            "HoverShift": false,
+                            "IsLoop": false,
+                            "IsPauseUI": false,
+                            "Pivot": 0,
+                            "ShowCollider": true,
+                            "SortOrder": 0,
+                            "SplitX": 1,
+                            "SplitY": 1,
+                            "SpriteIndex": 0,
+                            "SrcH": -1.0,
+                            "SrcW": -1.0,
+                            "SrcX": 0.0,
+                            "SrcY": 0.0,
+                            "TargetCol": 0,
+                            "TargetRow": 0,
+                            "TexturePath": ""
+                        },
+                        "type": "SpriteRender"
+                    }
+                ],
+                "id": 82,
+                "name": "OYA",
+                "parent": -1,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                -67.06700134277344,
+                                475.4750061035156,
+                                0.0
+                            ],
+                            "rotation": [
+                                0.0,
+                                0.0,
+                                0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "AnimFrameCount": 1,
+                            "ColHeight": 64.0,
+                            "ColOffsetX": 16.0,
+                            "ColOffsetY": -112.0,
+                            "ColWidth": 244.0,
                             "ColorA": 1.0,
                             "ColorB": 1.0,
                             "ColorG": 1.0,
@@ -178,237 +510,31 @@
                             "IsPauseUI": false,
                             "Pivot": 0,
                             "ShowCollider": true,
-                            "SortOrder": 1,
+                            "SortOrder": 0,
                             "SplitX": 2,
-                            "SplitY": 2,
-                            "SpriteIndex": 4,
-                            "SrcH": 60.0,
-                            "SrcW": 300.0,
+                            "SplitY": 1,
+                            "SpriteIndex": 2,
+                            "SrcH": 110.0,
+                            "SrcW": 260.0,
                             "SrcX": 0.0,
                             "SrcY": 0.0,
                             "TargetCol": 0,
                             "TargetRow": 0,
-                            "TexturePath": "Data/Sprite/Title_text.png"
+                            "TexturePath": "Data/Sprite/Select_back.png"
                         },
                         "type": "SpriteRender"
                     },
                     {
                         "data": {
-                            "ButtonMode": 0,
-                            "NextSceneName": "Scenes/Demo.json",
-                            "TitleSceneName": "Scenes/Title.json"
-                        },
-                        "type": "ButtonComponent"
-                    }
-                ],
-                "id": 57,
-                "name": "Start",
-                "parent": -1,
-                "tag": 0,
-                "type": "Actor"
-            },
-            {
-                "components": [
-                    {
-                        "data": {
-                            "position": [
-                                451.45098876953125,
-                                478.4779968261719,
-                                0.0
-                            ],
-                            "rotation": [
-                                0.0,
-                                0.0,
-                                0.0,
-                                1.0
-                            ],
-                            "scale": [
-                                1.0,
-                                1.0,
-                                1.0
-                            ]
-                        },
-                        "type": "Transform"
-                    },
-                    {
-                        "data": {
-                            "AnimFrameCount": 1,
-                            "ColHeight": 62.0,
-                            "ColOffsetX": -16.0,
-                            "ColOffsetY": -129.0,
-                            "ColWidth": 278.0,
-                            "ColorA": 1.0,
-                            "ColorB": 1.0,
-                            "ColorG": 1.0,
-                            "ColorR": 1.0,
-                            "EditorScale": 1.0,
-                            "FadeSpeed": 8.399999618530273,
-                            "FrameDuration": 0.10000000149011612,
-                            "HoverColOffset": 1,
-                            "HoverFade": false,
-                            "HoverRowOffset": 0,
-                            "HoverShift": true,
-                            "IsLoop": false,
-                            "IsPauseUI": false,
-                            "Pivot": 0,
-                            "ShowCollider": true,
-                            "SortOrder": 2,
-                            "SplitX": 2,
-                            "SplitY": 2,
-                            "SpriteIndex": 4,
-                            "SrcH": 60.0,
-                            "SrcW": 300.0,
-                            "SrcX": 0.0,
-                            "SrcY": 60.0,
-                            "TargetCol": 0,
-                            "TargetRow": 1,
-                            "TexturePath": "Data/Sprite/Title_text.png"
-                        },
-                        "type": "SpriteRender"
-                    },
-                    {
-                        "data": {
-                            "ButtonMode": 1,
+                            "ButtonMode": 4,
                             "NextSceneName": "",
                             "TitleSceneName": "Scenes/title.json"
                         },
                         "type": "ButtonComponent"
                     }
                 ],
-                "id": 58,
-                "name": "End",
-                "parent": -1,
-                "tag": 0,
-                "type": "Actor"
-            },
-            {
-                "components": [
-                    {
-                        "data": {
-                            "position": [
-                                377.37701416015625,
-                                355.3550109863281,
-                                0.0
-                            ],
-                            "rotation": [
-                                0.0,
-                                0.0,
-                                0.0,
-                                1.0
-                            ],
-                            "scale": [
-                                1.0,
-                                1.0,
-                                1.0
-                            ]
-                        },
-                        "type": "Transform"
-                    },
-                    {
-                        "data": {
-                            "AnimFrameCount": 1,
-                            "ColHeight": 61.0,
-                            "ColOffsetX": 68.0,
-                            "ColOffsetY": -69.0,
-                            "ColWidth": 257.0,
-                            "ColorA": 1.0,
-                            "ColorB": 1.0,
-                            "ColorG": 1.0,
-                            "ColorR": 1.0,
-                            "EditorScale": 1.0,
-                            "FadeSpeed": 8.399999618530273,
-                            "FrameDuration": 0.10000000149011612,
-                            "HoverColOffset": 1,
-                            "HoverFade": true,
-                            "HoverRowOffset": 0,
-                            "HoverShift": false,
-                            "IsLoop": false,
-                            "IsPauseUI": false,
-                            "Pivot": 0,
-                            "ShowCollider": true,
-                            "SortOrder": 0,
-                            "SplitX": 1,
-                            "SplitY": 1,
-                            "SpriteIndex": 0,
-                            "SrcH": 100.0,
-                            "SrcW": 450.0,
-                            "SrcX": 0.0,
-                            "SrcY": 0.0,
-                            "TargetCol": 0,
-                            "TargetRow": 0,
-                            "TexturePath": "Data/Sprite/Pause_select.png"
-                        },
-                        "type": "SpriteRender"
-                    }
-                ],
-                "id": 59,
-                "name": "Select",
-                "parent": -1,
-                "tag": 0,
-                "type": "Actor"
-            },
-            {
-                "components": [
-                    {
-                        "data": {
-                            "position": [
-                                377.37701416015625,
-                                459.4590148925781,
-                                0.0
-                            ],
-                            "rotation": [
-                                0.0,
-                                0.0,
-                                0.0,
-                                1.0
-                            ],
-                            "scale": [
-                                1.0,
-                                1.0,
-                                1.0
-                            ]
-                        },
-                        "type": "Transform"
-                    },
-                    {
-                        "data": {
-                            "AnimFrameCount": 1,
-                            "ColHeight": 62.0,
-                            "ColOffsetX": 57.0,
-                            "ColOffsetY": -111.0,
-                            "ColWidth": 279.0,
-                            "ColorA": 1.0,
-                            "ColorB": 1.0,
-                            "ColorG": 1.0,
-                            "ColorR": 1.0,
-                            "EditorScale": 1.0,
-                            "FadeSpeed": 8.399999618530273,
-                            "FrameDuration": 0.10000000149011612,
-                            "HoverColOffset": 1,
-                            "HoverFade": true,
-                            "HoverRowOffset": 0,
-                            "HoverShift": false,
-                            "IsLoop": false,
-                            "IsPauseUI": false,
-                            "Pivot": 0,
-                            "ShowCollider": true,
-                            "SortOrder": 0,
-                            "SplitX": 1,
-                            "SplitY": 1,
-                            "SpriteIndex": 0,
-                            "SrcH": 100.0,
-                            "SrcW": 450.0,
-                            "SrcX": 0.0,
-                            "SrcY": 0.0,
-                            "TargetCol": 0,
-                            "TargetRow": 0,
-                            "TexturePath": "Data/Sprite/Pause_select.png"
-                        },
-                        "type": "SpriteRender"
-                    }
-                ],
-                "id": 60,
-                "name": "Select1",
+                "id": 83,
+                "name": "NewActor",
                 "parent": -1,
                 "tag": 0,
                 "type": "Actor"
