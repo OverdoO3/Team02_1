@@ -64,6 +64,6 @@ private:
 
     ID3D11ShaderResourceView* instanceBufferSRV = nullptr;
 public:
-
+    int debugInstanceCount = 0;
     std::unordered_map<const ModelResource*, BatchData> batches;
 };

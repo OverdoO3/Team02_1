@@ -129,6 +129,18 @@ void Graphics::Initialize(HWND hWnd)
 	shapeRenderer = std::make_unique<ShapeRenderer>(device.Get());
 	modelRenderer = std::make_unique<ModelRenderer>(device.Get());
 
+	Microsoft::WRL::ComPtr<IDXGIDevice>   dxgiDevice;
+	Microsoft::WRL::ComPtr<IDXGIAdapter>  dxgiAdapter;
+
+	device->QueryInterface(IID_PPV_ARGS(dxgiDevice.GetAddressOf()));
+	dxgiDevice->GetAdapter(dxgiAdapter.GetAddressOf());
+
+	DXGI_ADAPTER_DESC desc{};
+	dxgiAdapter->GetDesc(&desc);
+
+	// ワイド文字列をデバッグ出力
+	OutputDebugStringW(desc.Description);
+	OutputDebugStringW(L"\n");
 }
 
 // クリア

@@ -1,0 +1,54 @@
+{
+    "components": [
+        {
+            "data": {
+                "position": [
+                    20.0,
+                    5.713814735412598,
+                    0.0
+                ],
+                "rotation": [
+                    -0.0,
+                    0.0,
+                    -0.0,
+                    1.0
+                ],
+                "scale": [
+                    1.0,
+                    1.0,
+                    1.0
+                ]
+            },
+            "type": "Transform"
+        },
+        {
+            "data": {
+                "ModelPath": "Data/Model/Stage/Demos/tree.mdl"
+            },
+            "type": "ModelRender"
+        },
+        {
+            "data": {
+                "size": [
+                    10.0,
+                    20.0,
+                    10.0
+                ]
+            },
+            "type": "BoxCollider"
+        },
+        {
+            "data": null,
+            "type": "ThermalBody"
+        },
+        {
+            "data": null,
+            "type": "wood"
+        }
+    ],
+    "id": 11,
+    "name": "tree",
+    "parent": -1,
+    "tag": 0,
+    "type": "Actor"
+}

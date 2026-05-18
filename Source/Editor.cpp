@@ -358,11 +358,52 @@ void Editor::DrawInspector(Scene* scene)
 	if (!selectedActors.empty()&&anchorActor != nullptr)
 	{
 		std::vector<Actor*> newSelection;
+
 		if (InputC::KeyPressed('D') && InputC::KeyDown(VK_CONTROL))
 		{
 			for (auto* a : selectedActors)
 			{
 				auto clone = a->Clone();
+
+				std::string baseName = a->name;
+				auto posa = baseName.rfind('(');
+				if (posa != std::string::npos)
+				{
+					// "(N)" の形式か確認（末尾が ')'）
+					if (baseName.back() == ')')
+					{
+						baseName = baseName.substr(0, posa);
+					}
+				}
+
+				// 同じベース名のActorが何個いるか数える
+				int count = 0;
+				for (auto& existing : scene->actors)
+				{
+					std::string existingName = existing->name;
+
+					// 既存Actorのベース名も取得
+					auto epos = existingName.rfind('(');
+					if (epos != std::string::npos && existingName.back() == ')')
+					{
+						existingName = existingName.substr(0, epos);
+					}
+
+					if (existingName == baseName)
+					{
+						count++;
+					}
+				}
+
+				// 重複があれば "(N)" をつける
+				if (count > 0)
+				{
+					clone->name = (baseName + "(" + std::to_string(count) + ")");
+				}
+				else
+				{
+					clone->name = (baseName); // ★ ベース名に戻す
+				}
 				Actor* ptr = clone.get();
 				// 少しずらすと気持ちいい
 				auto t = clone->GetComponent<Transform>();

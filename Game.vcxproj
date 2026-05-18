@@ -226,10 +226,6 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="Source\ComponentTemp.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
     <ClInclude Include="Source\DirectXCommon.h" />
     <ClInclude Include="Source\EditCamera.h" />
     <ClInclude Include="Source\Editor.h" />
@@ -267,6 +263,10 @@
     <ClInclude Include="Source\SceneSerializer.h" />
     <ClInclude Include="Source\Screen.h" />
     <ClInclude Include="Source\sky_map.h" />
+    <ClInclude Include="Source\Slope.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="Source\snowman.h">
       <SubType>
       </SubType>
@@ -300,6 +300,10 @@
     <ClInclude Include="Source\System\Shader.h" />
     <ClInclude Include="Source\System\ShapeRenderer.h" />
     <ClInclude Include="Source\System\Sprite.h" />
+    <ClInclude Include="Source\tent.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="Source\ThermalBody.h">
       <SubType>
       </SubType>
@@ -356,6 +360,10 @@
     <ClCompile Include="Source\Scene.cpp" />
     <ClCompile Include="Source\SceneSerializer.cpp" />
     <ClCompile Include="Source\sky_map.cpp" />
+    <ClCompile Include="Source\Slope.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="Source\snowman.cpp">
       <SubType>
       </SubType>
@@ -384,6 +392,10 @@
     <ClCompile Include="Source\System\RenderState.cpp" />
     <ClCompile Include="Source\System\ShapeRenderer.cpp" />
     <ClCompile Include="Source\System\Sprite.cpp" />
+    <ClCompile Include="Source\tent.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="Source\ThermalBody.cpp">
       <SubType>
       </SubType>

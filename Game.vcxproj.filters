@@ -318,9 +318,6 @@
     <ClInclude Include="Source\Lerp.h">
       <Filter>Source\misc</Filter>
     </ClInclude>
-    <ClInclude Include="Source\ComponentTemp.h">
-      <Filter>Source\Components</Filter>
-    </ClInclude>
     <ClInclude Include="Source\HeatComponent.h">
       <Filter>Source\Components\Temp</Filter>
     </ClInclude>
@@ -353,6 +350,12 @@
     </ClInclude>
     <ClInclude Include="Source\Prefab.h">
       <Filter>Source\Prefab</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Slope.h">
+      <Filter>Source\Components\Collider</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\tent.h">
+      <Filter>Source\Components\Temp\TempObj</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -538,6 +541,12 @@
     </ClCompile>
     <ClCompile Include="Source\PrefabManager.cpp">
       <Filter>Source\Prefab</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Slope.cpp">
+      <Filter>Source\Components\Collider</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\tent.cpp">
+      <Filter>Source\Components\Temp\TempObj</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

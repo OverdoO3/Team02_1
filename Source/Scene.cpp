@@ -23,7 +23,7 @@ void Scene::Update(float elapsedTime)
 			}
 		}
 
-		//アップデート
+		///アップデート
 		for (auto& a : actors)
 		{
 			bool active = a->setActive && (!a->GetParent() || a->GetParent()->setActive);
@@ -48,13 +48,14 @@ void Scene::Update(float elapsedTime)
 			actors.end()
 		);
 
-		adderActors.clear();
 		physics.Flush();
+		adderActors.clear();
 	}
 	else
 	{
 		for (auto& a : actors)
 		{
+			totalActor++;
 			bool active = a->setActive && (!a->GetParent() || a->GetParent()->setActive);
 			if (active)
 			{
@@ -83,6 +84,7 @@ void Scene::Update(float elapsedTime)
 
 void Scene::Render(CameraBase* camera, bool isEditor)
 {
+	totalActor = 0;
 	Graphics& graphics = Graphics::Instance();
 	ID3D11DeviceContext* dc = graphics.GetDeviceContext();
 	ShapeRenderer* shapeRenderer = graphics.GetShapeRenderer();
@@ -145,8 +147,6 @@ void Scene::Render(CameraBase* camera, bool isEditor)
 			actor->Draw(rc);
 		}
 	}
-
-	
 }
 
 void Scene::DrawGUI()

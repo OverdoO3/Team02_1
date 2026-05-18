@@ -166,6 +166,8 @@ public:
 	bool playState = false;
 
 	std::unique_ptr<sky_map> sky;
+
+	int totalActor = 0;
 };
 
 inline std::unique_ptr<Actor> CreateActorByType(const std::string& type)

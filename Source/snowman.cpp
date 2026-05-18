@@ -26,6 +26,5 @@ void snowman::Deserialize(nlohmann::json& j)
 
 std::unique_ptr<Component> snowman::Clone() const
 {
-
 	return std::unique_ptr<snowman>();
 }

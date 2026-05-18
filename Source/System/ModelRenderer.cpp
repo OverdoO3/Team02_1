@@ -75,8 +75,12 @@ void ModelRenderer::AddInstance(const Model* model, Actor* actor)
     auto& batch = batches[model->GetResource()];
     batch.representativeModel = model;
     batch.instances.push_back(data);
-}
 
+    //char buf[128];
+    //sprintf_s(buf, "AddInstance: %s\n", actor->name.c_str()); // Actor名を出力
+    //OutputDebugStringA(buf);
+    debugInstanceCount++;
+}
 //==============================
 // FlushAll（描画本体）
 //==============================
@@ -85,6 +89,19 @@ void ModelRenderer::FlushAll(const RenderContext& rc)
 {
     if (batches.empty())
         return;
+
+  /*  char buf[128];
+    sprintf_s(buf, "TotalInstances: %d, BatchCount: %zu\n",
+        debugInstanceCount, batches.size());
+    OutputDebugStringA(buf);
+    debugInstanceCount = 0;*/
+   
+
+    /*for (auto& [resource, instances] : batches)
+    {
+        OutputDebugStringA(("MeshCount: " + std::to_string(resource->GetMeshes().size()) + "\n").c_str());
+        OutputDebugStringA(("InstanceCount: " + std::to_string(instances.instances.size()) + "\n").c_str());
+    }*/
 
     auto* dc = rc.deviceContext;
 

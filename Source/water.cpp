@@ -17,22 +17,20 @@ void water::Update(float elapsedTime)
 	auto modelrender = owner->GetComponent<ModelRender>();
 	if (!modelrender)return;
 
+	auto col = owner->GetComponent<BoxCollider>();
+
 	std::unique_ptr<Model> model;
 	switch (temp->GetHeat())
 	{
-	case -1:
+	case -2:
 		model = std::make_unique<Model>(icepath.c_str());
-		modelrender->SetModel(std::move(model));
-		break;
-	case 0:
-		model = std::make_unique<Model>(waterpath.c_str());
-		modelrender->SetModel(std::move(model));
-		break;
-	case 1:
-		model = std::make_unique<Model>(waterpath.c_str());
+		col->size.y = 10;
 		modelrender->SetModel(std::move(model));
 		break;
 	default:
+		model = std::make_unique<Model>(waterpath.c_str());
+		col->size.y = 30;
+		modelrender->SetModel(std::move(model));
 		break;
 	}
 
@@ -42,15 +40,12 @@ void water::Update(float elapsedTime)
 	if (!thermal)return;
 	switch (thermal->GetHeat())
 	{
-	case 1:
-	case 0:
-		effectstate->enabled = false;
-		break;
-	case -1:
+	case -2:
 		effectstate->enabled = true;
 		effectstate->SetState("ice");
 		break;
 	default:
+		effectstate->enabled = false;
 		break;
 	}
 }

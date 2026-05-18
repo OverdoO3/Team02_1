@@ -119,14 +119,13 @@ std::unique_ptr<Actor> Actor::Clone(bool play) const
 	auto copy = std::make_unique<Actor>();
 
 	copy->SetScene(scene);
-
-	if (!play)
+	if (play)
 	{
-		copy->name = name + "copy";
+		copy->name = name;
 	}
 	else
 	{
-		copy->name = name;
+		copy->name = "";
 	}
 	copy->tag = tag;
 	copy->id = id;

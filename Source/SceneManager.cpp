@@ -4,7 +4,7 @@
 
 void SceneManager::Initialize()
 {
-	ChangeScene(std::move(std::make_unique<Scene>()), "Scenes/Demo.json");
+	ChangeScene(std::move(std::make_unique<Scene>()), "Scenes/Stage1.json");
 }
 
 void SceneManager::Update(float elapsedTime)

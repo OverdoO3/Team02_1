@@ -51,6 +51,8 @@ void HeatTransfer::Update(float elapsedTime)
 			{
 				thermal->AddHeat(Receiver->GetHeatNum());
 				thermal->SetHeat(std::clamp(thermal->GetHeat(), -1, 1));
+				int stealHeat = Receiver->GetHeatNum() * -1;
+				actor->GetComponent<ThermalBody>()->SetHeat(stealHeat);
 			}
 		}
 	}
@@ -65,6 +67,9 @@ void HeatTransfer::Update(float elapsedTime)
 		effectstate->SetState("hot");
 		break;
 	case -1:
+		effectstate->SetState("water");
+		break;
+	case -2:
 		effectstate->SetState("cold");
 		break;
 	default:

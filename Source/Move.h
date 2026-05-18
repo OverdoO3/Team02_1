@@ -23,15 +23,15 @@ public:
     std::unique_ptr<Component> Clone() const override;
 private:
     DirectX::XMFLOAT3 Velocity{ 0,0,0 };
-    float speed = 10.0f;
+    float speed = 30.0f;
     float turnSpeed = 5.0f;
-    float grav = 1.0f;
+    float grav = 4.0f;
 
     bool OnGround;
     float downhillOffset = 1.0f;
 
-    float radius = 0.4f;
-    float height = 1.0f;
+    float radius = 1.5f;
+    float height = 1.5f;
     float stepHeight = 0.4f;
 
     enum AnimState
