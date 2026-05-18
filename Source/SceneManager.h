@@ -62,11 +62,40 @@ public:
 		currentScene->physics.DeleteAllQueue();
 	}
 
-	void SetPause(bool pause) { isPaused = pause; }
+	void SetPause(bool pause)
+	{
+		// ポーズ解除時にマウスをセンターにリセット
+		if (isPaused && !pause)
+		{
+			HWND hwnd = GetActiveWindow();
+			RECT rect;
+			GetClientRect(hwnd, &rect);
+			POINT center;
+			center.x = rect.right / 2;
+			center.y = rect.bottom / 2;
+			ClientToScreen(hwnd, &center);
+			SetCursorPos(center.x, center.y);
+		}
+		isPaused = pause;
+	}
 	bool IsPaused()const { return isPaused; }
 
-	void TogglePause() { isPaused = !isPaused; }
-
+	void TogglePause()
+	{
+		// ポーズ解除時にマウスをセンターにリセット
+		if (isPaused)
+		{
+			HWND hwnd = GetActiveWindow();
+			RECT rect;
+			GetClientRect(hwnd, &rect);
+			POINT center;
+			center.x = rect.right / 2;
+			center.y = rect.bottom / 2;
+			ClientToScreen(hwnd, &center);
+			SetCursorPos(center.x, center.y);
+		}
+		isPaused = !isPaused;
+	}
 	void RequestSceneChange(const std::string& path)
 	{
 		m_pendingScenePath = path;

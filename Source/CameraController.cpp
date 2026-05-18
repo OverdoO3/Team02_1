@@ -3,6 +3,7 @@
 #include "Scene.h"
 #include "Factory.h"
 #include "Lerp.h"
+#include "SceneManager.h"
 
 //								↓に名前入れる
 REGISTER_COMPONENT(ComponentID::CameraController , CameraController)
@@ -13,6 +14,34 @@ void CameraController::OnAwake(float elapsedTime)
 
 void CameraController::Update(float elapsedTime)
 {
+	Scene* scene = owner->GetScene();
+	bool paused = scene && scene->sceneManager && scene->sceneManager->IsPaused();
+
+	if (paused)
+	{
+		m_wasPaused = true;  // ポーズ中だったことを記録
+		return;
+	}
+
+	// ポーズから復帰した最初のフレームはスキップ
+	if (m_wasPaused)
+	{
+		m_wasPaused = false;
+		// マウスをセンターに強制リセット
+		if (mouseLocked)
+		{
+			HWND hwnd = GetActiveWindow();
+			RECT rect;
+			GetClientRect(hwnd, &rect);
+			POINT center;
+			center.x = rect.right / 2;
+			center.y = rect.bottom / 2;
+			ClientToScreen(hwnd, &center);
+			SetCursorPos(center.x, center.y);
+		}
+		return;  // このフレームは処理しない
+	}
+
 	if(InputC::KeyPressed(VK_TAB))
 	{
 		mouseLocked = !mouseLocked;
@@ -93,6 +122,7 @@ void CameraController::Update(float elapsedTime)
 		transform->SetWorldPosition(cameraPos);
 		transform->LookAt(focusTarget);
 	}
+
 }
 
 void CameraController::DrawInspector()

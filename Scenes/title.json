@@ -115,8 +115,8 @@
                             "SplitX": 1,
                             "SplitY": 1,
                             "SpriteIndex": 0,
-                            "SrcH": -1.0,
-                            "SrcW": -1.0,
+                            "SrcH": 607.0,
+                            "SrcW": 945.0,
                             "SrcX": 0.0,
                             "SrcY": 0.0,
                             "TargetCol": 0,
@@ -192,7 +192,9 @@
                     },
                     {
                         "data": {
-                            "NextSceneName": "Scenes/Demo.json"
+                            "ButtonMode": 0,
+                            "NextSceneName": "Scenes/Demo.json",
+                            "TitleSceneName": "Scenes/Title.json"
                         },
                         "type": "ButtonComponent"
                     }
@@ -260,6 +262,14 @@
                             "TexturePath": "Data/Sprite/Title_text.png"
                         },
                         "type": "SpriteRender"
+                    },
+                    {
+                        "data": {
+                            "ButtonMode": 1,
+                            "NextSceneName": "",
+                            "TitleSceneName": "Scenes/title.json"
+                        },
+                        "type": "ButtonComponent"
                     }
                 ],
                 "id": 58,
@@ -381,8 +391,8 @@
                             "SplitX": 1,
                             "SplitY": 1,
                             "SpriteIndex": 0,
-                            "SrcH": -1.0,
-                            "SrcW": -1.0,
+                            "SrcH": 100.0,
+                            "SrcW": 450.0,
                             "SrcX": 0.0,
                             "SrcY": 0.0,
                             "TargetCol": 0,
