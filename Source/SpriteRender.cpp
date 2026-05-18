@@ -163,6 +163,7 @@ void SpriteRender::Update(float elapsedTime)
 {
     if (!owner)return;
     // 1. マウス座標とウィンドウの開始位置を取得
+
     ImVec2 mousePos = ImGui::GetMousePos();
     ImVec2 screenOffset = ImGui::GetCursorScreenPos();
 

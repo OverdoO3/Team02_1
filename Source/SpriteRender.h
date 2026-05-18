@@ -5,7 +5,7 @@
 #include "ImGuizmo.h"
 #include "CameraBase.h"
 #include "Camera.h"
-
+#include "SceneManager.h"
 
 class SpriteRender : public Component
 {
@@ -102,6 +102,7 @@ private:
     bool m_showCollider = true;
     bool m_isHovered = false;
 
+    bool m_isPauseUI = false;
 
     //êF
     DirectX::XMFLOAT4 color = { 1.0f,1.0f,1.0f,1.0f };
