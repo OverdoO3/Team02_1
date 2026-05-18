@@ -47,10 +47,16 @@ public:
 	inline void StartPlay()
 	{
 		runtimeScene = editorScene->Clone();
-		//シーン遷移用試し
 		runtimeScene->sceneManager = this;
 		runtimeScene->playState = true;
 		playState = true;
+
+		// SceneManagerをセットし直す
+		for (auto& actor : runtimeScene->actors)
+		{
+			actor->SetScene(runtimeScene.get()); // ← 追加
+		}
+
 		editorScene->physics.DeleteAllQueue();
 		currentScene = GetCurrentScene();
 		currentScene->physics.DeleteAllQueue();

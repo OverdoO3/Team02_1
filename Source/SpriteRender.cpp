@@ -12,6 +12,9 @@ void SpriteRender::Draw(RenderContext& rc)
     //ポーズUI制御
     if (m_isPauseUI)
     {
+        // ブレークポイントを置く
+        bool isNull = (m_sceneManager == nullptr);
+        bool isPaused = m_sceneManager ? m_sceneManager->IsPaused() : false;
         if (!m_sceneManager || !m_sceneManager->IsPaused()) return;
     }
 

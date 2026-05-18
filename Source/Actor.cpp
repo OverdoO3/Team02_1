@@ -242,4 +242,5 @@ void Actor::SetScene(Scene* s)
 	{
 		sr->SetSceneManager(s->sceneManager);
 	}
+
 }
