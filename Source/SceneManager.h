@@ -93,6 +93,7 @@ private:
 	bool m_hasPendingScene = false;
 	std::string m_currentScenePath = "";
 
+
 	std::vector<std::unique_ptr<Actor>> pauseActors;
 	std::string m_pauseUIPath = "Scenes/PauseUI.json";
 
