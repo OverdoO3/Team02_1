@@ -132,8 +132,8 @@ void SceneManager::LoadEditorScene(const std::string& path)
 	if (SceneSerializer::Load(*newScene, path))
 	{
 		editorScene = std::move(newScene);
+		editorScene->sceneManager = this;
 		editorScene->Initialize();
-
 		// Play中なら止める
 		runtimeScene.reset();
 		playState = false;

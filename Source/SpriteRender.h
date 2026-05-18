@@ -5,7 +5,8 @@
 #include "ImGuizmo.h"
 #include "CameraBase.h"
 #include "Camera.h"
-#include "SceneManager.h"
+
+class SceneManager;
 
 class SpriteRender : public Component
 {
@@ -43,6 +44,8 @@ public:
         this->color = color;
     }
 
+    void SetSceneManager(SceneManager* sm) { m_sceneManager = sm; }
+
     bool IsHovered()const { return m_isHovered; }
 
     std::string ToDataPath(const std::string& fullPath)
@@ -64,6 +67,7 @@ private:
     std::unique_ptr<Sprite> spr;
 
     std::string texturepath;
+    SceneManager* m_sceneManager = nullptr;
 
     float m_editorScale = 1.0f;
     float m_editorAngleDeg = 0.0f;

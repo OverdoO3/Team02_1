@@ -49,7 +49,7 @@ public:
 
 	std::unique_ptr<Actor> Clone(bool play = false) const;
 
-	void SetScene(Scene* s) { scene = s; }
+	void SetScene(Scene* s);
 	Scene* GetScene() { return scene; }
 	std::string GetName()const { return name; }
 

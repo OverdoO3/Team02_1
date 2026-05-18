@@ -1,12 +1,20 @@
 #include "SpriteRender.h"
 #include "Factory.h"
 #include "Actor.h"
+#include "SceneManager.h"
 
 REGISTER_COMPONENT(ComponentID::SpriteRender,SpriteRender)
 
 void SpriteRender::Draw(RenderContext& rc)
 {
     if (!owner)return;
+
+    //ポーズUI制御
+    if (m_isPauseUI)
+    {
+        if (!m_sceneManager || !m_sceneManager->IsPaused()) return;
+    }
+
     auto tran = owner->GetComponent<Transform>();
     if (spr && tran)
     {
@@ -164,6 +172,11 @@ void SpriteRender::Update(float elapsedTime)
     if (!owner)return;
     // 1. マウス座標とウィンドウの開始位置を取得
 
+    if (m_isPauseUI)
+    {
+        if (!m_sceneManager || !m_sceneManager->IsPaused()) return;
+    }
+
     ImVec2 mousePos = ImGui::GetMousePos();
     ImVec2 screenOffset = ImGui::GetCursorScreenPos();
 
@@ -234,6 +247,8 @@ std::unique_ptr<Component> SpriteRender::Clone() const
     c->m_colliderWidth = this->m_colliderWidth;
     c->m_colliderHeight = this->m_colliderHeight;
 
+    c->m_isPauseUI = this->m_isPauseUI;
+
     if (texturepath != "")
     {
         c->SetSprite(std::make_unique<Sprite>(texturepath.c_str()));
@@ -271,11 +286,13 @@ void SpriteRender::Serialize(nlohmann::json& j) const
     j["ColWidth"] = m_colliderWidth;
     j["ColHeight"] = m_colliderHeight;
     j["ShowCollider"] = m_showCollider;
+    j["IsPauseUI"] = m_isPauseUI;
 }
 
 void SpriteRender::DrawInspector()
 {
     ImGui::Checkbox("Enabled", &enabled);
+    ImGui::Checkbox("Pause UI Only", &m_isPauseUI);
 
     auto tran = owner->GetComponent<Transform>();
     if (!tran) return;
@@ -435,4 +452,5 @@ void SpriteRender::Deserialize(nlohmann::json& j)
     m_colliderWidth = j.value("ColWidth", 100.0f);
     m_colliderHeight = j.value("ColHeight", 100.0f);
     m_showCollider = j.value("ShowCollider", true);
+    m_isPauseUI = j.value("IsPauseUI", false);
 }

@@ -253,7 +253,7 @@ LRESULT CALLBACK Framework::HandleMessage(HWND hWnd, UINT msg, WPARAM wParam, LP
 	case WM_KEYDOWN:
 		if (wParam == VK_ESCAPE)
 		{
-			PostQuitMessage(0);
+			//PostQuitMessage(0);
 			// É|Å[ÉYèÛë‘ÇîΩì]Ç≥ÇπÇÈ
 			engine.GetSceneManager().TogglePause();
 		}
