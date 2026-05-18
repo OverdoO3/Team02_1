@@ -60,22 +60,28 @@ void SceneManager::Update(float elapsedTime)
 	{
 		if (isPaused)
 		{
-			// パス1: SpriteRenderホバー判定
-			for (auto& actor : pauseActors)
+			//Pause中の処理をここに入れる
+			for (auto& actor : currentScene->actors)
 			{
 				if (!actor->setActive) continue;
+
 				auto* sr = actor->GetComponent<SpriteRender>();
-				if (sr) sr->Update(elapsedTime);
+				if (sr && sr->GetIsPauseUI())
+				{
+					actor->Update(0.0f);
+				}
 			}
-			// パス2: ButtonComponent
-			for (auto& actor : pauseActors)
+			for (auto& actor : currentScene->actors)
 			{
 				if (!actor->setActive) continue;
 				auto* btn = actor->GetComponent<ButtonComponent>();
-				if (btn) btn->Update(elapsedTime);
+				if (btn && btn->GetIsPauseButton())
+				{
+					btn->Update(elapsedTime);
+				}
 			}
 		}
-		else 
+		else
 		{
 			currentScene->Update(elapsedTime);
 		}
@@ -181,7 +187,6 @@ void SceneManager::LoadEditorScene(const std::string& path)
 
 void SceneManager::LoadPauseUI(const std::string& path)
 {
-	// JSONからActorだけ読み込む
 	pauseActors.clear();
 	Scene temp;
 	temp.sceneManager = this;
@@ -189,7 +194,14 @@ void SceneManager::LoadPauseUI(const std::string& path)
 
 	for (auto& actor : temp.actors)
 	{
-		actor->SetScene(currentScene);  // 現在シーンに紐付け
+		actor->SetScene(currentScene);
+
+		// SpriteRenderに直接SceneManagerを渡す
+		if (auto* sr = actor->GetComponent<SpriteRender>())
+		{
+			sr->SetSceneManager(this);
+		}
+
 		pauseActors.emplace_back(std::move(actor));
 	}
 }
