@@ -42,6 +42,8 @@ public:
 		float r, float g, float b, float a	// êF
 	) const;
 
+	float GetTextureWidth() const { return textureWidth; }
+	float GetTextureHeight() const { return textureHeight; }
 private:
 	Microsoft::WRL::ComPtr<ID3D11VertexShader>			vertexShader;
 	Microsoft::WRL::ComPtr<ID3D11PixelShader>			pixelShader;

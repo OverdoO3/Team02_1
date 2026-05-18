@@ -9,6 +9,7 @@ void SceneManager::Initialize()
 
 void SceneManager::Update(float elapsedTime)
 {
+
 	if (nextScene != nullptr)
 	{
 		//古いシーンを終了
@@ -26,9 +27,18 @@ void SceneManager::Update(float elapsedTime)
 		Graphics::Instance().CreateRenderTarget(gameRT, 1280, 720);
 	}
 
+	
 	if (currentScene != nullptr)
 	{
-		currentScene->Update(elapsedTime);
+		if (isPaused)
+		{
+			//Pause中の処理をここに入れる
+
+		}
+		else 
+		{
+			currentScene->Update(elapsedTime);
+		}
 	}
 }
 
@@ -46,6 +56,20 @@ void SceneManager::DrawGUI()
 	{
 		currentScene->DrawGUI();
 	}
+
+#ifdef _DEBUG
+	// デバッグ用ポーズウィンドウ
+	if (isPaused)
+	{
+		ImGui::Begin("Pause Debug");
+		ImGui::Text("Game is Paused");
+		if (ImGui::Button("Resume"))
+		{
+			isPaused = false;
+		}
+		ImGui::End();
+	}
+#endif // _DEBUG
 }
 
 void SceneManager::Clear()

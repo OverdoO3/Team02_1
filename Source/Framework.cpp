@@ -49,6 +49,10 @@ Framework::Framework(HWND hWnd)
 	// シーン初期化
 	//SceneManager::Instance().ChangeScene(std::move(std::make_unique<Scene>()),"Scenes/scene.json");
 
+	//マウスカーソル初期化
+	mouseCursor = std::make_unique<MouseCursor>();
+	mouseCursor->Initialize("Data/Sprite/MouseCursor.png");
+
 	engine.Initialize();
 	editor.Initialize(&engine);
 }
@@ -73,30 +77,56 @@ Framework::~Framework()
 	LogManager::Instance().AddLog(LogCategory::system,LogEvent::Finalize, "GameEnd");
 
 	Audio::Instance().Finalize();
+
+	mouseGuard = std::make_unique<MouseGuard>();
+
+#ifdef _DEBUG
+	Microsoft::WRL::ComPtr<ID3D11Debug> d3dDebug;
+	Graphics::Instance().GetDevice()->QueryInterface(
+		__uuidof(ID3D11Debug),
+		reinterpret_cast<void**>(d3dDebug.GetAddressOf())
+	);
+	if (d3dDebug)
+	{
+		d3dDebug->ReportLiveDeviceObjects(D3D11_RLDO_DETAIL);
+	}
+#endif
 }
 
 // 更新処理
 void Framework::Update(float elapsedTime)
 {
-	// インプット更新処理
+	// インプットの生更新とImGuiは常に動かす
 	Input::Instance().Update();
-
-	// IMGUIフレーム開始処理	
 	ImGuiRenderer::NewFrame();
 
-	//入力のアップデート
-	KeyInput::Instance().Update();
+	//ポーズ中か確認用
+	bool isPaused = engine.GetSceneManager().IsPaused();
 
-	//Logのアップデート
 	LogManager::Instance().DrawLogWindow();
 
-	EffectManager::Instance().Update(elapsedTime);
+	// ポーズ中でない場合のみゲームを更新
+	if (!isPaused)
+	{
+		// キー入力の状態を確定
+		KeyInput::Instance().Update();
 
-	// シーン更新処理
-	engine.Update(elapsedTime);
+		// パーティクルなどの更新
+		EffectManager::Instance().Update(elapsedTime);
 
-	editor.Update(elapsedTime,engine.GetSceneManager().GetCurrentScene());
+		// シーン・アクター・物理の更新
+		engine.Update(elapsedTime);
+	}
+	if (mouseCursor)
+	{
+		mouseCursor->Update(hWnd);
+	}
+
+	// エディタはポーズ中も動かせるように外に出す
+	editor.Update(elapsedTime, engine.GetSceneManager().GetCurrentScene());
+
 }
+
 
 // 描画処理
 void Framework::Render(float elapsedTime)
@@ -104,6 +134,9 @@ void Framework::Render(float elapsedTime)
 	std::lock_guard <std::recursive_mutex> lock(Graphics::Instance().GetMutex());
 
 	ID3D11DeviceContext* dc = Graphics::Instance().GetDeviceContext();
+	RenderContext rc;
+	rc.deviceContext = dc;
+	rc.renderState = Graphics::Instance().GetRenderState();
 
 	// 画面クリア
 	Graphics::Instance().Clear(0, 0, 1, 1);
@@ -134,6 +167,11 @@ void Framework::Render(float elapsedTime)
 	// IMGUI描画
 	ImGuiRenderer::Render(dc);
 
+
+	if (mouseCursor)
+	{
+		mouseCursor->Draw(rc);
+	}
 	// 画面表示
 	Graphics::Instance().Present(syncInterval);
 }
@@ -213,7 +251,12 @@ LRESULT CALLBACK Framework::HandleMessage(HWND hWnd, UINT msg, WPARAM wParam, LP
 	case WM_CREATE:
 		break;
 	case WM_KEYDOWN:
-		if (wParam == VK_ESCAPE) PostMessage(hWnd, WM_CLOSE, 0, 0);
+		if (wParam == VK_ESCAPE)
+		{
+			PostQuitMessage(0);
+			// ポーズ状態を反転させる
+			engine.GetSceneManager().TogglePause();
+		}
 		break;
 	case WM_ENTERSIZEMOVE:
 		// WM_EXITSIZEMOVE is sent when the user grabs the resize bars.
@@ -224,6 +267,12 @@ LRESULT CALLBACK Framework::HandleMessage(HWND hWnd, UINT msg, WPARAM wParam, LP
 		// Here we reset everything based on the new window dimensions.
 		timer.Start();
 		break;
+
+	//case WM_CLOSE: 
+	//	while (ShowCursor(TRUE) < 0);
+
+	//	DestroyWindow(hWnd);
+	//	break;
 	default:
 		return DefWindowProc(hWnd, msg, wParam, lParam);
 	}

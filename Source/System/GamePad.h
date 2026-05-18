@@ -22,6 +22,8 @@ public:
 	static const GamePadButton BTN_RIGHT_SHOULDER	= (1 << 13);
 	static const GamePadButton BTN_LEFT_TRIGGER		= (1 << 14);
 	static const GamePadButton BTN_RIGHT_TRIGGER	= (1 << 15);
+	static const GamePadButton BTN_TAB				= (1 << 16);
+
 
 public:
 	GamePad() {}
@@ -60,6 +62,21 @@ public:
 	// 右トリガー入力状態の取得
 	float GetTriggerR() const { return triggerR; }
 
+
+	// 特定のボタンが「いま押されているか
+	bool IsButton(GamePadButton button) const {
+		return (buttonState[0] & button) != 0;
+	}
+
+	// 特定のボタンが「いま押された瞬間か
+	bool IsButtonDown(GamePadButton button) const {
+		return (buttonDown & button) != 0;
+	}
+
+	// 追加：特定のボタンが「いま離された瞬間か
+	bool IsButtonUp(GamePadButton button) const {
+		return (buttonUp & button) != 0;
+	}
 private:
 	GamePadButton		buttonState[2] = { 0 };
 	GamePadButton		buttonDown = 0;

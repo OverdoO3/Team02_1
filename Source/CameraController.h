@@ -1,6 +1,8 @@
 #pragma once
 #include "Component.h"
 #include "nlohmann/json.hpp"
+#include "System/Input.h"
+
 
 using json = nlohmann::json;
 
@@ -32,6 +34,8 @@ private:
     float maxDistance = 300.0f; //‚Ç‚ê‚­‚ç‚¢‰“‚´‚©‚ê‚é‚©
 
     bool focusToPlayer = false;
+
+    bool mouseLocked = true;
 
     DirectX::XMFLOAT3 focusTarget;   // ¡Œ©‚Ä‚é’†S
     DirectX::XMFLOAT3 targetGoal;    // –Ú•W‚Ì’†S

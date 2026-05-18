@@ -700,6 +700,65 @@
                 "parent": -1,
                 "tag": 0,
                 "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                65.06500244140625,
+                                69.06900024414063,
+                                0.0
+                            ],
+                            "rotation": [
+                                0.0,
+                                0.0,
+                                0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "AnimFrameCount": 2,
+                            "ColHeight": 89.0,
+                            "ColOffsetX": 4.0,
+                            "ColOffsetY": 35.0,
+                            "ColWidth": 97.0,
+                            "ColorA": 1.0,
+                            "ColorB": 1.0,
+                            "ColorG": 1.0,
+                            "ColorR": 1.0,
+                            "EditorScale": 1.0,
+                            "FrameDuration": 0.10000000149011612,
+                            "IsLoop": false,
+                            "Pivot": 0,
+                            "SortOrder": 0,
+                            "SplitX": 1,
+                            "SplitY": 1,
+                            "SpriteIndex": 1,
+                            "SrcH": 110.0,
+                            "SrcW": 97.0,
+                            "SrcX": 0.0,
+                            "SrcY": 0.0,
+                            "TargetCol": 0,
+                            "TargetRow": 0,
+                            "TexturePath": "Data/Sprite/enemy.png"
+                        },
+                        "type": "SpriteRender"
+                    }
+                ],
+                "id": 18,
+                "name": "NewActor",
+                "parent": -1,
+                "tag": 0,
+                "type": "Actor"
             }
         ]
     }

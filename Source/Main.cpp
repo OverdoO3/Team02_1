@@ -3,6 +3,8 @@
 #include <assert.h>
 #include <tchar.h>
 #include "Framework.h"
+#include <csignal>
+#include <crtdbg.h>
 
 const LONG SCREEN_WIDTH = 1920;
 const LONG SCREEN_HEIGHT = 1080;
@@ -18,6 +20,14 @@ INT WINAPI wWinMain(HINSTANCE instance, HINSTANCE prev_instance, LPWSTR cmd_line
 #if defined(DEBUG) | defined(_DEBUG)
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 	//_CrtSetBreakAlloc(237);
+	std::signal(SIGABRT, [](int) {
+		while (ShowCursor(TRUE) < 0);
+		});
+
+	_CrtSetReportHook([](int reportType, char* message, int* returnValue) {
+		while (ShowCursor(TRUE) < 0);
+		return 0; // 0を返すと標準のダイアログが表示される
+		});
 #endif
 	WNDCLASSEX wcex;
 	wcex.cbSize = sizeof(WNDCLASSEX);

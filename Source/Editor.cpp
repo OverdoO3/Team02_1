@@ -2,6 +2,16 @@
 #include "ComponentManager.h"
 #include "PrefabManager.h"
 
+// ImGUiのブレンドモードを切り替えるコールバック関数
+static void ImGuiDisableAlphaBlendCallBack(const ImDrawList* parent_list, const ImDrawCmd* cmd)
+{
+	auto& g = Graphics::Instance();
+	auto render_state = g.GetRenderState();
+	auto context = g.GetDeviceContext();
+	const float blend_factor[4] = { 0.0f, 0.0f, 0.0f, 0.0f };
+	context->OMSetBlendState(render_state->GetBlendState(BlendState::Opaque), blend_factor, 0xFFFFFFFF);
+}
+
 Actor* Editor::CreateActor(const std::string& name,Scene* scene)
 {
 	auto actor = std::make_unique<Actor>();
@@ -154,6 +164,25 @@ void Editor::HandleSelection(Scene* scene, ImVec2 pos, ImVec2 size)
 									nowDistActor = actor.get();
 								}
 							}
+						}
+
+					}
+					if (auto sprRender = actor->GetComponent<SpriteRender>())
+					{
+						auto tran = actor->GetComponent<Transform>();
+						auto worldPos = tran->GetWorldPosition();
+
+						float dx = worldPos.x - rayOrigin.x;
+						float dy = worldPos.y - rayOrigin.y;
+						float dz = worldPos.z - rayOrigin.z;
+						float dist = sqrtf(dx * dx + dy * dy + dz * dz);
+
+						if (dist < 30.0f && dist < minDist)
+						{
+							minDist = dist;
+							nowDistActor = actor.get();
+
+							hitPos = worldPos;
 						}
 					}
 				}
@@ -461,7 +490,9 @@ void Editor::DrawSceneWindow()
 	ImVec2 pos = ImGui::GetCursorScreenPos();
 	ImVec2 size = ImGui::GetContentRegionAvail();
 
+	ImGui::GetWindowDrawList()->AddCallback(ImGuiDisableAlphaBlendCallBack, nullptr);
 	ImGui::Image((ImTextureID)sceneRT.srv.Get(), size);
+	ImGui::GetWindowDrawList()->AddCallback(ImDrawCallback_ResetRenderState, nullptr);
 
 	Scene* scene = engine->GetSceneManager().GetCurrentScene();
 	HandleSelection(scene, pos, size);
@@ -490,6 +521,10 @@ void Editor::DrawGameWindow()
 	{
 		if (ImGui::Button("|> Play")||InputC::KeyPressed('P')&&InputC::KeyDown(VK_LCONTROL))
 		{
+			//if (sm.IsPaused())
+			//{
+			//	sm.SetPause(false);
+			//}
 			sm.StartPlay();
 		}
 	}
@@ -497,17 +532,29 @@ void Editor::DrawGameWindow()
 	{
 		if (ImGui::Button("|| Stop") || InputC::KeyPressed('P') && InputC::KeyDown(VK_LCONTROL))
 		{
+			if (sm.IsPaused())
+			{
+				sm.SetPause(false);
+			}
 			sm.StopPlay();
 		}
 	}
 
 	// 少し見やすく
 	ImGui::SameLine();
-	ImGui::Text(sm.GetPlayState() ? "Running" : "Stopped");
-
+	if (engine->GetSceneManager().IsPaused())
+	{
+		ImGui::Text("Pause");
+	}
+	else
+	{
+		ImGui::Text(sm.GetPlayState() ? "Running" : "Stopped");
+	}
 	ImVec2 size = ImGui::GetContentRegionAvail();
 	// --- ゲーム画面 ---
+	ImGui::GetWindowDrawList()->AddCallback(ImGuiDisableAlphaBlendCallBack, nullptr);
 	ImGui::Image((ImTextureID)gameRT.srv.Get(), size);
+	ImGui::GetWindowDrawList()->AddCallback(ImDrawCallback_ResetRenderState, nullptr);
 	ImGui::End();
 }
 

@@ -6,7 +6,8 @@ ComponentID ComponentRegistry::StringToID(const std::string& name)
 {
     for (int i = 0; i < (int)ComponentID::COUNT; ++i)
     {
-        if (name == std::string(ComponentFactory::GetName((ComponentID)i)))
+        std::string n = std::string(ComponentFactory::GetName((ComponentID)i));
+        if (name == n)
         {
             return (ComponentID)i;
         }

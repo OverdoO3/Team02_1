@@ -6,6 +6,7 @@
 #include <DirectXMath.h>
 #include "BasicShader.h"
 #include "LambertShader.h"
+#include <imgui.h>
 
 using namespace DirectX;
 
@@ -50,15 +51,91 @@ ModelRenderer::ModelRenderer(ID3D11Device* device)
     HRESULT hr = device->CreateBuffer(&desc, nullptr, instanceBuffer.GetAddressOf());
     assert(SUCCEEDED(hr));
 
-    //D3D11_SHADER_RESOURCE_VIEW_DESC srvDesc = {};
-    //srvDesc.Format = DXGI_FORMAT_UNKNOWN;      // StructuredBufferはUNKNOWN必須
-    //srvDesc.ViewDimension = D3D11_SRV_DIMENSION_BUFFER;
-    //srvDesc.Buffer.FirstElement = 0;
-    //srvDesc.Buffer.NumElements = MAX_INSTANCES;
+	GpuResourceUtils::CreateConstantBuffer(
+		device,
+		sizeof(CbShadowParams),
+		shadowParamsConstantBuffer.GetAddressOf());
 
-    //hr = device->CreateShaderResourceView(
-    //    instanceBuffer.Get(), &srvDesc, &instanceBufferSRV);
-    //assert(SUCCEEDED(hr));
+	GpuResourceUtils::CreateConstantBuffer(
+		device,
+		sizeof(CbLightParams),
+		CbLightParamsConstantBuffer.GetAddressOf());
+
+	GpuResourceUtils::CreateConstantBuffer(
+		device,
+		sizeof(CbLight),
+		CbLightConstantBuffer.GetAddressOf());
+
+	// 頂点シェーダー
+	GpuResourceUtils::LoadVertexShader(
+		device,
+		"Data/Shader/LambertVS.cso",
+		ModelResource::InputElementDescs.data(),
+		static_cast<UINT>(ModelResource::InputElementDescs.size()),
+		inputLayout.GetAddressOf(),
+		vertexShader.GetAddressOf());
+
+	// ピクセルシェーダー
+	GpuResourceUtils::LoadPixelShader(
+		device,
+		"Data/Shader/LambertPS.cso",
+		pixelShader.GetAddressOf());
+
+	GpuResourceUtils::CreateConstantBuffer(
+		device,
+		sizeof(CbOutlineParams),
+		outlineParamsConstantBuffer.GetAddressOf());
+
+	GpuResourceUtils::CreateConstantBuffer(
+		device,
+		sizeof(CbOutlineColor),
+		outlineColorConstantBuffer.GetAddressOf());
+
+	// アウトライン用頂点シェーダー
+	GpuResourceUtils::LoadVertexShader(
+		device,
+		"./Data/Shader/out_line_vs.cso",
+		ModelResource::InputElementDescs.data(),
+		static_cast<UINT>(ModelResource::InputElementDescs.size()),
+		nullptr,
+		outlineVertexShader.GetAddressOf());
+
+	// アウトライン用ピクセルシェーダー
+	GpuResourceUtils::LoadPixelShader(
+		device,
+		"./Data/Shader/out_line_ps.cso",
+		outlinePixelShader.GetAddressOf());
+
+	// シェーダー生成
+	shaders[static_cast<int>(ShaderId::Basic)] = std::make_unique<BasicShader>(device);
+	shaders[static_cast<int>(ShaderId::Lambert)] = std::make_unique<LambertShader>(device);
+
+	{
+		point_light[0].position.x = 10;
+		point_light[0].position.y = 1;
+		point_light[0].range = 100;
+		point_light[0].color = { 1, 1, 1, 1 };
+
+		point_light[1].position.x = -10;
+		point_light[1].position.y = 1;
+		point_light[1].range = 10;
+		point_light[1].color = { 0, 1, 0, 1 };
+
+		point_light[2].position.y = 1;
+		point_light[2].position.z = 10;
+		point_light[2].range = 10;
+		point_light[2].position.y = 1;
+		point_light[2].color = { 0, 0, 1, 1 };
+
+		point_light[3].position.y = 1;
+		point_light[3].position.z = -10;
+		point_light[3].range = 10;
+		point_light[3].color = { 1, 1, 1, 1 };
+
+		point_light[4].range = 10;
+		point_light[4].color = { 1, 1, 1, 1 };
+		ZeroMemory(&point_light[5], sizeof(point_lights) * 3);
+	}
 }
 
 //==============================
@@ -75,11 +152,6 @@ void ModelRenderer::AddInstance(const Model* model, Actor* actor)
     auto& batch = batches[model->GetResource()];
     batch.representativeModel = model;
     batch.instances.push_back(data);
-
-    //char buf[128];
-    //sprintf_s(buf, "AddInstance: %s\n", actor->name.c_str()); // Actor名を出力
-    //OutputDebugStringA(buf);
-    debugInstanceCount++;
 }
 //==============================
 // FlushAll（描画本体）
@@ -89,19 +161,6 @@ void ModelRenderer::FlushAll(const RenderContext& rc)
 {
     if (batches.empty())
         return;
-
-  /*  char buf[128];
-    sprintf_s(buf, "TotalInstances: %d, BatchCount: %zu\n",
-        debugInstanceCount, batches.size());
-    OutputDebugStringA(buf);
-    debugInstanceCount = 0;*/
-   
-
-    /*for (auto& [resource, instances] : batches)
-    {
-        OutputDebugStringA(("MeshCount: " + std::to_string(resource->GetMeshes().size()) + "\n").c_str());
-        OutputDebugStringA(("InstanceCount: " + std::to_string(instances.instances.size()) + "\n").c_str());
-    }*/
 
     auto* dc = rc.deviceContext;
 
@@ -121,39 +180,101 @@ void ModelRenderer::FlushAll(const RenderContext& rc)
         dc->UpdateSubresource(sceneConstantBuffer.Get(), 0, nullptr, &cb, 0, 0);
     }
 
+    //=====================
     // 定数バッファ設定
-    ID3D11Buffer* vsConstantBuffers[] =
-    {
-        sceneConstantBuffer.Get(),
-        skeletonConstantBuffer.Get(),
-    };
-    dc->VSSetConstantBuffers(0, _countof(vsConstantBuffers), vsConstantBuffers);
+    //=====================
+    dc->VSSetConstantBuffers(1, 1, skeletonConstantBuffer.GetAddressOf());
+    dc->VSSetConstantBuffers(3, 1, sceneConstantBuffer.GetAddressOf());
+    dc->PSSetConstantBuffers(3, 1, sceneConstantBuffer.GetAddressOf());
 
-    ID3D11Buffer* psConstantBuffers[] =
+    //=====================
+    // ライト・影データ
+    //=====================
     {
-        sceneConstantBuffer.Get(),
-    };
-    dc->PSSetConstantBuffers(0, _countof(psConstantBuffers), psConstantBuffers);
+        CbLight cbLight{};
+        cbLight.lightViewProjection = rc.lightViewProjection;
+        cbLight.lightDirection = DirectX::XMFLOAT4(
+            rc.lightDirection.x, rc.lightDirection.y, rc.lightDirection.z, 0.0f);
+        cbLight.lightColor = rc.lightColor;
+        cbLight.ambientColor = rc.ambientColor;
+        memcpy_s(cbLight.point_light, sizeof(cbLight.point_light),
+            point_light, sizeof(point_light));
 
+        dc->UpdateSubresource(CbLightConstantBuffer.Get(), 0, nullptr, &cbLight, 0, 0);
+        dc->VSSetConstantBuffers(2, 1, CbLightConstantBuffer.GetAddressOf());
+        dc->PSSetConstantBuffers(2, 1, CbLightConstantBuffer.GetAddressOf());
+    }
+
+    //=====================
+    // 影パラメータ
+    //=====================
+    dc->UpdateSubresource(shadowParamsConstantBuffer.Get(), 0, nullptr, &rc.shadowParams, 0, 0);
+    dc->PSSetConstantBuffers(4, 1, shadowParamsConstantBuffer.GetAddressOf());
+
+    //=====================
+    // ライトパラメータ
+    //=====================
+    dc->UpdateSubresource(CbLightParamsConstantBuffer.Get(), 0, nullptr, &rc.lightParams, 0, 0);
+    dc->PSSetConstantBuffers(5, 1, CbLightParamsConstantBuffer.GetAddressOf());
+
+    //=====================
     // サンプラステート設定
+    //=====================
     ID3D11SamplerState* samplerStates[] =
     {
         rc.renderState->GetSamplerState(SamplerState::LinearWrap)
     };
     dc->PSSetSamplers(0, _countof(samplerStates), samplerStates);
 
+    //=====================
     // レンダーステート設定
-    dc->OMSetDepthStencilState(rc.renderState->GetDepthStencilState(DepthState::TestAndWrite), 0);
-    dc->RSSetState(rc.renderState->GetRasterizerState(RasterizerState::SolidCullBack));
-
-    // ブレンドステート設定
-    dc->OMSetBlendState(rc.renderState->GetBlendState(BlendState::Transparency), nullptr, 0xFFFFFFFF);
-
-    Shader* shader = shaders[(int)ShaderId::Lambert].get();
-    shader->Begin(rc);
+    //=====================
+    dc->OMSetDepthStencilState(
+        rc.renderState->GetDepthStencilState(DepthState::TestAndWrite), 0);
+    dc->RSSetState(
+        rc.renderState->GetRasterizerState(RasterizerState::SolidCullBack));
 
     //=====================
-    // モデル単位
+    // ブレンドステート設定
+    //=====================
+    dc->OMSetBlendState(
+        rc.renderState->GetBlendState(BlendState::Transparency), nullptr, 0xFFFFFFFF);
+
+    //=====================
+    // InputLayout & Shader 切り替え（ShaderId対応）
+    //=====================
+    dc->IASetInputLayout(inputLayout.Get());
+
+    if (shaderId == ShaderId::Outline)
+    {
+        dc->VSSetShader(outlineVertexShader.Get(), nullptr, 0);
+        dc->PSSetShader(outlinePixelShader.Get(), nullptr, 0);
+
+        dc->UpdateSubresource(outlineParamsConstantBuffer.Get(), 0, nullptr, &rc.outlineParams, 0, 0);
+        dc->UpdateSubresource(outlineColorConstantBuffer.Get(), 0, nullptr, &rc.outlineColor, 0, 0);
+        dc->VSSetConstantBuffers(6, 1, outlineParamsConstantBuffer.GetAddressOf());
+        dc->PSSetConstantBuffers(7, 1, outlineColorConstantBuffer.GetAddressOf());
+
+        dc->RSSetState(rc.renderState->GetCullFrontRasterizerState());
+    }
+    else if (shaderId == ShaderId::Shadow)
+    {
+        dc->VSSetShader(vertexShader.Get(), nullptr, 0);
+        dc->PSSetShader(nullptr, nullptr, 0);
+    }
+    else
+    {
+        // Lambert など通常シェーダー
+        Shader* shader = shaders[(int)ShaderId::Lambert].get();
+        shader->Begin(rc);
+
+        dc->VSSetShader(vertexShader.Get(), nullptr, 0);
+        dc->PSSetShader(pixelShader.Get(), nullptr, 0);
+        dc->RSSetState(rc.renderState->GetRasterizerState(RasterizerState::SolidCullBack));
+    }
+
+    //=====================
+    // モデル単位（バッチインスタンシング）
     //=====================
     for (auto& [resource, instances] : batches)
     {
@@ -164,8 +285,9 @@ void ModelRenderer::FlushAll(const RenderContext& rc)
             // ★ ここに来たら MAX_INSTANCES を増やす必要がある
             assert(false && "MAX_INSTANCES exceeded");
         }
+
         //=====================
-        // InstanceBuffer更新
+        // InstanceBuffer 更新
         //=====================
         {
             D3D11_MAPPED_SUBRESOURCE mapped{};
@@ -174,34 +296,26 @@ void ModelRenderer::FlushAll(const RenderContext& rc)
             memcpy(mapped.pData,
                 instances.instances.data(),
                 sizeof(InstanceData) * instances.instances.size());
-
             dc->Unmap(instanceBuffer.Get(), 0);
         }
-            //ID3D11ShaderResourceView* vsSRVs[] = { instanceBufferSRV };
-            //dc->VSSetShaderResources(0, 1, vsSRVs);
 
-            UINT instanceCount = (UINT)instances.instances.size();
-    
+        UINT instanceCount = (UINT)instances.instances.size();
+
         //=====================
-        // Mesh単位
+        // Mesh 単位
         //=====================
         for (const auto& mesh : resource->GetMeshes())
         {
-            UINT stride = sizeof(ModelResource::Vertex);
-            UINT offset = 0;
-
             ID3D11Buffer* buffers[2] =
             {
                 mesh.vertexBuffer.Get(),
                 instanceBuffer.Get()
             };
-
             UINT strides[2] =
             {
                 sizeof(ModelResource::Vertex),
                 sizeof(InstanceData)
             };
-
             UINT offsets[2] = { 0, 0 };
 
             dc->IASetVertexBuffers(0, 2, buffers, strides, offsets);
@@ -209,15 +323,15 @@ void ModelRenderer::FlushAll(const RenderContext& rc)
             dc->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 
             //=====================
-            // Skeleton
+            // Skeleton CB 更新
             //=====================
-
             CbSkeleton cbSkel{};
             if (!mesh.nodeIndices.empty())
             {
                 for (size_t i = 0; i < mesh.nodeIndices.size(); i++)
                 {
-                    const Model::Node& node = instances.representativeModel->GetNodes().at(mesh.nodeIndices[i]);
+                    const Model::Node& node =
+                        instances.representativeModel->GetNodes().at(mesh.nodeIndices[i]);
                     DirectX::XMMATRIX G = DirectX::XMLoadFloat4x4(&node.globalTransform);
                     DirectX::XMMATRIX O = DirectX::XMLoadFloat4x4(&mesh.offsetTransforms[i]);
                     DirectX::XMStoreFloat4x4(&cbSkel.boneTransforms[i], O * G);
@@ -225,27 +339,32 @@ void ModelRenderer::FlushAll(const RenderContext& rc)
             }
             else
             {
-                const Model::Node& node = instances.representativeModel->GetNodes().at(mesh.nodeIndex);
+                const Model::Node& node =
+                    instances.representativeModel->GetNodes().at(mesh.nodeIndex);
                 DirectX::XMMATRIX G = DirectX::XMLoadFloat4x4(&node.globalTransform);
                 DirectX::XMStoreFloat4x4(&cbSkel.boneTransforms[0], G);
             }
-            // GPUへ送る
             dc->UpdateSubresource(skeletonConstantBuffer.Get(), 0, nullptr, &cbSkel, 0, 0);
 
             //=====================
-            // Draw
+            // Draw（インスタンシング）
             //=====================
-
             const ModelResource::Material* lastMaterial = nullptr;
 
             for (const auto& subset : mesh.subsets)
             {
-                if (subset.material != lastMaterial)
+                // マテリアル更新（シャドウパスでは不要なのでスキップ）
+                if (shaderId != ShaderId::Shadow)
                 {
-                    shader->Update(rc, *subset.material);
-                    lastMaterial = subset.material;
+                    if (subset.material != lastMaterial)
+                    {
+                        // テクスチャをスロット0にバインド
+                        dc->PSSetShaderResources(
+                            0, 1, subset.material->shaderResourceView.GetAddressOf());
+                        lastMaterial = subset.material;
+                    }
                 }
-                //dc->DrawIndexed(subset.indexCount, subset.startIndex, 0);
+
                 dc->DrawIndexedInstanced(
                     subset.indexCount,   // IndexCountPerInstance
                     instanceCount,       // InstanceCount
@@ -256,24 +375,62 @@ void ModelRenderer::FlushAll(const RenderContext& rc)
         }
     }
 
-    shader->End(rc);
+    //=====================
+    // Lambert シェーダー終了処理
+    //=====================
+    if (shaderId != ShaderId::Shadow && shaderId != ShaderId::Outline)
+    {
+        Shader* shader = shaders[(int)ShaderId::Lambert].get();
+        shader->End(rc);
+    }
 
+    //=====================
+    // リソース解除（クリーンアップ）
+    //=====================
     ID3D11ShaderResourceView* nullSRVs[] = { nullptr };
     dc->VSSetShaderResources(0, 1, nullSRVs);
+    if (shaderId == ShaderId::Shadow)
+    {
+        dc->PSSetShaderResources(8, 1, nullSRVs); // 影SRV解除
+    }
 
-    for (ID3D11Buffer*& vsConstantBuffer : vsConstantBuffers) { vsConstantBuffer = nullptr; }
-    for (ID3D11Buffer*& psConstantBuffer : psConstantBuffers) { psConstantBuffer = nullptr; }
-    dc->VSSetConstantBuffers(0, _countof(vsConstantBuffers), vsConstantBuffers);
-    dc->PSSetConstantBuffers(0, _countof(psConstantBuffers), psConstantBuffers);
+    {
+        ID3D11Buffer* nullVSCBs[] = { nullptr, nullptr, nullptr, nullptr };
+        dc->VSSetConstantBuffers(0, _countof(nullVSCBs), nullVSCBs);
+    }
+    {
+        ID3D11Buffer* nullPSCBs[] = { nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr };
+        dc->PSSetConstantBuffers(0, _countof(nullPSCBs), nullPSCBs);
+    }
 
-    // サンプラステート設定解除
-    for (ID3D11SamplerState*& samplerState : samplerStates) { samplerState = nullptr; }
+    for (ID3D11SamplerState*& s : samplerStates) { s = nullptr; }
     dc->PSSetSamplers(0, _countof(samplerStates), samplerStates);
 
-    // cleanup
+    // バッチクリア（メモリは保持）
     for (auto& [resource, batch] : batches)
     {
-        batch.instances.clear(); // ★ vector のメモリは解放しない
+        batch.instances.clear();
         batch.representativeModel = nullptr;
     }
+}
+
+void ModelRenderer::DebugImGui()
+{
+#ifdef _DEBUG
+    if (ImGui::Begin("PointLights Debug"))
+    {
+        for (int i = 0; i < 8; i++)
+        {
+            ImGui::PushID(i);
+            if (ImGui::CollapsingHeader(("Light[" + std::to_string(i) + "]").c_str()))
+            {
+                ImGui::SliderFloat3("Position", &point_light[i].position.x, -50.0f, 50.0f);
+                ImGui::SliderFloat("Range", &point_light[i].range, 0.0f, 100.0f);
+                ImGui::ColorEdit4("Color", &point_light[i].color.x);
+            }
+            ImGui::PopID();
+        }
+    }
+    ImGui::End();
+#endif // _DEBUG
 }

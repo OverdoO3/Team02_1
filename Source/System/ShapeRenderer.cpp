@@ -32,6 +32,11 @@ ShapeRenderer::ShapeRenderer(ID3D11Device* device)
 		sizeof(CbMesh),
 		constantBuffer.GetAddressOf());
 
+	GpuResourceUtils::CreateConstantBuffer(
+		device,
+		sizeof(CbScene),
+		sceneConstantBuffer.GetAddressOf());
+
 	// 箱メッシュ生成
 	CreateBoxMesh(device, 1.0f, 1.0f, 1.0f);
 
@@ -433,19 +438,57 @@ void ShapeRenderer::CreateLineMesh(ID3D11Device* device)
 void ShapeRenderer::Render(const RenderContext& rc, const Mesh& mesh, const DirectX::XMFLOAT4X4& transform, const DirectX::XMFLOAT4& color) const
 {
 	ID3D11DeviceContext* dc = rc.deviceContext;
-
 	// シェーダー設定
 	dc->VSSetShader(vertexShader.Get(), nullptr, 0);
 	dc->PSSetShader(pixelShader.Get(), nullptr, 0);
 	dc->IASetInputLayout(inputLayout.Get());
 
 	// 定数バッファ設定
-	dc->VSSetConstantBuffers(0, 1, constantBuffer.GetAddressOf());
+	dc->VSSetConstantBuffers(5, 1, constantBuffer.GetAddressOf());
 
+	//シーン共通 (カメラ座標、ViewProj行列など)
+	dc->VSSetConstantBuffers(1, 1, sceneConstantBuffer.GetAddressOf());
+	dc->PSSetConstantBuffers(1, 1, sceneConstantBuffer.GetAddressOf());
+
+	//ライト、シャドウ、(環境光、ライト行列など)
+	//dc->VSSetConstantBuffers(2, 1, lightConstantBuffer.GetAddressOf());
+	//dc->PSSetConstantBuffers(2, 1, lightConstantBuffer.GetAddressOf());
+
+	CbMesh cbMesh;
 	// ビュープロジェクション行列作成
 	DirectX::XMMATRIX V = DirectX::XMLoadFloat4x4(&rc.view);
 	DirectX::XMMATRIX P = DirectX::XMLoadFloat4x4(&rc.projection);
 	DirectX::XMMATRIX VP = V * P;
+	cbMesh.color = color;
+	//色の設定
+	cbMesh.ka = { 1.0f, 1.0f, 1.0f, 1.0f }; // 全反射
+	cbMesh.kd = cbMesh.color;                      // 引数のcolorをセット
+	cbMesh.ks = { 1.0f, 1.0f, 1.0f, 1.0f }; // ハイライト用
+	//dc->UpdateSubresource(constantBuffer.Get(), 0, 0, &cbMesh, 0, 0);
+
+	CbScene cbScene{};
+	DirectX::XMStoreFloat4x4(&cbScene.viewProjection, VP);
+	cbScene.cameraPosition = DirectX::XMFLOAT4(rc.cameraPosition.x, rc.cameraPosition.y, rc.cameraPosition.z, 1.0f);
+	//rcにtimerを実装するのやったらここに実装する
+	dc->UpdateSubresource(sceneConstantBuffer.Get(), 0, 0, &cbScene, 0, 0);
+
+	////ライト。影データ
+	//CbLight cbLight{};
+	//cbLight.lightViewProjection = rc.lightViewProjection;	//カメラ視点のWVP用
+	//cbLight.lightDirection = DirectX::XMFLOAT4(rc.lightDirection.x, rc.lightDirection.y, rc.lightDirection.z, 0.0f);
+	//cbLight.lightColor = rc.lightColor;
+	//cbLight.ambientColor = rc.ambientColor;
+	//dc->UpdateSubresource(lightConstantBuffer.Get(), 0, 0, &cbLight, 0, 0 );
+
+	//dc->UpdateSubresource(shadowParamsConstantBuffer.Get(), 0, 0, &rc.shadowParams, 0, 0);
+	//dc->PSSetConstantBuffers(4, 1, shadowParamsConstantBuffer.GetAddressOf());
+
+	// HLSLの register(t1) にシャドウマップのビュー(SRV)をセットする
+
+	//dc->UpdateSubresource(meshDataConstantBuffer.Get(), 0, nullptr, &rc.mesh, 0, 0);
+	//dc->PSSetConstantBuffers(4, 1, meshDataConstantBuffer.GetAddressOf());
+	//dc->VSSetConstantBuffers(4, 1, meshDataConstantBuffer.GetAddressOf());
+
 
 	// プリミティブ設定
 	UINT stride = sizeof(DirectX::XMFLOAT3);
@@ -455,14 +498,30 @@ void ShapeRenderer::Render(const RenderContext& rc, const Mesh& mesh, const Dire
 	// 頂点バッファ設定
 	dc->IASetVertexBuffers(0, 1, mesh.vertexBuffer.GetAddressOf(), &stride, &offset);
 
-	// ワールドビュープロジェクション行列作成
 	DirectX::XMMATRIX W = DirectX::XMLoadFloat4x4(&transform);
 	DirectX::XMMATRIX WVP = W * VP;
 
-	// 定数バッファ更新
-	CbMesh cbMesh;
 	DirectX::XMStoreFloat4x4(&cbMesh.worldViewProjection, WVP);
-	cbMesh.color = color;
+
+
+	////// ワールドビュープロジェクション行列作成
+	//DirectX::XMMATRIX W = DirectX::XMLoadFloat4x4(&transform);
+	//DirectX::XMMATRIX WVP = W * VP;
+
+	//// 定数バッファ更新
+	//DirectX::XMStoreFloat4x4(&cbMesh.worldViewProjection, WVP);
+	//cbMesh.color = color;
+	{
+		//CbLight lights{};
+		//lights.ambientColor = ambient_color;
+		//lights.lightDirection = directional_light_direction;
+		//lights.lightColor = directional_light_color;
+		//memcpy_s(lights.point_light, sizeof(lights.point_light), point_light, sizeof(point_light));
+		//dc->UpdateSubresource(lightConstantBuffer.Get(), 0, 0, &lights, 0, 0);
+		//dc->PSSetConstantBuffers(2, 1, light_constant_buffer.GetAddressOf());
+		//dc->VSSetConstantBuffers(2, 1, light_constant_buffer.GetAddressOf());
+	}
+
 
 	dc->UpdateSubresource(constantBuffer.Get(), 0, 0, &cbMesh, 0, 0);
 

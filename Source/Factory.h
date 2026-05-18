@@ -48,7 +48,8 @@ public:
 
     static const char* GetName(ComponentID id)
     {
-        return GetTable()[(int)id].name;
+        auto ta = GetTable();
+        return ta[(int)id].name;
     }
 
     static std::vector<ComponentID> GetRegistered()
