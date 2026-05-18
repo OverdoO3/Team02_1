@@ -8,6 +8,7 @@
 #include "ShapeRenderer.h"
 #include "ModelRenderer.h"
 #include <DirectXTex.h>
+#include "fullscreen_quad.h"
 
 struct RenderTarget
 {
@@ -98,6 +99,8 @@ public:
 	ID3D11ShaderResourceView* GetShadowMapSRV() const { return shadowMapSRV.Get(); }
 	ID3D11SamplerState* GetShadowSampler() const { return shadowSampler.Get(); }
 
+	void Blit(ID3D11ShaderResourceView* srv);
+
 	struct scene_constants
 	{
 		DirectX::XMFLOAT4X4 view_projection;
@@ -137,4 +140,6 @@ private:
 	D3D11_VIEWPORT cached_viewports[D3D11_VIEWPORT_AND_SCISSORRECT_OBJECT_COUNT_PER_PIPELINE];
 	Microsoft::WRL::ComPtr<ID3D11RenderTargetView> cached_render_target_view;
 	Microsoft::WRL::ComPtr<ID3D11DepthStencilView> cached_depth_stencil_view;
+
+	std::unique_ptr<fullscreen_quad> fullscreenQuad;
 };

@@ -16,6 +16,8 @@ void Graphics::Initialize(HWND hWnd)
 
 	HRESULT hr = S_OK;
 
+	
+
 	// デバイス＆スワップチェーンの生成
 	{
 		UINT createDeviceFlags = 0;
@@ -207,6 +209,8 @@ void Graphics::Initialize(HWND hWnd)
 	// ワイド文字列をデバッグ出力
 	OutputDebugStringW(desc.Description);
 	OutputDebugStringW(L"\n");
+
+	fullscreenQuad = std::make_unique<fullscreen_quad>(device.Get());
 }
 
 // クリア
@@ -284,6 +288,20 @@ bool Graphics::CreateRenderTarget(RenderTarget& rt, int width, int height)
 	if (FAILED(hr)) return false;
 
 	return true;
+}
+
+void Graphics::Blit(ID3D11ShaderResourceView* srv)
+{
+	auto* dc = immediateContext.Get();
+
+	dc->OMSetDepthStencilState(
+		renderState->GetDepthStencilState(DepthState::NoTestNoWrite), 0);
+	dc->RSSetState(
+		renderState->GetRasterizerState(RasterizerState::SolidCullNone));
+	dc->OMSetBlendState(
+		renderState->GetBlendState(BlendState::Opaque), nullptr, 0xFFFFFFFF);
+
+	fullscreenQuad->blit(dc, &srv, 0, 1, nullptr);
 }
 
 //影用バッファのクリア

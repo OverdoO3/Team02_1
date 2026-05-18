@@ -9,7 +9,6 @@ void SceneManager::Initialize()
 
 void SceneManager::Update(float elapsedTime)
 {
-
 	if (nextScene != nullptr)
 	{
 		//古いシーンを終了
@@ -23,8 +22,14 @@ void SceneManager::Update(float elapsedTime)
 
 		currentScene = GetCurrentScene();
 
+#ifdef _DEBUG
 		Graphics::Instance().CreateRenderTarget(sceneRT, 1280, 720);
 		Graphics::Instance().CreateRenderTarget(gameRT, 1280, 720);
+#else
+		int sw = GetSystemMetrics(SM_CXSCREEN);
+		int sh = GetSystemMetrics(SM_CYSCREEN);
+		Graphics::Instance().CreateRenderTarget(gameRT, sw, sh); // ゲーム用のみ
+#endif
 	}
 
 	

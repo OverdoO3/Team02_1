@@ -3,6 +3,7 @@
 #include "Scene.h"
 #include "SpriteRender.h"
 #include "ThermalBody.h"
+#include <Lerp.h>
 
 REGISTER_COMPONENT(ComponentID::PlayerUIRotator, PlayerUIRotator)
 
@@ -48,7 +49,7 @@ void PlayerUIRotator::Update(float elapsedTime)
 	if (sprite)
 	{
 		// std::lerp ‚ðŽg‚Á‚ÄŒ»Ý‚ÌŠp“x‚ð–Ú•WŠp“x‚Ö‚¶‚í‚¶‚í‹ß‚Ã‚¯‚é
-		m_currentAngle = std::lerp(m_currentAngle, m_targetAngle, 0.1f);
+		m_currentAngle = Lerp(m_currentAngle, m_targetAngle, 0.1f);
 
 		sprite->SetAngle(m_currentAngle);
 	}

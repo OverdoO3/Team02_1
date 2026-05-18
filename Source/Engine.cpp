@@ -3,8 +3,14 @@
 void Engine::Initialize()
 {
 	sceneManager.Initialize();
+#ifdef _DEBUG
 	Graphics::Instance().CreateRenderTarget(sceneRT, 1280, 720);
 	Graphics::Instance().CreateRenderTarget(gameRT, 1280, 720);
+#else
+	int sw = GetSystemMetrics(SM_CXSCREEN);
+	int sh = GetSystemMetrics(SM_CYSCREEN);
+	Graphics::Instance().CreateRenderTarget(gameRT, sw, sh); // ★ モニター解像度
+#endif
 }
 
 void Engine::Update(float dt)

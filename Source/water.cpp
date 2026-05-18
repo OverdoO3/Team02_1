@@ -23,7 +23,7 @@ void water::Update(float elapsedTime)
 	switch (temp->GetHeat())
 	{
 	case -2:
-		model = std::make_unique<Model>(icepath.c_str());
+ 		model = std::make_unique<Model>(icepath.c_str());
 		col->size.y = 10;
 		modelrender->SetModel(std::move(model));
 		break;
