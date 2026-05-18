@@ -61,24 +61,18 @@ void SceneManager::Update(float elapsedTime)
 		if (isPaused)
 		{
 			//Pause中の処理をここに入れる
-			for (auto& actor : currentScene->actors)
+			for (auto& actor : pauseActors)
 			{
 				if (!actor->setActive) continue;
-
 				auto* sr = actor->GetComponent<SpriteRender>();
-				if (sr && sr->GetIsPauseUI())
-				{
-					actor->Update(0.0f);
-				}
+				if (sr) sr->Update(elapsedTime);
 			}
-			for (auto& actor : currentScene->actors)
+			// パス2: pauseActorsのButtonComponentクリック判定
+			for (auto& actor : pauseActors)
 			{
 				if (!actor->setActive) continue;
 				auto* btn = actor->GetComponent<ButtonComponent>();
-				if (btn && btn->GetIsPauseButton())
-				{
-					btn->Update(elapsedTime);
-				}
+				if (btn) btn->Update(elapsedTime);
 			}
 		}
 		else
