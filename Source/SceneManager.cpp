@@ -2,6 +2,7 @@
 #include "System/Graphics.h"
 #include "Engine.h"
 #include "SpriteRender.h"
+#include "ButtonComponent.h"
 
 void SceneManager::Initialize()
 {
@@ -42,6 +43,7 @@ void SceneManager::Update(float elapsedTime)
 		nextScene = nullptr;
 		nextSceneIsRuntime = false;
 		currentScene = GetCurrentScene();
+		m_currentScenePath = m_pendingScenePath;
 		isPaused = false;
 		Graphics::Instance().CreateRenderTarget(sceneRT, 1280, 720);
 		Graphics::Instance().CreateRenderTarget(gameRT, 1280, 720);
@@ -61,6 +63,15 @@ void SceneManager::Update(float elapsedTime)
 				if (sr && sr->GetIsPauseUI())
 				{
 					actor->Update(0.0f);
+				}
+			}
+			for (auto& actor : currentScene->actors)
+			{
+				if (!actor->setActive) continue;
+				auto* btn = actor->GetComponent<ButtonComponent>();
+				if (btn && btn->GetIsPauseButton())
+				{
+					btn->Update(elapsedTime);
 				}
 			}
 		}

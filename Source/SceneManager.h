@@ -73,6 +73,8 @@ public:
 		m_hasPendingScene = true;
 	}
 
+	std::string GetCurrentScenePath() const { return m_currentScenePath; }
+
 private:
 	//編集用のシーン
 	std::unique_ptr<Scene> editorScene = nullptr;
@@ -87,6 +89,7 @@ private:
 	bool nextSceneIsRuntime = false;
 	std::string m_pendingScenePath = "";
 	bool m_hasPendingScene = false;
+	std::string m_currentScenePath = "";
 
 	RenderTarget sceneRT;
 	RenderTarget gameRT;
