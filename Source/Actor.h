@@ -146,6 +146,20 @@ public:
 	Actor* GetParent() const { return parent; }
 	const std::vector<Actor*>& GetChildren() const { return children; }
 
+	void RemoveChild(Actor* child)
+	{
+		auto it = std::find(children.begin(), children.end(), child);
+		if (it != children.end())
+		{
+			children.erase(it);
+		}
+	}
+
+	void ClearChildren()
+	{
+		children.clear();
+	}
+
 	void Serialize(nlohmann::json& j)const 
 	{
 		j["type"] = type;
