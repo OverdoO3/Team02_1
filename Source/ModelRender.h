@@ -3,7 +3,6 @@
 #include "Component.h"
 #include <nlohmann/json.hpp>
 #include "OpenDialog.h"
-
 using json = nlohmann::json;
 
 class ModelRender : public Component
@@ -14,10 +13,7 @@ public:
 	~ModelRender() {};
 
 	void Render(RenderContext& rc, ModelRenderer* renderer) override;
-	void Update(float elasedTime) override
-	{
-		UpdateAnimation(elasedTime);
-	}
+	void Update(float elasedTime) override;
 
 	void DrawInspector() override;
 	Model* GetModel() 

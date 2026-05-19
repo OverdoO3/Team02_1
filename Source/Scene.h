@@ -208,6 +208,8 @@ public:
 
 	std::unique_ptr<sky_map> sky;
 
+	bool isClear = false;
+
 	//ブルーム用あんまいじらんといて
 	std::unique_ptr<bloom> bloomer;
 	std::unique_ptr<framebuffer> scene_framebuffer;

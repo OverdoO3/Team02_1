@@ -13,6 +13,13 @@ void CameraController::OnAwake(float elapsedTime)
 
 void CameraController::Update(float elapsedTime)
 {
+	if (owner->GetScene()->isClear)
+	{
+		targetGoal = owner->GetScene()->FindByTag(3)->GetComponent<Transform>()->GetLocalPosition();
+		focusTarget = Lerp(targetGoal, focusTarget, 0.1f);
+		distance = Lerp(distance, 100.0f, 0.1f);
+	}
+
 	if(InputC::KeyPressed(VK_TAB))
 	{
 		mouseLocked = !mouseLocked;
@@ -87,7 +94,7 @@ void CameraController::Update(float elapsedTime)
 		}; 
 		float scroll = ImGui::GetIO().MouseWheel;
 
-		distance -= scroll * 1.0f; // Š´“x’²®
+		distance -= scroll * 0.5f; // Š´“x’²®
 		distance = std::clamp(distance, minDistance, maxDistance);
 
 		transform->SetWorldPosition(cameraPos);

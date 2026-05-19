@@ -67,7 +67,6 @@ void Scene::Update(float elapsedTime)
     }
     ImGui::End();
 
-
 #endif
 	if(playState)
 	{
@@ -97,14 +96,37 @@ void Scene::Update(float elapsedTime)
 			actors.push_back(std::move(a));
 		}
 
-		actors.erase(
-			std::remove_if(actors.begin(), actors.end(),
-				[](const std::unique_ptr<Actor>& a)
-				{
-					return a->isDead;
-				}),
-			actors.end()
-		);
+        for (auto& a : actors)
+        {
+            if (!a->isDead) continue;
+
+            Actor* dead = a.get();
+
+            // 親の children から除去
+            Actor* parent = dead->GetParent();
+            if (parent)
+            {
+                parent->RemoveChild(dead); // ★ メソッド経由で操作
+                dead->SetParent(nullptr);
+            }
+
+            // 子の親参照を解消
+            for (auto* child : dead->GetChildren())
+            {
+                child->SetParent(nullptr);
+            }
+            dead->ClearChildren(); // ★ これも追加
+        }
+
+        // その後に erase
+        actors.erase(
+            std::remove_if(actors.begin(), actors.end(),
+                [](const std::unique_ptr<Actor>& a)
+                {
+                    return a->isDead;
+                }),
+            actors.end()
+        );
 
 		physics.Flush();
 		adderActors.clear();
@@ -219,10 +241,11 @@ void Scene::Render(CameraBase* camera, bool isEditor)
     rc.shadowSampler = graphics.GetShadowSampler();
     if (isEditor)
     {
+#ifdef DEBUG
         modelRenderer->DebugImGui();
+#endif // DEBUG
     }
     
-
     // skymap描画
     DirectX::XMMATRIX V = DirectX::XMLoadFloat4x4(&rc.view);
     DirectX::XMMATRIX P = DirectX::XMLoadFloat4x4(&rc.projection);

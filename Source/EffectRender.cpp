@@ -21,14 +21,10 @@ void EffectRender::Update(float elapsedTime)
 
 	position = transform->GetWorldPosition();
 
-	if (handle != -1)
-	{
-		effect->SetPosition(handle, position);
-	}
-
 	// 再生終了チェック
 	if (handle != -1)
 	{
+		effect->SetPosition(handle, position);
 		if (!effect->Exists(handle))
 		{
 			handle = -1;
@@ -51,11 +47,12 @@ void EffectRender::DrawInspector()
 
 void EffectRender::Serialize(nlohmann::json& j) const
 {
-	
+	j["loop"] = loop;
 }
 
 void EffectRender::Deserialize(nlohmann::json& j)
 {
+	loop = j["loop"];
 }
 
 std::unique_ptr<Component> EffectRender::Clone() const
@@ -78,9 +75,15 @@ void EffectRender::Play()
 
 	auto transform = owner->GetComponent<Transform>();
 	position = transform->GetWorldPosition();
-	handle = effect->Play(position,2.0f);
+	
 	if (handle != -1)
 	{
+		effect->Play(position, scale);
+		effect->SetPosition(handle, position);
+	}
+	else
+	{
+		handle = effect->Play(position,scale);
 		effect->SetPosition(handle, position);
 	}
 
@@ -105,4 +108,9 @@ void EffectRender::OnDestroy()
 void EffectRender::SetEffect(const std::shared_ptr<Effect>& eff)
 {
 	effect = eff;
+}
+
+void EffectRender::SetScale(float sca)
+{
+	scale = sca;
 }

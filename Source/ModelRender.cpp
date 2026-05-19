@@ -3,6 +3,7 @@
 #include "ResourceManager.h"
 #include "ImGuiFileDialog.h"
 #include "Actor.h"
+#include "Scene.h"
 
 REGISTER_COMPONENT(ComponentID::ModelRender,ModelRender)
 
@@ -15,6 +16,11 @@ void ModelRender::Render(RenderContext& rc, ModelRenderer* renderer)
 
 	// Instance“o˜^‚¾‚¯‚·‚éi•`‰æ‚Í‚µ‚È‚¢j
 	renderer->AddInstance(model.get(), owner);
+}
+
+void ModelRender::Update(float elasedTime)
+{
+	UpdateAnimation(elasedTime);
 }
 
 void ModelRender::DrawInspector()

@@ -14,6 +14,11 @@ void Move::OnAwake(float elapsedTime)
 
 void Move::Update(float elapsedTime)
 {
+    if (owner->GetScene()->isClear)
+    {
+        owner->GetComponent<Transform>()->LookAt(owner->GetScene()->GetCamera()->GetComponent<Transform>()->GetLocalPosition());
+        return;
+    }
     auto transform = owner->GetComponent<Transform>();
     transform->UpdateTransform();
     auto cam = owner->GetScene()->GetCamera()->GetComponent<Transform>();
@@ -125,7 +130,7 @@ void Move::Update(float elapsedTime)
             actor->GetComponent<Transform>()->UpdateTransform();
 
             DirectX::XMFLOAT3 start = { nextPos.x, nextPos.y + height, nextPos.z };
-            DirectX::XMFLOAT3 end = { nextPos.x, nextPos.y - height, nextPos.z };
+            DirectX::XMFLOAT3 end = { nextPos.x, nextPos.y - 5.0f, nextPos.z };
 
             DirectX::XMFLOAT3 tmpPos, tmpNormal;
 
@@ -158,7 +163,7 @@ void Move::Update(float elapsedTime)
 
             if (nextPos.x < oPos.x - size.x * 0.5f || nextPos.x > oPos.x + size.x * 0.5f) goto next_actor;
             if (nextPos.z < oPos.z - size.z * 0.5f || nextPos.z > oPos.z + size.z * 0.5f) goto next_actor;
-
+             
             // 上面をまたいでいるか
             if (nextPos.y + height < boxTop) goto next_actor; // 完全に下
             if (nextPos.y - height > boxTop) goto next_actor; // 完全に上（空中）
@@ -192,8 +197,8 @@ void Move::Update(float elapsedTime)
     else
     {
         // 空中慣性
-        Velocity.x *= 0.98f;
-        Velocity.z *= 0.98f;
+        Velocity.x *= 0.01f;
+        Velocity.z *= 0.01f;
 
         // 重力
         Velocity.y -= grav * elapsedTime;
@@ -242,12 +247,17 @@ void Move::Update(float elapsedTime)
         {
             float dist = sqrtf(distSq);
 
+            if (other->tag == 3)
+            {
+                owner->GetScene()->isClear = true;
+                nextState = Move::goal;
+            }
+
             if (dist > 0.0001f)
             {
                 // ベベル・床除外
                 float surfaceY = oPos.y + size.y * 0.5f;
-                float heightDiff = fabs(nextPos.y - surfaceY);
-                if (heightDiff < size.y * 0.4f) continue;
+                if (nextPos.y >= surfaceY - 0.1f) continue;
 
                 float push = r - dist;
 
@@ -310,10 +320,18 @@ void Move::DrawInspector()
 
 void Move::Serialize(nlohmann::json& j) const
 {
+    j["grav"] = grav;
+    j["turn"] = turnSpeed;
+    j["radius"] = radius;
+    j["spped"] = speed;
 }
 
 void Move::Deserialize(nlohmann::json& j)
 {
+    /*grav = j["grav"];
+    turnSpeed = j["turn"];
+    radius = j["radius"];
+    speed =  j["spped"];*/
 }
 
 std::unique_ptr<Component> Move::Clone() const

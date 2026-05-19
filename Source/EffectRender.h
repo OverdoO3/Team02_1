@@ -38,6 +38,7 @@ public:
     void OnDestroy();
 
     void SetEffect(const std::shared_ptr<Effect>& eff);
+    void SetScale(float scale);
 
     COMPONENT_ID(EffectRender)
 private:
@@ -46,6 +47,7 @@ private:
     std::string effectPath;
 
     DirectX::XMFLOAT3 position{0,0,0};
+    float scale;
 
     bool playOnStart = true;
     bool loop;

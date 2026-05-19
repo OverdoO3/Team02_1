@@ -26,7 +26,7 @@ public:
 
     COMPONENT_ID(CameraController)
 private:
-    float distance = 100;
+    float distance = 300;
     float yaw = 0.0f;
     float pitch = 20.0f;
     float maxPitch = 1.3f; //è„â∫ÇÃè„å¿
