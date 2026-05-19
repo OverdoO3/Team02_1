@@ -195,7 +195,7 @@
                     {
                         "data": {
                             "ButtonMode": 0,
-                            "NextSceneName": "Scenes/Demo.json",
+                            "NextSceneName": "Scenes/choice.json",
                             "TitleSceneName": "Scenes/Title.json"
                         },
                         "type": "ButtonComponent"
