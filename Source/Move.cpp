@@ -2,6 +2,7 @@
 #include "Scene.h"
 #include "Lerp.h"
 #include <RayCast.h>
+#include "Slope.h"
 #include "Factory.h"
 
 REGISTER_COMPONENT(ComponentID::Move,Move)
@@ -24,10 +25,12 @@ void Move::Update(float elapsedTime)
     // 入力
     //=========================
     float ax = 0, ay = 0;
-    if (InputC::KeyDown('W')) ay += 1;
-    if (InputC::KeyDown('S')) ay -= 1;
-    if (InputC::KeyDown('D')) ax += 1;
-    if (InputC::KeyDown('A')) ax -= 1;
+    {  
+        if (InputC::KeyDown('W')) ay += 1;
+        if (InputC::KeyDown('S')) ay -= 1;
+        if (InputC::KeyDown('D')) ax += 1;
+        if (InputC::KeyDown('A')) ax -= 1;
+    }
 
     //=========================
     // カメラ基準方向
@@ -48,6 +51,7 @@ void Move::Update(float elapsedTime)
     };
 
     float len = sqrtf(moveDir.x * moveDir.x + moveDir.z * moveDir.z);
+
     if (len > 0.0001f)
     {
         moveDir.x /= len;
@@ -96,70 +100,106 @@ void Move::Update(float elapsedTime)
     nextPos.x += Velocity.x * elapsedTime;
     nextPos.z += Velocity.z * elapsedTime;
 
-    //=========================
-    // 地面Ray
-    //=========================
-    DirectX::XMFLOAT3 start = {
-        nextPos.x,
-        nextPos.y + height,
-        nextPos.z
-    };
-
-    DirectX::XMFLOAT3 end = {
-        nextPos.x,
-        nextPos.y - height,
-        nextPos.z
-    };
-
+//=========================
+// 地面Ray（AABB版）
+//=========================
     bool onGround = false;
     RaycastHit hit;
 
     for (auto& actor : owner->GetScene()->actors)
     {
         if (actor.get() == owner) continue;
+        if (actor->tag != 2) continue;
 
-        auto model = actor->GetComponent<ModelRender>();
+        auto oPos = actor->GetComponent<Transform>()->GetWorldPosition();
 
-        actor->GetComponent<Transform>()->UpdateTransform();
-        if (!model || !model->GetModel()) continue;
-
-        DirectX::XMFLOAT3 tmpPos, tmpNormal;
-
-        if (Hit::RayCast(
-            start,
-            end,
-            actor->GetComponent<Transform>()->GetWorldMatrix(),
-            model->GetModel(),
-            tmpPos,
-            tmpNormal))
+        //=========================
+        // Slope優先チェック
+        //=========================
+        auto slope = actor->GetComponent<Slope>();
+        if (slope)
         {
-            hit.point = tmpPos;
-            hit.normal = tmpNormal;
+            auto model = actor->GetComponent<ModelRender>();
+            if (!model || !model->GetModel()) goto next_actor;
+
+            actor->GetComponent<Transform>()->UpdateTransform();
+
+            DirectX::XMFLOAT3 start = { nextPos.x, nextPos.y + height, nextPos.z };
+            DirectX::XMFLOAT3 end = { nextPos.x, nextPos.y - height, nextPos.z };
+
+            DirectX::XMFLOAT3 tmpPos, tmpNormal;
+
+            if (Hit::RayCast(
+                start,
+                end,
+                actor->GetComponent<Transform>()->GetWorldMatrix(),
+                model->GetModel(),
+                tmpPos,
+                tmpNormal))
+            {
+                hit.point = tmpPos;
+                hit.normal = tmpNormal;
+                onGround = true;
+                break;
+            }
+            goto next_actor;
+        }
+
+        //=========================
+        // 通常床チェック（BoxColliderのみ）
+        //=========================
+        {
+            auto col = actor->GetComponent<BoxCollider>();
+            if (!col) goto next_actor;
+
+            auto size = col->size;
+
+            float boxTop = oPos.y + size.y * 0.5f;
+
+            if (nextPos.x < oPos.x - size.x * 0.5f || nextPos.x > oPos.x + size.x * 0.5f) goto next_actor;
+            if (nextPos.z < oPos.z - size.z * 0.5f || nextPos.z > oPos.z + size.z * 0.5f) goto next_actor;
+
+            // 上面をまたいでいるか
+            if (nextPos.y + height < boxTop) goto next_actor; // 完全に下
+            if (nextPos.y - height > boxTop) goto next_actor; // 完全に上（空中）
+
+            hit.point = { nextPos.x, boxTop, nextPos.z };
+            hit.normal = { 0, 1, 0 };
             onGround = true;
             break;
         }
-        else
-        {
-            nextState = Move::fall;
-        }
+
+    next_actor:;
     }
+
+    if (!onGround) nextState = Move::fall;
 
     //=========================
     // 地面処理
     //=========================
     if (onGround && hit.normal.y > 0.5f)
     {
-        float dot = Velocity.x * hit.normal.x + Velocity.z * hit.normal.z;
+        float dot = Velocity.x * hit.normal.x
+            + Velocity.y * hit.normal.y
+            + Velocity.z * hit.normal.z;
 
         Velocity.x -= hit.normal.x * dot;
+        Velocity.y -= hit.normal.y * dot;  // ← Yも法線に沿って補正
         Velocity.z -= hit.normal.z * dot;
 
         nextPos.y = hit.point.y + radius;
-        Velocity.y = 0;
     }
     else
     {
+        // 空中慣性
+        Velocity.x *= 0.98f;
+        Velocity.z *= 0.98f;
+
+        // 重力
         Velocity.y -= grav * elapsedTime;
+
+        nextPos.x += Velocity.x * elapsedTime;
+        nextPos.z += Velocity.z * elapsedTime;
         nextPos.y += Velocity.y * elapsedTime;
     }
 
@@ -207,9 +247,7 @@ void Move::Update(float elapsedTime)
                 // ベベル・床除外
                 float surfaceY = oPos.y + size.y * 0.5f;
                 float heightDiff = fabs(nextPos.y - surfaceY);
-
-                if (heightDiff < 0.3f)
-                    continue;
+                if (heightDiff < size.y * 0.4f) continue;
 
                 float push = r - dist;
 

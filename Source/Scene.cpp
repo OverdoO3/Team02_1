@@ -7,79 +7,14 @@ void Scene::Initialize(const char* path)
 {
 	SceneSerializer::Load(*this,path);
 	InitializeAfterLoad();
-	sky = std::make_unique<sky_map>(Graphics::Instance().GetDevice(), "Data/skymap/sky_cloud.hdr",false);
 
+#ifndef _DEBUG
+    playState = true; // Releaseでは常にプレイ状態
+#endif
 }
 
 void Scene::Update(float elapsedTime)
 {
-	if(playState)
-	{
-		//アウェイク
-		for (auto& a : actors)
-		{
-			bool active = a->setActive && (!a->GetParent() || a->GetParent()->setActive);
-			if (active)
-			{
-				a->OnAwake(elapsedTime);
-			}
-		}
-
-		//アップデート
-		for (auto& a : actors)
-		{
-			bool active = a->setActive && (!a->GetParent() || a->GetParent()->setActive);
-			if (active)
-			{
-				a->Update(elapsedTime);
-			}
-		}
-
-		//アクターの追加
-		for (auto& a : adderActors)
-		{
-			actors.push_back(std::move(a));
-		}
-
-		actors.erase(
-			std::remove_if(actors.begin(), actors.end(),
-				[](const std::unique_ptr<Actor>& a)
-				{
-					return a->isDead;
-				}),
-			actors.end()
-		);
-		adderActors.clear();
-
-		physics.Flush();
-	}
-	else
-	{
-		for (auto& a : actors)
-		{
-			bool active = a->setActive && (!a->GetParent() || a->GetParent()->setActive);
-			if (active)
-			{
-				a->UpdateWithOutPlayed(elapsedTime);
-			}
-		}
-		//アクターの追加
-		for (auto& a : adderActors)
-		{
-			actors.push_back(std::move(a));
-		}
-
-		actors.erase(
-			std::remove_if(actors.begin(), actors.end(),
-				[](const std::unique_ptr<Actor>& a)
-				{
-					return a->isDead;
-				}),
-			actors.end()
-		);
-		physics.Flush();
-		adderActors.clear();
-	}
 #ifdef _DEBUG
     if (ImGui::Begin("Debug Settings"))
     {
@@ -134,6 +69,75 @@ void Scene::Update(float elapsedTime)
 
 
 #endif
+	if(playState)
+	{
+		//アウェイク
+		for (auto& a : actors)
+		{
+			bool active = a->setActive && (!a->GetParent() || a->GetParent()->setActive);
+			if (active)
+			{
+				a->OnAwake(elapsedTime);
+			}
+		}
+
+		///アップデート
+		for (auto& a : actors)
+		{
+			bool active = a->setActive && (!a->GetParent() || a->GetParent()->setActive);
+			if (active)
+			{
+				a->Update(elapsedTime);
+			}
+		}
+
+		//アクターの追加
+		for (auto& a : adderActors)
+		{
+			actors.push_back(std::move(a));
+		}
+
+		actors.erase(
+			std::remove_if(actors.begin(), actors.end(),
+				[](const std::unique_ptr<Actor>& a)
+				{
+					return a->isDead;
+				}),
+			actors.end()
+		);
+
+		physics.Flush();
+		adderActors.clear();
+	}
+	else
+	{
+		for (auto& a : actors)
+		{
+			bool active = a->setActive && (!a->GetParent() || a->GetParent()->setActive);
+			if (active)
+			{
+				a->UpdateWithOutPlayed(elapsedTime);
+			}
+		}
+		//アクターの追加
+		for (auto& a : adderActors)
+		{
+			actors.push_back(std::move(a));
+		}
+
+		actors.erase(
+			std::remove_if(actors.begin(), actors.end(),
+				[](const std::unique_ptr<Actor>& a)
+				{
+					return a->isDead;
+				}),
+			actors.end()
+		);
+
+		physics.Flush();
+		adderActors.clear();
+	}
+
 }
 
 void Scene::Render(CameraBase* camera, bool isEditor)
@@ -143,8 +147,6 @@ void Scene::Render(CameraBase* camera, bool isEditor)
     ID3D11DeviceContext* dc = graphics.GetDeviceContext();
     ShapeRenderer* shapeRenderer = graphics.GetShapeRenderer();
     ModelRenderer* modelRenderer = graphics.GetModelRenderer();
-
-
 
     // 描画準備
     RenderContext rc;
@@ -184,6 +186,7 @@ void Scene::Render(CameraBase* camera, bool isEditor)
         RenderContext shadowRC = rc;
         shadowRC.view = lightView;
         shadowRC.projection = lightProjection;
+        shadowRC.lightViewProjection = lightVP;
         rc.shadowParams = m_shadowParams;
 
         for (auto& actor : actors)
@@ -195,14 +198,15 @@ void Scene::Render(CameraBase* camera, bool isEditor)
                 auto modelRender = actor->GetComponent<ModelRender>();
                 if (modelRender)
                 {
-                    modelRender->SetShaderId(ShaderId::Shadow);
                     actor->Render(shadowRC, modelRenderer);
-                    modelRender->SetShaderId(ShaderId::Lambert);
                 }
             }
         }
+        modelRenderer->SetShaderId(ShaderId::Shadow);
+        modelRenderer->FlushAll(shadowRC);
         graphics.EndShadowMap();
     }
+   
 
     // scene_framebuffer に描画
     //graphics.SetRenderTargets();
@@ -211,16 +215,13 @@ void Scene::Render(CameraBase* camera, bool isEditor)
     scene_framebuffer->clear(dc, 0.2f, 0.2f, 0.2f, 1.0f);
     scene_framebuffer->activate(dc);
 
-
-
     rc.shadowMap = graphics.GetShadowMapSRV();
     rc.shadowSampler = graphics.GetShadowSampler();
     if (isEditor)
     {
         modelRenderer->DebugImGui();
     }
-    dc->PSSetShaderResources(8, 1, &rc.shadowMap);
-    dc->PSSetSamplers(8, 1, &rc.shadowSampler);
+    
 
     // skymap描画
     DirectX::XMMATRIX V = DirectX::XMLoadFloat4x4(&rc.view);
@@ -230,6 +231,9 @@ void Scene::Render(CameraBase* camera, bool isEditor)
     DirectX::XMFLOAT3 pos = camera->GetEye();
     sky->blit(rc, vp, { pos.x, pos.y, pos.z, 1.0f });
 
+    dc->PSSetShaderResources(8, 1, &rc.shadowMap);
+    dc->PSSetSamplers(8, 1, &rc.shadowSampler);
+
     // 3Dモデル描画
     for (auto& actor : actors)
     {
@@ -237,6 +241,8 @@ void Scene::Render(CameraBase* camera, bool isEditor)
         if (active)
             actor->Render(rc, modelRenderer);
     }
+    modelRenderer->SetShaderId(ShaderId::Lambert);
+    modelRenderer->FlushAll(rc);
 
     // アウトライン描画
     for (auto& actor : actors)
@@ -247,13 +253,12 @@ void Scene::Render(CameraBase* camera, bool isEditor)
             auto modelRender = actor->GetComponent<ModelRender>();
             if (modelRender)
             {
-                modelRender->SetShaderId(ShaderId::Outline);
-                actor->Render(rc, modelRenderer);
-                modelRender->SetShaderId(ShaderId::Lambert);
+                actor->Render(rc, modelRenderer);   
             }
         }
     }
-
+    modelRenderer->SetShaderId(ShaderId::Outline);
+    modelRenderer->FlushAll(rc);
 
     // エフェクト
     EffectManager::Instance().Render(rc.view, rc.projection);
@@ -270,7 +275,6 @@ void Scene::Render(CameraBase* camera, bool isEditor)
     }
 
     scene_framebuffer->deactivate(dc);
-
 
     // BLOOM
     if (bloomer)

@@ -8,6 +8,7 @@ void SceneManager::Initialize()
 {
 	ChangeScene(std::move(std::make_unique<Scene>()), "Scenes/Demo.json");
 	LoadPauseUI("Scenes/pause.json");
+	ChangeScene(std::move(std::make_unique<Scene>()), "Scenes/Stage1.json");
 }
 
 void SceneManager::Update(float elapsedTime)
@@ -53,6 +54,15 @@ void SceneManager::Update(float elapsedTime)
 		{
 			actor->SetScene(currentScene);
 		}
+
+#ifdef _DEBUG
+		Graphics::Instance().CreateRenderTarget(sceneRT, 1280, 720);
+		Graphics::Instance().CreateRenderTarget(gameRT, 1280, 720);
+#else
+		int sw = GetSystemMetrics(SM_CXSCREEN);
+		int sh = GetSystemMetrics(SM_CYSCREEN);
+		Graphics::Instance().CreateRenderTarget(gameRT, sw, sh); // ゲーム用のみ
+#endif
 	}
 
 

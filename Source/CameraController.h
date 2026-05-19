@@ -30,8 +30,8 @@ private:
     float yaw = 0.0f;
     float pitch = 20.0f;
     float maxPitch = 1.3f; //è„â∫ÇÃè„å¿
-    float minDistance = 20.0f; //Ç«ÇÍÇ≠ÇÁÇ¢ãﬂÇ√ÇØÇÍÇÈÇ©
-    float maxDistance = 100.0f; //Ç«ÇÍÇ≠ÇÁÇ¢âìÇ¥Ç©ÇÍÇÈÇ©
+    float minDistance = 40.0f; //Ç«ÇÍÇ≠ÇÁÇ¢ãﬂÇ√ÇØÇÍÇÈÇ©
+    float maxDistance = 300.0f; //Ç«ÇÍÇ≠ÇÁÇ¢âìÇ¥Ç©ÇÍÇÈÇ©
 
     bool focusToPlayer = false;
 

@@ -55,6 +55,8 @@ public:
 	void PlayAnimation(const char* name, bool loop);
 	void UpdateAnimation(float elapsedTime);
 
+	static void Flush(const RenderContext& rc, ModelRenderer* renderer);
+
 	std::unique_ptr<Component> Clone() const override;
 
 	void Serialize(nlohmann::json& j)const override;

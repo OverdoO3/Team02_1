@@ -14,7 +14,7 @@
 #include "LogManager.h"
 
 // 垂直同期間隔設定
-static const int syncInterval = 1;
+static const int syncInterval = 0;
 
 //static SceneGame sceneGame;
 
@@ -45,9 +45,6 @@ Framework::Framework(HWND hWnd)
 
 	ImGuiIO& io = ImGui::GetIO();
 	io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
-
-	// シーン初期化
-	//SceneManager::Instance().ChangeScene(std::move(std::make_unique<Scene>()),"Scenes/scene.json");
 
 	//マウスカーソル初期化
 	mouseCursor = std::make_unique<MouseCursor>();
@@ -136,48 +133,58 @@ void Framework::Update(float elapsedTime)
 // 描画処理
 void Framework::Render(float elapsedTime)
 {
-	std::lock_guard <std::recursive_mutex> lock(Graphics::Instance().GetMutex());
-
+	std::lock_guard<std::recursive_mutex> lock(Graphics::Instance().GetMutex());
 	ID3D11DeviceContext* dc = Graphics::Instance().GetDeviceContext();
 	RenderContext rc;
 	rc.deviceContext = dc;
 	rc.renderState = Graphics::Instance().GetRenderState();
 
-	// 画面クリア
 	Graphics::Instance().Clear(0, 0, 1, 1);
-
-	// レンダーターゲット設定
 	Graphics::Instance().SetRenderTargets();
 
-	// シーン描画処理
+#ifdef _DEBUG
+	//=====================
+	// エディタモード
+	//=====================
 	CameraBase* editorCam = editor.GetEditorCamera();
-	CameraBase* gameCam = engine.GetSceneManager().GetCurrentScene()->GetCamera()->GetComponent<Camera>();
-	engine.Render(editorCam,gameCam);
+	CameraBase* gameCam = engine.GetSceneManager().GetCurrentScene()
+		->GetCamera()->GetComponent<Camera>();
+	engine.Render(editorCam, gameCam);
 
-	// シーンGUI描画処理
 	Scene* scene = engine.GetSceneManager().GetCurrentScene();
 	editor.Render(scene);
-	//SceneManager::Instance().DrawGUI();
-#if 0
-	// IMGUIデモウインドウ描画（IMGUI機能テスト用）
-	ImGui::ShowDemoWindow();
-#endif
 
-	auto& graphics = Graphics::Instance();
-	ID3D11RenderTargetView* rtv = graphics.GetBackBufferRTV();
-
-	dc->OMSetRenderTargets(1, &rtv, graphics.GetDepthStencilView());
-
+	ID3D11RenderTargetView* rtv = Graphics::Instance().GetBackBufferRTV();
+	dc->OMSetRenderTargets(1, &rtv, Graphics::Instance().GetDepthStencilView());
 	ImGui::Render();
-	// IMGUI描画
 	ImGuiRenderer::Render(dc);
 
+#else
+	//=====================
+	// リリースモード：ゲームのみ全画面
+	//=====================
+	engine.RenderGame(nullptr);
+
+	// バックバッファに blit
+	ID3D11RenderTargetView* rtv = Graphics::Instance().GetBackBufferRTV();
+	dc->OMSetRenderTargets(1, &rtv, nullptr);
+
+	D3D11_VIEWPORT vp{};
+	vp.Width = Graphics::Instance().GetScreenWidth();
+	vp.Height = Graphics::Instance().GetScreenHeight();
+	vp.MinDepth = 0.0f;
+	vp.MaxDepth = 1.0f;
+	dc->RSSetViewports(1, &vp);
+
+	Graphics::Instance().Blit(engine.GetGameRT().srv.Get());
+
+#endif
 
 	if (mouseCursor)
 	{
 		mouseCursor->Draw(rc);
 	}
-	// 画面表示
+
 	Graphics::Instance().Present(syncInterval);
 }
 

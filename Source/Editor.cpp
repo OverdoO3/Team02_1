@@ -249,6 +249,11 @@ void Editor::HandleGizmo(ImVec2 pos, ImVec2 size)
 	if (InputC::KeyPressed('E'))operation = ImGuizmo::ROTATE;
 	if (InputC::KeyPressed('R'))operation = ImGuizmo::SCALE;
 
+	if (InputC::KeyDown(VK_SHIFT))
+	{
+		useSnap = true;
+	}
+
 	if (useSnap)
 	{
 		if (operation == ImGuizmo::TRANSLATE)
@@ -382,16 +387,57 @@ void Editor::DrawInspector(Scene* scene)
 	if (!selectedActors.empty()&&anchorActor != nullptr)
 	{
 		std::vector<Actor*> newSelection;
+
 		if (InputC::KeyPressed('D') && InputC::KeyDown(VK_CONTROL))
 		{
 			for (auto* a : selectedActors)
 			{
 				auto clone = a->Clone();
+
+				std::string baseName = a->name;
+				auto posa = baseName.rfind('(');
+				if (posa != std::string::npos)
+				{
+					// "(N)" の形式か確認（末尾が ')'）
+					if (baseName.back() == ')')
+					{
+						baseName = baseName.substr(0, posa);
+					}
+				}
+
+				// 同じベース名のActorが何個いるか数える
+				int count = 0;
+				for (auto& existing : scene->actors)
+				{
+					std::string existingName = existing->name;
+
+					// 既存Actorのベース名も取得
+					auto epos = existingName.rfind('(');
+					if (epos != std::string::npos && existingName.back() == ')')
+					{
+						existingName = existingName.substr(0, epos);
+					}
+
+					if (existingName == baseName)
+					{
+						count++;
+					}
+				}
+
+				// 重複があれば "(N)" をつける
+				if (count > 0)
+				{
+					clone->name = (baseName + "(" + std::to_string(count) + ")");
+				}
+				else
+				{
+					clone->name = (baseName); // ★ ベース名に戻す
+				}
 				Actor* ptr = clone.get();
 				// 少しずらすと気持ちいい
 				auto t = clone->GetComponent<Transform>();
 				auto pos = t->GetLocalPosition();
-				pos.x += 1.0f;
+				pos.x += 10.0f;
 				t->SetLocalPosition(pos);
 				clone->SetParent(a->GetParent());
 				scene->actors.emplace_back(std::move(clone));

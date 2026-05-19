@@ -1,4 +1,5 @@
 #include "Transform.h"
+#include "Actor.h"
 #include "Factory.h"
 
 REGISTER_COMPONENT(ComponentID::Transform, Transform)
@@ -53,6 +54,17 @@ void Transform::UpdateTransform()
     {
         child->UpdateTransform();
     }
+
+    children.erase(
+        std::remove_if(children.begin(), children.end(),
+            [](Transform* a)
+            {
+                return a == nullptr ||
+                    a->owner == nullptr ||
+                    a->owner->isDead;
+            }),
+        children.end()
+    );
 }
 
 void Transform::SetParent(Transform* newParent)

@@ -65,17 +65,18 @@ void LambertShader::Update(const RenderContext& rc, const ModelResource::Materia
 void LambertShader::End(const RenderContext& rc)
 {
 	ID3D11DeviceContext* dc = rc.deviceContext;
-
 	// シェーダー設定解除
 	dc->VSSetShader(nullptr, nullptr, 0);
 	dc->PSSetShader(nullptr, nullptr, 0);
 	dc->IASetInputLayout(nullptr);
-
 	// 定数バッファ設定解除
 	ID3D11Buffer* cbs[] = { nullptr };
 	dc->PSSetConstantBuffers(1, _countof(cbs), cbs);
-
 	// シェーダーリソースビュー設定解除
 	ID3D11ShaderResourceView* srvs[] = { nullptr, nullptr };
 	dc->PSSetShaderResources(0, _countof(srvs), srvs);
+
+	// ★ VS の t0 を解除
+	ID3D11ShaderResourceView* nullVsSRVs[] = { nullptr };
+	dc->VSSetShaderResources(0, _countof(nullVsSRVs), nullVsSRVs);
 }

@@ -25,6 +25,8 @@ enum class ComponentID
     snowman,
     PlayerUIRotator,
     ButtonComponent,
+    Slope,
+    tent,
     COUNT
 };
 

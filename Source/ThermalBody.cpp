@@ -41,6 +41,9 @@ void ThermalBody::RenderDebug(RenderContext& rc, ShapeRenderer* renderer)
 	case -1:
 		color = { 0,0,1,1 };
 		break;
+	case -2:
+		color = { 0,1,1,1 };
+		break;
 	default:
 		break;
 	}

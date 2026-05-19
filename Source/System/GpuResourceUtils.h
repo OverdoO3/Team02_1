@@ -49,4 +49,9 @@ public:
 		UINT bufferSize,
 		ID3D11Buffer** constantBuffer);
 
+	static HRESULT CreateDynamicVertexBuffer(
+		ID3D11Device* device,
+		UINT size,
+		ID3D11Buffer** buffer);
+
 };

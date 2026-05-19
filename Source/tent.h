@@ -3,11 +3,11 @@
 #include "nlohmann/json.hpp"
 
 using json = nlohmann::json;
-class ComponentTemp : public Component
+class tent : public Component
 {
 public:
-    ComponentTemp() = default;
-    ~ComponentTemp() override = default;
+    tent() = default;
+    ~tent() override = default;
 
     void OnAwake(float elapsedTime) override;
     void Update(float elapsedTime) override;
@@ -19,5 +19,5 @@ public:
 
     std::unique_ptr<Component> Clone() const override;
 
-    COMPONENT_ID()ComponentTemp)
+    COMPONENT_ID(tent)
 };
