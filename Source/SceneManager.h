@@ -122,9 +122,14 @@ private:
 	bool m_hasPendingScene = false;
 	std::string m_currentScenePath = "";
 
+	bool m_isGameFullScreen = false;
+
 	std::vector<std::unique_ptr<Actor>> pauseActors;
 	std::string m_pauseUIPath = "Scenes/PauseUI.json";
 
 	RenderTarget sceneRT;
 	RenderTarget gameRT;
+	int sw ;
+	int sh ;
+
 };

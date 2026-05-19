@@ -42,7 +42,7 @@
                     {
                         "data": {
                             "position": [
-                                -67.06700134277344,
+                                -69.06900024414063,
                                 -18.01799964904785,
                                 0.0
                             ],
@@ -53,8 +53,8 @@
                                 1.0
                             ],
                             "scale": [
-                                0.6700000166893005,
-                                0.6700000166893005,
+                                1.0,
+                                1.0,
                                 1.0
                             ]
                         },
@@ -129,10 +129,10 @@
                     {
                         "data": {
                             "AnimFrameCount": 1,
-                            "ColHeight": 156.0,
-                            "ColOffsetX": 36.0,
-                            "ColOffsetY": 51.0,
-                            "ColWidth": 377.0,
+                            "ColHeight": 270.0,
+                            "ColOffsetX": 0.0,
+                            "ColOffsetY": 0.0,
+                            "ColWidth": 420.0,
                             "ColorA": 1.0,
                             "ColorB": 1.0,
                             "ColorG": 1.0,
@@ -165,7 +165,7 @@
                     {
                         "data": {
                             "ButtonMode": 0,
-                            "NextSceneName": "Scenes/",
+                            "NextSceneName": "Scenes/stage1.json",
                             "TitleSceneName": "Scenes/title.json"
                         },
                         "type": "ButtonComponent"
@@ -203,10 +203,10 @@
                     {
                         "data": {
                             "AnimFrameCount": 1,
-                            "ColHeight": 156.0,
-                            "ColOffsetX": 3.0,
-                            "ColOffsetY": 51.0,
-                            "ColWidth": 377.0,
+                            "ColHeight": 270.0,
+                            "ColOffsetX": 0.0,
+                            "ColOffsetY": 0.0,
+                            "ColWidth": 420.0,
                             "ColorA": 1.0,
                             "ColorB": 1.0,
                             "ColorG": 1.0,
@@ -277,10 +277,10 @@
                     {
                         "data": {
                             "AnimFrameCount": 1,
-                            "ColHeight": 156.0,
-                            "ColOffsetX": -31.0,
-                            "ColOffsetY": 51.0,
-                            "ColWidth": 377.0,
+                            "ColHeight": 270.0,
+                            "ColOffsetX": 0.0,
+                            "ColOffsetY": 0.0,
+                            "ColWidth": 420.0,
                             "ColorA": 1.0,
                             "ColorB": 1.0,
                             "ColorG": 1.0,
@@ -351,10 +351,10 @@
                     {
                         "data": {
                             "AnimFrameCount": 1,
-                            "ColHeight": 156.0,
-                            "ColOffsetX": -60.0,
-                            "ColOffsetY": 52.0,
-                            "ColWidth": 377.0,
+                            "ColHeight": 270.0,
+                            "ColOffsetX": 0.0,
+                            "ColOffsetY": 0.0,
+                            "ColWidth": 420.0,
                             "ColorA": 1.0,
                             "ColorB": 1.0,
                             "ColorG": 1.0,
@@ -404,7 +404,7 @@
                     {
                         "data": {
                             "position": [
-                                -4.004000186920166,
+                                38.03799819946289,
                                 2.002000093460083,
                                 0.0
                             ],
@@ -415,8 +415,8 @@
                                 1.0
                             ],
                             "scale": [
-                                1.0,
-                                1.0,
+                                1.5,
+                                1.5,
                                 1.0
                             ]
                         },
@@ -471,7 +471,7 @@
                         "data": {
                             "position": [
                                 -67.06700134277344,
-                                475.4750061035156,
+                                768.7680053710938,
                                 0.0
                             ],
                             "rotation": [
@@ -481,8 +481,8 @@
                                 1.0
                             ],
                             "scale": [
-                                1.0,
-                                1.0,
+                                1.100000023841858,
+                                1.100000023841858,
                                 1.0
                             ]
                         },
@@ -491,10 +491,10 @@
                     {
                         "data": {
                             "AnimFrameCount": 1,
-                            "ColHeight": 64.0,
-                            "ColOffsetX": 16.0,
-                            "ColOffsetY": -112.0,
-                            "ColWidth": 244.0,
+                            "ColHeight": 105.0,
+                            "ColOffsetX": 0.0,
+                            "ColOffsetY": 0.0,
+                            "ColWidth": 270.0,
                             "ColorA": 1.0,
                             "ColorB": 1.0,
                             "ColorG": 1.0,

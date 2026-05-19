@@ -145,6 +145,7 @@ void Sprite::Render(const RenderContext& rc,
 	// --- 4. スクリーン座標系からNDC座標系へ変換 ---
 	D3D11_VIEWPORT viewport;
 	UINT numViewports = 1;
+
 	dc->RSGetViewports(&numViewports, &viewport);
 	float screenWidth = viewport.Width;
 	float screenHeight = viewport.Height;

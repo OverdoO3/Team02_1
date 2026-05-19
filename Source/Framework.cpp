@@ -266,13 +266,13 @@ LRESULT CALLBACK Framework::HandleMessage(HWND hWnd, UINT msg, WPARAM wParam, LP
 		if (wParam == VK_ESCAPE)
 		{
 			auto& sm = engine.GetSceneManager();
-			//std::string path = sm.GetCurrentScenePath();
+			std::string path = sm.GetCurrentScenePath();
 
-			//// "stage" を含むシーンだけポーズ可能
-			//if (path.find("stage") != std::string::npos)
-			//{
+			// "stage" を含むシーンだけポーズ可能
+			if (path.find("stage") != std::string::npos)
+			{
 				sm.TogglePause();
-			//}
+			}
 		}
 		break;
 	case WM_ENTERSIZEMOVE:

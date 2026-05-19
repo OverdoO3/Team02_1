@@ -8,7 +8,10 @@ void SceneManager::Initialize()
 {
 	ChangeScene(std::move(std::make_unique<Scene>()), "Scenes/Demo.json");
 	LoadPauseUI("Scenes/pause.json");
-	ChangeScene(std::move(std::make_unique<Scene>()), "Scenes/Stage1.json");
+	ChangeScene(std::move(std::make_unique<Scene>()), "Scenes/title.json");
+	sw = GetSystemMetrics(SM_CXSCREEN);
+	sh = GetSystemMetrics(SM_CYSCREEN);
+
 }
 
 void SceneManager::Update(float elapsedTime)
@@ -47,21 +50,19 @@ void SceneManager::Update(float elapsedTime)
 		currentScene = GetCurrentScene();
 		m_currentScenePath = m_pendingScenePath;
 		isPaused = false;
-		Graphics::Instance().CreateRenderTarget(sceneRT, 1280, 720);
-		Graphics::Instance().CreateRenderTarget(gameRT, 1280, 720);
+		Graphics::Instance().CreateRenderTarget(sceneRT, sw, sh);
+		Graphics::Instance().CreateRenderTarget(gameRT, sw, sh);
 
 		for (auto& actor : pauseActors)
 		{
 			actor->SetScene(currentScene);
 		}
 
-#ifdef _DEBUG
-		Graphics::Instance().CreateRenderTarget(sceneRT, 1280, 720);
-		Graphics::Instance().CreateRenderTarget(gameRT, 1280, 720);
-#else
+#ifdef DEBUG
+		// リリース（製品版）時は常にモニターの最大解像度で作る
 		int sw = GetSystemMetrics(SM_CXSCREEN);
 		int sh = GetSystemMetrics(SM_CYSCREEN);
-		Graphics::Instance().CreateRenderTarget(gameRT, sw, sh); // ゲーム用のみ
+		Graphics::Instance().CreateRenderTarget(gameRT, sw, sh);
 #endif
 	}
 
@@ -101,9 +102,20 @@ void SceneManager::Render(CameraBase* camera,bool isEditor)
 
 	if (isPaused)
 	{
+		// ソートしてから描画
+		std::vector<std::pair<int, Actor*>> spriteActors;
 		for (auto& actor : pauseActors)
 		{
 			if (!actor->setActive) continue;
+			auto* sr = actor->GetComponent<SpriteRender>();
+			if (sr && sr->enabled)
+				spriteActors.push_back({ sr->GetSortOrder(), actor.get() });
+		}
+		std::sort(spriteActors.begin(), spriteActors.end(),
+			[](const auto& a, const auto& b) { return a.first < b.first; });
+
+		for (auto& [order, actor] : spriteActors)
+		{
 			auto* sr = actor->GetComponent<SpriteRender>();
 			if (sr)
 			{

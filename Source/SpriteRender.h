@@ -65,6 +65,7 @@ public:
     enum class Pivot { TopLeft, Center };
     Pivot m_pivot = Pivot::TopLeft;
 
+
 private:
     std::unique_ptr<Sprite> spr;
 

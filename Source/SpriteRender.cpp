@@ -165,52 +165,74 @@ void SpriteRender::Draw(RenderContext& rc)
 //}
 void SpriteRender::Update(float elapsedTime)
 {
-    if (!owner)return;
-    // 1. マウス座標とウィンドウの開始位置を取得
+    if (!owner) return;
 
     if (m_isPauseUI)
     {
         if (!m_sceneManager || !m_sceneManager->IsPaused()) return;
     }
 
-    ImVec2 mousePos = ImGui::GetMousePos();
-    ImVec2 screenOffset = ImGui::GetCursorScreenPos();
-
+    // ─── 1. マウスのホバー判定（空間を統一して計算） ───
     auto tran = owner->GetComponent<Transform>();
-    if (tran)
+    if (tran && spr)
     {
         DirectX::XMFLOAT3 worldPos = tran->GetWorldPosition();
-
         DirectX::XMFLOAT3 worldScale = tran->GetWorldScale();
 
-        float colLeft = screenOffset.x + worldPos.x + m_colliderOffsetX * worldScale.x;
-        float colTop = screenOffset.y + worldPos.y + m_colliderOffsetY * worldScale.y;
+        // スプライト1コマの純粋なサイズを計算
+        float texW = spr->GetTextureWidth();
+        float texH = spr->GetTextureHeight();
+        float sw = (m_srcW < 0.0f) ? (texW / (float)m_splitX) : m_srcW;
+        float sh = (m_srcH < 0.0f) ? (texH / (float)m_splitY) : m_srcH;
+
+        // 描画される最終的なサイズ (Draw関数と同じ計算式)
+        float width = sw * m_editorScale * worldScale.x;
+        float height = sh * m_editorScale * worldScale.y;
+
+        // ピボットによる左上（基準点）の割り出し (Draw関数と同じ)
+        float drawLeft = worldPos.x;
+        float drawTop = worldPos.y;
+        if (m_pivot == Pivot::Center)
+        {
+            drawLeft -= width * 0.5f;
+            drawTop -= height * 0.5f;
+        }
+
+        // コライダーのローカルオフセットにスケールを適用
+        float colLeft = drawLeft + m_colliderOffsetX * worldScale.x;
+        float colTop = drawTop + m_colliderOffsetY * worldScale.y;
         float colRight = colLeft + m_colliderWidth * m_editorScale * worldScale.x;
         float colBottom = colTop + m_colliderHeight * m_editorScale * worldScale.y;
 
+        // ImGuiのSceneWindow内における「純粋なマウスの相対位置」を取得
+        // （これで screenOffset.x やエディタの窓の位置を足し引きする処理が一切不要になります）
+        ImVec2 mousePos = ImGui::GetMousePos();
+        ImVec2 windowPos = ImGui::GetWindowPos();
+        ImVec2 contentMin = ImGui::GetWindowContentRegionMin();
 
-        m_isHovered = (mousePos.x >= colLeft && mousePos.x <= colRight &&
-            mousePos.y >= colTop && mousePos.y <= colBottom);
+        // 窓の左上からの純粋なマウスピクセル座標
+        float mouseXInWindow = mousePos.x - (windowPos.x + contentMin.x);
+        float mouseYInWindow = mousePos.y - (windowPos.y + contentMin.y);
 
+        // 判定！
+        m_isHovered = (mouseXInWindow >= colLeft && mouseXInWindow <= colRight &&
+            mouseYInWindow >= colTop && mouseYInWindow <= colBottom);
     }
 
+    // ─── 2. アルファフェード処理（変更なし） ───
     if (m_hoverFade)
     {
-        // マウスが乗っていれば 1.0f (全表示)、離れれば 0.0f (非表示) を目指す
         float targetRatio = m_isHovered ? 1.0f : 0.0f;
-
-        // 線形補間（ラープ）
         float t = m_fadeSpeed * elapsedTime;
         if (t > 1.0f) t = 1.0f;
-
         m_appearanceRatio += (targetRatio - m_appearanceRatio) * t;
     }
     else
     {
-        // 機能がオフの場合は常に 1.0f（通常表示）
         m_appearanceRatio = 1.0f;
     }
 
+    // ─── 3. UVアニメーション・テクスチャ切り替え（変更なし） ───
     if (spr)
     {
         int currentCol = m_targetCol;
@@ -236,8 +258,7 @@ void SpriteRender::Update(float elapsedTime)
         m_srcY = (float)currentRow * cellH;
     }
 
-
-    //アニメーション処理
+    // アニメーションタイマー更新（変更なし）
     if (!m_isLoop || m_animFrameCount <= 1) return;
 
     m_timer += elapsedTime;
@@ -247,13 +268,8 @@ void SpriteRender::Update(float elapsedTime)
         m_currentFrame++;
         if (m_currentFrame >= m_animFrameCount)
             m_currentFrame = 0;
-
     }
-
-
-
 }
-
 
 
 
@@ -342,6 +358,32 @@ void SpriteRender::DrawInspector()
 {
     ImGui::Checkbox("Enabled", &enabled);
     ImGui::Checkbox("Pause UI Only", &m_isPauseUI);
+
+    ImGui::Text("lastDrawX: %.1f", m_lastDrawX);
+    ImGui::Text("lastDrawW: %.1f", m_lastDrawW);
+
+    if (ImGui::Button("Center on Screen X"))
+    {
+        auto t = owner->GetComponent<Transform>();
+        if (t && spr)
+        {
+            float texW = spr->GetTextureWidth();
+            float baseW = (m_srcW < 0.0f)
+                ? ((m_splitX > 1) ? (texW / (float)m_splitX) : texW)
+                : m_srcW;
+
+            DirectX::XMFLOAT3 localScale = t->GetLocalScale();
+            float uiWidth = baseW * m_editorScale * localScale.x;
+
+            float targetX = (m_pivot == Pivot::Center)
+                ? 640.0f
+                : 640.0f - uiWidth * 0.5f;
+
+            DirectX::XMFLOAT3 localPos = t->GetLocalPosition();
+            localPos.x = targetX;
+            t->SetLocalPosition(localPos);
+        }
+    }
 
     if (ImGui::CollapsingHeader("Hover Fade Settings", ImGuiTreeNodeFlags_DefaultOpen))
     {
