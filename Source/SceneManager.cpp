@@ -8,9 +8,19 @@ void SceneManager::Initialize()
 {
 	ChangeScene(std::move(std::make_unique<Scene>()), "Scenes/Demo.json");
 	LoadPauseUI("Scenes/pause.json");
-	ChangeScene(std::move(std::make_unique<Scene>()), "Scenes/title.json");
-	sw = GetSystemMetrics(SM_CXSCREEN);
-	sh = GetSystemMetrics(SM_CYSCREEN);
+	ChangeScene(std::move(std::make_unique<Scene>()), "Scenes/pause.json");
+
+#ifdef _DEBUG
+	int sw = GetSystemMetrics(SM_CXSCREEN);
+	int sh = GetSystemMetrics(SM_CYSCREEN);
+
+	Graphics::Instance().CreateRenderTarget(sceneRT, sw, sh);
+	Graphics::Instance().CreateRenderTarget(gameRT, sw, sh);
+#else
+	int sw = GetSystemMetrics(SM_CXSCREEN);
+	int sh = GetSystemMetrics(SM_CYSCREEN);
+	Graphics::Instance().CreateRenderTarget(gameRT, sw, sh); // ★ モニター解像度
+#endif
 
 }
 
@@ -50,20 +60,22 @@ void SceneManager::Update(float elapsedTime)
 		currentScene = GetCurrentScene();
 		m_currentScenePath = m_pendingScenePath;
 		isPaused = false;
-		Graphics::Instance().CreateRenderTarget(sceneRT, sw, sh);
-		Graphics::Instance().CreateRenderTarget(gameRT, sw, sh);
+		int currentSW = GetSystemMetrics(SM_CXSCREEN);
+		int currentSH = GetSystemMetrics(SM_CYSCREEN);
+
+
+#ifdef _DEBUG
+		// デバッグ時（エディタ環境）のみ sceneRT を作る
+		Graphics::Instance().CreateRenderTarget(sceneRT, 1280, 720);
+#endif
+		// ゲーム画面（gameRT）はデバッグ・リリース問わず、常に現在の生解像度で正しく作り直す
+		Graphics::Instance().CreateRenderTarget(gameRT, currentSW, currentSH);
 
 		for (auto& actor : pauseActors)
 		{
 			actor->SetScene(currentScene);
 		}
 
-#ifdef DEBUG
-		// リリース（製品版）時は常にモニターの最大解像度で作る
-		int sw = GetSystemMetrics(SM_CXSCREEN);
-		int sh = GetSystemMetrics(SM_CYSCREEN);
-		Graphics::Instance().CreateRenderTarget(gameRT, sw, sh);
-#endif
 	}
 
 

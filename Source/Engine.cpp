@@ -7,8 +7,8 @@ void Engine::Initialize()
 	int sw = GetSystemMetrics(SM_CXSCREEN);
 	int sh = GetSystemMetrics(SM_CYSCREEN);
 
-	Graphics::Instance().CreateRenderTarget(sceneRT, sw, sh);
-	Graphics::Instance().CreateRenderTarget(gameRT, sw, sh);
+	Graphics::Instance().CreateRenderTarget(sceneRT,1280, 720);
+	Graphics::Instance().CreateRenderTarget(gameRT, 1280, 720);
 #else
 	int sw = GetSystemMetrics(SM_CXSCREEN);
 	int sh = GetSystemMetrics(SM_CYSCREEN);

@@ -504,10 +504,12 @@ void SpriteRender::DrawInspector()
     {
         const char* pivotItems[] = { "TopLeft", "Center" };
         int pivotIndex = (int)m_pivot;
+        ImGui::PushID("PivotCombo");
         if (ImGui::Combo("Pivot", &pivotIndex, pivotItems, 2))
         {
             m_pivot = (Pivot)pivotIndex;
         }
+        ImGui::PopID();
     }
 
     if (ImGui::CollapsingHeader("Box Collider 2D"))
