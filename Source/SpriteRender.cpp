@@ -10,6 +10,15 @@ void SpriteRender::Draw(RenderContext& rc)
 {
     if (!owner)return;
 
+    if (m_isOnlyWhileLoading)
+    {
+        // 現在が「Loading（裏での読み込み中）」じゃないなら、文字ロゴは描画をスキップ
+        if (!m_sceneManager || m_sceneManager->GetLoadState() != SceneManager::LoadState::Loading)
+        {
+            return;
+        }
+    }
+
     //ポーズUI制御
     if (m_isPauseUI)
     {
@@ -390,6 +399,7 @@ std::unique_ptr<Component> SpriteRender::Clone() const
 
     c->m_isGameLoading = this->m_isGameLoading;
     c->m_isTitleLoading = this->m_isTitleLoading;
+    c->m_isOnlyWhileLoading = this->m_isOnlyWhileLoading;
 
 	return c;
 }
@@ -436,6 +446,7 @@ void SpriteRender::Serialize(nlohmann::json& j) const
 
     j["IsGameLoading"] = m_isGameLoading;
     j["IsTitleLoading"] = m_isTitleLoading;
+    j["IsOnlyWhileLoading"] = m_isOnlyWhileLoading;
 }
 
 void SpriteRender::DrawInspector()
@@ -607,6 +618,7 @@ void SpriteRender::DrawInspector()
     ImGui::Text("--- Loading Sprite Settings ---");
     ImGui::Checkbox("Use on Game Loading", &m_isGameLoading);
     ImGui::Checkbox("Use on Title Loading", &m_isTitleLoading);
+    ImGui::Checkbox("Only While Loading", &m_isOnlyWhileLoading);
     ImGui::Separator();
 
     if (ImGui::CollapsingHeader("Box Collider 2D"))
@@ -690,6 +702,7 @@ void SpriteRender::Deserialize(nlohmann::json& j)
 
     m_isGameLoading = j.value("IsGameLoading", false);
     m_isTitleLoading = j.value("IsTitleLoading", false);
+    m_isOnlyWhileLoading = j.value("IsOnlyWhileLoading", false);
 }
 
 void SpriteRender::StartIrisOut()
