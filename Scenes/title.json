@@ -108,6 +108,8 @@
                             "HoverFade": false,
                             "HoverRowOffset": 0,
                             "HoverShift": false,
+                            "IrisDuration": 1.0,
+                            "IrisTargetScale": 0.0,
                             "IsLoop": false,
                             "IsPauseUI": false,
                             "Pivot": 0,
@@ -174,6 +176,8 @@
                             "HoverFade": false,
                             "HoverRowOffset": 0,
                             "HoverShift": true,
+                            "IrisDuration": 1.0,
+                            "IrisTargetScale": 0.0,
                             "IsLoop": false,
                             "IsPauseUI": false,
                             "Pivot": 0,
@@ -196,7 +200,8 @@
                         "data": {
                             "ButtonMode": 0,
                             "NextSceneName": "Scenes/choice.json",
-                            "TitleSceneName": "Scenes/Title.json"
+                            "TitleSceneName": "Scenes/Title.json",
+                            "UseLoading": true
                         },
                         "type": "ButtonComponent"
                     }
@@ -248,6 +253,8 @@
                             "HoverFade": false,
                             "HoverRowOffset": 0,
                             "HoverShift": true,
+                            "IrisDuration": 1.0,
+                            "IrisTargetScale": 0.0,
                             "IsLoop": false,
                             "IsPauseUI": false,
                             "Pivot": 0,
@@ -270,7 +277,8 @@
                         "data": {
                             "ButtonMode": 1,
                             "NextSceneName": "",
-                            "TitleSceneName": "Scenes/title.json"
+                            "TitleSceneName": "Scenes/title.json",
+                            "UseLoading": false
                         },
                         "type": "ButtonComponent"
                     }
@@ -322,6 +330,8 @@
                             "HoverFade": true,
                             "HoverRowOffset": 0,
                             "HoverShift": false,
+                            "IrisDuration": 1.0,
+                            "IrisTargetScale": 0.0,
                             "IsLoop": false,
                             "IsPauseUI": false,
                             "Pivot": 0,
@@ -388,6 +398,8 @@
                             "HoverFade": true,
                             "HoverRowOffset": 0,
                             "HoverShift": false,
+                            "IrisDuration": 1.0,
+                            "IrisTargetScale": 0.0,
                             "IsLoop": false,
                             "IsPauseUI": false,
                             "Pivot": 0,
