@@ -54,9 +54,9 @@ bool SceneSerializer::Load(Scene& scene, const std::string& path)
         auto actor = CreateActorByType(type);
         if (!actor) continue;
 
+        actor->Deserialize(elem);
         actor->SetScene(&scene);
 
-        actor->Deserialize(elem);
 
         maxID = max(maxID, actor->id);
 

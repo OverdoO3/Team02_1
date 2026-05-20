@@ -114,6 +114,11 @@ void Framework::Update(float elapsedTime)
 		// シーン・アクター・物理の更新
 		engine.Update(elapsedTime);
 	}
+	else
+	{
+		engine.GetSceneManager().Update(elapsedTime);
+	}
+
 	if (mouseCursor)
 	{
 		mouseCursor->Update(hWnd);
@@ -261,9 +266,14 @@ LRESULT CALLBACK Framework::HandleMessage(HWND hWnd, UINT msg, WPARAM wParam, LP
 	case WM_KEYDOWN:
 		if (wParam == VK_ESCAPE)
 		{
-			PostQuitMessage(0);
-			// ポーズ状態を反転させる
-			engine.GetSceneManager().TogglePause();
+			auto& sm = engine.GetSceneManager();
+			std::string path = sm.GetCurrentScenePath();
+
+			// "stage" を含むシーンだけポーズ可能
+			if (path.find("stage") != std::string::npos)
+			{
+				sm.TogglePause();
+			}
 		}
 		break;
 	case WM_ENTERSIZEMOVE:

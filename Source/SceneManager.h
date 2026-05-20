@@ -47,17 +47,64 @@ public:
 	inline void StartPlay()
 	{
 		runtimeScene = editorScene->Clone();
+		runtimeScene->sceneManager = this;
 		runtimeScene->playState = true;
 		playState = true;
+
+		//Pause中に画像を出す用
+		for (auto& actor : runtimeScene->actors)
+		{
+			actor->SetScene(runtimeScene.get());
+		}
+
 		editorScene->physics.DeleteAllQueue();
 		currentScene = GetCurrentScene();
 		currentScene->physics.DeleteAllQueue();
 	}
 
-	void SetPause(bool pause) { isPaused = pause; }
+	void SetPause(bool pause)
+	{
+		// ポーズ解除時にマウスをセンターにリセット
+		if (isPaused && !pause)
+		{
+			HWND hwnd = GetActiveWindow();
+			RECT rect;
+			GetClientRect(hwnd, &rect);
+			POINT center;
+			center.x = rect.right / 2;
+			center.y = rect.bottom / 2;
+			ClientToScreen(hwnd, &center);
+			SetCursorPos(center.x, center.y);
+		}
+		isPaused = pause;
+	}
 	bool IsPaused()const { return isPaused; }
 
-	void TogglePause() { isPaused = !isPaused; }
+	void TogglePause()
+	{
+		// ポーズ解除時にマウスをセンターにリセット
+		if (isPaused)
+		{
+			HWND hwnd = GetActiveWindow();
+			RECT rect;
+			GetClientRect(hwnd, &rect);
+			POINT center;
+			center.x = rect.right / 2;
+			center.y = rect.bottom / 2;
+			ClientToScreen(hwnd, &center);
+			SetCursorPos(center.x, center.y);
+		}
+		isPaused = !isPaused;
+	}
+	void RequestSceneChange(const std::string& path)
+	{
+		m_pendingScenePath = path;
+		m_hasPendingScene = true;
+	}
+
+	std::string GetCurrentScenePath() const { return m_currentScenePath; }
+	void LoadPauseUI(const std::string& path);  // ポーズUI読み込み
+
 
 private:
 	//編集用のシーン
@@ -70,7 +117,19 @@ private:
 
 	bool playState = false;
 	bool isPaused = false;
+	bool nextSceneIsRuntime = false;
+	std::string m_pendingScenePath = "";
+	bool m_hasPendingScene = false;
+	std::string m_currentScenePath = "";
+
+	bool m_isGameFullScreen = false;
+
+	std::vector<std::unique_ptr<Actor>> pauseActors;
+	std::string m_pauseUIPath = "Scenes/PauseUI.json";
 
 	RenderTarget sceneRT;
 	RenderTarget gameRT;
+	int sw ;
+	int sh ;
+
 };

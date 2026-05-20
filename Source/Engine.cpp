@@ -4,7 +4,10 @@ void Engine::Initialize()
 {
 	sceneManager.Initialize();
 #ifdef _DEBUG
-	Graphics::Instance().CreateRenderTarget(sceneRT, 1280, 720);
+	int sw = GetSystemMetrics(SM_CXSCREEN);
+	int sh = GetSystemMetrics(SM_CYSCREEN);
+
+	Graphics::Instance().CreateRenderTarget(sceneRT,1280, 720);
 	Graphics::Instance().CreateRenderTarget(gameRT, 1280, 720);
 #else
 	int sw = GetSystemMetrics(SM_CXSCREEN);
@@ -92,10 +95,10 @@ void Engine::RenderGame(EditorCamera* camera)
 		D3D11_CLEAR_DEPTH | D3D11_CLEAR_STENCIL,
 		1.0f, 0);
 
-	if (scene->nowCamera)
-	{
-		scene->Render(scene->nowCamera->GetComponent<Camera>(), false);
-	}
+	sceneManager.Render(
+		scene->nowCamera ? scene->nowCamera->GetComponent<Camera>() : nullptr,
+		false
+	);
 }
 
 

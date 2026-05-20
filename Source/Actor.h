@@ -49,8 +49,9 @@ public:
 
 	std::unique_ptr<Actor> Clone(bool play = false) const;
 
-	void SetScene(Scene* s) { scene = s; }
+	void SetScene(Scene* s);
 	Scene* GetScene() { return scene; }
+	std::string GetName()const { return name; }
 
 	uint64_t GetID() const { return id; }
 
@@ -185,7 +186,9 @@ public:
 			json compJson;
 			
 			ComponentID id = comp->GetID();
-			std::string str = ComponentRegistry::IDToString(id);
+			const char* str = ComponentRegistry::IDToString(id);
+			if (!str) continue;
+
 			compJson["type"] = str;
 
 			json data;

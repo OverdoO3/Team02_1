@@ -6,6 +6,7 @@
 #include "CameraBase.h"
 #include "Camera.h"
 
+class SceneManager;
 
 class SpriteRender : public Component
 {
@@ -43,6 +44,10 @@ public:
         this->color = color;
     }
 
+    void SetSceneManager(SceneManager* sm) { m_sceneManager = sm; }
+
+    bool IsHovered()const { return m_isHovered; }
+
     std::string ToDataPath(const std::string& fullPath)
     {
         std::filesystem::path base = std::filesystem::absolute("Data");
@@ -55,13 +60,17 @@ public:
         return "Data/" + normalized.generic_string();
     }
 
+    bool GetIsPauseUI()const { return m_isPauseUI; }
+
     enum class Pivot { TopLeft, Center };
     Pivot m_pivot = Pivot::TopLeft;
+
 
 private:
     std::unique_ptr<Sprite> spr;
 
     std::string texturepath;
+    SceneManager* m_sceneManager = nullptr;
 
     float m_editorScale = 1.0f;
     float m_editorAngleDeg = 0.0f;
@@ -98,8 +107,18 @@ private:
 
     
     bool m_showCollider = true;
+    bool m_isHovered = false;
 
+    bool m_isPauseUI = false;
 
     //色
     DirectX::XMFLOAT4 color = { 1.0f,1.0f,1.0f,1.0f };
+
+    bool  m_hoverFade       = false;       // インスペクターでホバーでフェード出現させるかのスイッチ
+    float m_appearanceRatio = 0.0f;  // 現在の出現割合 (0.0f = 完全に透明/消滅、1.0f = 完全に表示)
+    float m_fadeSpeed       = 5.0f;        // フェードの速さ
+
+    bool m_hoverSpriteShift = false;
+    int m_hoverCollOffset = 1;
+    int m_hoverRowOffset = 0;
 };

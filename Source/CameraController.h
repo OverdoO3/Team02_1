@@ -37,6 +37,8 @@ private:
 
     bool mouseLocked = true;
 
+    bool m_wasPaused = false;
+
     DirectX::XMFLOAT3 focusTarget;   // ¡Œ©‚Ä‚é’†S
     DirectX::XMFLOAT3 targetGoal;    // –Ú•W‚Ì’†S
 };
