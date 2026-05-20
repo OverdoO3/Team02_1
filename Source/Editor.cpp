@@ -1,6 +1,7 @@
 #include "Editor.h"
 #include "ComponentManager.h"
 #include "PrefabManager.h"
+#include "EffectManager.h"
 
 // ImGUiのブレンドモードを切り替えるコールバック関数
 static void ImGuiDisableAlphaBlendCallBack(const ImDrawList* parent_list, const ImDrawCmd* cmd)
@@ -544,7 +545,7 @@ void Editor::DrawGameWindow()
 				sm.SetPause(false);
 			}
 			sm.StopPlay();
-			
+			EffectManager::Instance().Initialize();
 		}
 	}
 

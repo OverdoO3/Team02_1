@@ -21,10 +21,11 @@ void EffectRender::Update(float elapsedTime)
 
 	position = transform->GetWorldPosition();
 
+	DirectX::XMFLOAT3 pos = position + offset;
 	// 再生終了チェック
 	if (handle != -1)
 	{
-		effect->SetPosition(handle, position);
+		effect->SetPosition(handle, pos);
 		if (!effect->Exists(handle))
 		{
 			handle = -1;
@@ -41,18 +42,40 @@ void EffectRender::DrawInspector()
 {
 	ImGui::Checkbox("loop", &loop);
 	ImGui::Checkbox("StartPlay", &playOnStart);
+	ImGui::DragFloat3("effoffset", &offset.x);
+	if (ImGui::Button("Select"))
+	{
+		effectPath = OpenDialog::OpenLoadFileDialog();
+		effectPath = ToDataPath(effectPath);
+		effect = EffectManager::Instance().LoadEffect(effectPath);
+	}
+	ImGui::DragFloat("Scale", &scale);
 
-	ImGui::Text("effectpath", effectPath);
+	ImGui::Text(effectPath.c_str());
 }
 
 void EffectRender::Serialize(nlohmann::json& j) const
 {
 	j["loop"] = loop;
+	j["scale"] = scale;
+	j["path"] = effectPath;
+	j["offset"] = 
+	{ offset.x,offset.y,offset.z };
 }
 
 void EffectRender::Deserialize(nlohmann::json& j)
 {
 	loop = j["loop"];
+	scale = j["scale"];
+	effectPath = j["path"];
+	auto p = j["offset"];
+	offset.x = p[0];
+	offset.x = p[1];
+	offset.x = p[2];
+	if (effectPath != "")
+	{
+		effect = EffectManager::Instance().LoadEffect(effectPath.c_str());
+	}
 }
 
 std::unique_ptr<Component> EffectRender::Clone() const
@@ -61,6 +84,8 @@ std::unique_ptr<Component> EffectRender::Clone() const
 	e->loop = loop;
 	e->playOnStart = playOnStart;
 	e->effectPath = effectPath;
+	e->scale = scale;
+	e->offset = offset;
 	if (!effectPath.empty())
 	{
 		e->effect = std::make_unique<Effect>();

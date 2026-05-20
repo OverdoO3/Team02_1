@@ -201,7 +201,7 @@ void Move::Update(float elapsedTime)
         Velocity.z *= 0.01f;
 
         // èdóÕ
-        Velocity.y -= grav * elapsedTime;
+        Velocity.y -= grav;
 
         nextPos.x += Velocity.x * elapsedTime;
         nextPos.z += Velocity.z * elapsedTime;

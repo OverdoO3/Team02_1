@@ -47,7 +47,8 @@ private:
     std::string effectPath;
 
     DirectX::XMFLOAT3 position{0,0,0};
-    float scale;
+    DirectX::XMFLOAT3 offset{ 0,0,0 };
+    float scale = 1;
 
     bool playOnStart = true;
     bool loop;

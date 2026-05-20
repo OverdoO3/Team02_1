@@ -175,9 +175,10 @@ void Framework::Render(float elapsedTime)
 
 #endif
 
+	while (ShowCursor(TRUE) < 0);
 	if (mouseCursor)
 	{
-		mouseCursor->Draw(rc);
+		//mouseCursor->Draw(rc);
 	}
 
 	Graphics::Instance().Present(syncInterval);

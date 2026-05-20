@@ -33,6 +33,7 @@ public:
 	void SetString(std::string str)
 	{
 		modelpath = str;
+		model = std::make_unique<Model>(modelpath.c_str());
 	}
 
 	std::string ToDataPath(const std::string& fullPath)

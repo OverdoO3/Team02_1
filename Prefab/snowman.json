@@ -3,9 +3,9 @@
         {
             "data": {
                 "position": [
-                    -44.32170104980469,
-                    44.0,
-                    42.68852233886719
+                    64.0,
+                    45.0,
+                    61.0
                 ],
                 "rotation": [
                     -0.0,
@@ -14,16 +14,16 @@
                     1.0
                 ],
                 "scale": [
-                    1.0,
-                    1.0,
-                    1.0
+                    1.399999976158142,
+                    1.399999976158142,
+                    1.399999976158142
                 ]
             },
             "type": "Transform"
         },
         {
             "data": {
-                "ModelPath": "Data/Model/Stage/Demos/firewood.mdl"
+                "ModelPath": "Data/Model/Stage/Demos/snowmen.mdl"
             },
             "type": "ModelRender"
         },
@@ -33,27 +33,14 @@
         },
         {
             "data": {
-                "temperature": 1
+                "temperature": -2
             },
             "type": "HeatReceiver"
-        },
-        {
-            "data": {
-                "loop": true,
-                "offset": [
-                    0.0,
-                    0.0,
-                    0.0
-                ],
-                "path": "Data/Effects/firewood.efk",
-                "scale": 11.0
-            },
-            "type": "EffectRender"
         }
     ],
     "id": 12,
-    "name": "firewood",
-    "parent": -1,
+    "name": "snowman",
+    "parent": 15,
     "tag": 0,
     "type": "Actor"
 }
