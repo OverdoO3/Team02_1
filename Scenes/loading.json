@@ -80,11 +80,13 @@
                             "HoverShift": false,
                             "IrisDuration": 0.6000000238418579,
                             "IrisTargetScale": 0.10000000149011612,
+                            "IsGameLoading": true,
                             "IsLoop": false,
                             "IsPauseUI": false,
+                            "IsTitleLoading": false,
                             "Pivot": 1,
                             "ShowCollider": true,
-                            "SortOrder": 0,
+                            "SortOrder": 1,
                             "SplitX": 1,
                             "SplitY": 1,
                             "SpriteIndex": 0,
@@ -100,7 +102,77 @@
                     }
                 ],
                 "id": 65,
-                "name": "IrisMask",
+                "name": "GameMask",
+                "parent": -1,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                890.0,
+                                447.0,
+                                0.0
+                            ],
+                            "rotation": [
+                                0.0,
+                                0.0,
+                                0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                10.0,
+                                10.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "AnimFrameCount": 1,
+                            "ColHeight": 100.0,
+                            "ColOffsetX": 0.0,
+                            "ColOffsetY": 0.0,
+                            "ColWidth": 100.0,
+                            "ColorA": 1.0,
+                            "ColorB": 1.0,
+                            "ColorG": 1.0,
+                            "ColorR": 1.0,
+                            "EditorScale": 1.0,
+                            "FadeSpeed": 5.0,
+                            "FrameDuration": 0.10000000149011612,
+                            "HoverColOffset": 1,
+                            "HoverFade": false,
+                            "HoverRowOffset": 0,
+                            "HoverShift": false,
+                            "IrisDuration": 0.6000000238418579,
+                            "IrisTargetScale": 0.10000000149011612,
+                            "IsGameLoading": false,
+                            "IsLoop": false,
+                            "IsPauseUI": false,
+                            "IsTitleLoading": true,
+                            "Pivot": 1,
+                            "ShowCollider": false,
+                            "SortOrder": 0,
+                            "SplitX": 1,
+                            "SplitY": 1,
+                            "SpriteIndex": 0,
+                            "SrcH": 1080.0,
+                            "SrcW": 1920.0,
+                            "SrcX": 0.0,
+                            "SrcY": 0.0,
+                            "TargetCol": 0,
+                            "TargetRow": 0,
+                            "TexturePath": "Data/Sprite/Load_backgrond02.png"
+                        },
+                        "type": "SpriteRender"
+                    }
+                ],
+                "id": 66,
+                "name": "TitleMask",
                 "parent": -1,
                 "tag": 0,
                 "type": "Actor"

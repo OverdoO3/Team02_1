@@ -75,6 +75,7 @@ public:
 
     IrisMode GetIrisMode() const { return m_irisMode; }
 
+
 private:
     std::unique_ptr<Sprite> spr;
 
@@ -141,4 +142,9 @@ private:
     float m_irisTimer = 0.0f;
     float m_irisStartScale = 1.0f;
     float m_originalScale = 1.0f;
+
+    bool m_isGameLoading = false;  // ゲームに行くときのLoadingで出すか
+    bool m_isTitleLoading = false; // タイトルに戻るときのLoadingで出すか
+    bool m_isOnlyWhileLoading = false;
+
 };

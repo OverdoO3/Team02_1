@@ -105,10 +105,15 @@ public:
 		m_hasPendingScene = true;
 	}
 
+	enum class LoadState { FadeOut, Loading, FadeIn };
+
+
 	std::string GetCurrentScenePath() const { return m_currentScenePath; }
 	//void RequeatSceneChange(const std::string& path);
 	void LoadPauseUI(const std::string& path);  // ポーズUI読み込み
 	void LoadLoadingUI(const std::string& path);
+	const std::string& GetPendingScenePath() const { return m_pendingScenePath; }
+	LoadState GetLoadState()const { return m_loadState; }
 
 private:
 	//編集用のシーン
@@ -141,7 +146,6 @@ private:
 	float m_transitionTimer = 0.0f;
 	float m_transitionDuration = 1.0f;
 
-	enum class LoadState { FadeOut, Loading, FadeIn };
 
 	LoadState m_loadState = LoadState::FadeIn;
 	bool m_isLoading = false;
@@ -154,6 +158,9 @@ private:
 	Actor* m_charaActor = nullptr;
 	std::vector<std::unique_ptr<Actor>> loadingActors;
 	Actor* m_irisActor = nullptr;
+
+	Actor* m_gameIrisActor = nullptr;
+	Actor* m_titleIrisActor = nullptr;
 
 	float m_loadTimer = 0.0f;
 

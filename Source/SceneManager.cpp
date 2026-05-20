@@ -40,7 +40,7 @@ void SceneManager::Update(float elapsedTime)
         {
             if (auto* sr = m_irisActor->GetComponent<SpriteRender>())
             {
-                // ⭕ 演出モードが「None（演出終了）」になるまでは閉じきっていないと判定
+                // 演出モードが「None（演出終了）」になるまでは閉じきっていないと判定
                 if (sr->GetIrisMode() != SpriteRender::IrisMode::None)
                 {
                     isIrisOutFinished = false;
@@ -48,7 +48,6 @@ void SceneManager::Update(float elapsedTime)
             }
         }
 
-        // ⏳ 完全に閉じきったら（または最初から閉じきっていれば）次のシーンのスレッドロードを開始
         if (m_loadState == LoadState::FadeOut && isIrisOutFinished)
         {
             m_loadState = LoadState::Loading;
@@ -97,14 +96,14 @@ void SceneManager::Update(float elapsedTime)
                 for (auto& actor : pauseActors)
                     actor->SetScene(currentScene);
 
-                // ⭕ シーン切り替えが完了したので、マスクを「開く（アイリスイン）」
+                // シーン切り替えが完了したので、マスクを「開く（アイリスイン）」
                 m_loadState = LoadState::FadeIn;
                 if (m_irisActor)
                 {
                     m_irisActor->setActive = true;
                     if (auto* sr = m_irisActor->GetComponent<SpriteRender>())
                     {
-                        sr->StartIrisIn(); // 👈 拡大演出スタート！
+                        sr->StartIrisIn(); // 👈 決定されたマスクの拡大演出スタート！
                     }
                 }
             }
@@ -121,7 +120,6 @@ void SceneManager::Update(float elapsedTime)
                     if (sr->GetIrisMode() == SpriteRender::IrisMode::None)
                     {
                         m_isLoading = false;
-
                         m_loadState = LoadState::FadeOut;
                     }
                 }
@@ -153,16 +151,33 @@ void SceneManager::Update(float elapsedTime)
         if (m_useLoadingForPending)
         {
             m_isLoading = true;
-            m_loadState = LoadState::FadeOut; // 👈 まずは縮小モードにする
+            m_loadState = LoadState::FadeOut; // まずは縮小モードにする
             m_isLoadCompleted = false;
 
-            // ⭕ シーン遷移が始まった瞬間にマスクを「閉じる（アイリスアウト）」
+            // ⭕【ここを追加】行き先のパス（StageかTitleか）で操作対象のマスクを切り替える
+            std::string lowerPath = m_pendingScenePath;
+            std::transform(lowerPath.begin(), lowerPath.end(), lowerPath.begin(), ::tolower);
+
+            if (lowerPath.find("stage") != std::string::npos)
+            {
+                m_irisActor = m_gameIrisActor;  // GameMask をセット
+            }
+            else if (lowerPath.find("title") != std::string::npos)
+            {
+                m_irisActor = m_titleIrisActor; // TitleMask をセット
+            }
+            else
+            {
+                m_irisActor = nullptr;          // どちらでもなければマスク演出なし
+            }
+
+            // シーン遷移が始まった瞬間にマスクを「閉じる（アイリスアウト）」
             if (m_irisActor)
             {
                 m_irisActor->setActive = true;
                 if (auto* sr = m_irisActor->GetComponent<SpriteRender>())
                 {
-                    sr->StartIrisOut(); // 👈 スープライト側の指数縮小をキック！
+                    sr->StartIrisOut(); // 👈 スプライト側の演出をキック！
                 }
             }
             return;
@@ -178,7 +193,6 @@ void SceneManager::Update(float elapsedTime)
         }
     }
 
-    // （以下、nextScene != nullptr や通常のシーン更新処理は既存のままでOKです）
     if (nextScene != nullptr)
     {
         Clear();
@@ -230,7 +244,6 @@ void SceneManager::Update(float elapsedTime)
         }
     }
 }
-
 
 
 
@@ -373,7 +386,10 @@ void SceneManager::LoadPauseUI(const std::string& path)
 void SceneManager::LoadLoadingUI(const std::string& path)
 {
     loadingActors.clear();
-    m_irisActor = nullptr;
+
+    // ⭕ 2つのポインタを初期化する
+    m_gameIrisActor = nullptr;
+    m_titleIrisActor = nullptr;
     m_charaActor = nullptr;
 
     Scene temp;
@@ -386,11 +402,15 @@ void SceneManager::LoadLoadingUI(const std::string& path)
         if (auto* sr = actor->GetComponent<SpriteRender>())
             sr->SetSceneManager(this);
 
-        if (std::string(actor->GetName()) == "IrisMask")
-            m_irisActor = actor.get();
+        // ⭕ "GameMask" という名前ならゲーム用変数に入れる
+        if (std::string(actor->GetName()) == "GameMask")
+            m_gameIrisActor = actor.get();
+
+        // ⭕ "TitleMask" という名前ならタイトル用変数に入れる
+        if (std::string(actor->GetName()) == "TitleMask")
+            m_titleIrisActor = actor.get();
 
         loadingActors.emplace_back(std::move(actor));
     }
 }
-
 

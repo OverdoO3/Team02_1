@@ -78,8 +78,12 @@
                             "HoverFade": false,
                             "HoverRowOffset": 0,
                             "HoverShift": false,
+                            "IrisDuration": 1.0,
+                            "IrisTargetScale": 1.0,
+                            "IsGameLoading": false,
                             "IsLoop": false,
                             "IsPauseUI": false,
+                            "IsTitleLoading": false,
                             "Pivot": 0,
                             "ShowCollider": false,
                             "SortOrder": 0,
@@ -144,8 +148,12 @@
                             "HoverFade": false,
                             "HoverRowOffset": -1,
                             "HoverShift": true,
+                            "IrisDuration": 1.0,
+                            "IrisTargetScale": 1.0,
+                            "IsGameLoading": false,
                             "IsLoop": false,
                             "IsPauseUI": false,
+                            "IsTitleLoading": false,
                             "Pivot": 0,
                             "ShowCollider": true,
                             "SortOrder": 0,
@@ -166,7 +174,8 @@
                         "data": {
                             "ButtonMode": 0,
                             "NextSceneName": "Scenes/stage1.json",
-                            "TitleSceneName": "Scenes/title.json"
+                            "TitleSceneName": "Scenes/title.json",
+                            "UseLoading": true
                         },
                         "type": "ButtonComponent"
                     }
@@ -218,8 +227,12 @@
                             "HoverFade": false,
                             "HoverRowOffset": -1,
                             "HoverShift": true,
+                            "IrisDuration": 1.0,
+                            "IrisTargetScale": 1.0,
+                            "IsGameLoading": false,
                             "IsLoop": false,
                             "IsPauseUI": false,
+                            "IsTitleLoading": false,
                             "Pivot": 0,
                             "ShowCollider": true,
                             "SortOrder": 0,
@@ -240,7 +253,8 @@
                         "data": {
                             "ButtonMode": 0,
                             "NextSceneName": "Scenes/",
-                            "TitleSceneName": "Scenes/title.json"
+                            "TitleSceneName": "Scenes/title.json",
+                            "UseLoading": false
                         },
                         "type": "ButtonComponent"
                     }
@@ -292,8 +306,12 @@
                             "HoverFade": false,
                             "HoverRowOffset": -1,
                             "HoverShift": true,
+                            "IrisDuration": 1.0,
+                            "IrisTargetScale": 1.0,
+                            "IsGameLoading": false,
                             "IsLoop": false,
                             "IsPauseUI": false,
+                            "IsTitleLoading": false,
                             "Pivot": 0,
                             "ShowCollider": true,
                             "SortOrder": 0,
@@ -314,7 +332,8 @@
                         "data": {
                             "ButtonMode": 0,
                             "NextSceneName": "Scenes/",
-                            "TitleSceneName": "Scenes/title.json"
+                            "TitleSceneName": "Scenes/title.json",
+                            "UseLoading": false
                         },
                         "type": "ButtonComponent"
                     }
@@ -366,8 +385,12 @@
                             "HoverFade": false,
                             "HoverRowOffset": -1,
                             "HoverShift": true,
+                            "IrisDuration": 1.0,
+                            "IrisTargetScale": 1.0,
+                            "IsGameLoading": false,
                             "IsLoop": false,
                             "IsPauseUI": false,
+                            "IsTitleLoading": false,
                             "Pivot": 0,
                             "ShowCollider": true,
                             "SortOrder": 0,
@@ -388,7 +411,8 @@
                         "data": {
                             "ButtonMode": 0,
                             "NextSceneName": "Scenes/",
-                            "TitleSceneName": "Scenes/title.json"
+                            "TitleSceneName": "Scenes/title.json",
+                            "UseLoading": false
                         },
                         "type": "ButtonComponent"
                     }
@@ -440,8 +464,12 @@
                             "HoverFade": false,
                             "HoverRowOffset": 0,
                             "HoverShift": false,
+                            "IrisDuration": 1.0,
+                            "IrisTargetScale": 1.0,
+                            "IsGameLoading": false,
                             "IsLoop": false,
                             "IsPauseUI": false,
+                            "IsTitleLoading": false,
                             "Pivot": 0,
                             "ShowCollider": true,
                             "SortOrder": 0,
@@ -506,8 +534,12 @@
                             "HoverFade": false,
                             "HoverRowOffset": 0,
                             "HoverShift": true,
+                            "IrisDuration": 1.0,
+                            "IrisTargetScale": 1.0,
+                            "IsGameLoading": false,
                             "IsLoop": false,
                             "IsPauseUI": false,
+                            "IsTitleLoading": false,
                             "Pivot": 0,
                             "ShowCollider": true,
                             "SortOrder": 0,
@@ -528,7 +560,8 @@
                         "data": {
                             "ButtonMode": 4,
                             "NextSceneName": "",
-                            "TitleSceneName": "Scenes/title.json"
+                            "TitleSceneName": "Scenes/title.json",
+                            "UseLoading": false
                         },
                         "type": "ButtonComponent"
                     }

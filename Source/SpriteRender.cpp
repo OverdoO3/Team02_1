@@ -16,6 +16,37 @@ void SpriteRender::Draw(RenderContext& rc)
         if (!m_sceneManager || !m_sceneManager->IsPaused()) return;
     }
 
+    // ─── ⭕【修正版】Loadingスプライトの出し分け制御 ───
+    if (m_isGameLoading || m_isTitleLoading)
+    {
+        std::string nextPath = m_sceneManager ? m_sceneManager->GetPendingScenePath() : "";
+
+        // 3. もし次のシーンが決まっているなら、その名前で出し分ける
+        if (!nextPath.empty())
+        {
+            std::string lowerPath = nextPath;
+            std::transform(lowerPath.begin(), lowerPath.end(), lowerPath.begin(), ::tolower);
+
+            bool hasStage = (lowerPath.find("stage") != std::string::npos);
+            bool hasTitle = (lowerPath.find("title") != std::string::npos);
+
+            // 自分はGame用なのに、次のシーンがStageじゃないなら更新しない（Title用が動くべき）
+            if (m_isGameLoading && !hasStage) return;
+
+            // 自分はTitle用なのに、次のシーンがTitleじゃないなら更新しない（Game用が動くべき）
+            if (m_isTitleLoading && !hasTitle) return;
+        }
+        else
+        {
+            // 次のシーンのパスが空（＝遷移中ではない通常時）のとき
+            // もしアイリス演出も走っていない（None）なら、余計なUpdateは走らせない
+            if (m_irisMode == IrisMode::None)
+            {
+                return;
+            }
+        }
+    }
+
     auto tran = owner->GetComponent<Transform>();
     if (spr && tran)
     {
@@ -357,6 +388,9 @@ std::unique_ptr<Component> SpriteRender::Clone() const
     c->m_irisTimer = 0.0f;
     c->m_originalScale = this->m_editorScale;
 
+    c->m_isGameLoading = this->m_isGameLoading;
+    c->m_isTitleLoading = this->m_isTitleLoading;
+
 	return c;
 }
 
@@ -399,6 +433,9 @@ void SpriteRender::Serialize(nlohmann::json& j) const
 
     j["IrisDuration"] = m_irisDuration;
     j["IrisTargetScale"] = m_irisTargetScale;
+
+    j["IsGameLoading"] = m_isGameLoading;
+    j["IsTitleLoading"] = m_isTitleLoading;
 }
 
 void SpriteRender::DrawInspector()
@@ -566,10 +603,11 @@ void SpriteRender::DrawInspector()
     ImGui::DragFloat("Iris Duration (sec)", &m_irisDuration, 0.1f, 0.0f, 10.0f, "%.2f");
     ImGui::DragFloat("Iris Target Scale", &m_irisTargetScale, 0.01f, 0.0f, 5.0f, "%.2f");
 
-    if (ImGui::Button("Test Play (Iris Out)"))
-    {
-        StartIrisOut(); // エディタ上でいつでも動きを確認できるテストボタン
-    }
+    ImGui::Separator();
+    ImGui::Text("--- Loading Sprite Settings ---");
+    ImGui::Checkbox("Use on Game Loading", &m_isGameLoading);
+    ImGui::Checkbox("Use on Title Loading", &m_isTitleLoading);
+    ImGui::Separator();
 
     if (ImGui::CollapsingHeader("Box Collider 2D"))
     {
@@ -649,6 +687,9 @@ void SpriteRender::Deserialize(nlohmann::json& j)
 
     m_irisDuration = j.value("IrisDuration",m_irisDuration);
     m_irisTargetScale = j.value("IrisTargetScale", m_originalScale);
+
+    m_isGameLoading = j.value("IsGameLoading", false);
+    m_isTitleLoading = j.value("IsTitleLoading", false);
 }
 
 void SpriteRender::StartIrisOut()
