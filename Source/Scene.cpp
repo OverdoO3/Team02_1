@@ -437,7 +437,6 @@ void Scene::Render(CameraBase* camera, bool isEditor)
 
 #ifdef _DEBUG
 
-
     if (isEditor)
     {
         modelRenderer->DebugImGui();
@@ -489,7 +488,6 @@ void Scene::Render(CameraBase* camera, bool isEditor)
         }
     }
 
-    modelRenderer->DebugImGui();
 }
 
 void Scene::DrawGUI()
