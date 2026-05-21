@@ -365,32 +365,38 @@ void SceneManager::SaveEditorScene(const std::string& path)
     if (editorScene)
         SceneSerializer::Save(*editorScene, path);
 
-    editorScene->SaveSettings(path);
+    // ⭕【修正】セーブ時も、ちゃんと環境用（_Env.json）のパスを作って保存する
+    std::string envPath = path;
+    size_t dotPos = envPath.find_last_of(".");
+    if (dotPos != std::string::npos) {
+        envPath = envPath.substr(0, dotPos);
+    }
+    envPath += "_Env.json";
+
+    editorScene->SaveSettings(envPath); // ちゃんと _Env.json に保存
 }
 
 void SceneManager::LoadEditorScene(const std::string& path)
 {
+    // ⭕【大修正】二重ロードをやめて、Initialize一本に絞る！
     auto newScene = std::make_unique<Scene>();
-    if (SceneSerializer::Load(*newScene, path))
+    newScene->sceneManager = this;
+
+    // Initializeの中で、SceneSerializer::Load も LoadSettings(_Env.json) も全部綺麗にやってくれる！
+    newScene->Initialize(path.c_str());
+
+    editorScene = std::move(newScene);
+    runtimeScene.reset();
+    playState = false;
+    currentScene = GetCurrentScene();
+
+    m_currentScenePath = path;
+
+    auto* modelRenderer = Graphics::Instance().GetModelRenderer();
+    if (modelRenderer)
     {
-        editorScene = std::move(newScene);
-        editorScene->sceneManager = this;
-
-        editorScene->Initialize(path.c_str());
-
-        editorScene->LoadSettings(path);
-        runtimeScene.reset();
-        playState = false;
-        currentScene = GetCurrentScene();
-
-        m_currentScenePath = path;
-
-        auto* modelRenderer = Graphics::Instance().GetModelRenderer();
-        if (modelRenderer)
-        {
-            modelRenderer->SetLightPath(m_currentScenePath);
-            modelRenderer->LoadLights(modelRenderer->GetCurrentLightPath());
-        }
+        modelRenderer->SetLightPath(m_currentScenePath);
+        modelRenderer->LoadLights(modelRenderer->GetCurrentLightPath());
     }
 }
 
