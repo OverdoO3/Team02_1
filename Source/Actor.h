@@ -49,8 +49,9 @@ public:
 
 	std::unique_ptr<Actor> Clone(bool play = false) const;
 
-	void SetScene(Scene* s) { scene = s; }
+	void SetScene(Scene* s);
 	Scene* GetScene() { return scene; }
+	std::string GetName()const { return name; }
 
 	uint64_t GetID() const { return id; }
 
@@ -146,6 +147,20 @@ public:
 	Actor* GetParent() const { return parent; }
 	const std::vector<Actor*>& GetChildren() const { return children; }
 
+	void RemoveChild(Actor* child)
+	{
+		auto it = std::find(children.begin(), children.end(), child);
+		if (it != children.end())
+		{
+			children.erase(it);
+		}
+	}
+
+	void ClearChildren()
+	{
+		children.clear();
+	}
+
 	void Serialize(nlohmann::json& j)const 
 	{
 		j["type"] = type;
@@ -171,7 +186,9 @@ public:
 			json compJson;
 			
 			ComponentID id = comp->GetID();
-			std::string str = ComponentRegistry::IDToString(id);
+			const char* str = ComponentRegistry::IDToString(id);
+			if (!str) continue;
+
 			compJson["type"] = str;
 
 			json data;

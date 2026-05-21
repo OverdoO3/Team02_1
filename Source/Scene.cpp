@@ -7,78 +7,14 @@ void Scene::Initialize(const char* path)
 {
 	SceneSerializer::Load(*this,path);
 	InitializeAfterLoad();
+
+#ifndef _DEBUG
+    playState = true; // Releaseでは常にプレイ状態
+#endif
 }
 
 void Scene::Update(float elapsedTime)
 {
-	if(playState)
-	{
-		//アウェイク
-		for (auto& a : actors)
-		{
-			bool active = a->setActive && (!a->GetParent() || a->GetParent()->setActive);
-			if (active)
-			{
-				a->OnAwake(elapsedTime);
-			}
-		}
-
-		///アップデート
-		for (auto& a : actors)
-		{
-			bool active = a->setActive && (!a->GetParent() || a->GetParent()->setActive);
-			if (active)
-			{
-				a->Update(elapsedTime);
-			}
-		}
-
-		//アクターの追加
-		for (auto& a : adderActors)
-		{
-			actors.push_back(std::move(a));
-		}
-
-		actors.erase(
-			std::remove_if(actors.begin(), actors.end(),
-				[](const std::unique_ptr<Actor>& a)
-				{
-					return a->isDead;
-				}),
-			actors.end()
-		);
-
-		physics.Flush();
-		adderActors.clear();
-	}
-	else
-	{
-		for (auto& a : actors)
-		{
-			bool active = a->setActive && (!a->GetParent() || a->GetParent()->setActive);
-			if (active)
-			{
-				a->UpdateWithOutPlayed(elapsedTime);
-			}
-		}
-		//アクターの追加
-		for (auto& a : adderActors)
-		{
-			actors.push_back(std::move(a));
-		}
-
-		actors.erase(
-			std::remove_if(actors.begin(), actors.end(),
-				[](const std::unique_ptr<Actor>& a)
-				{
-					return a->isDead;
-				}),
-			actors.end()
-		);
-
-		physics.Flush();
-		adderActors.clear();
-	}
 #ifdef _DEBUG
     if (ImGui::Begin("Debug Settings"))
     {
@@ -131,8 +67,99 @@ void Scene::Update(float elapsedTime)
     }
     ImGui::End();
 
-
 #endif
+	if(playState)
+	{
+		//アウェイク
+		for (auto& a : actors)
+		{
+			bool active = a->setActive && (!a->GetParent() || a->GetParent()->setActive);
+			if (active)
+			{
+				a->OnAwake(elapsedTime);
+			}
+		}
+
+		///アップデート
+		for (auto& a : actors)
+		{
+			bool active = a->setActive && (!a->GetParent() || a->GetParent()->setActive);
+			if (active)
+			{
+				a->Update(elapsedTime);
+			}
+		}
+
+		//アクターの追加
+		for (auto& a : adderActors)
+		{
+			actors.push_back(std::move(a));
+		}
+
+        for (auto& a : actors)
+        {
+            if (!a->isDead) continue;
+
+            Actor* dead = a.get();
+
+            // 親の children から除去
+            Actor* parent = dead->GetParent();
+            if (parent)
+            {
+                parent->RemoveChild(dead); // ★ メソッド経由で操作
+                dead->SetParent(nullptr);
+            }
+
+            // 子の親参照を解消
+            for (auto* child : dead->GetChildren())
+            {
+                child->SetParent(nullptr);
+            }
+            dead->ClearChildren(); // ★ これも追加
+        }
+
+        // その後に erase
+        actors.erase(
+            std::remove_if(actors.begin(), actors.end(),
+                [](const std::unique_ptr<Actor>& a)
+                {
+                    return a->isDead;
+                }),
+            actors.end()
+        );
+
+		physics.Flush();
+		adderActors.clear();
+	}
+	else
+	{
+		for (auto& a : actors)
+		{
+			bool active = a->setActive && (!a->GetParent() || a->GetParent()->setActive);
+			if (active)
+			{
+				a->UpdateWithOutPlayed(elapsedTime);
+			}
+		}
+		//アクターの追加
+		for (auto& a : adderActors)
+		{
+			actors.push_back(std::move(a));
+		}
+
+		actors.erase(
+			std::remove_if(actors.begin(), actors.end(),
+				[](const std::unique_ptr<Actor>& a)
+				{
+					return a->isDead;
+				}),
+			actors.end()
+		);
+
+		physics.Flush();
+		adderActors.clear();
+	}
+
 }
 
 void Scene::Render(CameraBase* camera, bool isEditor)
@@ -214,10 +241,11 @@ void Scene::Render(CameraBase* camera, bool isEditor)
     rc.shadowSampler = graphics.GetShadowSampler();
     if (isEditor)
     {
+#ifdef DEBUG
         modelRenderer->DebugImGui();
+#endif // DEBUG
     }
     
-
     // skymap描画
     DirectX::XMMATRIX V = DirectX::XMLoadFloat4x4(&rc.view);
     DirectX::XMMATRIX P = DirectX::XMLoadFloat4x4(&rc.projection);
@@ -267,10 +295,30 @@ void Scene::Render(CameraBase* camera, bool isEditor)
             if (active)
                 actor->RenderDebug(rc, shapeRenderer);
         }
+
+        // ポイントライトのデバッグ球を追加
+        ModelRenderer* modelRenderer = graphics.GetModelRenderer();
+        point_lights* lights = modelRenderer->GetPointLights();
+        for (int i = 0; i < 8; i++)
+        {
+            if (lights[i].range <= 0.0f) continue; // rangeが0なら描画しない
+
+            DirectX::XMFLOAT3 pos = {
+                lights[i].position.x,
+                lights[i].position.y,
+                lights[i].position.z
+            };
+            shapeRenderer->RenderSphere(rc, pos, 3.0f, lights[i].color);
+        }
+
     }
 
     scene_framebuffer->deactivate(dc);
 
+    if (isEditor)
+    {
+        modelRenderer->DebugImGui();
+    }
     // BLOOM
     if (bloomer)
     {

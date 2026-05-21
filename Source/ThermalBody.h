@@ -31,7 +31,7 @@ public:
 private:
     int temperature = 0;
 
-    float radius = 5.0f;
+    float radius = 10.0f;
 
     DirectX::XMFLOAT4 color;
 };

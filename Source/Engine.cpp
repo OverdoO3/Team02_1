@@ -3,8 +3,17 @@
 void Engine::Initialize()
 {
 	sceneManager.Initialize();
-	Graphics::Instance().CreateRenderTarget(sceneRT, 1280, 720);
+#ifdef _DEBUG
+	int sw = GetSystemMetrics(SM_CXSCREEN);
+	int sh = GetSystemMetrics(SM_CYSCREEN);
+
+	Graphics::Instance().CreateRenderTarget(sceneRT,1280, 720);
 	Graphics::Instance().CreateRenderTarget(gameRT, 1280, 720);
+#else
+	int sw = GetSystemMetrics(SM_CXSCREEN);
+	int sh = GetSystemMetrics(SM_CYSCREEN);
+	Graphics::Instance().CreateRenderTarget(gameRT, sw, sh); // ★ モニター解像度
+#endif
 }
 
 void Engine::Update(float dt)
@@ -22,9 +31,12 @@ void Engine::Render(CameraBase* editCam, CameraBase* gameCam)
 	sceneManager.Render(editCam, true);
 
 	// Game用
-	SetRenderTarget(gameRT);
-	Clear(gameRT);
-	sceneManager.Render(gameCam, false);
+	if (gameCam)  
+	{
+		SetRenderTarget(gameRT);
+		Clear(gameRT);
+		sceneManager.Render(gameCam, false);
+	}
 }
 
 void Engine::RenderScene(EditorCamera* camera)
@@ -86,10 +98,10 @@ void Engine::RenderGame(EditorCamera* camera)
 		D3D11_CLEAR_DEPTH | D3D11_CLEAR_STENCIL,
 		1.0f, 0);
 
-	if (scene->nowCamera)
-	{
-		scene->Render(scene->nowCamera->GetComponent<Camera>(), false);
-	}
+	sceneManager.Render(
+		scene->nowCamera ? scene->nowCamera->GetComponent<Camera>() : nullptr,
+		false
+	);
 }
 
 

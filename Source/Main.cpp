@@ -44,10 +44,28 @@ INT WINAPI wWinMain(HINSTANCE instance, HINSTANCE prev_instance, LPWSTR cmd_line
 	wcex.hIconSm = 0;
 	RegisterClassEx(&wcex);
 
+#ifdef _DEBUG
+	// デバッグ：通常ウィンドウ
 	RECT rc = { 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT };
 	AdjustWindowRect(&rc, WS_OVERLAPPEDWINDOW, FALSE);
-	HWND hWnd = CreateWindow(_T("Game"), _T(""), WS_OVERLAPPEDWINDOW ^ WS_MAXIMIZEBOX ^ WS_THICKFRAME | WS_VISIBLE, CW_USEDEFAULT, CW_USEDEFAULT, rc.right - rc.left, rc.bottom - rc.top, NULL, NULL, instance, NULL);
+	HWND hWnd = CreateWindow(
+		_T("Game"), _T(""),
+		WS_OVERLAPPEDWINDOW ^ WS_MAXIMIZEBOX ^ WS_THICKFRAME | WS_VISIBLE,
+		CW_USEDEFAULT, CW_USEDEFAULT,
+		rc.right - rc.left, rc.bottom - rc.top,
+		NULL, NULL, instance, NULL);
 	ShowWindow(hWnd, SW_MAXIMIZE);
+#else
+	// リリース：ボーダーレス全画面
+	int sw = GetSystemMetrics(SM_CXSCREEN);
+	int sh = GetSystemMetrics(SM_CYSCREEN);
+	HWND hWnd = CreateWindow(
+		_T("Game"), _T(""),
+		WS_POPUP | WS_VISIBLE,  // ボーダーレス
+		0, 0, sw, sh,
+		NULL, NULL, instance, NULL);
+	ShowWindow(hWnd, SW_SHOW);
+#endif
 
 	Framework f(hWnd);
 	SetWindowLongPtr(hWnd, GWLP_USERDATA, reinterpret_cast<LONG_PTR>(&f));

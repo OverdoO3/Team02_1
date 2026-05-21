@@ -93,4 +93,6 @@ private:
 	void DrawGameWindow();
 
 	void DrawActorNode(Actor* actor);
+
+
 };

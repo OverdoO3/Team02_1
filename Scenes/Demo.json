@@ -706,8 +706,8 @@
                     {
                         "data": {
                             "position": [
-                                65.06500244140625,
-                                69.06900024414063,
+                                19.018999099731445,
+                                13.012999534606934,
                                 0.0
                             ],
                             "rotation": [
@@ -727,34 +727,161 @@
                     {
                         "data": {
                             "AnimFrameCount": 2,
-                            "ColHeight": 89.0,
-                            "ColOffsetX": 4.0,
-                            "ColOffsetY": 35.0,
-                            "ColWidth": 97.0,
+                            "ColHeight": 53.0,
+                            "ColOffsetX": 31.0,
+                            "ColOffsetY": 56.0,
+                            "ColWidth": 243.0,
                             "ColorA": 1.0,
                             "ColorB": 1.0,
                             "ColorG": 1.0,
                             "ColorR": 1.0,
                             "EditorScale": 1.0,
+                            "FadeSpeed": 5.0,
                             "FrameDuration": 0.10000000149011612,
+                            "HoverColOffset": 1,
+                            "HoverFade": false,
+                            "HoverRowOffset": 0,
+                            "HoverShift": true,
                             "IsLoop": false,
+                            "IsPauseUI": false,
                             "Pivot": 0,
-                            "SortOrder": 0,
-                            "SplitX": 1,
-                            "SplitY": 1,
-                            "SpriteIndex": 1,
-                            "SrcH": 110.0,
-                            "SrcW": 97.0,
+                            "ShowCollider": true,
+                            "SortOrder": 1,
+                            "SplitX": 2,
+                            "SplitY": 2,
+                            "SpriteIndex": 4,
+                            "SrcH": 60.0,
+                            "SrcW": 300.0,
                             "SrcX": 0.0,
                             "SrcY": 0.0,
                             "TargetCol": 0,
                             "TargetRow": 0,
-                            "TexturePath": "Data/Sprite/enemy.png"
+                            "TexturePath": "Data/Sprite/Title_text.png"
+                        },
+                        "type": "SpriteRender"
+                    },
+                    {
+                        "data": {
+                            "ButtonMode": 0,
+                            "NextSceneName": "Scenes/Demo2.json",
+                            "TitleSceneName": "Scenes/Title.json"
+                        },
+                        "type": "ButtonComponent"
+                    }
+                ],
+                "id": 18,
+                "name": "NewActor",
+                "parent": -1,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                -70.06999969482422,
+                                -20.020000457763672,
+                                0.0
+                            ],
+                            "rotation": [
+                                0.0,
+                                0.0,
+                                0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "AnimFrameCount": 1,
+                            "ColHeight": 53.0,
+                            "ColOffsetX": 102.0,
+                            "ColOffsetY": 75.0,
+                            "ColWidth": 244.0,
+                            "ColorA": 1.0,
+                            "ColorB": 1.0,
+                            "ColorG": 1.0,
+                            "ColorR": 1.0,
+                            "EditorScale": 1.0,
+                            "FadeSpeed": 8.199999809265137,
+                            "FrameDuration": 0.10000000149011612,
+                            "HoverColOffset": 1,
+                            "HoverFade": true,
+                            "HoverRowOffset": 0,
+                            "HoverShift": false,
+                            "IsLoop": false,
+                            "IsPauseUI": false,
+                            "Pivot": 0,
+                            "ShowCollider": true,
+                            "SortOrder": 0,
+                            "SplitX": 1,
+                            "SplitY": 1,
+                            "SpriteIndex": 0,
+                            "SrcH": 100.0,
+                            "SrcW": 450.0,
+                            "SrcX": 0.0,
+                            "SrcY": 0.0,
+                            "TargetCol": 0,
+                            "TargetRow": 0,
+                            "TexturePath": "Data/Sprite/Pause_select.png"
                         },
                         "type": "SpriteRender"
                     }
                 ],
-                "id": 18,
+                "id": 53,
+                "name": "NewActor",
+                "parent": 18,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                9.05780029296875,
+                                11.784392356872559,
+                                0.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                0.699999988079071,
+                                0.699999988079071,
+                                0.699999988079071
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/coin.mdl"
+                        },
+                        "type": "ModelRender"
+                    },
+                    {
+                        "data": {
+                            "size": [
+                                10.0,
+                                7.0,
+                                1.0
+                            ]
+                        },
+                        "type": "BoxCollider"
+                    }
+                ],
+                "id": 54,
                 "name": "NewActor",
                 "parent": -1,
                 "tag": 0,

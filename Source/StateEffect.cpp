@@ -9,24 +9,35 @@ REGISTER_COMPONENT(ComponentID::StateEffect, StateEffect)
 
 void StateEffect::OnAwake(float elapsedTime)
 {
-}
-
-void StateEffect::Update(float elapsedTime)
-{
-    auto er = owner->GetComponent<EffectRender>();
-    if (er)
+    for (auto& [name, data] : states)
     {
-        auto it = states.find(currentState);
-        if (it != states.end())
+        if (data.isFirstState == true)
         {
-            std::shared_ptr<Effect> eff = it->second.effect;
-            er->SetEffect(eff);
+            SetState(name);
         }
     }
 }
 
+void StateEffect::Update(float elapsedTime)
+{
+    /*{
+        auto er = owner->GetComponent<EffectRender>();
+        if (er)
+        {
+            auto it = states.find(currentState);
+            if (it != states.end())
+            {
+                std::shared_ptr<Effect> eff = it->second.effect;
+                SetState(it->first);
+            }
+        }
+    }*/
+}
+
 void StateEffect::DrawInspector()
 {
+    ImGui::Text("currentState :", currentState.c_str());
+
     if (ImGui::Button("Add State"))
     {
         states["NewState"] = StateData{};
@@ -41,6 +52,10 @@ void StateEffect::DrawInspector()
     for (auto& [name, data] : states)
     {
         ImGui::PushID(name.c_str());
+       
+        ImGui::Text("State: %s", name.c_str());
+        ImGui::SameLine();
+        ImGui::Checkbox("IsFirstState", &data.isFirstState);
 
         //=========================
         // –¼‘O•ÒW
@@ -68,8 +83,6 @@ void StateEffect::DrawInspector()
                 toRename.emplace_back(name, newName);
             }
         }
-
-        ImGui::Text("State: %s", name.c_str());
 
         //=========================
         // Effect‘I‘ð
@@ -175,9 +188,11 @@ void StateEffect::SetState(const std::string& state)
     if (it == states.end()) return;
 
     auto transform = owner->GetComponent<Transform>();
+    auto eff = owner->GetComponent<EffectRender>();
 
-    handle = it->second.effect->Play(
-        transform->GetWorldPosition());
+    eff->SetEffect(it->second.effect);
+    eff->Play();
+    eff->SetScale(3);
 }
 
 std::unique_ptr<Component> StateEffect::Clone() const

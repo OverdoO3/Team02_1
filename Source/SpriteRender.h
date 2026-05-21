@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "Component.h"
 #include "System/Sprite.h"
 #include "OpenDialog.h"
@@ -6,6 +6,8 @@
 #include "CameraBase.h"
 #include "Camera.h"
 
+class Actor;
+class SceneManager;
 
 class SpriteRender : public Component
 {
@@ -43,6 +45,10 @@ public:
         this->color = color;
     }
 
+    void SetSceneManager(SceneManager* sm) { m_sceneManager = sm; }
+
+    bool IsHovered()const { return m_isHovered; }
+
     std::string ToDataPath(const std::string& fullPath)
     {
         std::filesystem::path base = std::filesystem::absolute("Data");
@@ -55,18 +61,31 @@ public:
         return "Data/" + normalized.generic_string();
     }
 
+    bool GetIsPauseUI()const { return m_isPauseUI; }
+
     enum class Pivot { TopLeft, Center };
     Pivot m_pivot = Pivot::TopLeft;
+
+
+    enum class IrisMode { None, Out, In };
+
+    void StartIrisOut();
+
+    void StartIrisIn();
+
+    IrisMode GetIrisMode() const { return m_irisMode; }
+
 
 private:
     std::unique_ptr<Sprite> spr;
 
     std::string texturepath;
+    SceneManager* m_sceneManager = nullptr;
 
     float m_editorScale = 1.0f;
     float m_editorAngleDeg = 0.0f;
 
-    //�؂蔲���T�C�Y
+    //切り抜きサイズ
     float m_srcX = 0.0f;
     float m_srcY = 0.0f;
     float m_srcW = -1.0f;
@@ -85,21 +104,66 @@ private:
 
     bool m_mouseWasDown = false;
 
-    //�f�o�b�O��`�p(�����蔻�������Ă܂�)
-    float m_lastDrawX = 0.0f;  // ���ۂɕ`�悵������X
-    float m_lastDrawY = 0.0f;  // ���ۂɕ`�悵������Y
+    //デバッグ矩形用(当たり判定も入れてます)
+    float m_lastDrawX = 0.0f;  // 実際に描画した左上X
+    float m_lastDrawY = 0.0f;  // 実際に描画した左上Y
     float m_lastDrawW = 0.0f;
     float m_lastDrawH = 0.0f;
 
-    float m_colliderOffsetX = 0.0f; // ����̉��Y��
-    float m_colliderOffsetY = 0.0f; // ����̏c�Y��
-    float m_colliderWidth = 100.0f; // ����̉���
-    float m_colliderHeight = 100.0f; // ����̏c��
+    float m_colliderOffsetX = 0.0f; // 判定の横ズレ
+    float m_colliderOffsetY = 0.0f; // 判定の縦ズレ
+    float m_colliderWidth = 100.0f; // 判定の横幅
+    float m_colliderHeight = 100.0f; // 判定の縦幅
 
     
     bool m_showCollider = true;
+    bool m_isHovered = false;
 
+    bool m_isPauseUI = false;
 
-    //�F
+    //色
     DirectX::XMFLOAT4 color = { 1.0f,1.0f,1.0f,1.0f };
+
+    bool  m_hoverFade       = false;       // インスペクターでホバーでフェード出現させるかのスイッチ
+    float m_appearanceRatio = 0.0f;  // 現在の出現割合 (0.0f = 完全に透明/消滅、1.0f = 完全に表示)
+    float m_fadeSpeed       = 5.0f;        // フェードの速さ
+
+    bool m_hoverSpriteShift = false;
+    int m_hoverCollOffset = 1;
+    int m_hoverRowOffset = 0;
+    
+    bool  m_isIrisActive = false;
+
+    IrisMode m_irisMode = IrisMode::None;
+    float m_irisDuration = 1.0f;
+    float m_irisTargetScale = 0.0f; 
+    float m_irisMaxScale = 150.0f;    
+
+    float m_irisTimer = 0.0f;
+    float m_irisStartScale = 1.0f;
+    float m_originalScale = 1.0f;
+
+    bool m_isGameLoading = false;  // ゲームに行くときのLoadingで出すか
+    bool m_isTitleLoading = false; // タイトルに戻るときのLoadingで出すか
+    bool m_isOnlyWhileLoading = false;
+
+    // 揺れ設定
+    bool m_swingEnabled = false;
+    bool m_useSwingX = false;   // X方向（sin/cos）
+    bool m_useSwingY = false;   // Y方向（sin/cos）
+    bool m_swingXUseCos = false; // trueでcos、falseでsin
+    bool m_swingYUseCos = true;  // trueでcos、falseでsin
+    float m_swingAmplitudeX = 10.0f;  // X振幅
+    float m_swingAmplitudeY = 10.0f;  // Y振幅
+    float m_swingSpeedX = 1.0f;       // X速度
+    float m_swingSpeedY = 1.0f;       // Y速度
+    float m_swingOffsetX = 0.0f;      // X位相オフセット
+    float m_swingOffsetY = 0.0f;      // Y位相オフセット
+    float m_swingTimer = 0.0f;
+
+    // 回転揺れ
+    bool m_useSwingRot = false;
+    float m_swingRotAmplitude = 5.0f;
+    float m_swingRotSpeed = 1.0f;
+    bool m_swingRotUseCos = false;
 };

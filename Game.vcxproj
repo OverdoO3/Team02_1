@@ -238,6 +238,10 @@
     </ClInclude>
     <ClInclude Include="Source\Engine.h" />
     <ClInclude Include="Source\Factory.h" />
+    <ClInclude Include="Source\flower.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="Source\Framework.h" />
     <ClInclude Include="Source\HeatComponent.h" />
     <ClInclude Include="Source\HeatReceiver.h">
@@ -348,6 +352,10 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="Source\Engine.cpp" />
+    <ClCompile Include="Source\flower.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="Source\Framework.cpp" />
     <ClCompile Include="Source\GroundCheckComponent.cpp" />
     <ClCompile Include="Source\HeatComponent.cpp" />

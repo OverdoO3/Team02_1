@@ -8,7 +8,7 @@ class MouseGuard
 public:
 	//¶¬‚³‚ê‚½‚çƒ}ƒEƒX‚ð‰B‚·
 	MouseGuard() {
-		while (ShowCursor(FALSE) >= 0);
+		//while (ShowCursor(FALSE) >= 0);
 	}
 
 	//”jŠü‚³‚ê‚½‚çŒ©‚ê‚é‚æ‚¤‚É‚·‚é

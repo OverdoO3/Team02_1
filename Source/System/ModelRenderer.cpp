@@ -27,29 +27,11 @@ ModelRenderer::ModelRenderer(ID3D11Device* device)
         sizeof(CbSkeleton),
         skeletonConstantBuffer.GetAddressOf());
 
-    // Instance Buffer（StructuredではなくVertexBuffer運用）
-   /* GpuResourceUtils::CreateDynamicVertexBuffer(
-        device,
-        sizeof(InstanceData) * MAX_INSTANCES,
-        instanceBuffer.GetAddressOf());*/
+	//GpuResourceUtils::CreateConstantBuffer(
+	//	device,
+	//	sizeof(CbSkeleton),
+	//	lightConstantBuffer.GetAddressOf());
 
-    // Shaders
-    shaders[(int)ShaderId::Basic] =
-        std::make_unique<BasicShader>(device);
-
-    shaders[(int)ShaderId::Lambert] =
-        std::make_unique<LambertShader>(device);
-
-    D3D11_BUFFER_DESC desc = {};
-    desc.ByteWidth = sizeof(InstanceData) * MAX_INSTANCES;
-    desc.Usage = D3D11_USAGE_DYNAMIC;
-    desc.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;
-    desc.BindFlags = D3D11_BIND_VERTEX_BUFFER;
-    desc.MiscFlags = 0;
-    desc.StructureByteStride = 0;
-
-    HRESULT hr = device->CreateBuffer(&desc, nullptr, instanceBuffer.GetAddressOf());
-    assert(SUCCEEDED(hr));
 
 	GpuResourceUtils::CreateConstantBuffer(
 		device,
@@ -136,6 +118,39 @@ ModelRenderer::ModelRenderer(ID3D11Device* device)
 		point_light[4].color = { 1, 1, 1, 1 };
 		ZeroMemory(&point_light[5], sizeof(point_lights) * 3);
 	}
+    // Instance Buffer（StructuredではなくVertexBuffer運用）
+   /* GpuResourceUtils::CreateDynamicVertexBuffer(
+        device,
+        sizeof(InstanceData) * MAX_INSTANCES,
+        instanceBuffer.GetAddressOf());*/
+
+    // Shaders
+    shaders[(int)ShaderId::Basic] =
+        std::make_unique<BasicShader>(device);
+
+    shaders[(int)ShaderId::Lambert] =
+        std::make_unique<LambertShader>(device);
+
+    D3D11_BUFFER_DESC desc = {};
+    desc.ByteWidth = sizeof(InstanceData) * MAX_INSTANCES;
+    desc.Usage = D3D11_USAGE_DYNAMIC;
+    desc.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;
+    desc.BindFlags = D3D11_BIND_VERTEX_BUFFER;
+    desc.MiscFlags = 0;
+    desc.StructureByteStride = 0;
+
+    HRESULT hr = device->CreateBuffer(&desc, nullptr, instanceBuffer.GetAddressOf());
+    assert(SUCCEEDED(hr));
+
+    //D3D11_SHADER_RESOURCE_VIEW_DESC srvDesc = {};
+    //srvDesc.Format = DXGI_FORMAT_UNKNOWN;      // StructuredBufferはUNKNOWN必須
+    //srvDesc.ViewDimension = D3D11_SRV_DIMENSION_BUFFER;
+    //srvDesc.Buffer.FirstElement = 0;
+    //srvDesc.Buffer.NumElements = MAX_INSTANCES;
+
+    //hr = device->CreateShaderResourceView(
+    //    instanceBuffer.Get(), &srvDesc, &instanceBufferSRV);
+    //assert(SUCCEEDED(hr));
 }
 
 //==============================
@@ -152,6 +167,11 @@ void ModelRenderer::AddInstance(const Model* model, Actor* actor)
     auto& batch = batches[model->GetResource()];
     batch.representativeModel = model;
     batch.instances.push_back(data);
+
+    //char buf[128];
+    //sprintf_s(buf, "AddInstance: %s\n", actor->name.c_str()); // Actor名を出力
+    //OutputDebugStringA(buf);
+    debugInstanceCount++;
 }
 //==============================
 // FlushAll（描画本体）
@@ -241,7 +261,7 @@ void ModelRenderer::FlushAll(const RenderContext& rc)
         rc.renderState->GetBlendState(BlendState::Transparency), nullptr, 0xFFFFFFFF);
 
     //=====================
-    // InputLayout & Shader 切り替え（ShaderId対応）
+    // InputLayout & Shader 切り替え（引数の shaderId で判定）
     //=====================
     dc->IASetInputLayout(inputLayout.Get());
 
@@ -353,12 +373,11 @@ void ModelRenderer::FlushAll(const RenderContext& rc)
 
             for (const auto& subset : mesh.subsets)
             {
-                // マテリアル更新（シャドウパスでは不要なのでスキップ）
+                // Shadow パスではテクスチャ不要
                 if (shaderId != ShaderId::Shadow)
                 {
                     if (subset.material != lastMaterial)
                     {
-                        // テクスチャをスロット0にバインド
                         dc->PSSetShaderResources(
                             0, 1, subset.material->shaderResourceView.GetAddressOf());
                         lastMaterial = subset.material;
@@ -389,9 +408,11 @@ void ModelRenderer::FlushAll(const RenderContext& rc)
     //=====================
     ID3D11ShaderResourceView* nullSRVs[] = { nullptr };
     dc->VSSetShaderResources(0, 1, nullSRVs);
+
+    // Shadow SRV は Shadow パス以外では解除しない（通常描画で使うため）
     if (shaderId == ShaderId::Shadow)
     {
-        dc->PSSetShaderResources(8, 1, nullSRVs); // 影SRV解除
+        dc->PSSetShaderResources(8, 1, nullSRVs);
     }
 
     {
@@ -414,23 +435,71 @@ void ModelRenderer::FlushAll(const RenderContext& rc)
     }
 }
 
+#ifdef _DEBUG
 void ModelRenderer::DebugImGui()
 {
-#ifdef _DEBUG
     if (ImGui::Begin("PointLights Debug"))
     {
+        ImGui::Text("Current Light File: %s", currentLightPath.c_str());
+
+        if (ImGui::Button("Save Lights"))
+            SaveLights(currentLightPath);
+
+        ImGui::SameLine();
+
+        if (ImGui::Button("Load Lights"))
+            LoadLights(currentLightPath);
+
         for (int i = 0; i < 8; i++)
         {
             ImGui::PushID(i);
             if (ImGui::CollapsingHeader(("Light[" + std::to_string(i) + "]").c_str()))
             {
-                ImGui::SliderFloat3("Position", &point_light[i].position.x, -50.0f, 50.0f);
-                ImGui::SliderFloat("Range", &point_light[i].range, 0.0f, 100.0f);
+                ImGui::SliderFloat3("Position", &point_light[i].position.x, -150.0f, 150.0f);
+                ImGui::SliderFloat("Range", &point_light[i].range, 0.0f, 200.0f);
                 ImGui::ColorEdit4("Color", &point_light[i].color.x);
             }
             ImGui::PopID();
         }
     }
     ImGui::End();
+}
 #endif // _DEBUG
+
+
+void ModelRenderer::SaveLights(const std::string& path)
+{
+    nlohmann::json j;
+    for (int i = 0; i < 8; i++)
+    {
+        j["lights"][i]["posX"] = point_light[i].position.x;
+        j["lights"][i]["posY"] = point_light[i].position.y;
+        j["lights"][i]["posZ"] = point_light[i].position.z;
+        j["lights"][i]["range"] = point_light[i].range;
+        j["lights"][i]["colorR"] = point_light[i].color.x;
+        j["lights"][i]["colorG"] = point_light[i].color.y;
+        j["lights"][i]["colorB"] = point_light[i].color.z;
+        j["lights"][i]["colorA"] = point_light[i].color.w;
+    }
+    std::ofstream ofs(path);
+    ofs << j.dump(4);
+}
+
+void ModelRenderer::LoadLights(const std::string& path)
+{
+    std::ifstream ifs(path);
+    if (!ifs) return;
+    nlohmann::json j;
+    ifs >> j;
+    for (int i = 0; i < 8; i++)
+    {
+        point_light[i].position.x = j["lights"][i].value("posX", 0.0f);
+        point_light[i].position.y = j["lights"][i].value("posY", 0.0f);
+        point_light[i].position.z = j["lights"][i].value("posZ", 0.0f);
+        point_light[i].range = j["lights"][i].value("range", 0.0f);
+        point_light[i].color.x = j["lights"][i].value("colorR", 0.0f);
+        point_light[i].color.y = j["lights"][i].value("colorG", 0.0f);
+        point_light[i].color.z = j["lights"][i].value("colorB", 0.0f);
+        point_light[i].color.w = j["lights"][i].value("colorA", 1.0f);
+    }
 }

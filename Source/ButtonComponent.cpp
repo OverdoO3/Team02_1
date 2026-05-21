@@ -1,90 +1,162 @@
 #include "ButtonComponent.h"
 #include "Factory.h"
+#include "Scene.h"
+#include "SceneManager.h"
 
-//								↓に名前入れる
 REGISTER_COMPONENT(ComponentID::ButtonComponent, ButtonComponent)
-
 
 void ButtonComponent::Update(float elapsedTime)
 {
-    // マウスがボタンの上にあるか確認
-    bool hovering = IsMouseOver();
-
+    if (!owner) return;
     auto spr = owner->GetComponent<SpriteRender>();
     if (spr)
     {
+        bool hovering = spr->IsHovered();
         if (hovering)
         {
-            // ホバー中：少し明るくするか、特定の色にする（例：黄色っぽく）
             spr->SetColor(DirectX::XMFLOAT4(1.2f, 1.2f, 1.2f, 1.0f));
-
+            if (ImGui::IsMouseClicked(ImGuiMouseButton_Left))
+            {
+                m_clickedThisFrame = true;
+            }
         }
         else
         {
             spr->SetColor(DirectX::XMFLOAT4(1.0f, 1.0f, 1.0f, 1.0f));
         }
     }
+
+    if (m_clickedThisFrame)
+    {
+        m_clickedThisFrame = false;
+        OnClick();
+    }
 }
 
 void ButtonComponent::DrawInspector()
 {
+    // モード選択コンボボックス
+    const char* modeNames[] = {
+        "Scene Change",
+        "Quit Game",
+        "Resume Game (Pause)",
+        "Restart Scene",
+        "Return to Title",
+    };
+    int currentMode = static_cast<int>(m_buttonMode);
+    if (ImGui::Combo("Button Mode", &currentMode, modeNames, IM_ARRAYSIZE(modeNames)))
+    {
+        m_buttonMode = static_cast<ButtonMode>(currentMode);
+    }
+
+    // モードに応じて追加設定を表示
+    switch (m_buttonMode)
+    {
+    case ButtonMode::SceneChange:
+    {
+        char buf[256];
+        strcpy_s(buf, m_nextSceneName.c_str());
+        if (ImGui::InputText("Next Scene JSON Path", buf, sizeof(buf)))
+        {
+            m_nextSceneName = buf;
+        }
+        ImGui::Text("Example: Scenes/Demo2.json");
+        ImGui::Checkbox("Use Loading Screen", &m_useLoading);
+        break;
+    }
+    case ButtonMode::ReturnToTitle:
+    {
+        char buf[256];
+        strcpy_s(buf, m_titleSceneName.c_str());
+        if (ImGui::InputText("Title Scene JSON Path", buf, sizeof(buf)))
+        {
+            m_titleSceneName = buf;
+        }
+        ImGui::Text("Example: Scenes/Title.json");
+        break;
+    }
+
+    default:
+        break;
+    }
 }
 
 void ButtonComponent::Serialize(nlohmann::json& j) const
-
 {
+    j["NextSceneName"] = m_nextSceneName;
+    j["TitleSceneName"] = m_titleSceneName;
+    j["ButtonMode"] = static_cast<int>(m_buttonMode);
+    j["UseLoading"] = m_useLoading;
 }
+
 
 void ButtonComponent::Deserialize(nlohmann::json& j)
 {
+    m_nextSceneName = j.value("NextSceneName", "");
+    m_titleSceneName = j.value("TitleSceneName", "Scenes/Title.json");
+    m_useLoading = j.value("UseLoading", false);
+    if (j.contains("ButtonMode"))
+    {
+        m_buttonMode = static_cast<ButtonMode>(j.value("ButtonMode", 0));
+    }
+    else if (j.value("IsQuitButton", false))
+    {
+        m_buttonMode = ButtonMode::QuitGame;
+    }
+    else
+    {
+        m_buttonMode = ButtonMode::SceneChange;
+    }
 }
+
 
 std::unique_ptr<Component> ButtonComponent::Clone() const
 {
     auto c = std::make_unique<ButtonComponent>();
-
+    c->m_nextSceneName = this->m_nextSceneName;
+    c->m_titleSceneName = this->m_titleSceneName;
+    c->m_buttonMode = this->m_buttonMode;
+    c->m_useLoading = this->m_useLoading;
     return c;
-}
-
-bool ButtonComponent::IsMouseOver()
-{
-    if (!owner) return false;
-    auto tran = owner->GetComponent<Transform>();
-    auto spr = owner->GetComponent<SpriteRender>();
-    if (!tran || !spr) return false;
-
-    auto& mouse = Input::Instance().GetMouse();
-    float mouseX = static_cast<float>(mouse.GetPositionX());
-    float mouseY = static_cast<float>(mouse.GetPositionY());
-
-    auto pos = tran->GetWorldPosition();
-    float texW = spr->GetSprite() ? spr->GetSprite()->GetTextureWidth() : 0.0f;
-    float texH = spr->GetSprite() ? spr->GetSprite()->GetTextureHeight() : 0.0f;
-    float srcW = (spr->GetSrcW() < 0.0f) ? texW : spr->GetSrcW();
-    float srcH = (spr->GetSrcH() < 0.0f) ? texH : spr->GetSrcH();
-    float width = srcW * spr->GetEditorScale();
-    float height = srcH * spr->GetEditorScale();
-
-    // 左上原点のスクリーン座標で判定
-    float left = pos.x;
-    float top = pos.y;
-    float right = pos.x + width;
-    float bottom = pos.y + height;
-
-    if (mouseX >= left && mouseX <= right &&
-        mouseY >= top && mouseY <= bottom)
-    {
-        return true;
-    }
-    return false;
 }
 
 void ButtonComponent::OnClick()
 {
     if (!owner) return;
-    auto spr = owner->GetComponent<SpriteRender>();
-    if (spr)
+
+    Scene* scene = owner->GetScene();
+    if (!scene) return;
+    SceneManager* sm = scene->sceneManager;
+    if (!sm) return;
+
+    switch (m_buttonMode)
     {
-        spr->SetColor(DirectX::XMFLOAT4(1.0f, 0.0f, 0.0f, 1.0f));
+        // ── ゲーム終了 ────────────────────────────────────────────
+    case ButtonMode::QuitGame:
+        PostQuitMessage(0);
+        return;
+
+        // ── ゲームに戻る（ポーズ解除） ────────────────────────────
+    case ButtonMode::ResumeGame:
+        sm->SetPause(false);
+        return;
+
+        // ── やり直す（現在シーンをリロード） ──────────────────────
+    case ButtonMode::RestartScene:
+        sm->RequestSceneChange(sm->GetCurrentScenePath());
+        return;
+
+        // ── タイトルに戻る ────────────────────────────────────────
+    case ButtonMode::ReturnToTitle:
+        sm->SetPause(false);   // ポーズ中でも確実に解除してから遷移
+        sm->RequestSceneChange(m_titleSceneName);
+        return;
+
+        // ── シーン遷移（既存） ────────────────────────────────────
+    case ButtonMode::SceneChange:
+    default:
+        if (m_nextSceneName.empty()) return;
+        sm->ChangeScene(std::make_unique<Scene>(), m_nextSceneName.c_str(), m_useLoading);
+        return;
     }
 }

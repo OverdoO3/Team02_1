@@ -26,7 +26,7 @@ public:
 
     COMPONENT_ID(CameraController)
 private:
-    float distance = 100;
+    float distance = 300;
     float yaw = 0.0f;
     float pitch = 20.0f;
     float maxPitch = 1.3f; //ã‰º‚ÌãŒÀ
@@ -36,6 +36,8 @@ private:
     bool focusToPlayer = false;
 
     bool mouseLocked = true;
+
+    bool m_wasPaused = false;
 
     DirectX::XMFLOAT3 focusTarget;   // ¡Œ©‚Ä‚é’†S
     DirectX::XMFLOAT3 targetGoal;    // –Ú•W‚Ì’†S

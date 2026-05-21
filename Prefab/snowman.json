@@ -1,0 +1,46 @@
+{
+    "components": [
+        {
+            "data": {
+                "position": [
+                    64.0,
+                    45.0,
+                    61.0
+                ],
+                "rotation": [
+                    -0.0,
+                    0.0,
+                    -0.0,
+                    1.0
+                ],
+                "scale": [
+                    1.399999976158142,
+                    1.399999976158142,
+                    1.399999976158142
+                ]
+            },
+            "type": "Transform"
+        },
+        {
+            "data": {
+                "ModelPath": "Data/Model/Stage/Demos/snowmen.mdl"
+            },
+            "type": "ModelRender"
+        },
+        {
+            "data": null,
+            "type": "ThermalBody"
+        },
+        {
+            "data": {
+                "temperature": -2
+            },
+            "type": "HeatReceiver"
+        }
+    ],
+    "id": 12,
+    "name": "snowman",
+    "parent": 15,
+    "tag": 0,
+    "type": "Actor"
+}

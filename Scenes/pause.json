@@ -1,0 +1,594 @@
+{
+    "scene": {
+        "actors": [
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "rotation": [
+                                0.0,
+                                0.0,
+                                0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "Camera": true
+                        },
+                        "type": "Camera"
+                    }
+                ],
+                "id": 54,
+                "name": "Actor",
+                "parent": -1,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                -68.06800079345703,
+                                -132.1320037841797,
+                                0.0
+                            ],
+                            "rotation": [
+                                0.0,
+                                0.0,
+                                0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.2000000476837158,
+                                1.2000000476837158,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "AnimFrameCount": 1,
+                            "ColHeight": 100.0,
+                            "ColOffsetX": 0.0,
+                            "ColOffsetY": 0.0,
+                            "ColWidth": 100.0,
+                            "ColorA": 1.0,
+                            "ColorB": 1.0,
+                            "ColorG": 1.0,
+                            "ColorR": 1.0,
+                            "EditorScale": 1.0,
+                            "FadeSpeed": 5.0,
+                            "FrameDuration": 0.10000000149011612,
+                            "HoverColOffset": 1,
+                            "HoverFade": false,
+                            "HoverRowOffset": 0,
+                            "HoverShift": false,
+                            "IsLoop": false,
+                            "IsPauseUI": false,
+                            "Pivot": 0,
+                            "ShowCollider": false,
+                            "SortOrder": 0,
+                            "SplitX": 1,
+                            "SplitY": 1,
+                            "SpriteIndex": 0,
+                            "SrcH": 1080.0,
+                            "SrcW": 1920.0,
+                            "SrcX": 0.0,
+                            "SrcY": 0.0,
+                            "TargetCol": 0,
+                            "TargetRow": 0,
+                            "TexturePath": "Data/Sprite/Pause_background.png"
+                        },
+                        "type": "SpriteRender"
+                    }
+                ],
+                "id": 55,
+                "name": "Back",
+                "parent": 54,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                659.0189819335938,
+                                -20.020000457763672,
+                                0.0
+                            ],
+                            "rotation": [
+                                0.0,
+                                0.0,
+                                0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.3700000047683716,
+                                1.3700000047683716,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "AnimFrameCount": 1,
+                            "ColHeight": 100.0,
+                            "ColOffsetX": 0.0,
+                            "ColOffsetY": 0.0,
+                            "ColWidth": 100.0,
+                            "ColorA": 1.0,
+                            "ColorB": 1.0,
+                            "ColorG": 1.0,
+                            "ColorR": 1.0,
+                            "EditorScale": 1.0,
+                            "FadeSpeed": 5.0,
+                            "FrameDuration": 0.10000000149011612,
+                            "HoverColOffset": 1,
+                            "HoverFade": false,
+                            "HoverRowOffset": 0,
+                            "HoverShift": false,
+                            "IsLoop": false,
+                            "IsPauseUI": false,
+                            "Pivot": 0,
+                            "ShowCollider": false,
+                            "SortOrder": 0,
+                            "SplitX": 1,
+                            "SplitY": 1,
+                            "SpriteIndex": 0,
+                            "SrcH": 75.0,
+                            "SrcW": 288.0,
+                            "SrcX": 0.0,
+                            "SrcY": 0.0,
+                            "TargetCol": 0,
+                            "TargetRow": 0,
+                            "TexturePath": "Data/Sprite/Pause_text02.png"
+                        },
+                        "type": "SpriteRender"
+                    }
+                ],
+                "id": 57,
+                "name": "PAUSE",
+                "parent": -1,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                660.0,
+                                250.0,
+                                0.0
+                            ],
+                            "rotation": [
+                                0.0,
+                                0.0,
+                                0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.159999966621399,
+                                1.159999966621399,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "AnimFrameCount": 1,
+                            "ColHeight": 70.0,
+                            "ColOffsetX": 30.0,
+                            "ColOffsetY": 0.0,
+                            "ColWidth": 280.0,
+                            "ColorA": 1.0,
+                            "ColorB": 1.0,
+                            "ColorG": 1.0,
+                            "ColorR": 1.0,
+                            "EditorScale": 1.0,
+                            "FadeSpeed": 5.0,
+                            "FrameDuration": 0.10000000149011612,
+                            "HoverColOffset": 1,
+                            "HoverFade": false,
+                            "HoverRowOffset": 0,
+                            "HoverShift": true,
+                            "IsLoop": false,
+                            "IsPauseUI": false,
+                            "Pivot": 0,
+                            "ShowCollider": true,
+                            "SortOrder": 4,
+                            "SplitX": 2,
+                            "SplitY": 3,
+                            "SpriteIndex": 6,
+                            "SrcH": 60.0,
+                            "SrcW": 340.0,
+                            "SrcX": 0.0,
+                            "SrcY": 0.0,
+                            "TargetCol": 0,
+                            "TargetRow": 0,
+                            "TexturePath": "Data/Sprite/Pause_text01.png"
+                        },
+                        "type": "SpriteRender"
+                    },
+                    {
+                        "data": {
+                            "ButtonMode": 2,
+                            "NextSceneName": "",
+                            "TitleSceneName": "Scenes/title.json"
+                        },
+                        "type": "ButtonComponent"
+                    }
+                ],
+                "id": 62,
+                "name": "return",
+                "parent": -1,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                670.0,
+                                450.0,
+                                0.0
+                            ],
+                            "rotation": [
+                                0.0,
+                                0.0,
+                                0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.159999966621399,
+                                1.159999966621399,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "AnimFrameCount": 1,
+                            "ColHeight": 70.0,
+                            "ColOffsetX": 34.0,
+                            "ColOffsetY": 0.0,
+                            "ColWidth": 270.0,
+                            "ColorA": 1.0,
+                            "ColorB": 1.0,
+                            "ColorG": 1.0,
+                            "ColorR": 1.0,
+                            "EditorScale": 1.0,
+                            "FadeSpeed": 5.0,
+                            "FrameDuration": 0.10000000149011612,
+                            "HoverColOffset": 1,
+                            "HoverFade": false,
+                            "HoverRowOffset": 0,
+                            "HoverShift": true,
+                            "IsLoop": false,
+                            "IsPauseUI": false,
+                            "Pivot": 0,
+                            "ShowCollider": true,
+                            "SortOrder": 5,
+                            "SplitX": 2,
+                            "SplitY": 3,
+                            "SpriteIndex": 0,
+                            "SrcH": 60.0,
+                            "SrcW": 340.0,
+                            "SrcX": 0.0,
+                            "SrcY": 60.0,
+                            "TargetCol": 0,
+                            "TargetRow": 1,
+                            "TexturePath": "Data/Sprite/Pause_text01.png"
+                        },
+                        "type": "SpriteRender"
+                    },
+                    {
+                        "data": {
+                            "ButtonMode": 3,
+                            "NextSceneName": "",
+                            "TitleSceneName": "Scenes/title.json"
+                        },
+                        "type": "ButtonComponent"
+                    }
+                ],
+                "id": 62,
+                "name": "replay",
+                "parent": -1,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                680.0,
+                                650.0,
+                                0.0
+                            ],
+                            "rotation": [
+                                0.0,
+                                0.0,
+                                0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.159999966621399,
+                                1.159999966621399,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "AnimFrameCount": 1,
+                            "ColHeight": 70.0,
+                            "ColOffsetX": 0.0,
+                            "ColOffsetY": 0.0,
+                            "ColWidth": 344.0,
+                            "ColorA": 1.0,
+                            "ColorB": 1.0,
+                            "ColorG": 1.0,
+                            "ColorR": 1.0,
+                            "EditorScale": 1.0,
+                            "FadeSpeed": 5.0,
+                            "FrameDuration": 0.10000000149011612,
+                            "HoverColOffset": 1,
+                            "HoverFade": false,
+                            "HoverRowOffset": 0,
+                            "HoverShift": true,
+                            "IsLoop": false,
+                            "IsPauseUI": false,
+                            "Pivot": 0,
+                            "ShowCollider": true,
+                            "SortOrder": 6,
+                            "SplitX": 2,
+                            "SplitY": 3,
+                            "SpriteIndex": 0,
+                            "SrcH": 60.0,
+                            "SrcW": 340.0,
+                            "SrcX": 0.0,
+                            "SrcY": 120.0,
+                            "TargetCol": 0,
+                            "TargetRow": 2,
+                            "TexturePath": "Data/Sprite/Pause_text01.png"
+                        },
+                        "type": "SpriteRender"
+                    },
+                    {
+                        "data": {
+                            "ButtonMode": 4,
+                            "NextSceneName": "",
+                            "TitleSceneName": "Scenes/title.json"
+                        },
+                        "type": "ButtonComponent"
+                    }
+                ],
+                "id": 62,
+                "name": "title",
+                "parent": -1,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                637.6370239257813,
+                                235.23500061035156,
+                                0.0
+                            ],
+                            "rotation": [
+                                0.0,
+                                0.0,
+                                0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "AnimFrameCount": 1,
+                            "ColHeight": 100.0,
+                            "ColOffsetX": 39.0,
+                            "ColOffsetY": 0.0,
+                            "ColWidth": 355.0,
+                            "ColorA": 1.0,
+                            "ColorB": 1.0,
+                            "ColorG": 1.0,
+                            "ColorR": 1.0,
+                            "EditorScale": 1.0,
+                            "FadeSpeed": 8.399999618530273,
+                            "FrameDuration": 0.10000000149011612,
+                            "HoverColOffset": 1,
+                            "HoverFade": true,
+                            "HoverRowOffset": 0,
+                            "HoverShift": false,
+                            "IsLoop": false,
+                            "IsPauseUI": false,
+                            "Pivot": 0,
+                            "ShowCollider": true,
+                            "SortOrder": 2,
+                            "SplitX": 1,
+                            "SplitY": 1,
+                            "SpriteIndex": 0,
+                            "SrcH": 100.0,
+                            "SrcW": 450.0,
+                            "SrcX": 0.0,
+                            "SrcY": 0.0,
+                            "TargetCol": 0,
+                            "TargetRow": 0,
+                            "TexturePath": "Data/Sprite/Pause_select.png"
+                        },
+                        "type": "SpriteRender"
+                    }
+                ],
+                "id": 63,
+                "name": "back",
+                "parent": -1,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                647.6370239257813,
+                                435.43499755859375,
+                                0.0
+                            ],
+                            "rotation": [
+                                0.0,
+                                0.0,
+                                0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "AnimFrameCount": 1,
+                            "ColHeight": 100.0,
+                            "ColOffsetX": 90.0,
+                            "ColOffsetY": 0.0,
+                            "ColWidth": 260.0,
+                            "ColorA": 1.0,
+                            "ColorB": 1.0,
+                            "ColorG": 1.0,
+                            "ColorR": 1.0,
+                            "EditorScale": 1.0,
+                            "FadeSpeed": 8.399999618530273,
+                            "FrameDuration": 0.10000000149011612,
+                            "HoverColOffset": 1,
+                            "HoverFade": true,
+                            "HoverRowOffset": 0,
+                            "HoverShift": false,
+                            "IsLoop": false,
+                            "IsPauseUI": false,
+                            "Pivot": 0,
+                            "ShowCollider": true,
+                            "SortOrder": 2,
+                            "SplitX": 1,
+                            "SplitY": 1,
+                            "SpriteIndex": 0,
+                            "SrcH": 100.0,
+                            "SrcW": 450.0,
+                            "SrcX": 0.0,
+                            "SrcY": 0.0,
+                            "TargetCol": 0,
+                            "TargetRow": 0,
+                            "TexturePath": "Data/Sprite/Pause_select.png"
+                        },
+                        "type": "SpriteRender"
+                    }
+                ],
+                "id": 63,
+                "name": "back(1)",
+                "parent": -1,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                647.6370239257813,
+                                635.635009765625,
+                                0.0
+                            ],
+                            "rotation": [
+                                0.0,
+                                0.0,
+                                0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "AnimFrameCount": 1,
+                            "ColHeight": 100.0,
+                            "ColOffsetX": 32.0,
+                            "ColOffsetY": 0.0,
+                            "ColWidth": 395.0,
+                            "ColorA": 1.0,
+                            "ColorB": 1.0,
+                            "ColorG": 1.0,
+                            "ColorR": 1.0,
+                            "EditorScale": 1.0,
+                            "FadeSpeed": 8.399999618530273,
+                            "FrameDuration": 0.10000000149011612,
+                            "HoverColOffset": 1,
+                            "HoverFade": true,
+                            "HoverRowOffset": 0,
+                            "HoverShift": false,
+                            "IsLoop": false,
+                            "IsPauseUI": false,
+                            "Pivot": 0,
+                            "ShowCollider": true,
+                            "SortOrder": 2,
+                            "SplitX": 1,
+                            "SplitY": 1,
+                            "SpriteIndex": 0,
+                            "SrcH": 100.0,
+                            "SrcW": 450.0,
+                            "SrcX": 0.0,
+                            "SrcY": 0.0,
+                            "TargetCol": 0,
+                            "TargetRow": 0,
+                            "TexturePath": "Data/Sprite/Pause_select.png"
+                        },
+                        "type": "SpriteRender"
+                    }
+                ],
+                "id": 63,
+                "name": "back(2)",
+                "parent": -1,
+                "tag": 0,
+                "type": "Actor"
+            }
+        ]
+    }
+}

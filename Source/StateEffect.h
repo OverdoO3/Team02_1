@@ -41,6 +41,7 @@ private:
     {
         std::string effectPath;
         std::shared_ptr<Effect> effect;
+        bool isFirstState = false;
     };
     std::unordered_map<std::string, StateData> states;
 

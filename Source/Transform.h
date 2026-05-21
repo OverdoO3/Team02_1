@@ -57,6 +57,24 @@ worldMatrix._43
 
 	DirectX::XMFLOAT3 GetVelocity() const { return velocity; }
 
+	DirectX::XMFLOAT3 GetWorldEulerAngles() const {
+		if (parent) {
+			// 親がいる場合は、親のワールド回転 + 自身のローカル回転
+			DirectX::XMFLOAT3 parentEuler = parent->GetWorldEulerAngles();
+			return {
+				parentEuler.x + DirectX::XMConvertToDegrees(euler.x),
+				parentEuler.y + DirectX::XMConvertToDegrees(euler.y),
+				parentEuler.z + DirectX::XMConvertToDegrees(euler.z)
+			};
+		}
+		// 親がいない場合は自身のローカル回転をDegreeにして返す
+		return {
+			DirectX::XMConvertToDegrees(euler.x),
+			DirectX::XMConvertToDegrees(euler.y),
+			DirectX::XMConvertToDegrees(euler.z)
+		};
+	}
+
 	void SetLocalPosition(const DirectX::XMFLOAT3& pos) { localPosition = pos; }
 	void SetLocalRotation(const DirectX::XMFLOAT4& rot) { localRotation = rot; }
 	void SetLocalScale(const DirectX::XMFLOAT3& scale) { this->localScale = scale; }
@@ -93,6 +111,14 @@ worldMatrix._43
 	void RotateEuler(float pitch, float yaw, float roll);
 
 	DirectX::XMFLOAT3 GetEulerRotation() const;
+
+	DirectX::XMFLOAT3 GetLocalEulerAngles() const {
+		return {
+			DirectX::XMConvertToDegrees(euler.x),
+			DirectX::XMConvertToDegrees(euler.y),
+			DirectX::XMConvertToDegrees(euler.z)
+		};
+	}
 
 	void DrawInspector()
 	{

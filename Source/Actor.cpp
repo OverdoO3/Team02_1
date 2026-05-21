@@ -70,7 +70,6 @@ void Actor::UpdateWithOutPlayed(float elapsedTime)
 	for (auto& comp : components)
 	{
 		if (!comp) continue;
-
 		if (comp->isDeleted)
 		{
 			RemoveComponent(comp->GetID());
@@ -118,6 +117,9 @@ std::unique_ptr<Actor> Actor::Clone(bool play) const
 {
 	auto copy = std::make_unique<Actor>();
 
+	//copy->SetScene(scene);
+
+	if (!play)
 	copy->SetScene(scene);
 	if (play)
 	{
@@ -143,6 +145,8 @@ std::unique_ptr<Actor> Actor::Clone(bool play) const
 	}
 
 	copy->transform = copy->GetComponent<Transform>();
+
+	copy->SetScene(scene);
 
 	if (!play)
 	{
@@ -175,6 +179,7 @@ bool Actor::IsDescendantOf(Actor* potentialParent)
 
 void Actor::RegisterComp(Component* comp)
 {
+	if (!scene)return;
 	if (auto* col = dynamic_cast<Collider*>(comp))
 	{
 		scene->GetPhysics()->QueueAdd(col);
@@ -183,6 +188,7 @@ void Actor::RegisterComp(Component* comp)
 
 void Actor::UnRegisterComp(Component* comp)
 {
+	if (!scene)return;
 	if (auto* col = dynamic_cast<Collider*>(comp))
 	{
 		scene->physics.DeleteQueueAdd(col); // Ç±Ç±èdóv
@@ -226,3 +232,16 @@ Component* Actor::AddComponentByID(ComponentID id)
 	return ptr;
 }
 
+void Actor::SetScene(Scene* s)
+{
+	scene = s;
+
+	if (!s) return;
+
+	// SpriteRenderÇ…SceneManagerÇìnÇ∑
+	if (auto* sr = GetComponent<SpriteRender>())
+	{
+		sr->SetSceneManager(s->sceneManager);
+	}
+
+}

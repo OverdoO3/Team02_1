@@ -19,6 +19,8 @@ public:
     RenderTarget& GetSceneRT() { return sceneRT; }
     RenderTarget& GetGameRT() { return gameRT; }
 
+    void RenderScene(EditorCamera* camera);
+    void RenderGame(EditorCamera* camera);
 private:
     SceneManager sceneManager;
 
@@ -26,8 +28,7 @@ private:
     RenderTarget gameRT;
 
 private:
-    void RenderScene(EditorCamera* camera);
-    void RenderGame(EditorCamera* camera);
+    
 
     void SetRenderTarget(RenderTarget& rt);
     void Clear(RenderTarget& rt);
