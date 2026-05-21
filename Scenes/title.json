@@ -108,8 +108,13 @@
                             "HoverFade": false,
                             "HoverRowOffset": 0,
                             "HoverShift": false,
+                            "IrisDuration": 1.0,
+                            "IrisTargetScale": 0.0,
+                            "IsGameLoading": false,
                             "IsLoop": false,
+                            "IsOnlyWhileLoading": false,
                             "IsPauseUI": false,
+                            "IsTitleLoading": false,
                             "Pivot": 0,
                             "ShowCollider": false,
                             "SortOrder": 0,
@@ -174,8 +179,13 @@
                             "HoverFade": false,
                             "HoverRowOffset": 0,
                             "HoverShift": true,
+                            "IrisDuration": 1.0,
+                            "IrisTargetScale": 0.0,
+                            "IsGameLoading": false,
                             "IsLoop": false,
+                            "IsOnlyWhileLoading": false,
                             "IsPauseUI": false,
+                            "IsTitleLoading": false,
                             "Pivot": 0,
                             "ShowCollider": true,
                             "SortOrder": 1,
@@ -196,7 +206,8 @@
                         "data": {
                             "ButtonMode": 0,
                             "NextSceneName": "Scenes/choice.json",
-                            "TitleSceneName": "Scenes/Title.json"
+                            "TitleSceneName": "Scenes/Title.json",
+                            "UseLoading": false
                         },
                         "type": "ButtonComponent"
                     }
@@ -248,8 +259,13 @@
                             "HoverFade": false,
                             "HoverRowOffset": 0,
                             "HoverShift": true,
+                            "IrisDuration": 1.0,
+                            "IrisTargetScale": 0.0,
+                            "IsGameLoading": false,
                             "IsLoop": false,
+                            "IsOnlyWhileLoading": false,
                             "IsPauseUI": false,
+                            "IsTitleLoading": false,
                             "Pivot": 0,
                             "ShowCollider": true,
                             "SortOrder": 2,
@@ -270,7 +286,8 @@
                         "data": {
                             "ButtonMode": 1,
                             "NextSceneName": "",
-                            "TitleSceneName": "Scenes/title.json"
+                            "TitleSceneName": "Scenes/title.json",
+                            "UseLoading": false
                         },
                         "type": "ButtonComponent"
                     }
@@ -322,8 +339,13 @@
                             "HoverFade": true,
                             "HoverRowOffset": 0,
                             "HoverShift": false,
+                            "IrisDuration": 1.0,
+                            "IrisTargetScale": 0.0,
+                            "IsGameLoading": false,
                             "IsLoop": false,
+                            "IsOnlyWhileLoading": false,
                             "IsPauseUI": false,
+                            "IsTitleLoading": false,
                             "Pivot": 0,
                             "ShowCollider": true,
                             "SortOrder": 0,
@@ -373,7 +395,7 @@
                     {
                         "data": {
                             "AnimFrameCount": 1,
-                            "ColHeight": 43.0,
+                            "ColHeight": 57.0,
                             "ColOffsetX": 72.0,
                             "ColOffsetY": 20.0,
                             "ColWidth": 303.0,
@@ -388,8 +410,13 @@
                             "HoverFade": true,
                             "HoverRowOffset": 0,
                             "HoverShift": false,
+                            "IrisDuration": 1.0,
+                            "IrisTargetScale": 0.0,
+                            "IsGameLoading": false,
                             "IsLoop": false,
+                            "IsOnlyWhileLoading": false,
                             "IsPauseUI": false,
+                            "IsTitleLoading": false,
                             "Pivot": 0,
                             "ShowCollider": true,
                             "SortOrder": 0,

@@ -31,9 +31,12 @@ void Engine::Render(CameraBase* editCam, CameraBase* gameCam)
 	sceneManager.Render(editCam, true);
 
 	// Game—p
-	SetRenderTarget(gameRT);
-	Clear(gameRT);
-	sceneManager.Render(gameCam, false);
+	if (gameCam)  
+	{
+		SetRenderTarget(gameRT);
+		Clear(gameRT);
+		sceneManager.Render(gameCam, false);
+	}
 }
 
 void Engine::RenderScene(EditorCamera* camera)

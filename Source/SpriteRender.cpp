@@ -1,7 +1,8 @@
-#include "SpriteRender.h"
+ï»¿#include "SpriteRender.h"
 #include "Factory.h"
 #include "Actor.h"
 #include "SceneManager.h"
+#include "Actor.h"
 
 REGISTER_COMPONENT(ComponentID::SpriteRender,SpriteRender)
 
@@ -9,10 +10,50 @@ void SpriteRender::Draw(RenderContext& rc)
 {
     if (!owner)return;
 
-    //ƒ|[ƒYUI§Œä
+    if (m_isOnlyWhileLoading)
+    {
+        // ç¾åœ¨ãŒã€ŒLoadingï¼ˆè£ã§ã®èª­ã¿è¾¼ã¿ä¸­ï¼‰ã€ã˜ã‚ƒãªã„ãªã‚‰ã€æ–‡å­—ãƒ­ã‚´ã¯æç”»ã‚’ã‚¹ã‚­ãƒƒãƒ—
+        if (!m_sceneManager || m_sceneManager->GetLoadState() != SceneManager::LoadState::Loading)
+        {
+            return;
+        }
+    }
+
+    //ãƒãƒ¼ã‚ºUIåˆ¶å¾¡
     if (m_isPauseUI)
     {
         if (!m_sceneManager || !m_sceneManager->IsPaused()) return;
+    }
+
+    // â”€â”€â”€ â­•ã€ä¿®æ­£ç‰ˆã€‘Loadingã‚¹ãƒ—ãƒ©ã‚¤ãƒˆã®å‡ºã—åˆ†ã‘åˆ¶å¾¡ â”€â”€â”€
+    if (m_isGameLoading || m_isTitleLoading)
+    {
+        std::string nextPath = m_sceneManager ? m_sceneManager->GetPendingScenePath() : "";
+
+        // 3. ã‚‚ã—æ¬¡ã®ã‚·ãƒ¼ãƒ³ãŒæ±ºã¾ã£ã¦ã„ã‚‹ãªã‚‰ã€ãã®åå‰ã§å‡ºã—åˆ†ã‘ã‚‹
+        if (!nextPath.empty())
+        {
+            std::string lowerPath = nextPath;
+            std::transform(lowerPath.begin(), lowerPath.end(), lowerPath.begin(), ::tolower);
+
+            bool hasStage = (lowerPath.find("stage") != std::string::npos);
+            bool hasTitle = (lowerPath.find("title") != std::string::npos);
+
+            // è‡ªåˆ†ã¯Gameç”¨ãªã®ã«ã€æ¬¡ã®ã‚·ãƒ¼ãƒ³ãŒStageã˜ã‚ƒãªã„ãªã‚‰æ›´æ–°ã—ãªã„ï¼ˆTitleç”¨ãŒå‹•ãã¹ãï¼‰
+            if (m_isGameLoading && !hasStage) return;
+
+            // è‡ªåˆ†ã¯Titleç”¨ãªã®ã«ã€æ¬¡ã®ã‚·ãƒ¼ãƒ³ãŒTitleã˜ã‚ƒãªã„ãªã‚‰æ›´æ–°ã—ãªã„ï¼ˆGameç”¨ãŒå‹•ãã¹ãï¼‰
+            if (m_isTitleLoading && !hasTitle) return;
+        }
+        else
+        {
+            // æ¬¡ã®ã‚·ãƒ¼ãƒ³ã®ãƒ‘ã‚¹ãŒç©ºï¼ˆï¼é·ç§»ä¸­ã§ã¯ãªã„é€šå¸¸æ™‚ï¼‰ã®ã¨ã
+            // ã‚‚ã—ã‚¢ã‚¤ãƒªã‚¹æ¼”å‡ºã‚‚èµ°ã£ã¦ã„ãªã„ï¼ˆNoneï¼‰ãªã‚‰ã€ä½™è¨ˆãªUpdateã¯èµ°ã‚‰ã›ãªã„
+            if (m_irisMode == IrisMode::None)
+            {
+                return;
+            }
+        }
     }
 
     auto tran = owner->GetComponent<Transform>();
@@ -20,7 +61,7 @@ void SpriteRender::Draw(RenderContext& rc)
     {
         DirectX::XMFLOAT3 worldPos = tran->GetWorldPosition();
         DirectX::XMFLOAT3 worldScale = tran->GetWorldScale();
-        DirectX::XMFLOAT3 worldRot = tran->GetWorldEulerAngles(); // ƒIƒCƒ‰[Šp(Degree)‚ğ‘z’è
+        DirectX::XMFLOAT3 worldRot = tran->GetWorldEulerAngles(); // ã‚ªã‚¤ãƒ©ãƒ¼è§’(Degree)ã‚’æƒ³å®š
 
         float texW = spr->GetTextureWidth();
         float texH = spr->GetTextureHeight();
@@ -41,7 +82,7 @@ void SpriteRender::Draw(RenderContext& rc)
             drawY -= height * 0.5f;
         }
 
-        // ƒLƒƒƒbƒVƒ…i“–‚½‚è”»’è—pj
+        // ã‚­ãƒ£ãƒƒã‚·ãƒ¥ï¼ˆå½“ãŸã‚Šåˆ¤å®šç”¨ï¼‰
         m_lastDrawX = drawX;
         m_lastDrawY = drawY;
         m_lastDrawW = width;
@@ -49,7 +90,7 @@ void SpriteRender::Draw(RenderContext& rc)
 
         float totalAngle = m_editorAngleDeg + worldRot.z;
 
-        //•`‰æ‚Ég‚¤F‚ğŒˆ’è‚·‚é(ƒfƒoƒbƒO—p)
+        //æç”»ã«ä½¿ã†è‰²ã‚’æ±ºå®šã™ã‚‹(ãƒ‡ãƒãƒƒã‚°ç”¨)
         DirectX::XMFLOAT4 finalColor = color;
         if (m_hoverFade)
         {
@@ -57,7 +98,7 @@ void SpriteRender::Draw(RenderContext& rc)
         }
 
 
-        // ÀÛ‚Ì•`‰æŒÄ‚Ño‚µ
+        // å®Ÿéš›ã®æç”»å‘¼ã³å‡ºã—
         spr->Render(
             rc,
             drawX, drawY, worldPos.z,
@@ -70,15 +111,15 @@ void SpriteRender::Draw(RenderContext& rc)
 #ifdef _DEBUG
         if (m_showCollider)
         {
-            // “–‚½‚è”»’è‚Ì˜g‚àƒXƒP[ƒ‹‚³‚¹‚é
+            // å½“ãŸã‚Šåˆ¤å®šã®æ ã‚‚ã‚¹ã‚±ãƒ¼ãƒ«ã•ã›ã‚‹
             float debugLeft = screenOffset.x + worldPos.x + m_colliderOffsetX * worldScale.x;
             float debugTop = screenOffset.y + worldPos.y + m_colliderOffsetY * worldScale.y;
             float debugW = m_colliderWidth * worldScale.x;
             float debugH = m_colliderHeight * worldScale.y;
 
             ImU32 colliderColor = m_isHovered
-                ? IM_COL32(255, 0, 0, 255)   // ƒ}ƒEƒX‚ªæ‚Á‚½‚çÔ
-                : IM_COL32(0, 255, 0, 255);  // ’Êí‚Í—Î
+                ? IM_COL32(255, 0, 0, 255)   // ãƒã‚¦ã‚¹ãŒä¹—ã£ãŸã‚‰èµ¤
+                : IM_COL32(0, 255, 0, 255);  // é€šå¸¸æ™‚ã¯ç·‘
 
             ImGui::GetForegroundDrawList()->AddRect(
                 ImVec2(debugLeft, debugTop),
@@ -93,7 +134,7 @@ void SpriteRender::Draw(RenderContext& rc)
 
 //void SpriteRender::Update(float elapsedTime)
 //{
-//    // „Ÿ„Ÿ ƒ}ƒEƒXƒNƒŠƒbƒN”»’è „Ÿ„Ÿ„Ÿ„Ÿ„Ÿ„Ÿ„Ÿ„Ÿ„Ÿ„Ÿ„Ÿ„Ÿ„Ÿ„Ÿ„Ÿ„Ÿ„Ÿ„Ÿ„Ÿ„Ÿ„Ÿ„Ÿ„Ÿ„Ÿ„Ÿ„Ÿ„Ÿ„Ÿ„Ÿ„Ÿ„Ÿ„Ÿ„Ÿ„Ÿ„Ÿ„Ÿ„Ÿ„Ÿ
+//    // â”€â”€ ãƒã‚¦ã‚¹ã‚¯ãƒªãƒƒã‚¯åˆ¤å®š â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 //    if (GetAsyncKeyState(VK_LBUTTON) & 0x8000)
 //    {
 //        if (!m_mouseWasDown)
@@ -103,12 +144,12 @@ void SpriteRender::Draw(RenderContext& rc)
 //            POINT mousePos;
 //            GetCursorPos(&mousePos);
 //            HWND hwnd = GetActiveWindow();
-//            ScreenToClient(hwnd, &mousePos);   // ƒXƒNƒŠ[ƒ“¨ƒNƒ‰ƒCƒAƒ“ƒgÀ•W
+//            ScreenToClient(hwnd, &mousePos);   // ã‚¹ã‚¯ãƒªãƒ¼ãƒ³â†’ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆåº§æ¨™
 //
 //            auto tran = owner->GetComponent<Transform>();
 //            if (tran && spr)
 //            {
-//                auto pos = tran->GetWorldPosition(); // ‚±‚ê‚ªƒXƒvƒ‰ƒCƒg¶ã‚ÌƒsƒNƒZƒ‹À•W
+//                auto pos = tran->GetWorldPosition(); // ã“ã‚ŒãŒã‚¹ãƒ—ãƒ©ã‚¤ãƒˆå·¦ä¸Šã®ãƒ”ã‚¯ã‚»ãƒ«åº§æ¨™
 //
 //                float texW = spr->GetTextureWidth();
 //                float texH = spr->GetTextureHeight();
@@ -117,7 +158,7 @@ void SpriteRender::Draw(RenderContext& rc)
 //                float width = sw * m_editorScale;
 //                float height = sh * m_editorScale;
 //
-//                // Sprite::Render ‚Í dx,dy ‚ğ¶ã‚Æ‚µ‚Ä•`‰æ‚µ‚Ä‚¢‚é
+//                // Sprite::Render ã¯ dx,dy ã‚’å·¦ä¸Šã¨ã—ã¦æç”»ã—ã¦ã„ã‚‹
 //                float left = m_lastDrawX;
 //                float top = m_lastDrawY;
 //                float right = m_lastDrawX + m_lastDrawW;
@@ -167,29 +208,70 @@ void SpriteRender::Update(float elapsedTime)
 {
     if (!owner) return;
 
+    // â”€â”€â”€ â­• ã‚¢ã‚¤ãƒªã‚¹æ¼”å‡ºï¼ˆæ‹¡å¤§ãƒ»ç¸®å°ï¼‰ã®æ›´æ–° â”€â”€â”€
+    if (m_irisMode != IrisMode::None)
+    {
+
+
+        m_irisTimer += elapsedTime;
+        float rate = m_irisTimer / m_irisDuration;
+        if (rate >= 1.0f) rate = 1.0f;
+
+        if (m_irisMode == IrisMode::Out)
+        {
+            if (rate >= 0.95f)
+            {
+                m_editorScale = m_irisTargetScale; // å®Œå…¨ã« 0.0fï¼ˆé–‰ã˜ãã£ãŸçŠ¶æ…‹ï¼‰ã«ã™ã‚‹
+                m_irisMode = IrisMode::None;       // æ¼”å‡ºçµ‚äº†
+
+                // âŒ ã“ã“ã«ã‚ã£ãŸ m_editorScale = m_originalScale; ã¯å‰Šé™¤ã—ã¾ã™ï¼
+                // é–‰ã˜ãã£ãŸå¾Œã¯ 0.0f ã®ã¾ã¾ãƒ•ãƒªãƒ¼ã‚ºã•ã›ã¦ãŠã‹ãªã„ã¨ã€æ¬¡ã®ã‚·ãƒ¼ãƒ³ã«é·ç§»ã™ã‚‹ç¬é–“ã«ç”»é¢ãŒãƒ‘ãƒƒã¨è¦‹ãˆã¦ã—ã¾ã„ã¾ã™
+            }
+            else
+            {
+                // é€šå¸¸é€šã‚Šã®çˆ†é€Ÿç¸®å°ã‚¤ãƒ¼ã‚¸ãƒ³ã‚°
+                float easeOutRate = 1.0f - powf(2.0f, -10.0f * rate);
+                m_editorScale = m_irisMaxScale + (m_irisTargetScale - m_irisMaxScale) * easeOutRate;
+            }
+        }
+        else if (m_irisMode == IrisMode::In)
+        {
+            if (rate >= 1.0f)
+            {
+                m_irisMode = IrisMode::None;
+                owner->setActive = false;
+                m_editorScale = m_originalScale;
+            }
+            else
+            {
+                // â­• ã‚¨ãƒ«ãƒŸãƒ¼ãƒˆè£œé–“ï¼ˆSmoothstepï¼‰
+                // åˆé€Ÿã‚’æŠ‘ãˆã¤ã¤ã€å¾ŒåŠã‚‚ãƒ€ãƒ©ãƒ€ãƒ©ã›ãšã«ã‚¹ãƒƒã¨ç¶ºéº—ã«é–‹ããã‚Šã¾ã™
+                float smoothRate = rate * rate * (3.0f - 2.0f * rate);
+
+                m_editorScale = m_irisStartScale + (m_irisMaxScale - m_irisStartScale) * smoothRate;
+            }
+        }
+    }
     if (m_isPauseUI)
     {
         if (!m_sceneManager || !m_sceneManager->IsPaused()) return;
     }
 
-    // „Ÿ„Ÿ„Ÿ 1. ƒ}ƒEƒX‚Ìƒzƒo[”»’èi‹óŠÔ‚ğ“ˆê‚µ‚ÄŒvZj „Ÿ„Ÿ„Ÿ
+    // â”€â”€â”€ 1. ãƒã‚¦ã‚¹ã®ãƒ›ãƒãƒ¼åˆ¤å®š â”€â”€â”€
     auto tran = owner->GetComponent<Transform>();
     if (tran && spr)
     {
         DirectX::XMFLOAT3 worldPos = tran->GetWorldPosition();
         DirectX::XMFLOAT3 worldScale = tran->GetWorldScale();
 
-        // ƒXƒvƒ‰ƒCƒg1ƒRƒ}‚Ìƒˆ‚ÈƒTƒCƒY‚ğŒvZ
         float texW = spr->GetTextureWidth();
         float texH = spr->GetTextureHeight();
         float sw = (m_srcW < 0.0f) ? (texW / (float)m_splitX) : m_srcW;
         float sh = (m_srcH < 0.0f) ? (texH / (float)m_splitY) : m_srcH;
 
-        // •`‰æ‚³‚ê‚éÅI“I‚ÈƒTƒCƒY (DrawŠÖ”‚Æ“¯‚¶ŒvZ®)
         float width = sw * m_editorScale * worldScale.x;
         float height = sh * m_editorScale * worldScale.y;
 
-        // ƒsƒ{ƒbƒg‚É‚æ‚é¶ãiŠî€“_j‚ÌŠ„‚èo‚µ (DrawŠÖ”‚Æ“¯‚¶)
         float drawLeft = worldPos.x;
         float drawTop = worldPos.y;
         if (m_pivot == Pivot::Center)
@@ -198,28 +280,23 @@ void SpriteRender::Update(float elapsedTime)
             drawTop -= height * 0.5f;
         }
 
-        // ƒRƒ‰ƒCƒ_[‚Ìƒ[ƒJƒ‹ƒIƒtƒZƒbƒg‚ÉƒXƒP[ƒ‹‚ğ“K—p
         float colLeft = drawLeft + m_colliderOffsetX * worldScale.x;
         float colTop = drawTop + m_colliderOffsetY * worldScale.y;
         float colRight = colLeft + m_colliderWidth * m_editorScale * worldScale.x;
         float colBottom = colTop + m_colliderHeight * m_editorScale * worldScale.y;
 
-        // ImGui‚ÌSceneWindow“à‚É‚¨‚¯‚éuƒˆ‚Èƒ}ƒEƒX‚Ì‘Š‘ÎˆÊ’uv‚ğæ“¾
-        // i‚±‚ê‚Å screenOffset.x ‚âƒGƒfƒBƒ^‚Ì‘‹‚ÌˆÊ’u‚ğ‘«‚µˆø‚«‚·‚éˆ—‚ªˆêØ•s—v‚É‚È‚è‚Ü‚·j
         ImVec2 mousePos = ImGui::GetMousePos();
         ImVec2 windowPos = ImGui::GetWindowPos();
         ImVec2 contentMin = ImGui::GetWindowContentRegionMin();
 
-        // ‘‹‚Ì¶ã‚©‚ç‚Ìƒˆ‚Èƒ}ƒEƒXƒsƒNƒZƒ‹À•W
         float mouseXInWindow = mousePos.x - (windowPos.x + contentMin.x);
         float mouseYInWindow = mousePos.y - (windowPos.y + contentMin.y);
 
-        // ”»’èI
         m_isHovered = (mouseXInWindow >= colLeft && mouseXInWindow <= colRight &&
             mouseYInWindow >= colTop && mouseYInWindow <= colBottom);
     }
 
-    // „Ÿ„Ÿ„Ÿ 2. ƒAƒ‹ƒtƒ@ƒtƒF[ƒhˆ—i•ÏX‚È‚µj „Ÿ„Ÿ„Ÿ
+    // â”€â”€â”€ 2. ã‚¢ãƒ«ãƒ•ã‚¡ãƒ•ã‚§ãƒ¼ãƒ‰å‡¦ç† â”€â”€â”€
     if (m_hoverFade)
     {
         float targetRatio = m_isHovered ? 1.0f : 0.0f;
@@ -232,7 +309,7 @@ void SpriteRender::Update(float elapsedTime)
         m_appearanceRatio = 1.0f;
     }
 
-    // „Ÿ„Ÿ„Ÿ 3. UVƒAƒjƒ[ƒVƒ‡ƒ“EƒeƒNƒXƒ`ƒƒØ‚è‘Ö‚¦i•ÏX‚È‚µj „Ÿ„Ÿ„Ÿ
+    // â”€â”€â”€ 3. UVã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³ãƒ»ãƒ†ã‚¯ã‚¹ãƒãƒ£åˆ‡ã‚Šæ›¿ãˆ â”€â”€â”€
     if (spr)
     {
         int currentCol = m_targetCol;
@@ -258,7 +335,6 @@ void SpriteRender::Update(float elapsedTime)
         m_srcY = (float)currentRow * cellH;
     }
 
-    // ƒAƒjƒ[ƒVƒ‡ƒ“ƒ^ƒCƒ}[XVi•ÏX‚È‚µj
     if (!m_isLoop || m_animFrameCount <= 1) return;
 
     m_timer += elapsedTime;
@@ -270,8 +346,6 @@ void SpriteRender::Update(float elapsedTime)
             m_currentFrame = 0;
     }
 }
-
-
 
 std::unique_ptr<Component> SpriteRender::Clone() const
 {
@@ -307,11 +381,25 @@ std::unique_ptr<Component> SpriteRender::Clone() const
     c->m_hoverRowOffset = this->m_hoverRowOffset;
     c->m_appearanceRatio  = 0.0;
 
+    c->m_irisDuration = this->m_irisDuration;
+    c->m_irisTargetScale = this->m_irisTargetScale;
+
     if (texturepath != "")
     {
         c->SetSprite(std::make_unique<Sprite>(texturepath.c_str()));
         c->SetString(texturepath.c_str());
     }
+
+    c->m_irisDuration = this->m_irisDuration;
+    c->m_irisTargetScale = this->m_irisTargetScale;
+
+    c->m_irisMode = IrisMode::None;
+    c->m_irisTimer = 0.0f;
+    c->m_originalScale = this->m_editorScale;
+
+    c->m_isGameLoading = this->m_isGameLoading;
+    c->m_isTitleLoading = this->m_isTitleLoading;
+    c->m_isOnlyWhileLoading = this->m_isOnlyWhileLoading;
 
 	return c;
 }
@@ -352,6 +440,13 @@ void SpriteRender::Serialize(nlohmann::json& j) const
     j["HoverShift"] = m_hoverSpriteShift;
     j["HoverColOffset"] = m_hoverCollOffset;
     j["HoverRowOffset"] = m_hoverRowOffset;
+
+    j["IrisDuration"] = m_irisDuration;
+    j["IrisTargetScale"] = m_irisTargetScale;
+
+    j["IsGameLoading"] = m_isGameLoading;
+    j["IsTitleLoading"] = m_isTitleLoading;
+    j["IsOnlyWhileLoading"] = m_isOnlyWhileLoading;
 }
 
 void SpriteRender::DrawInspector()
@@ -419,16 +514,16 @@ void SpriteRender::DrawInspector()
 
         float rotZ = tran->GetLocalEulerAngles().z;
         if (ImGui::DragFloat("UI Rotation Z", &rotZ, 1.0f)) {
-            // SetRotationEuler ‚Í Radians ‚ğŠú‘Ò‚µ‚Ä‚¢‚é‚Í‚¸‚È‚Ì‚Å•ÏŠ·‚µ‚ÄƒZƒbƒg
+            // SetRotationEuler ã¯ Radians ã‚’æœŸå¾…ã—ã¦ã„ã‚‹ã¯ãšãªã®ã§å¤‰æ›ã—ã¦ã‚»ãƒƒãƒˆ
             tran->SetRotationEuler(
-                tran->GetEulerRotation().x, // X, Y ‚Í¡‚Ì’l‚ğˆÛ
+                tran->GetEulerRotation().x, // X, Y ã¯ä»Šã®å€¤ã‚’ç¶­æŒ
                 tran->GetEulerRotation().y,
                 DirectX::XMConvertToRadians(rotZ)
             );
         }
 
         float scaleVal = tran->GetLocalScale().x; 
-        if (ImGui::DragFloat("UI Scale", &scaleVal, 0.01f, 0.001f, 100.0f)) {
+        if (ImGui::DragFloat("UI Scale", &scaleVal, 0.01f, 0.001f, 1000.0f)) {
             tran->SetLocalScale({ scaleVal, scaleVal, 1.0f });
         }
 
@@ -512,9 +607,23 @@ void SpriteRender::DrawInspector()
         ImGui::PopID();
     }
 
+    ImGui::Separator();
+    ImGui::Text("--- Iris Out Setting ---");
+
+    // ã‚¤ãƒ³ã‚¹ãƒšã‚¯ã‚¿ãƒ¼ã‹ã‚‰ç§’æ•°ã¨ç›®æ¨™ã‚µã‚¤ã‚ºã‚’ã‚¹ãƒ©ã‚¤ãƒ€ãƒ¼ç­‰ã§èª¿æ•´ã§ãã‚‹ã‚ˆã†ã«ã™ã‚‹
+    ImGui::DragFloat("Iris Duration (sec)", &m_irisDuration, 0.1f, 0.0f, 10.0f, "%.2f");
+    ImGui::DragFloat("Iris Target Scale", &m_irisTargetScale, 0.01f, 0.0f, 5.0f, "%.2f");
+
+    ImGui::Separator();
+    ImGui::Text("--- Loading Sprite Settings ---");
+    ImGui::Checkbox("Use on Game Loading", &m_isGameLoading);
+    ImGui::Checkbox("Use on Title Loading", &m_isTitleLoading);
+    ImGui::Checkbox("Only While Loading", &m_isOnlyWhileLoading);
+    ImGui::Separator();
+
     if (ImGui::CollapsingHeader("Box Collider 2D"))
     {
-        //•\¦E”ñ•\¦‚ÌƒXƒCƒbƒ`
+        //è¡¨ç¤ºãƒ»éè¡¨ç¤ºã®ã‚¹ã‚¤ãƒƒãƒ
         ImGui::Checkbox("Show Collider OutLine", &m_showCollider);
 
         ImGui::DragFloat("Offset X", &m_colliderOffsetX, 1.0f);
@@ -523,7 +632,7 @@ void SpriteRender::DrawInspector()
         ImGui::DragFloat("Height", &m_colliderHeight, 1.0f, 1.0f, 2048.0f);
 
         if (ImGui::Button("Fit to Sprite")) {
-            // ƒ{ƒ^ƒ“ˆê”­‚ÅƒXƒvƒ‰ƒCƒg‚ÌƒTƒCƒY‚É‡‚í‚¹‚é‹@”\
+            // ãƒœã‚¿ãƒ³ä¸€ç™ºã§ã‚¹ãƒ—ãƒ©ã‚¤ãƒˆã®ã‚µã‚¤ã‚ºã«åˆã‚ã›ã‚‹æ©Ÿèƒ½
             m_colliderWidth = m_lastDrawW;
             m_colliderHeight = m_lastDrawH;
             m_colliderOffsetX = (m_pivot == Pivot::Center) ? -(m_lastDrawW * 0.5f) : 0.0f;
@@ -558,13 +667,17 @@ void SpriteRender::Deserialize(nlohmann::json& j)
         {
             float texW = spr->GetTextureWidth();
             float texH = spr->GetTextureHeight();
+            // â­• å¹…ãƒ»é«˜ã•ãŒãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå€¤ï¼ˆ-1.0fï¼‰ã®æ™‚ã ã‘ã€ãƒ†ã‚¯ã‚¹ãƒãƒ£å…¨ä½“ or åˆ†å‰²ã‚µã‚¤ã‚ºã‚’å…¥ã‚Œã‚‹
             if (m_srcW < 0.0f) m_srcW = texW / (float)m_splitX;
             if (m_srcH < 0.0f) m_srcH = texH / (float)m_splitY;
 
-            m_srcX = (float)m_targetCol * m_srcW;
-            m_srcY = (float)m_targetRow * m_srcH;
+            // â­•ã€é‡è¦ã€‘JSONã« "SrcX" ã‚„ "SrcY" ãŒä¿å­˜ã•ã‚Œã¦ã„ãªã‹ã£ãŸå ´åˆï¼ˆã¾ãŸã¯0ã®åˆæœŸçŠ¶æ…‹ï¼‰ã ã‘è‡ªå‹•è¨ˆç®—ã™ã‚‹
+            // ã“ã‚Œã§ã€æ‰‹å‹•ã§å¼„ã£ãŸ UVCrop ã®å€¤ãŒä¸Šæ›¸ãã•ã‚Œã‚‹ã®ã‚’é˜²ãã¾ã™ï¼
+            if (!j.contains("SrcX")) m_srcX = (float)m_targetCol * m_srcW;
+            if (!j.contains("SrcY")) m_srcY = (float)m_targetRow * m_srcH;
         }
-	}
+    }
+	
 
     m_spriteIndex = j.value("SpriteIndex", 0);
 
@@ -587,4 +700,39 @@ void SpriteRender::Deserialize(nlohmann::json& j)
     m_hoverSpriteShift = j.value("HoverShift", false);
     m_hoverCollOffset = j.value("HoverColOffset", 1);
     m_hoverRowOffset = j.value("HoverRowOffset", 0);
+
+    m_irisDuration = j.value("IrisDuration",m_irisDuration);
+    m_irisTargetScale = j.value("IrisTargetScale", m_originalScale);
+
+    m_isGameLoading = j.value("IsGameLoading", false);
+    m_isTitleLoading = j.value("IsTitleLoading", false);
+    m_isOnlyWhileLoading = j.value("IsOnlyWhileLoading", false);
+}
+
+void SpriteRender::StartIrisOut()
+{
+
+    m_irisMode = IrisMode::Out;
+    m_irisTimer = 0.0f;
+
+    // â­• jsonã®å€¤ã«ä¾å­˜ã›ãšã€ã‚³ãƒ¼ãƒ‰å´ã§æ¼”å‡ºã®ã‚­ãƒ¬ã‚’å¼·åˆ¶å›ºå®šã™ã‚‹
+    m_irisDuration = 0.6f;     // 2å›ç›®ã‚‚çµ¶å¯¾ã«çˆ†é€Ÿï¼ˆ0.25ç§’ï¼‰
+    m_irisTargetScale = 0.10f;   // å®Œå…¨ã«é–‰ã˜ãã‚‹
+
+    m_editorScale = m_originalScale; // ç¢ºå®Ÿã«å…¨é–‹ã‚µã‚¤ã‚ºã‹ã‚‰ã‚¹ã‚¿ãƒ¼ãƒˆã•ã›ã‚‹
+    m_irisMaxScale = m_editorScale;
+}
+
+void SpriteRender::StartIrisIn()
+{
+
+    m_irisMode = IrisMode::In;
+    m_irisTimer = 0.0f;
+
+    // â­• åŒæ§˜ã«ã€æ–°ã‚·ãƒ¼ãƒ³ã«åˆ‡ã‚Šæ›¿ã‚ã£ãŸç›´å¾Œã§ã‚‚ç¢ºå®Ÿã«æ•°å€¤ã‚’ä¸Šæ›¸ãå¼·åˆ¶ã™ã‚‹
+    m_irisDuration = 0.7f;      // 2å›ç›®ã‚‚çµ¶å¯¾ã«çˆ†é€Ÿï¼ˆ0.3ç§’ï¼‰
+    m_irisMaxScale = 6.0f;    // é¥ã‹å½¼æ–¹ã¾ã§æ‹¡å¤§ã™ã‚‹è¶…ç‰¹å¤§ã‚¹ã‚±ãƒ¼ãƒ«
+
+    m_irisStartScale = m_editorScale; // ç¾åœ¨ã®ã‚µã‚¤ã‚ºï¼ˆ0.0fãªã©ï¼‰ã‹ã‚‰ã‚¹ã‚¿ãƒ¼ãƒˆ
+
 }

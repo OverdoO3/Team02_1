@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "Component.h"
 #include "System/Sprite.h"
 #include "OpenDialog.h"
@@ -6,6 +6,7 @@
 #include "CameraBase.h"
 #include "Camera.h"
 
+class Actor;
 class SceneManager;
 
 class SpriteRender : public Component
@@ -66,6 +67,15 @@ public:
     Pivot m_pivot = Pivot::TopLeft;
 
 
+    enum class IrisMode { None, Out, In };
+
+    void StartIrisOut();
+
+    void StartIrisIn();
+
+    IrisMode GetIrisMode() const { return m_irisMode; }
+
+
 private:
     std::unique_ptr<Sprite> spr;
 
@@ -75,7 +85,7 @@ private:
     float m_editorScale = 1.0f;
     float m_editorAngleDeg = 0.0f;
 
-    //Ø‚è”²‚«ƒTƒCƒY
+    //åˆ‡ã‚ŠæŠœãã‚µã‚¤ã‚º
     float m_srcX = 0.0f;
     float m_srcY = 0.0f;
     float m_srcW = -1.0f;
@@ -94,16 +104,16 @@ private:
 
     bool m_mouseWasDown = false;
 
-    //ƒfƒoƒbƒO‹éŒ`—p(“–‚½‚è”»’è‚à“ü‚ê‚Ä‚Ü‚·)
-    float m_lastDrawX = 0.0f;  // ÀÛ‚É•`‰æ‚µ‚½¶ãX
-    float m_lastDrawY = 0.0f;  // ÀÛ‚É•`‰æ‚µ‚½¶ãY
+    //ãƒ‡ãƒãƒƒã‚°çŸ©å½¢ç”¨(å½“ãŸã‚Šåˆ¤å®šã‚‚å…¥ã‚Œã¦ã¾ã™)
+    float m_lastDrawX = 0.0f;  // å®Ÿéš›ã«æç”»ã—ãŸå·¦ä¸ŠX
+    float m_lastDrawY = 0.0f;  // å®Ÿéš›ã«æç”»ã—ãŸå·¦ä¸ŠY
     float m_lastDrawW = 0.0f;
     float m_lastDrawH = 0.0f;
 
-    float m_colliderOffsetX = 0.0f; // ”»’è‚Ì‰¡ƒYƒŒ
-    float m_colliderOffsetY = 0.0f; // ”»’è‚ÌcƒYƒŒ
-    float m_colliderWidth = 100.0f; // ”»’è‚Ì‰¡•
-    float m_colliderHeight = 100.0f; // ”»’è‚Ìc•
+    float m_colliderOffsetX = 0.0f; // åˆ¤å®šã®æ¨ªã‚ºãƒ¬
+    float m_colliderOffsetY = 0.0f; // åˆ¤å®šã®ç¸¦ã‚ºãƒ¬
+    float m_colliderWidth = 100.0f; // åˆ¤å®šã®æ¨ªå¹…
+    float m_colliderHeight = 100.0f; // åˆ¤å®šã®ç¸¦å¹…
 
     
     bool m_showCollider = true;
@@ -111,14 +121,30 @@ private:
 
     bool m_isPauseUI = false;
 
-    //F
+    //è‰²
     DirectX::XMFLOAT4 color = { 1.0f,1.0f,1.0f,1.0f };
 
-    bool  m_hoverFade       = false;       // ƒCƒ“ƒXƒyƒNƒ^[‚Åƒzƒo[‚ÅƒtƒF[ƒhoŒ»‚³‚¹‚é‚©‚ÌƒXƒCƒbƒ`
-    float m_appearanceRatio = 0.0f;  // Œ»İ‚ÌoŒ»Š„‡ (0.0f = Š®‘S‚É“§–¾/Á–ÅA1.0f = Š®‘S‚É•\¦)
-    float m_fadeSpeed       = 5.0f;        // ƒtƒF[ƒh‚Ì‘¬‚³
+    bool  m_hoverFade       = false;       // ã‚¤ãƒ³ã‚¹ãƒšã‚¯ã‚¿ãƒ¼ã§ãƒ›ãƒãƒ¼ã§ãƒ•ã‚§ãƒ¼ãƒ‰å‡ºç¾ã•ã›ã‚‹ã‹ã®ã‚¹ã‚¤ãƒƒãƒ
+    float m_appearanceRatio = 0.0f;  // ç¾åœ¨ã®å‡ºç¾å‰²åˆ (0.0f = å®Œå…¨ã«é€æ˜/æ¶ˆæ»…ã€1.0f = å®Œå…¨ã«è¡¨ç¤º)
+    float m_fadeSpeed       = 5.0f;        // ãƒ•ã‚§ãƒ¼ãƒ‰ã®é€Ÿã•
 
     bool m_hoverSpriteShift = false;
     int m_hoverCollOffset = 1;
     int m_hoverRowOffset = 0;
+    
+    bool  m_isIrisActive = false;
+
+    IrisMode m_irisMode = IrisMode::None;
+    float m_irisDuration = 1.0f;
+    float m_irisTargetScale = 0.0f; 
+    float m_irisMaxScale = 150.0f;    
+
+    float m_irisTimer = 0.0f;
+    float m_irisStartScale = 1.0f;
+    float m_originalScale = 1.0f;
+
+    bool m_isGameLoading = false;  // ã‚²ãƒ¼ãƒ ã«è¡Œãã¨ãã®Loadingã§å‡ºã™ã‹
+    bool m_isTitleLoading = false; // ã‚¿ã‚¤ãƒˆãƒ«ã«æˆ»ã‚‹ã¨ãã®Loadingã§å‡ºã™ã‹
+    bool m_isOnlyWhileLoading = false;
+
 };
