@@ -2,11 +2,30 @@
 #include "SceneManager.h"
 #include "EffectManager.h"
 #include "OpenDialog.h"
+#include "HeatComponent.h"
+#include <algorithm>
 
 void Scene::Initialize(const char* path)
 {
 	SceneSerializer::Load(*this,path);
 	InitializeAfterLoad();
+
+    if (path != nullptr)
+    {
+        m_sceneFilePath = path; 
+
+        std::string fullPath = path;
+        size_t lastSlash = fullPath.find_last_of("/\\");
+        std::string fileName = (lastSlash == std::string::npos) ? fullPath : fullPath.substr(lastSlash + 1);
+
+        size_t dotPos = fileName.find_last_of(".");
+        if (dotPos != std::string::npos) {
+            fileName = fileName.substr(0, dotPos);
+        }
+        std::string envPath = "Data/Lights/" + fileName + "_Env.json";
+
+        LoadSettings(envPath);
+    }
 
 #ifndef _DEBUG
     playState = true; // Releaseでは常にプレイ状態
@@ -18,6 +37,48 @@ void Scene::Update(float elapsedTime)
 #ifdef _DEBUG
     if (ImGui::Begin("Debug Settings"))
     {
+        ImGui::Text("File Management");
+        ImGui::Text("Current Scene: %s", m_sceneFilePath.c_str());
+
+        // ─── ⭕ Windowsの \ と / の両方に対応して choice だけを抜き出す ───
+        std::string fullPath = m_sceneFilePath;
+        std::string fileName = "";
+
+        size_t lastSlash = fullPath.find_last_of("/\\");
+        if (lastSlash != std::string::npos) {
+            fileName = fullPath.substr(lastSlash + 1);
+        }
+        else {
+            fileName = fullPath;
+        }
+
+        size_t dotPos = fileName.find_last_of(".");
+        if (dotPos != std::string::npos) {
+            fileName = fileName.substr(0, dotPos);
+        }
+
+        if (fileName.empty()) {
+            fileName = "SceneSettings";
+        }
+
+        // 強制的に Data/Lights/ 内の相対パスにする
+        std::string envPath = "Data/Lights/" + fileName + "_Env.json";
+        // ───────────────────────────────────────────────────────────────────
+
+        ImGui::Text("Env File: %s", envPath.c_str());
+
+        if (ImGui::Button("Save Scene Settings"))
+        {
+            SaveSettings(envPath);
+        }
+        ImGui::SameLine();
+        if (ImGui::Button("Load Scene Settings"))
+        {
+            LoadSettings(envPath);
+        }
+
+        ImGui::Separator();
+
         if (ImGui::CollapsingHeader("Light & Shadow", ImGuiTreeNodeFlags_DefaultOpen))
         {
             // ライト方向
@@ -39,11 +100,11 @@ void Scene::Update(float elapsedTime)
             ImGui::ColorEdit3("Directional Light Color", &lightCol.x);
 
             ImGui::Separator();
-            ImGui::Text("Light Settings"); // 新しいセクションのヘッダー
+            ImGui::Text("Light Settings");
 
             ImGui::SliderFloat("Light Intensity", &m_lightParams.lightIntensity, 0.0f, 5.0f);
             ImGui::SliderFloat("Contrast Power", &m_lightParams.contrastPower, 0.1f, 3.0f);
-            ImGui::SliderFloat("PointLight Intensity", &m_lightParams.pointLightIntensity, 0.0f, 10.0f); // ←追加
+            ImGui::SliderFloat("PointLight Intensity", &m_lightParams.pointLightIntensity, 0.0f, 10.0f);
             ImGui::Separator();
 
             ImGui::Text("OutLine Setting");
@@ -54,7 +115,6 @@ void Scene::Update(float elapsedTime)
             ImGui::Text("Bloom Settings");
             ImGui::SliderFloat("Bloom Threshold", &bloomer->bloom_extraction_threshold, 0.0f, 5.0f);
             ImGui::SliderFloat("Bloom Intensity", &bloomer->bloom_intensity, 0.0f, 5.0f);
-
 
             // シャドウマップのプレビュー表示
             ImGui::Separator();
@@ -68,7 +128,7 @@ void Scene::Update(float elapsedTime)
     ImGui::End();
 
 #endif
-	if(playState)
+    if(playState)
 	{
 		//アウェイク
 		for (auto& a : actors)
@@ -268,46 +328,80 @@ void Scene::Render(CameraBase* camera, bool isEditor)
     modelRenderer->FlushAll(rc);
 
     // ─── アウトライン描画のループ ───
+    HeatTransfer* playerHeatTransfer = nullptr;
+    
+    for (auto& actor : actors)
+    {
+        if (auto ht = actor->GetComponent<HeatTransfer>())
+        {
+            playerHeatTransfer = ht;
+            break; // 見つかったらループを抜ける
+        }
+    }
 
-        // 👤 パス1：通常オブジェクト（HeatReceiverを持っていない奴）だけを描画
     for (auto& actor : actors)
     {
         bool active = actor->setActive && (!actor->GetParent() || actor->GetParent()->setActive);
         if (!active) continue;
 
         auto modelRender = actor->GetComponent<ModelRender>();
-        if (modelRender && !actor->GetComponent<HeatReceiver>()) // ⭕ 持ていない奴
+        if (modelRender)
         {
-            actor->Render(rc, modelRenderer);
+            auto heatReceiver = actor->GetComponent<HeatReceiver>();
+            bool isInside = false;
+
+            if (playerHeatTransfer && heatReceiver)
+            {
+                auto& insideList = playerHeatTransfer->GetInsideActors();
+                if (std::find(insideList.begin(), insideList.end(), actor.get()) != insideList.end())
+                {
+                    isInside = true; // 範囲内に入っている
+                }
+            }
+
+            if (!heatReceiver || !isInside)
+            {
+                actor->Render(rc, modelRenderer);
+            }
         }
     }
-    // 【通常用】ImGuiやSceneで設定されているデフォルトの色と太さをセット
     rc.outlineColor.outlineColor = m_outlineColor;
-    rc.outlineParams.outlineThickness = m_outlineThickness; // ⭕ 通常の太さ
-
+    rc.outlineParams.outlineThickness = m_outlineThickness;
     modelRenderer->SetShaderId(ShaderId::Outline);
-    modelRenderer->FlushAll(rc); // 👈 1回目の描画（通常オブジェクト確定）
+    modelRenderer->FlushAll(rc); // 通常描画を確定
 
 
-    // 🔥 パス2：熱吸収オブジェクト（HeatReceiverを持っている奴）だけを描画
     for (auto& actor : actors)
     {
         bool active = actor->setActive && (!actor->GetParent() || actor->GetParent()->setActive);
         if (!active) continue;
 
         auto modelRender = actor->GetComponent<ModelRender>();
-        if (modelRender && actor->GetComponent<HeatReceiver>()) // ⭕ 持っている奴
+        if (modelRender)
         {
-            actor->Render(rc, modelRenderer);
+            auto heatReceiver = actor->GetComponent<HeatReceiver>();
+            bool isInside = false;
+
+            if (playerHeatTransfer && heatReceiver)
+            {
+                auto& insideList = playerHeatTransfer->GetInsideActors();
+                if (std::find(insideList.begin(), insideList.end(), actor.get()) != insideList.end())
+                {
+                    isInside = true; // 範囲内に入っている
+                }
+            }
+
+            // 「HeatReceiverを持っていて」かつ「プレイヤーの範囲内」の奴だけここで描画
+            if (heatReceiver && isInside)
+            {
+                actor->Render(rc, modelRenderer);
+            }
         }
     }
-    // 【熱吸収用】個別の色と太さを直接 rc に上書きセット
-    rc.outlineColor.outlineColor = DirectX::XMFLOAT4(1.0f, 0.5f, 0.0f, 1.0f); // オレンジ
-    rc.outlineParams.outlineThickness = 0.4f; // ⭕ 熱吸収オブジェクトだけ太くする（数値は好みで調整してな！）
-
+    rc.outlineColor.outlineColor = DirectX::XMFLOAT4(1.0f, 1.0f, 1.0f, 1.0f); // オレンジ
+    rc.outlineParams.outlineThickness = 0.4f; // 範囲内のときだけ太くする
     modelRenderer->SetShaderId(ShaderId::Outline);
-    modelRenderer->FlushAll(rc); // 👈 2回目の描画（熱吸収オブジェクト確定）
-
+    modelRenderer->FlushAll(rc); // 範囲内オブジェクトの描画を確定
 
     // エフェクト
     EffectManager::Instance().Render(rc.view, rc.projection);
@@ -415,4 +509,98 @@ void Scene::DrawGUI()
 	ImGui::SetNextWindowSize(ImVec2(400, 300), ImGuiCond_Once);
 
 
+}
+
+// ─── ⭕中身はそのまま、引数に const を追加してエラーを解消 ───
+void Scene::SaveSettings(const std::string& path) const
+{
+    nlohmann::json j;
+
+    // ライト・シャドウ関係
+    j["SceneSettings"]["LightDir"] = { lightDir.x, lightDir.y, lightDir.z };
+    j["SceneSettings"]["ShadowRange"] = shadowRange;
+    j["SceneSettings"]["FollowPlayer"] = followPlayer;
+    j["SceneSettings"]["LightColor"] = { lightCol.x, lightCol.y, lightCol.z, lightCol.w };
+    j["SceneSettings"]["AmbientColor"] = { ambientCol.x, ambientCol.y, ambientCol.z, ambientCol.w };
+
+    // シャドウパラメータ
+    j["SceneSettings"]["ShadowAlpha"] = m_shadowParams.shadow_color;
+    j["SceneSettings"]["ShadowBias"] = m_shadowParams.shadow_bias;
+
+    // ライトインテンシティ関係
+    j["SceneSettings"]["LightIntensity"] = m_lightParams.lightIntensity;
+    j["SceneSettings"]["ContrastPower"] = m_lightParams.contrastPower;
+    j["SceneSettings"]["PointLightIntensity"] = m_lightParams.pointLightIntensity; // ←追加したやつ！
+
+    // アウトライン関係
+    j["SceneSettings"]["OutlineColor"] = { m_outlineColor.x, m_outlineColor.y, m_outlineColor.z, m_outlineColor.w };
+    j["SceneSettings"]["OutlineThickness"] = m_outlineThickness;
+
+    // ブルーム関係
+    if (bloomer)
+    {
+        j["SceneSettings"]["BloomThreshold"] = bloomer->bloom_extraction_threshold;
+        j["SceneSettings"]["BloomIntensity"] = bloomer->bloom_intensity;
+    }
+
+    // 指定されたパスに直接ファイルを書き出す！
+    std::ofstream ofs(path);
+    if (ofs.is_open())
+    {
+        ofs << j.dump(4);
+    }
+}
+
+void Scene::LoadSettings(const std::string& path)
+{
+    std::ifstream ifs(path);
+    if (!ifs) return; // ファイルがなければ何もしない
+
+    nlohmann::json j;
+    ifs >> j;
+
+    if (!j.contains("SceneSettings")) return;
+    const auto& s = j["SceneSettings"];
+
+    if (s.contains("LightDir")) {
+        lightDir.x = s["LightDir"][0];
+        lightDir.y = s["LightDir"][1];
+        lightDir.z = s["LightDir"][2];
+    }
+    shadowRange = s.value("ShadowRange", shadowRange);
+    followPlayer = s.value("FollowPlayer", followPlayer);
+
+    if (s.contains("LightColor")) {
+        lightCol.x = s["LightColor"][0];
+        lightCol.y = s["LightColor"][1];
+        lightCol.z = s["LightColor"][2];
+        lightCol.w = s["LightColor"][3];
+    }
+    if (s.contains("AmbientColor")) {
+        ambientCol.x = s["AmbientColor"][0];
+        ambientCol.y = s["AmbientColor"][1];
+        ambientCol.z = s["AmbientColor"][2];
+        ambientCol.w = s["AmbientColor"][3];
+    }
+
+    m_shadowParams.shadow_color = s.value("ShadowAlpha", m_shadowParams.shadow_color);
+    m_shadowParams.shadow_bias = s.value("ShadowBias", m_shadowParams.shadow_bias);
+
+    m_lightParams.lightIntensity = s.value("LightIntensity", m_lightParams.lightIntensity);
+    m_lightParams.contrastPower = s.value("ContrastPower", m_lightParams.contrastPower);
+    m_lightParams.pointLightIntensity = s.value("PointLightIntensity", m_lightParams.pointLightIntensity);
+
+    if (s.contains("OutlineColor")) {
+        m_outlineColor.x = s["OutlineColor"][0];
+        m_outlineColor.y = s["OutlineColor"][1];
+        m_outlineColor.z = s["OutlineColor"][2];
+        m_outlineColor.w = s["OutlineColor"][3];
+    }
+    m_outlineThickness = s.value("OutlineThickness", m_outlineThickness);
+
+    if (bloomer)
+    {
+        bloomer->bloom_extraction_threshold = s.value("BloomThreshold", bloomer->bloom_extraction_threshold);
+        bloomer->bloom_intensity = s.value("BloomIntensity", bloomer->bloom_intensity);
+    }
 }

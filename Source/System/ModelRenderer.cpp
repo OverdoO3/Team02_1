@@ -467,7 +467,7 @@ void ModelRenderer::DebugImGui()
 #endif // _DEBUG
 
 
-void ModelRenderer::SaveLights(const std::string& path)
+void ModelRenderer::SaveLights(const std::string& path) 
 {
     nlohmann::json j;
     for (int i = 0; i < 8; i++)

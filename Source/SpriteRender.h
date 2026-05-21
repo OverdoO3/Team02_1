@@ -166,4 +166,13 @@ private:
     float m_swingRotAmplitude = 5.0f;
     float m_swingRotSpeed = 1.0f;
     bool m_swingRotUseCos = false;
+
+    bool m_isFadeEnabled = false;
+    float m_sprFadeSpeed = 2.0f;
+    float m_fadeTimer = 0.0f;
+
+    float m_fadeAlpha = 1.0f;
+
+    bool m_useClickHide = false;
+    bool m_isClickedHidden = false;
 };

@@ -18,6 +18,8 @@ public:
     void Deserialize(nlohmann::json& j) override;
 
     std::unique_ptr<Component> Clone() const override;
+    std::vector<Actor*> m_insideActors;
+    const std::vector<Actor*>& GetInsideActors() const { return m_insideActors; }
 
     COMPONENT_ID(HeatTransfer)
 private:

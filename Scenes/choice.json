@@ -95,9 +95,27 @@
                             "SrcW": 1920.0,
                             "SrcX": 0.0,
                             "SrcY": 0.0,
+                            "SwingAmpX": 10.0,
+                            "SwingAmpY": 10.0,
+                            "SwingEnabled": false,
+                            "SwingOffsetX": 0.0,
+                            "SwingOffsetY": 0.0,
+                            "SwingRotAmp": 5.0,
+                            "SwingRotSpeed": 1.0,
+                            "SwingRotUseCos": false,
+                            "SwingSpeedX": 1.0,
+                            "SwingSpeedY": 1.0,
+                            "SwingUseRot": false,
+                            "SwingUseX": false,
+                            "SwingUseY": false,
+                            "SwingXUseCos": false,
+                            "SwingYUseCos": true,
                             "TargetCol": 0,
                             "TargetRow": 0,
-                            "TexturePath": "Data/Sprite/Select_background.png"
+                            "TexturePath": "Data/Sprite/Select_background.png",
+                            "UseClickHide": false,
+                            "isFadeEnabled": false,
+                            "sprFadeSpeed": 5.0
                         },
                         "type": "SpriteRender"
                     }
@@ -166,9 +184,27 @@
                             "SrcW": 430.0,
                             "SrcX": 0.0,
                             "SrcY": 280.0,
+                            "SwingAmpX": 10.0,
+                            "SwingAmpY": 10.0,
+                            "SwingEnabled": false,
+                            "SwingOffsetX": 0.0,
+                            "SwingOffsetY": 0.0,
+                            "SwingRotAmp": 5.0,
+                            "SwingRotSpeed": 1.0,
+                            "SwingRotUseCos": false,
+                            "SwingSpeedX": 1.0,
+                            "SwingSpeedY": 1.0,
+                            "SwingUseRot": false,
+                            "SwingUseX": false,
+                            "SwingUseY": false,
+                            "SwingXUseCos": false,
+                            "SwingYUseCos": true,
                             "TargetCol": 0,
                             "TargetRow": 1,
-                            "TexturePath": "Data/Sprite/Select_stage.png"
+                            "TexturePath": "Data/Sprite/Select_stage.png",
+                            "UseClickHide": false,
+                            "isFadeEnabled": false,
+                            "sprFadeSpeed": 5.0
                         },
                         "type": "SpriteRender"
                     },
@@ -246,18 +282,36 @@
                             "SrcW": 430.0,
                             "SrcX": 430.0,
                             "SrcY": 280.0,
+                            "SwingAmpX": 10.0,
+                            "SwingAmpY": 10.0,
+                            "SwingEnabled": false,
+                            "SwingOffsetX": 0.0,
+                            "SwingOffsetY": 0.0,
+                            "SwingRotAmp": 5.0,
+                            "SwingRotSpeed": 1.0,
+                            "SwingRotUseCos": false,
+                            "SwingSpeedX": 1.0,
+                            "SwingSpeedY": 1.0,
+                            "SwingUseRot": false,
+                            "SwingUseX": false,
+                            "SwingUseY": false,
+                            "SwingXUseCos": false,
+                            "SwingYUseCos": true,
                             "TargetCol": 1,
                             "TargetRow": 1,
-                            "TexturePath": "Data/Sprite/Select_stage.png"
+                            "TexturePath": "Data/Sprite/Select_stage.png",
+                            "UseClickHide": false,
+                            "isFadeEnabled": false,
+                            "sprFadeSpeed": 5.0
                         },
                         "type": "SpriteRender"
                     },
                     {
                         "data": {
                             "ButtonMode": 0,
-                            "NextSceneName": "Scenes/",
+                            "NextSceneName": "Scenes/stage2.json",
                             "TitleSceneName": "Scenes/title.json",
-                            "UseLoading": false
+                            "UseLoading": true
                         },
                         "type": "ButtonComponent"
                     }
@@ -326,18 +380,36 @@
                             "SrcW": 430.0,
                             "SrcX": 860.0,
                             "SrcY": 280.0,
+                            "SwingAmpX": 10.0,
+                            "SwingAmpY": 10.0,
+                            "SwingEnabled": false,
+                            "SwingOffsetX": 0.0,
+                            "SwingOffsetY": 0.0,
+                            "SwingRotAmp": 5.0,
+                            "SwingRotSpeed": 1.0,
+                            "SwingRotUseCos": false,
+                            "SwingSpeedX": 1.0,
+                            "SwingSpeedY": 1.0,
+                            "SwingUseRot": false,
+                            "SwingUseX": false,
+                            "SwingUseY": false,
+                            "SwingXUseCos": false,
+                            "SwingYUseCos": true,
                             "TargetCol": 2,
                             "TargetRow": 1,
-                            "TexturePath": "Data/Sprite/Select_stage.png"
+                            "TexturePath": "Data/Sprite/Select_stage.png",
+                            "UseClickHide": false,
+                            "isFadeEnabled": false,
+                            "sprFadeSpeed": 5.0
                         },
                         "type": "SpriteRender"
                     },
                     {
                         "data": {
                             "ButtonMode": 0,
-                            "NextSceneName": "Scenes/",
+                            "NextSceneName": "Scenes/stage3.json",
                             "TitleSceneName": "Scenes/title.json",
-                            "UseLoading": false
+                            "UseLoading": true
                         },
                         "type": "ButtonComponent"
                     }
@@ -406,18 +478,36 @@
                             "SrcW": 430.0,
                             "SrcX": 1290.0,
                             "SrcY": 280.0,
+                            "SwingAmpX": 10.0,
+                            "SwingAmpY": 10.0,
+                            "SwingEnabled": false,
+                            "SwingOffsetX": 0.0,
+                            "SwingOffsetY": 0.0,
+                            "SwingRotAmp": 5.0,
+                            "SwingRotSpeed": 1.0,
+                            "SwingRotUseCos": false,
+                            "SwingSpeedX": 1.0,
+                            "SwingSpeedY": 1.0,
+                            "SwingUseRot": false,
+                            "SwingUseX": false,
+                            "SwingUseY": false,
+                            "SwingXUseCos": false,
+                            "SwingYUseCos": true,
                             "TargetCol": 3,
                             "TargetRow": 1,
-                            "TexturePath": "Data/Sprite/Select_stage.png"
+                            "TexturePath": "Data/Sprite/Select_stage.png",
+                            "UseClickHide": false,
+                            "isFadeEnabled": false,
+                            "sprFadeSpeed": 5.0
                         },
                         "type": "SpriteRender"
                     },
                     {
                         "data": {
                             "ButtonMode": 0,
-                            "NextSceneName": "Scenes/",
+                            "NextSceneName": "Scenes/stage4.json",
                             "TitleSceneName": "Scenes/title.json",
-                            "UseLoading": false
+                            "UseLoading": true
                         },
                         "type": "ButtonComponent"
                     }
@@ -486,9 +576,27 @@
                             "SrcW": -1.0,
                             "SrcX": 0.0,
                             "SrcY": 0.0,
+                            "SwingAmpX": 10.0,
+                            "SwingAmpY": 10.0,
+                            "SwingEnabled": false,
+                            "SwingOffsetX": 0.0,
+                            "SwingOffsetY": 0.0,
+                            "SwingRotAmp": 5.0,
+                            "SwingRotSpeed": 1.0,
+                            "SwingRotUseCos": false,
+                            "SwingSpeedX": 1.0,
+                            "SwingSpeedY": 1.0,
+                            "SwingUseRot": false,
+                            "SwingUseX": false,
+                            "SwingUseY": false,
+                            "SwingXUseCos": false,
+                            "SwingYUseCos": true,
                             "TargetCol": 0,
                             "TargetRow": 0,
-                            "TexturePath": ""
+                            "TexturePath": "",
+                            "UseClickHide": false,
+                            "isFadeEnabled": false,
+                            "sprFadeSpeed": 5.0
                         },
                         "type": "SpriteRender"
                     }
@@ -557,9 +665,27 @@
                             "SrcW": 260.0,
                             "SrcX": 258.0,
                             "SrcY": 0.0,
+                            "SwingAmpX": 10.0,
+                            "SwingAmpY": 10.0,
+                            "SwingEnabled": false,
+                            "SwingOffsetX": 0.0,
+                            "SwingOffsetY": 0.0,
+                            "SwingRotAmp": 5.0,
+                            "SwingRotSpeed": 1.0,
+                            "SwingRotUseCos": false,
+                            "SwingSpeedX": 1.0,
+                            "SwingSpeedY": 1.0,
+                            "SwingUseRot": false,
+                            "SwingUseX": false,
+                            "SwingUseY": false,
+                            "SwingXUseCos": false,
+                            "SwingYUseCos": true,
                             "TargetCol": 1,
                             "TargetRow": 0,
-                            "TexturePath": "Data/Sprite/Select_back.png"
+                            "TexturePath": "Data/Sprite/Select_back.png",
+                            "UseClickHide": false,
+                            "isFadeEnabled": false,
+                            "sprFadeSpeed": 5.0
                         },
                         "type": "SpriteRender"
                     },

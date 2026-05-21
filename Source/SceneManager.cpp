@@ -8,7 +8,7 @@ void SceneManager::Initialize()
 {
     ChangeScene(std::move(std::make_unique<Scene>()), "Scenes/Demo.json");
     LoadPauseUI("Scenes/pause.json");
-    ChangeScene(std::move(std::make_unique<Scene>()), "Scenes/stage1.json");
+    ChangeScene(std::move(std::make_unique<Scene>()), "Scenes/title.json");
 
     LoadLoadingUI("Scenes/loading.json");
 
@@ -364,6 +364,8 @@ void SceneManager::SaveEditorScene(const std::string& path)
 {
     if (editorScene)
         SceneSerializer::Save(*editorScene, path);
+
+    editorScene->SaveSettings(path);
 }
 
 void SceneManager::LoadEditorScene(const std::string& path)
@@ -373,18 +375,21 @@ void SceneManager::LoadEditorScene(const std::string& path)
     {
         editorScene = std::move(newScene);
         editorScene->sceneManager = this;
-        editorScene->Initialize();
+
+        editorScene->Initialize(path.c_str());
+
+        editorScene->LoadSettings(path);
         runtimeScene.reset();
         playState = false;
         currentScene = GetCurrentScene();
 
-        m_currentScenePath = path; 
+        m_currentScenePath = path;
 
         auto* modelRenderer = Graphics::Instance().GetModelRenderer();
         if (modelRenderer)
         {
-            modelRenderer->SetLightPath(m_currentScenePath);                 
-            modelRenderer->LoadLights(modelRenderer->GetCurrentLightPath()); 
+            modelRenderer->SetLightPath(m_currentScenePath);
+            modelRenderer->LoadLights(modelRenderer->GetCurrentLightPath());
         }
     }
 }

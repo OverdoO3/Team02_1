@@ -17,6 +17,9 @@ void HeatTransfer::Update(float elapsedTime)
 	auto thermal = owner->GetComponent<ThermalBody>();
 	auto scene = owner->GetScene();
 	if (!thermal) return;
+
+	m_insideActors.clear();
+
 	for (auto& actor : scene->actors)
 	{
 		auto toThermal = actor->GetComponent<ThermalBody>();
@@ -31,6 +34,8 @@ void HeatTransfer::Update(float elapsedTime)
 			toThermal->GetRadius()))
 		{
 			toThermal->SetHeat(thermal->GetHeat());
+
+			m_insideActors.push_back(actor.get());
 		} 
 	}
 

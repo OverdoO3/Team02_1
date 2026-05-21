@@ -9,6 +9,7 @@ REGISTER_COMPONENT(ComponentID::SpriteRender,SpriteRender)
 void SpriteRender::Draw(RenderContext& rc)
 {
     if (!owner)return;
+    if (m_isClickedHidden)return;
 
     if (m_isOnlyWhileLoading)
     {
@@ -24,6 +25,8 @@ void SpriteRender::Draw(RenderContext& rc)
     {
         if (!m_sceneManager || !m_sceneManager->IsPaused()) return;
     }
+
+
 
     // ─── ⭕【修正版】Loadingスプライトの出し分け制御 ───
     if (m_isGameLoading || m_isTitleLoading)
@@ -93,9 +96,9 @@ void SpriteRender::Draw(RenderContext& rc)
         //描画に使う色を決定する(デバッグ用)
         DirectX::XMFLOAT4 finalColor = color;
         if (m_hoverFade)
-        {
             finalColor.w *= m_appearanceRatio;
-        }
+
+        finalColor.w *= m_fadeAlpha;  
 
 
         Actor* parent = owner->GetParent();
@@ -271,8 +274,6 @@ void SpriteRender::Update(float elapsedTime)
     // ─── ⭕ アイリス演出（拡大・縮小）の更新 ───
     if (m_irisMode != IrisMode::None)
     {
-
-
         m_irisTimer += elapsedTime;
         float rate = m_irisTimer / m_irisDuration;
         if (rate >= 1.0f) rate = 1.0f;
@@ -284,8 +285,6 @@ void SpriteRender::Update(float elapsedTime)
                 m_editorScale = m_irisTargetScale; // 完全に 0.0f（閉じきった状態）にする
                 m_irisMode = IrisMode::None;       // 演出終了
 
-                // ❌ ここにあった m_editorScale = m_originalScale; は削除します！
-                // 閉じきった後は 0.0f のままフリーズさせておかないと、次のシーンに遷移する瞬間に画面がパッと見えてしまいます
             }
             else
             {
@@ -356,6 +355,15 @@ void SpriteRender::Update(float elapsedTime)
             mouseYInWindow >= colTop && mouseYInWindow <= colBottom);
     }
 
+    if (m_useClickHide && m_isHovered && !m_isClickedHidden)
+    {
+        // ImGuiの機能を使って、このフレームで左クリックされたかを検知
+        if (ImGui::IsMouseClicked(ImGuiMouseButton_Left))
+        {
+            m_isClickedHidden = true; 
+        }
+    }
+
     // ─── 2. アルファフェード処理 ───
     if (m_hoverFade)
     {
@@ -401,6 +409,16 @@ void SpriteRender::Update(float elapsedTime)
         m_swingTimer += elapsedTime;
     }
 
+    if (m_isFadeEnabled)
+    {
+        m_fadeTimer += elapsedTime * m_sprFadeSpeed;
+        m_fadeAlpha = (sinf(m_fadeTimer) * 0.5f) + 0.5f;
+    }
+    else
+    {
+        m_fadeAlpha = 1.0f;
+    }
+
     if (!m_isLoop || m_animFrameCount <= 1) return;
 
     m_timer += elapsedTime;
@@ -411,6 +429,7 @@ void SpriteRender::Update(float elapsedTime)
         if (m_currentFrame >= m_animFrameCount)
             m_currentFrame = 0;
     }
+
 }
 
 std::unique_ptr<Component> SpriteRender::Clone() const
@@ -483,6 +502,11 @@ std::unique_ptr<Component> SpriteRender::Clone() const
     c->m_swingRotAmplitude = this->m_swingRotAmplitude;
     c->m_swingRotSpeed = this->m_swingRotSpeed;
     c->m_swingRotUseCos = this->m_swingRotUseCos;
+    c->m_isFadeEnabled = this->m_isFadeEnabled;
+    c->m_sprFadeSpeed = this->m_sprFadeSpeed;
+
+    c->m_useClickHide = this->m_useClickHide;
+    c->m_isClickedHidden = false; // クローンされた側は表示状態からスタート
 
 	return c;
 }
@@ -546,6 +570,9 @@ void SpriteRender::Serialize(nlohmann::json& j) const
     j["SwingRotAmp"] = m_swingRotAmplitude;
     j["SwingRotSpeed"] = m_swingRotSpeed;
     j["SwingRotUseCos"] = m_swingRotUseCos;
+    j["isFadeEnabled"] = m_isFadeEnabled;
+    j["sprFadeSpeed"]  = m_sprFadeSpeed;
+    j["UseClickHide"] = m_useClickHide;
 }
 
 void SpriteRender::DrawInspector()
@@ -631,6 +658,40 @@ void SpriteRender::DrawInspector()
         ImGui::ColorEdit4("Color", &color.x);
         ImGui::InputInt("Sort Order", &sortOrder);
     }
+
+    ImGui::Separator(); // 境界線
+    ImGui::Text("Fade Settings");
+
+    // ⭕ フェード有効化のチェックボックス
+    ImGui::Checkbox("Enable Fade Loop", &m_isFadeEnabled);
+
+    if (m_isFadeEnabled)
+    {
+        ImGui::SliderFloat("Fade Speed", &m_sprFadeSpeed, 0.1f, 10.0f, "%.1f");
+
+        ImGui::Text("Current Alpha: %.2f", color.w);
+    }
+
+    ImGui::Separator();
+    if (ImGui::CollapsingHeader("Click Actions", ImGuiTreeNodeFlags_DefaultOpen))
+    {
+        ImGui::Checkbox("Use Click Hide", &m_useClickHide);
+
+        if (m_useClickHide)
+        {
+            ImGui::Text("Status: %s", m_isClickedHidden ? "Hidden" : "Visible");
+
+            // テスト用に消えたスプライトをパッと復活させるボタン
+            if (m_isClickedHidden)
+            {
+                if (ImGui::Button("Reset Visibility"))
+                {
+                    m_isClickedHidden = false;
+                }
+            }
+        }
+    }
+    ImGui::Separator();
 
     if (ImGui::CollapsingHeader("Sprite Resource"))
     {
@@ -864,6 +925,11 @@ void SpriteRender::Deserialize(nlohmann::json& j)
     m_swingRotAmplitude = j.value("SwingRotAmp", 5.0f);
     m_swingRotSpeed = j.value("SwingRotSpeed", 1.0f);
     m_swingRotUseCos = j.value("SwingRotUseCos", false);
+    m_isFadeEnabled = j.value("isFadeEnabled",false);
+    m_sprFadeSpeed = j.value("sprFadeSpeed", 5.0f);
+    m_useClickHide = j.value("UseClickHide", false);
+    m_isClickedHidden = false; // 読み込み時は一頭表示状態に戻す
+
 }
 
 void SpriteRender::StartIrisOut()
