@@ -28,6 +28,10 @@ enum class ComponentID
     Slope,
     tent,
     flower,
+    Bridge,
+    needles,
+    Coin,
+    playerModelChanger,
     COUNT
 };
 

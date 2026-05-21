@@ -20,6 +20,7 @@ AABB BoxCollider::GetAABB() const
 void BoxCollider::Serialize(json& j)const
 {
 	j["size"] = { size.x,size.y,size.z };
+	j["offset"] = { offset.x,offset.y,offset.z };
 }
 
 void BoxCollider::Deserialize(json& j)
@@ -29,7 +30,11 @@ void BoxCollider::Deserialize(json& j)
 	{ 
 		size = { s[0], s[1], s[2] };
 	}
-
+	auto o = j["offset"];
+	if (o != nullptr)
+	{
+		offset = { o[0], o[1], o[2] };
+	}
 }
 
 void BoxCollider::DrawInspector()

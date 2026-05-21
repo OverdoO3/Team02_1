@@ -157,6 +157,9 @@ void Move::Update(float elapsedTime)
             auto col = actor->GetComponent<BoxCollider>();
             if (!col) goto next_actor;
 
+            oPos.x += col->offset.x;
+            oPos.y += col->offset.y;
+            oPos.z += col->offset.z;
             auto size = col->size;
 
             float boxTop = oPos.y + size.y * 0.5f;
@@ -219,6 +222,9 @@ void Move::Update(float elapsedTime)
         if (!col) continue;
 
         auto oPos = other->GetComponent<Transform>()->GetWorldPosition();
+        oPos.x += col->offset.x;
+        oPos.y += col->offset.y;
+        oPos.z += col->offset.z;
         auto size = col->size;
 
         float top = nextPos.y + height;
@@ -340,10 +346,15 @@ void Move::Serialize(nlohmann::json& j) const
 
 void Move::Deserialize(nlohmann::json& j)
 {
-    /*grav = j["grav"];
+    grav = j["grav"];
     turnSpeed = j["turn"];
     radius = j["radius"];
-    speed =  j["spped"];*/
+    speed =  j["spped"];
+}
+
+void Move::ChangeModel()
+{
+    
 }
 
 std::unique_ptr<Component> Move::Clone() const
