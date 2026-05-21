@@ -27,10 +27,12 @@ void water::Update(float elapsedTime)
 		col->size.y = 10;
 		modelrender->SetModel(std::move(model));
 		break;
-	default:
+	case 1:
 		model = std::make_unique<Model>(waterpath.c_str());
 		col->size.y = 50;
 		modelrender->SetModel(std::move(model));
+		break;
+	default:
 		break;
 	}
 

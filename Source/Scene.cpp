@@ -345,7 +345,7 @@ void Scene::Render(CameraBase* camera, bool isEditor)
         }
     }
 
-
+    modelRenderer->DebugImGui();
 }
 
 void Scene::DrawGUI()
@@ -363,6 +363,4 @@ void Scene::DrawGUI()
 
 	ImGui::SetNextWindowPos(windowPos, ImGuiCond_FirstUseEver, windowPivot);
 	ImGui::SetNextWindowSize(ImVec2(400, 300), ImGuiCond_Once);
-
-
 }

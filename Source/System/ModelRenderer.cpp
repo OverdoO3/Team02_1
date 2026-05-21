@@ -163,7 +163,7 @@ void ModelRenderer::AddInstance(const Model* model, Actor* actor)
 
     InstanceData data{};
     data.world = t->GetWorldMatrix();
-    
+
     auto& batch = batches[model->GetResource()];
     batch.representativeModel = model;
     batch.instances.push_back(data);

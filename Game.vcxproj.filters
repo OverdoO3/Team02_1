@@ -371,6 +371,18 @@
     <ClInclude Include="Source\flower.h">
       <Filter>Source\Components\Temp\TempObj</Filter>
     </ClInclude>
+    <ClInclude Include="Source\Bridge.h">
+      <Filter>Source\Components\Temp\TempObj</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\needles.h">
+      <Filter>Source\Components\Temp\TempObj</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Coin.h">
+      <Filter>Source\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\player.h">
+      <Filter>Source\Components\Temp\TempObj</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="External\imgui-docking\imgui.cpp">
@@ -581,6 +593,18 @@
       <Filter>Source\Components\Temp\TempObj</Filter>
     </ClCompile>
     <ClCompile Include="Source\flower.cpp">
+      <Filter>Source\Components\Temp\TempObj</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Bridge.cpp">
+      <Filter>Source\Components\Temp\TempObj</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\needles.cpp">
+      <Filter>Source\Components\Temp\TempObj</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Coin.cpp">
+      <Filter>Source\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\player.cpp">
       <Filter>Source\Components\Temp\TempObj</Filter>
     </ClCompile>
   </ItemGroup>

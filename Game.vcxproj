@@ -216,9 +216,17 @@
     <ClInclude Include="External\imgui-docking\imstb_truetype.h" />
     <ClInclude Include="Source\Actor.h" />
     <ClInclude Include="Source\BoxCollider.h" />
+    <ClInclude Include="Source\Bridge.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="Source\ButtonComponent.h" />
     <ClInclude Include="Source\Camera.h" />
     <ClInclude Include="Source\CameraBase.h" />
+    <ClInclude Include="Source\Coin.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="Source\Collider.h" />
     <ClInclude Include="Source\Collision.h" />
     <ClInclude Include="Source\Component.h" />
@@ -260,8 +268,16 @@
     <ClInclude Include="Source\ModelRender.h" />
     <ClInclude Include="Source\MouseCursor.h" />
     <ClInclude Include="Source\Move.h" />
+    <ClInclude Include="Source\needles.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="Source\OpenDialog.h" />
     <ClInclude Include="Source\PhysicsSystem.h" />
+    <ClInclude Include="Source\player.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="Source\Prefab.h" />
     <ClInclude Include="Source\PrefabManager.h" />
     <ClInclude Include="Source\PlayerUIRotator.h" />
@@ -337,8 +353,16 @@
     <ClCompile Include="External\imgui-docking\imgui_widgets.cpp" />
     <ClCompile Include="Source\Actor.cpp" />
     <ClCompile Include="Source\BoxCollider.cpp" />
+    <ClCompile Include="Source\Bridge.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="Source\ButtonComponent.cpp" />
     <ClCompile Include="Source\Camera.cpp" />
+    <ClCompile Include="Source\Coin.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="Source\Collider.cpp" />
     <ClCompile Include="Source\Collision.cpp" />
     <ClCompile Include="Source\ComponentManager.cpp" />
@@ -369,7 +393,15 @@
     <ClCompile Include="Source\ModelRender.cpp" />
     <ClCompile Include="Source\MouseCursor.cpp" />
     <ClCompile Include="Source\Move.cpp" />
+    <ClCompile Include="Source\needles.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="Source\PhysicsSystem.cpp" />
+    <ClCompile Include="Source\player.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="Source\PrefabManager.cpp" />
     <ClCompile Include="Source\PlayerUIRotator.cpp" />
     <ClCompile Include="Source\RayCast.cpp" />

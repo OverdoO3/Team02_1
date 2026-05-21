@@ -1,0 +1,40 @@
+{
+    "components": [
+        {
+            "data": {
+                "position": [
+                    51.16699981689453,
+                    52.33646774291992,
+                    -30.0511474609375
+                ],
+                "rotation": [
+                    -0.0,
+                    0.0,
+                    -0.0,
+                    1.0
+                ],
+                "scale": [
+                    1.0,
+                    1.0,
+                    1.0
+                ]
+            },
+            "type": "Transform"
+        },
+        {
+            "data": {
+                "ModelPath": "Data/Model/Stage/Demos/coin.mdl"
+            },
+            "type": "ModelRender"
+        },
+        {
+            "data": null,
+            "type": "Coin"
+        }
+    ],
+    "id": 2744,
+    "name": "coin",
+    "parent": -1,
+    "tag": 0,
+    "type": "Actor"
+}

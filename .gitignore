@@ -29,6 +29,7 @@ Bin/
 *.tlog
 *.idb
 *.lastbuildstate
+*.ini
 
 # =========================
 # DirectX / Shader

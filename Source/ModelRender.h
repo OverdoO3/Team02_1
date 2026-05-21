@@ -12,6 +12,7 @@ public:
 	ModelRender() {};
 	~ModelRender() {};
 
+	void OnAwake(float elapsedTime);
 	void Render(RenderContext& rc, ModelRenderer* renderer) override;
 	void Update(float elasedTime) override;
 
@@ -71,4 +72,7 @@ private:
 	bool animationLoop = false;
 	bool animationPlaying = false;
 	float animationBlendSecondsLength = 0.2f;
+
+	float randomYRotation = 0.0f;      // ランダム回転角（ラジアン）
+	bool  randomRotationInitialized = false;
 };
