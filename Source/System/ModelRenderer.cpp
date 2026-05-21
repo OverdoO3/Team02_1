@@ -424,8 +424,8 @@ void ModelRenderer::DebugImGui()
             ImGui::PushID(i);
             if (ImGui::CollapsingHeader(("Light[" + std::to_string(i) + "]").c_str()))
             {
-                ImGui::SliderFloat3("Position", &point_light[i].position.x, -50.0f, 50.0f);
-                ImGui::SliderFloat("Range", &point_light[i].range, 0.0f, 100.0f);
+                ImGui::SliderFloat3("Position", &point_light[i].position.x, -150.0f, 150.0f);
+                ImGui::SliderFloat("Range", &point_light[i].range, 0.0f, 200.0f);
                 ImGui::ColorEdit4("Color", &point_light[i].color.x);
             }
             ImGui::PopID();

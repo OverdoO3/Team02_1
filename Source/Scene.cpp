@@ -272,6 +272,22 @@ void Scene::Render(CameraBase* camera, bool isEditor)
             if (active)
                 actor->RenderDebug(rc, shapeRenderer);
         }
+
+        // ポイントライトのデバッグ球を追加
+        ModelRenderer* modelRenderer = graphics.GetModelRenderer();
+        point_lights* lights = modelRenderer->GetPointLights();
+        for (int i = 0; i < 8; i++)
+        {
+            if (lights[i].range <= 0.0f) continue; // rangeが0なら描画しない
+
+            DirectX::XMFLOAT3 pos = {
+                lights[i].position.x,
+                lights[i].position.y,
+                lights[i].position.z
+            };
+            shapeRenderer->RenderSphere(rc, pos, 3.0f, lights[i].color);
+        }
+
     }
 
     scene_framebuffer->deactivate(dc);

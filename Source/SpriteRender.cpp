@@ -98,6 +98,66 @@ void SpriteRender::Draw(RenderContext& rc)
         }
 
 
+        Actor* parent = owner->GetParent();
+        if (parent)
+        {
+            auto parentTran = parent->GetComponent<Transform>();
+            auto* parentSpr = parent->GetComponent<SpriteRender>();
+            if (parentTran && parentSpr)
+            {
+                DirectX::XMFLOAT3 parentPos = parentTran->GetWorldPosition();
+                DirectX::XMFLOAT3 parentScale = parentTran->GetWorldScale();
+
+                float parentTexW = parentSpr->GetSprite() ? parentSpr->GetSprite()->GetTextureWidth() : 0.0f;
+                float parentTexH = parentSpr->GetSprite() ? parentSpr->GetSprite()->GetTextureHeight() : 0.0f;
+                float parentSW = (parentSpr->GetSrcW() < 0.0f) ? parentTexW : parentSpr->GetSrcW();
+                float parentSH = (parentSpr->GetSrcH() < 0.0f) ? parentTexH : parentSpr->GetSrcH();
+                float parentW = parentSW * parentSpr->GetEditorScale() * parentScale.x;
+                float parentH = parentSH * parentSpr->GetEditorScale() * parentScale.y;
+
+                // 親のCenter座標
+                float parentCenterX = screenOffset.x + parentPos.x;
+                float parentCenterY = screenOffset.y + parentPos.y;
+                // Pivot::Centerなので中心がそのまま座標
+
+                float relX = drawX - parentCenterX;
+                float relY = drawY - parentCenterY;
+
+                float rad = DirectX::XMConvertToRadians(totalAngle);
+                float cosA = cosf(rad);
+                float sinA = sinf(rad);
+
+                drawX = parentCenterX + cosA * relX - sinA * relY;
+                drawY = parentCenterY + sinA * relX + cosA * relY;
+            }
+        }
+
+        if (m_swingEnabled)
+        {
+            if (m_useSwingX)
+            {
+                float wave = m_swingXUseCos
+                    ? cosf((m_swingTimer + m_swingOffsetX) * m_swingSpeedX)
+                    : sinf((m_swingTimer + m_swingOffsetX) * m_swingSpeedX);
+                drawX += wave * m_swingAmplitudeX;
+            }
+            if (m_useSwingY)
+            {
+                float wave = m_swingYUseCos
+                    ? cosf((m_swingTimer + m_swingOffsetY) * m_swingSpeedY)
+                    : sinf((m_swingTimer + m_swingOffsetY) * m_swingSpeedY);
+                drawY += wave * m_swingAmplitudeY;
+            }
+            if (m_useSwingRot)
+            {
+                float wave = m_swingRotUseCos
+                    ? cosf(m_swingTimer * m_swingRotSpeed)
+                    : sinf(m_swingTimer * m_swingRotSpeed);
+                totalAngle += wave * m_swingRotAmplitude;
+            }
+        }
+
+
         // 実際の描画呼び出し
         spr->Render(
             rc,
@@ -335,6 +395,12 @@ void SpriteRender::Update(float elapsedTime)
         m_srcY = (float)currentRow * cellH;
     }
 
+    // 揺れ処理
+    if (m_swingEnabled)
+    {
+        m_swingTimer += elapsedTime;
+    }
+
     if (!m_isLoop || m_animFrameCount <= 1) return;
 
     m_timer += elapsedTime;
@@ -366,6 +432,7 @@ std::unique_ptr<Component> SpriteRender::Clone() const
     c->m_editorScale     = this->m_editorScale;
     c->m_pivot           = this->m_pivot;
     c->sortOrder         = this->sortOrder;
+    c->m_editorAngleDeg = this->m_editorAngleDeg;
 
     c->m_colliderOffsetX = this->m_colliderOffsetX;
     c->m_colliderOffsetY = this->m_colliderOffsetY;
@@ -400,6 +467,22 @@ std::unique_ptr<Component> SpriteRender::Clone() const
     c->m_isGameLoading = this->m_isGameLoading;
     c->m_isTitleLoading = this->m_isTitleLoading;
     c->m_isOnlyWhileLoading = this->m_isOnlyWhileLoading;
+
+    c->m_swingEnabled = this->m_swingEnabled;
+    c->m_useSwingX = this->m_useSwingX;
+    c->m_useSwingY = this->m_useSwingY;
+    c->m_swingXUseCos = this->m_swingXUseCos;
+    c->m_swingYUseCos = this->m_swingYUseCos;
+    c->m_swingAmplitudeX = this->m_swingAmplitudeX;
+    c->m_swingAmplitudeY = this->m_swingAmplitudeY;
+    c->m_swingSpeedX = this->m_swingSpeedX;
+    c->m_swingSpeedY = this->m_swingSpeedY;
+    c->m_swingOffsetX = this->m_swingOffsetX;
+    c->m_swingOffsetY = this->m_swingOffsetY;
+    c->m_useSwingRot = this->m_useSwingRot;
+    c->m_swingRotAmplitude = this->m_swingRotAmplitude;
+    c->m_swingRotSpeed = this->m_swingRotSpeed;
+    c->m_swingRotUseCos = this->m_swingRotUseCos;
 
 	return c;
 }
@@ -447,6 +530,22 @@ void SpriteRender::Serialize(nlohmann::json& j) const
     j["IsGameLoading"] = m_isGameLoading;
     j["IsTitleLoading"] = m_isTitleLoading;
     j["IsOnlyWhileLoading"] = m_isOnlyWhileLoading;
+
+    j["SwingEnabled"] = m_swingEnabled;
+    j["SwingUseX"] = m_useSwingX;
+    j["SwingUseY"] = m_useSwingY;
+    j["SwingXUseCos"] = m_swingXUseCos;
+    j["SwingYUseCos"] = m_swingYUseCos;
+    j["SwingAmpX"] = m_swingAmplitudeX;
+    j["SwingAmpY"] = m_swingAmplitudeY;
+    j["SwingSpeedX"] = m_swingSpeedX;
+    j["SwingSpeedY"] = m_swingSpeedY;
+    j["SwingOffsetX"] = m_swingOffsetX;
+    j["SwingOffsetY"] = m_swingOffsetY;
+    j["SwingUseRot"] = m_useSwingRot;
+    j["SwingRotAmp"] = m_swingRotAmplitude;
+    j["SwingRotSpeed"] = m_swingRotSpeed;
+    j["SwingRotUseCos"] = m_swingRotUseCos;
 }
 
 void SpriteRender::DrawInspector()
@@ -607,6 +706,48 @@ void SpriteRender::DrawInspector()
         ImGui::PopID();
     }
 
+    if (ImGui::CollapsingHeader("Swing Settings"))
+    {
+        ImGui::Checkbox("Enable Swing", &m_swingEnabled);
+        if (m_swingEnabled)
+        {
+            ImGui::Separator();
+            ImGui::Text("--- X Swing ---");
+            ImGui::Checkbox("Use X Swing", &m_useSwingX);
+            if (m_useSwingX)
+            {
+                ImGui::Checkbox("X Use Cos (off=Sin)", &m_swingXUseCos);
+                ImGui::DragFloat("X Amplitude", &m_swingAmplitudeX, 0.5f, -500.0f, 500.0f);
+                ImGui::DragFloat("X Speed", &m_swingSpeedX, 0.1f, 0.0f, 20.0f);
+                ImGui::DragFloat("X Phase Offset", &m_swingOffsetX, 0.1f, -10.0f, 10.0f);
+            }
+
+            ImGui::Separator();
+            ImGui::Text("--- Y Swing ---");
+            ImGui::Checkbox("Use Y Swing", &m_useSwingY);
+            if (m_useSwingY)
+            {
+                ImGui::Checkbox("Y Use Cos (off=Sin)", &m_swingYUseCos);
+                ImGui::DragFloat("Y Amplitude", &m_swingAmplitudeY, 0.5f, -500.0f, 500.0f);
+                ImGui::DragFloat("Y Speed", &m_swingSpeedY, 0.1f, 0.0f, 20.0f);
+                ImGui::DragFloat("Y Phase Offset", &m_swingOffsetY, 0.1f, -10.0f, 10.0f);
+            }
+
+            ImGui::Separator();
+            ImGui::Text("--- Rotation Swing ---");
+            ImGui::Checkbox("Use Rotation Swing", &m_useSwingRot);
+            if (m_useSwingRot)
+            {
+                ImGui::Checkbox("Rot Use Cos (off=Sin)", &m_swingRotUseCos);
+                ImGui::DragFloat("Rot Amplitude (deg)", &m_swingRotAmplitude, 0.5f, -180.0f, 180.0f);
+                ImGui::DragFloat("Rot Speed", &m_swingRotSpeed, 0.1f, 0.0f, 20.0f);
+            }
+
+            if (ImGui::Button("Reset Timer"))
+                m_swingTimer = 0.0f;
+        }
+    }
+
     ImGui::Separator();
     ImGui::Text("--- Iris Out Setting ---");
 
@@ -707,6 +848,22 @@ void SpriteRender::Deserialize(nlohmann::json& j)
     m_isGameLoading = j.value("IsGameLoading", false);
     m_isTitleLoading = j.value("IsTitleLoading", false);
     m_isOnlyWhileLoading = j.value("IsOnlyWhileLoading", false);
+
+    m_swingEnabled = j.value("SwingEnabled", false);
+    m_useSwingX = j.value("SwingUseX", false);
+    m_useSwingY = j.value("SwingUseY", false);
+    m_swingXUseCos = j.value("SwingXUseCos", false);
+    m_swingYUseCos = j.value("SwingYUseCos", true);
+    m_swingAmplitudeX = j.value("SwingAmpX", 10.0f);
+    m_swingAmplitudeY = j.value("SwingAmpY", 10.0f);
+    m_swingSpeedX = j.value("SwingSpeedX", 1.0f);
+    m_swingSpeedY = j.value("SwingSpeedY", 1.0f);
+    m_swingOffsetX = j.value("SwingOffsetX", 0.0f);
+    m_swingOffsetY = j.value("SwingOffsetY", 0.0f);
+    m_useSwingRot = j.value("SwingUseRot", false);
+    m_swingRotAmplitude = j.value("SwingRotAmp", 5.0f);
+    m_swingRotSpeed = j.value("SwingRotSpeed", 1.0f);
+    m_swingRotUseCos = j.value("SwingRotUseCos", false);
 }
 
 void SpriteRender::StartIrisOut()
