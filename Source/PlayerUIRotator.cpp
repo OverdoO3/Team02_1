@@ -31,20 +31,35 @@ void PlayerUIRotator::Update(float elapsedTime)
 		int heat = m_playerThermal->GetHeat();
 		switch (heat)
 		{
+		//case -2: //•X
+		//	m_targetAngle = 180.0f;
+		//	break;
+		//case -1: // …
+		//	m_targetAngle = 270.0f;
+		//	break;
+		//case 0:  // –³
+		//	m_targetAngle = 0.0f;
+		//	break;
+		//case 1:  // ‰Î
+		//	m_targetAngle = 90.0f;
+		//	break;
+		//default:
+		//	break;
 		case -2: //•X
-			m_targetAngle = 180.0f;
+			m_targetAngle = 135.0f;
 			break;
 		case -1: // …
-			m_targetAngle = 270.0f;
+			m_targetAngle = 225.0f;
 			break;
 		case 0:  // –³
-			m_targetAngle = 0.0f;
+			m_targetAngle = -45.0f;
 			break;
 		case 1:  // ‰Î
-			m_targetAngle = 90.0f;
+			m_targetAngle =	45.0f;
 			break;
 		default:
 			break;
+
 		}
 	}
 

@@ -1,4 +1,4 @@
-#include "Scene.h"
+ï»¿#include "Scene.h"
 #include "SceneManager.h"
 #include "EffectManager.h"
 #include "OpenDialog.h"
@@ -9,7 +9,7 @@ void Scene::Initialize(const char* path)
 	InitializeAfterLoad();
 
 #ifndef _DEBUG
-    playState = true; // Release‚Å‚Íí‚ÉƒvƒŒƒCó‘Ô
+    playState = true; // Releaseã§ã¯å¸¸ã«ãƒ—ãƒ¬ã‚¤çŠ¶æ…‹
 #endif
 }
 
@@ -20,14 +20,14 @@ void Scene::Update(float elapsedTime)
     {
         if (ImGui::CollapsingHeader("Light & Shadow", ImGuiTreeNodeFlags_DefaultOpen))
         {
-            // ƒ‰ƒCƒg•ûŒü
+            // ãƒ©ã‚¤ãƒˆæ–¹å‘
             ImGui::DragFloat3("Light Direction", &lightDir.x, 0.01f, -1.0f, 1.0f);
 
             ImGui::SliderFloat("Shadow Range", &shadowRange, 0.1f, 200.0f);
 
             ImGui::Checkbox("Follow Player", &followPlayer);
 
-            // Fİ’è
+            // è‰²è¨­å®š
             ImGui::ColorEdit4("Light Color", &lightCol.x);
             ImGui::ColorEdit4("Ambient Color", &ambientCol.x);
 
@@ -35,15 +35,15 @@ void Scene::Update(float elapsedTime)
             ImGui::SliderFloat("Shadow Alpha", &m_shadowParams.shadow_color, 0.0f, 1.0f);
             ImGui::DragFloat("Shadow Bias", &m_shadowParams.shadow_bias, 0.0001f, 0.0f, 0.01f, "%.4f");
 
-            // •½sŒõŒ¹‚ÌFİ’è
+            // å¹³è¡Œå…‰æºã®è‰²è¨­å®š
             ImGui::ColorEdit3("Directional Light Color", &lightCol.x);
 
             ImGui::Separator();
-            ImGui::Text("Light Settings"); // V‚µ‚¢ƒZƒNƒVƒ‡ƒ“‚Ìƒwƒbƒ_[
+            ImGui::Text("Light Settings"); // æ–°ã—ã„ã‚»ã‚¯ã‚·ãƒ§ãƒ³ã®ãƒ˜ãƒƒãƒ€ãƒ¼
 
             ImGui::SliderFloat("Light Intensity", &m_lightParams.lightIntensity, 0.0f, 5.0f);
             ImGui::SliderFloat("Contrast Power", &m_lightParams.contrastPower, 0.1f, 3.0f);
-            ImGui::SliderFloat("PointLight Intensity", &m_lightParams.pointLightIntensity, 0.0f, 10.0f); // ©’Ç‰Á
+            ImGui::SliderFloat("PointLight Intensity", &m_lightParams.pointLightIntensity, 0.0f, 10.0f); // â†è¿½åŠ 
             ImGui::Separator();
 
             ImGui::Text("OutLine Setting");
@@ -56,7 +56,7 @@ void Scene::Update(float elapsedTime)
             ImGui::SliderFloat("Bloom Intensity", &bloomer->bloom_intensity, 0.0f, 5.0f);
 
 
-            // ƒVƒƒƒhƒEƒ}ƒbƒv‚ÌƒvƒŒƒrƒ…[•\¦
+            // ã‚·ãƒ£ãƒ‰ã‚¦ãƒãƒƒãƒ—ã®ãƒ—ãƒ¬ãƒ“ãƒ¥ãƒ¼è¡¨ç¤º
             ImGui::Separator();
             ImGui::Text("Shadow Map Preview:");
             ID3D11ShaderResourceView* shadowSRV = Graphics::Instance().GetShadowMapSRV();
@@ -70,7 +70,7 @@ void Scene::Update(float elapsedTime)
 #endif
 	if(playState)
 	{
-		//ƒAƒEƒFƒCƒN
+		//ã‚¢ã‚¦ã‚§ã‚¤ã‚¯
 		for (auto& a : actors)
 		{
 			bool active = a->setActive && (!a->GetParent() || a->GetParent()->setActive);
@@ -80,7 +80,7 @@ void Scene::Update(float elapsedTime)
 			}
 		}
 
-		///ƒAƒbƒvƒf[ƒg
+		///ã‚¢ãƒƒãƒ—ãƒ‡ãƒ¼ãƒˆ
 		for (auto& a : actors)
 		{
 			bool active = a->setActive && (!a->GetParent() || a->GetParent()->setActive);
@@ -90,7 +90,7 @@ void Scene::Update(float elapsedTime)
 			}
 		}
 
-		//ƒAƒNƒ^[‚Ì’Ç‰Á
+		//ã‚¢ã‚¯ã‚¿ãƒ¼ã®è¿½åŠ 
 		for (auto& a : adderActors)
 		{
 			actors.push_back(std::move(a));
@@ -102,23 +102,23 @@ void Scene::Update(float elapsedTime)
 
             Actor* dead = a.get();
 
-            // e‚Ì children ‚©‚çœ‹
+            // è¦ªã® children ã‹ã‚‰é™¤å»
             Actor* parent = dead->GetParent();
             if (parent)
             {
-                parent->RemoveChild(dead); // š ƒƒ\ƒbƒhŒo—R‚Å‘€ì
+                parent->RemoveChild(dead); // â˜… ãƒ¡ã‚½ãƒƒãƒ‰çµŒç”±ã§æ“ä½œ
                 dead->SetParent(nullptr);
             }
 
-            // q‚ÌeQÆ‚ğ‰ğÁ
+            // å­ã®è¦ªå‚ç…§ã‚’è§£æ¶ˆ
             for (auto* child : dead->GetChildren())
             {
                 child->SetParent(nullptr);
             }
-            dead->ClearChildren(); // š ‚±‚ê‚à’Ç‰Á
+            dead->ClearChildren(); // â˜… ã“ã‚Œã‚‚è¿½åŠ 
         }
 
-        // ‚»‚ÌŒã‚É erase
+        // ãã®å¾Œã« erase
         actors.erase(
             std::remove_if(actors.begin(), actors.end(),
                 [](const std::unique_ptr<Actor>& a)
@@ -141,7 +141,7 @@ void Scene::Update(float elapsedTime)
 				a->UpdateWithOutPlayed(elapsedTime);
 			}
 		}
-		//ƒAƒNƒ^[‚Ì’Ç‰Á
+		//ã‚¢ã‚¯ã‚¿ãƒ¼ã®è¿½åŠ 
 		for (auto& a : adderActors)
 		{
 			actors.push_back(std::move(a));
@@ -170,7 +170,7 @@ void Scene::Render(CameraBase* camera, bool isEditor)
     ShapeRenderer* shapeRenderer = graphics.GetShapeRenderer();
     ModelRenderer* modelRenderer = graphics.GetModelRenderer();
 
-    // •`‰æ€”õ
+    // æç”»æº–å‚™
     RenderContext rc;
     rc.deviceContext = graphics.GetDeviceContext();
     rc.renderState = graphics.GetRenderState();
@@ -184,7 +184,7 @@ void Scene::Render(CameraBase* camera, bool isEditor)
     DirectX::XMStoreFloat4x4(&rc.view, camera->GetView());
     DirectX::XMStoreFloat4x4(&rc.projection, camera->GetProjection());
 
-    // ƒ‰ƒCƒg‚ÌVPs—ñŒvZ
+    // ãƒ©ã‚¤ãƒˆã®VPè¡Œåˆ—è¨ˆç®—
     {
         using namespace DirectX;
         XMVECTOR LDir = XMVector3Normalize(XMLoadFloat3(&lightDir));
@@ -216,7 +216,7 @@ void Scene::Render(CameraBase* camera, bool isEditor)
             bool active = actor->setActive && (!actor->GetParent() || actor->GetParent()->setActive);
             if (active)
             {
-                // ShaderId‚ğShadow‚Éİ’è‚µ‚Ä•`‰æ
+                // ShaderIdã‚’Shadowã«è¨­å®šã—ã¦æç”»
                 auto modelRender = actor->GetComponent<ModelRender>();
                 if (modelRender)
                 {
@@ -230,7 +230,7 @@ void Scene::Render(CameraBase* camera, bool isEditor)
     }
    
 
-    // scene_framebuffer ‚É•`‰æ
+    // scene_framebuffer ã«æç”»
     //graphics.SetRenderTargets();
     //graphics.Clear(0.2f, 0.2f, 0.2f, 1.0f);
 
@@ -246,7 +246,7 @@ void Scene::Render(CameraBase* camera, bool isEditor)
 #endif // DEBUG
     }
     
-    // skymap•`‰æ
+    // skymapæç”»
     DirectX::XMMATRIX V = DirectX::XMLoadFloat4x4(&rc.view);
     DirectX::XMMATRIX P = DirectX::XMLoadFloat4x4(&rc.projection);
     DirectX::XMFLOAT4X4 vp;
@@ -257,7 +257,7 @@ void Scene::Render(CameraBase* camera, bool isEditor)
     dc->PSSetShaderResources(8, 1, &rc.shadowMap);
     dc->PSSetSamplers(8, 1, &rc.shadowSampler);
 
-    // 3Dƒ‚ƒfƒ‹•`‰æ
+    // 3Dãƒ¢ãƒ‡ãƒ«æç”»
     for (auto& actor : actors)
     {
         bool active = actor->setActive && (!actor->GetParent() || actor->GetParent()->setActive);
@@ -267,26 +267,52 @@ void Scene::Render(CameraBase* camera, bool isEditor)
     modelRenderer->SetShaderId(ShaderId::Lambert);
     modelRenderer->FlushAll(rc);
 
-    // ƒAƒEƒgƒ‰ƒCƒ“•`‰æ
+    // â”€â”€â”€ ã‚¢ã‚¦ãƒˆãƒ©ã‚¤ãƒ³æç”»ã®ãƒ«ãƒ¼ãƒ— â”€â”€â”€
+
+        // ğŸ‘¤ ãƒ‘ã‚¹1ï¼šé€šå¸¸ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆï¼ˆHeatReceiverã‚’æŒã£ã¦ã„ãªã„å¥´ï¼‰ã ã‘ã‚’æç”»
     for (auto& actor : actors)
     {
         bool active = actor->setActive && (!actor->GetParent() || actor->GetParent()->setActive);
-        if (active)
+        if (!active) continue;
+
+        auto modelRender = actor->GetComponent<ModelRender>();
+        if (modelRender && !actor->GetComponent<HeatReceiver>()) // â­• æŒã¦ã„ãªã„å¥´
         {
-            auto modelRender = actor->GetComponent<ModelRender>();
-            if (modelRender)
-            {
-                actor->Render(rc, modelRenderer);   
-            }
+            actor->Render(rc, modelRenderer);
         }
     }
-    modelRenderer->SetShaderId(ShaderId::Outline);
-    modelRenderer->FlushAll(rc);
+    // ã€é€šå¸¸ç”¨ã€‘ImGuiã‚„Sceneã§è¨­å®šã•ã‚Œã¦ã„ã‚‹ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®è‰²ã¨å¤ªã•ã‚’ã‚»ãƒƒãƒˆ
+    rc.outlineColor.outlineColor = m_outlineColor;
+    rc.outlineParams.outlineThickness = m_outlineThickness; // â­• é€šå¸¸ã®å¤ªã•
 
-    // ƒGƒtƒFƒNƒg
+    modelRenderer->SetShaderId(ShaderId::Outline);
+    modelRenderer->FlushAll(rc); // ğŸ‘ˆ 1å›ç›®ã®æç”»ï¼ˆé€šå¸¸ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆç¢ºå®šï¼‰
+
+
+    // ğŸ”¥ ãƒ‘ã‚¹2ï¼šç†±å¸åã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆï¼ˆHeatReceiverã‚’æŒã£ã¦ã„ã‚‹å¥´ï¼‰ã ã‘ã‚’æç”»
+    for (auto& actor : actors)
+    {
+        bool active = actor->setActive && (!actor->GetParent() || actor->GetParent()->setActive);
+        if (!active) continue;
+
+        auto modelRender = actor->GetComponent<ModelRender>();
+        if (modelRender && actor->GetComponent<HeatReceiver>()) // â­• æŒã£ã¦ã„ã‚‹å¥´
+        {
+            actor->Render(rc, modelRenderer);
+        }
+    }
+    // ã€ç†±å¸åç”¨ã€‘å€‹åˆ¥ã®è‰²ã¨å¤ªã•ã‚’ç›´æ¥ rc ã«ä¸Šæ›¸ãã‚»ãƒƒãƒˆ
+    rc.outlineColor.outlineColor = DirectX::XMFLOAT4(1.0f, 0.5f, 0.0f, 1.0f); // ã‚ªãƒ¬ãƒ³ã‚¸
+    rc.outlineParams.outlineThickness = 0.4f; // â­• ç†±å¸åã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã ã‘å¤ªãã™ã‚‹ï¼ˆæ•°å€¤ã¯å¥½ã¿ã§èª¿æ•´ã—ã¦ãªï¼ï¼‰
+
+    modelRenderer->SetShaderId(ShaderId::Outline);
+    modelRenderer->FlushAll(rc); // ğŸ‘ˆ 2å›ç›®ã®æç”»ï¼ˆç†±å¸åã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆç¢ºå®šï¼‰
+
+
+    // ã‚¨ãƒ•ã‚§ã‚¯ãƒˆ
     EffectManager::Instance().Render(rc.view, rc.projection);
 
-    // 3DƒfƒoƒbƒO•`‰æ
+    // 3Dãƒ‡ãƒãƒƒã‚°æç”»
     if (isEditor)
     {
         for (auto& actor : actors)
@@ -296,12 +322,12 @@ void Scene::Render(CameraBase* camera, bool isEditor)
                 actor->RenderDebug(rc, shapeRenderer);
         }
 
-        // ƒ|ƒCƒ“ƒgƒ‰ƒCƒg‚ÌƒfƒoƒbƒO‹…‚ğ’Ç‰Á
+        // ãƒã‚¤ãƒ³ãƒˆãƒ©ã‚¤ãƒˆã®ãƒ‡ãƒãƒƒã‚°çƒã‚’è¿½åŠ 
         ModelRenderer* modelRenderer = graphics.GetModelRenderer();
         point_lights* lights = modelRenderer->GetPointLights();
         for (int i = 0; i < 8; i++)
         {
-            if (lights[i].range <= 0.0f) continue; // range‚ª0‚È‚ç•`‰æ‚µ‚È‚¢
+            if (lights[i].range <= 0.0f) continue; // rangeãŒ0ãªã‚‰æç”»ã—ãªã„
 
             DirectX::XMFLOAT3 pos = {
                 lights[i].position.x,
@@ -315,10 +341,14 @@ void Scene::Render(CameraBase* camera, bool isEditor)
 
     scene_framebuffer->deactivate(dc);
 
+#ifdef _DEBUG
+
+
     if (isEditor)
     {
         modelRenderer->DebugImGui();
     }
+#endif // _DEBUG
     // BLOOM
     if (bloomer)
     {
@@ -346,11 +376,11 @@ void Scene::Render(CameraBase* camera, bool isEditor)
         dc->OMSetBlendState(graphics.GetRenderState()->GetBlendState(BlendState::Transparency), nullptr, 0xFFFFFFFF);
         dc->OMSetDepthStencilState(graphics.GetRenderState()->GetDepthStencilState(DepthState::NoTestNoWrite), 0);
 
-        // 2. ƒrƒ…[ƒ|[ƒg‚àÄİ’è
+        // 2. ãƒ“ãƒ¥ãƒ¼ãƒãƒ¼ãƒˆã‚‚å†è¨­å®š
         D3D11_VIEWPORT vp = graphics.GetViewport();
         dc->RSSetViewports(1, &vp);
 
-        // 3. ƒXƒvƒ‰ƒCƒg‚Ìƒ\[ƒg‚Æ•`‰æ
+        // 3. ã‚¹ãƒ—ãƒ©ã‚¤ãƒˆã®ã‚½ãƒ¼ãƒˆã¨æç”»
         std::vector<std::pair<int, Actor*>> spriteActors;
         for (auto& actor : actors) {
             bool active = actor->setActive && (!actor->GetParent() || actor->GetParent()->setActive);
