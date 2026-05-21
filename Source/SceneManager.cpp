@@ -6,8 +6,6 @@
 
 void SceneManager::Initialize()
 {
-
-
     ChangeScene(std::move(std::make_unique<Scene>()), "Scenes/Demo.json");
     LoadPauseUI("Scenes/pause.json");
     ChangeScene(std::move(std::make_unique<Scene>()), "Scenes/title.json");
@@ -96,6 +94,13 @@ void SceneManager::Update(float elapsedTime)
                 for (auto& actor : pauseActors)
                     actor->SetScene(currentScene);
 
+                auto* modelRenderer = Graphics::Instance().GetModelRenderer();
+                if (modelRenderer)
+                {
+                    modelRenderer->SetLightPath(m_currentScenePath);
+                    modelRenderer->LoadLights(modelRenderer->GetCurrentLightPath());
+                }
+
                 // シーン切り替えが完了したので、マスクを「開く（アイリスイン）」
                 m_loadState = LoadState::FadeIn;
                 if (m_irisActor)
@@ -106,6 +111,7 @@ void SceneManager::Update(float elapsedTime)
                         sr->StartIrisIn(); // 👈 決定されたマスクの拡大演出スタート！
                     }
                 }
+
             }
         }
 
@@ -219,6 +225,13 @@ void SceneManager::Update(float elapsedTime)
         Graphics::Instance().CreateRenderTarget(gameRT, currentSW, currentSH);
         for (auto& actor : pauseActors)
             actor->SetScene(currentScene);
+
+        auto* modelRenderer = Graphics::Instance().GetModelRenderer();
+        if (modelRenderer)
+        {
+            modelRenderer->SetLightPath(m_currentScenePath);
+            modelRenderer->LoadLights(modelRenderer->GetCurrentLightPath());
+        }
     }
 
     if (currentScene != nullptr)
