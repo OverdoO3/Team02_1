@@ -315,6 +315,10 @@ void Scene::Render(CameraBase* camera, bool isEditor)
 
     scene_framebuffer->deactivate(dc);
 
+    if (isEditor)
+    {
+        modelRenderer->DebugImGui();
+    }
     // BLOOM
     if (bloomer)
     {

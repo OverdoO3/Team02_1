@@ -465,8 +465,7 @@ void ModelRenderer::DebugImGui()
     ImGui::End();
 }
 #endif // _DEBUG
-#endif
-}
+
 
 void ModelRenderer::SaveLights(const std::string& path)
 {

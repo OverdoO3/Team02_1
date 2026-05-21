@@ -377,6 +377,15 @@ void SceneManager::LoadEditorScene(const std::string& path)
         runtimeScene.reset();
         playState = false;
         currentScene = GetCurrentScene();
+
+        m_currentScenePath = path; 
+
+        auto* modelRenderer = Graphics::Instance().GetModelRenderer();
+        if (modelRenderer)
+        {
+            modelRenderer->SetLightPath(m_currentScenePath);                 
+            modelRenderer->LoadLights(modelRenderer->GetCurrentLightPath()); 
+        }
     }
 }
 
