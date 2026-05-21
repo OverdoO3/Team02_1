@@ -90,11 +90,11 @@ void CameraController::Update(float elapsedTime)
 	offset.z = distance * cosf(pitch) * cosf(yaw);
 
 	DirectX::XMFLOAT3 target;
-	Actor* player = owner->GetScene()->FindByTag(1);
+	Actor* playerModelChanger = owner->GetScene()->FindByTag(1);
 	DirectX::XMFLOAT3 currentPos = owner->GetComponent<Transform>()->GetWorldPosition();
 	auto transform = owner->GetComponent<Transform>();
 
-	if (player)
+	if (playerModelChanger)
 	{
 		auto transform = owner->GetComponent<Transform>();
 
@@ -103,7 +103,7 @@ void CameraController::Update(float elapsedTime)
 			focusToPlayer = !focusToPlayer;
 		}
 		targetGoal = focusToPlayer ?
-			player->GetComponent<Transform>()->GetWorldPosition() :
+			playerModelChanger->GetComponent<Transform>()->GetWorldPosition() :
 			DirectX::XMFLOAT3{ 0,0,0 };
 
 		// スムーズに中心移動

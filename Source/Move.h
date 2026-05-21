@@ -20,6 +20,8 @@ public:
     void Serialize(nlohmann::json& j) const override;
     void Deserialize(nlohmann::json& j) override;
 
+    void ChangeModel();
+
     std::unique_ptr<Component> Clone() const override;
 private:
     DirectX::XMFLOAT3 Velocity{ 0,0,0 };

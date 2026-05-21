@@ -1,14 +1,14 @@
-#include "flower.h"
+#include "Bridge.h"
 #include "Factory.h"
 #include "Actor.h"
 //								«‚É–¼‘O“ü‚ê‚é
-REGISTER_COMPONENT(ComponentID::flower, flower)
+REGISTER_COMPONENT(ComponentID::Bridge, Bridge)
 
-void flower::OnAwake(float elapsedTime)
+void Bridge::OnAwake(float elapsedTime)
 {
 }
 
-void flower::Update(float elapsedTime)
+void Bridge::Update(float elapsedTime)
 {
 	auto temp = owner->GetComponent<ThermalBody>();
 	if (!temp)return;
@@ -19,10 +19,6 @@ void flower::Update(float elapsedTime)
 
 	switch (temp->GetHeat())
 	{
-	case -1:
-		boxCollider->size.y = saveY;
-		model->SetString(openPath);
-		break;
 	case 1:
 		boxCollider->size.y = deathY;
 		death = true;
@@ -37,38 +33,38 @@ void flower::Update(float elapsedTime)
 		{
 			timer -= elapsedTime;
 			auto tran = owner->GetComponent<Transform>();
-			tran->SetLocalScale({1,timer,1});
+			tran->SetLocalScale({ timer,1,timer });
 			model->enabled = false;
 		}
 	}
 
 	if (deathY == 0)
 	{
-		boxCollider->enabled = false;
+		//boxCollider->enabled = false;
 	}
 }
 
-void flower::DrawInspector()
+void Bridge::DrawInspector()
 {
 	ImGui::InputFloat("openY", &saveY);
-	ImGui::InputFloat("closeY", &deathY);
+	ImGui::InputFloat("deathY", &deathY);
 }
 
-void flower::Serialize(nlohmann::json& j) const
+void Bridge::Serialize(nlohmann::json& j) const
 {
 	j["openY"] = saveY;
 	j["closeY"] = deathY;
 }
 
-void flower::Deserialize(nlohmann::json& j)
+void Bridge::Deserialize(nlohmann::json& j)
 {
 	saveY = j["openY"];
 	deathY = j["closeY"];
 }
 
-std::unique_ptr<Component> flower::Clone() const
+std::unique_ptr<Component> Bridge::Clone() const
 {
-	auto c = std::make_unique<flower>();
+	auto c = std::make_unique<Bridge>();
 	c->saveY = saveY;
 	c->deathY = deathY;
 	return c;

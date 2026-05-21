@@ -3,11 +3,11 @@
 #include "nlohmann/json.hpp"
 
 using json = nlohmann::json;
-class flower : public Component
+class needles : public Component
 {
 public:
-    flower() = default;
-    ~flower() override = default;
+    needles() = default;
+    ~needles() override = default;
 
     void OnAwake(float elapsedTime) override;
     void Update(float elapsedTime) override;
@@ -19,12 +19,8 @@ public:
 
     std::unique_ptr<Component> Clone() const override;
 
-    COMPONENT_ID(flower)
+    COMPONENT_ID(needles)
 private:
-    std::string openPath = "./Data/Model/Stage/Demos/flower_obj.mdl";
-    std::string clocsePath = "./Data/Model/Stage/Demos/bud_obj.mdl";
-
-    float saveY;
     float deathY;
 
     bool death;
