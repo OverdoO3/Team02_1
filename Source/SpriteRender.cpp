@@ -10,7 +10,7 @@ void SpriteRender::Draw(RenderContext& rc)
 {
     if (!owner)return;
     if (m_isClickedHidden)return;
-
+    if (m_isOnlyWhileGoal && !m_isPopUp)return;
     if (m_isOnlyWhileLoading)
     {
         // 現在が「Loading（裏での読み込み中）」じゃないなら、文字ロゴは描画をスキップ
@@ -25,8 +25,6 @@ void SpriteRender::Draw(RenderContext& rc)
     {
         if (!m_sceneManager || !m_sceneManager->IsPaused()) return;
     }
-
-
 
     // ─── ⭕【修正版】Loadingスプライトの出し分け制御 ───
     if (m_isGameLoading || m_isTitleLoading)
@@ -271,6 +269,32 @@ void SpriteRender::Update(float elapsedTime)
 {
     if (!owner) return;
 
+    if (m_isPopUp)
+    {
+        m_popUpTimer += elapsedTime;
+        float t = m_popUpTimer / m_popUpDuration;
+
+        if (t >= 1.0f)
+        {
+            t = 1.0f;
+            m_isPopUp = false;
+            m_popUpTimer = 0.0f;
+
+            m_editorScale = m_baseScale;
+        }
+        else
+        {
+            const float c1 = 1.70158f;
+            const float c3 = c1 + 1.0f;
+
+            float ease = 1.0f + (c3 * powf(t - 1.0f, 3.0f) + c1 * powf(t - 1.0f, 2.0f));
+
+            float scaleMultiplier = m_maxPopScale - (ease * (m_maxPopScale - 1.0f));
+
+            m_editorScale = m_baseScale * scaleMultiplier;
+        }
+    }
+
     // ─── ⭕ アイリス演出（拡大・縮小）の更新 ───
     if (m_irisMode != IrisMode::None)
     {
@@ -508,6 +532,11 @@ std::unique_ptr<Component> SpriteRender::Clone() const
     c->m_useClickHide = this->m_useClickHide;
     c->m_isClickedHidden = false; // クローンされた側は表示状態からスタート
 
+    c->m_usePopUpClear = this->m_usePopUpClear;
+    c->m_popUpDuration = this->m_popUpDuration;
+    c->m_maxPopScale = this->m_maxPopScale;
+    c->m_isOnlyWhileGoal = this->m_isOnlyWhileGoal;
+
 	return c;
 }
 
@@ -573,6 +602,11 @@ void SpriteRender::Serialize(nlohmann::json& j) const
     j["isFadeEnabled"] = m_isFadeEnabled;
     j["sprFadeSpeed"]  = m_sprFadeSpeed;
     j["UseClickHide"] = m_useClickHide;
+
+    j["UsePopUpClear"] = m_usePopUpClear;
+    j["PopUpDuration"] = m_popUpDuration;
+    j["MaxPopScale"] = m_maxPopScale;
+    j["OnlyWhileGoal"] = m_isOnlyWhileGoal;
 }
 
 void SpriteRender::DrawInspector()
@@ -708,6 +742,20 @@ void SpriteRender::DrawInspector()
             }
         }
     }
+
+    ImGui::Separator();
+    ImGui::Text("Goal PopUp Setting");
+
+    ImGui::Checkbox("Use Goal PopUp", &m_usePopUpClear);
+    ImGui::Checkbox("Only While Goal", &m_isOnlyWhileGoal);
+
+    if (m_usePopUpClear)
+    {
+        ImGui::SliderFloat("Pop Duration", &m_popUpDuration, 0.1, 2.0f);
+        ImGui::SliderFloat("Max Pop Scale", &m_maxPopScale, 1.1f, 3.0f);
+    }
+    ImGui::Separator();
+
 
     if (ImGui::CollapsingHeader("Sprite Sheet Splitter"))
     {
@@ -930,6 +978,10 @@ void SpriteRender::Deserialize(nlohmann::json& j)
     m_useClickHide = j.value("UseClickHide", false);
     m_isClickedHidden = false; // 読み込み時は一頭表示状態に戻す
 
+    m_usePopUpClear = j.value("UsePopUpClear", false);
+    m_popUpDuration = j.value("PopUpDuration", 1.0f);
+    m_maxPopScale   = j.value("MaxPopScale  ", 1.0f);
+    m_isOnlyWhileGoal = j.value("OnlyWhileGoal", false);
 }
 
 void SpriteRender::StartIrisOut()
@@ -938,7 +990,6 @@ void SpriteRender::StartIrisOut()
     m_irisMode = IrisMode::Out;
     m_irisTimer = 0.0f;
 
-    // ⭕ jsonの値に依存せず、コード側で演出のキレを強制固定する
     m_irisDuration = 0.6f;     // 2回目も絶対に爆速（0.25秒）
     m_irisTargetScale = 0.10f;   // 完全に閉じきる
 
@@ -952,10 +1003,19 @@ void SpriteRender::StartIrisIn()
     m_irisMode = IrisMode::In;
     m_irisTimer = 0.0f;
 
-    // ⭕ 同様に、新シーンに切り替わった直後でも確実に数値を上書き強制する
     m_irisDuration = 0.7f;      // 2回目も絶対に爆速（0.3秒）
     m_irisMaxScale = 6.0f;    // 遥か彼方まで拡大する超特大スケール
 
     m_irisStartScale = m_editorScale; // 現在のサイズ（0.0fなど）からスタート
 
+}
+
+void SpriteRender::StartPopUp(float duration, float maxScale)
+{
+    m_isPopUp = true;
+    m_popUpTimer = 0.0f;
+    m_popUpDuration = duration;
+    m_maxPopScale = maxScale;
+
+    m_baseScale = m_editorScale;
 }

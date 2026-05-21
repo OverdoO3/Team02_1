@@ -74,7 +74,7 @@ public:
     void StartIrisIn();
 
     IrisMode GetIrisMode() const { return m_irisMode; }
-
+    void StartPopUp(float duration = 0.4f, float maxScale = 1.5f);
 
 private:
     std::unique_ptr<Sprite> spr;
@@ -175,4 +175,13 @@ private:
 
     bool m_useClickHide = false;
     bool m_isClickedHidden = false;
+
+    bool m_isPopUp = false;
+    float m_popUpTimer = 0.0f;
+    float m_popUpDuration = 0.4f;
+    float m_baseScale = 1.0f;
+    float m_maxPopScale = 1.5f;
+
+    bool m_usePopUpClear = false;
+    bool m_isOnlyWhileGoal = false;
 };
