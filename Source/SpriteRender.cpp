@@ -667,13 +667,17 @@ void SpriteRender::Deserialize(nlohmann::json& j)
         {
             float texW = spr->GetTextureWidth();
             float texH = spr->GetTextureHeight();
+            // ⭕ 幅・高さがデフォルト値（-1.0f）の時だけ、テクスチャ全体 or 分割サイズを入れる
             if (m_srcW < 0.0f) m_srcW = texW / (float)m_splitX;
             if (m_srcH < 0.0f) m_srcH = texH / (float)m_splitY;
 
-            m_srcX = (float)m_targetCol * m_srcW;
-            m_srcY = (float)m_targetRow * m_srcH;
+            // ⭕【重要】JSONに "SrcX" や "SrcY" が保存されていなかった場合（または0の初期状態）だけ自動計算する
+            // これで、手動で弄った UVCrop の値が上書きされるのを防ぎます！
+            if (!j.contains("SrcX")) m_srcX = (float)m_targetCol * m_srcW;
+            if (!j.contains("SrcY")) m_srcY = (float)m_targetRow * m_srcH;
         }
-	}
+    }
+	
 
     m_spriteIndex = j.value("SpriteIndex", 0);
 
