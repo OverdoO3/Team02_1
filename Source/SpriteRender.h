@@ -76,6 +76,10 @@ public:
     IrisMode GetIrisMode() const { return m_irisMode; }
     void StartPopUp(float duration = 0.4f, float maxScale = 1.5f);
 
+    bool GetUsePopUpClear()const { return m_usePopUpClear; }
+    float GetPopUpDuration()const { return m_popUpDuration; }
+    float GetMaxPopScale() const { return m_maxPopScale; }
+
 private:
     std::unique_ptr<Sprite> spr;
 

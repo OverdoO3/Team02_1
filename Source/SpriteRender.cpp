@@ -980,7 +980,7 @@ void SpriteRender::Deserialize(nlohmann::json& j)
 
     m_usePopUpClear = j.value("UsePopUpClear", false);
     m_popUpDuration = j.value("PopUpDuration", 1.0f);
-    m_maxPopScale   = j.value("MaxPopScale  ", 1.0f);
+    m_maxPopScale   = j.value("MaxPopScale", 1.0f);
     m_isOnlyWhileGoal = j.value("OnlyWhileGoal", false);
 }
 

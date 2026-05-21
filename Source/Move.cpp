@@ -251,6 +251,18 @@ void Move::Update(float elapsedTime)
             {
                 owner->GetScene()->isClear = true;
                 nextState = Move::goal;
+
+                //ゴール用のアクターを探す
+                for (auto& actor : owner->GetScene()->actors)
+                {
+                    if (auto* sr = actor->GetComponent<SpriteRender>())
+                    {
+                        if (sr->GetUsePopUpClear())
+                        {
+                            sr->StartPopUp(sr->GetPopUpDuration(), sr->GetMaxPopScale());
+                        }
+                    }
+                }
             }
 
             if (dist > 0.0001f)

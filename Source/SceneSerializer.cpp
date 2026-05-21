@@ -11,7 +11,7 @@ bool SceneSerializer::Save(const Scene& scene, const std::string& path)
 {
     json j;
 
-    scene.SaveSettings(j["scene"]["SceneSettings"]);
+   // scene.SaveSettings(j["scene"]["SceneSettings"]);
 
     j["scene"]["actors"] = json::array();
 
@@ -47,10 +47,10 @@ bool SceneSerializer::Load(Scene& scene, const std::string& path)
     if (!j.contains("scene") || !j["scene"].contains("actors"))
         return false;
 
-    if (j["scene"].contains("SceneSettings"))
-    {
-        scene.LoadSettings(j["scene"]["SceneSettings"]);
-    }
+    //if (j["scene"].contains("SceneSettings"))
+    //{
+    //    scene.LoadSettings(j["scene"]["SceneSettings"]);
+    //}
 
     uint64_t maxID = 0;
 
