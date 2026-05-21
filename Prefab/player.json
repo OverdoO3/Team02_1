@@ -1,0 +1,78 @@
+{
+    "components": [
+        {
+            "data": {
+                "position": [
+                    -53.0557861328125,
+                    47.5284423828125,
+                    4.634322643280029
+                ],
+                "rotation": [
+                    -0.0,
+                    -1.4901161193847656e-08,
+                    -0.0,
+                    1.0
+                ],
+                "scale": [
+                    3.0,
+                    3.0,
+                    3.0
+                ]
+            },
+            "type": "Transform"
+        },
+        {
+            "data": {
+                "ModelPath": "Data/Model/player/chara_motion.mdl"
+            },
+            "type": "ModelRender"
+        },
+        {
+            "data": {
+                "grav": 4.0,
+                "radius": 1.5,
+                "spped": 30.0,
+                "turn": 5.0
+            },
+            "type": "Move"
+        },
+        {
+            "data": null,
+            "type": "ThermalBody"
+        },
+        {
+            "data": null,
+            "type": "HeatTransfer"
+        },
+        {
+            "data": {
+                "loop": true,
+                "offset": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "path": "",
+                "scale": 0.0
+            },
+            "type": "EffectRender"
+        },
+        {
+            "data": {
+                "CurrentState": "",
+                "States": {
+                    "cold": "Data/Effects/mode_ice.efk",
+                    "hot": "Data/Effects/mode_fire.efk",
+                    "normal": "Data/Effects/mode_normal.efk",
+                    "water": ""
+                }
+            },
+            "type": "StateEffect"
+        }
+    ],
+    "id": 3,
+    "name": "player",
+    "parent": -1,
+    "tag": 1,
+    "type": "Actor"
+}

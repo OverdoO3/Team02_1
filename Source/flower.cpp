@@ -38,6 +38,7 @@ void flower::Update(float elapsedTime)
 			timer -= elapsedTime;
 			auto tran = owner->GetComponent<Transform>();
 			tran->SetLocalScale({1,timer,1});
+			model->enabled = false;
 		}
 	}
 
