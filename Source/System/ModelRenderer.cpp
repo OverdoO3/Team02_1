@@ -419,6 +419,16 @@ void ModelRenderer::DebugImGui()
 #ifdef _DEBUG
     if (ImGui::Begin("PointLights Debug"))
     {
+        ImGui::Text("Current Light File: %s", currentLightPath.c_str());
+
+        if (ImGui::Button("Save Lights"))
+            SaveLights(currentLightPath);
+
+        ImGui::SameLine();
+
+        if (ImGui::Button("Load Lights"))
+            LoadLights(currentLightPath);
+
         for (int i = 0; i < 8; i++)
         {
             ImGui::PushID(i);
@@ -432,5 +442,42 @@ void ModelRenderer::DebugImGui()
         }
     }
     ImGui::End();
-#endif // _DEBUG
+#endif
+}
+
+void ModelRenderer::SaveLights(const std::string& path)
+{
+    nlohmann::json j;
+    for (int i = 0; i < 8; i++)
+    {
+        j["lights"][i]["posX"] = point_light[i].position.x;
+        j["lights"][i]["posY"] = point_light[i].position.y;
+        j["lights"][i]["posZ"] = point_light[i].position.z;
+        j["lights"][i]["range"] = point_light[i].range;
+        j["lights"][i]["colorR"] = point_light[i].color.x;
+        j["lights"][i]["colorG"] = point_light[i].color.y;
+        j["lights"][i]["colorB"] = point_light[i].color.z;
+        j["lights"][i]["colorA"] = point_light[i].color.w;
+    }
+    std::ofstream ofs(path);
+    ofs << j.dump(4);
+}
+
+void ModelRenderer::LoadLights(const std::string& path)
+{
+    std::ifstream ifs(path);
+    if (!ifs) return;
+    nlohmann::json j;
+    ifs >> j;
+    for (int i = 0; i < 8; i++)
+    {
+        point_light[i].position.x = j["lights"][i].value("posX", 0.0f);
+        point_light[i].position.y = j["lights"][i].value("posY", 0.0f);
+        point_light[i].position.z = j["lights"][i].value("posZ", 0.0f);
+        point_light[i].range = j["lights"][i].value("range", 0.0f);
+        point_light[i].color.x = j["lights"][i].value("colorR", 0.0f);
+        point_light[i].color.y = j["lights"][i].value("colorG", 0.0f);
+        point_light[i].color.z = j["lights"][i].value("colorB", 0.0f);
+        point_light[i].color.w = j["lights"][i].value("colorA", 1.0f);
+    }
 }

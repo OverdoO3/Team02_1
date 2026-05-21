@@ -1,0 +1,84 @@
+{
+    "lights": [
+        {
+            "colorA": 1.0,
+            "colorB": 1.0,
+            "colorG": 1.0,
+            "colorR": 1.0,
+            "posX": 10.0,
+            "posY": 128.5709991455078,
+            "posZ": 0.0,
+            "range": 120.32499694824219
+        },
+        {
+            "colorA": 1.0,
+            "colorB": 0.0,
+            "colorG": 1.0,
+            "colorR": 0.0,
+            "posX": -10.0,
+            "posY": 1.0,
+            "posZ": 0.0,
+            "range": 0.0
+        },
+        {
+            "colorA": 1.0,
+            "colorB": 1.0,
+            "colorG": 0.0,
+            "colorR": 0.0,
+            "posX": 0.0,
+            "posY": 1.0,
+            "posZ": 10.0,
+            "range": 0.0
+        },
+        {
+            "colorA": 1.0,
+            "colorB": 1.0,
+            "colorG": 1.0,
+            "colorR": 1.0,
+            "posX": 0.0,
+            "posY": 1.0,
+            "posZ": -10.0,
+            "range": 0.0
+        },
+        {
+            "colorA": 1.0,
+            "colorB": 1.0,
+            "colorG": 1.0,
+            "colorR": 1.0,
+            "posX": 0.0,
+            "posY": 0.0,
+            "posZ": 0.0,
+            "range": 0.0
+        },
+        {
+            "colorA": 0.0,
+            "colorB": 0.0,
+            "colorG": 0.0,
+            "colorR": 0.0,
+            "posX": 0.0,
+            "posY": 0.0,
+            "posZ": 0.0,
+            "range": 0.0
+        },
+        {
+            "colorA": 0.0,
+            "colorB": 0.0,
+            "colorG": 0.0,
+            "colorR": 0.0,
+            "posX": 0.0,
+            "posY": 0.0,
+            "posZ": 0.0,
+            "range": 0.0
+        },
+        {
+            "colorA": 0.0,
+            "colorB": 0.0,
+            "colorG": 0.0,
+            "colorR": 0.0,
+            "posX": 0.0,
+            "posY": 0.0,
+            "posZ": 0.0,
+            "range": 0.0
+        }
+    ]
+}
