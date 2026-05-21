@@ -368,6 +368,9 @@
     <ClInclude Include="Source\tent.h">
       <Filter>Source\Components\Temp\TempObj</Filter>
     </ClInclude>
+    <ClInclude Include="Source\flower.h">
+      <Filter>Source\Components\Temp\TempObj</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="External\imgui-docking\imgui.cpp">
@@ -575,6 +578,9 @@
       <Filter>Source\Components\Collider</Filter>
     </ClCompile>
     <ClCompile Include="Source\tent.cpp">
+      <Filter>Source\Components\Temp\TempObj</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\flower.cpp">
       <Filter>Source\Components\Temp\TempObj</Filter>
     </ClCompile>
   </ItemGroup>

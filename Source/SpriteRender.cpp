@@ -1,7 +1,8 @@
-#include "SpriteRender.h"
+﻿#include "SpriteRender.h"
 #include "Factory.h"
 #include "Actor.h"
 #include "SceneManager.h"
+#include "Actor.h"
 
 REGISTER_COMPONENT(ComponentID::SpriteRender,SpriteRender)
 
@@ -9,10 +10,50 @@ void SpriteRender::Draw(RenderContext& rc)
 {
     if (!owner)return;
 
-    //�|�[�YUI����
+    if (m_isOnlyWhileLoading)
+    {
+        // 現在が「Loading（裏での読み込み中）」じゃないなら、文字ロゴは描画をスキップ
+        if (!m_sceneManager || m_sceneManager->GetLoadState() != SceneManager::LoadState::Loading)
+        {
+            return;
+        }
+    }
+
+    //ポーズUI制御
     if (m_isPauseUI)
     {
         if (!m_sceneManager || !m_sceneManager->IsPaused()) return;
+    }
+
+    // ─── ⭕【修正版】Loadingスプライトの出し分け制御 ───
+    if (m_isGameLoading || m_isTitleLoading)
+    {
+        std::string nextPath = m_sceneManager ? m_sceneManager->GetPendingScenePath() : "";
+
+        // 3. もし次のシーンが決まっているなら、その名前で出し分ける
+        if (!nextPath.empty())
+        {
+            std::string lowerPath = nextPath;
+            std::transform(lowerPath.begin(), lowerPath.end(), lowerPath.begin(), ::tolower);
+
+            bool hasStage = (lowerPath.find("stage") != std::string::npos);
+            bool hasTitle = (lowerPath.find("title") != std::string::npos);
+
+            // 自分はGame用なのに、次のシーンがStageじゃないなら更新しない（Title用が動くべき）
+            if (m_isGameLoading && !hasStage) return;
+
+            // 自分はTitle用なのに、次のシーンがTitleじゃないなら更新しない（Game用が動くべき）
+            if (m_isTitleLoading && !hasTitle) return;
+        }
+        else
+        {
+            // 次のシーンのパスが空（＝遷移中ではない通常時）のとき
+            // もしアイリス演出も走っていない（None）なら、余計なUpdateは走らせない
+            if (m_irisMode == IrisMode::None)
+            {
+                return;
+            }
+        }
     }
 
     auto tran = owner->GetComponent<Transform>();
@@ -20,7 +61,7 @@ void SpriteRender::Draw(RenderContext& rc)
     {
         DirectX::XMFLOAT3 worldPos = tran->GetWorldPosition();
         DirectX::XMFLOAT3 worldScale = tran->GetWorldScale();
-        DirectX::XMFLOAT3 worldRot = tran->GetWorldEulerAngles(); // �I�C���[�p(Degree)��z��
+        DirectX::XMFLOAT3 worldRot = tran->GetWorldEulerAngles(); // オイラー角(Degree)を想定
 
         float texW = spr->GetTextureWidth();
         float texH = spr->GetTextureHeight();
@@ -41,7 +82,7 @@ void SpriteRender::Draw(RenderContext& rc)
             drawY -= height * 0.5f;
         }
 
-        // �L���b�V���i�����蔻��p�j
+        // キャッシュ（当たり判定用）
         m_lastDrawX = drawX;
         m_lastDrawY = drawY;
         m_lastDrawW = width;
@@ -49,7 +90,7 @@ void SpriteRender::Draw(RenderContext& rc)
 
         float totalAngle = m_editorAngleDeg + worldRot.z;
 
-        //�`��Ɏg���F�����肷��(�f�o�b�O�p)
+        //描画に使う色を決定する(デバッグ用)
         DirectX::XMFLOAT4 finalColor = color;
         if (m_hoverFade)
         {
@@ -57,7 +98,7 @@ void SpriteRender::Draw(RenderContext& rc)
         }
 
 
-        // ���ۂ̕`��Ăяo��
+        // 実際の描画呼び出し
         spr->Render(
             rc,
             drawX, drawY, worldPos.z,
@@ -70,15 +111,15 @@ void SpriteRender::Draw(RenderContext& rc)
 #ifdef _DEBUG
         if (m_showCollider)
         {
-            // �����蔻��̘g���X�P�[��������
+            // 当たり判定の枠もスケールさせる
             float debugLeft = screenOffset.x + worldPos.x + m_colliderOffsetX * worldScale.x;
             float debugTop = screenOffset.y + worldPos.y + m_colliderOffsetY * worldScale.y;
             float debugW = m_colliderWidth * worldScale.x;
             float debugH = m_colliderHeight * worldScale.y;
 
             ImU32 colliderColor = m_isHovered
-                ? IM_COL32(255, 0, 0, 255)   // �}�E�X����������
-                : IM_COL32(0, 255, 0, 255);  // �ʏ펞�͗�
+                ? IM_COL32(255, 0, 0, 255)   // マウスが乗ったら赤
+                : IM_COL32(0, 255, 0, 255);  // 通常時は緑
 
             ImGui::GetForegroundDrawList()->AddRect(
                 ImVec2(debugLeft, debugTop),
@@ -93,7 +134,7 @@ void SpriteRender::Draw(RenderContext& rc)
 
 //void SpriteRender::Update(float elapsedTime)
 //{
-//    // ���� �}�E�X�N���b�N���� ����������������������������������������������������������������������������
+//    // ── マウスクリック判定 ──────────────────────────────────────
 //    if (GetAsyncKeyState(VK_LBUTTON) & 0x8000)
 //    {
 //        if (!m_mouseWasDown)
@@ -103,12 +144,12 @@ void SpriteRender::Draw(RenderContext& rc)
 //            POINT mousePos;
 //            GetCursorPos(&mousePos);
 //            HWND hwnd = GetActiveWindow();
-//            ScreenToClient(hwnd, &mousePos);   // �X�N���[�����N���C�A���g���W
+//            ScreenToClient(hwnd, &mousePos);   // スクリーン→クライアント座標
 //
 //            auto tran = owner->GetComponent<Transform>();
 //            if (tran && spr)
 //            {
-//                auto pos = tran->GetWorldPosition(); // ���ꂪ�X�v���C�g����̃s�N�Z�����W
+//                auto pos = tran->GetWorldPosition(); // これがスプライト左上のピクセル座標
 //
 //                float texW = spr->GetTextureWidth();
 //                float texH = spr->GetTextureHeight();
@@ -117,7 +158,7 @@ void SpriteRender::Draw(RenderContext& rc)
 //                float width = sw * m_editorScale;
 //                float height = sh * m_editorScale;
 //
-//                // Sprite::Render �� dx,dy ������Ƃ��ĕ`�悵�Ă���
+//                // Sprite::Render は dx,dy を左上として描画している
 //                float left = m_lastDrawX;
 //                float top = m_lastDrawY;
 //                float right = m_lastDrawX + m_lastDrawW;
@@ -165,52 +206,110 @@ void SpriteRender::Draw(RenderContext& rc)
 //}
 void SpriteRender::Update(float elapsedTime)
 {
-    if (!owner)return;
-    // 1. �}�E�X���W�ƃE�B���h�E�̊J�n�ʒu���擾
+    if (!owner) return;
 
+    // ─── ⭕ アイリス演出（拡大・縮小）の更新 ───
+    if (m_irisMode != IrisMode::None)
+    {
+
+
+        m_irisTimer += elapsedTime;
+        float rate = m_irisTimer / m_irisDuration;
+        if (rate >= 1.0f) rate = 1.0f;
+
+        if (m_irisMode == IrisMode::Out)
+        {
+            if (rate >= 0.95f)
+            {
+                m_editorScale = m_irisTargetScale; // 完全に 0.0f（閉じきった状態）にする
+                m_irisMode = IrisMode::None;       // 演出終了
+
+                // ❌ ここにあった m_editorScale = m_originalScale; は削除します！
+                // 閉じきった後は 0.0f のままフリーズさせておかないと、次のシーンに遷移する瞬間に画面がパッと見えてしまいます
+            }
+            else
+            {
+                // 通常通りの爆速縮小イージング
+                float easeOutRate = 1.0f - powf(2.0f, -10.0f * rate);
+                m_editorScale = m_irisMaxScale + (m_irisTargetScale - m_irisMaxScale) * easeOutRate;
+            }
+        }
+        else if (m_irisMode == IrisMode::In)
+        {
+            if (rate >= 1.0f)
+            {
+                m_irisMode = IrisMode::None;
+                owner->setActive = false;
+                m_editorScale = m_originalScale;
+            }
+            else
+            {
+                // ⭕ エルミート補間（Smoothstep）
+                // 初速を抑えつつ、後半もダラダラせずにスッと綺麗に開ききります
+                float smoothRate = rate * rate * (3.0f - 2.0f * rate);
+
+                m_editorScale = m_irisStartScale + (m_irisMaxScale - m_irisStartScale) * smoothRate;
+            }
+        }
+    }
     if (m_isPauseUI)
     {
         if (!m_sceneManager || !m_sceneManager->IsPaused()) return;
     }
 
-    ImVec2 mousePos = ImGui::GetMousePos();
-    ImVec2 screenOffset = ImGui::GetCursorScreenPos();
-
+    // ─── 1. マウスのホバー判定 ───
     auto tran = owner->GetComponent<Transform>();
-    if (tran)
+    if (tran && spr)
     {
         DirectX::XMFLOAT3 worldPos = tran->GetWorldPosition();
-
         DirectX::XMFLOAT3 worldScale = tran->GetWorldScale();
 
-        float colLeft = screenOffset.x + worldPos.x + m_colliderOffsetX * worldScale.x;
-        float colTop = screenOffset.y + worldPos.y + m_colliderOffsetY * worldScale.y;
+        float texW = spr->GetTextureWidth();
+        float texH = spr->GetTextureHeight();
+        float sw = (m_srcW < 0.0f) ? (texW / (float)m_splitX) : m_srcW;
+        float sh = (m_srcH < 0.0f) ? (texH / (float)m_splitY) : m_srcH;
+
+        float width = sw * m_editorScale * worldScale.x;
+        float height = sh * m_editorScale * worldScale.y;
+
+        float drawLeft = worldPos.x;
+        float drawTop = worldPos.y;
+        if (m_pivot == Pivot::Center)
+        {
+            drawLeft -= width * 0.5f;
+            drawTop -= height * 0.5f;
+        }
+
+        float colLeft = drawLeft + m_colliderOffsetX * worldScale.x;
+        float colTop = drawTop + m_colliderOffsetY * worldScale.y;
         float colRight = colLeft + m_colliderWidth * m_editorScale * worldScale.x;
         float colBottom = colTop + m_colliderHeight * m_editorScale * worldScale.y;
 
+        ImVec2 mousePos = ImGui::GetMousePos();
+        ImVec2 windowPos = ImGui::GetWindowPos();
+        ImVec2 contentMin = ImGui::GetWindowContentRegionMin();
 
-        m_isHovered = (mousePos.x >= colLeft && mousePos.x <= colRight &&
-            mousePos.y >= colTop && mousePos.y <= colBottom);
+        float mouseXInWindow = mousePos.x - (windowPos.x + contentMin.x);
+        float mouseYInWindow = mousePos.y - (windowPos.y + contentMin.y);
 
+        m_isHovered = (mouseXInWindow >= colLeft && mouseXInWindow <= colRight &&
+            mouseYInWindow >= colTop && mouseYInWindow <= colBottom);
     }
 
+    // ─── 2. アルファフェード処理 ───
     if (m_hoverFade)
     {
-        // �}�E�X������Ă���� 1.0f (�S�\��)�A������ 0.0f (��\��) ��ڎw��
         float targetRatio = m_isHovered ? 1.0f : 0.0f;
-
-        // ���`��ԁi���[�v�j
         float t = m_fadeSpeed * elapsedTime;
         if (t > 1.0f) t = 1.0f;
-
         m_appearanceRatio += (targetRatio - m_appearanceRatio) * t;
     }
     else
     {
-        // �@�\���I�t�̏ꍇ�͏�� 1.0f�i�ʏ�\���j
         m_appearanceRatio = 1.0f;
     }
 
+    // ─── 3. UVアニメーション・テクスチャ切り替え ───
     if (spr)
     {
         int currentCol = m_targetCol;
@@ -236,8 +335,6 @@ void SpriteRender::Update(float elapsedTime)
         m_srcY = (float)currentRow * cellH;
     }
 
-
-    //�A�j���[�V��������
     if (!m_isLoop || m_animFrameCount <= 1) return;
 
     m_timer += elapsedTime;
@@ -247,15 +344,8 @@ void SpriteRender::Update(float elapsedTime)
         m_currentFrame++;
         if (m_currentFrame >= m_animFrameCount)
             m_currentFrame = 0;
-
     }
-
-
-
 }
-
-
-
 
 std::unique_ptr<Component> SpriteRender::Clone() const
 {
@@ -291,11 +381,25 @@ std::unique_ptr<Component> SpriteRender::Clone() const
     c->m_hoverRowOffset = this->m_hoverRowOffset;
     c->m_appearanceRatio  = 0.0;
 
+    c->m_irisDuration = this->m_irisDuration;
+    c->m_irisTargetScale = this->m_irisTargetScale;
+
     if (texturepath != "")
     {
         c->SetSprite(std::make_unique<Sprite>(texturepath.c_str()));
         c->SetString(texturepath.c_str());
     }
+
+    c->m_irisDuration = this->m_irisDuration;
+    c->m_irisTargetScale = this->m_irisTargetScale;
+
+    c->m_irisMode = IrisMode::None;
+    c->m_irisTimer = 0.0f;
+    c->m_originalScale = this->m_editorScale;
+
+    c->m_isGameLoading = this->m_isGameLoading;
+    c->m_isTitleLoading = this->m_isTitleLoading;
+    c->m_isOnlyWhileLoading = this->m_isOnlyWhileLoading;
 
 	return c;
 }
@@ -336,12 +440,45 @@ void SpriteRender::Serialize(nlohmann::json& j) const
     j["HoverShift"] = m_hoverSpriteShift;
     j["HoverColOffset"] = m_hoverCollOffset;
     j["HoverRowOffset"] = m_hoverRowOffset;
+
+    j["IrisDuration"] = m_irisDuration;
+    j["IrisTargetScale"] = m_irisTargetScale;
+
+    j["IsGameLoading"] = m_isGameLoading;
+    j["IsTitleLoading"] = m_isTitleLoading;
+    j["IsOnlyWhileLoading"] = m_isOnlyWhileLoading;
 }
 
 void SpriteRender::DrawInspector()
 {
     ImGui::Checkbox("Enabled", &enabled);
     ImGui::Checkbox("Pause UI Only", &m_isPauseUI);
+
+    ImGui::Text("lastDrawX: %.1f", m_lastDrawX);
+    ImGui::Text("lastDrawW: %.1f", m_lastDrawW);
+
+    if (ImGui::Button("Center on Screen X"))
+    {
+        auto t = owner->GetComponent<Transform>();
+        if (t && spr)
+        {
+            float texW = spr->GetTextureWidth();
+            float baseW = (m_srcW < 0.0f)
+                ? ((m_splitX > 1) ? (texW / (float)m_splitX) : texW)
+                : m_srcW;
+
+            DirectX::XMFLOAT3 localScale = t->GetLocalScale();
+            float uiWidth = baseW * m_editorScale * localScale.x;
+
+            float targetX = (m_pivot == Pivot::Center)
+                ? 640.0f
+                : 640.0f - uiWidth * 0.5f;
+
+            DirectX::XMFLOAT3 localPos = t->GetLocalPosition();
+            localPos.x = targetX;
+            t->SetLocalPosition(localPos);
+        }
+    }
 
     if (ImGui::CollapsingHeader("Hover Fade Settings", ImGuiTreeNodeFlags_DefaultOpen))
     {
@@ -377,16 +514,16 @@ void SpriteRender::DrawInspector()
 
         float rotZ = tran->GetLocalEulerAngles().z;
         if (ImGui::DragFloat("UI Rotation Z", &rotZ, 1.0f)) {
-            // SetRotationEuler �� Radians �����҂��Ă���͂��Ȃ̂ŕϊ����ăZ�b�g
+            // SetRotationEuler は Radians を期待しているはずなので変換してセット
             tran->SetRotationEuler(
-                tran->GetEulerRotation().x, // X, Y �͍��̒l���ێ�
+                tran->GetEulerRotation().x, // X, Y は今の値を維持
                 tran->GetEulerRotation().y,
                 DirectX::XMConvertToRadians(rotZ)
             );
         }
 
         float scaleVal = tran->GetLocalScale().x; 
-        if (ImGui::DragFloat("UI Scale", &scaleVal, 0.01f, 0.001f, 100.0f)) {
+        if (ImGui::DragFloat("UI Scale", &scaleVal, 0.01f, 0.001f, 1000.0f)) {
             tran->SetLocalScale({ scaleVal, scaleVal, 1.0f });
         }
 
@@ -462,15 +599,31 @@ void SpriteRender::DrawInspector()
     {
         const char* pivotItems[] = { "TopLeft", "Center" };
         int pivotIndex = (int)m_pivot;
+        ImGui::PushID("PivotCombo");
         if (ImGui::Combo("Pivot", &pivotIndex, pivotItems, 2))
         {
             m_pivot = (Pivot)pivotIndex;
         }
+        ImGui::PopID();
     }
+
+    ImGui::Separator();
+    ImGui::Text("--- Iris Out Setting ---");
+
+    // インスペクターから秒数と目標サイズをスライダー等で調整できるようにする
+    ImGui::DragFloat("Iris Duration (sec)", &m_irisDuration, 0.1f, 0.0f, 10.0f, "%.2f");
+    ImGui::DragFloat("Iris Target Scale", &m_irisTargetScale, 0.01f, 0.0f, 5.0f, "%.2f");
+
+    ImGui::Separator();
+    ImGui::Text("--- Loading Sprite Settings ---");
+    ImGui::Checkbox("Use on Game Loading", &m_isGameLoading);
+    ImGui::Checkbox("Use on Title Loading", &m_isTitleLoading);
+    ImGui::Checkbox("Only While Loading", &m_isOnlyWhileLoading);
+    ImGui::Separator();
 
     if (ImGui::CollapsingHeader("Box Collider 2D"))
     {
-        //�\���E��\���̃X�C�b�`
+        //表示・非表示のスイッチ
         ImGui::Checkbox("Show Collider OutLine", &m_showCollider);
 
         ImGui::DragFloat("Offset X", &m_colliderOffsetX, 1.0f);
@@ -479,7 +632,7 @@ void SpriteRender::DrawInspector()
         ImGui::DragFloat("Height", &m_colliderHeight, 1.0f, 1.0f, 2048.0f);
 
         if (ImGui::Button("Fit to Sprite")) {
-            // �{�^���ꔭ�ŃX�v���C�g�̃T�C�Y�ɍ��킹��@�\
+            // ボタン一発でスプライトのサイズに合わせる機能
             m_colliderWidth = m_lastDrawW;
             m_colliderHeight = m_lastDrawH;
             m_colliderOffsetX = (m_pivot == Pivot::Center) ? -(m_lastDrawW * 0.5f) : 0.0f;
@@ -514,13 +667,17 @@ void SpriteRender::Deserialize(nlohmann::json& j)
         {
             float texW = spr->GetTextureWidth();
             float texH = spr->GetTextureHeight();
+            // ⭕ 幅・高さがデフォルト値（-1.0f）の時だけ、テクスチャ全体 or 分割サイズを入れる
             if (m_srcW < 0.0f) m_srcW = texW / (float)m_splitX;
             if (m_srcH < 0.0f) m_srcH = texH / (float)m_splitY;
 
-            m_srcX = (float)m_targetCol * m_srcW;
-            m_srcY = (float)m_targetRow * m_srcH;
+            // ⭕【重要】JSONに "SrcX" や "SrcY" が保存されていなかった場合（または0の初期状態）だけ自動計算する
+            // これで、手動で弄った UVCrop の値が上書きされるのを防ぎます！
+            if (!j.contains("SrcX")) m_srcX = (float)m_targetCol * m_srcW;
+            if (!j.contains("SrcY")) m_srcY = (float)m_targetRow * m_srcH;
         }
-	}
+    }
+	
 
     m_spriteIndex = j.value("SpriteIndex", 0);
 
@@ -543,4 +700,39 @@ void SpriteRender::Deserialize(nlohmann::json& j)
     m_hoverSpriteShift = j.value("HoverShift", false);
     m_hoverCollOffset = j.value("HoverColOffset", 1);
     m_hoverRowOffset = j.value("HoverRowOffset", 0);
+
+    m_irisDuration = j.value("IrisDuration",m_irisDuration);
+    m_irisTargetScale = j.value("IrisTargetScale", m_originalScale);
+
+    m_isGameLoading = j.value("IsGameLoading", false);
+    m_isTitleLoading = j.value("IsTitleLoading", false);
+    m_isOnlyWhileLoading = j.value("IsOnlyWhileLoading", false);
+}
+
+void SpriteRender::StartIrisOut()
+{
+
+    m_irisMode = IrisMode::Out;
+    m_irisTimer = 0.0f;
+
+    // ⭕ jsonの値に依存せず、コード側で演出のキレを強制固定する
+    m_irisDuration = 0.6f;     // 2回目も絶対に爆速（0.25秒）
+    m_irisTargetScale = 0.10f;   // 完全に閉じきる
+
+    m_editorScale = m_originalScale; // 確実に全開サイズからスタートさせる
+    m_irisMaxScale = m_editorScale;
+}
+
+void SpriteRender::StartIrisIn()
+{
+
+    m_irisMode = IrisMode::In;
+    m_irisTimer = 0.0f;
+
+    // ⭕ 同様に、新シーンに切り替わった直後でも確実に数値を上書き強制する
+    m_irisDuration = 0.7f;      // 2回目も絶対に爆速（0.3秒）
+    m_irisMaxScale = 6.0f;    // 遥か彼方まで拡大する超特大スケール
+
+    m_irisStartScale = m_editorScale; // 現在のサイズ（0.0fなど）からスタート
+
 }

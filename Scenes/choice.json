@@ -42,7 +42,7 @@
                     {
                         "data": {
                             "position": [
-                                -67.06700134277344,
+                                -69.06900024414063,
                                 -18.01799964904785,
                                 0.0
                             ],
@@ -53,8 +53,8 @@
                                 1.0
                             ],
                             "scale": [
-                                0.6700000166893005,
-                                0.6700000166893005,
+                                1.0,
+                                1.0,
                                 1.0
                             ]
                         },
@@ -78,8 +78,13 @@
                             "HoverFade": false,
                             "HoverRowOffset": 0,
                             "HoverShift": false,
+                            "IrisDuration": 1.0,
+                            "IrisTargetScale": 1.0,
+                            "IsGameLoading": false,
                             "IsLoop": false,
+                            "IsOnlyWhileLoading": false,
                             "IsPauseUI": false,
+                            "IsTitleLoading": false,
                             "Pivot": 0,
                             "ShowCollider": false,
                             "SortOrder": 0,
@@ -129,10 +134,10 @@
                     {
                         "data": {
                             "AnimFrameCount": 1,
-                            "ColHeight": 156.0,
-                            "ColOffsetX": 36.0,
-                            "ColOffsetY": 51.0,
-                            "ColWidth": 377.0,
+                            "ColHeight": 270.0,
+                            "ColOffsetX": 0.0,
+                            "ColOffsetY": 0.0,
+                            "ColWidth": 420.0,
                             "ColorA": 1.0,
                             "ColorB": 1.0,
                             "ColorG": 1.0,
@@ -144,8 +149,13 @@
                             "HoverFade": false,
                             "HoverRowOffset": -1,
                             "HoverShift": true,
+                            "IrisDuration": 1.0,
+                            "IrisTargetScale": 1.0,
+                            "IsGameLoading": false,
                             "IsLoop": false,
+                            "IsOnlyWhileLoading": false,
                             "IsPauseUI": false,
+                            "IsTitleLoading": false,
                             "Pivot": 0,
                             "ShowCollider": true,
                             "SortOrder": 0,
@@ -165,8 +175,9 @@
                     {
                         "data": {
                             "ButtonMode": 0,
-                            "NextSceneName": "Scenes/",
-                            "TitleSceneName": "Scenes/title.json"
+                            "NextSceneName": "Scenes/stage1.json",
+                            "TitleSceneName": "Scenes/title.json",
+                            "UseLoading": true
                         },
                         "type": "ButtonComponent"
                     }
@@ -203,10 +214,10 @@
                     {
                         "data": {
                             "AnimFrameCount": 1,
-                            "ColHeight": 156.0,
-                            "ColOffsetX": 3.0,
-                            "ColOffsetY": 51.0,
-                            "ColWidth": 377.0,
+                            "ColHeight": 270.0,
+                            "ColOffsetX": 0.0,
+                            "ColOffsetY": 0.0,
+                            "ColWidth": 420.0,
                             "ColorA": 1.0,
                             "ColorB": 1.0,
                             "ColorG": 1.0,
@@ -218,8 +229,13 @@
                             "HoverFade": false,
                             "HoverRowOffset": -1,
                             "HoverShift": true,
+                            "IrisDuration": 1.0,
+                            "IrisTargetScale": 1.0,
+                            "IsGameLoading": false,
                             "IsLoop": false,
+                            "IsOnlyWhileLoading": false,
                             "IsPauseUI": false,
+                            "IsTitleLoading": false,
                             "Pivot": 0,
                             "ShowCollider": true,
                             "SortOrder": 0,
@@ -240,7 +256,8 @@
                         "data": {
                             "ButtonMode": 0,
                             "NextSceneName": "Scenes/",
-                            "TitleSceneName": "Scenes/title.json"
+                            "TitleSceneName": "Scenes/title.json",
+                            "UseLoading": false
                         },
                         "type": "ButtonComponent"
                     }
@@ -277,10 +294,10 @@
                     {
                         "data": {
                             "AnimFrameCount": 1,
-                            "ColHeight": 156.0,
-                            "ColOffsetX": -31.0,
-                            "ColOffsetY": 51.0,
-                            "ColWidth": 377.0,
+                            "ColHeight": 270.0,
+                            "ColOffsetX": 0.0,
+                            "ColOffsetY": 0.0,
+                            "ColWidth": 420.0,
                             "ColorA": 1.0,
                             "ColorB": 1.0,
                             "ColorG": 1.0,
@@ -292,8 +309,13 @@
                             "HoverFade": false,
                             "HoverRowOffset": -1,
                             "HoverShift": true,
+                            "IrisDuration": 1.0,
+                            "IrisTargetScale": 1.0,
+                            "IsGameLoading": false,
                             "IsLoop": false,
+                            "IsOnlyWhileLoading": false,
                             "IsPauseUI": false,
+                            "IsTitleLoading": false,
                             "Pivot": 0,
                             "ShowCollider": true,
                             "SortOrder": 0,
@@ -314,7 +336,8 @@
                         "data": {
                             "ButtonMode": 0,
                             "NextSceneName": "Scenes/",
-                            "TitleSceneName": "Scenes/title.json"
+                            "TitleSceneName": "Scenes/title.json",
+                            "UseLoading": false
                         },
                         "type": "ButtonComponent"
                     }
@@ -351,10 +374,10 @@
                     {
                         "data": {
                             "AnimFrameCount": 1,
-                            "ColHeight": 156.0,
-                            "ColOffsetX": -60.0,
-                            "ColOffsetY": 52.0,
-                            "ColWidth": 377.0,
+                            "ColHeight": 270.0,
+                            "ColOffsetX": 0.0,
+                            "ColOffsetY": 0.0,
+                            "ColWidth": 420.0,
                             "ColorA": 1.0,
                             "ColorB": 1.0,
                             "ColorG": 1.0,
@@ -366,8 +389,13 @@
                             "HoverFade": false,
                             "HoverRowOffset": -1,
                             "HoverShift": true,
+                            "IrisDuration": 1.0,
+                            "IrisTargetScale": 1.0,
+                            "IsGameLoading": false,
                             "IsLoop": false,
+                            "IsOnlyWhileLoading": false,
                             "IsPauseUI": false,
+                            "IsTitleLoading": false,
                             "Pivot": 0,
                             "ShowCollider": true,
                             "SortOrder": 0,
@@ -388,7 +416,8 @@
                         "data": {
                             "ButtonMode": 0,
                             "NextSceneName": "Scenes/",
-                            "TitleSceneName": "Scenes/title.json"
+                            "TitleSceneName": "Scenes/title.json",
+                            "UseLoading": false
                         },
                         "type": "ButtonComponent"
                     }
@@ -404,7 +433,7 @@
                     {
                         "data": {
                             "position": [
-                                -4.004000186920166,
+                                38.03799819946289,
                                 2.002000093460083,
                                 0.0
                             ],
@@ -415,8 +444,8 @@
                                 1.0
                             ],
                             "scale": [
-                                1.0,
-                                1.0,
+                                1.5,
+                                1.5,
                                 1.0
                             ]
                         },
@@ -440,8 +469,13 @@
                             "HoverFade": false,
                             "HoverRowOffset": 0,
                             "HoverShift": false,
+                            "IrisDuration": 1.0,
+                            "IrisTargetScale": 1.0,
+                            "IsGameLoading": false,
                             "IsLoop": false,
+                            "IsOnlyWhileLoading": false,
                             "IsPauseUI": false,
+                            "IsTitleLoading": false,
                             "Pivot": 0,
                             "ShowCollider": true,
                             "SortOrder": 0,
@@ -470,8 +504,8 @@
                     {
                         "data": {
                             "position": [
-                                -67.06700134277344,
-                                475.4750061035156,
+                                -70.06999969482422,
+                                768.7680053710938,
                                 0.0
                             ],
                             "rotation": [
@@ -481,8 +515,8 @@
                                 1.0
                             ],
                             "scale": [
-                                1.0,
-                                1.0,
+                                1.100000023841858,
+                                1.100000023841858,
                                 1.0
                             ]
                         },
@@ -491,10 +525,10 @@
                     {
                         "data": {
                             "AnimFrameCount": 1,
-                            "ColHeight": 64.0,
-                            "ColOffsetX": 16.0,
-                            "ColOffsetY": -112.0,
-                            "ColWidth": 244.0,
+                            "ColHeight": 105.0,
+                            "ColOffsetX": 0.0,
+                            "ColOffsetY": 0.0,
+                            "ColWidth": 270.0,
                             "ColorA": 1.0,
                             "ColorB": 1.0,
                             "ColorG": 1.0,
@@ -502,12 +536,17 @@
                             "EditorScale": 1.0,
                             "FadeSpeed": 5.0,
                             "FrameDuration": 0.10000000149011612,
-                            "HoverColOffset": 1,
+                            "HoverColOffset": -1,
                             "HoverFade": false,
                             "HoverRowOffset": 0,
                             "HoverShift": true,
+                            "IrisDuration": 1.0,
+                            "IrisTargetScale": 1.0,
+                            "IsGameLoading": false,
                             "IsLoop": false,
+                            "IsOnlyWhileLoading": false,
                             "IsPauseUI": false,
+                            "IsTitleLoading": false,
                             "Pivot": 0,
                             "ShowCollider": true,
                             "SortOrder": 0,
@@ -516,9 +555,9 @@
                             "SpriteIndex": 2,
                             "SrcH": 110.0,
                             "SrcW": 260.0,
-                            "SrcX": 0.0,
+                            "SrcX": 258.0,
                             "SrcY": 0.0,
-                            "TargetCol": 0,
+                            "TargetCol": 1,
                             "TargetRow": 0,
                             "TexturePath": "Data/Sprite/Select_back.png"
                         },
@@ -528,7 +567,8 @@
                         "data": {
                             "ButtonMode": 4,
                             "NextSceneName": "",
-                            "TitleSceneName": "Scenes/title.json"
+                            "TitleSceneName": "Scenes/title.json",
+                            "UseLoading": false
                         },
                         "type": "ButtonComponent"
                     }

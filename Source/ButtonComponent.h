@@ -40,6 +40,7 @@ private:
     bool m_clickedThisFrame = false;
     std::string m_nextSceneName = "";
     bool m_isQuitButton = false;          
+    bool m_useLoading = false;
 
     ButtonMode m_buttonMode = ButtonMode::SceneChange;
     std::string m_titleSceneName = "Scenes/title.json";

@@ -27,6 +27,7 @@ enum class ComponentID
     ButtonComponent,
     Slope,
     tent,
+    flower,
     COUNT
 };
 

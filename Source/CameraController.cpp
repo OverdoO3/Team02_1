@@ -4,6 +4,7 @@
 #include "Factory.h"
 #include "Lerp.h"
 #include "SceneManager.h"
+#include "RayCast.h"
 
 //								«‚É–¼‘O“ü‚ê‚é
 REGISTER_COMPONENT(ComponentID::CameraController , CameraController)
@@ -116,13 +117,14 @@ void CameraController::Update(float elapsedTime)
 		}; 
 		float scroll = ImGui::GetIO().MouseWheel;
 
-		distance -= scroll * 1.0f; // Š´“x’²®
+		distance -= scroll * 0.5f; // Š´“x’²®
 		distance = std::clamp(distance, minDistance, maxDistance);
 
 		transform->SetWorldPosition(cameraPos);
 		transform->LookAt(focusTarget);
 	}
 
+	//if(Hit::RayCast(focusTarget,transform->GetWorldPosition(),))
 }
 
 void CameraController::DrawInspector()

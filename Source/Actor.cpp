@@ -70,7 +70,6 @@ void Actor::UpdateWithOutPlayed(float elapsedTime)
 	for (auto& comp : components)
 	{
 		if (!comp) continue;
-
 		if (comp->isDeleted)
 		{
 			RemoveComponent(comp->GetID());

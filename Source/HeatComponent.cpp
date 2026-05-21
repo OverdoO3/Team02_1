@@ -30,8 +30,7 @@ void HeatTransfer::Update(float elapsedTime)
 			toTransform->GetWorldPosition(),
 			toThermal->GetRadius()))
 		{
-			toThermal->AddHeat(thermal->GetHeat());
-			toThermal->SetHeat(std::clamp(toThermal->GetHeat(), -2, 1));
+			toThermal->SetHeat(thermal->GetHeat());
 		} 
 	}
 
@@ -49,8 +48,7 @@ void HeatTransfer::Update(float elapsedTime)
 				toTransform->GetWorldPosition(),
 				Receiver->GetRadius()))
 			{
-				thermal->AddHeat(Receiver->GetHeatNum());
-				thermal->SetHeat(std::clamp(thermal->GetHeat(), -2, 1));
+				thermal->SetHeat(Receiver->GetHeatNum());
 				int stealHeat = Receiver->GetHeatNum() * -1;
 				actor->GetComponent<ThermalBody>()->SetHeat(stealHeat);
 			}

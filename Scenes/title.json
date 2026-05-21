@@ -72,8 +72,8 @@
                     {
                         "data": {
                             "position": [
-                                279.27899169921875,
-                                -88.08799743652344,
+                                448.8089904785156,
+                                -58.05799865722656,
                                 0.0
                             ],
                             "rotation": [
@@ -83,8 +83,8 @@
                                 1.0
                             ],
                             "scale": [
-                                0.6800000071525574,
-                                0.6800000071525574,
+                                1.0,
+                                1.0,
                                 1.0
                             ]
                         },
@@ -108,8 +108,13 @@
                             "HoverFade": false,
                             "HoverRowOffset": 0,
                             "HoverShift": false,
+                            "IrisDuration": 1.0,
+                            "IrisTargetScale": 0.0,
+                            "IsGameLoading": false,
                             "IsLoop": false,
+                            "IsOnlyWhileLoading": false,
                             "IsPauseUI": false,
+                            "IsTitleLoading": false,
                             "Pivot": 0,
                             "ShowCollider": false,
                             "SortOrder": 0,
@@ -138,8 +143,8 @@
                     {
                         "data": {
                             "position": [
-                                451.45098876953125,
-                                374.3739929199219,
+                                717.2269897460938,
+                                606.6060180664063,
                                 0.0
                             ],
                             "rotation": [
@@ -149,8 +154,8 @@
                                 1.0
                             ],
                             "scale": [
-                                1.0,
-                                1.0,
+                                1.3300000429153442,
+                                1.3300000429153442,
                                 1.0
                             ]
                         },
@@ -159,10 +164,10 @@
                     {
                         "data": {
                             "AnimFrameCount": 1,
-                            "ColHeight": 62.0,
-                            "ColOffsetX": -6.0,
-                            "ColOffsetY": -88.0,
-                            "ColWidth": 257.0,
+                            "ColHeight": 50.0,
+                            "ColOffsetX": 20.0,
+                            "ColOffsetY": 0.0,
+                            "ColWidth": 262.0,
                             "ColorA": 1.0,
                             "ColorB": 1.0,
                             "ColorG": 1.0,
@@ -174,8 +179,13 @@
                             "HoverFade": false,
                             "HoverRowOffset": 0,
                             "HoverShift": true,
+                            "IrisDuration": 1.0,
+                            "IrisTargetScale": 0.0,
+                            "IsGameLoading": false,
                             "IsLoop": false,
+                            "IsOnlyWhileLoading": false,
                             "IsPauseUI": false,
+                            "IsTitleLoading": false,
                             "Pivot": 0,
                             "ShowCollider": true,
                             "SortOrder": 1,
@@ -196,7 +206,8 @@
                         "data": {
                             "ButtonMode": 0,
                             "NextSceneName": "Scenes/choice.json",
-                            "TitleSceneName": "Scenes/Title.json"
+                            "TitleSceneName": "Scenes/Title.json",
+                            "UseLoading": false
                         },
                         "type": "ButtonComponent"
                     }
@@ -212,8 +223,8 @@
                     {
                         "data": {
                             "position": [
-                                451.45098876953125,
-                                478.4779968261719,
+                                717.2277221679688,
+                                750.75,
                                 0.0
                             ],
                             "rotation": [
@@ -223,8 +234,8 @@
                                 1.0
                             ],
                             "scale": [
-                                1.0,
-                                1.0,
+                                1.3300000429153442,
+                                1.3300000429153442,
                                 1.0
                             ]
                         },
@@ -233,10 +244,10 @@
                     {
                         "data": {
                             "AnimFrameCount": 1,
-                            "ColHeight": 62.0,
-                            "ColOffsetX": -16.0,
-                            "ColOffsetY": -129.0,
-                            "ColWidth": 278.0,
+                            "ColHeight": 50.0,
+                            "ColOffsetX": 0.0,
+                            "ColOffsetY": 0.0,
+                            "ColWidth": 295.0,
                             "ColorA": 1.0,
                             "ColorB": 1.0,
                             "ColorG": 1.0,
@@ -248,8 +259,13 @@
                             "HoverFade": false,
                             "HoverRowOffset": 0,
                             "HoverShift": true,
+                            "IrisDuration": 1.0,
+                            "IrisTargetScale": 0.0,
+                            "IsGameLoading": false,
                             "IsLoop": false,
+                            "IsOnlyWhileLoading": false,
                             "IsPauseUI": false,
+                            "IsTitleLoading": false,
                             "Pivot": 0,
                             "ShowCollider": true,
                             "SortOrder": 2,
@@ -270,7 +286,8 @@
                         "data": {
                             "ButtonMode": 1,
                             "NextSceneName": "",
-                            "TitleSceneName": "Scenes/title.json"
+                            "TitleSceneName": "Scenes/title.json",
+                            "UseLoading": false
                         },
                         "type": "ButtonComponent"
                     }
@@ -286,8 +303,8 @@
                     {
                         "data": {
                             "position": [
-                                377.37701416015625,
-                                355.3550109863281,
+                                633.218017578125,
+                                582.5819702148438,
                                 0.0
                             ],
                             "rotation": [
@@ -297,8 +314,8 @@
                                 1.0
                             ],
                             "scale": [
-                                1.0,
-                                1.0,
+                                1.25,
+                                1.25,
                                 1.0
                             ]
                         },
@@ -307,10 +324,10 @@
                     {
                         "data": {
                             "AnimFrameCount": 1,
-                            "ColHeight": 61.0,
-                            "ColOffsetX": 68.0,
-                            "ColOffsetY": -69.0,
-                            "ColWidth": 257.0,
+                            "ColHeight": 56.0,
+                            "ColOffsetX": 100.0,
+                            "ColOffsetY": 20.0,
+                            "ColWidth": 258.0,
                             "ColorA": 1.0,
                             "ColorB": 1.0,
                             "ColorG": 1.0,
@@ -322,8 +339,13 @@
                             "HoverFade": true,
                             "HoverRowOffset": 0,
                             "HoverShift": false,
+                            "IrisDuration": 1.0,
+                            "IrisTargetScale": 0.0,
+                            "IsGameLoading": false,
                             "IsLoop": false,
+                            "IsOnlyWhileLoading": false,
                             "IsPauseUI": false,
+                            "IsTitleLoading": false,
                             "Pivot": 0,
                             "ShowCollider": true,
                             "SortOrder": 0,
@@ -352,8 +374,8 @@
                     {
                         "data": {
                             "position": [
-                                377.37701416015625,
-                                459.4590148925781,
+                                633.2186279296875,
+                                727.7269897460938,
                                 0.0
                             ],
                             "rotation": [
@@ -363,8 +385,8 @@
                                 1.0
                             ],
                             "scale": [
-                                1.0,
-                                1.0,
+                                1.25,
+                                1.25,
                                 1.0
                             ]
                         },
@@ -373,10 +395,10 @@
                     {
                         "data": {
                             "AnimFrameCount": 1,
-                            "ColHeight": 62.0,
-                            "ColOffsetX": 57.0,
-                            "ColOffsetY": -111.0,
-                            "ColWidth": 279.0,
+                            "ColHeight": 57.0,
+                            "ColOffsetX": 72.0,
+                            "ColOffsetY": 20.0,
+                            "ColWidth": 303.0,
                             "ColorA": 1.0,
                             "ColorB": 1.0,
                             "ColorG": 1.0,
@@ -388,8 +410,13 @@
                             "HoverFade": true,
                             "HoverRowOffset": 0,
                             "HoverShift": false,
+                            "IrisDuration": 1.0,
+                            "IrisTargetScale": 0.0,
+                            "IsGameLoading": false,
                             "IsLoop": false,
+                            "IsOnlyWhileLoading": false,
                             "IsPauseUI": false,
+                            "IsTitleLoading": false,
                             "Pivot": 0,
                             "ShowCollider": true,
                             "SortOrder": 0,

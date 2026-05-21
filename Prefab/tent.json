@@ -1,0 +1,63 @@
+{
+    "components": [
+        {
+            "data": {
+                "position": [
+                    -40.0,
+                    125.00001525878906,
+                    20.000001907348633
+                ],
+                "rotation": [
+                    0.0,
+                    0.7072286605834961,
+                    0.0,
+                    0.7069849371910095
+                ],
+                "scale": [
+                    1.7000000476837158,
+                    1.700000286102295,
+                    1.7000000476837158
+                ]
+            },
+            "type": "Transform"
+        },
+        {
+            "data": {
+                "ModelPath": "Data/Model/Stage/Demos/tent_hata.mdl"
+            },
+            "type": "ModelRender"
+        },
+        {
+            "data": {
+                "size": [
+                    30.0,
+                    30.0,
+                    30.0
+                ]
+            },
+            "type": "BoxCollider"
+        },
+        {
+            "data": {
+                "loop": true,
+                "offset": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "path": "Data/Effects/goal.efk",
+                "scale": 7.0
+            },
+            "type": "EffectRender"
+        },
+        {
+            "data": null,
+            "type": "tent"
+        }
+    ],
+    "id": 637,
+    "name": "tent",
+    "parent": 15,
+    "tag": 3,
+    "type": "Actor"
+}

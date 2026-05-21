@@ -61,6 +61,7 @@ void ButtonComponent::DrawInspector()
             m_nextSceneName = buf;
         }
         ImGui::Text("Example: Scenes/Demo2.json");
+        ImGui::Checkbox("Use Loading Screen", &m_useLoading);
         break;
     }
     case ButtonMode::ReturnToTitle:
@@ -74,6 +75,7 @@ void ButtonComponent::DrawInspector()
         ImGui::Text("Example: Scenes/Title.json");
         break;
     }
+
     default:
         break;
     }
@@ -84,6 +86,7 @@ void ButtonComponent::Serialize(nlohmann::json& j) const
     j["NextSceneName"] = m_nextSceneName;
     j["TitleSceneName"] = m_titleSceneName;
     j["ButtonMode"] = static_cast<int>(m_buttonMode);
+    j["UseLoading"] = m_useLoading;
 }
 
 
@@ -91,7 +94,7 @@ void ButtonComponent::Deserialize(nlohmann::json& j)
 {
     m_nextSceneName = j.value("NextSceneName", "");
     m_titleSceneName = j.value("TitleSceneName", "Scenes/Title.json");
-
+    m_useLoading = j.value("UseLoading", false);
     if (j.contains("ButtonMode"))
     {
         m_buttonMode = static_cast<ButtonMode>(j.value("ButtonMode", 0));
@@ -113,6 +116,7 @@ std::unique_ptr<Component> ButtonComponent::Clone() const
     c->m_nextSceneName = this->m_nextSceneName;
     c->m_titleSceneName = this->m_titleSceneName;
     c->m_buttonMode = this->m_buttonMode;
+    c->m_useLoading = this->m_useLoading;
     return c;
 }
 
@@ -152,7 +156,7 @@ void ButtonComponent::OnClick()
     case ButtonMode::SceneChange:
     default:
         if (m_nextSceneName.empty()) return;
-        sm->RequestSceneChange(m_nextSceneName);
+        sm->ChangeScene(std::make_unique<Scene>(), m_nextSceneName.c_str(), m_useLoading);
         return;
     }
 }

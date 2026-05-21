@@ -7,7 +7,7 @@ REGISTER_COMPONENT(ComponentID::water, water)
 
 void water::OnAwake(float elapsedTime)
 {
-
+	std::make_unique<Model>(icepath.c_str());
 }
 
 void water::Update(float elapsedTime)
@@ -29,7 +29,7 @@ void water::Update(float elapsedTime)
 		break;
 	default:
 		model = std::make_unique<Model>(waterpath.c_str());
-		col->size.y = 30;
+		col->size.y = 50;
 		modelrender->SetModel(std::move(model));
 		break;
 	}
