@@ -26,4 +26,9 @@ private:
     int m_originalCol = -1;
     bool m_isStageSelectMode = false;
     float m_appearanceRatio = 0.0f;
+
+    float m_popUpTimer = 0.0f;
+    float m_scale = 1.0f;
+    float m_scaleVelocity = 0.0f;
+    bool m_wasCollected = false;
 };

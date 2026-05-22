@@ -19,16 +19,42 @@ void CoinUIComponent::Update(float elapsedTime)
     auto* spr = owner->GetComponent<SpriteRender>();
     if (!spr) return;
 
-    // --- 1. 共通の初期化 ---
     if (m_originalCol == -1) {
         m_originalCol = spr->GetTargetCol();
     }
 
-    // --- 2. 【ゲームモード用】コイン取得フラグによるスプライトずらし ---
-    // ステージ選択モードじゃない時、もしくは両方動かしたい時でも動くようにする
     bool isCollected = scene->sceneManager->IsCoinCollected(m_stageIndex, m_coinIndex);
     int splitX = spr->GetSplitX();
     if (splitX <= 0) splitX = 1;
+
+    // --- ⭕ 新規：ポップアップ演出（イージング） ---
+    if (!m_isStageSelectMode)
+    {
+        // 取得した瞬間にタイマーを開始
+        if (isCollected && !m_wasCollected) {
+            m_popUpTimer = 0.0f; // 演出タイマーをリセット
+        }
+        m_wasCollected = isCollected;
+
+        if (isCollected) {
+            m_popUpTimer += elapsedTime;
+            float duration = 0.4f; // 演出の長さ
+            float t = std::clamp(m_popUpTimer / duration, 0.0f, 1.0f);
+
+            // 最初小さく(0.5) → 急加速して大きく(1.5) → 戻る(1.0)
+            if (t < 0.5f) {
+                m_scale = 0.5f + (t * 2.0f) * (t * 2.0f);
+            }
+            else {
+                float t2 = (t - 0.5f) * 2.0f;
+                m_scale = 1.5f - (t2 * t2 * 0.5f);
+            }
+            spr->SetScale(m_scale);
+        }
+        else {
+            spr->SetScale(1.0f);
+        }
+    }
 
     if (isCollected) {
         spr->SetTargetCol((m_originalCol + splitX - 1) % splitX);
@@ -37,8 +63,6 @@ void CoinUIComponent::Update(float elapsedTime)
         spr->SetTargetCol(m_originalCol);
     }
 
-    // --- 3. 【ステージ選択用】アルファフェード処理 ---
-    // このモードのときだけ、アルファを操作する
     if (m_isStageSelectMode)
     {
         int hoveredStage = scene->sceneManager->GetHoveredStage();
@@ -54,8 +78,6 @@ void CoinUIComponent::Update(float elapsedTime)
     }
     else
     {
-        // ステージ選択モードじゃない時は、アルファを強制的に1.0にしておく
-        // (これをしないと、前のシーンから戻ってきた時に透明なままになる可能性があるため)
         DirectX::XMFLOAT4 color = { 1.0f,1.0f,1.0f,1.0f };
         color.w = 1.0f;
         spr->SetColor(color);

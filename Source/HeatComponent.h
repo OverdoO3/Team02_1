@@ -20,7 +20,10 @@ public:
     std::unique_ptr<Component> Clone() const override;
     std::vector<Actor*> m_insideActors;
     const std::vector<Actor*>& GetInsideActors() const { return m_insideActors; }
+    bool GetCanAbsorb() const { return m_canAbsorb; }
 
+    bool IsStatusActive() const;
     COMPONENT_ID(HeatTransfer)
 private:
+    bool m_canAbsorb = false;
 };

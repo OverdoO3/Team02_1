@@ -4,6 +4,9 @@
 #include "Collision.h"
 #include "Scene.h"
 #include "SceneManager.h"
+#include <algorithm>
+
+
 //								↓に名前入れる
 REGISTER_COMPONENT(ComponentID::Coin, Coin)
 
@@ -28,6 +31,30 @@ void Coin::Update(float elapsedTime)
 	auto playerModelChanger = owner->GetScene()->FindByTag(1);
 	auto transform = owner->GetComponent<Transform>();
 
+	// 演出中
+	if (m_isAnimating)
+	{
+		m_jumpTimer += elapsedTime;
+
+		m_jumpVelocityY += -30.0f * elapsedTime; // 重力加速度
+		auto pos = transform->GetWorldPosition();
+		pos.y += m_jumpVelocityY * elapsedTime;
+		transform->SetWorldPosition(pos);
+
+		auto rot = transform->GetEulerRotation();
+		rot.y += 20.0f * elapsedTime; // 縦回転の速度
+		transform->SetRotationEuler(rot.x, rot.y, rot.z);
+
+		// 演出が終わったら無効化する
+		if (m_jumpTimer > 0.8f) {
+			if (auto* mr = owner->GetComponent<ModelRender>()) {
+				mr->enabled = false;
+			}
+			this->enabled = false;
+		}
+		return;
+	}
+
 	// コインをくるくる回す処理
 	auto ro = transform->GetEulerRotation();
 	ro.y += elapsedTime * 4;
@@ -46,11 +73,17 @@ void Coin::Update(float elapsedTime)
 		{
 			scene->sceneManager->CollectCoin(m_stageIndex, m_coinIndex);
 		}
-		// 触れたら非表示にする
-		if (mr)
-		{
-			mr->enabled = false;
-		}
+		m_isAnimating = true;
+
+		m_jumpVelocityY = 30.0f; 
+		m_spinAngle = 0.0f;      
+		m_startPos = transform->GetWorldPosition();
+
+		//// 触れたら非表示にする
+		//if (mr)
+		//{
+		//	mr->enabled = false;
+		//}
 
 		m_isCollected = true;
 

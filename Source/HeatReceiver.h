@@ -2,6 +2,9 @@
 #include "Component.h"
 #include "nlohmann/json.hpp"
 
+class Actor;
+class ThermalBody;
+
 using json = nlohmann::json;
 class HeatReceiver : public Component
 {
@@ -23,9 +26,14 @@ public:
 
     float GetHeatNum() { return heatNum; }
 
+    bool IsPlayerNear() const { return m_isPlayerNear; }
+
     COMPONENT_ID(HeatReceiver)
 private:
     int heatNum;
 
     float radius = 5.0f;
+
+    ThermalBody* m_playerThermal = nullptr; // プレイヤーのThermalBodyをキャッシュ
+    bool m_isPlayerNear = false;           // プレイヤーが近くにいるかのフラグ
 };

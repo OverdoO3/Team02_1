@@ -5,16 +5,18 @@
 #include "ImGuizmo.h"
 #include "CameraBase.h"
 #include "Camera.h"
+#include"HeatComponent.h"
 
 class Actor;
 class SceneManager;
+class ThermalBody;
 
 class SpriteRender : public Component
 {
 public:
     COMPONENT_ID(SpriteRender)
 
-    SpriteRender() {};
+        SpriteRender() {};
     ~SpriteRender() {};
     void Draw(RenderContext& rc) override;
     void Update(float elapsedTime) override;
@@ -23,7 +25,7 @@ public:
     void SetAngle(float deg) { m_editorAngleDeg = deg; }
     void SetScale(float scale) { m_editorScale = scale; }
 
-    Sprite* GetSprite(){ return spr.get(); }
+    Sprite* GetSprite() { return spr.get(); }
     void SetSprite(std::unique_ptr<Sprite> sp) { spr = std::move(sp); }
     void SetString(const char* st) { texturepath = st; }
 
@@ -129,7 +131,7 @@ private:
     float m_colliderWidth = 100.0f; // 判定の横幅
     float m_colliderHeight = 100.0f; // 判定の縦幅
 
-    
+
     bool m_showCollider = true;
     bool m_isHovered = false;
 
@@ -138,20 +140,20 @@ private:
     //色
     DirectX::XMFLOAT4 color = { 1.0f,1.0f,1.0f,1.0f };
 
-    bool  m_hoverFade       = false;       // インスペクターでホバーでフェード出現させるかのスイッチ
+    bool  m_hoverFade = false;       // インスペクターでホバーでフェード出現させるかのスイッチ
     float m_appearanceRatio = 0.0f;  // 現在の出現割合 (0.0f = 完全に透明/消滅、1.0f = 完全に表示)
-    float m_fadeSpeed       = 5.0f;        // フェードの速さ
+    float m_fadeSpeed = 5.0f;        // フェードの速さ
 
     bool m_hoverSpriteShift = false;
     int m_hoverCollOffset = 1;
     int m_hoverRowOffset = 0;
-    
+
     bool  m_isIrisActive = false;
 
     IrisMode m_irisMode = IrisMode::None;
     float m_irisDuration = 1.0f;
-    float m_irisTargetScale = 0.0f; 
-    float m_irisMaxScale = 150.0f;    
+    float m_irisTargetScale = 0.0f;
+    float m_irisMaxScale = 150.0f;
 
     float m_irisTimer = 0.0f;
     float m_irisStartScale = 1.0f;
@@ -198,4 +200,9 @@ private:
 
     bool m_usePopUpClear = false;
     bool m_isOnlyWhileGoal = false;
+
+    bool m_useHeatUI = false;
+    bool m_showAbnormal = false;
+
+    HeatTransfer* m_targetHeat = nullptr;
 };

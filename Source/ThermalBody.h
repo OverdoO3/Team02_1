@@ -2,6 +2,8 @@
 #include "Component.h"
 #include "nlohmann/json.hpp"
 
+class Actor;
+
 using json = nlohmann::json;
 class ThermalBody : public Component
 {

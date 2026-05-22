@@ -41463,13 +41463,17 @@
                     },
                     {
                         "data": null,
+                        "type": "ThermalBody"
+                    },
+                    {
+                        "data": null,
                         "type": "wood"
                     }
                 ],
                 "id": 411,
                 "name": "grass(333)",
                 "parent": 636,
-                "tag": 2,
+                "tag": 1,
                 "type": "Actor"
             },
             {
@@ -42723,6 +42727,7 @@
                             "EditorScale": 1.0,
                             "FadeSpeed": 5.0,
                             "FrameDuration": 0.10000000149011612,
+                            "HeatUI": false,
                             "HoverColOffset": 1,
                             "HoverFade": false,
                             "HoverRowOffset": 0,
@@ -42738,6 +42743,7 @@
                             "OnlyWhileGoal": true,
                             "Pivot": 1,
                             "PopUpDuration": 0.9950000047683716,
+                            "ShowAbnormal": false,
                             "ShowCollider": true,
                             "SortOrder": 0,
                             "SplitX": 1,
@@ -42816,6 +42822,7 @@
                             "EditorScale": 1.0,
                             "FadeSpeed": 5.0,
                             "FrameDuration": 0.10000000149011612,
+                            "HeatUI": false,
                             "HoverColOffset": 1,
                             "HoverFade": false,
                             "HoverRowOffset": 0,
@@ -42831,6 +42838,7 @@
                             "OnlyWhileGoal": false,
                             "Pivot": 1,
                             "PopUpDuration": 0.4000000059604645,
+                            "ShowAbnormal": false,
                             "ShowCollider": false,
                             "SortOrder": 1,
                             "SplitX": 1,
@@ -42916,6 +42924,7 @@
                             "EditorScale": 1.0,
                             "FadeSpeed": 5.0,
                             "FrameDuration": 0.10000000149011612,
+                            "HeatUI": false,
                             "HoverColOffset": 1,
                             "HoverFade": false,
                             "HoverRowOffset": 0,
@@ -42931,6 +42940,7 @@
                             "OnlyWhileGoal": false,
                             "Pivot": 0,
                             "PopUpDuration": 0.4000000059604645,
+                            "ShowAbnormal": false,
                             "ShowCollider": false,
                             "SortOrder": 0,
                             "SplitX": 1,
@@ -43009,6 +43019,7 @@
                             "EditorScale": 1.0,
                             "FadeSpeed": 5.0,
                             "FrameDuration": 0.10000000149011612,
+                            "HeatUI": true,
                             "HoverColOffset": 1,
                             "HoverFade": false,
                             "HoverRowOffset": 0,
@@ -43024,6 +43035,7 @@
                             "OnlyWhileGoal": false,
                             "Pivot": 1,
                             "PopUpDuration": 0.4000000059604645,
+                            "ShowAbnormal": false,
                             "ShowCollider": true,
                             "SortOrder": 0,
                             "SplitX": 1,
@@ -43053,8 +43065,8 @@
                             "TexturePath": "Data/Sprite/Game_text04.png",
                             "UseClickHide": false,
                             "UsePopUpClear": false,
-                            "isFadeEnabled": false,
-                            "sprFadeSpeed": 2.0
+                            "isFadeEnabled": true,
+                            "sprFadeSpeed": 4.099999904632568
                         },
                         "type": "SpriteRender"
                     }
@@ -43102,6 +43114,7 @@
                             "EditorScale": 1.0,
                             "FadeSpeed": 5.0,
                             "FrameDuration": 0.10000000149011612,
+                            "HeatUI": false,
                             "HoverColOffset": 1,
                             "HoverFade": false,
                             "HoverRowOffset": 0,
@@ -43117,6 +43130,7 @@
                             "OnlyWhileGoal": false,
                             "Pivot": 1,
                             "PopUpDuration": 0.4000000059604645,
+                            "ShowAbnormal": true,
                             "ShowCollider": true,
                             "SortOrder": 0,
                             "SplitX": 1,
@@ -43146,8 +43160,8 @@
                             "TexturePath": "Data/Sprite/Game_text05.png",
                             "UseClickHide": false,
                             "UsePopUpClear": false,
-                            "isFadeEnabled": false,
-                            "sprFadeSpeed": 2.0
+                            "isFadeEnabled": true,
+                            "sprFadeSpeed": 4.099999904632568
                         },
                         "type": "SpriteRender"
                     }
@@ -43195,6 +43209,7 @@
                             "EditorScale": 1.0,
                             "FadeSpeed": 5.0,
                             "FrameDuration": 0.10000000149011612,
+                            "HeatUI": false,
                             "HoverColOffset": 1,
                             "HoverFade": false,
                             "HoverRowOffset": 0,
@@ -43210,6 +43225,7 @@
                             "OnlyWhileGoal": false,
                             "Pivot": 1,
                             "PopUpDuration": 0.4000000059604645,
+                            "ShowAbnormal": false,
                             "ShowCollider": true,
                             "SortOrder": 0,
                             "SplitX": 2,
@@ -43247,7 +43263,8 @@
                     {
                         "data": {
                             "CoinIndex": 2,
-                            "StageIndex": 0
+                            "StageIndex": 0,
+                            "StageSelectMode": false
                         },
                         "type": "CoinUIComponent"
                     }
@@ -43295,6 +43312,7 @@
                             "EditorScale": 1.0,
                             "FadeSpeed": 5.0,
                             "FrameDuration": 0.10000000149011612,
+                            "HeatUI": false,
                             "HoverColOffset": 1,
                             "HoverFade": false,
                             "HoverRowOffset": 0,
@@ -43310,6 +43328,7 @@
                             "OnlyWhileGoal": false,
                             "Pivot": 1,
                             "PopUpDuration": 0.4000000059604645,
+                            "ShowAbnormal": false,
                             "ShowCollider": true,
                             "SortOrder": 0,
                             "SplitX": 2,
@@ -43347,7 +43366,8 @@
                     {
                         "data": {
                             "CoinIndex": 1,
-                            "StageIndex": 0
+                            "StageIndex": 0,
+                            "StageSelectMode": false
                         },
                         "type": "CoinUIComponent"
                     }
@@ -43395,6 +43415,7 @@
                             "EditorScale": 1.0,
                             "FadeSpeed": 5.0,
                             "FrameDuration": 0.10000000149011612,
+                            "HeatUI": false,
                             "HoverColOffset": 1,
                             "HoverFade": false,
                             "HoverRowOffset": 0,
@@ -43410,6 +43431,7 @@
                             "OnlyWhileGoal": false,
                             "Pivot": 1,
                             "PopUpDuration": 0.4000000059604645,
+                            "ShowAbnormal": false,
                             "ShowCollider": true,
                             "SortOrder": 0,
                             "SplitX": 2,
@@ -43447,7 +43469,8 @@
                     {
                         "data": {
                             "CoinIndex": 0,
-                            "StageIndex": 0
+                            "StageIndex": 0,
+                            "StageSelectMode": false
                         },
                         "type": "CoinUIComponent"
                     }

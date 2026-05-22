@@ -30,4 +30,11 @@ private:
     int m_stageIndex = 0; 
     int m_coinIndex = 0;  
     bool m_isCollected = false;
+
+    float m_jumpTimer = 0.0f;
+    bool m_isAnimTimer = 0.0f;
+    bool m_isAnimating = false;
+    DirectX::XMFLOAT3 m_startPos;
+    float m_jumpVelocityY = 0.0f;
+    float m_spinAngle = 0.0f;
 };

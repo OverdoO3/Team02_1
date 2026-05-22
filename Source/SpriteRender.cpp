@@ -2,6 +2,7 @@
 #include "Factory.h"
 #include "Actor.h"
 #include "SceneManager.h"
+#include "ThermalBody.h"
 #include "Actor.h"
 
 REGISTER_COMPONENT(ComponentID::SpriteRender,SpriteRender)
@@ -11,6 +12,55 @@ void SpriteRender::Draw(RenderContext& rc)
     if (!owner)return;
     if (m_isClickedHidden)return;
     if (m_isOnlyWhileGoal && !m_isPopUp)return;
+    if (m_showAbnormal)
+    {
+        bool isNormal = true; // デフォルトは描画しない（Normal扱い）
+        auto scene = owner->GetScene();
+        if (scene)
+        {
+            for (auto& actor : scene->actors)
+            {
+                if (actor->tag == 1) // プレイヤーのタグ
+                {
+                    auto thermal = actor->GetComponent<ThermalBody>();
+                    if (thermal)
+                    {
+                        // 0以外（異常状態）なら描画許可
+                        if (thermal->GetHeat() != 0)
+                        {
+                            isNormal = false;
+                        }
+                    }
+                    break;
+                }
+            }
+        }
+
+        // Normal状態（またはプレイヤーが見つからない状態）ならスキップ
+        if (isNormal)
+        {
+            return;
+        }
+    }
+
+    if (m_useHeatUI)
+    {
+        bool isNearAnyReceiver = false;
+        auto scene = owner->GetScene();
+
+        for (auto& actor : scene->actors)
+        {
+            auto receiver = actor->GetComponent<HeatReceiver>();
+            if (receiver && receiver->IsPlayerNear())
+            {
+                isNearAnyReceiver = true;
+                break;
+            }
+        }
+
+        if (!isNearAnyReceiver) return;
+    }
+
     if (m_isOnlyWhileLoading)
     {
         // 現在が「Loading（裏での読み込み中）」じゃないなら、文字ロゴは描画をスキップ
@@ -281,6 +331,7 @@ void SpriteRender::Update(float elapsedTime)
 {
     if (!owner) return;
 
+
     if (m_isPopUp)
     {
         m_popUpTimer += elapsedTime;
@@ -442,6 +493,16 @@ void SpriteRender::Update(float elapsedTime)
         m_srcY = (float)currentRow * cellH;
     }
 
+    if (m_useHeatUI)
+    {
+        auto heat = owner->GetComponent<HeatTransfer>();
+        if (heat)
+        {
+            this->enabled = heat->GetCanAbsorb();
+        }
+    }
+
+
     // 揺れ処理
     if (m_swingEnabled)
     {
@@ -551,6 +612,8 @@ std::unique_ptr<Component> SpriteRender::Clone() const
     c->m_popUpDuration = this->m_popUpDuration;
     c->m_maxPopScale = this->m_maxPopScale;
     c->m_isOnlyWhileGoal = this->m_isOnlyWhileGoal;
+    c->m_useHeatUI = this->m_useHeatUI;
+    c->m_showAbnormal = this->m_showAbnormal;
 
 	return c;
 }
@@ -622,6 +685,8 @@ void SpriteRender::Serialize(nlohmann::json& j) const
     j["PopUpDuration"] = m_popUpDuration;
     j["MaxPopScale"] = m_maxPopScale;
     j["OnlyWhileGoal"] = m_isOnlyWhileGoal;
+    j["HeatUI"] = m_useHeatUI;
+    j["ShowAbnormal"] = m_showAbnormal;
 }
 
 void SpriteRender::DrawInspector()
@@ -829,6 +894,15 @@ void SpriteRender::DrawInspector()
         }
         ImGui::PopID();
     }
+    ImGui::Separator();
+
+    ImGui::Checkbox("Show Abnormal", &m_showAbnormal);
+    ImGui::Checkbox("Show Heat UI", &m_useHeatUI);
+    if (m_useHeatUI)
+    {
+        ImGui::Text("HeatTransfer component is active.");
+    }
+    ImGui::Separator();
 
     if (ImGui::CollapsingHeader("Swing Settings"))
     {
@@ -997,6 +1071,8 @@ void SpriteRender::Deserialize(nlohmann::json& j)
     m_popUpDuration = j.value("PopUpDuration", 1.0f);
     m_maxPopScale   = j.value("MaxPopScale", 1.0f);
     m_isOnlyWhileGoal = j.value("OnlyWhileGoal", false);
+    m_useHeatUI = j.value("HeatUI", false);
+    m_showAbnormal = j.value("ShowAbnormal", false);
 }
 
 void SpriteRender::StartIrisOut()

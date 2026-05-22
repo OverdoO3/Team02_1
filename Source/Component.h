@@ -26,6 +26,7 @@ public:
     virtual std::unique_ptr<Component> Clone() const = 0;
 
 	void SetOwner(Actor* owner) { this->owner = owner; }
+	Actor* GetOwner() const { return owner; }
 
 	virtual void Serialize(nlohmann::json& j)const {};
 	virtual void Deserialize(nlohmann::json& j){};
