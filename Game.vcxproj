@@ -227,6 +227,7 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="Source\CoinUIComponent.h" />
     <ClInclude Include="Source\Collider.h" />
     <ClInclude Include="Source\Collision.h" />
     <ClInclude Include="Source\Component.h" />
@@ -363,6 +364,7 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="Source\CoinUIComponent.cpp" />
     <ClCompile Include="Source\Collider.cpp" />
     <ClCompile Include="Source\Collision.cpp" />
     <ClCompile Include="Source\ComponentManager.cpp" />

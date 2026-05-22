@@ -4,11 +4,13 @@
 #include "SpriteRender.h"
 #include "ButtonComponent.h"
 
+bool SceneManager::m_coinFlags[4][3] = { false };
+
 void SceneManager::Initialize()
 {
     ChangeScene(std::move(std::make_unique<Scene>()), "Scenes/Demo.json");
     LoadPauseUI("Scenes/pause.json");
-    ChangeScene(std::move(std::make_unique<Scene>()), "Scenes/stage1.json");
+    ChangeScene(std::move(std::make_unique<Scene>()), "Scenes/choice.json");
 
     LoadLoadingUI("Scenes/loading.json");
 
@@ -457,3 +459,13 @@ void SceneManager::LoadLoadingUI(const std::string& path)
     }
 }
 
+
+bool SceneManager::IsCoinCollected(int stageIdx, int coinIdx) const {
+    if (stageIdx < 0 || stageIdx >= 4 || coinIdx < 0 || coinIdx >= 3) return false;
+    return m_coinFlags[stageIdx][coinIdx];
+}
+
+void SceneManager::CollectCoin(int stageIdx, int coinIdx) {
+    if (stageIdx < 0 || stageIdx >= 4 || coinIdx < 0 || coinIdx >= 3) return;
+    m_coinFlags[stageIdx][coinIdx] = true;
+}

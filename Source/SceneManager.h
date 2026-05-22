@@ -115,6 +115,9 @@ public:
 	const std::string& GetPendingScenePath() const { return m_pendingScenePath; }
 	LoadState GetLoadState()const { return m_loadState; }
 
+	bool IsCoinCollected(int stageIdx, int coinIdx) const;
+
+	void CollectCoin(int stageIdx, int coinIdx);
 private:
 	//編集用のシーン
 	std::unique_ptr<Scene> editorScene = nullptr;
@@ -165,6 +168,7 @@ private:
 
 	float m_loadTimer = 0.0f;
 
+	static bool m_coinFlags[4][3];
 
 	//Actor* m_irisActor = nullptr;   // くりぬきスプライト（カメレオン）
 };

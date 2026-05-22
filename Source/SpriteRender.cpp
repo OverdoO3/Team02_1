@@ -91,15 +91,27 @@ void SpriteRender::Draw(RenderContext& rc)
 
         float totalAngle = m_editorAngleDeg + worldRot.z;
 
-        //描画に使う色を決定する(デバッグ用)
+        // ─── 描画に使う色を決定する ───
         DirectX::XMFLOAT4 finalColor = color;
-        if (m_hoverFade)
-            finalColor.w *= m_appearanceRatio;
-
-        finalColor.w *= m_fadeAlpha;  
-
 
         Actor* parent = owner->GetParent();
+        if (parent) {
+            if (auto* parentSpr = parent->GetComponent<SpriteRender>()) {
+                // 親がホバーフェード中なら、親のratioを自分のアルファに乗算する
+                if (parentSpr->m_hoverFade) {
+                    finalColor.w *= parentSpr->m_appearanceRatio;
+                }
+            }
+        }
+        else {
+            // 親がいない（自分自身が親）なら、自分のratioを使う
+            if (m_hoverFade)
+                finalColor.w *= m_appearanceRatio;
+        }
+
+        finalColor.w *= m_fadeAlpha;
+
+        parent = owner->GetParent();
         if (parent)
         {
             auto parentTran = parent->GetComponent<Transform>();
@@ -393,6 +405,15 @@ void SpriteRender::Update(float elapsedTime)
     else
     {
         m_appearanceRatio = 1.0f;
+    }
+
+    for (auto& child : owner->GetChildren())
+    {
+        if (auto* childSr = child->GetComponent<SpriteRender>())
+        {
+            // 子のフェード設定（m_hoverFade）も親と同期させたい場合はここでセット
+            childSr->m_appearanceRatio = this->m_appearanceRatio;
+        }
     }
 
     // ─── 3. UVアニメーション・テクスチャ切り替え ───

@@ -80,6 +80,16 @@ public:
     float GetPopUpDuration()const { return m_popUpDuration; }
     float GetMaxPopScale() const { return m_maxPopScale; }
 
+    int GetTargetCol()const { return m_targetCol; }
+    int GetTargetRow()const { return m_targetRow; }
+
+    int GetSplitX()const { return m_splitX; }
+    int GetSplitY()const { return m_splitY; }
+
+    void SetSrcX(float srcX) { m_srcX = srcX; }
+    void SetSrcY(float srcY) { m_srcY = srcY; }
+    void SetTargetCol(int col) { m_targetCol = col; }
+
 private:
     std::unique_ptr<Sprite> spr;
 
