@@ -84,7 +84,9 @@ void Scene::Update(float elapsedTime)
             // ライト方向
             ImGui::DragFloat3("Light Direction", &lightDir.x, 0.01f, -1.0f, 1.0f);
 
-            ImGui::SliderFloat("Shadow Range", &shadowRange, 0.1f, 200.0f);
+            ImGui::DragFloat3("Shadow Base Position", &shadowBasePos.x, 0.1f);
+
+            ImGui::SliderFloat("Shadow Range", &shadowRange, 0.1f, 600.0f);
 
             ImGui::Checkbox("Follow Player", &followPlayer);
 
@@ -95,6 +97,7 @@ void Scene::Update(float elapsedTime)
             ImGui::Text("Shadow editer");
             ImGui::SliderFloat("Shadow Alpha", &m_shadowParams.shadow_color, 0.0f, 1.0f);
             ImGui::DragFloat("Shadow Bias", &m_shadowParams.shadow_bias, 0.0001f, 0.0f, 0.01f, "%.4f");
+            ImGui::SliderFloat("Shadow Far Clip", &shadowFarClip, 10.0f, 2000.0f);
 
             // 平行光源の色設定
             ImGui::ColorEdit3("Directional Light Color", &lightCol.x);
@@ -249,11 +252,11 @@ void Scene::Render(CameraBase* camera, bool isEditor)
     {
         using namespace DirectX;
         XMVECTOR LDir = XMVector3Normalize(XMLoadFloat3(&lightDir));
-        XMVECTOR LFocus = XMVectorSet(0, 0, 0, 0);
+        XMVECTOR LFocus = XMLoadFloat3(&shadowBasePos);
         XMVECTOR LEye = LFocus - (LDir * shadowRange);
         XMVECTOR LUp = XMVectorSet(0, 1, 0, 0);
         XMMATRIX LV = XMMatrixLookAtLH(LEye, LFocus, LUp);
-        XMMATRIX LP = XMMatrixOrthographicLH(shadowRange, shadowRange, 0.1f, 200.0f);
+        XMMATRIX LP = XMMatrixOrthographicLH(shadowRange, shadowRange, 0.1f, shadowFarClip);
         XMStoreFloat4x4(&lightView, LV);
         XMStoreFloat4x4(&lightProjection, LP);
         XMStoreFloat4x4(&lightVP, LV * LP);
@@ -432,8 +435,16 @@ void Scene::Render(CameraBase* camera, bool isEditor)
             shapeRenderer->RenderSphere(rc, pos, 3.0f, lights[i].color);
         }
 
-    }
+        shapeRenderer->RenderSphere(rc, shadowBasePos, 5.0f, { 1.0f, 1.0f, 0.0f, 1.0f }); // 黄色で表示
 
+        // 影の範囲を示すデバッグボックス（オプション）
+        DirectX::XMFLOAT3 boxPos = shadowBasePos;
+        DirectX::XMFLOAT3 boxAngle = { 0.0f, 0.0f, 0.0f }; // 必要なら回転も調整可能
+        DirectX::XMFLOAT3 boxSize = { shadowRange, shadowFarClip, shadowRange }; // 幅、奥行き、高さを指定
+        DirectX::XMFLOAT4 boxColor = { 1.0f, 1.0f, 1.0f, 0.5f }; // 半透明の白
+
+        shapeRenderer->RenderBox(rc, boxPos, boxAngle, boxSize, boxColor);
+    }
     scene_framebuffer->deactivate(dc);
 
 #ifdef _DEBUG
@@ -533,6 +544,13 @@ void Scene::SaveSettings(const std::string& path) const
     j["SceneSettings"]["OutlineColor"] = { m_outlineColor.x, m_outlineColor.y, m_outlineColor.z, m_outlineColor.w };
     j["SceneSettings"]["OutlineThickness"] = m_outlineThickness;
 
+    // シャドウパラメータに追加
+    j["SceneSettings"]["ShadowAlpha"] = m_shadowParams.shadow_color;
+    j["SceneSettings"]["ShadowBias"] = m_shadowParams.shadow_bias;
+
+    j["SceneSettings"]["ShadowFarClip"] = shadowFarClip;
+    j["SceneSettings"]["ShadowBasePos"] = { shadowBasePos.x, shadowBasePos.y, shadowBasePos.z };
+
     // ブルーム関係
     if (bloomer)
     {
@@ -599,5 +617,16 @@ void Scene::LoadSettings(const std::string& path)
     {
         bloomer->bloom_extraction_threshold = s.value("BloomThreshold", bloomer->bloom_extraction_threshold);
         bloomer->bloom_intensity = s.value("BloomIntensity", bloomer->bloom_intensity);
+    }
+
+    m_shadowParams.shadow_color = s.value("ShadowAlpha", m_shadowParams.shadow_color);
+    m_shadowParams.shadow_bias = s.value("ShadowBias", m_shadowParams.shadow_bias);
+
+    shadowFarClip = s.value("ShadowFarClip", shadowFarClip);
+
+    if (s.contains("ShadowBasePos")) {
+        shadowBasePos.x = s["ShadowBasePos"][0];
+        shadowBasePos.y = s["ShadowBasePos"][1];
+        shadowBasePos.z = s["ShadowBasePos"][2];
     }
 }

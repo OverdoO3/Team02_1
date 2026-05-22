@@ -236,6 +236,8 @@ public:
 	DirectX::XMFLOAT4 m_outlineColor = { 0.0f,0.0f,0.0f,1.0f };
 	float m_outlineThickness = 0.02f;
 	std::string m_sceneFilePath;
+	float shadowFarClip;
+	DirectX::XMFLOAT3 shadowBasePos;
 };
 
 inline std::unique_ptr<Actor> CreateActorByType(const std::string& type)
