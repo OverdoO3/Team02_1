@@ -103,6 +103,9 @@ public:
 
     void UpdateClickLogic();
 
+    void SetClickedHidden(bool hidden) {
+        m_isClickedHidden = hidden;
+    }
 private:
     std::unique_ptr<Sprite> spr;
 

@@ -6,10 +6,10 @@
             0.20000000298023224,
             1.0
         ],
-        "BloomIntensity": 1.0,
-        "BloomThreshold": 1.100000023841858,
-        "ContrastPower": 0.0,
-        "FollowPlayer": true,
+        "BloomIntensity": 0.05999999865889549,
+        "BloomThreshold": 0.800000011920929,
+        "ContrastPower": 1.937999963760376,
+        "FollowPlayer": false,
         "LightColor": [
             1.0,
             1.0,
@@ -17,21 +17,27 @@
             1.0
         ],
         "LightDir": [
-            1.0,
-            -1.0,
-            1.0
+            -0.2800000011920929,
+            -0.6100000143051147,
+            0.8799999952316284
         ],
-        "LightIntensity": 0.0,
+        "LightIntensity": 0.4309999942779541,
         "OutlineColor": [
             0.0,
             0.0,
             0.0,
             1.0
         ],
-        "OutlineThickness": 0.019999999552965164,
-        "PointLightIntensity": 0.0,
-        "ShadowAlpha": 0.5,
-        "ShadowBias": 9.999999747378752e-05,
-        "ShadowRange": 50.0
+        "OutlineThickness": 0.009999999776482582,
+        "PointLightIntensity": 6.0,
+        "ShadowAlpha": 0.6370000243186951,
+        "ShadowBasePos": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "ShadowBias": 0.009999999776482582,
+        "ShadowFarClip": 646.7999877929688,
+        "ShadowRange": 282.5140075683594
     }
 }

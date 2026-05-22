@@ -144,6 +144,20 @@ public:
 		}
 	}
 
+
+	void SetChildrenHidden(bool hidden)
+	{
+		for (auto* child : children)
+		{
+			auto sprite = child->GetComponent<SpriteRender>();
+			if (sprite)
+			{
+				sprite->SetClickedHidden(hidden); 
+			}
+
+			child->SetChildrenHidden(hidden);
+		}
+	}
 	Actor* GetParent() const { return parent; }
 	const std::vector<Actor*>& GetChildren() const { return children; }
 

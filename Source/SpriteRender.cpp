@@ -454,6 +454,8 @@ void SpriteRender::Update(float elapsedTime)
         if (m_useClickHide && m_clickCountLimit > 0 && m_currentClickCount >= m_clickCountLimit)
         {
             m_isClickedHidden = true;
+
+            owner->SetChildrenHidden(true);
         }
     }
 
