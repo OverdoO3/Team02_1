@@ -210,6 +210,12 @@ private:
     float m_scaleLoopTimer = 0.0f;        
     float m_baseScaleForLoop = 1.0f;      
 
+    int m_clickCountLimit = 1;        // 何回で消えるか（0なら無限、または指定回数）
+    int m_currentClickCount = 0;      // 現在のクリック回数
+    bool m_useClickShift = false;     // クリックごとにシートをずらすか
+    int m_clickShiftCol = 1;          // クリックごとにずらす列数
+    int m_clickShiftRow = 0;          // クリックごとにずらす行数
+
 
     HeatTransfer* m_targetHeat = nullptr;
 };

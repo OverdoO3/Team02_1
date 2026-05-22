@@ -10,7 +10,7 @@ void SceneManager::Initialize()
 {
     ChangeScene(std::move(std::make_unique<Scene>()), "Scenes/Demo.json");
     LoadPauseUI("Scenes/pause.json");
-    ChangeScene(std::move(std::make_unique<Scene>()), "Scenes/stage1.json");
+    ChangeScene(std::move(std::make_unique<Scene>()), "Scenes/title.json");
 
     LoadLoadingUI("Scenes/loading.json");
 

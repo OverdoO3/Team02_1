@@ -436,14 +436,26 @@ void SpriteRender::Update(float elapsedTime)
             mouseYInWindow >= colTop && mouseYInWindow <= colBottom);
     }
 
-    if (m_useClickHide && m_isHovered && !m_isClickedHidden)
+    // ─── Update 関数内のクリック判定箇所 ───
+    if (m_isHovered && ImGui::IsMouseClicked(ImGuiMouseButton_Left))
     {
-        // ImGuiの機能を使って、このフレームで左クリックされたかを検知
-        if (ImGui::IsMouseClicked(ImGuiMouseButton_Left))
+        // 1. クリック回数を加算
+        m_currentClickCount++;
+
+        // 2. スプライトシートをずらす処理
+        if (m_useClickShift)
         {
-            m_isClickedHidden = true; 
+            m_targetCol = (m_targetCol + m_clickShiftCol) % m_splitX;
+            m_targetRow = (m_targetRow + m_clickShiftRow) % m_splitY;
+        }
+
+        // 3. 回数制限に達したら隠す（制限が0より大きい場合）
+        if (m_useClickHide && m_clickCountLimit > 0 && m_currentClickCount >= m_clickCountLimit)
+        {
+            m_isClickedHidden = true;
         }
     }
+
 
     // ─── 2. アルファフェード処理 ───
     if (m_hoverFade)
@@ -628,6 +640,11 @@ std::unique_ptr<Component> SpriteRender::Clone() const
     c->m_scaleLoopAmplitude = this->m_scaleLoopAmplitude;
     c->m_baseScaleForLoop = this->m_baseScaleForLoop;
 
+    c->m_clickCountLimit = this->m_clickCountLimit;
+    c->m_useClickShift = this->m_useClickShift;
+    c->m_clickShiftCol = this->m_clickShiftCol;
+    c->m_clickShiftRow = this->m_clickShiftRow;
+    c->m_currentClickCount = 0;
 
 	return c;
 }
@@ -706,6 +723,10 @@ void SpriteRender::Serialize(nlohmann::json& j) const
     j["ScaleLoopSpeed"] = m_scaleLoopSpeed;
     j["ScaleLoopAmp"] = m_scaleLoopAmplitude;
 
+    j["ClickLimit"] = m_clickCountLimit;
+    j["UseClickShift"] = m_useClickShift;
+    j["ClickShiftCol"] = m_clickShiftCol;
+    j["ClickShiftRow"] = m_clickShiftRow;
 }
 
 void SpriteRender::DrawInspector()
@@ -809,19 +830,24 @@ void SpriteRender::DrawInspector()
     if (ImGui::CollapsingHeader("Click Actions", ImGuiTreeNodeFlags_DefaultOpen))
     {
         ImGui::Checkbox("Use Click Hide", &m_useClickHide);
-
         if (m_useClickHide)
         {
-            ImGui::Text("Status: %s", m_isClickedHidden ? "Hidden" : "Visible");
+            ImGui::InputInt("Click Limit Count", &m_clickCountLimit);
+            ImGui::Text("Current Clicks: %d", m_currentClickCount);
+            if (ImGui::Button("Reset Click Count")) m_currentClickCount = 0;
+        }
 
-            // テスト用に消えたスプライトをパッと復活させるボタン
-            if (m_isClickedHidden)
-            {
-                if (ImGui::Button("Reset Visibility"))
-                {
-                    m_isClickedHidden = false;
-                }
-            }
+        ImGui::Checkbox("Use Click Shift", &m_useClickShift);
+        if (m_useClickShift)
+        {
+            ImGui::InputInt("Shift Col per Click", &m_clickShiftCol);
+            ImGui::InputInt("Shift Row per Click", &m_clickShiftRow);
+        }
+
+        if (m_isClickedHidden && ImGui::Button("Reset Visibility"))
+        {
+            m_isClickedHidden = false;
+            m_currentClickCount = 0;
         }
     }
     ImGui::Separator();
@@ -1108,6 +1134,12 @@ void SpriteRender::Deserialize(nlohmann::json& j)
     m_isOnlyWhileGoal = j.value("OnlyWhileGoal", false);
     m_useHeatUI = j.value("HeatUI", false);
     m_showAbnormal = j.value("ShowAbnormal", false);
+
+    m_clickCountLimit = j.value("ClickLimit", 1);
+    m_useClickShift = j.value("UseClickShift", false);
+    m_clickShiftCol = j.value("ClickShiftCol", 1);
+    m_clickShiftRow = j.value("ClickShiftRow", 0);
+    m_currentClickCount = 0; // 読み込み時はリセット
 
     m_isScaleLoopEnabled = j.value("ScaleLoopEnabled", false);
     m_scaleLoopSpeed = j.value("ScaleLoopSpeed", 1.0f);

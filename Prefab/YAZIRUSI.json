@@ -1,0 +1,98 @@
+{
+    "components": [
+        {
+            "data": {
+                "position": [
+                    116.0,
+                    92.0,
+                    0.0
+                ],
+                "rotation": [
+                    0.0,
+                    0.0,
+                    0.0,
+                    1.0
+                ],
+                "scale": [
+                    0.7799999713897705,
+                    0.7799999713897705,
+                    1.0
+                ]
+            },
+            "type": "Transform"
+        },
+        {
+            "data": {
+                "AnimFrameCount": 1,
+                "ColHeight": 100.0,
+                "ColOffsetX": 0.0,
+                "ColOffsetY": 0.0,
+                "ColWidth": 100.0,
+                "ColorA": 1.0,
+                "ColorB": 1.0,
+                "ColorG": 1.0,
+                "ColorR": 1.0,
+                "EditorScale": 1.0,
+                "FadeSpeed": 5.0,
+                "FrameDuration": 0.10000000149011612,
+                "HeatUI": false,
+                "HoverColOffset": 1,
+                "HoverFade": false,
+                "HoverRowOffset": 0,
+                "HoverShift": false,
+                "IrisDuration": 1.0,
+                "IrisTargetScale": 0.0,
+                "IsGameLoading": false,
+                "IsLoop": false,
+                "IsOnlyWhileLoading": false,
+                "IsPauseUI": false,
+                "IsTitleLoading": false,
+                "MaxPopScale": 1.5,
+                "OnlyWhileGoal": false,
+                "Pivot": 0,
+                "PopUpDuration": 0.4000000059604645,
+                "ScaleLoopAmp": 0.10000000149011612,
+                "ScaleLoopEnabled": false,
+                "ScaleLoopSpeed": 1.0,
+                "ShowAbnormal": false,
+                "ShowCollider": false,
+                "SortOrder": 0,
+                "SplitX": 1,
+                "SplitY": 1,
+                "SpriteIndex": 0,
+                "SrcH": 73.0,
+                "SrcW": 73.0,
+                "SrcX": 0.0,
+                "SrcY": 0.0,
+                "SwingAmpX": 6.0,
+                "SwingAmpY": 6.0,
+                "SwingEnabled": true,
+                "SwingOffsetX": 0.0,
+                "SwingOffsetY": 0.0,
+                "SwingRotAmp": 5.0,
+                "SwingRotSpeed": 1.0,
+                "SwingRotUseCos": false,
+                "SwingSpeedX": 4.0,
+                "SwingSpeedY": 4.0,
+                "SwingUseRot": false,
+                "SwingUseX": true,
+                "SwingUseY": true,
+                "SwingXUseCos": true,
+                "SwingYUseCos": true,
+                "TargetCol": 0,
+                "TargetRow": 0,
+                "TexturePath": "Data/Sprite/Game_mode02.png",
+                "UseClickHide": false,
+                "UsePopUpClear": false,
+                "isFadeEnabled": false,
+                "sprFadeSpeed": 2.0
+            },
+            "type": "SpriteRender"
+        }
+    ],
+    "id": 2747,
+    "name": "YAZIRUSI",
+    "parent": -1,
+    "tag": 0,
+    "type": "Actor"
+}
