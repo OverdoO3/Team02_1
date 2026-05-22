@@ -95,11 +95,9 @@
                             "SrcW": 1920.0,
                             "SrcX": 0.0,
                             "SrcY": 0.0,
-<<<<<<< Updated upstream
                             "TargetCol": 0,
                             "TargetRow": 0,
-                            "TexturePath": "Data/Sprite/Select_background.png"
-=======
+                            "TexturePath": "Data/Sprite/Select_background.png",
                             "SwingAmpX": 10.0,
                             "SwingAmpY": 10.0,
                             "SwingEnabled": false,
@@ -121,7 +119,6 @@
                             "UseClickHide": false,
                             "isFadeEnabled": false,
                             "sprFadeSpeed": 5.0
->>>>>>> Stashed changes
                         },
                         "type": "SpriteRender"
                     }
@@ -190,11 +187,9 @@
                             "SrcW": 430.0,
                             "SrcX": 0.0,
                             "SrcY": 280.0,
-<<<<<<< Updated upstream
                             "TargetCol": 0,
                             "TargetRow": 1,
-                            "TexturePath": "Data/Sprite/Select_stage.png"
-=======
+                            "TexturePath": "Data/Sprite/Select_stage.png",
                             "SwingAmpX": 10.0,
                             "SwingAmpY": 10.0,
                             "SwingEnabled": false,
@@ -216,7 +211,6 @@
                             "UseClickHide": false,
                             "isFadeEnabled": false,
                             "sprFadeSpeed": 5.0
->>>>>>> Stashed changes
                         },
                         "type": "SpriteRender"
                     },
@@ -294,11 +288,9 @@
                             "SrcW": 430.0,
                             "SrcX": 430.0,
                             "SrcY": 280.0,
-<<<<<<< Updated upstream
                             "TargetCol": 1,
                             "TargetRow": 1,
-                            "TexturePath": "Data/Sprite/Select_stage.png"
-=======
+                            "TexturePath": "Data/Sprite/Select_stage.png",
                             "SwingAmpX": 10.0,
                             "SwingAmpY": 10.0,
                             "SwingEnabled": false,
@@ -320,22 +312,18 @@
                             "UseClickHide": false,
                             "isFadeEnabled": false,
                             "sprFadeSpeed": 5.0
->>>>>>> Stashed changes
                         },
                         "type": "SpriteRender"
                     },
                     {
                         "data": {
                             "ButtonMode": 0,
-<<<<<<< Updated upstream
                             "NextSceneName": "Scenes/",
                             "TitleSceneName": "Scenes/title.json",
-                            "UseLoading": false
-=======
+                            "UseLoading": false,
                             "NextSceneName": "Scenes/stage2.json",
                             "TitleSceneName": "Scenes/title.json",
                             "UseLoading": true
->>>>>>> Stashed changes
                         },
                         "type": "ButtonComponent"
                     }
@@ -404,11 +392,9 @@
                             "SrcW": 430.0,
                             "SrcX": 860.0,
                             "SrcY": 280.0,
-<<<<<<< Updated upstream
                             "TargetCol": 2,
                             "TargetRow": 1,
-                            "TexturePath": "Data/Sprite/Select_stage.png"
-=======
+                            "TexturePath": "Data/Sprite/Select_stage.png",
                             "SwingAmpX": 10.0,
                             "SwingAmpY": 10.0,
                             "SwingEnabled": false,
@@ -430,22 +416,18 @@
                             "UseClickHide": false,
                             "isFadeEnabled": false,
                             "sprFadeSpeed": 5.0
->>>>>>> Stashed changes
                         },
                         "type": "SpriteRender"
                     },
                     {
                         "data": {
                             "ButtonMode": 0,
-<<<<<<< Updated upstream
                             "NextSceneName": "Scenes/",
                             "TitleSceneName": "Scenes/title.json",
-                            "UseLoading": false
-=======
+                            "UseLoading": false,
                             "NextSceneName": "Scenes/stage3.json",
                             "TitleSceneName": "Scenes/title.json",
                             "UseLoading": true
->>>>>>> Stashed changes
                         },
                         "type": "ButtonComponent"
                     }
@@ -514,11 +496,9 @@
                             "SrcW": 430.0,
                             "SrcX": 1290.0,
                             "SrcY": 280.0,
-<<<<<<< Updated upstream
                             "TargetCol": 3,
                             "TargetRow": 1,
-                            "TexturePath": "Data/Sprite/Select_stage.png"
-=======
+                            "TexturePath": "Data/Sprite/Select_stage.png",
                             "SwingAmpX": 10.0,
                             "SwingAmpY": 10.0,
                             "SwingEnabled": false,
@@ -540,22 +520,18 @@
                             "UseClickHide": false,
                             "isFadeEnabled": false,
                             "sprFadeSpeed": 5.0
->>>>>>> Stashed changes
                         },
                         "type": "SpriteRender"
                     },
                     {
                         "data": {
                             "ButtonMode": 0,
-<<<<<<< Updated upstream
                             "NextSceneName": "Scenes/",
                             "TitleSceneName": "Scenes/title.json",
-                            "UseLoading": false
-=======
+                            "UseLoading": false,
                             "NextSceneName": "Scenes/stage4.json",
                             "TitleSceneName": "Scenes/title.json",
                             "UseLoading": true
->>>>>>> Stashed changes
                         },
                         "type": "ButtonComponent"
                     }
@@ -624,11 +600,9 @@
                             "SrcW": -1.0,
                             "SrcX": 0.0,
                             "SrcY": 0.0,
-<<<<<<< Updated upstream
                             "TargetCol": 0,
                             "TargetRow": 0,
-                            "TexturePath": ""
-=======
+                            "TexturePath": "",
                             "SwingAmpX": 10.0,
                             "SwingAmpY": 10.0,
                             "SwingEnabled": false,
@@ -650,7 +624,6 @@
                             "UseClickHide": false,
                             "isFadeEnabled": false,
                             "sprFadeSpeed": 5.0
->>>>>>> Stashed changes
                         },
                         "type": "SpriteRender"
                     }
@@ -719,11 +692,9 @@
                             "SrcW": 260.0,
                             "SrcX": 258.0,
                             "SrcY": 0.0,
-<<<<<<< Updated upstream
                             "TargetCol": 1,
                             "TargetRow": 0,
-                            "TexturePath": "Data/Sprite/Select_back.png"
-=======
+                            "TexturePath": "Data/Sprite/Select_back.png",
                             "SwingAmpX": 10.0,
                             "SwingAmpY": 10.0,
                             "SwingEnabled": false,
@@ -745,7 +716,6 @@
                             "UseClickHide": false,
                             "isFadeEnabled": false,
                             "sprFadeSpeed": 5.0
->>>>>>> Stashed changes
                         },
                         "type": "SpriteRender"
                     },

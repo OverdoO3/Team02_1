@@ -38,7 +38,6 @@ void SceneManager::Update(float elapsedTime)
         {
             if (auto* sr = m_irisActor->GetComponent<SpriteRender>())
             {
-                // 演出モードが「None（演出終了）」になるまでは閉じきっていないと判定
                 if (sr->GetIrisMode() != SpriteRender::IrisMode::None)
                 {
                     isIrisOutFinished = false;
@@ -46,6 +45,7 @@ void SceneManager::Update(float elapsedTime)
             }
         }
 
+        // 【FadeOut状態】マスクが閉じきったらスレッドを立ててロード開始
         if (m_loadState == LoadState::FadeOut && isIrisOutFinished)
         {
             m_loadState = LoadState::Loading;
@@ -55,6 +55,10 @@ void SceneManager::Update(float elapsedTime)
             nextScene = std::make_unique<Scene>();
             nextScene->sceneManager = this;
             nextSceneIsRuntime = playState;
+
+            // 古いスレッドが万が一残っていたら確実にjoinしておく
+            if (m_loadThread.joinable()) m_loadThread.join();
+
             m_loadThread = std::thread([this]() {
                 nextScene->Initialize(m_pendingScenePath.c_str());
                 m_isLoadCompleted = true;
@@ -108,10 +112,9 @@ void SceneManager::Update(float elapsedTime)
                     m_irisActor->setActive = true;
                     if (auto* sr = m_irisActor->GetComponent<SpriteRender>())
                     {
-                        sr->StartIrisIn(); // 👈 決定されたマスクの拡大演出スタート！
+                        sr->StartIrisIn();
                     }
                 }
-
             }
         }
 
@@ -122,7 +125,6 @@ void SceneManager::Update(float elapsedTime)
             {
                 if (auto* sr = m_irisActor->GetComponent<SpriteRender>())
                 {
-                    // 開ききったら（Noneに戻ったら）ローディング状態を完全に終了する
                     if (sr->GetIrisMode() == SpriteRender::IrisMode::None)
                     {
                         m_isLoading = false;
@@ -132,7 +134,6 @@ void SceneManager::Update(float elapsedTime)
             }
             else
             {
-                // 万が一マスクアクターが外れていてもフリーズしないようにセーフティを入れておく
                 m_isLoading = false;
                 m_loadState = LoadState::FadeOut;
             }
@@ -146,6 +147,7 @@ void SceneManager::Update(float elapsedTime)
                 sr->Update(elapsedTime);
         }
 
+        // 🚨【超重要】ローディング中のフレームは、これより下の通常Update（通常シーン切り替えやcurrentScene->Update）を絶対に実行させずに終了する！
         return;
     }
 
@@ -172,6 +174,11 @@ void SceneManager::Update(float elapsedTime)
             {
                 m_irisActor = m_titleIrisActor; // TitleMask をセット
             }
+            else if (lowerPath.find("choice") != std::string::npos)
+            {
+                m_irisActor = m_choiceIrisActor;
+            }
+
             else
             {
                 m_irisActor = nullptr;          // どちらでもなければマスク演出なし
@@ -378,7 +385,6 @@ void SceneManager::SaveEditorScene(const std::string& path)
 
 void SceneManager::LoadEditorScene(const std::string& path)
 {
-    // ⭕【大修正】二重ロードをやめて、Initialize一本に絞る！
     auto newScene = std::make_unique<Scene>();
     newScene->sceneManager = this;
 
@@ -442,6 +448,10 @@ void SceneManager::LoadLoadingUI(const std::string& path)
         // ⭕ "TitleMask" という名前ならタイトル用変数に入れる
         if (std::string(actor->GetName()) == "TitleMask")
             m_titleIrisActor = actor.get();
+
+        if (std::string(actor->GetName()) == "ChoiceMask")
+            m_choiceIrisActor = actor.get();
+
 
         loadingActors.emplace_back(std::move(actor));
     }

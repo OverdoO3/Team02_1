@@ -277,24 +277,18 @@ void SpriteRender::Update(float elapsedTime)
         if (t >= 1.0f)
         {
             t = 1.0f;
-            m_isPopUp = false;
-            m_popUpTimer = 0.0f;
 
-            m_editorScale = m_baseScale;
         }
-        else
-        {
-            const float c1 = 1.70158f;
-            const float c3 = c1 + 1.0f;
 
-            float ease = 1.0f + (c3 * powf(t - 1.0f, 3.0f) + c1 * powf(t - 1.0f, 2.0f));
+        // イージング計算（シュッと出てバウンドする計算）
+        const float c1 = 1.70158f;
+        const float c3 = c1 + 1.0f;
+        float ease = 1.0f + (c3 * powf(t - 1.0f, 3.0f) + c1 * powf(t - 1.0f, 2.0f));
 
-            float scaleMultiplier = m_maxPopScale - (ease * (m_maxPopScale - 1.0f));
-
-            m_editorScale = m_baseScale * scaleMultiplier;
-        }
+        // 最大サイズ（m_maxPopScale）で見た目を固定する
+        float scaleMultiplier = m_maxPopScale - (ease * (m_maxPopScale - 1.0f));
+        m_editorScale = m_baseScale * scaleMultiplier;
     }
-
     // ─── ⭕ アイリス演出（拡大・縮小）の更新 ───
     if (m_irisMode != IrisMode::None)
     {

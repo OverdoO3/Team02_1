@@ -4,6 +4,7 @@
 #include <RayCast.h>
 #include "Slope.h"
 #include "Factory.h"
+#include "SceneManager.h"
 
 REGISTER_COMPONENT(ComponentID::Move,Move)
 
@@ -17,7 +18,18 @@ void Move::Update(float elapsedTime)
     if (owner->GetScene()->isClear)
     {
         owner->GetComponent<Transform>()->LookAt(owner->GetScene()->GetCamera()->GetComponent<Transform>()->GetLocalPosition());
-        return;
+        if (m_isTransitionStarted)return;
+        m_goalTimer += elapsedTime;
+        if (m_goalTimer >= 2.0f)
+        {
+            m_isTransitionStarted = true;
+            auto* sceneManager = owner->GetScene()->sceneManager;
+            if (sceneManager)
+            {
+                sceneManager->ChangeScene(nullptr, "Scenes/title.json", true);
+            }
+        }
+    return;
     }
     auto transform = owner->GetComponent<Transform>();
     transform->UpdateTransform();
@@ -255,17 +267,20 @@ void Move::Update(float elapsedTime)
 
             if (other->tag == 3)
             {
-                owner->GetScene()->isClear = true;
-                nextState = Move::goal;
-
-                //ゴール用のアクターを探す
-                for (auto& actor : owner->GetScene()->actors)
+                if (!owner->GetScene()->isClear)
                 {
-                    if (auto* sr = actor->GetComponent<SpriteRender>())
+                    owner->GetScene()->isClear = true;
+                    nextState = Move::goal;
+
+                    // ゴール用のアクターを探して、1回だけポップアップを開始する
+                    for (auto& actor : owner->GetScene()->actors)
                     {
-                        if (sr->GetUsePopUpClear())
+                        if (auto* sr = actor->GetComponent<SpriteRender>())
                         {
-                            sr->StartPopUp(sr->GetPopUpDuration(), sr->GetMaxPopScale());
+                            if (sr->GetUsePopUpClear())
+                            {
+                                sr->StartPopUp(sr->GetPopUpDuration(), sr->GetMaxPopScale());
+                            }
                         }
                     }
                 }
