@@ -42696,7 +42696,7 @@
                         "data": {
                             "position": [
                                 900.0,
-                                50.0,
+                                70.0199966430664,
                                 0.0
                             ],
                             "rotation": [
@@ -42743,6 +42743,9 @@
                             "OnlyWhileGoal": true,
                             "Pivot": 1,
                             "PopUpDuration": 0.9950000047683716,
+                            "ScaleLoopAmp": 0.10000000149011612,
+                            "ScaleLoopEnabled": false,
+                            "ScaleLoopSpeed": 1.0,
                             "ShowAbnormal": false,
                             "ShowCollider": true,
                             "SortOrder": 0,
@@ -42838,6 +42841,9 @@
                             "OnlyWhileGoal": false,
                             "Pivot": 1,
                             "PopUpDuration": 0.4000000059604645,
+                            "ScaleLoopAmp": 0.10000000149011612,
+                            "ScaleLoopEnabled": false,
+                            "ScaleLoopSpeed": 1.0,
                             "ShowAbnormal": false,
                             "ShowCollider": false,
                             "SortOrder": 1,
@@ -42940,6 +42946,9 @@
                             "OnlyWhileGoal": false,
                             "Pivot": 0,
                             "PopUpDuration": 0.4000000059604645,
+                            "ScaleLoopAmp": 0.10000000149011612,
+                            "ScaleLoopEnabled": false,
+                            "ScaleLoopSpeed": 1.0,
                             "ShowAbnormal": false,
                             "ShowCollider": false,
                             "SortOrder": 0,
@@ -42987,7 +42996,7 @@
                     {
                         "data": {
                             "position": [
-                                50.0,
+                                60.0,
                                 450.0,
                                 0.0
                             ],
@@ -43035,6 +43044,9 @@
                             "OnlyWhileGoal": false,
                             "Pivot": 1,
                             "PopUpDuration": 0.4000000059604645,
+                            "ScaleLoopAmp": 0.10000000149011612,
+                            "ScaleLoopEnabled": true,
+                            "ScaleLoopSpeed": 2.0,
                             "ShowAbnormal": false,
                             "ShowCollider": true,
                             "SortOrder": 0,
@@ -43082,8 +43094,8 @@
                     {
                         "data": {
                             "position": [
-                                50.0,
-                                530.0,
+                                60.0,
+                                550.0,
                                 0.0
                             ],
                             "rotation": [
@@ -43130,6 +43142,9 @@
                             "OnlyWhileGoal": false,
                             "Pivot": 1,
                             "PopUpDuration": 0.4000000059604645,
+                            "ScaleLoopAmp": 0.10000000149011612,
+                            "ScaleLoopEnabled": true,
+                            "ScaleLoopSpeed": 2.0,
                             "ShowAbnormal": true,
                             "ShowCollider": true,
                             "SortOrder": 0,
@@ -43225,6 +43240,9 @@
                             "OnlyWhileGoal": false,
                             "Pivot": 1,
                             "PopUpDuration": 0.4000000059604645,
+                            "ScaleLoopAmp": 0.10000000149011612,
+                            "ScaleLoopEnabled": false,
+                            "ScaleLoopSpeed": 1.0,
                             "ShowAbnormal": false,
                             "ShowCollider": true,
                             "SortOrder": 0,
@@ -43328,6 +43346,9 @@
                             "OnlyWhileGoal": false,
                             "Pivot": 1,
                             "PopUpDuration": 0.4000000059604645,
+                            "ScaleLoopAmp": 0.10000000149011612,
+                            "ScaleLoopEnabled": false,
+                            "ScaleLoopSpeed": 1.0,
                             "ShowAbnormal": false,
                             "ShowCollider": true,
                             "SortOrder": 0,
@@ -43431,6 +43452,9 @@
                             "OnlyWhileGoal": false,
                             "Pivot": 1,
                             "PopUpDuration": 0.4000000059604645,
+                            "ScaleLoopAmp": 0.10000000149011612,
+                            "ScaleLoopEnabled": false,
+                            "ScaleLoopSpeed": 1.0,
                             "ShowAbnormal": false,
                             "ShowCollider": true,
                             "SortOrder": 0,

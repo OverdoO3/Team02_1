@@ -204,5 +204,12 @@ private:
     bool m_useHeatUI = false;
     bool m_showAbnormal = false;
 
+    bool m_isScaleLoopEnabled = false;    
+    float m_scaleLoopSpeed = 2.0f;        
+    float m_scaleLoopAmplitude = 0.5f;    
+    float m_scaleLoopTimer = 0.0f;        
+    float m_baseScaleForLoop = 1.0f;      
+
+
     HeatTransfer* m_targetHeat = nullptr;
 };

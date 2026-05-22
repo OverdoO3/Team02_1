@@ -519,6 +519,14 @@ void SpriteRender::Update(float elapsedTime)
         m_fadeAlpha = 1.0f;
     }
 
+    if (m_isScaleLoopEnabled)
+    {
+        m_scaleLoopTimer += elapsedTime * m_scaleLoopSpeed;
+
+        float scaleOffset = sinf(m_scaleLoopTimer) * m_scaleLoopAmplitude;
+        m_editorScale = m_baseScaleForLoop + scaleOffset;
+    }
+
     if (!m_isLoop || m_animFrameCount <= 1) return;
 
     m_timer += elapsedTime;
@@ -557,11 +565,11 @@ std::unique_ptr<Component> SpriteRender::Clone() const
     c->m_colliderOffsetY = this->m_colliderOffsetY;
     c->m_colliderWidth   = this->m_colliderWidth;
     c->m_colliderHeight  = this->m_colliderHeight;
-
     c->m_isPauseUI       = this->m_isPauseUI;
+
+
     c->m_hoverFade       = this->m_hoverFade;
     c->m_fadeSpeed       = this->m_fadeSpeed;
-
     c->m_hoverSpriteShift = this->m_hoverSpriteShift;
     c->m_hoverCollOffset  = this->m_hoverCollOffset;
     c->m_hoverRowOffset = this->m_hoverRowOffset;
@@ -614,6 +622,12 @@ std::unique_ptr<Component> SpriteRender::Clone() const
     c->m_isOnlyWhileGoal = this->m_isOnlyWhileGoal;
     c->m_useHeatUI = this->m_useHeatUI;
     c->m_showAbnormal = this->m_showAbnormal;
+
+    c->m_isScaleLoopEnabled = this->m_isScaleLoopEnabled;
+    c->m_scaleLoopSpeed = this->m_scaleLoopSpeed;
+    c->m_scaleLoopAmplitude = this->m_scaleLoopAmplitude;
+    c->m_baseScaleForLoop = this->m_baseScaleForLoop;
+
 
 	return c;
 }
@@ -687,6 +701,11 @@ void SpriteRender::Serialize(nlohmann::json& j) const
     j["OnlyWhileGoal"] = m_isOnlyWhileGoal;
     j["HeatUI"] = m_useHeatUI;
     j["ShowAbnormal"] = m_showAbnormal;
+
+    j["ScaleLoopEnabled"] = m_isScaleLoopEnabled;
+    j["ScaleLoopSpeed"] = m_scaleLoopSpeed;
+    j["ScaleLoopAmp"] = m_scaleLoopAmplitude;
+
 }
 
 void SpriteRender::DrawInspector()
@@ -859,6 +878,22 @@ void SpriteRender::DrawInspector()
             m_srcH = texH / (float)m_splitY;
             m_srcX = (float)m_targetCol * m_srcW;
             m_srcY = (float)m_targetRow * m_srcH;
+        }
+    }
+
+    ImGui::Separator();
+    ImGui::Text("Scale Loop Settings");
+
+    ImGui::Checkbox("Enable Scale Loop", &m_isScaleLoopEnabled);
+    if (m_isScaleLoopEnabled)
+    {
+        ImGui::SliderFloat("Loop Speed", &m_scaleLoopSpeed, 0.1f, 10.0f, "%.1f");
+        ImGui::SliderFloat("Loop Amplitude", &m_scaleLoopAmplitude, 0.01f, 2.0f, "%.2f");
+
+        // 基準スケールをリセットするボタンがあると便利
+        if (ImGui::Button("Reset Base Scale"))
+        {
+            m_baseScaleForLoop = m_editorScale;
         }
     }
 
@@ -1073,6 +1108,11 @@ void SpriteRender::Deserialize(nlohmann::json& j)
     m_isOnlyWhileGoal = j.value("OnlyWhileGoal", false);
     m_useHeatUI = j.value("HeatUI", false);
     m_showAbnormal = j.value("ShowAbnormal", false);
+
+    m_isScaleLoopEnabled = j.value("ScaleLoopEnabled", false);
+    m_scaleLoopSpeed = j.value("ScaleLoopSpeed", 1.0f);
+    m_scaleLoopAmplitude = j.value("ScaleLoopAmp", 0.1f);
+    m_baseScaleForLoop = m_editorScale;
 }
 
 void SpriteRender::StartIrisOut()
