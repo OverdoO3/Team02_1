@@ -118,6 +118,13 @@ public:
 	bool IsCoinCollected(int stageIdx, int coinIdx) const;
 
 	void CollectCoin(int stageIdx, int coinIdx);
+
+	void SetHoveredStage(int stageIdx) { m_hoveredStageIndex = stageIdx; }
+	int GetHoveredStage() const		   { return m_hoveredStageIndex; }
+
+	bool IsStageSelectScene() const {
+		return m_currentScenePath.find("choice") != std::string::npos;
+	}
 private:
 	//編集用のシーン
 	std::unique_ptr<Scene> editorScene = nullptr;
@@ -170,5 +177,6 @@ private:
 
 	static bool m_coinFlags[4][3];
 
+	int m_hoveredStageIndex = -1;
 	//Actor* m_irisActor = nullptr;   // くりぬきスプライト（カメレオン）
 };

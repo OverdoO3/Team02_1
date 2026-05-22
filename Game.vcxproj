@@ -299,6 +299,7 @@
     <ClInclude Include="Source\Scene.h" />
     <ClInclude Include="Source\LoadingController.h" />
     <ClInclude Include="Source\SceneManager.h" />
+    <ClInclude Include="Source\StageButtonComponent.h" />
     <ClInclude Include="Source\StateEffect.h">
       <SubType>
       </SubType>
@@ -422,6 +423,7 @@
     <ClCompile Include="Source\SpriteRender.cpp" />
     <ClCompile Include="Source\LoadingController.cpp" />
     <ClCompile Include="Source\SceneManager.cpp" />
+    <ClCompile Include="Source\StageButtonComponent.cpp" />
     <ClCompile Include="Source\StateEffect.cpp">
       <SubType>
       </SubType>

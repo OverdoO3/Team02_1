@@ -386,6 +386,9 @@
     <ClInclude Include="Source\CoinUIComponent.h">
       <Filter>Source\Components\Temp\TempObj</Filter>
     </ClInclude>
+    <ClInclude Include="Source\StageButtonComponent.h">
+      <Filter>Source\Components\Temp\TempObj</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="External\imgui-docking\imgui.cpp">
@@ -611,6 +614,9 @@
       <Filter>Source\Components\Temp\TempObj</Filter>
     </ClCompile>
     <ClCompile Include="Source\CoinUIComponent.cpp">
+      <Filter>Source\Components\Temp\TempObj</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\StageButtonComponent.cpp">
       <Filter>Source\Components\Temp\TempObj</Filter>
     </ClCompile>
   </ItemGroup>

@@ -224,6 +224,12 @@
                             "UseLoading": true
                         },
                         "type": "ButtonComponent"
+                    },
+                    {
+                        "data": {
+                            "StageIndex": 0
+                        },
+                        "type": "StageButtonComponent"
                     }
                 ],
                 "id": 56,
@@ -326,6 +332,12 @@
                             "UseLoading": true
                         },
                         "type": "ButtonComponent"
+                    },
+                    {
+                        "data": {
+                            "StageIndex": 1
+                        },
+                        "type": "StageButtonComponent"
                     }
                 ],
                 "id": 56,
@@ -428,6 +440,12 @@
                             "UseLoading": true
                         },
                         "type": "ButtonComponent"
+                    },
+                    {
+                        "data": {
+                            "StageIndex": 2
+                        },
+                        "type": "StageButtonComponent"
                     }
                 ],
                 "id": 56,
@@ -530,6 +548,12 @@
                             "UseLoading": true
                         },
                         "type": "ButtonComponent"
+                    },
+                    {
+                        "data": {
+                            "StageIndex": 3
+                        },
+                        "type": "StageButtonComponent"
                     }
                 ],
                 "id": 56,
@@ -915,7 +939,8 @@
                     {
                         "data": {
                             "CoinIndex": 0,
-                            "StageIndex": 0
+                            "StageIndex": 0,
+                            "StageSelectMode": true
                         },
                         "type": "CoinUIComponent"
                     }
@@ -1015,7 +1040,8 @@
                     {
                         "data": {
                             "CoinIndex": 1,
-                            "StageIndex": 0
+                            "StageIndex": 0,
+                            "StageSelectMode": true
                         },
                         "type": "CoinUIComponent"
                     }
@@ -1115,7 +1141,8 @@
                     {
                         "data": {
                             "CoinIndex": 2,
-                            "StageIndex": 0
+                            "StageIndex": 0,
+                            "StageSelectMode": true
                         },
                         "type": "CoinUIComponent"
                     }
@@ -1308,7 +1335,8 @@
                     {
                         "data": {
                             "CoinIndex": 0,
-                            "StageIndex": 1
+                            "StageIndex": 1,
+                            "StageSelectMode": true
                         },
                         "type": "CoinUIComponent"
                     }
@@ -1408,7 +1436,8 @@
                     {
                         "data": {
                             "CoinIndex": 1,
-                            "StageIndex": 1
+                            "StageIndex": 1,
+                            "StageSelectMode": true
                         },
                         "type": "CoinUIComponent"
                     }
@@ -1508,7 +1537,8 @@
                     {
                         "data": {
                             "CoinIndex": 2,
-                            "StageIndex": 1
+                            "StageIndex": 1,
+                            "StageSelectMode": true
                         },
                         "type": "CoinUIComponent"
                     }
@@ -1701,7 +1731,8 @@
                     {
                         "data": {
                             "CoinIndex": 0,
-                            "StageIndex": 2
+                            "StageIndex": 2,
+                            "StageSelectMode": true
                         },
                         "type": "CoinUIComponent"
                     }
@@ -1801,7 +1832,8 @@
                     {
                         "data": {
                             "CoinIndex": 1,
-                            "StageIndex": 2
+                            "StageIndex": 2,
+                            "StageSelectMode": true
                         },
                         "type": "CoinUIComponent"
                     }
@@ -1901,7 +1933,8 @@
                     {
                         "data": {
                             "CoinIndex": 2,
-                            "StageIndex": 2
+                            "StageIndex": 2,
+                            "StageSelectMode": true
                         },
                         "type": "CoinUIComponent"
                     }
@@ -2094,7 +2127,8 @@
                     {
                         "data": {
                             "CoinIndex": 0,
-                            "StageIndex": 3
+                            "StageIndex": 3,
+                            "StageSelectMode": true
                         },
                         "type": "CoinUIComponent"
                     }
@@ -2194,7 +2228,8 @@
                     {
                         "data": {
                             "CoinIndex": 1,
-                            "StageIndex": 3
+                            "StageIndex": 3,
+                            "StageSelectMode": true
                         },
                         "type": "CoinUIComponent"
                     }
@@ -2294,7 +2329,8 @@
                     {
                         "data": {
                             "CoinIndex": 2,
-                            "StageIndex": 3
+                            "StageIndex": 3,
+                            "StageSelectMode": true
                         },
                         "type": "CoinUIComponent"
                     }

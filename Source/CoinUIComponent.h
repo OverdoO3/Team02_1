@@ -24,4 +24,6 @@ private:
     int m_stageIndex = 0;
     int m_coinIndex = 0;
     int m_originalCol = -1;
+    bool m_isStageSelectMode = false;
+    float m_appearanceRatio = 0.0f;
 };

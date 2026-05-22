@@ -351,6 +351,7 @@ void SceneManager::Clear()
     {
         currentScene->Finalize();
         currentScene = nullptr;
+        m_hoveredStageIndex = -1;
     }
 }
 
