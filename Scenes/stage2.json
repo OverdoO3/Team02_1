@@ -6,20 +6,20 @@
                     {
                         "data": {
                             "position": [
-                                0.28939950466156006,
-                                18.121379852294922,
-                                -46.46931076049805
+                                -0.902803897857666,
+                                139.8742218017578,
+                                -67.36246490478516
                             ],
                             "rotation": [
-                                -0.0,
-                                0.0,
-                                -0.0,
-                                1.0
+                                0.3213132321834564,
+                                0.040896765887737274,
+                                -0.04095378890633583,
+                                0.945202648639679
                             ],
                             "scale": [
-                                1.0,
-                                1.0,
-                                1.0
+                                1.0000025033950806,
+                                0.9999971985816956,
+                                1.0000004768371582
                             ]
                         },
                         "type": "Transform"
@@ -31,7 +31,13 @@
                         "type": "Camera"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "CameraPos": [
+                                -0.902803897857666,
+                                139.8742218017578,
+                                -67.36246490478516
+                            ]
+                        },
                         "type": "CameraController"
                     }
                 ],
@@ -33007,6 +33013,9 @@
                     {
                         "data": {
                             "AnimFrameCount": 1,
+                            "ClickLimit": 1,
+                            "ClickShiftCol": 1,
+                            "ClickShiftRow": 0,
                             "ColHeight": 100.0,
                             "ColOffsetX": 0.0,
                             "ColOffsetY": 0.0,
@@ -33066,6 +33075,7 @@
                             "TargetRow": 0,
                             "TexturePath": "Data/Sprite/Game_coin.png",
                             "UseClickHide": false,
+                            "UseClickShift": false,
                             "UsePopUpClear": false,
                             "isFadeEnabled": false,
                             "sprFadeSpeed": 2.0
@@ -33113,6 +33123,9 @@
                     {
                         "data": {
                             "AnimFrameCount": 1,
+                            "ClickLimit": 1,
+                            "ClickShiftCol": 1,
+                            "ClickShiftRow": 0,
                             "ColHeight": 100.0,
                             "ColOffsetX": 0.0,
                             "ColOffsetY": 0.0,
@@ -33172,6 +33185,7 @@
                             "TargetRow": 0,
                             "TexturePath": "Data/Sprite/Game_coin.png",
                             "UseClickHide": false,
+                            "UseClickShift": false,
                             "UsePopUpClear": false,
                             "isFadeEnabled": false,
                             "sprFadeSpeed": 2.0
@@ -33219,6 +33233,9 @@
                     {
                         "data": {
                             "AnimFrameCount": 1,
+                            "ClickLimit": 1,
+                            "ClickShiftCol": 1,
+                            "ClickShiftRow": 0,
                             "ColHeight": 100.0,
                             "ColOffsetX": 0.0,
                             "ColOffsetY": 0.0,
@@ -33278,6 +33295,7 @@
                             "TargetRow": 0,
                             "TexturePath": "Data/Sprite/Game_coin.png",
                             "UseClickHide": false,
+                            "UseClickShift": false,
                             "UsePopUpClear": false,
                             "isFadeEnabled": false,
                             "sprFadeSpeed": 2.0
@@ -33325,6 +33343,9 @@
                     {
                         "data": {
                             "AnimFrameCount": 1,
+                            "ClickLimit": 1,
+                            "ClickShiftCol": 1,
+                            "ClickShiftRow": 0,
                             "ColHeight": 650.0,
                             "ColOffsetX": -325.0,
                             "ColOffsetY": -325.0,
@@ -33384,6 +33405,7 @@
                             "TargetRow": 0,
                             "TexturePath": "Data/Sprite/Game_mode01.png",
                             "UseClickHide": false,
+                            "UseClickShift": false,
                             "UsePopUpClear": false,
                             "isFadeEnabled": false,
                             "sprFadeSpeed": 2.0
@@ -33430,6 +33452,9 @@
                     {
                         "data": {
                             "AnimFrameCount": 1,
+                            "ClickLimit": 1,
+                            "ClickShiftCol": 1,
+                            "ClickShiftRow": 0,
                             "ColHeight": 100.0,
                             "ColOffsetX": 0.0,
                             "ColOffsetY": 0.0,
@@ -33489,6 +33514,7 @@
                             "TargetRow": 0,
                             "TexturePath": "Data/Sprite/Game_text06.png",
                             "UseClickHide": false,
+                            "UseClickShift": false,
                             "UsePopUpClear": false,
                             "isFadeEnabled": false,
                             "sprFadeSpeed": 2.0
@@ -33528,6 +33554,9 @@
                     {
                         "data": {
                             "AnimFrameCount": 1,
+                            "ClickLimit": 1,
+                            "ClickShiftCol": 1,
+                            "ClickShiftRow": 0,
                             "ColHeight": 100.0,
                             "ColOffsetX": 0.0,
                             "ColOffsetY": 0.0,
@@ -33587,6 +33616,7 @@
                             "TargetRow": 0,
                             "TexturePath": "Data/Sprite/Game_text03.png",
                             "UseClickHide": false,
+                            "UseClickShift": false,
                             "UsePopUpClear": true,
                             "isFadeEnabled": false,
                             "sprFadeSpeed": 2.0
@@ -33626,6 +33656,9 @@
                     {
                         "data": {
                             "AnimFrameCount": 1,
+                            "ClickLimit": 1,
+                            "ClickShiftCol": 1,
+                            "ClickShiftRow": 0,
                             "ColHeight": 100.0,
                             "ColOffsetX": 0.0,
                             "ColOffsetY": 0.0,
@@ -33685,6 +33718,7 @@
                             "TargetRow": 0,
                             "TexturePath": "Data/Sprite/Game_text05.png",
                             "UseClickHide": false,
+                            "UseClickShift": false,
                             "UsePopUpClear": false,
                             "isFadeEnabled": true,
                             "sprFadeSpeed": 4.099999904632568
@@ -33724,6 +33758,9 @@
                     {
                         "data": {
                             "AnimFrameCount": 1,
+                            "ClickLimit": 1,
+                            "ClickShiftCol": 1,
+                            "ClickShiftRow": 0,
                             "ColHeight": 100.0,
                             "ColOffsetX": 0.0,
                             "ColOffsetY": 0.0,
@@ -33783,6 +33820,7 @@
                             "TargetRow": 0,
                             "TexturePath": "Data/Sprite/Game_text04.png",
                             "UseClickHide": false,
+                            "UseClickShift": false,
                             "UsePopUpClear": false,
                             "isFadeEnabled": true,
                             "sprFadeSpeed": 4.099999904632568
@@ -33822,6 +33860,9 @@
                     {
                         "data": {
                             "AnimFrameCount": 1,
+                            "ClickLimit": 1,
+                            "ClickShiftCol": 1,
+                            "ClickShiftRow": 0,
                             "ColHeight": 100.0,
                             "ColOffsetX": 0.0,
                             "ColOffsetY": 0.0,
@@ -33881,6 +33922,7 @@
                             "TargetRow": 0,
                             "TexturePath": "Data/Sprite/Game_text01.png",
                             "UseClickHide": false,
+                            "UseClickShift": false,
                             "UsePopUpClear": false,
                             "isFadeEnabled": false,
                             "sprFadeSpeed": 2.0
@@ -33920,6 +33962,9 @@
                     {
                         "data": {
                             "AnimFrameCount": 1,
+                            "ClickLimit": 1,
+                            "ClickShiftCol": 1,
+                            "ClickShiftRow": 0,
                             "ColHeight": 100.0,
                             "ColOffsetX": 0.0,
                             "ColOffsetY": 0.0,
@@ -33979,6 +34024,7 @@
                             "TargetRow": 0,
                             "TexturePath": "Data/Sprite/Game_mode02.png",
                             "UseClickHide": false,
+                            "UseClickShift": false,
                             "UsePopUpClear": false,
                             "isFadeEnabled": false,
                             "sprFadeSpeed": 2.0

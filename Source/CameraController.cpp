@@ -11,10 +11,17 @@ REGISTER_COMPONENT(ComponentID::CameraController , CameraController)
 
 void CameraController::OnAwake(float elapsedTime)
 {
+	Actor* player = owner->GetScene()->FindByTag(1);
+	if (player) {
+		// 目標地点を原点(0,0,0)ではなく、最初からプレイヤーの位置にする
+		focusTarget = player->GetComponent<Transform>()->GetWorldPosition();
+		targetGoal = focusTarget;
+	}
 }
 
 void CameraController::Update(float elapsedTime)
 {
+	
 	Scene* scene = owner->GetScene();
 	bool paused = scene && scene->sceneManager && scene->sceneManager->IsPaused();
 
@@ -134,14 +141,56 @@ void CameraController::DrawInspector()
 
 void CameraController::Serialize(nlohmann::json& j) const
 {
+	auto transform = owner->GetComponent<Transform>();
+	DirectX::XMFLOAT3 pos = transform->GetWorldPosition();
+	// JSONに今の座標を保存
+	j["CameraPos"] = { pos.x, pos.y, pos.z };
 }
 
 void CameraController::Deserialize(nlohmann::json& j)
 {
+	if (j.contains("CameraPos"))
+	{
+		auto pos = j["CameraPos"];
+		DirectX::XMFLOAT3 startPos = { pos[0], pos[1], pos[2] };
+		// ロード時にこの位置をTransformに適用
+		owner->GetComponent<Transform>()->SetWorldPosition(startPos);
+	}
 }
 
 std::unique_ptr<Component> CameraController::Clone() const
 {
 	auto c = std::make_unique<CameraController>();
+
+	c->distance = this->distance;
+	c->pitch = this->pitch;
+	c->yaw = this->yaw;
+	c->maxPitch = this->maxPitch;
+	c->minDistance = this->minDistance;
+	c->maxDistance = this->maxDistance;
+	c->focusToPlayer = this->focusToPlayer;
+
 	return c;
+}
+
+void CameraController::UpdateCameraPosition()
+{
+	DirectX::XMFLOAT3 offset;
+	offset.x = distance * cosf(pitch) * sinf(yaw);
+	offset.y = distance * sinf(pitch);
+	offset.z = distance * cosf(pitch) * cosf(yaw);
+
+	Actor* player = owner->GetScene()->FindByTag(1);
+	if (player) {
+		targetGoal = focusToPlayer ? player->GetComponent<Transform>()->GetWorldPosition() : DirectX::XMFLOAT3{ 0,0,0 };
+		focusTarget = targetGoal; // ここで初期値を代入しちゃう
+
+		DirectX::XMFLOAT3 cameraPos = {
+			focusTarget.x + offset.x,
+			focusTarget.y + offset.y,
+			focusTarget.z + offset.z
+		};
+		owner->GetComponent<Transform>()->SetWorldPosition(cameraPos);
+		owner->GetComponent<Transform>()->LookAt(focusTarget);
+	}
 }

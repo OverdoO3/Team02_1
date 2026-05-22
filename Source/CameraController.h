@@ -22,6 +22,8 @@ public:
     void Serialize(nlohmann::json& j) const override;
     void Deserialize(nlohmann::json& j) override;
 
+    void UpdateCameraPosition();
+
     std::unique_ptr<Component> Clone() const override;
 
     COMPONENT_ID(CameraController)

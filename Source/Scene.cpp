@@ -146,6 +146,7 @@ void Scene::Update(float elapsedTime)
 			bool active = a->setActive && (!a->GetParent() || a->GetParent()->setActive);
 			if (active)
 			{
+
 				a->Update(elapsedTime);
 			}
 		}

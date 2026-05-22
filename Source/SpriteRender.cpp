@@ -329,6 +329,7 @@ void SpriteRender::Draw(RenderContext& rc)
 //}
 void SpriteRender::Update(float elapsedTime)
 {
+    
     if (!owner) return;
 
 

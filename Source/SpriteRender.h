@@ -92,6 +92,17 @@ public:
     void SetSrcY(float srcY) { m_srcY = srcY; }
     void SetTargetCol(int col) { m_targetCol = col; }
 
+    bool IsClickCompleted()const
+    {
+        if (!m_useClickHide || m_clickCountLimit <= 0) return true;
+        return m_currentClickCount >= m_clickCountLimit;
+    }
+    bool IsClickRestrictionActive() const {
+        return m_useClickHide && m_clickCountLimit > 0 && m_currentClickCount < m_clickCountLimit;
+    }
+
+    void UpdateClickLogic();
+
 private:
     std::unique_ptr<Sprite> spr;
 
