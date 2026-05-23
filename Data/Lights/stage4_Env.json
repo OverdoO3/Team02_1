@@ -1,0 +1,43 @@
+{
+    "SceneSettings": {
+        "AmbientColor": [
+            0.20000000298023224,
+            0.20000000298023224,
+            0.20000000298023224,
+            1.0
+        ],
+        "BloomIntensity": 0.05999999865889549,
+        "BloomThreshold": 0.800000011920929,
+        "ContrastPower": 1.937999963760376,
+        "FollowPlayer": false,
+        "LightColor": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+        ],
+        "LightDir": [
+            1.0,
+            -0.8199999928474426,
+            1.0
+        ],
+        "LightIntensity": 0.4309999942779541,
+        "OutlineColor": [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+        ],
+        "OutlineThickness": 0.019999999552965164,
+        "PointLightIntensity": 6.0,
+        "ShadowAlpha": 0.6140000224113464,
+        "ShadowBasePos": [
+            -4.699999809265137,
+            70.0999984741211,
+            0.0
+        ],
+        "ShadowBias": 0.0003000000142492354,
+        "ShadowFarClip": 1037.27001953125,
+        "ShadowRange": 230.33200073242188
+    }
+}
