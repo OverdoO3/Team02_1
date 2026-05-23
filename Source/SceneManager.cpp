@@ -34,6 +34,11 @@ void SceneManager::Update(float elapsedTime)
     // ─── ローディング演出中 ───
     if (m_isLoading)
     {
+        if (currentScene != nullptr)
+        {
+           currentScene->Update(elapsedTime);
+        }
+
         bool isIrisOutFinished = true; // マスクが閉じきったかどうかのフラグ
 
         if (m_irisActor && m_irisActor->setActive)
@@ -149,7 +154,6 @@ void SceneManager::Update(float elapsedTime)
                 sr->Update(elapsedTime);
         }
 
-        // 🚨【超重要】ローディング中のフレームは、これより下の通常Update（通常シーン切り替えやcurrentScene->Update）を絶対に実行させずに終了する！
         return;
     }
 
@@ -164,7 +168,6 @@ void SceneManager::Update(float elapsedTime)
             m_loadState = LoadState::FadeOut; // まずは縮小モードにする
             m_isLoadCompleted = false;
 
-            // ⭕【ここを追加】行き先のパス（StageかTitleか）で操作対象のマスクを切り替える
             std::string lowerPath = m_pendingScenePath;
             std::transform(lowerPath.begin(), lowerPath.end(), lowerPath.begin(), ::tolower);
 
@@ -375,7 +378,6 @@ void SceneManager::SaveEditorScene(const std::string& path)
     if (editorScene)
         SceneSerializer::Save(*editorScene, path);
 
-    // ⭕【修正】セーブ時も、ちゃんと環境用（_Env.json）のパスを作って保存する
     std::string envPath = path;
     size_t dotPos = envPath.find_last_of(".");
     if (dotPos != std::string::npos) {

@@ -105,8 +105,7 @@ public:
 		m_hasPendingScene = true;
 	}
 
-	enum class LoadState { FadeOut, Loading, FadeIn };
-
+	enum class LoadState { FadeOut, Loading, ReadyToStart, FadeIn };
 
 	std::string GetCurrentScenePath() const { return m_currentScenePath; }
 	//void RequeatSceneChange(const std::string& path);
@@ -122,6 +121,7 @@ public:
 	void SetHoveredStage(int stageIdx) { m_hoveredStageIndex = stageIdx; }
 	int GetHoveredStage() const		   { return m_hoveredStageIndex; }
 
+	bool IsLoading() const { return m_isLoading; }
 	bool IsStageSelectScene() const {
 		return m_currentScenePath.find("choice") != std::string::npos;
 	}
@@ -155,10 +155,9 @@ private:
 
 	float m_transitionTimer = 0.0f;
 	float m_transitionDuration = 1.0f;
-
+	bool m_isLoading = false;
 
 	LoadState m_loadState = LoadState::FadeIn;
-	bool m_isLoading = false;
 	float m_maskScale = 1.0f;
 	float m_maskScaleMin = 0.3f;
 	float m_maskScaleMax = 1.0f;
@@ -174,9 +173,11 @@ private:
 	Actor* m_choiceIrisActor = nullptr;
 
 	float m_loadTimer = 0.0f;
+	float m_fadeWaitTimer = 0.0f;
 
 	static bool m_coinFlags[4][3];
 
 	int m_hoveredStageIndex = -1;
+	bool m_isWaitingForIrisOpen = false;
 	//Actor* m_irisActor = nullptr;   // くりぬきスプライト（カメレオン）
 };

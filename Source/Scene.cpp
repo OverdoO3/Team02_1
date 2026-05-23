@@ -179,7 +179,7 @@ void Scene::Update(float elapsedTime)
             {
                 child->SetParent(nullptr);
             }
-            dead->ClearChildren(); // ★ これも追加
+            dead->ClearChildren(); 
         }
 
         // その後に erase

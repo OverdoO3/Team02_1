@@ -215,6 +215,7 @@
     <ClInclude Include="External\imgui-docking\imstb_textedit.h" />
     <ClInclude Include="External\imgui-docking\imstb_truetype.h" />
     <ClInclude Include="Source\Actor.h" />
+    <ClInclude Include="Source\AudioComponent.h" />
     <ClInclude Include="Source\BoxCollider.h" />
     <ClInclude Include="Source\Bridge.h">
       <SubType>
@@ -354,6 +355,7 @@
     <ClCompile Include="External\imgui-docking\imgui_impl_win32.cpp" />
     <ClCompile Include="External\imgui-docking\imgui_widgets.cpp" />
     <ClCompile Include="Source\Actor.cpp" />
+    <ClCompile Include="Source\AudioComponent.cpp" />
     <ClCompile Include="Source\BoxCollider.cpp" />
     <ClCompile Include="Source\Bridge.cpp">
       <SubType>

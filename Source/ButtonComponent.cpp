@@ -8,6 +8,12 @@ REGISTER_COMPONENT(ComponentID::ButtonComponent, ButtonComponent)
 void ButtonComponent::Update(float elapsedTime)
 {
     if (!owner) return;
+    Scene* scene = owner->GetScene();
+    if (scene && scene->sceneManager && scene->sceneManager->IsLoading())
+    {
+        return; // ロード中ならこの下のクリック判定を無視
+    }
+
     auto spr = owner->GetComponent<SpriteRender>();
     if (spr)
     {
@@ -143,6 +149,7 @@ void ButtonComponent::OnClick()
 
         // ── やり直す（現在シーンをリロード） ──────────────────────
     case ButtonMode::RestartScene:
+        sm->SetPause(false);
         sm->RequestSceneChange(sm->GetCurrentScenePath());
         return;
 

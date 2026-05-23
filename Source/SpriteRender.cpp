@@ -61,6 +61,17 @@ void SpriteRender::Draw(RenderContext& rc)
         if (!isNearAnyReceiver) return;
     }
 
+
+    //ポーズUI制御
+    if (m_isPauseUI)
+    {
+        // ポーズ中ではない、かつ「アイリス演出中でもない」ならスキップ
+        if (!m_sceneManager || (!m_sceneManager->IsPaused() && m_irisMode == IrisMode::None))
+        {
+            return;
+        }
+    }
+
     if (m_isOnlyWhileLoading)
     {
         // 現在が「Loading（裏での読み込み中）」じゃないなら、文字ロゴは描画をスキップ
@@ -70,11 +81,6 @@ void SpriteRender::Draw(RenderContext& rc)
         }
     }
 
-    //ポーズUI制御
-    if (m_isPauseUI)
-    {
-        if (!m_sceneManager || !m_sceneManager->IsPaused()) return;
-    }
 
     // ─── ⭕【修正版】Loadingスプライトの出し分け制御 ───
     if (m_isGameLoading || m_isTitleLoading)

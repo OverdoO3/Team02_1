@@ -34,6 +34,7 @@ enum class ComponentID
     playerModelChanger,
     CoinUIComponent,
     StageButtonComponent,
+    Audio,
     COUNT
 };
 
