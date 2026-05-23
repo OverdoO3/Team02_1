@@ -52901,7 +52901,7 @@
                     },
                     {
                         "data": {
-                            "heat": 0,
+                            "heat": 1,
                             "linkedLightIndex": 4
                         },
                         "type": "HeatReceiver"
@@ -52918,6 +52918,10 @@
                             "scale": 5.0
                         },
                         "type": "EffectRender"
+                    },
+                    {
+                        "data": null,
+                        "type": "firewood"
                     }
                 ],
                 "id": 658,
@@ -53411,7 +53415,7 @@
                     },
                     {
                         "data": {
-                            "heat": 0,
+                            "heat": 1,
                             "linkedLightIndex": 3
                         },
                         "type": "HeatReceiver"
@@ -53428,6 +53432,10 @@
                             "scale": 5.0
                         },
                         "type": "EffectRender"
+                    },
+                    {
+                        "data": null,
+                        "type": "firewood"
                     }
                 ],
                 "id": 658,

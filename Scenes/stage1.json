@@ -39410,6 +39410,10 @@
                             "scale": 5.0
                         },
                         "type": "EffectRender"
+                    },
+                    {
+                        "data": null,
+                        "type": "firewood"
                     }
                 ],
                 "id": 658,
