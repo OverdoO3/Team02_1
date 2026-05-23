@@ -1,6 +1,7 @@
 #include "snowman.h"
 #include "Factory.h"
 #include "Actor.h"
+#include <EffectRender.h>
 
 //								«‚É–¼‘O“ü‚ê‚é
 REGISTER_COMPONENT(ComponentID::snowman, snowman)
@@ -11,6 +12,8 @@ void snowman::OnAwake(float elapsedTime)
 
 void snowman::Update(float elapsedTime)
 {
+	auto eff = owner->GetComponent<EffectRender>();
+	if (!eff)return;
 	auto th = owner->GetComponent<ThermalBody>();
 	if (th->GetHeat() == 1)
 	{
@@ -21,6 +24,7 @@ void snowman::Update(float elapsedTime)
 	if (death)
 	{
 		owner->GetComponent<Transform>()->SetLocalScale({ 1,timer,1 });
+		eff->Stop();
 		if (timer < 0)
 		{
 			owner->isDead = true;

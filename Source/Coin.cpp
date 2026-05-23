@@ -5,6 +5,7 @@
 #include "Scene.h"
 #include "SceneManager.h"
 #include <algorithm>
+#include <EffectRender.h>
 
 
 //								↓に名前入れる
@@ -78,6 +79,12 @@ void Coin::Update(float elapsedTime)
 		m_jumpVelocityY = 30.0f; 
 		m_spinAngle = 0.0f;      
 		m_startPos = transform->GetWorldPosition();
+
+		auto eff = owner->GetComponent<EffectRender>();
+		if (eff)
+		{
+			eff->Play();
+		}
 
 		//// 触れたら非表示にする
 		//if (mr)

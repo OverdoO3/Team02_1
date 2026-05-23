@@ -32,6 +32,13 @@ void Effect::SetScale(Effekseer::Handle handle, const DirectX::XMFLOAT3& scale)
 	effekseerManager->SetScale(handle, scale.x, scale.y, scale.z);
 }
 
+void Effect::SetRotation(Effekseer::Handle handle, const DirectX::XMFLOAT3 rotation)
+{
+	Effekseer::ManagerRef effekseerManager = EffectManager::Instance().GetEffekseerManager();
+
+	effekseerManager->SetRotation(handle, rotation.x, rotation.y, rotation.z);
+}
+
 bool Effect::Exists(int handle)
 {
 	return EffectManager::Instance().GetEffekseerManager()->Exists(handle);

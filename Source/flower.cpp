@@ -1,6 +1,7 @@
 #include "flower.h"
 #include "Factory.h"
 #include "Actor.h"
+#include <EffectRender.h>
 //								«‚É–¼‘O“ü‚ê‚é
 REGISTER_COMPONENT(ComponentID::flower, flower)
 
@@ -32,7 +33,6 @@ void flower::Update(float elapsedTime)
 	switch (temp->GetHeat())
 	{
 	case -1:
-		boxCollider->size.y = saveY;
 		isOpen = true;
 		break;
 	case 1:
@@ -47,10 +47,16 @@ void flower::Update(float elapsedTime)
 	{
 		once = true;
 		model->PlayAnimation("bud_open", false);
+		auto eff = owner->GetComponent<EffectRender>();
+		if (eff)
+		{
+			eff->Play();
+		}
 	}
 
 	if (!model->GetAnimationPlaying() && isOpen && !once2)
 	{
+		boxCollider->size.y = saveY;
 		model->SetString(openPath);
 		model->PlayAnimation("flower_open", false);
 		once2 = true;

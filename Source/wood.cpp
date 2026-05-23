@@ -1,7 +1,7 @@
 #include "wood.h"
 #include "Actor.h"
 #include "Factory.h"
-#include "StateEffect.h"
+#include <EffectRender.h>
 
 //								«‚É–¼‘O“ü‚ê‚é
 REGISTER_COMPONENT(ComponentID::wood, wood)
@@ -13,13 +13,18 @@ void wood::OnAwake(float elapsedTime)
 void wood::Update(float elapsedTime)
 {
 	auto thermal = owner->GetComponent<ThermalBody>();
-
 	if (!thermal)return;
 
+	auto eff = owner->GetComponent<EffectRender>();
+	if (!eff)return;
 	if (thermal->GetHeat() >= 1)
 	{
 		timer -= elapsedTime;
-		death = true;
+		if (death == false)
+		{
+			death = true;
+			eff->Play();
+		}
 	}
 
 	if (death)
