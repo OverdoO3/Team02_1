@@ -30,18 +30,26 @@ public:
     void Stop();
     void SetVolume(float volume);
 
-    std::string ToDataPath(const std::string& fullPath)
+    std::string ToDataPath(const std::string& inputPath)
     {
-        std::filesystem::path base = std::filesystem::absolute("Data");
-        std::filesystem::path target = std::filesystem::absolute(fullPath);
+        // 1. まずバックスラッシュ(\)をスラッシュ(/)に統一する（Windowsパス対策）
+        std::string path = inputPath;
+        std::replace(path.begin(), path.end(), '\\', '/');
 
-        std::filesystem::path relative = std::filesystem::relative(target, base);
+        // 2. 検索したいキーワードのリスト
+        const std::string keywords[] = { "Data/", "Scenes/" };
 
-        std::filesystem::path normalized = relative.lexically_normal();
-
-        return "Data/" + normalized.generic_string();
+        for (const auto& key : keywords)
+        {
+            size_t pos = path.find(key);
+            if (pos != std::string::npos)
+            {
+                // キーワード以降の文字列を返す
+                return path.substr(pos);
+            }
+        }
+        return path;
     }
-
     COMPONENT_ID(Audio)
 
 private:
