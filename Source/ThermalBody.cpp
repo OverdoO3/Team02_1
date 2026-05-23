@@ -16,14 +16,17 @@ void ThermalBody::Update(float elapsedTime)
 void ThermalBody::DrawInspector()
 {
 	ImGui::InputInt("temprature",&temperature);
+	ImGui::InputFloat("radius", &radius);
 }
 
 void ThermalBody::Serialize(nlohmann::json& j) const
 {
+	j["radius"] = radius;
 }
 
 void ThermalBody::Deserialize(nlohmann::json& j)
 {
+	j["radius"] = radius;
 }
 
 void ThermalBody::RenderDebug(RenderContext& rc, ShapeRenderer* renderer)
@@ -54,5 +57,6 @@ std::unique_ptr<Component> ThermalBody::Clone() const
 {
 	auto c = std::make_unique<ThermalBody>();
 	c->SetHeat(temperature);
+	c->radius = radius;
 	return c;
 }

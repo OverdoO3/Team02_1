@@ -32,6 +32,8 @@ public:
 	const std::vector<Node>& GetNodes() const { return nodes; }
 	std::vector<Node>& GetNodes() { return nodes; }
 
+	void SetNodes(std::vector<Node> n) { nodes = n; }
+
 	// ƒŠƒ\[ƒXæ“¾
 	const ModelResource* GetResource() const { return resource.get(); }
 

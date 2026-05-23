@@ -1,0 +1,61 @@
+{
+    "components": [
+        {
+            "data": {
+                "position": [
+                    -40.000038146972656,
+                    40.0000114440918,
+                    20.00010108947754
+                ],
+                "rotation": [
+                    -0.0,
+                    0.0,
+                    -0.0,
+                    1.0
+                ],
+                "scale": [
+                    0.9999997615814209,
+                    1.0,
+                    0.9999997615814209
+                ]
+            },
+            "type": "Transform"
+        },
+        {
+            "data": {
+                "ModelPath": "Data/Model/Stage/Demos/water_block.mdl"
+            },
+            "type": "ModelRender"
+        },
+        {
+            "data": {
+                "offset": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "size": [
+                    10.0,
+                    30.0,
+                    10.0
+                ]
+            },
+            "type": "BoxCollider"
+        },
+        {
+            "data": null,
+            "type": "ThermalBody"
+        },
+        {
+            "data": {
+                "temperature": -1
+            },
+            "type": "HeatReceiver"
+        }
+    ],
+    "id": 8140,
+    "name": "water(200)",
+    "parent": 8139,
+    "tag": 2,
+    "type": "Actor"
+}

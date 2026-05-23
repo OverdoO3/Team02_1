@@ -209,3 +209,12 @@ void ModelRender::Deserialize(nlohmann::json& j)
 		model = std::make_unique<Model>(modelpath.c_str());
 	}
 }
+
+void ModelRender::SetPlayerTexture(const char* filename)
+{
+	GpuResourceUtils::LoadTexture(
+		Graphics::Instance().GetDevice(),
+		filename,
+		overrideSRV.ReleaseAndGetAddressOf());
+}
+
