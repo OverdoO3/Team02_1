@@ -1,0 +1,62 @@
+{
+    "components": [
+        {
+            "data": {
+                "position": [
+                    -30.0,
+                    42.000003814697266,
+                    60.0
+                ],
+                "rotation": [
+                    -0.0,
+                    0.0,
+                    -0.0,
+                    1.0
+                ],
+                "scale": [
+                    1.5,
+                    1.5,
+                    1.5
+                ]
+            },
+            "type": "Transform"
+        },
+        {
+            "data": {
+                "ModelPath": "Data/Model/Stage/Demos/bud_obj.mdl"
+            },
+            "type": "ModelRender"
+        },
+        {
+            "data": {
+                "offset": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "size": [
+                    30.0,
+                    40.0,
+                    30.0
+                ]
+            },
+            "type": "BoxCollider"
+        },
+        {
+            "data": null,
+            "type": "ThermalBody"
+        },
+        {
+            "data": {
+                "closeY": 40.0,
+                "openY": 6.0
+            },
+            "type": "flower"
+        }
+    ],
+    "id": 9138,
+    "name": "flower",
+    "parent": -1,
+    "tag": 2,
+    "type": "Actor"
+}

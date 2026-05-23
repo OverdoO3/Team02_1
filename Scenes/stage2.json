@@ -80,7 +80,9 @@
                         "type": "Move"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -15964,7 +15966,7 @@
                             "position": [
                                 70.0,
                                 50.0,
-                                61.0
+                                60.0
                             ],
                             "rotation": [
                                 -0.0,
@@ -16216,6 +16218,21 @@
                             "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
                         },
                         "type": "ModelRender"
+                    },
+                    {
+                        "data": {
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                10.0,
+                                10.0,
+                                10.0
+                            ]
+                        },
+                        "type": "BoxCollider"
                     }
                 ],
                 "id": 663,
@@ -16231,7 +16248,7 @@
                             "position": [
                                 70.0,
                                 50.0,
-                                51.0
+                                50.0
                             ],
                             "rotation": [
                                 -0.0,
@@ -16362,7 +16379,7 @@
                             "position": [
                                 80.0,
                                 50.0,
-                                51.0
+                                50.0
                             ],
                             "rotation": [
                                 -0.0,
@@ -16383,6 +16400,21 @@
                             "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
                         },
                         "type": "ModelRender"
+                    },
+                    {
+                        "data": {
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                10.0,
+                                10.0,
+                                10.0
+                            ]
+                        },
+                        "type": "BoxCollider"
                     }
                 ],
                 "id": 663,
@@ -16398,7 +16430,7 @@
                             "position": [
                                 80.0,
                                 50.0,
-                                61.0
+                                60.0
                             ],
                             "rotation": [
                                 -0.0,
@@ -16550,7 +16582,7 @@
                             "position": [
                                 80.0,
                                 60.0,
-                                61.0
+                                60.0
                             ],
                             "rotation": [
                                 -0.0,
@@ -16571,6 +16603,21 @@
                             "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
                         },
                         "type": "ModelRender"
+                    },
+                    {
+                        "data": {
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                10.0,
+                                10.0,
+                                10.0
+                            ]
+                        },
+                        "type": "BoxCollider"
                     }
                 ],
                 "id": 663,
@@ -16586,7 +16633,7 @@
                             "position": [
                                 70.0,
                                 60.0,
-                                61.0
+                                60.0
                             ],
                             "rotation": [
                                 -0.0,
@@ -16607,6 +16654,21 @@
                             "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
                         },
                         "type": "ModelRender"
+                    },
+                    {
+                        "data": {
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                10.0,
+                                10.0,
+                                10.0
+                            ]
+                        },
+                        "type": "BoxCollider"
                     }
                 ],
                 "id": 663,
@@ -17244,7 +17306,9 @@
                         "type": "ModelRender"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     }
                 ],
@@ -17320,7 +17384,9 @@
                         "type": "ModelRender"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     }
                 ],
@@ -17360,7 +17426,9 @@
                         "type": "ModelRender"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -17421,7 +17489,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -17486,7 +17556,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -17551,7 +17623,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -23523,7 +23597,7 @@
                         "data": {
                             "position": [
                                 80.0,
-                                69.0,
+                                70.0,
                                 80.0
                             ],
                             "rotation": [
@@ -23574,7 +23648,7 @@
                         "data": {
                             "position": [
                                 80.0,
-                                69.0,
+                                70.0,
                                 90.0
                             ],
                             "rotation": [
@@ -23625,7 +23699,7 @@
                         "data": {
                             "position": [
                                 70.0,
-                                69.0,
+                                70.0,
                                 70.0
                             ],
                             "rotation": [
@@ -23676,7 +23750,7 @@
                         "data": {
                             "position": [
                                 70.0,
-                                69.0,
+                                70.0,
                                 80.0
                             ],
                             "rotation": [
@@ -23778,7 +23852,7 @@
                         "data": {
                             "position": [
                                 60.0,
-                                69.0,
+                                70.0,
                                 70.0
                             ],
                             "rotation": [
@@ -23829,7 +23903,7 @@
                         "data": {
                             "position": [
                                 60.0,
-                                69.0,
+                                70.0,
                                 80.0
                             ],
                             "rotation": [
@@ -23931,7 +24005,7 @@
                         "data": {
                             "position": [
                                 50.0,
-                                69.0,
+                                70.0,
                                 70.0
                             ],
                             "rotation": [
@@ -23982,7 +24056,7 @@
                         "data": {
                             "position": [
                                 50.0,
-                                69.0,
+                                70.0,
                                 80.0
                             ],
                             "rotation": [
@@ -24084,7 +24158,7 @@
                         "data": {
                             "position": [
                                 80.0,
-                                69.0,
+                                70.0,
                                 70.0
                             ],
                             "rotation": [
@@ -25311,7 +25385,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -25373,7 +25449,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -25435,7 +25513,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -25482,7 +25562,9 @@
                         "type": "ModelRender"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -25556,7 +25638,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -25600,7 +25684,9 @@
                         "type": "ModelRender"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -25697,7 +25783,9 @@
                         "type": "ModelRender"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     }
                 ],
@@ -25737,7 +25825,9 @@
                         "type": "ModelRender"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     }
                 ],
@@ -25777,7 +25867,9 @@
                         "type": "ModelRender"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     }
                 ],
@@ -25817,7 +25909,9 @@
                         "type": "ModelRender"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     }
                 ],
@@ -25857,7 +25951,9 @@
                         "type": "ModelRender"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     }
                 ],
@@ -25897,7 +25993,9 @@
                         "type": "ModelRender"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     }
                 ],
@@ -25937,7 +26035,9 @@
                         "type": "ModelRender"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -25983,7 +26083,9 @@
                         "type": "ModelRender"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -26044,7 +26146,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -26109,7 +26213,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -26174,7 +26280,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -26239,7 +26347,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -26301,7 +26411,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -26363,7 +26475,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -26425,7 +26539,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -26472,7 +26588,9 @@
                         "type": "ModelRender"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -26533,7 +26651,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -26592,7 +26712,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -26651,7 +26773,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -26710,7 +26834,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -26769,7 +26895,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -26896,7 +27024,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -26961,7 +27091,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -27026,7 +27158,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -27091,7 +27225,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -27156,7 +27292,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -27221,7 +27359,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -27286,7 +27426,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -27351,7 +27493,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -27416,7 +27560,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -27481,7 +27627,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -27546,7 +27694,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -27611,7 +27761,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -27676,7 +27828,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -27741,7 +27895,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -27806,7 +27962,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -27871,7 +28029,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -27936,7 +28096,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -28001,7 +28163,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -28066,7 +28230,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -28131,7 +28297,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -28196,7 +28364,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -28261,7 +28431,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -28326,7 +28498,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -28391,7 +28565,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -28456,7 +28632,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -28521,7 +28699,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -28586,7 +28766,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -28651,7 +28833,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -28716,7 +28900,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -28781,7 +28967,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -28846,7 +29034,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -28911,7 +29101,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -28976,7 +29168,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -29041,7 +29235,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -29106,7 +29302,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -29171,7 +29369,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -29236,7 +29436,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -29301,7 +29503,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -29366,7 +29570,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -29431,7 +29637,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -29496,7 +29704,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -29561,7 +29771,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -29626,7 +29838,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -29691,7 +29905,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -29756,7 +29972,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -29821,7 +30039,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -29886,7 +30106,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -29951,7 +30173,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -30016,7 +30240,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -30081,7 +30307,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -30146,7 +30374,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -30211,7 +30441,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -30276,7 +30508,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -30341,7 +30575,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -30406,7 +30642,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -30471,7 +30709,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -30536,7 +30776,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -30601,7 +30843,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -30666,7 +30910,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -30731,7 +30977,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -30796,7 +31044,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -30861,7 +31111,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -30926,7 +31178,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -30991,7 +31245,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -31056,7 +31312,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -31121,7 +31379,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -31186,7 +31446,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -31251,7 +31513,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -31316,7 +31580,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -31375,7 +31641,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -31434,7 +31702,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -31493,7 +31763,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -31552,7 +31824,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -31611,7 +31885,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -32779,7 +33055,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -32943,7 +33221,9 @@
                         "type": "ModelRender"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {

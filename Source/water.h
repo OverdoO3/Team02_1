@@ -23,4 +23,6 @@ public:
 private:
     std::string waterpath = "Data/Model/Stage/Demos/water_block.mdl";
     std::string icepath = "Data/Model/Stage/Demos/ice_block.mdl";
+
+    int currentTemp;
 };

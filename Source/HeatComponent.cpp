@@ -54,8 +54,8 @@ void HeatTransfer::Update(float elapsedTime)
 				Receiver->GetRadius()))
 			{
 				thermal->SetHeat(Receiver->GetHeatNum());
-				int stealHeat = Receiver->GetHeatNum() * -1;
-				actor->GetComponent<ThermalBody>()->SetHeat(stealHeat);
+				//int stealHeat = Receiver->GetHeatNum() * -1;
+				//actor->GetComponent<ThermalBody>()->SetHeat(thermal);
 			}
 		}
 	}

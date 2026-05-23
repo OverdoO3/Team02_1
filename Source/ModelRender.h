@@ -62,6 +62,10 @@ public:
 
 	void SetShaderId(ShaderId id) { shaderId = id; }
 	ShaderId GetShaderId() const { return shaderId; }
+
+	bool GetAnimationPlaying() { return animationPlaying; }
+
+	void SetPlayerTexture(const char* filename);
 private:
 	std::unique_ptr<Model> model;
 	std::string modelpath;
@@ -75,4 +79,6 @@ private:
 
 	float randomYRotation = 0.0f;      // ランダム回転角（ラジアン）
 	bool  randomRotationInitialized = false;
+public:
+	Microsoft::WRL::ComPtr<ID3D11ShaderResourceView> overrideSRV;
 };

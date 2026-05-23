@@ -1,6 +1,8 @@
 #include "player.h"
 #include "Actor.h"
 #include "Factory.h"
+#include "System/Model.h"
+#include <System/GpuResourceUtils.h>
 
 //								Å´Ç…ñºëOì¸ÇÍÇÈ
 REGISTER_COMPONENT(ComponentID::playerModelChanger, playerModelChanger)
@@ -17,28 +19,25 @@ void playerModelChanger::Update(float elapsedTime)
 
 	if (thermal != currentTemp)
 	{
-		std::unique_ptr<Model> newModel = nullptr;
+		std::vector<Model::Node> node = model->GetModel()->GetNodes();
 		switch (thermal)
 		{
 		case -2:
-			newModel = std::make_unique<Model>(icePath.c_str());
-			model->SetModel(std::move(newModel));
+			model->SetPlayerTexture(icePath.c_str());
 			break;
 		case -1:
-			newModel = std::make_unique<Model>(waterPath.c_str());
-			model->SetModel(std::move(newModel));
+			model->SetPlayerTexture(waterPath.c_str());
 			break;
 		case 0:
-			newModel = std::make_unique<Model>(normalPath.c_str());
-			model->SetModel(std::move(newModel));
+			model->SetPlayerTexture(normalPath.c_str());
 			break;
 		case 1:
-			newModel = std::make_unique<Model>(hotPath.c_str());
-			model->SetModel(std::move(newModel));
+			model->SetPlayerTexture(hotPath.c_str());
 			break;
 		default:
 			break;
 		}
+		currentTemp = thermal;
 	}
 }
 

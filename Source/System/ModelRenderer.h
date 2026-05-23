@@ -53,6 +53,7 @@ public:
     struct InstanceData
     {
         DirectX::XMFLOAT4X4 world;
+		ID3D11ShaderResourceView* overrideSRV = nullptr;
     };
 
 	void SetShaderId(ShaderId id) { shaderId = id; }
@@ -120,9 +121,8 @@ private:
 	CbLight m_lightConstants;
 	point_lights point_light[8];
     ShaderId batchShader = ShaderId::Lambert;
-
-    ID3D11ShaderResourceView* instanceBufferSRV = nullptr;
 public:
+	ID3D11ShaderResourceView* instanceBufferSRV = nullptr;
     int debugInstanceCount = 0;
     std::unordered_map<const ModelResource*, BatchData> batches;
 };
