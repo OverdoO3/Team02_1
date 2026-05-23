@@ -282,10 +282,7 @@
                             "PlayOnClick": true,
                             "PlayOnHover": false,
                             "Volume": 0.800000011920929,
-                            "filename": "C:\\Users\\2250282\\Documents\\Team02_1\\Data\\Sound\\SE_button.wav",
-                            "filenames": [
-                                "C:\\Users\\2250282\\Documents\\Team02_1\\Data\\Sound\\SE_button.wav"
-                            ]
+                            "filename": "C:\\Users\\2250282\\Documents\\Team02_1\\Data\\Sound\\SE_button.wav"
                         },
                         "type": "AudioComponent"
                     }
@@ -409,10 +406,7 @@
                             "PlayOnClick": true,
                             "PlayOnHover": false,
                             "Volume": 0.800000011920929,
-                            "filename": "C:\\Users\\2250282\\Documents\\Team02_1\\Data\\Sound\\SE_button.wav",
-                            "filenames": [
-                                "C:\\Users\\2250282\\Documents\\Team02_1\\Data\\Sound\\SE_button.wav"
-                            ]
+                            "filename": "C:\\Users\\2250282\\Documents\\Team02_1\\Data\\Sound\\SE_button.wav"
                         },
                         "type": "AudioComponent"
                     }
@@ -517,6 +511,19 @@
                             "sprFadeSpeed": 5.0
                         },
                         "type": "SpriteRender"
+                    },
+                    {
+                        "data": {
+                            "BGMPlayOnAwake": true,
+                            "IsBGM": false,
+                            "Loop": false,
+                            "PlayOnAwake": false,
+                            "PlayOnClick": false,
+                            "PlayOnHover": true,
+                            "Volume": 1.0,
+                            "filename": "C:\\Users\\2250282\\Documents\\Team02_1\\Data\\Sound\\SE_cursor.wav"
+                        },
+                        "type": "AudioComponent"
                     }
                 ],
                 "id": 59,
@@ -619,6 +626,19 @@
                             "sprFadeSpeed": 5.0
                         },
                         "type": "SpriteRender"
+                    },
+                    {
+                        "data": {
+                            "BGMPlayOnAwake": true,
+                            "IsBGM": false,
+                            "Loop": false,
+                            "PlayOnAwake": false,
+                            "PlayOnClick": false,
+                            "PlayOnHover": true,
+                            "Volume": 1.0,
+                            "filename": "C:\\Users\\2250282\\Documents\\Team02_1\\Data\\Sound\\SE_cursor.wav"
+                        },
+                        "type": "AudioComponent"
                     }
                 ],
                 "id": 60,
@@ -659,10 +679,7 @@
                             "PlayOnClick": false,
                             "PlayOnHover": false,
                             "Volume": 0.28200000524520874,
-                            "filename": "C:\\Users\\2250282\\Documents\\Team02_1\\Data\\Sound\\BGM_other.wav",
-                            "filenames": [
-                                "C:\\Users\\2250282\\Documents\\Team02_1\\Data\\Sound\\BGM_other.wav"
-                            ]
+                            "filename": "C:\\Users\\2250282\\Documents\\Team02_1\\Data\\Sound\\BGM_other.wav"
                         },
                         "type": "AudioComponent"
                     }

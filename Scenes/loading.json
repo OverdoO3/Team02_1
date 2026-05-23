@@ -573,8 +573,8 @@
                     {
                         "data": {
                             "BGMPlayOnAwake": true,
-                            "IsBGM": false,
-                            "Loop": true,
+                            "IsBGM": true,
+                            "Loop": false,
                             "PlayOnAwake": true,
                             "PlayOnClick": false,
                             "PlayOnHover": false,
@@ -585,6 +585,36 @@
                     }
                 ],
                 "id": 70,
+                "name": "NewActor",
+                "parent": -1,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "rotation": [
+                                0.0,
+                                0.0,
+                                0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    }
+                ],
+                "id": 71,
                 "name": "NewActor",
                 "parent": -1,
                 "tag": 0,

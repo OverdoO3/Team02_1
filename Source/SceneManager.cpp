@@ -57,6 +57,7 @@ void SceneManager::Update(float elapsedTime)
         if (m_loadState == LoadState::FadeOut && isIrisOutFinished)
         {
             Audio::Instance().StopBGM();
+            Audio::Instance().PlaySE("Data/Sound/SE_scene_change.wav");
             m_loadState = LoadState::Loading;
             m_isLoadCompleted = false;
             m_loadTimer = 0.0f;

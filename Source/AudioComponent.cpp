@@ -31,13 +31,27 @@ void AudioComponent::OnAwake(float elapsedTime)
 void AudioComponent::Update(float elapsedTime)
 {
     if (!Audio::IsSystemAlive()) return;
-    if (!owner || !source) return;
+    if (!owner) return;
 
     auto sprite = owner->GetComponent<SpriteRender>();
     bool isHovered = (sprite != nullptr && sprite->IsHovered());
 
-    if (m_playOnHover && isHovered) Play(m_loop);
-    if (m_playOnClick && isHovered && ImGui::IsMouseClicked(ImGuiMouseButton_Left)) Play(m_loop);
+    // 1. ホバー音の再生処理
+    if (m_playOnHover && isHovered) {
+        // まだ再生中でない場合だけ Play を呼ぶ
+        if (!m_isPlaying) {
+            Play(m_loop);
+        }
+    }
+    else if (m_playOnHover && !isHovered) {
+        // ホバーが外れたら「再生終了」とみなしてフラグをオフにする
+        m_isPlaying = false;
+    }
+
+    // 2. クリック音の再生処理
+    if (m_playOnClick && isHovered && ImGui::IsMouseClicked(ImGuiMouseButton_Left)) {
+        Play(m_loop);
+    }
 }
 
 void AudioComponent::DrawInspector()
