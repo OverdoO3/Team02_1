@@ -167,7 +167,11 @@ void AudioComponent::Load(const char* filename)
 {
     if (!Audio::IsSystemAlive() || m_isBGM) return;
     if (!filename || strlen(filename) == 0) return;
-    auto res = std::make_shared<AudioResource>(filename);
+
+    // š‚±‚±‚Å•ÏŠ·‚·‚é
+    std::string safePath = ToDataPath(filename);
+
+    auto res = std::make_shared<AudioResource>(safePath.c_str());
     source = std::make_unique<AudioSource>(Audio::Instance().GetXAudio2(), res);
 }
 
