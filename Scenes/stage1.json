@@ -52,9 +52,9 @@
                     {
                         "data": {
                             "position": [
-                                62.2664680480957,
+                                62.266475677490234,
                                 46.52845001220703,
-                                -60.66997528076172
+                                -64.66997528076172
                             ],
                             "rotation": [
                                 -0.0,
@@ -98,6 +98,7 @@
                     },
                     {
                         "data": {
+                            "StartPlay": true,
                             "loop": true,
                             "offset": [
                                 0.0,
@@ -118,7 +119,7 @@
                                 "normal": "Data/Effects/mode_normal.efk",
                                 "water": ""
                             },
-                            "loop": false
+                            "loop": true
                         },
                         "type": "StateEffect"
                     },
@@ -26792,6 +26793,7 @@
                     },
                     {
                         "data": {
+                            "StartPlay": false,
                             "loop": true,
                             "offset": [
                                 0.0,
@@ -26819,813 +26821,7 @@
                     {
                         "data": {
                             "position": [
-                                -69.99998474121094,
-                                125.0,
-                                20.00002098083496
-                            ],
-                            "rotation": [
-                                -0.0,
-                                0.0,
-                                -0.0,
-                                1.0
-                            ],
-                            "scale": [
-                                1.5,
-                                1.5,
-                                1.5
-                            ]
-                        },
-                        "type": "Transform"
-                    },
-                    {
-                        "data": {
-                            "ModelPath": "Data/Model/Stage/Demos/tree.mdl"
-                        },
-                        "type": "ModelRender"
-                    },
-                    {
-                        "data": {
-                            "offset": [
-                                0.0,
-                                0.0,
-                                0.0
-                            ],
-                            "size": [
-                                10.0,
-                                20.0,
-                                10.0
-                            ]
-                        },
-                        "type": "BoxCollider"
-                    },
-                    {
-                        "data": {
-                            "radius": 10.0,
-                            "thermal": 0
-                        },
-                        "type": "ThermalBody"
-                    },
-                    {
-                        "data": null,
-                        "type": "wood"
-                    }
-                ],
-                "id": 11,
-                "name": "tree",
-                "parent": 657,
-                "tag": 0,
-                "type": "Actor"
-            },
-            {
-                "components": [
-                    {
-                        "data": {
-                            "position": [
-                                -69.99996948242188,
-                                125.0,
-                                4.000020503997803
-                            ],
-                            "rotation": [
-                                -0.0,
-                                0.0,
-                                -0.0,
-                                1.0
-                            ],
-                            "scale": [
-                                1.2000000476837158,
-                                1.2000000476837158,
-                                1.2000000476837158
-                            ]
-                        },
-                        "type": "Transform"
-                    },
-                    {
-                        "data": {
-                            "ModelPath": "Data/Model/Stage/Demos/tree.mdl"
-                        },
-                        "type": "ModelRender"
-                    },
-                    {
-                        "data": {
-                            "offset": [
-                                0.0,
-                                0.0,
-                                0.0
-                            ],
-                            "size": [
-                                10.0,
-                                20.0,
-                                10.0
-                            ]
-                        },
-                        "type": "BoxCollider"
-                    },
-                    {
-                        "data": {
-                            "radius": 10.0,
-                            "thermal": 0
-                        },
-                        "type": "ThermalBody"
-                    },
-                    {
-                        "data": null,
-                        "type": "wood"
-                    }
-                ],
-                "id": 11,
-                "name": "tree(1)",
-                "parent": 657,
-                "tag": 0,
-                "type": "Actor"
-            },
-            {
-                "components": [
-                    {
-                        "data": {
-                            "position": [
-                                -69.99996948242188,
-                                125.0,
-                                36.999996185302734
-                            ],
-                            "rotation": [
-                                -0.0,
-                                0.0,
-                                -0.0,
-                                1.0
-                            ],
-                            "scale": [
-                                1.2000000476837158,
-                                1.2000000476837158,
-                                1.2000000476837158
-                            ]
-                        },
-                        "type": "Transform"
-                    },
-                    {
-                        "data": {
-                            "ModelPath": "Data/Model/Stage/Demos/tree.mdl"
-                        },
-                        "type": "ModelRender"
-                    },
-                    {
-                        "data": {
-                            "offset": [
-                                0.0,
-                                0.0,
-                                0.0
-                            ],
-                            "size": [
-                                10.0,
-                                20.0,
-                                10.0
-                            ]
-                        },
-                        "type": "BoxCollider"
-                    },
-                    {
-                        "data": {
-                            "radius": 10.0,
-                            "thermal": 0
-                        },
-                        "type": "ThermalBody"
-                    },
-                    {
-                        "data": null,
-                        "type": "wood"
-                    }
-                ],
-                "id": 11,
-                "name": "tree(2)",
-                "parent": 657,
-                "tag": 0,
-                "type": "Actor"
-            },
-            {
-                "components": [
-                    {
-                        "data": {
-                            "position": [
-                                -39.999977111816406,
-                                45.0,
-                                60.00002670288086
-                            ],
-                            "rotation": [
-                                -0.0,
-                                0.0,
-                                -0.0,
-                                1.0
-                            ],
-                            "scale": [
-                                1.1999999284744263,
-                                1.1999999284744263,
-                                1.1999999284744263
-                            ]
-                        },
-                        "type": "Transform"
-                    },
-                    {
-                        "data": {
-                            "ModelPath": "Data/Model/Stage/Demos/tree.mdl"
-                        },
-                        "type": "ModelRender"
-                    },
-                    {
-                        "data": {
-                            "offset": [
-                                0.0,
-                                0.0,
-                                0.0
-                            ],
-                            "size": [
-                                10.0,
-                                20.0,
-                                10.0
-                            ]
-                        },
-                        "type": "BoxCollider"
-                    },
-                    {
-                        "data": {
-                            "radius": 10.0,
-                            "thermal": 0
-                        },
-                        "type": "ThermalBody"
-                    },
-                    {
-                        "data": null,
-                        "type": "wood"
-                    }
-                ],
-                "id": 11,
-                "name": "tree(3)",
-                "parent": 657,
-                "tag": 0,
-                "type": "Actor"
-            },
-            {
-                "components": [
-                    {
-                        "data": {
-                            "position": [
-                                -29.999977111816406,
-                                45.0,
-                                60.00002670288086
-                            ],
-                            "rotation": [
-                                -0.0,
-                                0.0,
-                                -0.0,
-                                1.0
-                            ],
-                            "scale": [
-                                1.1999999284744263,
-                                1.1999999284744263,
-                                1.1999999284744263
-                            ]
-                        },
-                        "type": "Transform"
-                    },
-                    {
-                        "data": {
-                            "ModelPath": "Data/Model/Stage/Demos/tree.mdl"
-                        },
-                        "type": "ModelRender"
-                    },
-                    {
-                        "data": {
-                            "offset": [
-                                0.0,
-                                0.0,
-                                0.0
-                            ],
-                            "size": [
-                                10.0,
-                                20.0,
-                                10.0
-                            ]
-                        },
-                        "type": "BoxCollider"
-                    },
-                    {
-                        "data": {
-                            "radius": 10.0,
-                            "thermal": 0
-                        },
-                        "type": "ThermalBody"
-                    },
-                    {
-                        "data": null,
-                        "type": "wood"
-                    }
-                ],
-                "id": 11,
-                "name": "tree(4)",
-                "parent": 657,
-                "tag": 0,
-                "type": "Actor"
-            },
-            {
-                "components": [
-                    {
-                        "data": {
-                            "position": [
-                                -39.99997329711914,
-                                45.0,
-                                70.00003051757813
-                            ],
-                            "rotation": [
-                                -0.0,
-                                0.0,
-                                -0.0,
-                                1.0
-                            ],
-                            "scale": [
-                                1.1999999284744263,
-                                1.1999999284744263,
-                                1.1999999284744263
-                            ]
-                        },
-                        "type": "Transform"
-                    },
-                    {
-                        "data": {
-                            "ModelPath": "Data/Model/Stage/Demos/tree.mdl"
-                        },
-                        "type": "ModelRender"
-                    },
-                    {
-                        "data": {
-                            "offset": [
-                                0.0,
-                                0.0,
-                                0.0
-                            ],
-                            "size": [
-                                10.0,
-                                20.0,
-                                10.0
-                            ]
-                        },
-                        "type": "BoxCollider"
-                    },
-                    {
-                        "data": {
-                            "radius": 10.0,
-                            "thermal": 0
-                        },
-                        "type": "ThermalBody"
-                    },
-                    {
-                        "data": null,
-                        "type": "wood"
-                    }
-                ],
-                "id": 11,
-                "name": "tree(5)",
-                "parent": 657,
-                "tag": 0,
-                "type": "Actor"
-            },
-            {
-                "components": [
-                    {
-                        "data": {
-                            "position": [
-                                -29.99997329711914,
-                                45.0,
-                                70.00003051757813
-                            ],
-                            "rotation": [
-                                -0.0,
-                                0.0,
-                                -0.0,
-                                1.0
-                            ],
-                            "scale": [
-                                1.1999999284744263,
-                                1.1999999284744263,
-                                1.1999999284744263
-                            ]
-                        },
-                        "type": "Transform"
-                    },
-                    {
-                        "data": {
-                            "ModelPath": "Data/Model/Stage/Demos/tree.mdl"
-                        },
-                        "type": "ModelRender"
-                    },
-                    {
-                        "data": {
-                            "offset": [
-                                0.0,
-                                0.0,
-                                0.0
-                            ],
-                            "size": [
-                                10.0,
-                                20.0,
-                                10.0
-                            ]
-                        },
-                        "type": "BoxCollider"
-                    },
-                    {
-                        "data": {
-                            "radius": 10.0,
-                            "thermal": 0
-                        },
-                        "type": "ThermalBody"
-                    },
-                    {
-                        "data": null,
-                        "type": "wood"
-                    }
-                ],
-                "id": 11,
-                "name": "tree(6)",
-                "parent": 657,
-                "tag": 0,
-                "type": "Actor"
-            },
-            {
-                "components": [
-                    {
-                        "data": {
-                            "position": [
-                                -39.999969482421875,
-                                45.0,
-                                50.00002670288086
-                            ],
-                            "rotation": [
-                                -0.0,
-                                0.0,
-                                -0.0,
-                                1.0
-                            ],
-                            "scale": [
-                                1.1999999284744263,
-                                1.1999999284744263,
-                                1.1999999284744263
-                            ]
-                        },
-                        "type": "Transform"
-                    },
-                    {
-                        "data": {
-                            "ModelPath": "Data/Model/Stage/Demos/tree.mdl"
-                        },
-                        "type": "ModelRender"
-                    },
-                    {
-                        "data": {
-                            "offset": [
-                                0.0,
-                                0.0,
-                                0.0
-                            ],
-                            "size": [
-                                10.0,
-                                20.0,
-                                10.0
-                            ]
-                        },
-                        "type": "BoxCollider"
-                    },
-                    {
-                        "data": {
-                            "radius": 10.0,
-                            "thermal": 0
-                        },
-                        "type": "ThermalBody"
-                    },
-                    {
-                        "data": null,
-                        "type": "wood"
-                    }
-                ],
-                "id": 11,
-                "name": "tree(7)",
-                "parent": 657,
-                "tag": 0,
-                "type": "Actor"
-            },
-            {
-                "components": [
-                    {
-                        "data": {
-                            "position": [
-                                -29.999969482421875,
-                                45.0,
-                                50.00002670288086
-                            ],
-                            "rotation": [
-                                -0.0,
-                                0.0,
-                                -0.0,
-                                1.0
-                            ],
-                            "scale": [
-                                1.1999999284744263,
-                                1.1999999284744263,
-                                1.1999999284744263
-                            ]
-                        },
-                        "type": "Transform"
-                    },
-                    {
-                        "data": {
-                            "ModelPath": "Data/Model/Stage/Demos/tree.mdl"
-                        },
-                        "type": "ModelRender"
-                    },
-                    {
-                        "data": {
-                            "offset": [
-                                0.0,
-                                0.0,
-                                0.0
-                            ],
-                            "size": [
-                                10.0,
-                                20.0,
-                                10.0
-                            ]
-                        },
-                        "type": "BoxCollider"
-                    },
-                    {
-                        "data": {
-                            "radius": 10.0,
-                            "thermal": 0
-                        },
-                        "type": "ThermalBody"
-                    },
-                    {
-                        "data": null,
-                        "type": "wood"
-                    }
-                ],
-                "id": 11,
-                "name": "tree(8)",
-                "parent": 657,
-                "tag": 0,
-                "type": "Actor"
-            },
-            {
-                "components": [
-                    {
-                        "data": {
-                            "position": [
-                                59.00001525878906,
-                                45.0,
-                                -9.999974250793457
-                            ],
-                            "rotation": [
-                                -0.0,
-                                0.0,
-                                -0.0,
-                                1.0
-                            ],
-                            "scale": [
-                                1.1999999284744263,
-                                1.1999999284744263,
-                                1.1999999284744263
-                            ]
-                        },
-                        "type": "Transform"
-                    },
-                    {
-                        "data": {
-                            "ModelPath": "Data/Model/Stage/Demos/tree.mdl"
-                        },
-                        "type": "ModelRender"
-                    },
-                    {
-                        "data": {
-                            "offset": [
-                                0.0,
-                                0.0,
-                                0.0
-                            ],
-                            "size": [
-                                10.0,
-                                20.0,
-                                10.0
-                            ]
-                        },
-                        "type": "BoxCollider"
-                    },
-                    {
-                        "data": {
-                            "radius": 10.0,
-                            "thermal": 0
-                        },
-                        "type": "ThermalBody"
-                    },
-                    {
-                        "data": null,
-                        "type": "wood"
-                    }
-                ],
-                "id": 11,
-                "name": "tree(9)",
-                "parent": 657,
-                "tag": 0,
-                "type": "Actor"
-            },
-            {
-                "components": [
-                    {
-                        "data": {
-                            "position": [
-                                30.000240325927734,
-                                45.0,
-                                2.467632293701172e-05
-                            ],
-                            "rotation": [
-                                -0.0,
-                                0.0,
-                                -0.0,
-                                1.0
-                            ],
-                            "scale": [
-                                1.1999999284744263,
-                                1.1999999284744263,
-                                1.1999999284744263
-                            ]
-                        },
-                        "type": "Transform"
-                    },
-                    {
-                        "data": {
-                            "ModelPath": "Data/Model/Stage/Demos/tree.mdl"
-                        },
-                        "type": "ModelRender"
-                    },
-                    {
-                        "data": {
-                            "offset": [
-                                0.0,
-                                0.0,
-                                0.0
-                            ],
-                            "size": [
-                                10.0,
-                                20.0,
-                                10.0
-                            ]
-                        },
-                        "type": "BoxCollider"
-                    },
-                    {
-                        "data": {
-                            "radius": 10.0,
-                            "thermal": 0
-                        },
-                        "type": "ThermalBody"
-                    },
-                    {
-                        "data": null,
-                        "type": "wood"
-                    }
-                ],
-                "id": 11,
-                "name": "tree(10)",
-                "parent": 657,
-                "tag": 0,
-                "type": "Actor"
-            },
-            {
-                "components": [
-                    {
-                        "data": {
-                            "position": [
-                                69.0000228881836,
-                                45.0,
-                                1.1324882507324219e-05
-                            ],
-                            "rotation": [
-                                -0.0,
-                                0.0,
-                                -0.0,
-                                1.0
-                            ],
-                            "scale": [
-                                1.1999999284744263,
-                                1.1999999284744263,
-                                1.1999999284744263
-                            ]
-                        },
-                        "type": "Transform"
-                    },
-                    {
-                        "data": {
-                            "ModelPath": "Data/Model/Stage/Demos/tree.mdl"
-                        },
-                        "type": "ModelRender"
-                    },
-                    {
-                        "data": {
-                            "offset": [
-                                0.0,
-                                0.0,
-                                0.0
-                            ],
-                            "size": [
-                                10.0,
-                                20.0,
-                                10.0
-                            ]
-                        },
-                        "type": "BoxCollider"
-                    },
-                    {
-                        "data": {
-                            "radius": 10.0,
-                            "thermal": 0
-                        },
-                        "type": "ThermalBody"
-                    },
-                    {
-                        "data": null,
-                        "type": "wood"
-                    }
-                ],
-                "id": 11,
-                "name": "tree(11)",
-                "parent": 657,
-                "tag": 0,
-                "type": "Actor"
-            },
-            {
-                "components": [
-                    {
-                        "data": {
-                            "position": [
-                                59.000244140625,
-                                45.0,
-                                1.1324882507324219e-05
-                            ],
-                            "rotation": [
-                                -0.0,
-                                0.0,
-                                -0.0,
-                                1.0
-                            ],
-                            "scale": [
-                                1.1999999284744263,
-                                1.1999999284744263,
-                                1.1999999284744263
-                            ]
-                        },
-                        "type": "Transform"
-                    },
-                    {
-                        "data": {
-                            "ModelPath": "Data/Model/Stage/Demos/tree.mdl"
-                        },
-                        "type": "ModelRender"
-                    },
-                    {
-                        "data": {
-                            "offset": [
-                                0.0,
-                                0.0,
-                                0.0
-                            ],
-                            "size": [
-                                10.0,
-                                20.0,
-                                10.0
-                            ]
-                        },
-                        "type": "BoxCollider"
-                    },
-                    {
-                        "data": {
-                            "radius": 10.0,
-                            "thermal": 0
-                        },
-                        "type": "ThermalBody"
-                    },
-                    {
-                        "data": null,
-                        "type": "wood"
-                    }
-                ],
-                "id": 11,
-                "name": "tree(12)",
-                "parent": 657,
-                "tag": 0,
-                "type": "Actor"
-            },
-            {
-                "components": [
-                    {
-                        "data": {
-                            "position": [
-                                69.00001525878906,
+                                29.000017166137695,
                                 45.0,
                                 -9.999972343444824
                             ],
@@ -27674,320 +26870,24 @@
                     {
                         "data": null,
                         "type": "wood"
+                    },
+                    {
+                        "data": {
+                            "StartPlay": false,
+                            "loop": false,
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "path": "Data/Effects/tree_fire.efk",
+                            "scale": 1.0
+                        },
+                        "type": "EffectRender"
                     }
                 ],
                 "id": 11,
                 "name": "tree(13)",
-                "parent": 657,
-                "tag": 0,
-                "type": "Actor"
-            },
-            {
-                "components": [
-                    {
-                        "data": {
-                            "position": [
-                                49.000247955322266,
-                                45.0,
-                                2.47955322265625e-05
-                            ],
-                            "rotation": [
-                                -0.0,
-                                0.0,
-                                -0.0,
-                                1.0
-                            ],
-                            "scale": [
-                                1.1999999284744263,
-                                1.1999999284744263,
-                                1.1999999284744263
-                            ]
-                        },
-                        "type": "Transform"
-                    },
-                    {
-                        "data": {
-                            "ModelPath": "Data/Model/Stage/Demos/tree.mdl"
-                        },
-                        "type": "ModelRender"
-                    },
-                    {
-                        "data": {
-                            "offset": [
-                                0.0,
-                                0.0,
-                                0.0
-                            ],
-                            "size": [
-                                10.0,
-                                20.0,
-                                10.0
-                            ]
-                        },
-                        "type": "BoxCollider"
-                    },
-                    {
-                        "data": {
-                            "radius": 10.0,
-                            "thermal": 0
-                        },
-                        "type": "ThermalBody"
-                    },
-                    {
-                        "data": null,
-                        "type": "wood"
-                    }
-                ],
-                "id": 11,
-                "name": "tree(14)",
-                "parent": 657,
-                "tag": 0,
-                "type": "Actor"
-            },
-            {
-                "components": [
-                    {
-                        "data": {
-                            "position": [
-                                30.0002384185791,
-                                45.0,
-                                -9.999975204467773
-                            ],
-                            "rotation": [
-                                -0.0,
-                                0.0,
-                                -0.0,
-                                1.0
-                            ],
-                            "scale": [
-                                1.1999999284744263,
-                                1.1999999284744263,
-                                1.1999999284744263
-                            ]
-                        },
-                        "type": "Transform"
-                    },
-                    {
-                        "data": {
-                            "ModelPath": "Data/Model/Stage/Demos/tree.mdl"
-                        },
-                        "type": "ModelRender"
-                    },
-                    {
-                        "data": {
-                            "offset": [
-                                0.0,
-                                0.0,
-                                0.0
-                            ],
-                            "size": [
-                                10.0,
-                                20.0,
-                                10.0
-                            ]
-                        },
-                        "type": "BoxCollider"
-                    },
-                    {
-                        "data": {
-                            "radius": 10.0,
-                            "thermal": 0
-                        },
-                        "type": "ThermalBody"
-                    },
-                    {
-                        "data": null,
-                        "type": "wood"
-                    }
-                ],
-                "id": 11,
-                "name": "tree(15)",
-                "parent": 657,
-                "tag": 0,
-                "type": "Actor"
-            },
-            {
-                "components": [
-                    {
-                        "data": {
-                            "position": [
-                                40.00023651123047,
-                                45.0,
-                                -9.999975204467773
-                            ],
-                            "rotation": [
-                                -0.0,
-                                0.0,
-                                -0.0,
-                                1.0
-                            ],
-                            "scale": [
-                                1.1999999284744263,
-                                1.1999999284744263,
-                                1.1999999284744263
-                            ]
-                        },
-                        "type": "Transform"
-                    },
-                    {
-                        "data": {
-                            "ModelPath": "Data/Model/Stage/Demos/tree.mdl"
-                        },
-                        "type": "ModelRender"
-                    },
-                    {
-                        "data": {
-                            "offset": [
-                                0.0,
-                                0.0,
-                                0.0
-                            ],
-                            "size": [
-                                10.0,
-                                20.0,
-                                10.0
-                            ]
-                        },
-                        "type": "BoxCollider"
-                    },
-                    {
-                        "data": {
-                            "radius": 10.0,
-                            "thermal": 0
-                        },
-                        "type": "ThermalBody"
-                    },
-                    {
-                        "data": null,
-                        "type": "wood"
-                    }
-                ],
-                "id": 11,
-                "name": "tree(16)",
-                "parent": 657,
-                "tag": 0,
-                "type": "Actor"
-            },
-            {
-                "components": [
-                    {
-                        "data": {
-                            "position": [
-                                50.00023651123047,
-                                45.0,
-                                -9.999975204467773
-                            ],
-                            "rotation": [
-                                -0.0,
-                                0.0,
-                                -0.0,
-                                1.0
-                            ],
-                            "scale": [
-                                1.1999999284744263,
-                                1.1999999284744263,
-                                1.1999999284744263
-                            ]
-                        },
-                        "type": "Transform"
-                    },
-                    {
-                        "data": {
-                            "ModelPath": "Data/Model/Stage/Demos/tree.mdl"
-                        },
-                        "type": "ModelRender"
-                    },
-                    {
-                        "data": {
-                            "offset": [
-                                0.0,
-                                0.0,
-                                0.0
-                            ],
-                            "size": [
-                                10.0,
-                                20.0,
-                                10.0
-                            ]
-                        },
-                        "type": "BoxCollider"
-                    },
-                    {
-                        "data": {
-                            "radius": 10.0,
-                            "thermal": 0
-                        },
-                        "type": "ThermalBody"
-                    },
-                    {
-                        "data": null,
-                        "type": "wood"
-                    }
-                ],
-                "id": 11,
-                "name": "tree(17)",
-                "parent": 657,
-                "tag": 0,
-                "type": "Actor"
-            },
-            {
-                "components": [
-                    {
-                        "data": {
-                            "position": [
-                                40.000240325927734,
-                                45.0,
-                                2.467632293701172e-05
-                            ],
-                            "rotation": [
-                                -0.0,
-                                0.0,
-                                -0.0,
-                                1.0
-                            ],
-                            "scale": [
-                                1.1999999284744263,
-                                1.1999999284744263,
-                                1.1999999284744263
-                            ]
-                        },
-                        "type": "Transform"
-                    },
-                    {
-                        "data": {
-                            "ModelPath": "Data/Model/Stage/Demos/tree.mdl"
-                        },
-                        "type": "ModelRender"
-                    },
-                    {
-                        "data": {
-                            "offset": [
-                                0.0,
-                                0.0,
-                                0.0
-                            ],
-                            "size": [
-                                10.0,
-                                20.0,
-                                10.0
-                            ]
-                        },
-                        "type": "BoxCollider"
-                    },
-                    {
-                        "data": {
-                            "radius": 10.0,
-                            "thermal": 0
-                        },
-                        "type": "ThermalBody"
-                    },
-                    {
-                        "data": null,
-                        "type": "wood"
-                    }
-                ],
-                "id": 11,
-                "name": "tree(18)",
                 "parent": 657,
                 "tag": 0,
                 "type": "Actor"
@@ -28019,254 +26919,6 @@
                 "id": 657,
                 "name": "trees",
                 "parent": 15,
-                "tag": 0,
-                "type": "Actor"
-            },
-            {
-                "components": [
-                    {
-                        "data": {
-                            "position": [
-                                -8.999751091003418,
-                                86.0,
-                                -49.99998474121094
-                            ],
-                            "rotation": [
-                                -0.0,
-                                0.0,
-                                -0.0,
-                                1.0
-                            ],
-                            "scale": [
-                                1.1999999284744263,
-                                1.1999999284744263,
-                                1.1999999284744263
-                            ]
-                        },
-                        "type": "Transform"
-                    },
-                    {
-                        "data": {
-                            "ModelPath": "Data/Model/Stage/Demos/tree.mdl"
-                        },
-                        "type": "ModelRender"
-                    },
-                    {
-                        "data": {
-                            "offset": [
-                                0.0,
-                                0.0,
-                                0.0
-                            ],
-                            "size": [
-                                10.0,
-                                20.0,
-                                10.0
-                            ]
-                        },
-                        "type": "BoxCollider"
-                    },
-                    {
-                        "data": {
-                            "radius": 10.0,
-                            "thermal": 0
-                        },
-                        "type": "ThermalBody"
-                    },
-                    {
-                        "data": null,
-                        "type": "wood"
-                    }
-                ],
-                "id": 11,
-                "name": "tree(21)",
-                "parent": 657,
-                "tag": 0,
-                "type": "Actor"
-            },
-            {
-                "components": [
-                    {
-                        "data": {
-                            "position": [
-                                10.000019073486328,
-                                86.0,
-                                -49.99998474121094
-                            ],
-                            "rotation": [
-                                -0.0,
-                                0.0,
-                                -0.0,
-                                1.0
-                            ],
-                            "scale": [
-                                1.1999999284744263,
-                                1.1999999284744263,
-                                1.1999999284744263
-                            ]
-                        },
-                        "type": "Transform"
-                    },
-                    {
-                        "data": {
-                            "ModelPath": "Data/Model/Stage/Demos/tree.mdl"
-                        },
-                        "type": "ModelRender"
-                    },
-                    {
-                        "data": {
-                            "offset": [
-                                0.0,
-                                0.0,
-                                0.0
-                            ],
-                            "size": [
-                                10.0,
-                                20.0,
-                                10.0
-                            ]
-                        },
-                        "type": "BoxCollider"
-                    },
-                    {
-                        "data": {
-                            "radius": 10.0,
-                            "thermal": 0
-                        },
-                        "type": "ThermalBody"
-                    },
-                    {
-                        "data": null,
-                        "type": "wood"
-                    }
-                ],
-                "id": 11,
-                "name": "tree(23)",
-                "parent": 657,
-                "tag": 0,
-                "type": "Actor"
-            },
-            {
-                "components": [
-                    {
-                        "data": {
-                            "position": [
-                                1.0002316236495972,
-                                86.0,
-                                -49.99998474121094
-                            ],
-                            "rotation": [
-                                -0.0,
-                                0.0,
-                                -0.0,
-                                1.0
-                            ],
-                            "scale": [
-                                1.1999999284744263,
-                                1.1999999284744263,
-                                1.1999999284744263
-                            ]
-                        },
-                        "type": "Transform"
-                    },
-                    {
-                        "data": {
-                            "ModelPath": "Data/Model/Stage/Demos/tree.mdl"
-                        },
-                        "type": "ModelRender"
-                    },
-                    {
-                        "data": {
-                            "offset": [
-                                0.0,
-                                0.0,
-                                0.0
-                            ],
-                            "size": [
-                                10.0,
-                                20.0,
-                                10.0
-                            ]
-                        },
-                        "type": "BoxCollider"
-                    },
-                    {
-                        "data": {
-                            "radius": 10.0,
-                            "thermal": 0
-                        },
-                        "type": "ThermalBody"
-                    },
-                    {
-                        "data": null,
-                        "type": "wood"
-                    }
-                ],
-                "id": 11,
-                "name": "tree(24)",
-                "parent": 657,
-                "tag": 0,
-                "type": "Actor"
-            },
-            {
-                "components": [
-                    {
-                        "data": {
-                            "position": [
-                                20.000015258789063,
-                                86.0,
-                                -49.99998092651367
-                            ],
-                            "rotation": [
-                                -0.0,
-                                0.0,
-                                -0.0,
-                                1.0
-                            ],
-                            "scale": [
-                                1.1999999284744263,
-                                1.1999999284744263,
-                                1.1999999284744263
-                            ]
-                        },
-                        "type": "Transform"
-                    },
-                    {
-                        "data": {
-                            "ModelPath": "Data/Model/Stage/Demos/tree.mdl"
-                        },
-                        "type": "ModelRender"
-                    },
-                    {
-                        "data": {
-                            "offset": [
-                                0.0,
-                                0.0,
-                                0.0
-                            ],
-                            "size": [
-                                10.0,
-                                20.0,
-                                10.0
-                            ]
-                        },
-                        "type": "BoxCollider"
-                    },
-                    {
-                        "data": {
-                            "radius": 10.0,
-                            "thermal": 0
-                        },
-                        "type": "ThermalBody"
-                    },
-                    {
-                        "data": null,
-                        "type": "wood"
-                    }
-                ],
-                "id": 11,
-                "name": "tree(27)",
-                "parent": 657,
                 "tag": 0,
                 "type": "Actor"
             },
@@ -28315,6 +26967,7 @@
                     },
                     {
                         "data": {
+                            "StartPlay": true,
                             "loop": true,
                             "offset": [
                                 0.0,
@@ -28382,6 +27035,7 @@
                     },
                     {
                         "data": {
+                            "StartPlay": true,
                             "loop": true,
                             "offset": [
                                 0.0,
@@ -28448,6 +27102,20 @@
                         "type": "HeatReceiver"
                     },
                     {
+                        "data": {
+                            "StartPlay": true,
+                            "loop": true,
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "path": "Data/Effects/snowman.efk",
+                            "scale": 3.0
+                        },
+                        "type": "EffectRender"
+                    },
+                    {
                         "data": null,
                         "type": "snowman"
                     }
@@ -28456,144 +27124,6 @@
                 "name": "snowman",
                 "parent": 15,
                 "tag": 0,
-                "type": "Actor"
-            },
-            {
-                "components": [
-                    {
-                        "data": {
-                            "position": [
-                                -20.0,
-                                40.0,
-                                10.0
-                            ],
-                            "rotation": [
-                                -0.0,
-                                0.0,
-                                -0.0,
-                                1.0
-                            ],
-                            "scale": [
-                                1.0,
-                                1.0,
-                                1.0
-                            ]
-                        },
-                        "type": "Transform"
-                    },
-                    {
-                        "data": {
-                            "ModelPath": "Data/Model/Stage/Demos/water_block.mdl"
-                        },
-                        "type": "ModelRender"
-                    },
-                    {
-                        "data": {
-                            "offset": [
-                                0.0,
-                                0.0,
-                                0.0
-                            ],
-                            "size": [
-                                10.0,
-                                20.0,
-                                10.0
-                            ]
-                        },
-                        "type": "BoxCollider"
-                    },
-                    {
-                        "data": {
-                            "radius": 10.0,
-                            "thermal": 0
-                        },
-                        "type": "ThermalBody"
-                    },
-                    {
-                        "data": {
-                            "heat": -1,
-                            "linkedLightIndex": -1
-                        },
-                        "type": "HeatReceiver"
-                    },
-                    {
-                        "data": null,
-                        "type": "water"
-                    }
-                ],
-                "id": 411,
-                "name": "grass(337)",
-                "parent": 636,
-                "tag": 2,
-                "type": "Actor"
-            },
-            {
-                "components": [
-                    {
-                        "data": {
-                            "position": [
-                                -20.0,
-                                40.0,
-                                20.0
-                            ],
-                            "rotation": [
-                                -0.0,
-                                0.0,
-                                -0.0,
-                                1.0
-                            ],
-                            "scale": [
-                                1.0,
-                                1.0,
-                                1.0
-                            ]
-                        },
-                        "type": "Transform"
-                    },
-                    {
-                        "data": {
-                            "ModelPath": "Data/Model/Stage/Demos/water_block.mdl"
-                        },
-                        "type": "ModelRender"
-                    },
-                    {
-                        "data": {
-                            "offset": [
-                                0.0,
-                                0.0,
-                                0.0
-                            ],
-                            "size": [
-                                10.0,
-                                20.0,
-                                10.0
-                            ]
-                        },
-                        "type": "BoxCollider"
-                    },
-                    {
-                        "data": {
-                            "radius": 10.0,
-                            "thermal": 0
-                        },
-                        "type": "ThermalBody"
-                    },
-                    {
-                        "data": {
-                            "heat": -1,
-                            "linkedLightIndex": -1
-                        },
-                        "type": "HeatReceiver"
-                    },
-                    {
-                        "data": null,
-                        "type": "water"
-                    }
-                ],
-                "id": 411,
-                "name": "grass(338)",
-                "parent": 636,
-                "tag": 2,
                 "type": "Actor"
             },
             {
@@ -39296,56 +37826,6 @@
                     {
                         "data": {
                             "position": [
-                                -69.89407348632813,
-                                44.990901947021484,
-                                50.12895965576172
-                            ],
-                            "rotation": [
-                                -0.0,
-                                0.5910207629203796,
-                                -0.0,
-                                0.8066563606262207
-                            ],
-                            "scale": [
-                                1.399999976158142,
-                                1.399999976158142,
-                                1.399999976158142
-                            ]
-                        },
-                        "type": "Transform"
-                    },
-                    {
-                        "data": {
-                            "ModelPath": "Data/Model/Stage/Demos/snowmen.mdl"
-                        },
-                        "type": "ModelRender"
-                    },
-                    {
-                        "data": {
-                            "radius": 10.0,
-                            "thermal": -2
-                        },
-                        "type": "ThermalBody"
-                    },
-                    {
-                        "data": {
-                            "heat": -2,
-                            "linkedLightIndex": -1
-                        },
-                        "type": "HeatReceiver"
-                    }
-                ],
-                "id": 12,
-                "name": "snowman(1)",
-                "parent": 15,
-                "tag": 0,
-                "type": "Actor"
-            },
-            {
-                "components": [
-                    {
-                        "data": {
-                            "position": [
                                 -54.99998474121094,
                                 58.0,
                                 27.0
@@ -39401,6 +37881,7 @@
                     },
                     {
                         "data": {
+                            "StartPlay": false,
                             "loop": true,
                             "offset": [
                                 0.0,
@@ -41619,6 +40100,20 @@
                     {
                         "data": null,
                         "type": "wood"
+                    },
+                    {
+                        "data": {
+                            "StartPlay": false,
+                            "loop": false,
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "path": "Data/Effects/tree_fire.efk",
+                            "scale": 1.0
+                        },
+                        "type": "EffectRender"
                     }
                 ],
                 "id": 411,
@@ -41716,840 +40211,26 @@
                         "type": "HeatReceiver"
                     },
                     {
+                        "data": {
+                            "StartPlay": false,
+                            "loop": true,
+                            "offset": [
+                                0.0,
+                                6.0,
+                                0.0
+                            ],
+                            "path": "",
+                            "scale": 1.0
+                        },
+                        "type": "EffectRender"
+                    },
+                    {
                         "data": null,
                         "type": "water"
                     }
                 ],
                 "id": 411,
                 "name": "grass(332)",
-                "parent": 636,
-                "tag": 2,
-                "type": "Actor"
-            },
-            {
-                "components": [
-                    {
-                        "data": {
-                            "position": [
-                                -10.0,
-                                40.0,
-                                10.0
-                            ],
-                            "rotation": [
-                                -0.0,
-                                0.0,
-                                -0.0,
-                                1.0
-                            ],
-                            "scale": [
-                                1.0,
-                                1.0,
-                                1.0
-                            ]
-                        },
-                        "type": "Transform"
-                    },
-                    {
-                        "data": {
-                            "ModelPath": "Data/Model/Stage/Demos/water_block.mdl"
-                        },
-                        "type": "ModelRender"
-                    },
-                    {
-                        "data": {
-                            "offset": [
-                                0.0,
-                                0.0,
-                                0.0
-                            ],
-                            "size": [
-                                10.0,
-                                20.0,
-                                10.0
-                            ]
-                        },
-                        "type": "BoxCollider"
-                    },
-                    {
-                        "data": {
-                            "radius": 10.0,
-                            "thermal": 0
-                        },
-                        "type": "ThermalBody"
-                    },
-                    {
-                        "data": {
-                            "heat": -1,
-                            "linkedLightIndex": -1
-                        },
-                        "type": "HeatReceiver"
-                    },
-                    {
-                        "data": null,
-                        "type": "water"
-                    }
-                ],
-                "id": 411,
-                "name": "grass(318)",
-                "parent": 636,
-                "tag": 2,
-                "type": "Actor"
-            },
-            {
-                "components": [
-                    {
-                        "data": {
-                            "position": [
-                                -10.0,
-                                40.0,
-                                20.0
-                            ],
-                            "rotation": [
-                                -0.0,
-                                0.0,
-                                -0.0,
-                                1.0
-                            ],
-                            "scale": [
-                                1.0,
-                                1.0,
-                                1.0
-                            ]
-                        },
-                        "type": "Transform"
-                    },
-                    {
-                        "data": {
-                            "ModelPath": "Data/Model/Stage/Demos/water_block.mdl"
-                        },
-                        "type": "ModelRender"
-                    },
-                    {
-                        "data": {
-                            "offset": [
-                                0.0,
-                                0.0,
-                                0.0
-                            ],
-                            "size": [
-                                10.0,
-                                20.0,
-                                10.0
-                            ]
-                        },
-                        "type": "BoxCollider"
-                    },
-                    {
-                        "data": {
-                            "radius": 10.0,
-                            "thermal": 0
-                        },
-                        "type": "ThermalBody"
-                    },
-                    {
-                        "data": {
-                            "heat": -1,
-                            "linkedLightIndex": -1
-                        },
-                        "type": "HeatReceiver"
-                    },
-                    {
-                        "data": null,
-                        "type": "water"
-                    }
-                ],
-                "id": 411,
-                "name": "grass(319)",
-                "parent": 636,
-                "tag": 2,
-                "type": "Actor"
-            },
-            {
-                "components": [
-                    {
-                        "data": {
-                            "position": [
-                                -10.0,
-                                40.0,
-                                30.0
-                            ],
-                            "rotation": [
-                                -0.0,
-                                0.0,
-                                -0.0,
-                                1.0
-                            ],
-                            "scale": [
-                                1.0,
-                                1.0,
-                                1.0
-                            ]
-                        },
-                        "type": "Transform"
-                    },
-                    {
-                        "data": {
-                            "ModelPath": "Data/Model/Stage/Demos/water_block.mdl"
-                        },
-                        "type": "ModelRender"
-                    },
-                    {
-                        "data": {
-                            "offset": [
-                                0.0,
-                                0.0,
-                                0.0
-                            ],
-                            "size": [
-                                10.0,
-                                20.0,
-                                10.0
-                            ]
-                        },
-                        "type": "BoxCollider"
-                    },
-                    {
-                        "data": {
-                            "radius": 10.0,
-                            "thermal": 0
-                        },
-                        "type": "ThermalBody"
-                    },
-                    {
-                        "data": {
-                            "heat": -1,
-                            "linkedLightIndex": -1
-                        },
-                        "type": "HeatReceiver"
-                    },
-                    {
-                        "data": null,
-                        "type": "water"
-                    }
-                ],
-                "id": 411,
-                "name": "grass(320)",
-                "parent": 636,
-                "tag": 2,
-                "type": "Actor"
-            },
-            {
-                "components": [
-                    {
-                        "data": {
-                            "position": [
-                                0.0,
-                                40.0,
-                                10.0
-                            ],
-                            "rotation": [
-                                -0.0,
-                                0.0,
-                                -0.0,
-                                1.0
-                            ],
-                            "scale": [
-                                1.0,
-                                1.0,
-                                1.0
-                            ]
-                        },
-                        "type": "Transform"
-                    },
-                    {
-                        "data": {
-                            "ModelPath": "Data/Model/Stage/Demos/water_block.mdl"
-                        },
-                        "type": "ModelRender"
-                    },
-                    {
-                        "data": {
-                            "offset": [
-                                0.0,
-                                0.0,
-                                0.0
-                            ],
-                            "size": [
-                                10.0,
-                                20.0,
-                                10.0
-                            ]
-                        },
-                        "type": "BoxCollider"
-                    },
-                    {
-                        "data": {
-                            "radius": 10.0,
-                            "thermal": 0
-                        },
-                        "type": "ThermalBody"
-                    },
-                    {
-                        "data": {
-                            "heat": -1,
-                            "linkedLightIndex": -1
-                        },
-                        "type": "HeatReceiver"
-                    },
-                    {
-                        "data": null,
-                        "type": "water"
-                    }
-                ],
-                "id": 411,
-                "name": "grass(321)",
-                "parent": 636,
-                "tag": 2,
-                "type": "Actor"
-            },
-            {
-                "components": [
-                    {
-                        "data": {
-                            "position": [
-                                0.0,
-                                40.0,
-                                20.0
-                            ],
-                            "rotation": [
-                                -0.0,
-                                0.0,
-                                -0.0,
-                                1.0
-                            ],
-                            "scale": [
-                                1.0,
-                                1.0,
-                                1.0
-                            ]
-                        },
-                        "type": "Transform"
-                    },
-                    {
-                        "data": {
-                            "ModelPath": "Data/Model/Stage/Demos/water_block.mdl"
-                        },
-                        "type": "ModelRender"
-                    },
-                    {
-                        "data": {
-                            "offset": [
-                                0.0,
-                                0.0,
-                                0.0
-                            ],
-                            "size": [
-                                10.0,
-                                20.0,
-                                10.0
-                            ]
-                        },
-                        "type": "BoxCollider"
-                    },
-                    {
-                        "data": {
-                            "radius": 10.0,
-                            "thermal": 0
-                        },
-                        "type": "ThermalBody"
-                    },
-                    {
-                        "data": {
-                            "heat": -1,
-                            "linkedLightIndex": -1
-                        },
-                        "type": "HeatReceiver"
-                    },
-                    {
-                        "data": null,
-                        "type": "water"
-                    }
-                ],
-                "id": 411,
-                "name": "grass(322)",
-                "parent": 636,
-                "tag": 2,
-                "type": "Actor"
-            },
-            {
-                "components": [
-                    {
-                        "data": {
-                            "position": [
-                                0.0,
-                                40.0,
-                                30.0
-                            ],
-                            "rotation": [
-                                -0.0,
-                                0.0,
-                                -0.0,
-                                1.0
-                            ],
-                            "scale": [
-                                1.0,
-                                1.0,
-                                1.0
-                            ]
-                        },
-                        "type": "Transform"
-                    },
-                    {
-                        "data": {
-                            "ModelPath": "Data/Model/Stage/Demos/water_block.mdl"
-                        },
-                        "type": "ModelRender"
-                    },
-                    {
-                        "data": {
-                            "offset": [
-                                0.0,
-                                0.0,
-                                0.0
-                            ],
-                            "size": [
-                                10.0,
-                                20.0,
-                                10.0
-                            ]
-                        },
-                        "type": "BoxCollider"
-                    },
-                    {
-                        "data": {
-                            "radius": 10.0,
-                            "thermal": 0
-                        },
-                        "type": "ThermalBody"
-                    },
-                    {
-                        "data": {
-                            "heat": -1,
-                            "linkedLightIndex": -1
-                        },
-                        "type": "HeatReceiver"
-                    },
-                    {
-                        "data": null,
-                        "type": "water"
-                    }
-                ],
-                "id": 411,
-                "name": "grass(323)",
-                "parent": 636,
-                "tag": 2,
-                "type": "Actor"
-            },
-            {
-                "components": [
-                    {
-                        "data": {
-                            "position": [
-                                10.0,
-                                40.0,
-                                10.0
-                            ],
-                            "rotation": [
-                                -0.0,
-                                0.0,
-                                -0.0,
-                                1.0
-                            ],
-                            "scale": [
-                                1.0,
-                                1.0,
-                                1.0
-                            ]
-                        },
-                        "type": "Transform"
-                    },
-                    {
-                        "data": {
-                            "ModelPath": "Data/Model/Stage/Demos/water_block.mdl"
-                        },
-                        "type": "ModelRender"
-                    },
-                    {
-                        "data": {
-                            "offset": [
-                                0.0,
-                                0.0,
-                                0.0
-                            ],
-                            "size": [
-                                10.0,
-                                20.0,
-                                10.0
-                            ]
-                        },
-                        "type": "BoxCollider"
-                    },
-                    {
-                        "data": {
-                            "radius": 10.0,
-                            "thermal": 0
-                        },
-                        "type": "ThermalBody"
-                    },
-                    {
-                        "data": {
-                            "heat": -1,
-                            "linkedLightIndex": -1
-                        },
-                        "type": "HeatReceiver"
-                    },
-                    {
-                        "data": null,
-                        "type": "water"
-                    }
-                ],
-                "id": 411,
-                "name": "grass(324)",
-                "parent": 636,
-                "tag": 2,
-                "type": "Actor"
-            },
-            {
-                "components": [
-                    {
-                        "data": {
-                            "position": [
-                                10.0,
-                                40.0,
-                                20.0
-                            ],
-                            "rotation": [
-                                -0.0,
-                                0.0,
-                                -0.0,
-                                1.0
-                            ],
-                            "scale": [
-                                1.0,
-                                1.0,
-                                1.0
-                            ]
-                        },
-                        "type": "Transform"
-                    },
-                    {
-                        "data": {
-                            "ModelPath": "Data/Model/Stage/Demos/water_block.mdl"
-                        },
-                        "type": "ModelRender"
-                    },
-                    {
-                        "data": {
-                            "offset": [
-                                0.0,
-                                0.0,
-                                0.0
-                            ],
-                            "size": [
-                                10.0,
-                                20.0,
-                                10.0
-                            ]
-                        },
-                        "type": "BoxCollider"
-                    },
-                    {
-                        "data": {
-                            "radius": 10.0,
-                            "thermal": 0
-                        },
-                        "type": "ThermalBody"
-                    },
-                    {
-                        "data": {
-                            "heat": -1,
-                            "linkedLightIndex": -1
-                        },
-                        "type": "HeatReceiver"
-                    },
-                    {
-                        "data": null,
-                        "type": "water"
-                    }
-                ],
-                "id": 411,
-                "name": "grass(325)",
-                "parent": 636,
-                "tag": 2,
-                "type": "Actor"
-            },
-            {
-                "components": [
-                    {
-                        "data": {
-                            "position": [
-                                10.0,
-                                40.0,
-                                30.0
-                            ],
-                            "rotation": [
-                                -0.0,
-                                0.0,
-                                -0.0,
-                                1.0
-                            ],
-                            "scale": [
-                                1.0,
-                                1.0,
-                                1.0
-                            ]
-                        },
-                        "type": "Transform"
-                    },
-                    {
-                        "data": {
-                            "ModelPath": "Data/Model/Stage/Demos/water_block.mdl"
-                        },
-                        "type": "ModelRender"
-                    },
-                    {
-                        "data": {
-                            "offset": [
-                                0.0,
-                                0.0,
-                                0.0
-                            ],
-                            "size": [
-                                10.0,
-                                20.0,
-                                10.0
-                            ]
-                        },
-                        "type": "BoxCollider"
-                    },
-                    {
-                        "data": {
-                            "radius": 10.0,
-                            "thermal": 0
-                        },
-                        "type": "ThermalBody"
-                    },
-                    {
-                        "data": {
-                            "heat": -1,
-                            "linkedLightIndex": -1
-                        },
-                        "type": "HeatReceiver"
-                    },
-                    {
-                        "data": null,
-                        "type": "water"
-                    }
-                ],
-                "id": 411,
-                "name": "grass(326)",
-                "parent": 636,
-                "tag": 2,
-                "type": "Actor"
-            },
-            {
-                "components": [
-                    {
-                        "data": {
-                            "position": [
-                                20.0,
-                                40.0,
-                                10.0
-                            ],
-                            "rotation": [
-                                -0.0,
-                                0.0,
-                                -0.0,
-                                1.0
-                            ],
-                            "scale": [
-                                1.0,
-                                1.0,
-                                1.0
-                            ]
-                        },
-                        "type": "Transform"
-                    },
-                    {
-                        "data": {
-                            "ModelPath": "Data/Model/Stage/Demos/water_block.mdl"
-                        },
-                        "type": "ModelRender"
-                    },
-                    {
-                        "data": {
-                            "offset": [
-                                0.0,
-                                0.0,
-                                0.0
-                            ],
-                            "size": [
-                                10.0,
-                                20.0,
-                                10.0
-                            ]
-                        },
-                        "type": "BoxCollider"
-                    },
-                    {
-                        "data": {
-                            "radius": 10.0,
-                            "thermal": 0
-                        },
-                        "type": "ThermalBody"
-                    },
-                    {
-                        "data": {
-                            "heat": -1,
-                            "linkedLightIndex": -1
-                        },
-                        "type": "HeatReceiver"
-                    },
-                    {
-                        "data": null,
-                        "type": "water"
-                    }
-                ],
-                "id": 411,
-                "name": "grass(327)",
-                "parent": 636,
-                "tag": 2,
-                "type": "Actor"
-            },
-            {
-                "components": [
-                    {
-                        "data": {
-                            "position": [
-                                20.0,
-                                40.0,
-                                20.0
-                            ],
-                            "rotation": [
-                                -0.0,
-                                0.0,
-                                -0.0,
-                                1.0
-                            ],
-                            "scale": [
-                                1.0,
-                                1.0,
-                                1.0
-                            ]
-                        },
-                        "type": "Transform"
-                    },
-                    {
-                        "data": {
-                            "ModelPath": "Data/Model/Stage/Demos/water_block.mdl"
-                        },
-                        "type": "ModelRender"
-                    },
-                    {
-                        "data": {
-                            "offset": [
-                                0.0,
-                                0.0,
-                                0.0
-                            ],
-                            "size": [
-                                10.0,
-                                20.0,
-                                10.0
-                            ]
-                        },
-                        "type": "BoxCollider"
-                    },
-                    {
-                        "data": {
-                            "radius": 10.0,
-                            "thermal": 0
-                        },
-                        "type": "ThermalBody"
-                    },
-                    {
-                        "data": {
-                            "heat": -1,
-                            "linkedLightIndex": -1
-                        },
-                        "type": "HeatReceiver"
-                    },
-                    {
-                        "data": null,
-                        "type": "water"
-                    }
-                ],
-                "id": 411,
-                "name": "grass(328)",
-                "parent": 636,
-                "tag": 2,
-                "type": "Actor"
-            },
-            {
-                "components": [
-                    {
-                        "data": {
-                            "position": [
-                                20.0,
-                                40.0,
-                                30.0
-                            ],
-                            "rotation": [
-                                -0.0,
-                                0.0,
-                                -0.0,
-                                1.0
-                            ],
-                            "scale": [
-                                1.0,
-                                1.0,
-                                1.0
-                            ]
-                        },
-                        "type": "Transform"
-                    },
-                    {
-                        "data": {
-                            "ModelPath": "Data/Model/Stage/Demos/water_block.mdl"
-                        },
-                        "type": "ModelRender"
-                    },
-                    {
-                        "data": {
-                            "offset": [
-                                0.0,
-                                0.0,
-                                0.0
-                            ],
-                            "size": [
-                                10.0,
-                                20.0,
-                                10.0
-                            ]
-                        },
-                        "type": "BoxCollider"
-                    },
-                    {
-                        "data": {
-                            "radius": 10.0,
-                            "thermal": 0
-                        },
-                        "type": "ThermalBody"
-                    },
-                    {
-                        "data": {
-                            "heat": -1,
-                            "linkedLightIndex": -1
-                        },
-                        "type": "HeatReceiver"
-                    },
-                    {
-                        "data": null,
-                        "type": "water"
-                    }
-                ],
-                "id": 411,
-                "name": "grass(329)",
                 "parent": 636,
                 "tag": 2,
                 "type": "Actor"
@@ -42795,6 +40476,20 @@
                     },
                     {
                         "data": {
+                            "StartPlay": false,
+                            "loop": false,
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "path": "Data/Effects/coin_get.efk",
+                            "scale": 1.0
+                        },
+                        "type": "EffectRender"
+                    },
+                    {
+                        "data": {
                             "CoinIndex": 0,
                             "StageIndex": 0
                         },
@@ -42838,6 +40533,20 @@
                     },
                     {
                         "data": {
+                            "StartPlay": false,
+                            "loop": false,
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "path": "Data/Effects/coin_get.efk",
+                            "scale": 1.0
+                        },
+                        "type": "EffectRender"
+                    },
+                    {
+                        "data": {
                             "CoinIndex": 1,
                             "StageIndex": 0
                         },
@@ -42878,6 +40587,20 @@
                             "ModelPath": "Data/Model/Stage/Demos/coin.mdl"
                         },
                         "type": "ModelRender"
+                    },
+                    {
+                        "data": {
+                            "StartPlay": false,
+                            "loop": false,
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "path": "Data/Effects/coin_get.efk",
+                            "scale": 1.0
+                        },
+                        "type": "EffectRender"
                     },
                     {
                         "data": {
@@ -44233,6 +41956,7 @@
                     },
                     {
                         "data": {
+                            "StartPlay": false,
                             "loop": false,
                             "offset": [
                                 0.0,
@@ -44261,6 +41985,2908 @@
                 "name": "eff",
                 "parent": 3,
                 "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                29.00001335144043,
+                                45.0,
+                                2.765655517578125e-05
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.1999999284744263,
+                                1.1999999284744263,
+                                1.1999999284744263
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/tree.mdl"
+                        },
+                        "type": "ModelRender"
+                    },
+                    {
+                        "data": {
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                10.0,
+                                20.0,
+                                10.0
+                            ]
+                        },
+                        "type": "BoxCollider"
+                    },
+                    {
+                        "data": {
+                            "radius": 10.0,
+                            "thermal": 0
+                        },
+                        "type": "ThermalBody"
+                    },
+                    {
+                        "data": null,
+                        "type": "wood"
+                    },
+                    {
+                        "data": {
+                            "StartPlay": false,
+                            "loop": false,
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "path": "Data/Effects/tree_fire.efk",
+                            "scale": 1.0
+                        },
+                        "type": "EffectRender"
+                    }
+                ],
+                "id": 11,
+                "name": "tree(14)",
+                "parent": 657,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                -9.999983787536621,
+                                84.99998474121094,
+                                -49.999969482421875
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.1999999284744263,
+                                1.1999999284744263,
+                                1.1999999284744263
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/tree.mdl"
+                        },
+                        "type": "ModelRender"
+                    },
+                    {
+                        "data": {
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                10.0,
+                                20.0,
+                                10.0
+                            ]
+                        },
+                        "type": "BoxCollider"
+                    },
+                    {
+                        "data": {
+                            "radius": 10.0,
+                            "thermal": 0
+                        },
+                        "type": "ThermalBody"
+                    },
+                    {
+                        "data": null,
+                        "type": "wood"
+                    },
+                    {
+                        "data": {
+                            "StartPlay": false,
+                            "loop": false,
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "path": "Data/Effects/tree_fire.efk",
+                            "scale": 1.0
+                        },
+                        "type": "EffectRender"
+                    }
+                ],
+                "id": 11,
+                "name": "tree(19)",
+                "parent": 657,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                -70.99998474121094,
+                                122.99996948242188,
+                                3.099441164522432e-05
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.1999999284744263,
+                                1.1999999284744263,
+                                1.1999999284744263
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/tree.mdl"
+                        },
+                        "type": "ModelRender"
+                    },
+                    {
+                        "data": {
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                10.0,
+                                20.0,
+                                10.0
+                            ]
+                        },
+                        "type": "BoxCollider"
+                    },
+                    {
+                        "data": {
+                            "radius": 10.0,
+                            "thermal": 0
+                        },
+                        "type": "ThermalBody"
+                    },
+                    {
+                        "data": null,
+                        "type": "wood"
+                    },
+                    {
+                        "data": {
+                            "StartPlay": false,
+                            "loop": false,
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "path": "Data/Effects/tree_fire.efk",
+                            "scale": 1.0
+                        },
+                        "type": "EffectRender"
+                    }
+                ],
+                "id": 11,
+                "name": "tree(23)",
+                "parent": 657,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                -70.99983215332031,
+                                122.9998779296875,
+                                19.000036239624023
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.9199999570846558,
+                                1.9199999570846558,
+                                1.9199999570846558
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/tree.mdl"
+                        },
+                        "type": "ModelRender"
+                    },
+                    {
+                        "data": {
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                10.0,
+                                20.0,
+                                10.0
+                            ]
+                        },
+                        "type": "BoxCollider"
+                    },
+                    {
+                        "data": {
+                            "radius": 10.0,
+                            "thermal": 0
+                        },
+                        "type": "ThermalBody"
+                    },
+                    {
+                        "data": null,
+                        "type": "wood"
+                    },
+                    {
+                        "data": {
+                            "StartPlay": false,
+                            "loop": false,
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "path": "Data/Effects/tree_fire.efk",
+                            "scale": 1.0
+                        },
+                        "type": "EffectRender"
+                    }
+                ],
+                "id": 11,
+                "name": "tree(21)",
+                "parent": 657,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                -71.99995422363281,
+                                122.99995422363281,
+                                41.00001907348633
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.3199999332427979,
+                                1.3199999332427979,
+                                1.3199999332427979
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/tree.mdl"
+                        },
+                        "type": "ModelRender"
+                    },
+                    {
+                        "data": {
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                10.0,
+                                20.0,
+                                10.0
+                            ]
+                        },
+                        "type": "BoxCollider"
+                    },
+                    {
+                        "data": {
+                            "radius": 10.0,
+                            "thermal": 0
+                        },
+                        "type": "ThermalBody"
+                    },
+                    {
+                        "data": null,
+                        "type": "wood"
+                    },
+                    {
+                        "data": {
+                            "StartPlay": false,
+                            "loop": false,
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "path": "Data/Effects/tree_fire.efk",
+                            "scale": 1.0
+                        },
+                        "type": "EffectRender"
+                    }
+                ],
+                "id": 11,
+                "name": "tree(22)",
+                "parent": 657,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                39.00001525878906,
+                                45.0,
+                                2.765655517578125e-05
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.1999999284744263,
+                                1.1999999284744263,
+                                1.1999999284744263
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/tree.mdl"
+                        },
+                        "type": "ModelRender"
+                    },
+                    {
+                        "data": {
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                10.0,
+                                20.0,
+                                10.0
+                            ]
+                        },
+                        "type": "BoxCollider"
+                    },
+                    {
+                        "data": {
+                            "radius": 10.0,
+                            "thermal": 0
+                        },
+                        "type": "ThermalBody"
+                    },
+                    {
+                        "data": null,
+                        "type": "wood"
+                    },
+                    {
+                        "data": {
+                            "StartPlay": false,
+                            "loop": false,
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "path": "Data/Effects/tree_fire.efk",
+                            "scale": 1.0
+                        },
+                        "type": "EffectRender"
+                    }
+                ],
+                "id": 11,
+                "name": "tree(15)",
+                "parent": 657,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                39.00001525878906,
+                                45.0,
+                                -9.999972343444824
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.1999999284744263,
+                                1.1999999284744263,
+                                1.1999999284744263
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/tree.mdl"
+                        },
+                        "type": "ModelRender"
+                    },
+                    {
+                        "data": {
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                10.0,
+                                20.0,
+                                10.0
+                            ]
+                        },
+                        "type": "BoxCollider"
+                    },
+                    {
+                        "data": {
+                            "radius": 10.0,
+                            "thermal": 0
+                        },
+                        "type": "ThermalBody"
+                    },
+                    {
+                        "data": null,
+                        "type": "wood"
+                    },
+                    {
+                        "data": {
+                            "StartPlay": false,
+                            "loop": false,
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "path": "Data/Effects/tree_fire.efk",
+                            "scale": 1.0
+                        },
+                        "type": "EffectRender"
+                    }
+                ],
+                "id": 11,
+                "name": "tree(16)",
+                "parent": 657,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                49.00001525878906,
+                                45.0,
+                                2.765655517578125e-05
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.1999999284744263,
+                                1.1999999284744263,
+                                1.1999999284744263
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/tree.mdl"
+                        },
+                        "type": "ModelRender"
+                    },
+                    {
+                        "data": {
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                10.0,
+                                20.0,
+                                10.0
+                            ]
+                        },
+                        "type": "BoxCollider"
+                    },
+                    {
+                        "data": {
+                            "radius": 10.0,
+                            "thermal": 0
+                        },
+                        "type": "ThermalBody"
+                    },
+                    {
+                        "data": null,
+                        "type": "wood"
+                    },
+                    {
+                        "data": {
+                            "StartPlay": false,
+                            "loop": false,
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "path": "Data/Effects/tree_fire.efk",
+                            "scale": 1.0
+                        },
+                        "type": "EffectRender"
+                    }
+                ],
+                "id": 11,
+                "name": "tree(17)",
+                "parent": 657,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                49.00001525878906,
+                                45.0,
+                                -9.999972343444824
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.1999999284744263,
+                                1.1999999284744263,
+                                1.1999999284744263
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/tree.mdl"
+                        },
+                        "type": "ModelRender"
+                    },
+                    {
+                        "data": {
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                10.0,
+                                20.0,
+                                10.0
+                            ]
+                        },
+                        "type": "BoxCollider"
+                    },
+                    {
+                        "data": {
+                            "radius": 10.0,
+                            "thermal": 0
+                        },
+                        "type": "ThermalBody"
+                    },
+                    {
+                        "data": null,
+                        "type": "wood"
+                    },
+                    {
+                        "data": {
+                            "StartPlay": false,
+                            "loop": false,
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "path": "Data/Effects/tree_fire.efk",
+                            "scale": 1.0
+                        },
+                        "type": "EffectRender"
+                    }
+                ],
+                "id": 11,
+                "name": "tree(18)",
+                "parent": 657,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                59.00001525878906,
+                                45.0,
+                                2.765655517578125e-05
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.1999999284744263,
+                                1.1999999284744263,
+                                1.1999999284744263
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/tree.mdl"
+                        },
+                        "type": "ModelRender"
+                    },
+                    {
+                        "data": {
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                10.0,
+                                20.0,
+                                10.0
+                            ]
+                        },
+                        "type": "BoxCollider"
+                    },
+                    {
+                        "data": {
+                            "radius": 10.0,
+                            "thermal": 0
+                        },
+                        "type": "ThermalBody"
+                    },
+                    {
+                        "data": null,
+                        "type": "wood"
+                    },
+                    {
+                        "data": {
+                            "StartPlay": false,
+                            "loop": false,
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "path": "Data/Effects/tree_fire.efk",
+                            "scale": 1.0
+                        },
+                        "type": "EffectRender"
+                    }
+                ],
+                "id": 11,
+                "name": "tree(19)",
+                "parent": 657,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                59.00001525878906,
+                                45.0,
+                                -9.999972343444824
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.1999999284744263,
+                                1.1999999284744263,
+                                1.1999999284744263
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/tree.mdl"
+                        },
+                        "type": "ModelRender"
+                    },
+                    {
+                        "data": {
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                10.0,
+                                20.0,
+                                10.0
+                            ]
+                        },
+                        "type": "BoxCollider"
+                    },
+                    {
+                        "data": {
+                            "radius": 10.0,
+                            "thermal": 0
+                        },
+                        "type": "ThermalBody"
+                    },
+                    {
+                        "data": null,
+                        "type": "wood"
+                    },
+                    {
+                        "data": {
+                            "StartPlay": false,
+                            "loop": false,
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "path": "Data/Effects/tree_fire.efk",
+                            "scale": 1.0
+                        },
+                        "type": "EffectRender"
+                    }
+                ],
+                "id": 11,
+                "name": "tree(20)",
+                "parent": 657,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                69.00001525878906,
+                                45.0,
+                                2.765655517578125e-05
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.1999999284744263,
+                                1.1999999284744263,
+                                1.1999999284744263
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/tree.mdl"
+                        },
+                        "type": "ModelRender"
+                    },
+                    {
+                        "data": {
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                10.0,
+                                20.0,
+                                10.0
+                            ]
+                        },
+                        "type": "BoxCollider"
+                    },
+                    {
+                        "data": {
+                            "radius": 10.0,
+                            "thermal": 0
+                        },
+                        "type": "ThermalBody"
+                    },
+                    {
+                        "data": null,
+                        "type": "wood"
+                    },
+                    {
+                        "data": {
+                            "StartPlay": false,
+                            "loop": false,
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "path": "Data/Effects/tree_fire.efk",
+                            "scale": 1.0
+                        },
+                        "type": "EffectRender"
+                    }
+                ],
+                "id": 11,
+                "name": "tree(21)",
+                "parent": 657,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                69.00001525878906,
+                                45.0,
+                                -9.999972343444824
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.1999999284744263,
+                                1.1999999284744263,
+                                1.1999999284744263
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/tree.mdl"
+                        },
+                        "type": "ModelRender"
+                    },
+                    {
+                        "data": {
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                10.0,
+                                20.0,
+                                10.0
+                            ]
+                        },
+                        "type": "BoxCollider"
+                    },
+                    {
+                        "data": {
+                            "radius": 10.0,
+                            "thermal": 0
+                        },
+                        "type": "ThermalBody"
+                    },
+                    {
+                        "data": null,
+                        "type": "wood"
+                    },
+                    {
+                        "data": {
+                            "StartPlay": false,
+                            "loop": false,
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "path": "Data/Effects/tree_fire.efk",
+                            "scale": 1.0
+                        },
+                        "type": "EffectRender"
+                    }
+                ],
+                "id": 11,
+                "name": "tree(22)",
+                "parent": 657,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                1.621246337890625e-05,
+                                84.99998474121094,
+                                -49.999969482421875
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.1999999284744263,
+                                1.1999999284744263,
+                                1.1999999284744263
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/tree.mdl"
+                        },
+                        "type": "ModelRender"
+                    },
+                    {
+                        "data": {
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                10.0,
+                                20.0,
+                                10.0
+                            ]
+                        },
+                        "type": "BoxCollider"
+                    },
+                    {
+                        "data": {
+                            "radius": 10.0,
+                            "thermal": 0
+                        },
+                        "type": "ThermalBody"
+                    },
+                    {
+                        "data": null,
+                        "type": "wood"
+                    },
+                    {
+                        "data": {
+                            "StartPlay": false,
+                            "loop": false,
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "path": "Data/Effects/tree_fire.efk",
+                            "scale": 1.0
+                        },
+                        "type": "EffectRender"
+                    }
+                ],
+                "id": 11,
+                "name": "tree(20)",
+                "parent": 657,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                10.000016212463379,
+                                84.99998474121094,
+                                -49.999969482421875
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.1999999284744263,
+                                1.1999999284744263,
+                                1.1999999284744263
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/tree.mdl"
+                        },
+                        "type": "ModelRender"
+                    },
+                    {
+                        "data": {
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                10.0,
+                                20.0,
+                                10.0
+                            ]
+                        },
+                        "type": "BoxCollider"
+                    },
+                    {
+                        "data": {
+                            "radius": 10.0,
+                            "thermal": 0
+                        },
+                        "type": "ThermalBody"
+                    },
+                    {
+                        "data": null,
+                        "type": "wood"
+                    },
+                    {
+                        "data": {
+                            "StartPlay": false,
+                            "loop": false,
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "path": "Data/Effects/tree_fire.efk",
+                            "scale": 1.0
+                        },
+                        "type": "EffectRender"
+                    }
+                ],
+                "id": 11,
+                "name": "tree(21)",
+                "parent": 657,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                20.000015258789063,
+                                84.99998474121094,
+                                -49.999969482421875
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.1999999284744263,
+                                1.1999999284744263,
+                                1.1999999284744263
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/tree.mdl"
+                        },
+                        "type": "ModelRender"
+                    },
+                    {
+                        "data": {
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                10.0,
+                                20.0,
+                                10.0
+                            ]
+                        },
+                        "type": "BoxCollider"
+                    },
+                    {
+                        "data": {
+                            "radius": 10.0,
+                            "thermal": 0
+                        },
+                        "type": "ThermalBody"
+                    },
+                    {
+                        "data": null,
+                        "type": "wood"
+                    },
+                    {
+                        "data": {
+                            "StartPlay": false,
+                            "loop": false,
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "path": "Data/Effects/tree_fire.efk",
+                            "scale": 1.0
+                        },
+                        "type": "EffectRender"
+                    }
+                ],
+                "id": 11,
+                "name": "tree(22)",
+                "parent": 657,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                -19.999977111816406,
+                                45.0,
+                                60.00002670288086
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.1999999284744263,
+                                1.1999999284744263,
+                                1.1999999284744263
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/tree.mdl"
+                        },
+                        "type": "ModelRender"
+                    },
+                    {
+                        "data": {
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                10.0,
+                                20.0,
+                                10.0
+                            ]
+                        },
+                        "type": "BoxCollider"
+                    },
+                    {
+                        "data": {
+                            "radius": 10.0,
+                            "thermal": 0
+                        },
+                        "type": "ThermalBody"
+                    },
+                    {
+                        "data": null,
+                        "type": "wood"
+                    },
+                    {
+                        "data": {
+                            "StartPlay": false,
+                            "loop": false,
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "path": "Data/Effects/tree_fire.efk",
+                            "scale": 1.0
+                        },
+                        "type": "EffectRender"
+                    }
+                ],
+                "id": 11,
+                "name": "tree(17)",
+                "parent": 657,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                -19.999977111816406,
+                                45.0,
+                                50.000022888183594
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.1999999284744263,
+                                1.1999999284744263,
+                                1.1999999284744263
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/tree.mdl"
+                        },
+                        "type": "ModelRender"
+                    },
+                    {
+                        "data": {
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                10.0,
+                                20.0,
+                                10.0
+                            ]
+                        },
+                        "type": "BoxCollider"
+                    },
+                    {
+                        "data": {
+                            "radius": 10.0,
+                            "thermal": 0
+                        },
+                        "type": "ThermalBody"
+                    },
+                    {
+                        "data": null,
+                        "type": "wood"
+                    },
+                    {
+                        "data": {
+                            "StartPlay": false,
+                            "loop": false,
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "path": "Data/Effects/tree_fire.efk",
+                            "scale": 1.0
+                        },
+                        "type": "EffectRender"
+                    }
+                ],
+                "id": 11,
+                "name": "tree(18)",
+                "parent": 657,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                -29.999980926513672,
+                                45.0,
+                                50.000022888183594
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.1999999284744263,
+                                1.1999999284744263,
+                                1.1999999284744263
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/tree.mdl"
+                        },
+                        "type": "ModelRender"
+                    },
+                    {
+                        "data": {
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                10.0,
+                                20.0,
+                                10.0
+                            ]
+                        },
+                        "type": "BoxCollider"
+                    },
+                    {
+                        "data": {
+                            "radius": 10.0,
+                            "thermal": 0
+                        },
+                        "type": "ThermalBody"
+                    },
+                    {
+                        "data": null,
+                        "type": "wood"
+                    },
+                    {
+                        "data": {
+                            "StartPlay": false,
+                            "loop": false,
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "path": "Data/Effects/tree_fire.efk",
+                            "scale": 1.0
+                        },
+                        "type": "EffectRender"
+                    }
+                ],
+                "id": 11,
+                "name": "tree(19)",
+                "parent": 657,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                -29.999980926513672,
+                                45.0,
+                                60.00002670288086
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.1999999284744263,
+                                1.1999999284744263,
+                                1.1999999284744263
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/tree.mdl"
+                        },
+                        "type": "ModelRender"
+                    },
+                    {
+                        "data": {
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                10.0,
+                                20.0,
+                                10.0
+                            ]
+                        },
+                        "type": "BoxCollider"
+                    },
+                    {
+                        "data": {
+                            "radius": 10.0,
+                            "thermal": 0
+                        },
+                        "type": "ThermalBody"
+                    },
+                    {
+                        "data": null,
+                        "type": "wood"
+                    },
+                    {
+                        "data": {
+                            "StartPlay": false,
+                            "loop": false,
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "path": "Data/Effects/tree_fire.efk",
+                            "scale": 1.0
+                        },
+                        "type": "EffectRender"
+                    }
+                ],
+                "id": 11,
+                "name": "tree(20)",
+                "parent": 657,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                -19.999977111816406,
+                                45.0,
+                                70.0000228881836
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.1999999284744263,
+                                1.1999999284744263,
+                                1.1999999284744263
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/tree.mdl"
+                        },
+                        "type": "ModelRender"
+                    },
+                    {
+                        "data": {
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                10.0,
+                                20.0,
+                                10.0
+                            ]
+                        },
+                        "type": "BoxCollider"
+                    },
+                    {
+                        "data": {
+                            "radius": 10.0,
+                            "thermal": 0
+                        },
+                        "type": "ThermalBody"
+                    },
+                    {
+                        "data": null,
+                        "type": "wood"
+                    },
+                    {
+                        "data": {
+                            "StartPlay": false,
+                            "loop": false,
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "path": "Data/Effects/tree_fire.efk",
+                            "scale": 1.0
+                        },
+                        "type": "EffectRender"
+                    }
+                ],
+                "id": 11,
+                "name": "tree(21)",
+                "parent": 657,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                -29.999977111816406,
+                                45.0,
+                                70.0000228881836
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.1999999284744263,
+                                1.1999999284744263,
+                                1.1999999284744263
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/tree.mdl"
+                        },
+                        "type": "ModelRender"
+                    },
+                    {
+                        "data": {
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                10.0,
+                                20.0,
+                                10.0
+                            ]
+                        },
+                        "type": "BoxCollider"
+                    },
+                    {
+                        "data": {
+                            "radius": 10.0,
+                            "thermal": 0
+                        },
+                        "type": "ThermalBody"
+                    },
+                    {
+                        "data": null,
+                        "type": "wood"
+                    },
+                    {
+                        "data": {
+                            "StartPlay": false,
+                            "loop": false,
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "path": "Data/Effects/tree_fire.efk",
+                            "scale": 1.0
+                        },
+                        "type": "EffectRender"
+                    }
+                ],
+                "id": 11,
+                "name": "tree(22)",
+                "parent": 657,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                -70.0,
+                                45.0,
+                                51.000003814697266
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.399999976158142,
+                                1.399999976158142,
+                                1.399999976158142
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/snowmen.mdl"
+                        },
+                        "type": "ModelRender"
+                    },
+                    {
+                        "data": {
+                            "radius": 10.0,
+                            "thermal": -2
+                        },
+                        "type": "ThermalBody"
+                    },
+                    {
+                        "data": {
+                            "heat": -2,
+                            "linkedLightIndex": -1
+                        },
+                        "type": "HeatReceiver"
+                    },
+                    {
+                        "data": {
+                            "StartPlay": true,
+                            "loop": true,
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "path": "Data/Effects/snowman.efk",
+                            "scale": 3.0
+                        },
+                        "type": "EffectRender"
+                    },
+                    {
+                        "data": null,
+                        "type": "snowman"
+                    }
+                ],
+                "id": 12,
+                "name": "snowman(2)",
+                "parent": 15,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                -20.0,
+                                40.0,
+                                20.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/water_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    },
+                    {
+                        "data": {
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                10.0,
+                                20.0,
+                                10.0
+                            ]
+                        },
+                        "type": "BoxCollider"
+                    },
+                    {
+                        "data": {
+                            "radius": 10.0,
+                            "thermal": 0
+                        },
+                        "type": "ThermalBody"
+                    },
+                    {
+                        "data": {
+                            "heat": -1,
+                            "linkedLightIndex": -1
+                        },
+                        "type": "HeatReceiver"
+                    },
+                    {
+                        "data": {
+                            "StartPlay": false,
+                            "loop": true,
+                            "offset": [
+                                0.0,
+                                6.0,
+                                0.0
+                            ],
+                            "path": "",
+                            "scale": 1.0
+                        },
+                        "type": "EffectRender"
+                    },
+                    {
+                        "data": null,
+                        "type": "water"
+                    }
+                ],
+                "id": 411,
+                "name": "grass(316)",
+                "parent": 636,
+                "tag": 2,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                -20.0,
+                                40.0,
+                                10.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/water_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    },
+                    {
+                        "data": {
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                10.0,
+                                20.0,
+                                10.0
+                            ]
+                        },
+                        "type": "BoxCollider"
+                    },
+                    {
+                        "data": {
+                            "radius": 10.0,
+                            "thermal": 0
+                        },
+                        "type": "ThermalBody"
+                    },
+                    {
+                        "data": {
+                            "heat": -1,
+                            "linkedLightIndex": -1
+                        },
+                        "type": "HeatReceiver"
+                    },
+                    {
+                        "data": {
+                            "StartPlay": false,
+                            "loop": true,
+                            "offset": [
+                                0.0,
+                                6.0,
+                                0.0
+                            ],
+                            "path": "",
+                            "scale": 1.0
+                        },
+                        "type": "EffectRender"
+                    },
+                    {
+                        "data": null,
+                        "type": "water"
+                    }
+                ],
+                "id": 411,
+                "name": "grass(317)",
+                "parent": 636,
+                "tag": 2,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                -10.0,
+                                40.0,
+                                20.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/water_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    },
+                    {
+                        "data": {
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                10.0,
+                                20.0,
+                                10.0
+                            ]
+                        },
+                        "type": "BoxCollider"
+                    },
+                    {
+                        "data": {
+                            "radius": 10.0,
+                            "thermal": 0
+                        },
+                        "type": "ThermalBody"
+                    },
+                    {
+                        "data": {
+                            "heat": -1,
+                            "linkedLightIndex": -1
+                        },
+                        "type": "HeatReceiver"
+                    },
+                    {
+                        "data": {
+                            "StartPlay": false,
+                            "loop": true,
+                            "offset": [
+                                0.0,
+                                6.0,
+                                0.0
+                            ],
+                            "path": "",
+                            "scale": 1.0
+                        },
+                        "type": "EffectRender"
+                    },
+                    {
+                        "data": null,
+                        "type": "water"
+                    }
+                ],
+                "id": 411,
+                "name": "grass(318)",
+                "parent": 636,
+                "tag": 2,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                -10.0,
+                                40.0,
+                                30.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/water_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    },
+                    {
+                        "data": {
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                10.0,
+                                20.0,
+                                10.0
+                            ]
+                        },
+                        "type": "BoxCollider"
+                    },
+                    {
+                        "data": {
+                            "radius": 10.0,
+                            "thermal": 0
+                        },
+                        "type": "ThermalBody"
+                    },
+                    {
+                        "data": {
+                            "heat": -1,
+                            "linkedLightIndex": -1
+                        },
+                        "type": "HeatReceiver"
+                    },
+                    {
+                        "data": {
+                            "StartPlay": false,
+                            "loop": true,
+                            "offset": [
+                                0.0,
+                                6.0,
+                                0.0
+                            ],
+                            "path": "",
+                            "scale": 1.0
+                        },
+                        "type": "EffectRender"
+                    },
+                    {
+                        "data": null,
+                        "type": "water"
+                    }
+                ],
+                "id": 411,
+                "name": "grass(319)",
+                "parent": 636,
+                "tag": 2,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                -10.0,
+                                40.0,
+                                10.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/water_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    },
+                    {
+                        "data": {
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                10.0,
+                                20.0,
+                                10.0
+                            ]
+                        },
+                        "type": "BoxCollider"
+                    },
+                    {
+                        "data": {
+                            "radius": 10.0,
+                            "thermal": 0
+                        },
+                        "type": "ThermalBody"
+                    },
+                    {
+                        "data": {
+                            "heat": -1,
+                            "linkedLightIndex": -1
+                        },
+                        "type": "HeatReceiver"
+                    },
+                    {
+                        "data": {
+                            "StartPlay": false,
+                            "loop": true,
+                            "offset": [
+                                0.0,
+                                6.0,
+                                0.0
+                            ],
+                            "path": "",
+                            "scale": 1.0
+                        },
+                        "type": "EffectRender"
+                    },
+                    {
+                        "data": null,
+                        "type": "water"
+                    }
+                ],
+                "id": 411,
+                "name": "grass(320)",
+                "parent": 636,
+                "tag": 2,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                0.0,
+                                40.0,
+                                20.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/water_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    },
+                    {
+                        "data": {
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                10.0,
+                                20.0,
+                                10.0
+                            ]
+                        },
+                        "type": "BoxCollider"
+                    },
+                    {
+                        "data": {
+                            "radius": 10.0,
+                            "thermal": 0
+                        },
+                        "type": "ThermalBody"
+                    },
+                    {
+                        "data": {
+                            "heat": -1,
+                            "linkedLightIndex": -1
+                        },
+                        "type": "HeatReceiver"
+                    },
+                    {
+                        "data": {
+                            "StartPlay": false,
+                            "loop": true,
+                            "offset": [
+                                0.0,
+                                6.0,
+                                0.0
+                            ],
+                            "path": "",
+                            "scale": 1.0
+                        },
+                        "type": "EffectRender"
+                    },
+                    {
+                        "data": null,
+                        "type": "water"
+                    }
+                ],
+                "id": 411,
+                "name": "grass(321)",
+                "parent": 636,
+                "tag": 2,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                0.0,
+                                40.0,
+                                30.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/water_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    },
+                    {
+                        "data": {
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                10.0,
+                                20.0,
+                                10.0
+                            ]
+                        },
+                        "type": "BoxCollider"
+                    },
+                    {
+                        "data": {
+                            "radius": 10.0,
+                            "thermal": 0
+                        },
+                        "type": "ThermalBody"
+                    },
+                    {
+                        "data": {
+                            "heat": -1,
+                            "linkedLightIndex": -1
+                        },
+                        "type": "HeatReceiver"
+                    },
+                    {
+                        "data": {
+                            "StartPlay": false,
+                            "loop": true,
+                            "offset": [
+                                0.0,
+                                6.0,
+                                0.0
+                            ],
+                            "path": "",
+                            "scale": 1.0
+                        },
+                        "type": "EffectRender"
+                    },
+                    {
+                        "data": null,
+                        "type": "water"
+                    }
+                ],
+                "id": 411,
+                "name": "grass(322)",
+                "parent": 636,
+                "tag": 2,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                0.0,
+                                40.0,
+                                10.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/water_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    },
+                    {
+                        "data": {
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                10.0,
+                                20.0,
+                                10.0
+                            ]
+                        },
+                        "type": "BoxCollider"
+                    },
+                    {
+                        "data": {
+                            "radius": 10.0,
+                            "thermal": 0
+                        },
+                        "type": "ThermalBody"
+                    },
+                    {
+                        "data": {
+                            "heat": -1,
+                            "linkedLightIndex": -1
+                        },
+                        "type": "HeatReceiver"
+                    },
+                    {
+                        "data": {
+                            "StartPlay": false,
+                            "loop": true,
+                            "offset": [
+                                0.0,
+                                6.0,
+                                0.0
+                            ],
+                            "path": "",
+                            "scale": 1.0
+                        },
+                        "type": "EffectRender"
+                    },
+                    {
+                        "data": null,
+                        "type": "water"
+                    }
+                ],
+                "id": 411,
+                "name": "grass(323)",
+                "parent": 636,
+                "tag": 2,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                10.0,
+                                40.0,
+                                20.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/water_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    },
+                    {
+                        "data": {
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                10.0,
+                                20.0,
+                                10.0
+                            ]
+                        },
+                        "type": "BoxCollider"
+                    },
+                    {
+                        "data": {
+                            "radius": 10.0,
+                            "thermal": 0
+                        },
+                        "type": "ThermalBody"
+                    },
+                    {
+                        "data": {
+                            "heat": -1,
+                            "linkedLightIndex": -1
+                        },
+                        "type": "HeatReceiver"
+                    },
+                    {
+                        "data": {
+                            "StartPlay": false,
+                            "loop": true,
+                            "offset": [
+                                0.0,
+                                6.0,
+                                0.0
+                            ],
+                            "path": "",
+                            "scale": 1.0
+                        },
+                        "type": "EffectRender"
+                    },
+                    {
+                        "data": null,
+                        "type": "water"
+                    }
+                ],
+                "id": 411,
+                "name": "grass(324)",
+                "parent": 636,
+                "tag": 2,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                10.0,
+                                40.0,
+                                30.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/water_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    },
+                    {
+                        "data": {
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                10.0,
+                                20.0,
+                                10.0
+                            ]
+                        },
+                        "type": "BoxCollider"
+                    },
+                    {
+                        "data": {
+                            "radius": 10.0,
+                            "thermal": 0
+                        },
+                        "type": "ThermalBody"
+                    },
+                    {
+                        "data": {
+                            "heat": -1,
+                            "linkedLightIndex": -1
+                        },
+                        "type": "HeatReceiver"
+                    },
+                    {
+                        "data": {
+                            "StartPlay": false,
+                            "loop": true,
+                            "offset": [
+                                0.0,
+                                6.0,
+                                0.0
+                            ],
+                            "path": "",
+                            "scale": 1.0
+                        },
+                        "type": "EffectRender"
+                    },
+                    {
+                        "data": null,
+                        "type": "water"
+                    }
+                ],
+                "id": 411,
+                "name": "grass(325)",
+                "parent": 636,
+                "tag": 2,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                10.0,
+                                40.0,
+                                10.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/water_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    },
+                    {
+                        "data": {
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                10.0,
+                                20.0,
+                                10.0
+                            ]
+                        },
+                        "type": "BoxCollider"
+                    },
+                    {
+                        "data": {
+                            "radius": 10.0,
+                            "thermal": 0
+                        },
+                        "type": "ThermalBody"
+                    },
+                    {
+                        "data": {
+                            "heat": -1,
+                            "linkedLightIndex": -1
+                        },
+                        "type": "HeatReceiver"
+                    },
+                    {
+                        "data": {
+                            "StartPlay": false,
+                            "loop": true,
+                            "offset": [
+                                0.0,
+                                6.0,
+                                0.0
+                            ],
+                            "path": "",
+                            "scale": 1.0
+                        },
+                        "type": "EffectRender"
+                    },
+                    {
+                        "data": null,
+                        "type": "water"
+                    }
+                ],
+                "id": 411,
+                "name": "grass(326)",
+                "parent": 636,
+                "tag": 2,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                20.0,
+                                40.0,
+                                20.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/water_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    },
+                    {
+                        "data": {
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                10.0,
+                                20.0,
+                                10.0
+                            ]
+                        },
+                        "type": "BoxCollider"
+                    },
+                    {
+                        "data": {
+                            "radius": 10.0,
+                            "thermal": 0
+                        },
+                        "type": "ThermalBody"
+                    },
+                    {
+                        "data": {
+                            "heat": -1,
+                            "linkedLightIndex": -1
+                        },
+                        "type": "HeatReceiver"
+                    },
+                    {
+                        "data": {
+                            "StartPlay": false,
+                            "loop": true,
+                            "offset": [
+                                0.0,
+                                6.0,
+                                0.0
+                            ],
+                            "path": "",
+                            "scale": 1.0
+                        },
+                        "type": "EffectRender"
+                    },
+                    {
+                        "data": null,
+                        "type": "water"
+                    }
+                ],
+                "id": 411,
+                "name": "grass(327)",
+                "parent": 636,
+                "tag": 2,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                20.0,
+                                40.0,
+                                30.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/water_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    },
+                    {
+                        "data": {
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                10.0,
+                                20.0,
+                                10.0
+                            ]
+                        },
+                        "type": "BoxCollider"
+                    },
+                    {
+                        "data": {
+                            "radius": 10.0,
+                            "thermal": 0
+                        },
+                        "type": "ThermalBody"
+                    },
+                    {
+                        "data": {
+                            "heat": -1,
+                            "linkedLightIndex": -1
+                        },
+                        "type": "HeatReceiver"
+                    },
+                    {
+                        "data": {
+                            "StartPlay": false,
+                            "loop": true,
+                            "offset": [
+                                0.0,
+                                6.0,
+                                0.0
+                            ],
+                            "path": "",
+                            "scale": 1.0
+                        },
+                        "type": "EffectRender"
+                    },
+                    {
+                        "data": null,
+                        "type": "water"
+                    }
+                ],
+                "id": 411,
+                "name": "grass(328)",
+                "parent": 636,
+                "tag": 2,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                20.0,
+                                40.0,
+                                10.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/water_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    },
+                    {
+                        "data": {
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                10.0,
+                                20.0,
+                                10.0
+                            ]
+                        },
+                        "type": "BoxCollider"
+                    },
+                    {
+                        "data": {
+                            "radius": 10.0,
+                            "thermal": 0
+                        },
+                        "type": "ThermalBody"
+                    },
+                    {
+                        "data": {
+                            "heat": -1,
+                            "linkedLightIndex": -1
+                        },
+                        "type": "HeatReceiver"
+                    },
+                    {
+                        "data": {
+                            "StartPlay": false,
+                            "loop": true,
+                            "offset": [
+                                0.0,
+                                6.0,
+                                0.0
+                            ],
+                            "path": "",
+                            "scale": 1.0
+                        },
+                        "type": "EffectRender"
+                    },
+                    {
+                        "data": null,
+                        "type": "water"
+                    }
+                ],
+                "id": 411,
+                "name": "grass(329)",
+                "parent": 636,
+                "tag": 2,
                 "type": "Actor"
             }
         ]

@@ -21,9 +21,12 @@ void firewood::Update(float elapsedTime)
 		onfire = false;
 		r->SetHeatNum(0);
 		auto eff = owner->GetComponent<EffectRender>();
+		auto effect = EffectManager::Instance().LoadEffect("./Data/Effects/smoke.efk");
 		eff->Stop();
-
-
+		eff->SetEffect(effect);
+		eff->SetLoop(false);
+		eff->Play();
+		eff->SetScale(0.1f);
 	}
 }
 

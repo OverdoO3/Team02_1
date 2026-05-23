@@ -37,6 +37,7 @@ public:
     void Stop();
     void OnDestroy();
 
+    void SetLoop(bool l) { loop = l; }
     void SetEffect(const std::shared_ptr<Effect>& eff);
     void SetScale(float scale);
 
@@ -51,6 +52,6 @@ private:
     DirectX::XMFLOAT3 offset{ 0,0,0 };
     float scale = 1;
 
-    bool playOnStart = true;
+    bool playOnStart;
     bool loop;
 };

@@ -81,6 +81,7 @@ void EffectRender::DrawInspector()
 void EffectRender::Serialize(nlohmann::json& j) const
 {
 	j["loop"] = loop;
+	j["StartPlay"] = playOnStart;
 	j["scale"] = scale;
 	j["path"] = effectPath;
 	j["offset"] = 
@@ -92,6 +93,7 @@ void EffectRender::Deserialize(nlohmann::json& j)
 	loop = j["loop"];
 	scale = j["scale"];
 	effectPath = j["path"];
+	playOnStart = j.value("StartPlay",false);
 	auto p = j["offset"];
 	offset.x = p[0];
 	offset.x = p[1];
@@ -124,7 +126,7 @@ void EffectRender::Play()
 
 	auto transform = owner->GetComponent<Transform>();
 	position = transform->GetWorldPosition();
-	
+	position = offset + position;
 	if (handle != -1)
 	{
 		effect->Play(position, scale);

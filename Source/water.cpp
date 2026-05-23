@@ -2,12 +2,16 @@
 #include "Actor.h"
 #include "Factory.h"
 #include "StateEffect.h"
+#include <EffectRender.h>
 //								Å´Ç…ñºëOì¸ÇÍÇÈ
 REGISTER_COMPONENT(ComponentID::water, water)
 
 void water::OnAwake(float elapsedTime)
 {
-	//std::make_unique<Model>(icepath.c_str());
+	auto eff = owner->GetComponent<EffectRender>();
+	if (!eff)return;
+
+	eff->SetEffect(EffectManager::Instance().LoadEffect("./Data/Effects/ice_box.efk"));
 }
 
 void water::Update(float elapsedTime)
@@ -16,6 +20,8 @@ void water::Update(float elapsedTime)
 	if (!temp)return;
 	auto modelrender = owner->GetComponent<ModelRender>();
 	if (!modelrender)return;
+	auto eff = owner->GetComponent<EffectRender>();
+	if (!eff)return;
 
 	auto col = owner->GetComponent<BoxCollider>();
 
@@ -27,11 +33,13 @@ void water::Update(float elapsedTime)
  		model = std::make_unique<Model>(icepath.c_str());
 		col->size.y = 10;
 		modelrender->SetModel(std::move(model));
+		eff->Play();
 		break;
 	case 1:
 		model = std::make_unique<Model>(waterpath.c_str());
 		col->size.y = 50;
 		modelrender->SetModel(std::move(model));
+		eff->Stop();
 		break;
 	default:
 		break;
