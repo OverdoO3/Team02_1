@@ -109,7 +109,6 @@ void Audio::PlaySE(const char* filename, float volume)
 {
     if (!m_isInitialized || xaudio == nullptr) return;
 
-    // ★ここでファイル存在チェックを追加
     if (!std::filesystem::exists(filename)) {
         // パスが間違っているとここで引っかかるので、デバッグ出力して止める
         OutputDebugStringA(("!!! File not found: " + std::string(filename) + "\n").c_str());
