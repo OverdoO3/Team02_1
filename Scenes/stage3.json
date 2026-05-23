@@ -30164,7 +30164,8 @@
                                 "hot": "Data/Effects/mode_fire.efk",
                                 "normal": "Data/Effects/mode_normal.efk",
                                 "water": ""
-                            }
+                            },
+                            "loop": false
                         },
                         "type": "StateEffect"
                     },
@@ -36985,6 +36986,61 @@
                 "id": 2747,
                 "name": "YAZIRUSI",
                 "parent": -1,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                0.0,
+                                2.6666622161865234,
+                                3.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "loop": false,
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "path": "",
+                            "scale": 1.0
+                        },
+                        "type": "EffectRender"
+                    },
+                    {
+                        "data": {
+                            "CurrentState": "",
+                            "States": {
+                                "hotbreath": "Data/Effects/breath_fire.efk",
+                                "icebreath": "Data/Effects/breath_ice.efk",
+                                "waterbreath": "Data/Effects/breath_water.efk"
+                            },
+                            "loop": false
+                        },
+                        "type": "StateEffect"
+                    }
+                ],
+                "id": 13620,
+                "name": "eff",
+                "parent": 3,
                 "tag": 0,
                 "type": "Actor"
             }
