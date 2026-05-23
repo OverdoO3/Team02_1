@@ -22279,7 +22279,7 @@
                     },
                     {
                         "data": {
-                            "heat": 0,
+                            "heat": -1,
                             "linkedLightIndex": -1
                         },
                         "type": "HeatReceiver"
@@ -22348,7 +22348,7 @@
                     },
                     {
                         "data": {
-                            "heat": 0,
+                            "heat": -1,
                             "linkedLightIndex": -1
                         },
                         "type": "HeatReceiver"
@@ -22369,7 +22369,7 @@
                     {
                         "data": {
                             "position": [
-                                -20.00005340576172,
+                                -20.00005531311035,
                                 40.0000114440918,
                                 50.0001220703125
                             ],
@@ -22417,7 +22417,7 @@
                     },
                     {
                         "data": {
-                            "heat": 0,
+                            "heat": -1,
                             "linkedLightIndex": -1
                         },
                         "type": "HeatReceiver"
@@ -24493,13 +24493,13 @@
                     {
                         "data": {
                             "radius": 10.0,
-                            "thermal": 0
+                            "thermal": -2
                         },
                         "type": "ThermalBody"
                     },
                     {
                         "data": {
-                            "heat": 0,
+                            "heat": -1,
                             "linkedLightIndex": -1
                         },
                         "type": "HeatReceiver"
@@ -24522,7 +24522,7 @@
                             "position": [
                                 -4.76837158203125e-05,
                                 40.0000114440918,
-                                10.000115394592285
+                                10.000116348266602
                             ],
                             "rotation": [
                                 -0.0,
@@ -24562,13 +24562,13 @@
                     {
                         "data": {
                             "radius": 10.0,
-                            "thermal": 0
+                            "thermal": -2
                         },
                         "type": "ThermalBody"
                     },
                     {
                         "data": {
-                            "heat": 0,
+                            "heat": -1,
                             "linkedLightIndex": -1
                         },
                         "type": "HeatReceiver"
@@ -24591,7 +24591,7 @@
                             "position": [
                                 -4.76837158203125e-05,
                                 40.0000114440918,
-                                0.00011444093252066523
+                                0.00011444093979662284
                             ],
                             "rotation": [
                                 -0.0,
@@ -24631,13 +24631,13 @@
                     {
                         "data": {
                             "radius": 10.0,
-                            "thermal": 0
+                            "thermal": -2
                         },
                         "type": "ThermalBody"
                     },
                     {
                         "data": {
-                            "heat": 0,
+                            "heat": -1,
                             "linkedLightIndex": -1
                         },
                         "type": "HeatReceiver"
@@ -24700,13 +24700,13 @@
                     {
                         "data": {
                             "radius": 10.0,
-                            "thermal": 0
+                            "thermal": -2
                         },
                         "type": "ThermalBody"
                     },
                     {
                         "data": {
-                            "heat": 0,
+                            "heat": -1,
                             "linkedLightIndex": -1
                         },
                         "type": "HeatReceiver"
@@ -24727,76 +24727,7 @@
                     {
                         "data": {
                             "position": [
-                                19.999950408935547,
-                                40.0000114440918,
-                                0.00011444093979662284
-                            ],
-                            "rotation": [
-                                -0.0,
-                                0.0,
-                                -0.0,
-                                1.0
-                            ],
-                            "scale": [
-                                0.9999997615814209,
-                                1.0,
-                                0.9999997615814209
-                            ]
-                        },
-                        "type": "Transform"
-                    },
-                    {
-                        "data": {
-                            "ModelPath": "Data/Model/Stage/Demos/water_block.mdl"
-                        },
-                        "type": "ModelRender"
-                    },
-                    {
-                        "data": {
-                            "offset": [
-                                0.0,
-                                0.0,
-                                0.0
-                            ],
-                            "size": [
-                                10.0,
-                                30.0,
-                                10.0
-                            ]
-                        },
-                        "type": "BoxCollider"
-                    },
-                    {
-                        "data": {
-                            "radius": 10.0,
-                            "thermal": 0
-                        },
-                        "type": "ThermalBody"
-                    },
-                    {
-                        "data": {
-                            "heat": 0,
-                            "linkedLightIndex": -1
-                        },
-                        "type": "HeatReceiver"
-                    },
-                    {
-                        "data": null,
-                        "type": "water"
-                    }
-                ],
-                "id": 8140,
-                "name": "water(19)",
-                "parent": 153,
-                "tag": 2,
-                "type": "Actor"
-            },
-            {
-                "components": [
-                    {
-                        "data": {
-                            "position": [
-                                29.999956130981445,
+                                19.999948501586914,
                                 40.0000114440918,
                                 0.00011444094707258046
                             ],
@@ -24838,13 +24769,82 @@
                     {
                         "data": {
                             "radius": 10.0,
-                            "thermal": 0
+                            "thermal": -2
                         },
                         "type": "ThermalBody"
                     },
                     {
                         "data": {
-                            "heat": 0,
+                            "heat": -1,
+                            "linkedLightIndex": -1
+                        },
+                        "type": "HeatReceiver"
+                    },
+                    {
+                        "data": null,
+                        "type": "water"
+                    }
+                ],
+                "id": 8140,
+                "name": "water(19)",
+                "parent": 153,
+                "tag": 2,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                29.999958038330078,
+                                40.0000114440918,
+                                0.00011444094707258046
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                0.9999997615814209,
+                                1.0,
+                                0.9999997615814209
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/water_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    },
+                    {
+                        "data": {
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                10.0,
+                                30.0,
+                                10.0
+                            ]
+                        },
+                        "type": "BoxCollider"
+                    },
+                    {
+                        "data": {
+                            "radius": 10.0,
+                            "thermal": -2
+                        },
+                        "type": "ThermalBody"
+                    },
+                    {
+                        "data": {
+                            "heat": -1,
                             "linkedLightIndex": -1
                         },
                         "type": "HeatReceiver"
@@ -24865,9 +24865,9 @@
                     {
                         "data": {
                             "position": [
-                                9.999953269958496,
+                                9.99995231628418,
                                 40.0000114440918,
-                                20.00011444091797
+                                20.0001163482666
                             ],
                             "rotation": [
                                 -0.0,
@@ -24907,13 +24907,13 @@
                     {
                         "data": {
                             "radius": 10.0,
-                            "thermal": 0
+                            "thermal": -2
                         },
                         "type": "ThermalBody"
                     },
                     {
                         "data": {
-                            "heat": 0,
+                            "heat": -1,
                             "linkedLightIndex": -1
                         },
                         "type": "HeatReceiver"
@@ -24934,7 +24934,76 @@
                     {
                         "data": {
                             "position": [
-                                19.99995231628418,
+                                19.999950408935547,
+                                40.0000114440918,
+                                20.0001163482666
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                0.9999997615814209,
+                                1.0,
+                                0.9999997615814209
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/water_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    },
+                    {
+                        "data": {
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                10.0,
+                                30.0,
+                                10.0
+                            ]
+                        },
+                        "type": "BoxCollider"
+                    },
+                    {
+                        "data": {
+                            "radius": 10.0,
+                            "thermal": -2
+                        },
+                        "type": "ThermalBody"
+                    },
+                    {
+                        "data": {
+                            "heat": -1,
+                            "linkedLightIndex": -1
+                        },
+                        "type": "HeatReceiver"
+                    },
+                    {
+                        "data": null,
+                        "type": "water"
+                    }
+                ],
+                "id": 8140,
+                "name": "water(23)",
+                "parent": 153,
+                "tag": 2,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                29.999956130981445,
                                 40.0000114440918,
                                 20.00011444091797
                             ],
@@ -24976,82 +25045,13 @@
                     {
                         "data": {
                             "radius": 10.0,
-                            "thermal": 0
+                            "thermal": -2
                         },
                         "type": "ThermalBody"
                     },
                     {
                         "data": {
-                            "heat": 0,
-                            "linkedLightIndex": -1
-                        },
-                        "type": "HeatReceiver"
-                    },
-                    {
-                        "data": null,
-                        "type": "water"
-                    }
-                ],
-                "id": 8140,
-                "name": "water(23)",
-                "parent": 153,
-                "tag": 2,
-                "type": "Actor"
-            },
-            {
-                "components": [
-                    {
-                        "data": {
-                            "position": [
-                                29.999954223632813,
-                                40.0000114440918,
-                                20.000112533569336
-                            ],
-                            "rotation": [
-                                -0.0,
-                                0.0,
-                                -0.0,
-                                1.0
-                            ],
-                            "scale": [
-                                0.9999997615814209,
-                                1.0,
-                                0.9999997615814209
-                            ]
-                        },
-                        "type": "Transform"
-                    },
-                    {
-                        "data": {
-                            "ModelPath": "Data/Model/Stage/Demos/water_block.mdl"
-                        },
-                        "type": "ModelRender"
-                    },
-                    {
-                        "data": {
-                            "offset": [
-                                0.0,
-                                0.0,
-                                0.0
-                            ],
-                            "size": [
-                                10.0,
-                                30.0,
-                                10.0
-                            ]
-                        },
-                        "type": "BoxCollider"
-                    },
-                    {
-                        "data": {
-                            "radius": 10.0,
-                            "thermal": 0
-                        },
-                        "type": "ThermalBody"
-                    },
-                    {
-                        "data": {
-                            "heat": 0,
+                            "heat": -1,
                             "linkedLightIndex": -1
                         },
                         "type": "HeatReceiver"
@@ -25114,13 +25114,13 @@
                     {
                         "data": {
                             "radius": 10.0,
-                            "thermal": 0
+                            "thermal": -2
                         },
                         "type": "ThermalBody"
                     },
                     {
                         "data": {
-                            "heat": 0,
+                            "heat": -1,
                             "linkedLightIndex": -1
                         },
                         "type": "HeatReceiver"
@@ -25141,9 +25141,9 @@
                     {
                         "data": {
                             "position": [
-                                19.999950408935547,
+                                19.999948501586914,
                                 40.0000114440918,
-                                10.000115394592285
+                                10.000116348266602
                             ],
                             "rotation": [
                                 -0.0,
@@ -25183,13 +25183,13 @@
                     {
                         "data": {
                             "radius": 10.0,
-                            "thermal": 0
+                            "thermal": -2
                         },
                         "type": "ThermalBody"
                     },
                     {
                         "data": {
-                            "heat": 0,
+                            "heat": -1,
                             "linkedLightIndex": -1
                         },
                         "type": "HeatReceiver"
@@ -25210,9 +25210,9 @@
                     {
                         "data": {
                             "position": [
-                                29.999950408935547,
+                                29.99995231628418,
                                 40.000003814697266,
-                                10.000115394592285
+                                10.000116348266602
                             ],
                             "rotation": [
                                 -0.0,
@@ -25252,13 +25252,13 @@
                     {
                         "data": {
                             "radius": 10.0,
-                            "thermal": 0
+                            "thermal": -2
                         },
                         "type": "ThermalBody"
                     },
                     {
                         "data": {
-                            "heat": 0,
+                            "heat": -1,
                             "linkedLightIndex": -1
                         },
                         "type": "HeatReceiver"
@@ -54148,7 +54148,7 @@
                     },
                     {
                         "data": {
-                            "heat": 0,
+                            "heat": -1,
                             "linkedLightIndex": -1
                         },
                         "type": "HeatReceiver"
@@ -54169,7 +54169,7 @@
                     {
                         "data": {
                             "position": [
-                                -10.000055313110352,
+                                -10.000056266784668,
                                 40.0000114440918,
                                 60.00011444091797
                             ],
@@ -54217,7 +54217,7 @@
                     },
                     {
                         "data": {
-                            "heat": 0,
+                            "heat": -1,
                             "linkedLightIndex": -1
                         },
                         "type": "HeatReceiver"
@@ -54238,7 +54238,7 @@
                     {
                         "data": {
                             "position": [
-                                -10.000053405761719,
+                                -10.000054359436035,
                                 40.0000114440918,
                                 50.0001220703125
                             ],
@@ -54286,7 +54286,7 @@
                     },
                     {
                         "data": {
-                            "heat": 0,
+                            "heat": -1,
                             "linkedLightIndex": -1
                         },
                         "type": "HeatReceiver"
@@ -54355,7 +54355,7 @@
                     },
                     {
                         "data": {
-                            "heat": 0,
+                            "heat": -1,
                             "linkedLightIndex": -1
                         },
                         "type": "HeatReceiver"
@@ -54424,7 +54424,7 @@
                     },
                     {
                         "data": {
-                            "heat": 0,
+                            "heat": -1,
                             "linkedLightIndex": -1
                         },
                         "type": "HeatReceiver"
@@ -54445,7 +54445,7 @@
                     {
                         "data": {
                             "position": [
-                                -5.340576171875e-05,
+                                -5.340576535672881e-05,
                                 40.0000114440918,
                                 50.0001220703125
                             ],
@@ -54493,7 +54493,7 @@
                     },
                     {
                         "data": {
-                            "heat": 0,
+                            "heat": -1,
                             "linkedLightIndex": -1
                         },
                         "type": "HeatReceiver"
@@ -54514,7 +54514,7 @@
                     {
                         "data": {
                             "position": [
-                                9.999942779541016,
+                                9.9999418258667,
                                 40.0000114440918,
                                 70.00011444091797
                             ],
@@ -54562,7 +54562,7 @@
                     },
                     {
                         "data": {
-                            "heat": 0,
+                            "heat": -1,
                             "linkedLightIndex": -1
                         },
                         "type": "HeatReceiver"
@@ -54631,7 +54631,7 @@
                     },
                     {
                         "data": {
-                            "heat": 0,
+                            "heat": -1,
                             "linkedLightIndex": -1
                         },
                         "type": "HeatReceiver"
@@ -54652,7 +54652,7 @@
                     {
                         "data": {
                             "position": [
-                                9.999946594238281,
+                                9.999945640563965,
                                 40.0000114440918,
                                 50.0001220703125
                             ],
@@ -54700,7 +54700,7 @@
                     },
                     {
                         "data": {
-                            "heat": 0,
+                            "heat": -1,
                             "linkedLightIndex": -1
                         },
                         "type": "HeatReceiver"
@@ -54721,7 +54721,7 @@
                     {
                         "data": {
                             "position": [
-                                19.999942779541016,
+                                19.999940872192383,
                                 40.0000114440918,
                                 70.00011444091797
                             ],
@@ -54769,7 +54769,7 @@
                     },
                     {
                         "data": {
-                            "heat": 0,
+                            "heat": -1,
                             "linkedLightIndex": -1
                         },
                         "type": "HeatReceiver"
@@ -54790,7 +54790,7 @@
                     {
                         "data": {
                             "position": [
-                                19.99994468688965,
+                                19.999942779541016,
                                 40.0000114440918,
                                 60.00011444091797
                             ],
@@ -54838,7 +54838,7 @@
                     },
                     {
                         "data": {
-                            "heat": 0,
+                            "heat": -1,
                             "linkedLightIndex": -1
                         },
                         "type": "HeatReceiver"
@@ -54907,7 +54907,7 @@
                     },
                     {
                         "data": {
-                            "heat": 0,
+                            "heat": -1,
                             "linkedLightIndex": -1
                         },
                         "type": "HeatReceiver"

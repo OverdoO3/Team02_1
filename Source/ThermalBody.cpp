@@ -27,6 +27,7 @@ void ThermalBody::Serialize(nlohmann::json& j) const
 
 void ThermalBody::Deserialize(nlohmann::json& j)
 {
+	if (j["radius"] != nullptr)
 	radius =  j["radius"];
 	if(j["thermal"] != nullptr)
 	temperature = j["thermal"];

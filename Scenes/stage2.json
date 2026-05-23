@@ -32882,7 +32882,7 @@
                     },
                     {
                         "data": {
-                            "heat": 0,
+                            "heat": 1,
                             "linkedLightIndex": 1
                         },
                         "type": "HeatReceiver"
@@ -33400,7 +33400,7 @@
                     {
                         "data": {
                             "radius": 10.0,
-                            "thermal": 0
+                            "thermal": 1
                         },
                         "type": "ThermalBody"
                     },
@@ -34535,7 +34535,7 @@
                     },
                     {
                         "data": {
-                            "heat": 0,
+                            "heat": 1,
                             "linkedLightIndex": 2
                         },
                         "type": "HeatReceiver"

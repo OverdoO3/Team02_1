@@ -62,7 +62,7 @@ void HeatReceiver::Serialize(nlohmann::json& j) const
 
 void HeatReceiver::Deserialize(nlohmann::json& j)
 {
-	//auto n = j["temperature"];
+	auto n = j["temperature"];
     heatNum = j.value("heat", 0);
     m_linkedLightIndex = j.value("linkedLightIndex", -1);
 }
