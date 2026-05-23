@@ -510,3 +510,20 @@ void ModelRenderer::LoadLights(const std::string& path)
         point_light[i].color.w = j["lights"][i].value("colorA", 1.0f);
     }
 }
+
+void ModelRenderer::SetLightEnabled(int index, bool enabled)
+{
+    if (index < 0 || index >= 8) return;
+
+    if (enabled) {
+        // ƒIƒ“‚É‚·‚é‚Í•Û‘¶‚µ‚Ä‚¨‚¢‚½range‚ğ•œŒ³
+        point_light[index].range = point_light[index].savedRange;
+        point_light[index].isEnabled = true;
+    }
+    else {
+        // ƒIƒt‚É‚·‚é‚ÍŒ»İ‚Ìrange‚ğ•Û‘¶‚µ‚Ä0‚É‚·‚é
+        point_light[index].savedRange = point_light[index].range;
+        point_light[index].range = 0.0f;
+        point_light[index].isEnabled = false;
+    }
+}

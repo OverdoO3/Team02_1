@@ -17,7 +17,9 @@
 		DirectX::XMFLOAT4 position{ 0,0,0,0 };
 		DirectX::XMFLOAT4 color{ 1,1,1,1 };
 		float range{ 0 };
-		DirectX::XMFLOAT3 dummy;
+		float savedRange{ 0 }; // 追加：オフにする前の値を保存
+		bool  isEnabled{ true }; // 追加：状態管理用
+		float dummy;
 	};
 
 	struct LightConstants {
@@ -97,6 +99,7 @@ public:
 	//ポイント配列のゲッター
 	point_lights* GetPointLights() { return point_light; }
 
+	void SetLightEnabled(int index, bool enabled);
 
 private:
 	// 描画実行

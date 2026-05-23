@@ -50,23 +50,42 @@ void HeatReceiver::Update(float elapsedTime)
 
 void HeatReceiver::DrawInspector()
 {
-	ImGui::InputInt("heat", &heatNum);
+    ImGui::InputInt("heat", &heatNum);
+    ImGui::SliderInt("Linked Light Index", &m_linkedLightIndex, -1, 7); // ’Ç‰Á
 }
 
 void HeatReceiver::Serialize(nlohmann::json& j) const
 {
-	j["temperature"] = heatNum;
+    j["heat"] = heatNum;
+    j["linkedLightIndex"] = m_linkedLightIndex; 
 }
 
 void HeatReceiver::Deserialize(nlohmann::json& j)
 {
-	auto n = j["temperature"];
-	heatNum = n;
+	//auto n = j["temperature"];
+    heatNum = j.value("heat", 0);
+    m_linkedLightIndex = j.value("linkedLightIndex", -1);
 }
 
 std::unique_ptr<Component> HeatReceiver::Clone() const
 {
 	auto h = std::make_unique<HeatReceiver>();
 	h->heatNum = this->heatNum;
+    h->m_linkedLightIndex = this->m_linkedLightIndex;
 	return h;
+}
+
+void HeatReceiver::SetHeatNum(int n)
+{
+    int oldHeat = heatNum;
+    heatNum = n;
+
+    if (oldHeat != heatNum)
+    {
+        auto* renderer = Graphics::Instance().GetModelRenderer();
+        if (renderer && m_linkedLightIndex >= 0)
+        {
+            renderer->SetLightEnabled(m_linkedLightIndex, (heatNum > 0));
+        }
+    }
 }

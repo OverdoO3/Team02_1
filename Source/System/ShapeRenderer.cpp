@@ -528,3 +528,20 @@ void ShapeRenderer::Render(const RenderContext& rc, const Mesh& mesh, const Dire
 	// 描画
 	dc->Draw(mesh.vertexCount, 0);
 }
+
+void ShapeRenderer::SetLightEnabled(int index, bool enabled)
+{
+	if (index < 0 || index >= 8) return;
+
+	if (enabled) {
+		// オンにする時は保存した範囲を戻す
+		point_light[index].range = point_light[index].savedRange;
+		point_light[index].isEnabled = true;
+	}
+	else {
+		// オフにする時は現在の値を保存して0にする
+		point_light[index].savedRange = point_light[index].range;
+		point_light[index].range = 0.0f;
+		point_light[index].isEnabled = false;
+	}
+}
