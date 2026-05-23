@@ -29678,7 +29678,8 @@
                     },
                     {
                         "data": {
-                            "radius": 10.0
+                            "radius": 10.0,
+                            "thermal": 0
                         },
                         "type": "ThermalBody"
                     },
@@ -29734,7 +29735,8 @@
                     },
                     {
                         "data": {
-                            "temperature": 1
+                            "heat": 1,
+                            "linkedLightIndex": 0
                         },
                         "type": "HeatReceiver"
                     },
@@ -29815,7 +29817,8 @@
                     },
                     {
                         "data": {
-                            "temperature": 1
+                            "heat": 1,
+                            "linkedLightIndex": 3
                         },
                         "type": "HeatReceiver"
                     },
@@ -30261,7 +30264,8 @@
                     },
                     {
                         "data": {
-                            "temperature": -1
+                            "heat": -1,
+                            "linkedLightIndex": -1
                         },
                         "type": "HeatReceiver"
                     }
@@ -30325,7 +30329,8 @@
                     },
                     {
                         "data": {
-                            "temperature": -1
+                            "heat": -1,
+                            "linkedLightIndex": -1
                         },
                         "type": "HeatReceiver"
                     }
@@ -30389,7 +30394,8 @@
                     },
                     {
                         "data": {
-                            "temperature": -1
+                            "heat": -1,
+                            "linkedLightIndex": -1
                         },
                         "type": "HeatReceiver"
                     }
@@ -31505,7 +31511,8 @@
                     },
                     {
                         "data": {
-                            "temperature": -1
+                            "heat": -1,
+                            "linkedLightIndex": -1
                         },
                         "type": "HeatReceiver"
                     }
@@ -31569,7 +31576,8 @@
                     },
                     {
                         "data": {
-                            "temperature": -1
+                            "heat": -1,
+                            "linkedLightIndex": -1
                         },
                         "type": "HeatReceiver"
                     }
@@ -31633,7 +31641,8 @@
                     },
                     {
                         "data": {
-                            "temperature": -1
+                            "heat": -1,
+                            "linkedLightIndex": -1
                         },
                         "type": "HeatReceiver"
                     }
@@ -31697,7 +31706,8 @@
                     },
                     {
                         "data": {
-                            "temperature": -1
+                            "heat": -1,
+                            "linkedLightIndex": -1
                         },
                         "type": "HeatReceiver"
                     }
@@ -31761,7 +31771,8 @@
                     },
                     {
                         "data": {
-                            "temperature": -1
+                            "heat": -1,
+                            "linkedLightIndex": -1
                         },
                         "type": "HeatReceiver"
                     }
@@ -31825,7 +31836,8 @@
                     },
                     {
                         "data": {
-                            "temperature": -1
+                            "heat": -1,
+                            "linkedLightIndex": -1
                         },
                         "type": "HeatReceiver"
                     }
@@ -31889,7 +31901,8 @@
                     },
                     {
                         "data": {
-                            "temperature": -1
+                            "heat": -1,
+                            "linkedLightIndex": -1
                         },
                         "type": "HeatReceiver"
                     }
@@ -31953,7 +31966,8 @@
                     },
                     {
                         "data": {
-                            "temperature": -1
+                            "heat": -1,
+                            "linkedLightIndex": -1
                         },
                         "type": "HeatReceiver"
                     }
@@ -32017,7 +32031,8 @@
                     },
                     {
                         "data": {
-                            "temperature": -1
+                            "heat": -1,
+                            "linkedLightIndex": -1
                         },
                         "type": "HeatReceiver"
                     }
@@ -32081,7 +32096,8 @@
                     },
                     {
                         "data": {
-                            "temperature": -1
+                            "heat": -1,
+                            "linkedLightIndex": -1
                         },
                         "type": "HeatReceiver"
                     }
@@ -32145,7 +32161,8 @@
                     },
                     {
                         "data": {
-                            "temperature": -1
+                            "heat": -1,
+                            "linkedLightIndex": -1
                         },
                         "type": "HeatReceiver"
                     }
@@ -32209,7 +32226,8 @@
                     },
                     {
                         "data": {
-                            "temperature": -1
+                            "heat": -1,
+                            "linkedLightIndex": -1
                         },
                         "type": "HeatReceiver"
                     }
@@ -32273,7 +32291,8 @@
                     },
                     {
                         "data": {
-                            "temperature": -1
+                            "heat": -1,
+                            "linkedLightIndex": -1
                         },
                         "type": "HeatReceiver"
                     }
@@ -32337,7 +32356,8 @@
                     },
                     {
                         "data": {
-                            "temperature": -1
+                            "heat": -1,
+                            "linkedLightIndex": -1
                         },
                         "type": "HeatReceiver"
                     }
@@ -32401,7 +32421,8 @@
                     },
                     {
                         "data": {
-                            "temperature": -1
+                            "heat": -1,
+                            "linkedLightIndex": -1
                         },
                         "type": "HeatReceiver"
                     }
@@ -32465,7 +32486,8 @@
                     },
                     {
                         "data": {
-                            "temperature": -1
+                            "heat": -1,
+                            "linkedLightIndex": -1
                         },
                         "type": "HeatReceiver"
                     }
@@ -32529,7 +32551,8 @@
                     },
                     {
                         "data": {
-                            "temperature": -1
+                            "heat": -1,
+                            "linkedLightIndex": -1
                         },
                         "type": "HeatReceiver"
                     }
@@ -32593,7 +32616,8 @@
                     },
                     {
                         "data": {
-                            "temperature": -1
+                            "heat": -1,
+                            "linkedLightIndex": -1
                         },
                         "type": "HeatReceiver"
                     }
@@ -32657,7 +32681,8 @@
                     },
                     {
                         "data": {
-                            "temperature": -1
+                            "heat": -1,
+                            "linkedLightIndex": -1
                         },
                         "type": "HeatReceiver"
                     }
@@ -32721,7 +32746,8 @@
                     },
                     {
                         "data": {
-                            "temperature": -1
+                            "heat": -1,
+                            "linkedLightIndex": -1
                         },
                         "type": "HeatReceiver"
                     }
@@ -32785,7 +32811,8 @@
                     },
                     {
                         "data": {
-                            "temperature": -1
+                            "heat": -1,
+                            "linkedLightIndex": -1
                         },
                         "type": "HeatReceiver"
                     }
@@ -32849,7 +32876,8 @@
                     },
                     {
                         "data": {
-                            "temperature": -1
+                            "heat": -1,
+                            "linkedLightIndex": -1
                         },
                         "type": "HeatReceiver"
                     }
@@ -32913,7 +32941,8 @@
                     },
                     {
                         "data": {
-                            "temperature": -1
+                            "heat": -1,
+                            "linkedLightIndex": -1
                         },
                         "type": "HeatReceiver"
                     }
@@ -32977,7 +33006,8 @@
                     },
                     {
                         "data": {
-                            "temperature": -1
+                            "heat": -1,
+                            "linkedLightIndex": -1
                         },
                         "type": "HeatReceiver"
                     }
@@ -33041,7 +33071,8 @@
                     },
                     {
                         "data": {
-                            "temperature": -1
+                            "heat": -1,
+                            "linkedLightIndex": -1
                         },
                         "type": "HeatReceiver"
                     }
@@ -33105,7 +33136,8 @@
                     },
                     {
                         "data": {
-                            "temperature": -1
+                            "heat": -1,
+                            "linkedLightIndex": -1
                         },
                         "type": "HeatReceiver"
                     }
@@ -33169,7 +33201,8 @@
                     },
                     {
                         "data": {
-                            "temperature": -1
+                            "heat": -1,
+                            "linkedLightIndex": -1
                         },
                         "type": "HeatReceiver"
                     }
@@ -33233,7 +33266,8 @@
                     },
                     {
                         "data": {
-                            "temperature": -1
+                            "heat": -1,
+                            "linkedLightIndex": -1
                         },
                         "type": "HeatReceiver"
                     }
@@ -33297,7 +33331,8 @@
                     },
                     {
                         "data": {
-                            "temperature": -1
+                            "heat": -1,
+                            "linkedLightIndex": -1
                         },
                         "type": "HeatReceiver"
                     }
@@ -33361,7 +33396,8 @@
                     },
                     {
                         "data": {
-                            "temperature": -1
+                            "heat": -1,
+                            "linkedLightIndex": -1
                         },
                         "type": "HeatReceiver"
                     }
@@ -33425,7 +33461,8 @@
                     },
                     {
                         "data": {
-                            "temperature": -1
+                            "heat": -1,
+                            "linkedLightIndex": -1
                         },
                         "type": "HeatReceiver"
                     }
@@ -33489,7 +33526,8 @@
                     },
                     {
                         "data": {
-                            "temperature": -1
+                            "heat": -1,
+                            "linkedLightIndex": -1
                         },
                         "type": "HeatReceiver"
                     }
@@ -33553,7 +33591,8 @@
                     },
                     {
                         "data": {
-                            "temperature": -1
+                            "heat": -1,
+                            "linkedLightIndex": -1
                         },
                         "type": "HeatReceiver"
                     }
@@ -33617,7 +33656,8 @@
                     },
                     {
                         "data": {
-                            "temperature": -1
+                            "heat": -1,
+                            "linkedLightIndex": -1
                         },
                         "type": "HeatReceiver"
                     }
@@ -33681,7 +33721,8 @@
                     },
                     {
                         "data": {
-                            "temperature": -1
+                            "heat": -1,
+                            "linkedLightIndex": -1
                         },
                         "type": "HeatReceiver"
                     }
@@ -33745,7 +33786,8 @@
                     },
                     {
                         "data": {
-                            "temperature": -1
+                            "heat": -1,
+                            "linkedLightIndex": -1
                         },
                         "type": "HeatReceiver"
                     }
@@ -33809,7 +33851,8 @@
                     },
                     {
                         "data": {
-                            "temperature": -1
+                            "heat": -1,
+                            "linkedLightIndex": -1
                         },
                         "type": "HeatReceiver"
                     }
@@ -33873,7 +33916,8 @@
                     },
                     {
                         "data": {
-                            "temperature": -1
+                            "heat": -1,
+                            "linkedLightIndex": -1
                         },
                         "type": "HeatReceiver"
                     }
@@ -33937,7 +33981,8 @@
                     },
                     {
                         "data": {
-                            "temperature": -1
+                            "heat": -1,
+                            "linkedLightIndex": -1
                         },
                         "type": "HeatReceiver"
                     }
@@ -34001,7 +34046,8 @@
                     },
                     {
                         "data": {
-                            "temperature": -1
+                            "heat": -1,
+                            "linkedLightIndex": -1
                         },
                         "type": "HeatReceiver"
                     }
@@ -34065,7 +34111,8 @@
                     },
                     {
                         "data": {
-                            "temperature": -1
+                            "heat": -1,
+                            "linkedLightIndex": -1
                         },
                         "type": "HeatReceiver"
                     }
@@ -34129,7 +34176,8 @@
                     },
                     {
                         "data": {
-                            "temperature": -1
+                            "heat": -1,
+                            "linkedLightIndex": -1
                         },
                         "type": "HeatReceiver"
                     }
@@ -34193,7 +34241,8 @@
                     },
                     {
                         "data": {
-                            "temperature": -1
+                            "heat": -1,
+                            "linkedLightIndex": -1
                         },
                         "type": "HeatReceiver"
                     }
@@ -34257,7 +34306,8 @@
                     },
                     {
                         "data": {
-                            "temperature": -1
+                            "heat": -1,
+                            "linkedLightIndex": -1
                         },
                         "type": "HeatReceiver"
                     }
@@ -34321,7 +34371,8 @@
                     },
                     {
                         "data": {
-                            "temperature": -1
+                            "heat": -1,
+                            "linkedLightIndex": -1
                         },
                         "type": "HeatReceiver"
                     }
@@ -34900,7 +34951,8 @@
                     },
                     {
                         "data": {
-                            "temperature": 1
+                            "heat": 1,
+                            "linkedLightIndex": 2
                         },
                         "type": "HeatReceiver"
                     },

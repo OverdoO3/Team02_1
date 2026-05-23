@@ -1,6 +1,7 @@
 #pragma once
 #include "Component.h"
 #include "nlohmann/json.hpp"
+#include "System/Graphics.h"
 
 class Actor;
 class ThermalBody;
@@ -22,16 +23,18 @@ public:
 
     std::unique_ptr<Component> Clone() const override;
 
+    void SetHeatNum(int heat);
+
     float GetRadius() { return radius; }
 
     float GetHeatNum() { return heatNum; }
-    void SetHeatNum(int n) { heatNum = n; }
 
     bool IsPlayerNear() const { return m_isPlayerNear; }
 
     COMPONENT_ID(HeatReceiver)
 private:
     int heatNum;
+    int m_linkedLightIndex = -1;
 
     float radius = 5.0f;
 

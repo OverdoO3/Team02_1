@@ -22,6 +22,8 @@ void firewood::Update(float elapsedTime)
 		r->SetHeatNum(0);
 		auto eff = owner->GetComponent<EffectRender>();
 		eff->Stop();
+
+
 	}
 }
 

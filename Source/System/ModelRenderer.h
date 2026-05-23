@@ -62,6 +62,8 @@ public:
 	void SaveLights(const std::string& path);
 	void LoadLights(const std::string& path);
 
+	void SetLightEnabled(int index, bool enabled);
+
 	std::string currentLightPath = "Data/Lights/default.json";
 
 	void SetLightPath(const std::string& scenePath)
