@@ -4,6 +4,7 @@
 #include "OpenDialog.h"
 #include "HeatComponent.h"
 #include <algorithm>
+#include "System/Audio.h"
 
 void Scene::Initialize(const char* path)
 {
@@ -391,8 +392,15 @@ void Scene::Render(CameraBase* camera, bool isEditor)
                 auto& insideList = playerHeatTransfer->GetInsideActors();
                 if (std::find(insideList.begin(), insideList.end(), actor.get()) != insideList.end())
                 {
-                    isInside = true; // 範囲内に入っている
+                    isInside = true;
+
+                    if (!heatReceiver->IsWasInside())
+                    {
+                        std::string path = "Data/Sound/SE_outline_change.wav";
+                        Audio::Instance().PlaySE(path.c_str());
+                    }
                 }
+                heatReceiver->SetWasInside(isInside);
             }
 
             // 「HeatReceiverを持っていて」かつ「プレイヤーの範囲内」の奴だけここで描画
@@ -402,7 +410,7 @@ void Scene::Render(CameraBase* camera, bool isEditor)
             }
         }
     }
-    rc.outlineColor.outlineColor = DirectX::XMFLOAT4(1.0f, 1.0f, 1.0f, 1.0f); // オレンジ
+    rc.outlineColor.outlineColor = DirectX::XMFLOAT4(1.0f, 1.0f, 1.0f, 1.0f); 
     rc.outlineParams.outlineThickness = 0.4f; // 範囲内のときだけ太くする
     modelRenderer->SetShaderId(ShaderId::Outline);
     modelRenderer->FlushAll(rc); // 範囲内オブジェクトの描画を確定

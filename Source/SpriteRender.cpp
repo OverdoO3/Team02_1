@@ -444,7 +444,8 @@ void SpriteRender::Update(float elapsedTime)
 
         if (m_isHovered && !m_wasHovered)
         {
-            Audio::Instance().PlaySE("Data/Sound/SE_cursor.wav");
+            std::string myPath = ToDataPath("Data/Sound/SE_cursor.wav");
+            Audio::Instance().PlaySE(myPath.c_str());
         }
         m_wasHovered = m_isHovered;
     }

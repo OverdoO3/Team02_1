@@ -6,6 +6,7 @@
 #include "StateEffect.h"
 #include "ThermalBody.h"
 #include <EffectRender.h>
+#include "System/Audio.h"
 
 REGISTER_COMPONENT(ComponentID::HeatTransfer, HeatTransfer)
 
@@ -89,28 +90,40 @@ void HeatTransfer::Update(float elapsedTime)
 				success = true;
 			}
 		}
-		if (!success&&thermal->GetHeat() != 0)
+		if (!success && thermal->GetHeat() != 0)
 		{
 			owner->GetComponent<ModelRender>()->PlayAnimation("in_out", false);
 
 			switch (thermal->GetHeat())
 			{
 			case -2:
+			{
 				owner->GetChildren().front()->GetComponent<StateEffect>()->SetState("icebreath");
+				std::string myPath = ToDataPath("Data/Sound/SE_game_breath_ice.wav");
+				Audio::Instance().PlaySE(myPath.c_str());
+			}
 				break;
 			case -1:
+			{
 				owner->GetChildren().front()->GetComponent<StateEffect>()->SetState("waterbreath");
+				std::string myPath = ToDataPath("Data/Sound/SE_game_breath_water.wav");
+				Audio::Instance().PlaySE(myPath.c_str());
 				break;
+			}
 			case 1:
+			{
 				owner->GetChildren().front()->GetComponent<StateEffect>()->SetState("hotbreath");
-				break;
+				std::string myPath = ToDataPath("Data/Sound/SE_game_breath_fire.wav");
+				Audio::Instance().PlaySE(myPath.c_str());
+			}
+			break;
+
 			default:
 				break;
 			}
-			
+
 			thermal->SetHeat(0);
 		}
-
 		
 	}
 
@@ -124,14 +137,26 @@ void HeatTransfer::Update(float elapsedTime)
 		effectstate->SetState("normal");
 		break;
 	case 1:
+	{
 		effectstate->SetState("hot");
-		break;
+		std::string myPath = ToDataPath("Data/Sound/SE_game_reaction_fire.wav");
+		Audio::Instance().PlaySE(myPath.c_str());
+	}
+	break;
 	case -1:
+	{
 		effectstate->SetState("water");
-		break;
+		std::string myPath = ToDataPath("Data/Sound/SE_game_reaction_water.wav");
+		Audio::Instance().PlaySE(myPath.c_str());
+	}
+	break;
 	case -2:
+	{
 		effectstate->SetState("cold");
-		break;
+		std::string myPath = ToDataPath("Data/Sound/SE_game_reaction_ice.wav");
+		Audio::Instance().PlaySE(myPath.c_str());
+	}
+	break;
 	default:
 		break;
 	}

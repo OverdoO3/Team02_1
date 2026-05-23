@@ -22,6 +22,18 @@ public:
     const std::vector<Actor*>& GetInsideActors() const { return m_insideActors; }
     bool GetCanAbsorb() const { return m_canAbsorb; }
 
+    std::string ToDataPath(const std::string& fullPath)
+    {
+        std::filesystem::path base = std::filesystem::absolute("Data");
+        std::filesystem::path target = std::filesystem::absolute(fullPath);
+
+        std::filesystem::path relative = std::filesystem::relative(target, base);
+
+        std::filesystem::path normalized = relative.lexically_normal();
+
+        return "Data/" + normalized.generic_string();
+    }
+
     bool IsStatusActive() const;
     COMPONENT_ID(HeatTransfer)
 private:

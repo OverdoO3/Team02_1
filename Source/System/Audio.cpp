@@ -1,5 +1,6 @@
 #include "System/Misc.h"
 #include "System/Audio.h"
+#include <filesystem>
 
 // 静的メンバの初期化
 bool Audio::m_isInitialized = false;
@@ -107,13 +108,21 @@ void Audio::SetBGMVolume(float volume)
 void Audio::PlaySE(const char* filename, float volume)
 {
     if (!m_isInitialized || xaudio == nullptr) return;
-    // ここで毎回新しいAudioSourceを生成してリストに入れる
+
+    // ★ここでファイル存在チェックを追加
+    if (!std::filesystem::exists(filename)) {
+        // パスが間違っているとここで引っかかるので、デバッグ出力して止める
+        OutputDebugStringA(("!!! File not found: " + std::string(filename) + "\n").c_str());
+        return;
+    }
+
     auto res = std::make_shared<AudioResource>(filename);
     auto source = std::make_unique<AudioSource>(xaudio, res);
     source->SetVolume(volume);
     source->Play(false);
     m_seSources.push_back(std::move(source));
 }
+
 
 void Audio::UpdateSE()
 {

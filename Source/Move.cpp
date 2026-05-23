@@ -5,6 +5,7 @@
 #include "Slope.h"
 #include "Factory.h"
 #include "SceneManager.h"
+#include "System/Audio.h"
 
 REGISTER_COMPONENT(ComponentID::Move,Move)
 
@@ -20,8 +21,11 @@ void Move::Update(float elapsedTime)
         owner->GetComponent<Transform>()->LookAt(owner->GetScene()->GetCamera()->GetComponent<Transform>()->GetLocalPosition());
         if (m_isTransitionStarted)return;
         m_goalTimer += elapsedTime;
-        if (m_goalTimer >= 2.0f)
+        if (m_goalTimer >= 4.0f)
         {
+            std::string myPath = ToDataPath("Data/Sound/SE_game_clear.wav");
+            Audio::Instance().PlaySE(myPath.c_str());
+
             m_isTransitionStarted = true;
             auto* sceneManager = owner->GetScene()->sceneManager;
             if (sceneManager)
@@ -327,8 +331,13 @@ void Move::Update(float elapsedTime)
             model->PlayAnimation("in_out", true);
             break;
         case Move::land:
+        {
+            // ‚±‚±‚Å‘Š‘ÎƒpƒX•ÏŠ·‚ÆSEÄ¶
+            std::string myPath = ToDataPath("Data/Sound/SE_game_landing.wav");
+            Audio::Instance().PlaySE(myPath.c_str());
             model->PlayAnimation("land", true);
-            break;
+        }
+        break;
         case Move::fall:
             model->PlayAnimation("fall", true);
             break;

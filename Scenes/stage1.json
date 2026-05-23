@@ -40216,7 +40216,7 @@
                             "loop": true,
                             "offset": [
                                 0.0,
-                                6.0,
+                                0.0,
                                 0.0
                             ],
                             "path": "",
@@ -41769,7 +41769,7 @@
                             "FrameDuration": 0.10000000149011612,
                             "HeatUI": false,
                             "HoverColOffset": 1,
-                            "HoverFade": false,
+                            "HoverFade": true,
                             "HoverRowOffset": 0,
                             "HoverShift": false,
                             "IrisDuration": 1.0,
@@ -43791,7 +43791,7 @@
                             "loop": true,
                             "offset": [
                                 0.0,
-                                6.0,
+                                0.0,
                                 0.0
                             ],
                             "path": "",
@@ -43874,7 +43874,7 @@
                             "loop": true,
                             "offset": [
                                 0.0,
-                                6.0,
+                                0.0,
                                 0.0
                             ],
                             "path": "",
@@ -43957,7 +43957,7 @@
                             "loop": true,
                             "offset": [
                                 0.0,
-                                6.0,
+                                0.0,
                                 0.0
                             ],
                             "path": "",
@@ -44040,7 +44040,7 @@
                             "loop": true,
                             "offset": [
                                 0.0,
-                                6.0,
+                                0.0,
                                 0.0
                             ],
                             "path": "",
@@ -44123,7 +44123,7 @@
                             "loop": true,
                             "offset": [
                                 0.0,
-                                6.0,
+                                0.0,
                                 0.0
                             ],
                             "path": "",
@@ -44206,7 +44206,7 @@
                             "loop": true,
                             "offset": [
                                 0.0,
-                                6.0,
+                                0.0,
                                 0.0
                             ],
                             "path": "",
@@ -44289,7 +44289,7 @@
                             "loop": true,
                             "offset": [
                                 0.0,
-                                6.0,
+                                0.0,
                                 0.0
                             ],
                             "path": "",
@@ -44372,7 +44372,7 @@
                             "loop": true,
                             "offset": [
                                 0.0,
-                                6.0,
+                                0.0,
                                 0.0
                             ],
                             "path": "",
@@ -44455,7 +44455,7 @@
                             "loop": true,
                             "offset": [
                                 0.0,
-                                6.0,
+                                0.0,
                                 0.0
                             ],
                             "path": "",
@@ -44538,7 +44538,7 @@
                             "loop": true,
                             "offset": [
                                 0.0,
-                                6.0,
+                                0.0,
                                 0.0
                             ],
                             "path": "",
@@ -44621,7 +44621,7 @@
                             "loop": true,
                             "offset": [
                                 0.0,
-                                6.0,
+                                0.0,
                                 0.0
                             ],
                             "path": "",
@@ -44704,7 +44704,7 @@
                             "loop": true,
                             "offset": [
                                 0.0,
-                                6.0,
+                                0.0,
                                 0.0
                             ],
                             "path": "",
@@ -44787,7 +44787,7 @@
                             "loop": true,
                             "offset": [
                                 0.0,
-                                6.0,
+                                0.0,
                                 0.0
                             ],
                             "path": "",
@@ -44870,7 +44870,7 @@
                             "loop": true,
                             "offset": [
                                 0.0,
-                                6.0,
+                                0.0,
                                 0.0
                             ],
                             "path": "",
@@ -44887,6 +44887,92 @@
                 "name": "grass(329)",
                 "parent": 636,
                 "tag": 2,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "rotation": [
+                                0.0,
+                                0.0,
+                                0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "BGMPlayOnAwake": true,
+                            "IsBGM": false,
+                            "Loop": true,
+                            "PlayOnAwake": true,
+                            "PlayOnClick": false,
+                            "PlayOnHover": false,
+                            "Volume": 0.503000020980835,
+                            "filename": "C:\\Users\\2250282\\Documents\\Team02_1\\Data\\Sound\\BGM_game.wav"
+                        },
+                        "type": "AudioComponent"
+                    }
+                ],
+                "id": 13621,
+                "name": "NewActor",
+                "parent": -1,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "rotation": [
+                                0.0,
+                                0.0,
+                                0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "BGMPlayOnAwake": true,
+                            "IsBGM": false,
+                            "Loop": true,
+                            "PlayOnAwake": true,
+                            "PlayOnClick": false,
+                            "PlayOnHover": false,
+                            "Volume": 0.25,
+                            "filename": "C:\\Users\\2250282\\Documents\\Team02_1\\Data\\Sound\\BGM_game_ambient.wav"
+                        },
+                        "type": "AudioComponent"
+                    }
+                ],
+                "id": 13622,
+                "name": "NewActor",
+                "parent": -1,
+                "tag": 0,
                 "type": "Actor"
             }
         ]

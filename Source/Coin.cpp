@@ -6,6 +6,7 @@
 #include "SceneManager.h"
 #include <algorithm>
 #include <EffectRender.h>
+#include "System/Audio.h"
 
 
 //								↓に名前入れる
@@ -74,6 +75,9 @@ void Coin::Update(float elapsedTime)
 		{
 			scene->sceneManager->CollectCoin(m_stageIndex, m_coinIndex);
 		}
+		std::string path = "Data/Sound/SE_game_get_coin.wav";
+		Audio::Instance().PlaySE(path.c_str());
+
 		m_isAnimating = true;
 
 		m_jumpVelocityY = 30.0f; 

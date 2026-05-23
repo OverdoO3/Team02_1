@@ -24,6 +24,7 @@
 #include "System/GpuResourceUtils.h"
 #include <map>
 #include <unordered_map>
+#include <filesystem>
 
 using json = nlohmann::json;
 
@@ -168,6 +169,19 @@ public:
 		}
 		return nullptr;
 	}
+
+	std::string ToDataPath(const std::string& fullPath)
+	{
+		std::filesystem::path base = std::filesystem::absolute("Data");
+		std::filesystem::path target = std::filesystem::absolute(fullPath);
+
+		std::filesystem::path relative = std::filesystem::relative(target, base);
+
+		std::filesystem::path normalized = relative.lexically_normal();
+
+		return "Data/" + normalized.generic_string();
+	}
+
 
 	struct SceneRenderTarget
 	{

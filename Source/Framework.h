@@ -20,6 +20,18 @@ private:
 
 	void CalculateFrameStats();
 
+	std::string ToDataPath(const std::string& fullPath)
+	{
+		std::filesystem::path base = std::filesystem::absolute("Data");
+		std::filesystem::path target = std::filesystem::absolute(fullPath);
+
+		std::filesystem::path relative = std::filesystem::relative(target, base);
+
+		std::filesystem::path normalized = relative.lexically_normal();
+
+		return "Data/" + normalized.generic_string();
+	}
+
 public:
 	int Run();
 	LRESULT CALLBACK HandleMessage(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);

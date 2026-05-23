@@ -31,6 +31,9 @@ public:
 
     bool IsPlayerNear() const { return m_isPlayerNear; }
 
+    bool IsWasInside() const { return m_wasInside; }
+    void SetWasInside(bool isInside) { m_wasInside = isInside; }
+
     COMPONENT_ID(HeatReceiver)
 private:
     int heatNum;
@@ -40,4 +43,5 @@ private:
 
     ThermalBody* m_playerThermal = nullptr; // プレイヤーのThermalBodyをキャッシュ
     bool m_isPlayerNear = false;           // プレイヤーが近くにいるかのフラグ
+    bool m_wasInside = false;
 };
