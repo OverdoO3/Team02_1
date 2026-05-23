@@ -74,7 +74,11 @@ public:
     void StartIrisIn();
 
     IrisMode GetIrisMode() const { return m_irisMode; }
+    void StartPopUp(float duration = 0.4f, float maxScale = 1.5f);
 
+    bool GetUsePopUpClear()const { return m_usePopUpClear; }
+    float GetPopUpDuration()const { return m_popUpDuration; }
+    float GetMaxPopScale() const { return m_maxPopScale; }
 
 private:
     std::unique_ptr<Sprite> spr;
@@ -147,4 +151,41 @@ private:
     bool m_isTitleLoading = false; // タイトルに戻るときのLoadingで出すか
     bool m_isOnlyWhileLoading = false;
 
+    // 揺れ設定
+    bool m_swingEnabled = false;
+    bool m_useSwingX = false;   // X方向（sin/cos）
+    bool m_useSwingY = false;   // Y方向（sin/cos）
+    bool m_swingXUseCos = false; // trueでcos、falseでsin
+    bool m_swingYUseCos = true;  // trueでcos、falseでsin
+    float m_swingAmplitudeX = 10.0f;  // X振幅
+    float m_swingAmplitudeY = 10.0f;  // Y振幅
+    float m_swingSpeedX = 1.0f;       // X速度
+    float m_swingSpeedY = 1.0f;       // Y速度
+    float m_swingOffsetX = 0.0f;      // X位相オフセット
+    float m_swingOffsetY = 0.0f;      // Y位相オフセット
+    float m_swingTimer = 0.0f;
+
+    // 回転揺れ
+    bool m_useSwingRot = false;
+    float m_swingRotAmplitude = 5.0f;
+    float m_swingRotSpeed = 1.0f;
+    bool m_swingRotUseCos = false;
+
+    bool m_isFadeEnabled = false;
+    float m_sprFadeSpeed = 2.0f;
+    float m_fadeTimer = 0.0f;
+
+    float m_fadeAlpha = 1.0f;
+
+    bool m_useClickHide = false;
+    bool m_isClickedHidden = false;
+
+    bool m_isPopUp = false;
+    float m_popUpTimer = 0.0f;
+    float m_popUpDuration = 0.4f;
+    float m_baseScale = 1.0f;
+    float m_maxPopScale = 1.5f;
+
+    bool m_usePopUpClear = false;
+    bool m_isOnlyWhileGoal = false;
 };

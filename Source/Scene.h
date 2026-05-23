@@ -148,6 +148,9 @@ public:
 
 	void DrawGUI();
 
+	void SaveSettings(const std::string& path) const;
+	void LoadSettings(const std::string& path);
+
 	const char* GetName() const {};
 
 	Actor* GetCamera() { return nowCamera; }
@@ -232,6 +235,7 @@ public:
 	CbLightParams m_lightParams;
 	DirectX::XMFLOAT4 m_outlineColor = { 0.0f,0.0f,0.0f,1.0f };
 	float m_outlineThickness = 0.02f;
+	std::string m_sceneFilePath;
 };
 
 inline std::unique_ptr<Actor> CreateActorByType(const std::string& type)

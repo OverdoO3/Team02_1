@@ -48,4 +48,7 @@ private:
 
     AnimState currentState = AnimState::idle;
     AnimState nextState;
+
+    float m_goalTimer = 0.0f;
+    bool m_isTransitionStarted = false;
 };

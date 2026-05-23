@@ -9,7 +9,8 @@ REGISTER_COMPONENT(ComponentID::SpriteRender,SpriteRender)
 void SpriteRender::Draw(RenderContext& rc)
 {
     if (!owner)return;
-
+    if (m_isClickedHidden)return;
+    if (m_isOnlyWhileGoal && !m_isPopUp)return;
     if (m_isOnlyWhileLoading)
     {
         // 現在が「Loading（裏での読み込み中）」じゃないなら、文字ロゴは描画をスキップ
@@ -93,8 +94,68 @@ void SpriteRender::Draw(RenderContext& rc)
         //描画に使う色を決定する(デバッグ用)
         DirectX::XMFLOAT4 finalColor = color;
         if (m_hoverFade)
-        {
             finalColor.w *= m_appearanceRatio;
+
+        finalColor.w *= m_fadeAlpha;  
+
+
+        Actor* parent = owner->GetParent();
+        if (parent)
+        {
+            auto parentTran = parent->GetComponent<Transform>();
+            auto* parentSpr = parent->GetComponent<SpriteRender>();
+            if (parentTran && parentSpr)
+            {
+                DirectX::XMFLOAT3 parentPos = parentTran->GetWorldPosition();
+                DirectX::XMFLOAT3 parentScale = parentTran->GetWorldScale();
+
+                float parentTexW = parentSpr->GetSprite() ? parentSpr->GetSprite()->GetTextureWidth() : 0.0f;
+                float parentTexH = parentSpr->GetSprite() ? parentSpr->GetSprite()->GetTextureHeight() : 0.0f;
+                float parentSW = (parentSpr->GetSrcW() < 0.0f) ? parentTexW : parentSpr->GetSrcW();
+                float parentSH = (parentSpr->GetSrcH() < 0.0f) ? parentTexH : parentSpr->GetSrcH();
+                float parentW = parentSW * parentSpr->GetEditorScale() * parentScale.x;
+                float parentH = parentSH * parentSpr->GetEditorScale() * parentScale.y;
+
+                // 親のCenter座標
+                float parentCenterX = screenOffset.x + parentPos.x;
+                float parentCenterY = screenOffset.y + parentPos.y;
+                // Pivot::Centerなので中心がそのまま座標
+
+                float relX = drawX - parentCenterX;
+                float relY = drawY - parentCenterY;
+
+                float rad = DirectX::XMConvertToRadians(totalAngle);
+                float cosA = cosf(rad);
+                float sinA = sinf(rad);
+
+                drawX = parentCenterX + cosA * relX - sinA * relY;
+                drawY = parentCenterY + sinA * relX + cosA * relY;
+            }
+        }
+
+        if (m_swingEnabled)
+        {
+            if (m_useSwingX)
+            {
+                float wave = m_swingXUseCos
+                    ? cosf((m_swingTimer + m_swingOffsetX) * m_swingSpeedX)
+                    : sinf((m_swingTimer + m_swingOffsetX) * m_swingSpeedX);
+                drawX += wave * m_swingAmplitudeX;
+            }
+            if (m_useSwingY)
+            {
+                float wave = m_swingYUseCos
+                    ? cosf((m_swingTimer + m_swingOffsetY) * m_swingSpeedY)
+                    : sinf((m_swingTimer + m_swingOffsetY) * m_swingSpeedY);
+                drawY += wave * m_swingAmplitudeY;
+            }
+            if (m_useSwingRot)
+            {
+                float wave = m_swingRotUseCos
+                    ? cosf(m_swingTimer * m_swingRotSpeed)
+                    : sinf(m_swingTimer * m_swingRotSpeed);
+                totalAngle += wave * m_swingRotAmplitude;
+            }
         }
 
 
@@ -208,11 +269,29 @@ void SpriteRender::Update(float elapsedTime)
 {
     if (!owner) return;
 
+    if (m_isPopUp)
+    {
+        m_popUpTimer += elapsedTime;
+        float t = m_popUpTimer / m_popUpDuration;
+
+        if (t >= 1.0f)
+        {
+            t = 1.0f;
+
+        }
+
+        // イージング計算（シュッと出てバウンドする計算）
+        const float c1 = 1.70158f;
+        const float c3 = c1 + 1.0f;
+        float ease = 1.0f + (c3 * powf(t - 1.0f, 3.0f) + c1 * powf(t - 1.0f, 2.0f));
+
+        // 最大サイズ（m_maxPopScale）で見た目を固定する
+        float scaleMultiplier = m_maxPopScale - (ease * (m_maxPopScale - 1.0f));
+        m_editorScale = m_baseScale * scaleMultiplier;
+    }
     // ─── ⭕ アイリス演出（拡大・縮小）の更新 ───
     if (m_irisMode != IrisMode::None)
     {
-
-
         m_irisTimer += elapsedTime;
         float rate = m_irisTimer / m_irisDuration;
         if (rate >= 1.0f) rate = 1.0f;
@@ -224,8 +303,6 @@ void SpriteRender::Update(float elapsedTime)
                 m_editorScale = m_irisTargetScale; // 完全に 0.0f（閉じきった状態）にする
                 m_irisMode = IrisMode::None;       // 演出終了
 
-                // ❌ ここにあった m_editorScale = m_originalScale; は削除します！
-                // 閉じきった後は 0.0f のままフリーズさせておかないと、次のシーンに遷移する瞬間に画面がパッと見えてしまいます
             }
             else
             {
@@ -296,6 +373,15 @@ void SpriteRender::Update(float elapsedTime)
             mouseYInWindow >= colTop && mouseYInWindow <= colBottom);
     }
 
+    if (m_useClickHide && m_isHovered && !m_isClickedHidden)
+    {
+        // ImGuiの機能を使って、このフレームで左クリックされたかを検知
+        if (ImGui::IsMouseClicked(ImGuiMouseButton_Left))
+        {
+            m_isClickedHidden = true; 
+        }
+    }
+
     // ─── 2. アルファフェード処理 ───
     if (m_hoverFade)
     {
@@ -335,6 +421,22 @@ void SpriteRender::Update(float elapsedTime)
         m_srcY = (float)currentRow * cellH;
     }
 
+    // 揺れ処理
+    if (m_swingEnabled)
+    {
+        m_swingTimer += elapsedTime;
+    }
+
+    if (m_isFadeEnabled)
+    {
+        m_fadeTimer += elapsedTime * m_sprFadeSpeed;
+        m_fadeAlpha = (sinf(m_fadeTimer) * 0.5f) + 0.5f;
+    }
+    else
+    {
+        m_fadeAlpha = 1.0f;
+    }
+
     if (!m_isLoop || m_animFrameCount <= 1) return;
 
     m_timer += elapsedTime;
@@ -345,6 +447,7 @@ void SpriteRender::Update(float elapsedTime)
         if (m_currentFrame >= m_animFrameCount)
             m_currentFrame = 0;
     }
+
 }
 
 std::unique_ptr<Component> SpriteRender::Clone() const
@@ -366,6 +469,7 @@ std::unique_ptr<Component> SpriteRender::Clone() const
     c->m_editorScale     = this->m_editorScale;
     c->m_pivot           = this->m_pivot;
     c->sortOrder         = this->sortOrder;
+    c->m_editorAngleDeg = this->m_editorAngleDeg;
 
     c->m_colliderOffsetX = this->m_colliderOffsetX;
     c->m_colliderOffsetY = this->m_colliderOffsetY;
@@ -400,6 +504,32 @@ std::unique_ptr<Component> SpriteRender::Clone() const
     c->m_isGameLoading = this->m_isGameLoading;
     c->m_isTitleLoading = this->m_isTitleLoading;
     c->m_isOnlyWhileLoading = this->m_isOnlyWhileLoading;
+
+    c->m_swingEnabled = this->m_swingEnabled;
+    c->m_useSwingX = this->m_useSwingX;
+    c->m_useSwingY = this->m_useSwingY;
+    c->m_swingXUseCos = this->m_swingXUseCos;
+    c->m_swingYUseCos = this->m_swingYUseCos;
+    c->m_swingAmplitudeX = this->m_swingAmplitudeX;
+    c->m_swingAmplitudeY = this->m_swingAmplitudeY;
+    c->m_swingSpeedX = this->m_swingSpeedX;
+    c->m_swingSpeedY = this->m_swingSpeedY;
+    c->m_swingOffsetX = this->m_swingOffsetX;
+    c->m_swingOffsetY = this->m_swingOffsetY;
+    c->m_useSwingRot = this->m_useSwingRot;
+    c->m_swingRotAmplitude = this->m_swingRotAmplitude;
+    c->m_swingRotSpeed = this->m_swingRotSpeed;
+    c->m_swingRotUseCos = this->m_swingRotUseCos;
+    c->m_isFadeEnabled = this->m_isFadeEnabled;
+    c->m_sprFadeSpeed = this->m_sprFadeSpeed;
+
+    c->m_useClickHide = this->m_useClickHide;
+    c->m_isClickedHidden = false; // クローンされた側は表示状態からスタート
+
+    c->m_usePopUpClear = this->m_usePopUpClear;
+    c->m_popUpDuration = this->m_popUpDuration;
+    c->m_maxPopScale = this->m_maxPopScale;
+    c->m_isOnlyWhileGoal = this->m_isOnlyWhileGoal;
 
 	return c;
 }
@@ -447,6 +577,30 @@ void SpriteRender::Serialize(nlohmann::json& j) const
     j["IsGameLoading"] = m_isGameLoading;
     j["IsTitleLoading"] = m_isTitleLoading;
     j["IsOnlyWhileLoading"] = m_isOnlyWhileLoading;
+
+    j["SwingEnabled"] = m_swingEnabled;
+    j["SwingUseX"] = m_useSwingX;
+    j["SwingUseY"] = m_useSwingY;
+    j["SwingXUseCos"] = m_swingXUseCos;
+    j["SwingYUseCos"] = m_swingYUseCos;
+    j["SwingAmpX"] = m_swingAmplitudeX;
+    j["SwingAmpY"] = m_swingAmplitudeY;
+    j["SwingSpeedX"] = m_swingSpeedX;
+    j["SwingSpeedY"] = m_swingSpeedY;
+    j["SwingOffsetX"] = m_swingOffsetX;
+    j["SwingOffsetY"] = m_swingOffsetY;
+    j["SwingUseRot"] = m_useSwingRot;
+    j["SwingRotAmp"] = m_swingRotAmplitude;
+    j["SwingRotSpeed"] = m_swingRotSpeed;
+    j["SwingRotUseCos"] = m_swingRotUseCos;
+    j["isFadeEnabled"] = m_isFadeEnabled;
+    j["sprFadeSpeed"]  = m_sprFadeSpeed;
+    j["UseClickHide"] = m_useClickHide;
+
+    j["UsePopUpClear"] = m_usePopUpClear;
+    j["PopUpDuration"] = m_popUpDuration;
+    j["MaxPopScale"] = m_maxPopScale;
+    j["OnlyWhileGoal"] = m_isOnlyWhileGoal;
 }
 
 void SpriteRender::DrawInspector()
@@ -533,6 +687,40 @@ void SpriteRender::DrawInspector()
         ImGui::InputInt("Sort Order", &sortOrder);
     }
 
+    ImGui::Separator(); // 境界線
+    ImGui::Text("Fade Settings");
+
+    // ⭕ フェード有効化のチェックボックス
+    ImGui::Checkbox("Enable Fade Loop", &m_isFadeEnabled);
+
+    if (m_isFadeEnabled)
+    {
+        ImGui::SliderFloat("Fade Speed", &m_sprFadeSpeed, 0.1f, 10.0f, "%.1f");
+
+        ImGui::Text("Current Alpha: %.2f", color.w);
+    }
+
+    ImGui::Separator();
+    if (ImGui::CollapsingHeader("Click Actions", ImGuiTreeNodeFlags_DefaultOpen))
+    {
+        ImGui::Checkbox("Use Click Hide", &m_useClickHide);
+
+        if (m_useClickHide)
+        {
+            ImGui::Text("Status: %s", m_isClickedHidden ? "Hidden" : "Visible");
+
+            // テスト用に消えたスプライトをパッと復活させるボタン
+            if (m_isClickedHidden)
+            {
+                if (ImGui::Button("Reset Visibility"))
+                {
+                    m_isClickedHidden = false;
+                }
+            }
+        }
+    }
+    ImGui::Separator();
+
     if (ImGui::CollapsingHeader("Sprite Resource"))
     {
         if (!texturepath.empty()) {
@@ -548,6 +736,20 @@ void SpriteRender::DrawInspector()
             }
         }
     }
+
+    ImGui::Separator();
+    ImGui::Text("Goal PopUp Setting");
+
+    ImGui::Checkbox("Use Goal PopUp", &m_usePopUpClear);
+    ImGui::Checkbox("Only While Goal", &m_isOnlyWhileGoal);
+
+    if (m_usePopUpClear)
+    {
+        ImGui::SliderFloat("Pop Duration", &m_popUpDuration, 0.1, 2.0f);
+        ImGui::SliderFloat("Max Pop Scale", &m_maxPopScale, 1.1f, 3.0f);
+    }
+    ImGui::Separator();
+
 
     if (ImGui::CollapsingHeader("Sprite Sheet Splitter"))
     {
@@ -605,6 +807,48 @@ void SpriteRender::DrawInspector()
             m_pivot = (Pivot)pivotIndex;
         }
         ImGui::PopID();
+    }
+
+    if (ImGui::CollapsingHeader("Swing Settings"))
+    {
+        ImGui::Checkbox("Enable Swing", &m_swingEnabled);
+        if (m_swingEnabled)
+        {
+            ImGui::Separator();
+            ImGui::Text("--- X Swing ---");
+            ImGui::Checkbox("Use X Swing", &m_useSwingX);
+            if (m_useSwingX)
+            {
+                ImGui::Checkbox("X Use Cos (off=Sin)", &m_swingXUseCos);
+                ImGui::DragFloat("X Amplitude", &m_swingAmplitudeX, 0.5f, -500.0f, 500.0f);
+                ImGui::DragFloat("X Speed", &m_swingSpeedX, 0.1f, 0.0f, 20.0f);
+                ImGui::DragFloat("X Phase Offset", &m_swingOffsetX, 0.1f, -10.0f, 10.0f);
+            }
+
+            ImGui::Separator();
+            ImGui::Text("--- Y Swing ---");
+            ImGui::Checkbox("Use Y Swing", &m_useSwingY);
+            if (m_useSwingY)
+            {
+                ImGui::Checkbox("Y Use Cos (off=Sin)", &m_swingYUseCos);
+                ImGui::DragFloat("Y Amplitude", &m_swingAmplitudeY, 0.5f, -500.0f, 500.0f);
+                ImGui::DragFloat("Y Speed", &m_swingSpeedY, 0.1f, 0.0f, 20.0f);
+                ImGui::DragFloat("Y Phase Offset", &m_swingOffsetY, 0.1f, -10.0f, 10.0f);
+            }
+
+            ImGui::Separator();
+            ImGui::Text("--- Rotation Swing ---");
+            ImGui::Checkbox("Use Rotation Swing", &m_useSwingRot);
+            if (m_useSwingRot)
+            {
+                ImGui::Checkbox("Rot Use Cos (off=Sin)", &m_swingRotUseCos);
+                ImGui::DragFloat("Rot Amplitude (deg)", &m_swingRotAmplitude, 0.5f, -180.0f, 180.0f);
+                ImGui::DragFloat("Rot Speed", &m_swingRotSpeed, 0.1f, 0.0f, 20.0f);
+            }
+
+            if (ImGui::Button("Reset Timer"))
+                m_swingTimer = 0.0f;
+        }
     }
 
     ImGui::Separator();
@@ -707,6 +951,31 @@ void SpriteRender::Deserialize(nlohmann::json& j)
     m_isGameLoading = j.value("IsGameLoading", false);
     m_isTitleLoading = j.value("IsTitleLoading", false);
     m_isOnlyWhileLoading = j.value("IsOnlyWhileLoading", false);
+
+    m_swingEnabled = j.value("SwingEnabled", false);
+    m_useSwingX = j.value("SwingUseX", false);
+    m_useSwingY = j.value("SwingUseY", false);
+    m_swingXUseCos = j.value("SwingXUseCos", false);
+    m_swingYUseCos = j.value("SwingYUseCos", true);
+    m_swingAmplitudeX = j.value("SwingAmpX", 10.0f);
+    m_swingAmplitudeY = j.value("SwingAmpY", 10.0f);
+    m_swingSpeedX = j.value("SwingSpeedX", 1.0f);
+    m_swingSpeedY = j.value("SwingSpeedY", 1.0f);
+    m_swingOffsetX = j.value("SwingOffsetX", 0.0f);
+    m_swingOffsetY = j.value("SwingOffsetY", 0.0f);
+    m_useSwingRot = j.value("SwingUseRot", false);
+    m_swingRotAmplitude = j.value("SwingRotAmp", 5.0f);
+    m_swingRotSpeed = j.value("SwingRotSpeed", 1.0f);
+    m_swingRotUseCos = j.value("SwingRotUseCos", false);
+    m_isFadeEnabled = j.value("isFadeEnabled",false);
+    m_sprFadeSpeed = j.value("sprFadeSpeed", 5.0f);
+    m_useClickHide = j.value("UseClickHide", false);
+    m_isClickedHidden = false; // 読み込み時は一頭表示状態に戻す
+
+    m_usePopUpClear = j.value("UsePopUpClear", false);
+    m_popUpDuration = j.value("PopUpDuration", 1.0f);
+    m_maxPopScale   = j.value("MaxPopScale", 1.0f);
+    m_isOnlyWhileGoal = j.value("OnlyWhileGoal", false);
 }
 
 void SpriteRender::StartIrisOut()
@@ -715,7 +984,6 @@ void SpriteRender::StartIrisOut()
     m_irisMode = IrisMode::Out;
     m_irisTimer = 0.0f;
 
-    // ⭕ jsonの値に依存せず、コード側で演出のキレを強制固定する
     m_irisDuration = 0.6f;     // 2回目も絶対に爆速（0.25秒）
     m_irisTargetScale = 0.10f;   // 完全に閉じきる
 
@@ -729,10 +997,19 @@ void SpriteRender::StartIrisIn()
     m_irisMode = IrisMode::In;
     m_irisTimer = 0.0f;
 
-    // ⭕ 同様に、新シーンに切り替わった直後でも確実に数値を上書き強制する
     m_irisDuration = 0.7f;      // 2回目も絶対に爆速（0.3秒）
     m_irisMaxScale = 6.0f;    // 遥か彼方まで拡大する超特大スケール
 
     m_irisStartScale = m_editorScale; // 現在のサイズ（0.0fなど）からスタート
 
+}
+
+void SpriteRender::StartPopUp(float duration, float maxScale)
+{
+    m_isPopUp = true;
+    m_popUpTimer = 0.0f;
+    m_popUpDuration = duration;
+    m_maxPopScale = maxScale;
+
+    m_baseScale = m_editorScale;
 }

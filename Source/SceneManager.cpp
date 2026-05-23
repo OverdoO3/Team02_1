@@ -6,11 +6,9 @@
 
 void SceneManager::Initialize()
 {
-
-
     ChangeScene(std::move(std::make_unique<Scene>()), "Scenes/Demo.json");
     LoadPauseUI("Scenes/pause.json");
-    ChangeScene(std::move(std::make_unique<Scene>()), "Scenes/title.json");
+    ChangeScene(std::move(std::make_unique<Scene>()), "Scenes/stage1.json");
 
     LoadLoadingUI("Scenes/loading.json");
 
@@ -40,7 +38,6 @@ void SceneManager::Update(float elapsedTime)
         {
             if (auto* sr = m_irisActor->GetComponent<SpriteRender>())
             {
-                // 演出モードが「None（演出終了）」になるまでは閉じきっていないと判定
                 if (sr->GetIrisMode() != SpriteRender::IrisMode::None)
                 {
                     isIrisOutFinished = false;
@@ -48,6 +45,7 @@ void SceneManager::Update(float elapsedTime)
             }
         }
 
+        // 【FadeOut状態】マスクが閉じきったらスレッドを立ててロード開始
         if (m_loadState == LoadState::FadeOut && isIrisOutFinished)
         {
             m_loadState = LoadState::Loading;
@@ -57,6 +55,10 @@ void SceneManager::Update(float elapsedTime)
             nextScene = std::make_unique<Scene>();
             nextScene->sceneManager = this;
             nextSceneIsRuntime = playState;
+
+            // 古いスレッドが万が一残っていたら確実にjoinしておく
+            if (m_loadThread.joinable()) m_loadThread.join();
+
             m_loadThread = std::thread([this]() {
                 nextScene->Initialize(m_pendingScenePath.c_str());
                 m_isLoadCompleted = true;
@@ -96,6 +98,13 @@ void SceneManager::Update(float elapsedTime)
                 for (auto& actor : pauseActors)
                     actor->SetScene(currentScene);
 
+                auto* modelRenderer = Graphics::Instance().GetModelRenderer();
+                if (modelRenderer)
+                {
+                    modelRenderer->SetLightPath(m_currentScenePath);
+                    modelRenderer->LoadLights(modelRenderer->GetCurrentLightPath());
+                }
+
                 // シーン切り替えが完了したので、マスクを「開く（アイリスイン）」
                 m_loadState = LoadState::FadeIn;
                 if (m_irisActor)
@@ -103,7 +112,7 @@ void SceneManager::Update(float elapsedTime)
                     m_irisActor->setActive = true;
                     if (auto* sr = m_irisActor->GetComponent<SpriteRender>())
                     {
-                        sr->StartIrisIn(); // 👈 決定されたマスクの拡大演出スタート！
+                        sr->StartIrisIn();
                     }
                 }
             }
@@ -116,7 +125,6 @@ void SceneManager::Update(float elapsedTime)
             {
                 if (auto* sr = m_irisActor->GetComponent<SpriteRender>())
                 {
-                    // 開ききったら（Noneに戻ったら）ローディング状態を完全に終了する
                     if (sr->GetIrisMode() == SpriteRender::IrisMode::None)
                     {
                         m_isLoading = false;
@@ -126,7 +134,6 @@ void SceneManager::Update(float elapsedTime)
             }
             else
             {
-                // 万が一マスクアクターが外れていてもフリーズしないようにセーフティを入れておく
                 m_isLoading = false;
                 m_loadState = LoadState::FadeOut;
             }
@@ -140,6 +147,7 @@ void SceneManager::Update(float elapsedTime)
                 sr->Update(elapsedTime);
         }
 
+        // 🚨【超重要】ローディング中のフレームは、これより下の通常Update（通常シーン切り替えやcurrentScene->Update）を絶対に実行させずに終了する！
         return;
     }
 
@@ -166,6 +174,11 @@ void SceneManager::Update(float elapsedTime)
             {
                 m_irisActor = m_titleIrisActor; // TitleMask をセット
             }
+            else if (lowerPath.find("choice") != std::string::npos)
+            {
+                m_irisActor = m_choiceIrisActor;
+            }
+
             else
             {
                 m_irisActor = nullptr;          // どちらでもなければマスク演出なし
@@ -219,6 +232,13 @@ void SceneManager::Update(float elapsedTime)
         Graphics::Instance().CreateRenderTarget(gameRT, currentSW, currentSH);
         for (auto& actor : pauseActors)
             actor->SetScene(currentScene);
+
+        auto* modelRenderer = Graphics::Instance().GetModelRenderer();
+        if (modelRenderer)
+        {
+            modelRenderer->SetLightPath(m_currentScenePath);
+            modelRenderer->LoadLights(modelRenderer->GetCurrentLightPath());
+        }
     }
 
     if (currentScene != nullptr)
@@ -351,19 +371,38 @@ void SceneManager::SaveEditorScene(const std::string& path)
 {
     if (editorScene)
         SceneSerializer::Save(*editorScene, path);
+
+    // ⭕【修正】セーブ時も、ちゃんと環境用（_Env.json）のパスを作って保存する
+    std::string envPath = path;
+    size_t dotPos = envPath.find_last_of(".");
+    if (dotPos != std::string::npos) {
+        envPath = envPath.substr(0, dotPos);
+    }
+    envPath += "_Env.json";
+
+    editorScene->SaveSettings(envPath); // ちゃんと _Env.json に保存
 }
 
 void SceneManager::LoadEditorScene(const std::string& path)
 {
     auto newScene = std::make_unique<Scene>();
-    if (SceneSerializer::Load(*newScene, path))
+    newScene->sceneManager = this;
+
+    // Initializeの中で、SceneSerializer::Load も LoadSettings(_Env.json) も全部綺麗にやってくれる！
+    newScene->Initialize(path.c_str());
+
+    editorScene = std::move(newScene);
+    runtimeScene.reset();
+    playState = false;
+    currentScene = GetCurrentScene();
+
+    m_currentScenePath = path;
+
+    auto* modelRenderer = Graphics::Instance().GetModelRenderer();
+    if (modelRenderer)
     {
-        editorScene = std::move(newScene);
-        editorScene->sceneManager = this;
-        editorScene->Initialize();
-        runtimeScene.reset();
-        playState = false;
-        currentScene = GetCurrentScene();
+        modelRenderer->SetLightPath(m_currentScenePath);
+        modelRenderer->LoadLights(modelRenderer->GetCurrentLightPath());
     }
 }
 
@@ -409,6 +448,10 @@ void SceneManager::LoadLoadingUI(const std::string& path)
         // ⭕ "TitleMask" という名前ならタイトル用変数に入れる
         if (std::string(actor->GetName()) == "TitleMask")
             m_titleIrisActor = actor.get();
+
+        if (std::string(actor->GetName()) == "ChoiceMask")
+            m_choiceIrisActor = actor.get();
+
 
         loadingActors.emplace_back(std::move(actor));
     }

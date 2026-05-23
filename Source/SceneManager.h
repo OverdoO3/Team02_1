@@ -161,6 +161,7 @@ private:
 
 	Actor* m_gameIrisActor = nullptr;
 	Actor* m_titleIrisActor = nullptr;
+	Actor* m_choiceIrisActor = nullptr;
 
 	float m_loadTimer = 0.0f;
 

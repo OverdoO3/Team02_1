@@ -11,6 +11,8 @@
 #include <map>
 #include <unordered_map>
 #include "../System/ShapeRenderer.h"
+#include <fstream>
+#include <filesystem>
 
 class Actor;
 
@@ -56,6 +58,19 @@ public:
 
 	void SetShaderId(ShaderId id) { shaderId = id; }
 	ShaderId GetShaderId() const { return shaderId; }
+
+	void SaveLights(const std::string& path);
+	void LoadLights(const std::string& path);
+
+	std::string currentLightPath = "Data/Lights/default.json";
+
+	void SetLightPath(const std::string& scenePath)
+	{
+		// "Scenes/stage1.json" Å® "Data/Lights/stage1_lights.json"
+		std::filesystem::path p(scenePath);
+		currentLightPath = "Data/Lights/" + p.stem().string() + "_lights.json";
+	}
+	std::string GetCurrentLightPath() const { return currentLightPath; }
 private:
 	struct CbScene
 	{
