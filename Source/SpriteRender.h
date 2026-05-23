@@ -150,7 +150,7 @@ private:
     bool m_isHovered = false;
 
     bool m_isPauseUI = false;
-
+    bool m_wasHovered = false;
     //色
     DirectX::XMFLOAT4 color = { 1.0f,1.0f,1.0f,1.0f };
 

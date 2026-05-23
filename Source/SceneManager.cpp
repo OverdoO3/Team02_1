@@ -4,6 +4,7 @@
 #include "SpriteRender.h"
 #include "ButtonComponent.h"
 #include "System/Audio.h"
+#include "AudioComponent.h"
 
 bool SceneManager::m_coinFlags[4][3] = { false };
 
@@ -264,6 +265,12 @@ void SceneManager::Update(float elapsedTime)
                 if (!actor->setActive) continue;
                 if (auto* btn = actor->GetComponent<ButtonComponent>())
                     btn->Update(elapsedTime);
+            }
+            for (auto& actor : pauseActors)
+            {
+                if (!actor->setActive) continue;
+                if (auto* audio = actor->GetComponent<AudioComponent>())
+                    audio->Update(elapsedTime);
             }
         }
         else
