@@ -392,6 +392,9 @@
     <ClInclude Include="Source\AudioComponent.h">
       <Filter>Source\Components\Temp\TempObj</Filter>
     </ClInclude>
+    <ClInclude Include="Source\firewood.h">
+      <Filter>Source\Components\Temp\TempObj</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="External\imgui-docking\imgui.cpp">
@@ -623,6 +626,9 @@
       <Filter>Source\Components\Temp\TempObj</Filter>
     </ClCompile>
     <ClCompile Include="Source\AudioComponent.cpp">
+      <Filter>Source\Components\Temp\TempObj</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\firewood.cpp">
       <Filter>Source\Components\Temp\TempObj</Filter>
     </ClCompile>
   </ItemGroup>

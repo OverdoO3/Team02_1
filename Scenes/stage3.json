@@ -28266,7 +28266,8 @@
                     },
                     {
                         "data": {
-                            "radius": 10.0
+                            "radius": 10.0,
+                            "thermal": 0
                         },
                         "type": "ThermalBody"
                     },
@@ -28330,7 +28331,8 @@
                     },
                     {
                         "data": {
-                            "radius": 10.0
+                            "radius": 10.0,
+                            "thermal": 0
                         },
                         "type": "ThermalBody"
                     },
@@ -28394,7 +28396,8 @@
                     },
                     {
                         "data": {
-                            "radius": 10.0
+                            "radius": 10.0,
+                            "thermal": 0
                         },
                         "type": "ThermalBody"
                     },
@@ -28458,7 +28461,8 @@
                     },
                     {
                         "data": {
-                            "radius": 10.0
+                            "radius": 10.0,
+                            "thermal": 0
                         },
                         "type": "ThermalBody"
                     },
@@ -29723,7 +29727,8 @@
                     },
                     {
                         "data": {
-                            "radius": 10.0
+                            "radius": 10.0,
+                            "thermal": 1
                         },
                         "type": "ThermalBody"
                     },
@@ -29745,6 +29750,10 @@
                             "scale": 11.0
                         },
                         "type": "EffectRender"
+                    },
+                    {
+                        "data": null,
+                        "type": "firewood"
                     }
                 ],
                 "id": 12,
@@ -29758,7 +29767,7 @@
                     {
                         "data": {
                             "position": [
-                                65.00000762939453,
+                                64.99999237060547,
                                 57.000003814697266,
                                 -63.999996185302734
                             ],
@@ -29796,6 +29805,19 @@
                             ]
                         },
                         "type": "BoxCollider"
+                    },
+                    {
+                        "data": {
+                            "radius": 10.0,
+                            "thermal": 1
+                        },
+                        "type": "ThermalBody"
+                    },
+                    {
+                        "data": {
+                            "temperature": 1
+                        },
+                        "type": "HeatReceiver"
                     },
                     {
                         "data": {
@@ -29863,7 +29885,8 @@
                     },
                     {
                         "data": {
-                            "radius": 10.0
+                            "radius": 10.0,
+                            "thermal": 0
                         },
                         "type": "ThermalBody"
                     },
@@ -29924,7 +29947,8 @@
                     },
                     {
                         "data": {
-                            "radius": 10.0
+                            "radius": 10.0,
+                            "thermal": 0
                         },
                         "type": "ThermalBody"
                     },
@@ -29985,7 +30009,8 @@
                     },
                     {
                         "data": {
-                            "radius": 10.0
+                            "radius": 10.0,
+                            "thermal": 0
                         },
                         "type": "ThermalBody"
                     },
@@ -30046,7 +30071,8 @@
                     },
                     {
                         "data": {
-                            "radius": 10.0
+                            "radius": 10.0,
+                            "thermal": 0
                         },
                         "type": "ThermalBody"
                     },
@@ -30137,7 +30163,8 @@
                     },
                     {
                         "data": {
-                            "radius": 10.0
+                            "radius": 10.0,
+                            "thermal": 0
                         },
                         "type": "ThermalBody"
                     },
@@ -30227,7 +30254,8 @@
                     },
                     {
                         "data": {
-                            "radius": 10.0
+                            "radius": 10.0,
+                            "thermal": 0
                         },
                         "type": "ThermalBody"
                     },
@@ -30290,7 +30318,8 @@
                     },
                     {
                         "data": {
-                            "radius": 10.0
+                            "radius": 10.0,
+                            "thermal": 0
                         },
                         "type": "ThermalBody"
                     },
@@ -30353,7 +30382,8 @@
                     },
                     {
                         "data": {
-                            "radius": 10.0
+                            "radius": 10.0,
+                            "thermal": 0
                         },
                         "type": "ThermalBody"
                     },
@@ -30416,7 +30446,8 @@
                     },
                     {
                         "data": {
-                            "radius": 10.0
+                            "radius": 10.0,
+                            "thermal": 0
                         },
                         "type": "ThermalBody"
                     },
@@ -30480,7 +30511,8 @@
                     },
                     {
                         "data": {
-                            "radius": 10.0
+                            "radius": 10.0,
+                            "thermal": 0
                         },
                         "type": "ThermalBody"
                     },
@@ -30544,7 +30576,8 @@
                     },
                     {
                         "data": {
-                            "radius": 10.0
+                            "radius": 10.0,
+                            "thermal": 0
                         },
                         "type": "ThermalBody"
                     },
@@ -30608,7 +30641,8 @@
                     },
                     {
                         "data": {
-                            "radius": 10.0
+                            "radius": 10.0,
+                            "thermal": 0
                         },
                         "type": "ThermalBody"
                     },
@@ -30672,7 +30706,8 @@
                     },
                     {
                         "data": {
-                            "radius": 10.0
+                            "radius": 10.0,
+                            "thermal": 0
                         },
                         "type": "ThermalBody"
                     }
@@ -30729,7 +30764,8 @@
                     },
                     {
                         "data": {
-                            "radius": 10.0
+                            "radius": 10.0,
+                            "thermal": 0
                         },
                         "type": "ThermalBody"
                     }
@@ -30786,7 +30822,8 @@
                     },
                     {
                         "data": {
-                            "radius": 10.0
+                            "radius": 10.0,
+                            "thermal": 0
                         },
                         "type": "ThermalBody"
                     }
@@ -30843,7 +30880,8 @@
                     },
                     {
                         "data": {
-                            "radius": 10.0
+                            "radius": 10.0,
+                            "thermal": 0
                         },
                         "type": "ThermalBody"
                     }
@@ -30900,7 +30938,8 @@
                     },
                     {
                         "data": {
-                            "radius": 10.0
+                            "radius": 10.0,
+                            "thermal": 0
                         },
                         "type": "ThermalBody"
                     }
@@ -30957,7 +30996,8 @@
                     },
                     {
                         "data": {
-                            "radius": 10.0
+                            "radius": 10.0,
+                            "thermal": 0
                         },
                         "type": "ThermalBody"
                     }
@@ -31458,7 +31498,8 @@
                     },
                     {
                         "data": {
-                            "radius": 10.0
+                            "radius": 10.0,
+                            "thermal": 0
                         },
                         "type": "ThermalBody"
                     },
@@ -31521,7 +31562,8 @@
                     },
                     {
                         "data": {
-                            "radius": 10.0
+                            "radius": 10.0,
+                            "thermal": 0
                         },
                         "type": "ThermalBody"
                     },
@@ -31584,7 +31626,8 @@
                     },
                     {
                         "data": {
-                            "radius": 10.0
+                            "radius": 10.0,
+                            "thermal": 0
                         },
                         "type": "ThermalBody"
                     },
@@ -31647,7 +31690,8 @@
                     },
                     {
                         "data": {
-                            "radius": 10.0
+                            "radius": 10.0,
+                            "thermal": 0
                         },
                         "type": "ThermalBody"
                     },
@@ -31710,7 +31754,8 @@
                     },
                     {
                         "data": {
-                            "radius": 10.0
+                            "radius": 10.0,
+                            "thermal": 0
                         },
                         "type": "ThermalBody"
                     },
@@ -31773,7 +31818,8 @@
                     },
                     {
                         "data": {
-                            "radius": 10.0
+                            "radius": 10.0,
+                            "thermal": 0
                         },
                         "type": "ThermalBody"
                     },
@@ -31836,7 +31882,8 @@
                     },
                     {
                         "data": {
-                            "radius": 10.0
+                            "radius": 10.0,
+                            "thermal": 0
                         },
                         "type": "ThermalBody"
                     },
@@ -31899,7 +31946,8 @@
                     },
                     {
                         "data": {
-                            "radius": 10.0
+                            "radius": 10.0,
+                            "thermal": 0
                         },
                         "type": "ThermalBody"
                     },
@@ -31962,7 +32010,8 @@
                     },
                     {
                         "data": {
-                            "radius": 10.0
+                            "radius": 10.0,
+                            "thermal": 0
                         },
                         "type": "ThermalBody"
                     },
@@ -32025,7 +32074,8 @@
                     },
                     {
                         "data": {
-                            "radius": 10.0
+                            "radius": 10.0,
+                            "thermal": 0
                         },
                         "type": "ThermalBody"
                     },
@@ -32088,7 +32138,8 @@
                     },
                     {
                         "data": {
-                            "radius": 10.0
+                            "radius": 10.0,
+                            "thermal": 0
                         },
                         "type": "ThermalBody"
                     },
@@ -32151,7 +32202,8 @@
                     },
                     {
                         "data": {
-                            "radius": 10.0
+                            "radius": 10.0,
+                            "thermal": 0
                         },
                         "type": "ThermalBody"
                     },
@@ -32214,7 +32266,8 @@
                     },
                     {
                         "data": {
-                            "radius": 10.0
+                            "radius": 10.0,
+                            "thermal": 0
                         },
                         "type": "ThermalBody"
                     },
@@ -32277,7 +32330,8 @@
                     },
                     {
                         "data": {
-                            "radius": 10.0
+                            "radius": 10.0,
+                            "thermal": 0
                         },
                         "type": "ThermalBody"
                     },
@@ -32340,7 +32394,8 @@
                     },
                     {
                         "data": {
-                            "radius": 10.0
+                            "radius": 10.0,
+                            "thermal": 0
                         },
                         "type": "ThermalBody"
                     },
@@ -32403,7 +32458,8 @@
                     },
                     {
                         "data": {
-                            "radius": 10.0
+                            "radius": 10.0,
+                            "thermal": 0
                         },
                         "type": "ThermalBody"
                     },
@@ -32466,7 +32522,8 @@
                     },
                     {
                         "data": {
-                            "radius": 10.0
+                            "radius": 10.0,
+                            "thermal": 0
                         },
                         "type": "ThermalBody"
                     },
@@ -32529,7 +32586,8 @@
                     },
                     {
                         "data": {
-                            "radius": 10.0
+                            "radius": 10.0,
+                            "thermal": 0
                         },
                         "type": "ThermalBody"
                     },
@@ -32592,7 +32650,8 @@
                     },
                     {
                         "data": {
-                            "radius": 10.0
+                            "radius": 10.0,
+                            "thermal": 0
                         },
                         "type": "ThermalBody"
                     },
@@ -32655,7 +32714,8 @@
                     },
                     {
                         "data": {
-                            "radius": 10.0
+                            "radius": 10.0,
+                            "thermal": 0
                         },
                         "type": "ThermalBody"
                     },
@@ -32718,7 +32778,8 @@
                     },
                     {
                         "data": {
-                            "radius": 10.0
+                            "radius": 10.0,
+                            "thermal": 0
                         },
                         "type": "ThermalBody"
                     },
@@ -32781,7 +32842,8 @@
                     },
                     {
                         "data": {
-                            "radius": 10.0
+                            "radius": 10.0,
+                            "thermal": 0
                         },
                         "type": "ThermalBody"
                     },
@@ -32844,7 +32906,8 @@
                     },
                     {
                         "data": {
-                            "radius": 10.0
+                            "radius": 10.0,
+                            "thermal": 0
                         },
                         "type": "ThermalBody"
                     },
@@ -32907,7 +32970,8 @@
                     },
                     {
                         "data": {
-                            "radius": 10.0
+                            "radius": 10.0,
+                            "thermal": 0
                         },
                         "type": "ThermalBody"
                     },
@@ -32970,7 +33034,8 @@
                     },
                     {
                         "data": {
-                            "radius": 10.0
+                            "radius": 10.0,
+                            "thermal": 0
                         },
                         "type": "ThermalBody"
                     },
@@ -33033,7 +33098,8 @@
                     },
                     {
                         "data": {
-                            "radius": 10.0
+                            "radius": 10.0,
+                            "thermal": 0
                         },
                         "type": "ThermalBody"
                     },
@@ -33096,7 +33162,8 @@
                     },
                     {
                         "data": {
-                            "radius": 10.0
+                            "radius": 10.0,
+                            "thermal": 0
                         },
                         "type": "ThermalBody"
                     },
@@ -33159,7 +33226,8 @@
                     },
                     {
                         "data": {
-                            "radius": 10.0
+                            "radius": 10.0,
+                            "thermal": 0
                         },
                         "type": "ThermalBody"
                     },
@@ -33222,7 +33290,8 @@
                     },
                     {
                         "data": {
-                            "radius": 10.0
+                            "radius": 10.0,
+                            "thermal": 0
                         },
                         "type": "ThermalBody"
                     },
@@ -33285,7 +33354,8 @@
                     },
                     {
                         "data": {
-                            "radius": 10.0
+                            "radius": 10.0,
+                            "thermal": 0
                         },
                         "type": "ThermalBody"
                     },
@@ -33348,7 +33418,8 @@
                     },
                     {
                         "data": {
-                            "radius": 10.0
+                            "radius": 10.0,
+                            "thermal": 0
                         },
                         "type": "ThermalBody"
                     },
@@ -33411,7 +33482,8 @@
                     },
                     {
                         "data": {
-                            "radius": 10.0
+                            "radius": 10.0,
+                            "thermal": 0
                         },
                         "type": "ThermalBody"
                     },
@@ -33474,7 +33546,8 @@
                     },
                     {
                         "data": {
-                            "radius": 10.0
+                            "radius": 10.0,
+                            "thermal": 0
                         },
                         "type": "ThermalBody"
                     },
@@ -33537,7 +33610,8 @@
                     },
                     {
                         "data": {
-                            "radius": 10.0
+                            "radius": 10.0,
+                            "thermal": 0
                         },
                         "type": "ThermalBody"
                     },
@@ -33600,7 +33674,8 @@
                     },
                     {
                         "data": {
-                            "radius": 10.0
+                            "radius": 10.0,
+                            "thermal": 0
                         },
                         "type": "ThermalBody"
                     },
@@ -33663,7 +33738,8 @@
                     },
                     {
                         "data": {
-                            "radius": 10.0
+                            "radius": 10.0,
+                            "thermal": 0
                         },
                         "type": "ThermalBody"
                     },
@@ -33726,7 +33802,8 @@
                     },
                     {
                         "data": {
-                            "radius": 10.0
+                            "radius": 10.0,
+                            "thermal": 0
                         },
                         "type": "ThermalBody"
                     },
@@ -33789,7 +33866,8 @@
                     },
                     {
                         "data": {
-                            "radius": 10.0
+                            "radius": 10.0,
+                            "thermal": 0
                         },
                         "type": "ThermalBody"
                     },
@@ -33852,7 +33930,8 @@
                     },
                     {
                         "data": {
-                            "radius": 10.0
+                            "radius": 10.0,
+                            "thermal": 0
                         },
                         "type": "ThermalBody"
                     },
@@ -33915,7 +33994,8 @@
                     },
                     {
                         "data": {
-                            "radius": 10.0
+                            "radius": 10.0,
+                            "thermal": 0
                         },
                         "type": "ThermalBody"
                     },
@@ -33978,7 +34058,8 @@
                     },
                     {
                         "data": {
-                            "radius": 10.0
+                            "radius": 10.0,
+                            "thermal": 0
                         },
                         "type": "ThermalBody"
                     },
@@ -34041,7 +34122,8 @@
                     },
                     {
                         "data": {
-                            "radius": 10.0
+                            "radius": 10.0,
+                            "thermal": 0
                         },
                         "type": "ThermalBody"
                     },
@@ -34104,7 +34186,8 @@
                     },
                     {
                         "data": {
-                            "radius": 10.0
+                            "radius": 10.0,
+                            "thermal": 0
                         },
                         "type": "ThermalBody"
                     },
@@ -34167,7 +34250,8 @@
                     },
                     {
                         "data": {
-                            "radius": 10.0
+                            "radius": 10.0,
+                            "thermal": 0
                         },
                         "type": "ThermalBody"
                     },
@@ -34230,7 +34314,8 @@
                     },
                     {
                         "data": {
-                            "radius": 10.0
+                            "radius": 10.0,
+                            "thermal": 0
                         },
                         "type": "ThermalBody"
                     },
@@ -34287,7 +34372,8 @@
                     },
                     {
                         "data": {
-                            "radius": 10.0
+                            "radius": 20.0,
+                            "thermal": 0
                         },
                         "type": "ThermalBody"
                     },
@@ -34636,7 +34722,8 @@
                     },
                     {
                         "data": {
-                            "radius": 10.0
+                            "radius": 10.0,
+                            "thermal": 0
                         },
                         "type": "ThermalBody"
                     },
@@ -34697,7 +34784,8 @@
                     },
                     {
                         "data": {
-                            "radius": 10.0
+                            "radius": 10.0,
+                            "thermal": 0
                         },
                         "type": "ThermalBody"
                     },
@@ -34758,7 +34846,8 @@
                     },
                     {
                         "data": {
-                            "radius": 10.0
+                            "radius": 10.0,
+                            "thermal": 0
                         },
                         "type": "ThermalBody"
                     },
@@ -34804,7 +34893,8 @@
                     },
                     {
                         "data": {
-                            "radius": 10.0
+                            "radius": 10.0,
+                            "thermal": 1
                         },
                         "type": "ThermalBody"
                     },
@@ -34826,6 +34916,10 @@
                             "scale": 11.0
                         },
                         "type": "EffectRender"
+                    },
+                    {
+                        "data": null,
+                        "type": "firewood"
                     }
                 ],
                 "id": 12,

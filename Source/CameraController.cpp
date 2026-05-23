@@ -124,7 +124,7 @@ void CameraController::Update(float elapsedTime)
 		}; 
 		float scroll = ImGui::GetIO().MouseWheel;
 
-		distance -= scroll * 0.5f; // Š´“x’²®
+		distance -= scroll * 3.0f; // Š´“x’²®
 		distance = std::clamp(distance, minDistance, maxDistance);
 
 		transform->SetWorldPosition(cameraPos);

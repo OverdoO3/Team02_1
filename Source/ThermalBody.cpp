@@ -22,11 +22,14 @@ void ThermalBody::DrawInspector()
 void ThermalBody::Serialize(nlohmann::json& j) const
 {
 	j["radius"] = radius;
+	j["thermal"] = temperature;
 }
 
 void ThermalBody::Deserialize(nlohmann::json& j)
 {
-	j["radius"] = radius;
+	radius =  j["radius"];
+	if(j["thermal"] != nullptr)
+	temperature = j["thermal"];
 }
 
 void ThermalBody::RenderDebug(RenderContext& rc, ShapeRenderer* renderer)
