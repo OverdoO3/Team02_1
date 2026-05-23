@@ -131,34 +131,40 @@ void HeatTransfer::Update(float elapsedTime)
 	auto effectstate = owner->GetComponent<StateEffect>();
 	if (!effectstate) return;
 
-	switch (thermal->GetHeat())
+	if (m_prevHeat != thermal->GetHeat())
 	{
-	case 0:
-		effectstate->SetState("normal");
+		switch (thermal->GetHeat())
+		{
+		case 1:
+		{
+			effectstate->SetState("hot");
+			std::string myPath = ToDataPath("Data/Sound/SE_game_reaction_fire.wav");
+			Audio::Instance().PlaySE(myPath.c_str());
+		}
 		break;
-	case 1:
-	{
-		effectstate->SetState("hot");
-		std::string myPath = ToDataPath("Data/Sound/SE_game_reaction_fire.wav");
-		Audio::Instance().PlaySE(myPath.c_str());
-	}
-	break;
-	case -1:
-	{
-		effectstate->SetState("water");
-		std::string myPath = ToDataPath("Data/Sound/SE_game_reaction_water.wav");
-		Audio::Instance().PlaySE(myPath.c_str());
-	}
-	break;
-	case -2:
-	{
-		effectstate->SetState("cold");
-		std::string myPath = ToDataPath("Data/Sound/SE_game_reaction_ice.wav");
-		Audio::Instance().PlaySE(myPath.c_str());
-	}
-	break;
-	default:
+		case -1:
+		{
+			effectstate->SetState("water");
+			std::string myPath = ToDataPath("Data/Sound/SE_game_reaction_water.wav");
+			Audio::Instance().PlaySE(myPath.c_str());
+		}
 		break;
+		case -2:
+		{
+			effectstate->SetState("cold");
+			std::string myPath = ToDataPath("Data/Sound/SE_game_reaction_ice.wav");
+			Audio::Instance().PlaySE(myPath.c_str());
+		}
+		break;
+		case 0:
+		{
+			effectstate->SetState("normal");
+		}
+		break;
+		}
+
+		// ÅŒã‚ÉŒ»Ý‚Ìó‘Ô‚ð•Û‘¶‚µ‚ÄAŽŸƒtƒŒ[ƒ€‚Æ”äŠr‚Å‚«‚é‚æ‚¤‚É‚·‚é
+		m_prevHeat = thermal->GetHeat();
 	}
 }
 

@@ -38,4 +38,5 @@ public:
     COMPONENT_ID(HeatTransfer)
 private:
     bool m_canAbsorb = false;
+    int m_prevHeat = 0;
 };
