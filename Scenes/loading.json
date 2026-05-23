@@ -546,6 +546,79 @@
                 "parent": -1,
                 "tag": 0,
                 "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "rotation": [
+                                0.0,
+                                0.0,
+                                0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "BGMPlayOnAwake": true,
+                            "IsBGM": true,
+                            "Loop": false,
+                            "PlayOnAwake": true,
+                            "PlayOnClick": false,
+                            "PlayOnHover": false,
+                            "Volume": 0.4519999921321869,
+                            "filename": "C:\\Users\\2250282\\Documents\\Team02_1\\Data\\Sound\\SE_scene_change.wav"
+                        },
+                        "type": "AudioComponent"
+                    }
+                ],
+                "id": 70,
+                "name": "NewActor",
+                "parent": -1,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "rotation": [
+                                0.0,
+                                0.0,
+                                0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    }
+                ],
+                "id": 71,
+                "name": "NewActor",
+                "parent": -1,
+                "tag": 0,
+                "type": "Actor"
             }
         ]
     }

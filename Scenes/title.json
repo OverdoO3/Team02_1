@@ -272,6 +272,19 @@
                             "UseLoading": false
                         },
                         "type": "ButtonComponent"
+                    },
+                    {
+                        "data": {
+                            "BGMPlayOnAwake": false,
+                            "IsBGM": false,
+                            "Loop": false,
+                            "PlayOnAwake": false,
+                            "PlayOnClick": true,
+                            "PlayOnHover": false,
+                            "Volume": 0.800000011920929,
+                            "filename": "C:\\Users\\2250282\\Documents\\Team02_1\\Data\\Sound\\SE_button.wav"
+                        },
+                        "type": "AudioComponent"
                     }
                 ],
                 "id": 57,
@@ -383,6 +396,19 @@
                             "UseLoading": false
                         },
                         "type": "ButtonComponent"
+                    },
+                    {
+                        "data": {
+                            "BGMPlayOnAwake": false,
+                            "IsBGM": false,
+                            "Loop": false,
+                            "PlayOnAwake": false,
+                            "PlayOnClick": true,
+                            "PlayOnHover": false,
+                            "Volume": 0.800000011920929,
+                            "filename": "C:\\Users\\2250282\\Documents\\Team02_1\\Data\\Sound\\SE_button.wav"
+                        },
+                        "type": "AudioComponent"
                     }
                 ],
                 "id": 58,
@@ -485,6 +511,19 @@
                             "sprFadeSpeed": 5.0
                         },
                         "type": "SpriteRender"
+                    },
+                    {
+                        "data": {
+                            "BGMPlayOnAwake": true,
+                            "IsBGM": false,
+                            "Loop": false,
+                            "PlayOnAwake": false,
+                            "PlayOnClick": false,
+                            "PlayOnHover": true,
+                            "Volume": 1.0,
+                            "filename": "C:\\Users\\2250282\\Documents\\Team02_1\\Data\\Sound\\SE_cursor.wav"
+                        },
+                        "type": "AudioComponent"
                     }
                 ],
                 "id": 59,
@@ -587,10 +626,66 @@
                             "sprFadeSpeed": 5.0
                         },
                         "type": "SpriteRender"
+                    },
+                    {
+                        "data": {
+                            "BGMPlayOnAwake": true,
+                            "IsBGM": false,
+                            "Loop": false,
+                            "PlayOnAwake": false,
+                            "PlayOnClick": false,
+                            "PlayOnHover": true,
+                            "Volume": 1.0,
+                            "filename": "C:\\Users\\2250282\\Documents\\Team02_1\\Data\\Sound\\SE_cursor.wav"
+                        },
+                        "type": "AudioComponent"
                     }
                 ],
                 "id": 60,
                 "name": "Select1",
+                "parent": -1,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "rotation": [
+                                0.0,
+                                0.0,
+                                0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "BGMPlayOnAwake": true,
+                            "IsBGM": true,
+                            "Loop": true,
+                            "PlayOnAwake": true,
+                            "PlayOnClick": false,
+                            "PlayOnHover": false,
+                            "Volume": 0.28200000524520874,
+                            "filename": "C:\\Users\\2250282\\Documents\\Team02_1\\Data\\Sound\\BGM_other.wav"
+                        },
+                        "type": "AudioComponent"
+                    }
+                ],
+                "id": 61,
+                "name": "NewActor",
                 "parent": -1,
                 "tag": 0,
                 "type": "Actor"

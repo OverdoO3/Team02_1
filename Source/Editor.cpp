@@ -214,8 +214,12 @@ void Editor::HandleSelection(Scene* scene, ImVec2 pos, ImVec2 size)
 
 void Editor::HandleGizmo(ImVec2 pos, ImVec2 size)
 {
-	if (selectedActors.empty() || anchorActor == nullptr)
+	if (selectedActors.empty() || anchorActor == nullptr || anchorActor->isDead)
+	{
+		selectedActors.clear();
+		anchorActor = nullptr;
 		return;
+	}
 
 	if (InputC::KeyDown(VK_DELETE))
 	{
@@ -385,7 +389,7 @@ void Editor::DrawHierarchy(Scene* scene)
 void Editor::DrawInspector(Scene* scene)
 {
 	ImGui::Begin("Inspector");
-	if (!selectedActors.empty()&&anchorActor != nullptr)
+	if (!selectedActors.empty() && anchorActor != nullptr && !anchorActor->isDead)
 	{
 		std::vector<Actor*> newSelection;
 
@@ -480,6 +484,9 @@ void Editor::DrawInspector(Scene* scene)
 	}
 	ImGui::End();
 }
+
+
+
 
 void Editor::DrawSceneWindow()
 {

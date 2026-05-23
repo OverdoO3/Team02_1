@@ -4,6 +4,7 @@
 #include "SceneManager.h"
 #include "ThermalBody.h"
 #include "Actor.h"
+#include "System/Audio.h"
 
 REGISTER_COMPONENT(ComponentID::SpriteRender,SpriteRender)
 
@@ -80,7 +81,6 @@ void SpriteRender::Draw(RenderContext& rc)
             return;
         }
     }
-
 
     // ─── ⭕【修正版】Loadingスプライトの出し分け制御 ───
     if (m_isGameLoading || m_isTitleLoading)
@@ -441,6 +441,12 @@ void SpriteRender::Update(float elapsedTime)
 
         m_isHovered = (mouseXInWindow >= colLeft && mouseXInWindow <= colRight &&
             mouseYInWindow >= colTop && mouseYInWindow <= colBottom);
+
+        if (m_isHovered && !m_wasHovered)
+        {
+            Audio::Instance().PlaySE("Data/Sound/SE_cursor.wav");
+        }
+        m_wasHovered = m_isHovered;
     }
 
     // ─── Update 関数内のクリック判定箇所 ───

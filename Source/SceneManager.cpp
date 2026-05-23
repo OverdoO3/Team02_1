@@ -3,6 +3,8 @@
 #include "Engine.h"
 #include "SpriteRender.h"
 #include "ButtonComponent.h"
+#include "System/Audio.h"
+#include "AudioComponent.h"
 
 bool SceneManager::m_coinFlags[4][3] = { false };
 
@@ -55,6 +57,8 @@ void SceneManager::Update(float elapsedTime)
         // 【FadeOut状態】マスクが閉じきったらスレッドを立ててロード開始
         if (m_loadState == LoadState::FadeOut && isIrisOutFinished)
         {
+            Audio::Instance().StopBGM();
+            Audio::Instance().PlaySE("Data/Sound/SE_scene_change.wav");
             m_loadState = LoadState::Loading;
             m_isLoadCompleted = false;
             m_loadTimer = 0.0f;
@@ -262,12 +266,19 @@ void SceneManager::Update(float elapsedTime)
                 if (auto* btn = actor->GetComponent<ButtonComponent>())
                     btn->Update(elapsedTime);
             }
+            for (auto& actor : pauseActors)
+            {
+                if (!actor->setActive) continue;
+                if (auto* audio = actor->GetComponent<AudioComponent>())
+                    audio->Update(elapsedTime);
+            }
         }
         else
         {
             currentScene->Update(elapsedTime);
         }
     }
+
 }
 
 
@@ -328,6 +339,7 @@ void SceneManager::Render(CameraBase* camera, bool isEditor)
             }
         }
     }
+
 }
 
 

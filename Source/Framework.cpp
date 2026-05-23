@@ -273,6 +273,7 @@ LRESULT CALLBACK Framework::HandleMessage(HWND hWnd, UINT msg, WPARAM wParam, LP
 			if (path.find("stage") != std::string::npos)
 			{
 				sm.TogglePause();
+				Audio::Instance().PlaySE("Data/Sound/SE_pause.wav");
 			}
 		}
 		break;
