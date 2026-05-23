@@ -3,11 +3,11 @@
 #include "nlohmann/json.hpp"
 
 using json = nlohmann::json;
-class snowman : public Component
+class firewood : public Component
 {
 public:
-    snowman() = default;
-    ~snowman() override = default;
+    firewood() = default;
+    ~firewood() override = default;
 
     void OnAwake(float elapsedTime) override;
     void Update(float elapsedTime) override;
@@ -19,8 +19,7 @@ public:
 
     std::unique_ptr<Component> Clone() const override;
 
-    COMPONENT_ID(snowman)
+    COMPONENT_ID(firewood)
 private:
-    bool death;
-    float timer = 1.4f;
+    bool onfire = true;
 };

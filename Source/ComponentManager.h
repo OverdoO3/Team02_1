@@ -32,6 +32,7 @@ enum class ComponentID
     needles,
     Coin,
     playerModelChanger,
+    firewood,
     COUNT
 };
 

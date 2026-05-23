@@ -22,6 +22,7 @@ public:
     float GetRadius() { return radius; }
 
     float GetHeatNum() { return heatNum; }
+    void SetHeatNum(int n) { heatNum = n; }
 
     COMPONENT_ID(HeatReceiver)
 private:

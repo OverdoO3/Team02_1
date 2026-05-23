@@ -197,7 +197,7 @@ void Move::Update(float elapsedTime)
     //=========================
     // ’n–Êˆ—
     //=========================
-    if (onGround && hit.normal.y > 0.5f)
+    if (onGround && hit.normal.y > 0.1f)
     {
         float dot = Velocity.x * hit.normal.x
             + Velocity.y * hit.normal.y

@@ -14,7 +14,6 @@ void playerModelChanger::OnAwake(float elapsedTime)
 void playerModelChanger::Update(float elapsedTime)
 {
 	auto thermal = owner->GetComponent<ThermalBody>()->GetHeat();
-	if (!thermal)return;
 	auto model = owner->GetComponent<ModelRender>();
 
 	if (thermal != currentTemp)

@@ -36,6 +36,11 @@ void EffectRender::Update(float elapsedTime)
 			}
 		}
 	}
+
+	if (!this->enabled)
+	{
+		Stop();
+	}
 }
 
 void EffectRender::DrawInspector()

@@ -4,6 +4,7 @@
 #include "Scene.h"
 #include "Collision.h"
 #include "StateEffect.h"
+#include <EffectRender.h>
 
 REGISTER_COMPONENT(ComponentID::HeatTransfer, HeatTransfer)
 
@@ -33,14 +34,17 @@ void HeatTransfer::Update(float elapsedTime)
 			toTransform->GetWorldPosition(),
 			toThermal->GetRadius()))
 		{
+			if(thermal->GetHeat() != 0)
 			toThermal->SetHeat(thermal->GetHeat());
 
 			m_insideActors.push_back(actor.get());
 		} 
 	}
 
-	if (InputC::KeyDown(VK_LBUTTON))
+	
+	if (InputC::KeyPressed(VK_LBUTTON))
 	{
+		bool success = false;
 		for (auto& actor : scene->actors)
 		{
 			auto Receiver = actor->GetComponent<HeatReceiver>();
@@ -54,14 +58,28 @@ void HeatTransfer::Update(float elapsedTime)
 				Receiver->GetRadius()))
 			{
 				thermal->SetHeat(Receiver->GetHeatNum());
-				//int stealHeat = Receiver->GetHeatNum() * -1;
-				//actor->GetComponent<ThermalBody>()->SetHeat(thermal);
+				auto th = actor->GetComponent<ThermalBody>();
+				if (th->GetHeat() == 1)
+				{
+					th->SetHeat(0);
+					auto a = actor->GetComponent<EffectRender>();
+					if (a)
+					{
+						a->Stop();
+					}
+				}
+				success = true;
 			}
+		}
+		if (!success)
+		{
+			thermal->SetHeat(0);
 		}
 	}
 
+
 	auto effectstate = owner->GetComponent<StateEffect>();
-	if (!effectstate) return;  // © ‚±‚ê‚ð’Ç‰Á
+	if (!effectstate) return;
 
 	switch (thermal->GetHeat())
 	{
