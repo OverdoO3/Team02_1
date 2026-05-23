@@ -248,6 +248,10 @@
     </ClInclude>
     <ClInclude Include="Source\Engine.h" />
     <ClInclude Include="Source\Factory.h" />
+    <ClInclude Include="Source\firewood.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="Source\flower.h">
       <SubType>
       </SubType>
@@ -381,6 +385,10 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="Source\Engine.cpp" />
+    <ClCompile Include="Source\firewood.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="Source\flower.cpp">
       <SubType>
       </SubType>
