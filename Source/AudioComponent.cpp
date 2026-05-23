@@ -94,8 +94,10 @@ void AudioComponent::Load(const char* filename)
 {
     if (filename == nullptr || strlen(filename) == 0) return;
 
-    std::string filenameStr(filename);  // まずstringにコピー
-    if (filenameStr.empty()) return;
+    std::string filenameStr(filename);
+
+    // ロード開始をログに
+    LogManager::Instance().AddLog(LogCategory::asset, LogEvent::Load, "Loading: " + filenameStr);
 
     if (source)
     {
@@ -104,8 +106,25 @@ void AudioComponent::Load(const char* filename)
     }
 
     source = Audio::Instance().LoadAudioSource(filenameStr.c_str());
+
+    if (!source)
+    {
+        // ここで落ちる前にログを出す！
+        LogManager::Instance().AddLog(LogCategory::asset, LogEvent::None, "Failed to load: " + filenameStr);
+    }
 }
 
-void AudioComponent::Play(bool loop) { if (source) source->Play(loop); }
+void AudioComponent::Play(bool loop)
+{
+    if (source)
+    {
+        source->Play(loop);
+    }
+    else
+    {
+        LogManager::Instance().AddLog(LogCategory::asset, LogEvent::None, "Audio source is nullptr! Cannot play.");
+    }
+}
+
 void AudioComponent::Stop() { if (source) source->Stop(); }
 void AudioComponent::SetVolume(float volume) { if (source) source->SetVolume(volume); }
