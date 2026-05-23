@@ -7,7 +7,7 @@ REGISTER_COMPONENT(ComponentID::water, water)
 
 void water::OnAwake(float elapsedTime)
 {
-	std::make_unique<Model>(icepath.c_str());
+	//std::make_unique<Model>(icepath.c_str());
 }
 
 void water::Update(float elapsedTime)
