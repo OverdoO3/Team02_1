@@ -3,6 +3,8 @@
 #include <xaudio2.h>
 #include "System/AudioSource.h"
 #include <string>
+#include <filesystem>
+
 
 // オーディオ
 class Audio
@@ -39,6 +41,29 @@ public:
     void UpdateSE();
     void SetLockBGM(bool lock) { m_isBGMLocked = lock; }
     void StopBGM(bool force = false);
+
+    std::string ToDataPath(const std::string& inputPath)
+    {
+        // 1. まずバックスラッシュ(\)をスラッシュ(/)に統一する（Windowsパス対策）
+        std::string path = inputPath;
+        std::replace(path.begin(), path.end(), '\\', '/');
+
+        // 2. 検索したいキーワードのリスト
+        const std::string keywords[] = { "Data/", "Scenes/" };
+
+        for (const auto& key : keywords)
+        {
+            size_t pos = path.find(key);
+            if (pos != std::string::npos)
+            {
+                // キーワード以降の文字列を返す
+                return path.substr(pos);
+            }
+        }
+        return path;
+    }
+
+
 
     const std::string& GetCurrentBGMName() const { return m_currentBGMName; }
 private:

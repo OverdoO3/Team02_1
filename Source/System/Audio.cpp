@@ -72,19 +72,21 @@ void Audio::PlayBGM(const char* filename, bool force)
     // ロック中なら無視
     if (m_isBGMLocked && !force) return;
 
+    // ★ここで相対パスに変換してから判定・ロードする
+    std::string safePath = ToDataPath(filename);
+
     // 今流れている曲と同じなら何もしない
-    if (m_bgmSource && m_currentBGMName == filename) return;
+    if (m_bgmSource && m_currentBGMName == safePath) return;
 
     StopBGM(true);
 
     // 新しい曲をロードして再生
-    m_bgmResource = std::make_shared<AudioResource>(filename);
+    m_bgmResource = std::make_shared<AudioResource>(safePath.c_str());
     m_bgmSource = std::make_unique<AudioSource>(xaudio, m_bgmResource);
     m_bgmSource->SetVolume(m_bgmVolume);
     m_bgmSource->Play(true);
-    m_currentBGMName = filename;
+    m_currentBGMName = safePath;
 }
-
 
 void Audio::StopBGM(bool force)
 {
