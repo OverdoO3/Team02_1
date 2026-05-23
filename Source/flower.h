@@ -29,4 +29,8 @@ private:
 
     bool death;
     float timer = 1.0f;
+
+    bool isOpen;
+    bool once = false;
+    bool once2 = false;
 };

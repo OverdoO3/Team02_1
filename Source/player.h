@@ -21,10 +21,10 @@ public:
 
     COMPONENT_ID(playerModelChanger)
 private:
-    std::string normalPath = "./Data/Model/player/chara_motion.mdl";
-    std::string icePath = "./Data/Model/player/chara_motion_ice.mdl";
-    std::string waterPath = "./Data/Model/player/chara_motion_water.mdl";
-    std::string hotPath = "./Data/Model/player/chara_motion_fire.mdl";
+    std::string normalPath = "./Data/Model/player/chara_motion.fbm/chameleon_TEX.png";
+    std::string icePath = "./Data/Model/player/chara_motion.fbm/chameleon_tex_ice.png";
+    std::string waterPath = "./Data/Model/player/chara_motion.fbm/chameleon_tex_water.png";
+    std::string hotPath = "./Data/Model/player/chara_motion.fbm/chameleon_tex_fire.png";
 
     int currentTemp = 0;
 };

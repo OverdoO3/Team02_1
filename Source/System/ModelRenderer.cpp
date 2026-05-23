@@ -164,13 +164,16 @@ void ModelRenderer::AddInstance(const Model* model, Actor* actor)
     InstanceData data{};
     data.world = t->GetWorldMatrix();
 
+    auto modelRender = actor->GetComponent<ModelRender>();
+    if (modelRender && modelRender->overrideSRV)
+    {
+        data.overrideSRV = modelRender->overrideSRV.Get();
+    }
+
     auto& batch = batches[model->GetResource()];
     batch.representativeModel = model;
     batch.instances.push_back(data);
 
-    //char buf[128];
-    //sprintf_s(buf, "AddInstance: %s\n", actor->name.c_str()); // Actor名を出力
-    //OutputDebugStringA(buf);
     debugInstanceCount++;
 }
 //==============================
@@ -373,23 +376,27 @@ void ModelRenderer::FlushAll(const RenderContext& rc)
 
             for (const auto& subset : mesh.subsets)
             {
-                // Shadow パスではテクスチャ不要
                 if (shaderId != ShaderId::Shadow)
                 {
                     if (subset.material != lastMaterial)
                     {
-                        dc->PSSetShaderResources(
-                            0, 1, subset.material->shaderResourceView.GetAddressOf());
+                        // ★ overrideSRV があれば差し替え、なければ通常テクスチャ
+                        ID3D11ShaderResourceView* srv =
+                            instances.instances[0].overrideSRV
+                            ? instances.instances[0].overrideSRV
+                            : subset.material->shaderResourceView.Get();
+
+                        dc->PSSetShaderResources(0, 1, &srv); // ★ srv を使う
                         lastMaterial = subset.material;
                     }
                 }
 
                 dc->DrawIndexedInstanced(
-                    subset.indexCount,   // IndexCountPerInstance
-                    instanceCount,       // InstanceCount
-                    subset.startIndex,   // StartIndexLocation
-                    0,                   // BaseVertexLocation
-                    0);                  // StartInstanceLocation
+                    subset.indexCount,
+                    instanceCount,
+                    subset.startIndex,
+                    0,
+                    0);
             }
         }
     }

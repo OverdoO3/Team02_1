@@ -19,6 +19,7 @@ void water::Update(float elapsedTime)
 
 	auto col = owner->GetComponent<BoxCollider>();
 
+	if (temp->GetHeat() == currentTemp) return;
 	std::unique_ptr<Model> model;
 	switch (temp->GetHeat())
 	{
@@ -46,10 +47,13 @@ void water::Update(float elapsedTime)
 		effectstate->enabled = true;
 		effectstate->SetState("ice");
 		break;
-	default:
+	case 1:
 		effectstate->enabled = false;
 		break;
+	default:
+		break;
 	}
+	currentTemp = temp->GetHeat();
 }
 
 void water::DrawInspector()

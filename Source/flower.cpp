@@ -6,6 +6,18 @@ REGISTER_COMPONENT(ComponentID::flower, flower)
 
 void flower::OnAwake(float elapsedTime)
 {
+	auto temp = owner->GetComponent<ThermalBody>();
+	if (!temp)return;
+	if (temp->GetHeat() == -1)
+	{
+		owner->GetComponent<ModelRender>()->PlayAnimation("flower_idle",true);
+		isOpen = true;
+	}
+	else
+	{
+		owner->GetComponent<ModelRender>()->PlayAnimation("bud_idle", true);
+		isOpen = false;
+	}
 }
 
 void flower::Update(float elapsedTime)
@@ -21,7 +33,7 @@ void flower::Update(float elapsedTime)
 	{
 	case -1:
 		boxCollider->size.y = saveY;
-		model->SetString(openPath);
+		isOpen = true;
 		break;
 	case 1:
 		boxCollider->size.y = deathY;
@@ -29,6 +41,24 @@ void flower::Update(float elapsedTime)
 		break;
 	default:
 		break;
+	}
+
+	if (isOpen && !once)
+	{
+		once = true;
+		model->PlayAnimation("bud_open", false);
+	}
+
+	if (!model->GetAnimationPlaying() && isOpen && !once2)
+	{
+		model->SetString(openPath);
+		model->PlayAnimation("flower_open", false);
+		once2 = true;
+	}
+
+	if (once2&&!model->GetAnimationPlaying())
+	{
+		model->PlayAnimation("flower_idle",true);
 	}
 
 	if (death)

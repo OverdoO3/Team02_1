@@ -18726,6 +18726,21 @@
                             "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
                         },
                         "type": "ModelRender"
+                    },
+                    {
+                        "data": {
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                10.0,
+                                10.0,
+                                10.0
+                            ]
+                        },
+                        "type": "BoxCollider"
                     }
                 ],
                 "id": 8547,
@@ -19650,6 +19665,21 @@
                             "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
                         },
                         "type": "ModelRender"
+                    },
+                    {
+                        "data": {
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                10.0,
+                                10.0,
+                                10.0
+                            ]
+                        },
+                        "type": "BoxCollider"
                     }
                 ],
                 "id": 8110,
@@ -20514,6 +20544,21 @@
                             "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
                         },
                         "type": "ModelRender"
+                    },
+                    {
+                        "data": {
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                10.0,
+                                10.0,
+                                10.0
+                            ]
+                        },
+                        "type": "BoxCollider"
                     }
                 ],
                 "id": 8110,
@@ -20658,6 +20703,21 @@
                             "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
                         },
                         "type": "ModelRender"
+                    },
+                    {
+                        "data": {
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                10.0,
+                                10.0,
+                                10.0
+                            ]
+                        },
+                        "type": "BoxCollider"
                     }
                 ],
                 "id": 8110,
@@ -20946,6 +21006,21 @@
                             "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
                         },
                         "type": "ModelRender"
+                    },
+                    {
+                        "data": {
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                10.0,
+                                10.0,
+                                10.0
+                            ]
+                        },
+                        "type": "BoxCollider"
                     }
                 ],
                 "id": 8110,
@@ -20982,6 +21057,21 @@
                             "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
                         },
                         "type": "ModelRender"
+                    },
+                    {
+                        "data": {
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                10.0,
+                                10.0,
+                                10.0
+                            ]
+                        },
+                        "type": "BoxCollider"
                     }
                 ],
                 "id": 8110,
@@ -21018,6 +21108,21 @@
                             "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
                         },
                         "type": "ModelRender"
+                    },
+                    {
+                        "data": {
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                10.0,
+                                10.0,
+                                10.0
+                            ]
+                        },
+                        "type": "BoxCollider"
                     }
                 ],
                 "id": 8110,
@@ -22080,6 +22185,21 @@
                             "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
                         },
                         "type": "ModelRender"
+                    },
+                    {
+                        "data": {
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                10.0,
+                                10.0,
+                                10.0
+                            ]
+                        },
+                        "type": "BoxCollider"
                     }
                 ],
                 "id": 8110,
@@ -22188,6 +22308,21 @@
                             "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
                         },
                         "type": "ModelRender"
+                    },
+                    {
+                        "data": {
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                10.0,
+                                10.0,
+                                10.0
+                            ]
+                        },
+                        "type": "BoxCollider"
                     }
                 ],
                 "id": 8110,
@@ -22224,6 +22359,21 @@
                             "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
                         },
                         "type": "ModelRender"
+                    },
+                    {
+                        "data": {
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                10.0,
+                                10.0,
+                                10.0
+                            ]
+                        },
+                        "type": "BoxCollider"
                     }
                 ],
                 "id": 8110,
@@ -22440,6 +22590,21 @@
                             "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
                         },
                         "type": "ModelRender"
+                    },
+                    {
+                        "data": {
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                10.0,
+                                10.0,
+                                10.0
+                            ]
+                        },
+                        "type": "BoxCollider"
                     }
                 ],
                 "id": 8110,
@@ -22620,6 +22785,21 @@
                             "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
                         },
                         "type": "ModelRender"
+                    },
+                    {
+                        "data": {
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                10.0,
+                                10.0,
+                                10.0
+                            ]
+                        },
+                        "type": "BoxCollider"
                     }
                 ],
                 "id": 8110,
@@ -22836,6 +23016,21 @@
                             "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
                         },
                         "type": "ModelRender"
+                    },
+                    {
+                        "data": {
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                10.0,
+                                10.0,
+                                10.0
+                            ]
+                        },
+                        "type": "BoxCollider"
                     }
                 ],
                 "id": 8110,
@@ -23731,153 +23926,9 @@
                     {
                         "data": {
                             "position": [
-                                -50.0,
-                                80.0,
-                                -50.0000114440918
-                            ],
-                            "rotation": [
-                                -0.0,
-                                0.0,
-                                -0.0,
-                                1.0
-                            ],
-                            "scale": [
-                                0.9999998807907104,
-                                1.0,
-                                0.9999998807907104
-                            ]
-                        },
-                        "type": "Transform"
-                    },
-                    {
-                        "data": {
-                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
-                        },
-                        "type": "ModelRender"
-                    }
-                ],
-                "id": 8110,
-                "name": "NewActor(368)",
-                "parent": 8138,
-                "tag": 0,
-                "type": "Actor"
-            },
-            {
-                "components": [
-                    {
-                        "data": {
-                            "position": [
-                                -60.0,
-                                80.0,
-                                -50.0000114440918
-                            ],
-                            "rotation": [
-                                -0.0,
-                                0.0,
-                                -0.0,
-                                1.0
-                            ],
-                            "scale": [
-                                0.9999998807907104,
-                                1.0,
-                                0.9999998807907104
-                            ]
-                        },
-                        "type": "Transform"
-                    },
-                    {
-                        "data": {
-                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
-                        },
-                        "type": "ModelRender"
-                    }
-                ],
-                "id": 8110,
-                "name": "NewActor(369)",
-                "parent": 8138,
-                "tag": 0,
-                "type": "Actor"
-            },
-            {
-                "components": [
-                    {
-                        "data": {
-                            "position": [
-                                -50.000003814697266,
-                                70.0,
-                                -39.99999237060547
-                            ],
-                            "rotation": [
-                                -0.0,
-                                0.0,
-                                -0.0,
-                                1.0
-                            ],
-                            "scale": [
-                                0.9999998807907104,
-                                1.0,
-                                0.9999998807907104
-                            ]
-                        },
-                        "type": "Transform"
-                    },
-                    {
-                        "data": {
-                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
-                        },
-                        "type": "ModelRender"
-                    }
-                ],
-                "id": 8110,
-                "name": "NewActor(370)",
-                "parent": 8138,
-                "tag": 0,
-                "type": "Actor"
-            },
-            {
-                "components": [
-                    {
-                        "data": {
-                            "position": [
-                                -60.0,
-                                70.0,
-                                -39.99999237060547
-                            ],
-                            "rotation": [
-                                -0.0,
-                                0.0,
-                                -0.0,
-                                1.0
-                            ],
-                            "scale": [
-                                0.9999998807907104,
-                                1.0,
-                                0.9999998807907104
-                            ]
-                        },
-                        "type": "Transform"
-                    },
-                    {
-                        "data": {
-                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
-                        },
-                        "type": "ModelRender"
-                    }
-                ],
-                "id": 8110,
-                "name": "NewActor(371)",
-                "parent": 8138,
-                "tag": 0,
-                "type": "Actor"
-            },
-            {
-                "components": [
-                    {
-                        "data": {
-                            "position": [
                                 -70.0,
                                 80.0,
-                                -50.00001525878906
+                                -50.00001907348633
                             ],
                             "rotation": [
                                 -0.0,
@@ -23898,118 +23949,25 @@
                             "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
                         },
                         "type": "ModelRender"
+                    },
+                    {
+                        "data": {
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                10.0,
+                                10.0,
+                                10.0
+                            ]
+                        },
+                        "type": "BoxCollider"
                     }
                 ],
                 "id": 8110,
                 "name": "NewActor(372)",
-                "parent": 8138,
-                "tag": 0,
-                "type": "Actor"
-            },
-            {
-                "components": [
-                    {
-                        "data": {
-                            "position": [
-                                -70.0,
-                                70.0,
-                                -39.99999237060547
-                            ],
-                            "rotation": [
-                                -0.0,
-                                0.0,
-                                -0.0,
-                                1.0
-                            ],
-                            "scale": [
-                                0.9999998807907104,
-                                1.0,
-                                0.9999998807907104
-                            ]
-                        },
-                        "type": "Transform"
-                    },
-                    {
-                        "data": {
-                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
-                        },
-                        "type": "ModelRender"
-                    }
-                ],
-                "id": 8110,
-                "name": "NewActor(373)",
-                "parent": 8138,
-                "tag": 0,
-                "type": "Actor"
-            },
-            {
-                "components": [
-                    {
-                        "data": {
-                            "position": [
-                                -70.0,
-                                60.0,
-                                -29.99999237060547
-                            ],
-                            "rotation": [
-                                -0.0,
-                                0.0,
-                                -0.0,
-                                1.0
-                            ],
-                            "scale": [
-                                0.9999998807907104,
-                                1.0,
-                                0.9999998807907104
-                            ]
-                        },
-                        "type": "Transform"
-                    },
-                    {
-                        "data": {
-                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
-                        },
-                        "type": "ModelRender"
-                    }
-                ],
-                "id": 8110,
-                "name": "NewActor(374)",
-                "parent": 8138,
-                "tag": 0,
-                "type": "Actor"
-            },
-            {
-                "components": [
-                    {
-                        "data": {
-                            "position": [
-                                -50.00000762939453,
-                                60.0,
-                                -29.99999237060547
-                            ],
-                            "rotation": [
-                                -0.0,
-                                0.0,
-                                -0.0,
-                                1.0
-                            ],
-                            "scale": [
-                                0.9999998807907104,
-                                1.0,
-                                0.9999998807907104
-                            ]
-                        },
-                        "type": "Transform"
-                    },
-                    {
-                        "data": {
-                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
-                        },
-                        "type": "ModelRender"
-                    }
-                ],
-                "id": 8110,
-                "name": "NewActor(375)",
                 "parent": 8138,
                 "tag": 0,
                 "type": "Actor"
@@ -24055,44 +24013,8 @@
                     {
                         "data": {
                             "position": [
-                                -60.000003814697266,
-                                60.0,
-                                -29.99999237060547
-                            ],
-                            "rotation": [
-                                -0.0,
-                                0.0,
-                                -0.0,
-                                1.0
-                            ],
-                            "scale": [
-                                0.9999998807907104,
-                                1.0,
-                                0.9999998807907104
-                            ]
-                        },
-                        "type": "Transform"
-                    },
-                    {
-                        "data": {
-                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
-                        },
-                        "type": "ModelRender"
-                    }
-                ],
-                "id": 8110,
-                "name": "NewActor(377)",
-                "parent": 8138,
-                "tag": 0,
-                "type": "Actor"
-            },
-            {
-                "components": [
-                    {
-                        "data": {
-                            "position": [
                                 -70.00000762939453,
-                                50.0000114440918,
+                                50.00001525878906,
                                 -19.99999237060547
                             ],
                             "rotation": [
@@ -24114,118 +24036,25 @@
                             "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
                         },
                         "type": "ModelRender"
+                    },
+                    {
+                        "data": {
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                10.0,
+                                10.0,
+                                10.0
+                            ]
+                        },
+                        "type": "BoxCollider"
                     }
                 ],
                 "id": 8110,
                 "name": "NewActor(378)",
-                "parent": 8138,
-                "tag": 0,
-                "type": "Actor"
-            },
-            {
-                "components": [
-                    {
-                        "data": {
-                            "position": [
-                                -50.00001525878906,
-                                50.0000114440918,
-                                -19.99999237060547
-                            ],
-                            "rotation": [
-                                -0.0,
-                                0.0,
-                                -0.0,
-                                1.0
-                            ],
-                            "scale": [
-                                0.9999998807907104,
-                                1.0,
-                                0.9999998807907104
-                            ]
-                        },
-                        "type": "Transform"
-                    },
-                    {
-                        "data": {
-                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
-                        },
-                        "type": "ModelRender"
-                    }
-                ],
-                "id": 8110,
-                "name": "NewActor(379)",
-                "parent": 8138,
-                "tag": 0,
-                "type": "Actor"
-            },
-            {
-                "components": [
-                    {
-                        "data": {
-                            "position": [
-                                -50.00001525878906,
-                                50.0000114440918,
-                                -19.99999237060547
-                            ],
-                            "rotation": [
-                                -0.0,
-                                0.0,
-                                -0.0,
-                                1.0
-                            ],
-                            "scale": [
-                                0.9999998807907104,
-                                1.0,
-                                0.9999998807907104
-                            ]
-                        },
-                        "type": "Transform"
-                    },
-                    {
-                        "data": {
-                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
-                        },
-                        "type": "ModelRender"
-                    }
-                ],
-                "id": 8110,
-                "name": "NewActor(380)",
-                "parent": 8138,
-                "tag": 0,
-                "type": "Actor"
-            },
-            {
-                "components": [
-                    {
-                        "data": {
-                            "position": [
-                                -60.0000114440918,
-                                50.0000114440918,
-                                -19.99999237060547
-                            ],
-                            "rotation": [
-                                -0.0,
-                                0.0,
-                                -0.0,
-                                1.0
-                            ],
-                            "scale": [
-                                0.9999998807907104,
-                                1.0,
-                                0.9999998807907104
-                            ]
-                        },
-                        "type": "Transform"
-                    },
-                    {
-                        "data": {
-                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
-                        },
-                        "type": "ModelRender"
-                    }
-                ],
-                "id": 8110,
-                "name": "NewActor(381)",
                 "parent": 8138,
                 "tag": 0,
                 "type": "Actor"
@@ -24834,6 +24663,21 @@
                             "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
                         },
                         "type": "ModelRender"
+                    },
+                    {
+                        "data": {
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                10.0,
+                                10.0,
+                                10.0
+                            ]
+                        },
+                        "type": "BoxCollider"
                     }
                 ],
                 "id": 8110,
@@ -27270,6 +27114,21 @@
                             "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
                         },
                         "type": "ModelRender"
+                    },
+                    {
+                        "data": {
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                10.0,
+                                10.0,
+                                10.0
+                            ]
+                        },
+                        "type": "BoxCollider"
                     }
                 ],
                 "id": 8110,
@@ -27429,7 +27288,7 @@
                             "position": [
                                 -40.0,
                                 50.0,
-                                0.0
+                                -1.1920928955078125e-07
                             ],
                             "rotation": [
                                 -0.0,
@@ -27450,6 +27309,21 @@
                             "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
                         },
                         "type": "ModelRender"
+                    },
+                    {
+                        "data": {
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                10.0,
+                                10.0,
+                                10.0
+                            ]
+                        },
+                        "type": "BoxCollider"
                     }
                 ],
                 "id": 8110,
@@ -28391,7 +28265,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -28453,7 +28329,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -28515,7 +28393,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -28577,7 +28457,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -29791,7 +29673,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 15.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -29838,7 +29722,9 @@
                         "type": "ModelRender"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -29976,7 +29862,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -30035,7 +29923,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -30094,7 +29984,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -30153,7 +30045,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -30242,7 +30136,9 @@
                         "type": "Move"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -30330,7 +30226,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -30391,7 +30289,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -30452,7 +30352,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -30513,7 +30415,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -30575,7 +30479,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -30637,7 +30543,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -30699,7 +30607,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -30761,7 +30671,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     }
                 ],
@@ -30816,7 +30728,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     }
                 ],
@@ -30871,7 +30785,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     }
                 ],
@@ -30926,7 +30842,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     }
                 ],
@@ -30981,7 +30899,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     }
                 ],
@@ -31036,7 +30956,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     }
                 ],
@@ -31535,7 +31457,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -31596,7 +31520,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -31657,7 +31583,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -31718,7 +31646,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -31779,7 +31709,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -31840,7 +31772,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -31901,7 +31835,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -31962,7 +31898,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -32023,7 +31961,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -32084,7 +32024,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -32145,7 +32087,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -32206,7 +32150,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -32267,7 +32213,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -32328,7 +32276,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -32389,7 +32339,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -32450,7 +32402,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -32511,7 +32465,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -32572,7 +32528,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -32633,7 +32591,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -32694,7 +32654,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -32755,7 +32717,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -32816,7 +32780,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -32877,7 +32843,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -32938,7 +32906,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -32999,7 +32969,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -33060,7 +33032,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -33121,7 +33095,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -33182,7 +33158,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -33243,7 +33221,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -33304,7 +33284,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -33365,7 +33347,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -33426,7 +33410,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -33487,7 +33473,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -33548,7 +33536,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -33609,7 +33599,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -33670,7 +33662,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -33731,7 +33725,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -33792,7 +33788,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -33853,7 +33851,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -33914,7 +33914,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -33975,7 +33977,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -34036,7 +34040,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -34097,7 +34103,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -34158,7 +34166,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -34219,7 +34229,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -34274,7 +34286,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -34621,7 +34635,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -34680,7 +34696,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -34739,7 +34757,9 @@
                         "type": "BoxCollider"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -34783,7 +34803,9 @@
                         "type": "ModelRender"
                     },
                     {
-                        "data": null,
+                        "data": {
+                            "radius": 10.0
+                        },
                         "type": "ThermalBody"
                     },
                     {
@@ -34817,20 +34839,20 @@
                     {
                         "data": {
                             "position": [
-                                -29.999996185302734,
-                                96.99988555908203,
-                                1.0
+                                -29.999929428100586,
+                                94.99986267089844,
+                                0.9999988675117493
                             ],
                             "rotation": [
                                 0.0,
                                 1.0,
                                 0.0,
-                                -0.00017251209646929055
+                                -0.00017250618839170784
                             ],
                             "scale": [
-                                1.7000118494033813,
-                                1.6999942064285278,
-                                1.7000118494033813
+                                1.5300112962722778,
+                                1.529994010925293,
+                                1.5300112962722778
                             ]
                         },
                         "type": "Transform"
@@ -35186,6 +35208,618 @@
                 "id": 2744,
                 "name": "coin(2)",
                 "parent": -1,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                -60.0,
+                                40.0,
+                                -10.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    },
+                    {
+                        "data": {
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                10.0,
+                                10.0,
+                                10.0
+                            ]
+                        },
+                        "type": "BoxCollider"
+                    }
+                ],
+                "id": 8547,
+                "name": "grass(131)",
+                "parent": 8546,
+                "tag": 2,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                -50.0,
+                                40.0,
+                                -10.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    },
+                    {
+                        "data": {
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                10.0,
+                                10.0,
+                                10.0
+                            ]
+                        },
+                        "type": "BoxCollider"
+                    }
+                ],
+                "id": 8547,
+                "name": "grass(132)",
+                "parent": 8546,
+                "tag": 2,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                -60.00000762939453,
+                                50.0000114440918,
+                                -19.99999237060547
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                0.9999998807907104,
+                                1.0,
+                                0.9999998807907104
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    },
+                    {
+                        "data": {
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                10.0,
+                                10.0,
+                                10.0
+                            ]
+                        },
+                        "type": "BoxCollider"
+                    }
+                ],
+                "id": 8110,
+                "name": "NewActor(410)",
+                "parent": 8138,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                -50.00000762939453,
+                                50.0000114440918,
+                                -19.99999237060547
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                0.9999998807907104,
+                                1.0,
+                                0.9999998807907104
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    },
+                    {
+                        "data": {
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                10.0,
+                                10.0,
+                                10.0
+                            ]
+                        },
+                        "type": "BoxCollider"
+                    }
+                ],
+                "id": 8110,
+                "name": "NewActor(411)",
+                "parent": 8138,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                -70.00000762939453,
+                                60.00001525878906,
+                                -29.99999237060547
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                0.9999998807907104,
+                                1.0,
+                                0.9999998807907104
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    },
+                    {
+                        "data": {
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                10.0,
+                                10.0,
+                                10.0
+                            ]
+                        },
+                        "type": "BoxCollider"
+                    }
+                ],
+                "id": 8110,
+                "name": "NewActor(409)",
+                "parent": 8138,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                -60.00000762939453,
+                                60.00001525878906,
+                                -29.99999237060547
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                0.9999998807907104,
+                                1.0,
+                                0.9999998807907104
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    },
+                    {
+                        "data": {
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                10.0,
+                                10.0,
+                                10.0
+                            ]
+                        },
+                        "type": "BoxCollider"
+                    }
+                ],
+                "id": 8110,
+                "name": "NewActor(410)",
+                "parent": 8138,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                -50.00000762939453,
+                                60.00001525878906,
+                                -29.99999237060547
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                0.9999998807907104,
+                                1.0,
+                                0.9999998807907104
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    },
+                    {
+                        "data": {
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                10.0,
+                                10.0,
+                                10.0
+                            ]
+                        },
+                        "type": "BoxCollider"
+                    }
+                ],
+                "id": 8110,
+                "name": "NewActor(411)",
+                "parent": 8138,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                -70.00000762939453,
+                                70.00001525878906,
+                                -39.99999237060547
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                0.9999998807907104,
+                                1.0,
+                                0.9999998807907104
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    },
+                    {
+                        "data": {
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                10.0,
+                                10.0,
+                                10.0
+                            ]
+                        },
+                        "type": "BoxCollider"
+                    }
+                ],
+                "id": 8110,
+                "name": "NewActor(411)",
+                "parent": 8138,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                -60.00000762939453,
+                                70.00001525878906,
+                                -39.99999237060547
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                0.9999998807907104,
+                                1.0,
+                                0.9999998807907104
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    },
+                    {
+                        "data": {
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                10.0,
+                                10.0,
+                                10.0
+                            ]
+                        },
+                        "type": "BoxCollider"
+                    }
+                ],
+                "id": 8110,
+                "name": "NewActor(410)",
+                "parent": 8138,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                -50.00000762939453,
+                                70.00001525878906,
+                                -39.99999237060547
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                0.9999998807907104,
+                                1.0,
+                                0.9999998807907104
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    },
+                    {
+                        "data": {
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                10.0,
+                                10.0,
+                                10.0
+                            ]
+                        },
+                        "type": "BoxCollider"
+                    }
+                ],
+                "id": 8110,
+                "name": "NewActor(411)",
+                "parent": 8138,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                -60.0,
+                                80.0,
+                                -50.00001907348633
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                0.9999998807907104,
+                                1.0,
+                                0.9999998807907104
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    },
+                    {
+                        "data": {
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                10.0,
+                                10.0,
+                                10.0
+                            ]
+                        },
+                        "type": "BoxCollider"
+                    }
+                ],
+                "id": 8110,
+                "name": "NewActor(410)",
+                "parent": 8138,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                -50.0,
+                                80.0,
+                                -50.00001907348633
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                0.9999998807907104,
+                                1.0,
+                                0.9999998807907104
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    },
+                    {
+                        "data": {
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                10.0,
+                                10.0,
+                                10.0
+                            ]
+                        },
+                        "type": "BoxCollider"
+                    }
+                ],
+                "id": 8110,
+                "name": "NewActor(411)",
+                "parent": 8138,
                 "tag": 0,
                 "type": "Actor"
             }
