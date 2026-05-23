@@ -52631,7 +52631,7 @@
                     },
                     {
                         "data": {
-                            "heat": 0,
+                            "heat": 1,
                             "linkedLightIndex": 2
                         },
                         "type": "HeatReceiver"
@@ -52698,7 +52698,7 @@
                     },
                     {
                         "data": {
-                            "heat": 0,
+                            "heat": 1,
                             "linkedLightIndex": 0
                         },
                         "type": "HeatReceiver"
@@ -52769,6 +52769,10 @@
                             "linkedLightIndex": -1
                         },
                         "type": "HeatReceiver"
+                    },
+                    {
+                        "data": null,
+                        "type": "snowman"
                     }
                 ],
                 "id": 12,
@@ -52815,7 +52819,7 @@
                     },
                     {
                         "data": {
-                            "heat": 0,
+                            "heat": 1,
                             "linkedLightIndex": 1
                         },
                         "type": "HeatReceiver"
@@ -56495,6 +56499,10 @@
                             ]
                         },
                         "type": "BoxCollider"
+                    },
+                    {
+                        "data": null,
+                        "type": "needles"
                     }
                 ],
                 "id": 13619,
