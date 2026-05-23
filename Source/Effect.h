@@ -17,6 +17,8 @@ public:
 
 	void SetScale(Effekseer::Handle handle, const DirectX::XMFLOAT3& scale);
 
+	void SetRotation(Effekseer::Handle handle, const DirectX::XMFLOAT3 rotation);
+
 	bool Exists(int handle);
 
 	bool Load(const char* filename);

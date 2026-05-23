@@ -47,4 +47,6 @@ private:
 
     std::string currentState;
     Effekseer::Handle handle = -1;
+
+    bool loop = false;
 };

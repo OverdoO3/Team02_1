@@ -21,6 +21,25 @@ void EffectRender::Update(float elapsedTime)
 
 	position = transform->GetWorldPosition();
 
+	DirectX::XMFLOAT4 q = transform->GetWorldRotation();
+	DirectX::XMVECTOR quat = DirectX::XMLoadFloat4(&q);
+
+	// クォータニオンから回転行列
+	DirectX::XMMATRIX rotMat = DirectX::XMMatrixRotationQuaternion(quat);
+
+	// DirectXの関数でオイラー角を取り出す（ジンバルロック回避）
+	DirectX::XMVECTOR scale, rotQuat, trans;
+	DirectX::XMMatrixDecompose(&scale, &rotQuat, &trans, rotMat);
+
+	float rotY;
+	// Y軸回転だけ取り出す
+	DirectX::XMFLOAT4 rq;
+	DirectX::XMStoreFloat4(&rq, rotQuat);
+	rotY = atan2f(2.0f * (rq.w * rq.y + rq.x * rq.z),
+		1.0f - 2.0f * (rq.y * rq.y + rq.z * rq.z));
+
+	effect->SetRotation(handle, { 0, rotY - DirectX::XM_PIDIV2, 0 });
+
 	DirectX::XMFLOAT3 pos = position + offset;
 	// 再生終了チェック
 	if (handle != -1)
@@ -110,11 +129,13 @@ void EffectRender::Play()
 	{
 		effect->Play(position, scale);
 		effect->SetPosition(handle, position);
+		effect->SetRotation(handle, rotation);
 	}
 	else
 	{
 		handle = effect->Play(position,scale);
 		effect->SetPosition(handle, position);
+		effect->SetRotation(handle, rotation);
 	}
 
 }

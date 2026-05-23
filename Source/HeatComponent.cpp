@@ -89,10 +89,29 @@ void HeatTransfer::Update(float elapsedTime)
 				success = true;
 			}
 		}
-		if (!success)
+		if (!success&&thermal->GetHeat() != 0)
 		{
+			owner->GetComponent<ModelRender>()->PlayAnimation("in_out", false);
+
+			switch (thermal->GetHeat())
+			{
+			case -2:
+				owner->GetChildren().front()->GetComponent<StateEffect>()->SetState("icebreath");
+				break;
+			case -1:
+				owner->GetChildren().front()->GetComponent<StateEffect>()->SetState("waterbreath");
+				break;
+			case 1:
+				owner->GetChildren().front()->GetComponent<StateEffect>()->SetState("hotbreath");
+				break;
+			default:
+				break;
+			}
+			
 			thermal->SetHeat(0);
 		}
+
+		
 	}
 
 

@@ -20,22 +20,13 @@ void StateEffect::OnAwake(float elapsedTime)
 
 void StateEffect::Update(float elapsedTime)
 {
-    /*{
-        auto er = owner->GetComponent<EffectRender>();
-        if (er)
-        {
-            auto it = states.find(currentState);
-            if (it != states.end())
-            {
-                std::shared_ptr<Effect> eff = it->second.effect;
-                SetState(it->first);
-            }
-        }
-    }*/
+    
 }
 
 void StateEffect::DrawInspector()
 {
+    ImGui::Checkbox("effectloop", &loop);
+
     ImGui::Text("currentState :", currentState.c_str());
 
     if (ImGui::Button("Add State"))
@@ -143,8 +134,9 @@ void StateEffect::Serialize(nlohmann::json& j) const
     {
         j["States"][name] = data.effectPath;
     }
-
+    
     j["CurrentState"] = currentState;
+    j["loop"] = loop;
 }
 
 void StateEffect::Deserialize(nlohmann::json& j)
@@ -166,11 +158,12 @@ void StateEffect::Deserialize(nlohmann::json& j)
     }
 
     currentState = j.value("CurrentState", "");
+    loop = j.value("loop",false);
 }
 
 void StateEffect::SetState(const std::string& state)
 {
-    if (currentState == state) return;
+    if (currentState == state && loop) return;
 
     // 今のエフェクト停止
     if (handle != -1)
@@ -187,7 +180,6 @@ void StateEffect::SetState(const std::string& state)
     auto it = states.find(currentState);
     if (it == states.end()) return;
 
-    auto transform = owner->GetComponent<Transform>();
     auto eff = owner->GetComponent<EffectRender>();
 
     eff->SetEffect(it->second.effect);
@@ -199,5 +191,6 @@ std::unique_ptr<Component> StateEffect::Clone() const
 {
     auto s = std::make_unique<StateEffect>();
     s->states = states;
+    s->loop = loop;
     return s;
 }
