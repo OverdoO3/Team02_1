@@ -9,10 +9,14 @@ class AudioComponent : public Component
 {
 public:
     AudioComponent() = default;
-    ~AudioComponent() override { if (source) delete source; }
+    ~AudioComponent() override {
+        if (!Audio::IsSystemAlive()) return;
+        Stop();
+        
+    }
 
     void OnAwake(float elapsedTime) override;
-    void Update(float elapsedTime) override {}
+    void Update(float elapsedTime) override;
 
     void DrawInspector() override;
 
@@ -31,10 +35,23 @@ public:
 private:
     void Load(const char* filename);
 
-    AudioSource* source = nullptr;
+    std::unique_ptr<AudioSource>source;
+
+    // 複数のファイルを保持できるリスト
+    std::vector<std::string> m_filenames;
+    // 複数のソースを保持できるリスト
+    std::vector<std::unique_ptr<AudioSource>> m_sources;
+    // AudioSource* source = nullptr;
     std::string m_filename = "";
 
     bool m_playOnAwake = false;
     bool m_loop = false;
     float m_volume = 1.0f;
-};
+
+    bool m_isLoop = false;        
+    bool m_playOnClick = false;   
+    bool m_playOnHover = false;   
+    bool m_isBGM = false;
+    bool m_bgmPlayOnAwake = true;
+    bool m_isPlaying = false;
+};    

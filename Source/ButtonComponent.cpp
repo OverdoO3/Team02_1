@@ -2,6 +2,7 @@
 #include "Factory.h"
 #include "Scene.h"
 #include "SceneManager.h"
+#include "System/Audio.h"
 
 REGISTER_COMPONENT(ComponentID::ButtonComponent, ButtonComponent)
 
@@ -139,6 +140,8 @@ void ButtonComponent::OnClick()
     {
         // „Ÿ„Ÿ ƒQ[ƒ€I—¹ „Ÿ„Ÿ„Ÿ„Ÿ„Ÿ„Ÿ„Ÿ„Ÿ„Ÿ„Ÿ„Ÿ„Ÿ„Ÿ„Ÿ„Ÿ„Ÿ„Ÿ„Ÿ„Ÿ„Ÿ„Ÿ„Ÿ„Ÿ„Ÿ„Ÿ„Ÿ„Ÿ„Ÿ„Ÿ„Ÿ„Ÿ„Ÿ„Ÿ„Ÿ„Ÿ„Ÿ„Ÿ„Ÿ„Ÿ„Ÿ„Ÿ„Ÿ„Ÿ„Ÿ
     case ButtonMode::QuitGame:
+
+        Audio::Instance().StopBGM();
         PostQuitMessage(0);
         return;
 
