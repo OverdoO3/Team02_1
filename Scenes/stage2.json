@@ -33109,7 +33109,7 @@
                     {
                         "data": {
                             "CoinIndex": 0,
-                            "StageIndex": 0
+                            "StageIndex": 1
                         },
                         "type": "Coin"
                     }
@@ -33151,8 +33151,8 @@
                     },
                     {
                         "data": {
-                            "CoinIndex": 0,
-                            "StageIndex": 0
+                            "CoinIndex": 1,
+                            "StageIndex": 1
                         },
                         "type": "Coin"
                     }
@@ -33194,8 +33194,8 @@
                     },
                     {
                         "data": {
-                            "CoinIndex": 0,
-                            "StageIndex": 0
+                            "CoinIndex": 2,
+                            "StageIndex": 1
                         },
                         "type": "Coin"
                     }
@@ -33365,7 +33365,7 @@
                     {
                         "data": {
                             "CoinIndex": 0,
-                            "StageIndex": 0,
+                            "StageIndex": 1,
                             "StageSelectMode": false
                         },
                         "type": "CoinUIComponent"
@@ -33475,7 +33475,7 @@
                     {
                         "data": {
                             "CoinIndex": 1,
-                            "StageIndex": 0,
+                            "StageIndex": 1,
                             "StageSelectMode": false
                         },
                         "type": "CoinUIComponent"
@@ -33585,7 +33585,7 @@
                     {
                         "data": {
                             "CoinIndex": 2,
-                            "StageIndex": 0,
+                            "StageIndex": 1,
                             "StageSelectMode": false
                         },
                         "type": "CoinUIComponent"
