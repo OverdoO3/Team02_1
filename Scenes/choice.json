@@ -128,7 +128,13 @@
                             "UseClickShift": false,
                             "UsePopUpClear": false,
                             "isFadeEnabled": false,
-                            "sprFadeSpeed": 5.0
+                            "rotSwingAmplitude": 0.0,
+                            "rotSwingEnabled": false,
+                            "rotSwingSpeed": 0.0,
+                            "sprFadeSpeed": 5.0,
+                            "swingAmplitude": 0.0,
+                            "swingLoop": false,
+                            "swingSpeed": 0.0
                         },
                         "type": "SpriteRender"
                     }
@@ -230,7 +236,13 @@
                             "UseClickShift": false,
                             "UsePopUpClear": false,
                             "isFadeEnabled": false,
-                            "sprFadeSpeed": 5.0
+                            "rotSwingAmplitude": 0.0,
+                            "rotSwingEnabled": false,
+                            "rotSwingSpeed": 0.0,
+                            "sprFadeSpeed": 5.0,
+                            "swingAmplitude": 0.0,
+                            "swingLoop": false,
+                            "swingSpeed": 0.0
                         },
                         "type": "SpriteRender"
                     },
@@ -258,10 +270,7 @@
                             "PlayOnClick": true,
                             "PlayOnHover": false,
                             "Volume": 1.0,
-                            "filename": "C:\\Users\\2250282\\Documents\\Team02_1\\Data\\Sound\\SE_button.wav",
-                            "filenames": [
-                                "C:\\Users\\2250282\\Documents\\Team02_1\\Data\\Sound\\SE_button.wav"
-                            ]
+                            "filename": "C:\\Users\\2250282\\Documents\\Team02_1\\Data\\Sound\\SE_button.wav"
                         },
                         "type": "AudioComponent"
                     }
@@ -363,7 +372,13 @@
                             "UseClickShift": false,
                             "UsePopUpClear": false,
                             "isFadeEnabled": false,
-                            "sprFadeSpeed": 5.0
+                            "rotSwingAmplitude": 0.0,
+                            "rotSwingEnabled": false,
+                            "rotSwingSpeed": 0.0,
+                            "sprFadeSpeed": 5.0,
+                            "swingAmplitude": 0.0,
+                            "swingLoop": false,
+                            "swingSpeed": 0.0
                         },
                         "type": "SpriteRender"
                     },
@@ -391,10 +406,7 @@
                             "PlayOnClick": true,
                             "PlayOnHover": false,
                             "Volume": 1.0,
-                            "filename": "C:\\Users\\2250282\\Documents\\Team02_1\\Data\\Sound\\SE_button.wav",
-                            "filenames": [
-                                "C:\\Users\\2250282\\Documents\\Team02_1\\Data\\Sound\\SE_button.wav"
-                            ]
+                            "filename": "C:\\Users\\2250282\\Documents\\Team02_1\\Data\\Sound\\SE_button.wav"
                         },
                         "type": "AudioComponent"
                     }
@@ -496,7 +508,13 @@
                             "UseClickShift": false,
                             "UsePopUpClear": false,
                             "isFadeEnabled": false,
-                            "sprFadeSpeed": 5.0
+                            "rotSwingAmplitude": 0.0,
+                            "rotSwingEnabled": false,
+                            "rotSwingSpeed": 0.0,
+                            "sprFadeSpeed": 5.0,
+                            "swingAmplitude": 0.0,
+                            "swingLoop": false,
+                            "swingSpeed": 0.0
                         },
                         "type": "SpriteRender"
                     },
@@ -524,10 +542,7 @@
                             "PlayOnClick": true,
                             "PlayOnHover": false,
                             "Volume": 1.0,
-                            "filename": "C:\\Users\\2250282\\Documents\\Team02_1\\Data\\Sound\\SE_button.wav",
-                            "filenames": [
-                                "C:\\Users\\2250282\\Documents\\Team02_1\\Data\\Sound\\SE_button.wav"
-                            ]
+                            "filename": "C:\\Users\\2250282\\Documents\\Team02_1\\Data\\Sound\\SE_button.wav"
                         },
                         "type": "AudioComponent"
                     }
@@ -629,7 +644,13 @@
                             "UseClickShift": false,
                             "UsePopUpClear": false,
                             "isFadeEnabled": false,
-                            "sprFadeSpeed": 5.0
+                            "rotSwingAmplitude": 0.0,
+                            "rotSwingEnabled": false,
+                            "rotSwingSpeed": 0.0,
+                            "sprFadeSpeed": 5.0,
+                            "swingAmplitude": 0.0,
+                            "swingLoop": false,
+                            "swingSpeed": 0.0
                         },
                         "type": "SpriteRender"
                     },
@@ -657,10 +678,7 @@
                             "PlayOnClick": true,
                             "PlayOnHover": false,
                             "Volume": 1.0,
-                            "filename": "C:\\Users\\2250282\\Documents\\Team02_1\\Data\\Sound\\SE_button.wav",
-                            "filenames": [
-                                "C:\\Users\\2250282\\Documents\\Team02_1\\Data\\Sound\\SE_button.wav"
-                            ]
+                            "filename": "C:\\Users\\2250282\\Documents\\Team02_1\\Data\\Sound\\SE_button.wav"
                         },
                         "type": "AudioComponent"
                     }
@@ -762,7 +780,13 @@
                             "UseClickShift": false,
                             "UsePopUpClear": false,
                             "isFadeEnabled": false,
-                            "sprFadeSpeed": 5.0
+                            "rotSwingAmplitude": 0.0,
+                            "rotSwingEnabled": false,
+                            "rotSwingSpeed": 0.0,
+                            "sprFadeSpeed": 5.0,
+                            "swingAmplitude": 0.0,
+                            "swingLoop": false,
+                            "swingSpeed": 0.0
                         },
                         "type": "SpriteRender"
                     }
@@ -864,7 +888,13 @@
                             "UseClickShift": false,
                             "UsePopUpClear": false,
                             "isFadeEnabled": false,
-                            "sprFadeSpeed": 5.0
+                            "rotSwingAmplitude": 0.0,
+                            "rotSwingEnabled": false,
+                            "rotSwingSpeed": 0.0,
+                            "sprFadeSpeed": 5.0,
+                            "swingAmplitude": 0.0,
+                            "swingLoop": false,
+                            "swingSpeed": 0.0
                         },
                         "type": "SpriteRender"
                     },
@@ -886,10 +916,7 @@
                             "PlayOnClick": true,
                             "PlayOnHover": false,
                             "Volume": 1.0,
-                            "filename": "C:\\Users\\2250282\\Documents\\Team02_1\\Data\\Sound\\SE_button_back.wav",
-                            "filenames": [
-                                "C:\\Users\\2250282\\Documents\\Team02_1\\Data\\Sound\\SE_button_back.wav"
-                            ]
+                            "filename": "C:\\Users\\2250282\\Documents\\Team02_1\\Data\\Sound\\SE_button_back.wav"
                         },
                         "type": "AudioComponent"
                     }
@@ -991,7 +1018,13 @@
                             "UseClickShift": false,
                             "UsePopUpClear": false,
                             "isFadeEnabled": false,
-                            "sprFadeSpeed": 2.0
+                            "rotSwingAmplitude": 0.0,
+                            "rotSwingEnabled": false,
+                            "rotSwingSpeed": 0.0,
+                            "sprFadeSpeed": 2.0,
+                            "swingAmplitude": 0.0,
+                            "swingLoop": false,
+                            "swingSpeed": 0.0
                         },
                         "type": "SpriteRender"
                     }
@@ -1093,7 +1126,13 @@
                             "UseClickShift": false,
                             "UsePopUpClear": false,
                             "isFadeEnabled": false,
-                            "sprFadeSpeed": 2.0
+                            "rotSwingAmplitude": 0.0,
+                            "rotSwingEnabled": false,
+                            "rotSwingSpeed": 0.0,
+                            "sprFadeSpeed": 2.0,
+                            "swingAmplitude": 0.0,
+                            "swingLoop": false,
+                            "swingSpeed": 0.0
                         },
                         "type": "SpriteRender"
                     },
@@ -1203,7 +1242,13 @@
                             "UseClickShift": false,
                             "UsePopUpClear": false,
                             "isFadeEnabled": false,
-                            "sprFadeSpeed": 2.0
+                            "rotSwingAmplitude": 0.0,
+                            "rotSwingEnabled": false,
+                            "rotSwingSpeed": 0.0,
+                            "sprFadeSpeed": 2.0,
+                            "swingAmplitude": 0.0,
+                            "swingLoop": false,
+                            "swingSpeed": 0.0
                         },
                         "type": "SpriteRender"
                     },
@@ -1313,7 +1358,13 @@
                             "UseClickShift": false,
                             "UsePopUpClear": false,
                             "isFadeEnabled": false,
-                            "sprFadeSpeed": 2.0
+                            "rotSwingAmplitude": 0.0,
+                            "rotSwingEnabled": false,
+                            "rotSwingSpeed": 0.0,
+                            "sprFadeSpeed": 2.0,
+                            "swingAmplitude": 0.0,
+                            "swingLoop": false,
+                            "swingSpeed": 0.0
                         },
                         "type": "SpriteRender"
                     },
@@ -1423,7 +1474,13 @@
                             "UseClickShift": false,
                             "UsePopUpClear": false,
                             "isFadeEnabled": false,
-                            "sprFadeSpeed": 2.0
+                            "rotSwingAmplitude": 0.0,
+                            "rotSwingEnabled": false,
+                            "rotSwingSpeed": 0.0,
+                            "sprFadeSpeed": 2.0,
+                            "swingAmplitude": 0.0,
+                            "swingLoop": false,
+                            "swingSpeed": 0.0
                         },
                         "type": "SpriteRender"
                     }
@@ -1525,7 +1582,13 @@
                             "UseClickShift": false,
                             "UsePopUpClear": false,
                             "isFadeEnabled": false,
-                            "sprFadeSpeed": 2.0
+                            "rotSwingAmplitude": 0.0,
+                            "rotSwingEnabled": false,
+                            "rotSwingSpeed": 0.0,
+                            "sprFadeSpeed": 2.0,
+                            "swingAmplitude": 0.0,
+                            "swingLoop": false,
+                            "swingSpeed": 0.0
                         },
                         "type": "SpriteRender"
                     },
@@ -1635,7 +1698,13 @@
                             "UseClickShift": false,
                             "UsePopUpClear": false,
                             "isFadeEnabled": false,
-                            "sprFadeSpeed": 2.0
+                            "rotSwingAmplitude": 0.0,
+                            "rotSwingEnabled": false,
+                            "rotSwingSpeed": 0.0,
+                            "sprFadeSpeed": 2.0,
+                            "swingAmplitude": 0.0,
+                            "swingLoop": false,
+                            "swingSpeed": 0.0
                         },
                         "type": "SpriteRender"
                     },
@@ -1745,7 +1814,13 @@
                             "UseClickShift": false,
                             "UsePopUpClear": false,
                             "isFadeEnabled": false,
-                            "sprFadeSpeed": 2.0
+                            "rotSwingAmplitude": 0.0,
+                            "rotSwingEnabled": false,
+                            "rotSwingSpeed": 0.0,
+                            "sprFadeSpeed": 2.0,
+                            "swingAmplitude": 0.0,
+                            "swingLoop": false,
+                            "swingSpeed": 0.0
                         },
                         "type": "SpriteRender"
                     },
@@ -1855,7 +1930,13 @@
                             "UseClickShift": false,
                             "UsePopUpClear": false,
                             "isFadeEnabled": false,
-                            "sprFadeSpeed": 2.0
+                            "rotSwingAmplitude": 0.0,
+                            "rotSwingEnabled": false,
+                            "rotSwingSpeed": 0.0,
+                            "sprFadeSpeed": 2.0,
+                            "swingAmplitude": 0.0,
+                            "swingLoop": false,
+                            "swingSpeed": 0.0
                         },
                         "type": "SpriteRender"
                     },
@@ -1868,10 +1949,7 @@
                             "PlayOnClick": true,
                             "PlayOnHover": false,
                             "Volume": 0.42100000381469727,
-                            "filename": "C:\\Users\\2250282\\Documents\\Team02_1\\Data\\Sound\\SE_scene_change.wav",
-                            "filenames": [
-                                "C:\\Users\\2250282\\Documents\\Team02_1\\Data\\Sound\\SE_scene_change.wav"
-                            ]
+                            "filename": "C:\\Users\\2250282\\Documents\\Team02_1\\Data\\Sound\\SE_scene_change.wav"
                         },
                         "type": "AudioComponent"
                     }
@@ -1973,7 +2051,13 @@
                             "UseClickShift": false,
                             "UsePopUpClear": false,
                             "isFadeEnabled": false,
-                            "sprFadeSpeed": 2.0
+                            "rotSwingAmplitude": 0.0,
+                            "rotSwingEnabled": false,
+                            "rotSwingSpeed": 0.0,
+                            "sprFadeSpeed": 2.0,
+                            "swingAmplitude": 0.0,
+                            "swingLoop": false,
+                            "swingSpeed": 0.0
                         },
                         "type": "SpriteRender"
                     },
@@ -2083,7 +2167,13 @@
                             "UseClickShift": false,
                             "UsePopUpClear": false,
                             "isFadeEnabled": false,
-                            "sprFadeSpeed": 2.0
+                            "rotSwingAmplitude": 0.0,
+                            "rotSwingEnabled": false,
+                            "rotSwingSpeed": 0.0,
+                            "sprFadeSpeed": 2.0,
+                            "swingAmplitude": 0.0,
+                            "swingLoop": false,
+                            "swingSpeed": 0.0
                         },
                         "type": "SpriteRender"
                     },
@@ -2193,7 +2283,13 @@
                             "UseClickShift": false,
                             "UsePopUpClear": false,
                             "isFadeEnabled": false,
-                            "sprFadeSpeed": 2.0
+                            "rotSwingAmplitude": 0.0,
+                            "rotSwingEnabled": false,
+                            "rotSwingSpeed": 0.0,
+                            "sprFadeSpeed": 2.0,
+                            "swingAmplitude": 0.0,
+                            "swingLoop": false,
+                            "swingSpeed": 0.0
                         },
                         "type": "SpriteRender"
                     },
@@ -2303,7 +2399,13 @@
                             "UseClickShift": false,
                             "UsePopUpClear": false,
                             "isFadeEnabled": false,
-                            "sprFadeSpeed": 2.0
+                            "rotSwingAmplitude": 0.0,
+                            "rotSwingEnabled": false,
+                            "rotSwingSpeed": 0.0,
+                            "sprFadeSpeed": 2.0,
+                            "swingAmplitude": 0.0,
+                            "swingLoop": false,
+                            "swingSpeed": 0.0
                         },
                         "type": "SpriteRender"
                     }
@@ -2405,7 +2507,13 @@
                             "UseClickShift": false,
                             "UsePopUpClear": false,
                             "isFadeEnabled": false,
-                            "sprFadeSpeed": 2.0
+                            "rotSwingAmplitude": 0.0,
+                            "rotSwingEnabled": false,
+                            "rotSwingSpeed": 0.0,
+                            "sprFadeSpeed": 2.0,
+                            "swingAmplitude": 0.0,
+                            "swingLoop": false,
+                            "swingSpeed": 0.0
                         },
                         "type": "SpriteRender"
                     },
@@ -2515,7 +2623,13 @@
                             "UseClickShift": false,
                             "UsePopUpClear": false,
                             "isFadeEnabled": false,
-                            "sprFadeSpeed": 2.0
+                            "rotSwingAmplitude": 0.0,
+                            "rotSwingEnabled": false,
+                            "rotSwingSpeed": 0.0,
+                            "sprFadeSpeed": 2.0,
+                            "swingAmplitude": 0.0,
+                            "swingLoop": false,
+                            "swingSpeed": 0.0
                         },
                         "type": "SpriteRender"
                     },
@@ -2625,7 +2739,13 @@
                             "UseClickShift": false,
                             "UsePopUpClear": false,
                             "isFadeEnabled": false,
-                            "sprFadeSpeed": 2.0
+                            "rotSwingAmplitude": 0.0,
+                            "rotSwingEnabled": false,
+                            "rotSwingSpeed": 0.0,
+                            "sprFadeSpeed": 2.0,
+                            "swingAmplitude": 0.0,
+                            "swingLoop": false,
+                            "swingSpeed": 0.0
                         },
                         "type": "SpriteRender"
                     },
@@ -2641,6 +2761,114 @@
                 "id": 96,
                 "name": "Coin(8)",
                 "parent": 95,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                899.8989868164063,
+                                -25.024999618530273,
+                                0.0
+                            ],
+                            "rotation": [
+                                0.0,
+                                0.0,
+                                0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "AnimFrameCount": 1,
+                            "ClickLimit": 1,
+                            "ClickShiftCol": 1,
+                            "ClickShiftRow": 0,
+                            "ColHeight": 100.0,
+                            "ColOffsetX": 0.0,
+                            "ColOffsetY": 0.0,
+                            "ColWidth": 100.0,
+                            "ColorA": 1.0,
+                            "ColorB": 1.0,
+                            "ColorG": 1.0,
+                            "ColorR": 1.0,
+                            "EditorScale": 1.0,
+                            "FadeSpeed": 5.0,
+                            "FrameDuration": 0.10000000149011612,
+                            "HeatUI": false,
+                            "HoverColOffset": 1,
+                            "HoverFade": false,
+                            "HoverRowOffset": 0,
+                            "HoverShift": false,
+                            "IrisDuration": 1.0,
+                            "IrisTargetScale": 0.0,
+                            "IsGameLoading": false,
+                            "IsLoop": false,
+                            "IsOnlyWhileLoading": false,
+                            "IsPauseUI": false,
+                            "IsTitleLoading": false,
+                            "MaxPopScale": 1.5,
+                            "OnlyWhileGoal": false,
+                            "Pivot": 1,
+                            "PopUpDuration": 0.4000000059604645,
+                            "ScaleLoopAmp": 0.5,
+                            "ScaleLoopEnabled": false,
+                            "ScaleLoopSpeed": 2.0,
+                            "ShowAbnormal": false,
+                            "ShowCollider": true,
+                            "SortOrder": 0,
+                            "SplitX": 1,
+                            "SplitY": 1,
+                            "SpriteIndex": 0,
+                            "SrcH": 79.0,
+                            "SrcW": 436.0,
+                            "SrcX": 0.0,
+                            "SrcY": 0.0,
+                            "SwingAmpX": 10.0,
+                            "SwingAmpY": 10.0,
+                            "SwingEnabled": false,
+                            "SwingOffsetX": 0.0,
+                            "SwingOffsetY": 0.0,
+                            "SwingRotAmp": 5.0,
+                            "SwingRotSpeed": 1.0,
+                            "SwingRotUseCos": false,
+                            "SwingSpeedX": 1.0,
+                            "SwingSpeedY": 1.0,
+                            "SwingUseRot": false,
+                            "SwingUseX": false,
+                            "SwingUseY": false,
+                            "SwingXUseCos": false,
+                            "SwingYUseCos": true,
+                            "TargetCol": 0,
+                            "TargetRow": 0,
+                            "TexturePath": "Data/Sprite/Select_text.png",
+                            "UseClickHide": false,
+                            "UseClickShift": false,
+                            "UsePopUpClear": false,
+                            "isFadeEnabled": false,
+                            "rotSwingAmplitude": 0.10000000149011612,
+                            "rotSwingEnabled": false,
+                            "rotSwingSpeed": 2.0,
+                            "sprFadeSpeed": 2.0,
+                            "swingAmplitude": 20.0,
+                            "swingLoop": false,
+                            "swingSpeed": 2.0
+                        },
+                        "type": "SpriteRender"
+                    }
+                ],
+                "id": 97,
+                "name": "NewActor",
+                "parent": -1,
                 "tag": 0,
                 "type": "Actor"
             }
