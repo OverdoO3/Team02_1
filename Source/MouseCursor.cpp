@@ -6,6 +6,8 @@ void MouseCursor::Initialize(const char* filepath)
 {
 	spr = std::make_unique<Sprite>(filepath);
 	
+    while (ShowCursor(FALSE) >= 0);
+
 	//画像をロード
 	//OSのカーソルを非表示
     CURSORINFO ci = { sizeof(CURSORINFO) };
@@ -18,24 +20,20 @@ void MouseCursor::Initialize(const char* filepath)
 
 void MouseCursor::Update(HWND hWnd, bool isPaused, bool isLoading)
 {
-    // SceneManagerが正しく設定されているか確認
     if (!m_sceneManager) return;
 
+    // 1. OSカーソルを常に強制非表示
     while (ShowCursor(FALSE) >= 0);
 
-    // 現在のシーンパスを取得して "stage" が含まれるか判定
+    // 2. 現在の状況を取得
     std::string path = m_sceneManager->GetCurrentScenePath();
     bool isStageScene = (path.find("stage") != std::string::npos);
-
-    // ゲームがアクティブか（ポーズ中・ロード中でない）判定
     bool isGameActive = !isPaused && !isLoading;
 
-    bool isCursorHidden = isStageScene && isGameActive;
+    // 3. 以下の条件で「カーソルを隠すべき（＝ゲームプレイ中）」と判定
+    bool isGameRunning = (isStageScene && isGameActive);
 
-    // カスタムカーソルを表示する条件
-    bool shouldShowCursor = isStageScene && isGameActive;
-
-    // 画面外判定
+    // 4. 画面外判定
     POINT globalPos;
     GetCursorPos(&globalPos);
     POINT clientPos = globalPos;
@@ -46,21 +44,19 @@ void MouseCursor::Update(HWND hWnd, bool isPaused, bool isLoading)
     bool isOutside = (clientPos.x < 0 || clientPos.x > rect.right ||
         clientPos.y < 0 || clientPos.y > rect.bottom);
 
-    // カーソルの表示制御
-    // 画面外、またはゲームがアクティブでない（ポーズ・ロード中等）場合はOSカーソルを出す
-    if (isOutside || !shouldShowCursor) {
-        while (ShowCursor(TRUE) < 0); // OSカーソルを表示
-        m_showCustomCursor = false;    // カスタムカーソルを非表示
+    // 5. 自作カーソルの描画フラグ制御
+    // 「ゲームプレイ中」または「画面外」なら自作カーソルも消す
+    if (isGameRunning || isOutside) {
+        m_showCustomCursor = false;
     }
     else {
-        // ゲーム中かつ画面内ならカスタムカーソルを表示
-        while (ShowCursor(FALSE) >= 0); // OSカーソルを非表示
-        m_showCustomCursor = true;     // カスタムカーソルを表示
+        m_showCustomCursor = true;
     }
 
     m_pos = clientPos;
     m_isPressed = ImGui::IsMouseDown(0);
 }
+
 
 void MouseCursor::Draw(RenderContext& rc)
 {
