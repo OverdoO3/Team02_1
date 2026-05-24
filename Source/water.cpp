@@ -34,8 +34,9 @@ void water::Update(float elapsedTime)
     auto modelrender = owner->GetComponent<ModelRender>();
     auto eff = owner->GetComponent<EffectRender>();
     auto col = owner->GetComponent<BoxCollider>();
+    auto rec = owner->GetComponent<HeatReceiver>();
 
-    if (modelrender && eff && col)
+    if (modelrender && eff && col && rec)
     {
         switch (heat)
         {
@@ -45,6 +46,7 @@ void water::Update(float elapsedTime)
             col->size.y = 10;
             modelrender->SetModel(std::move(model));
             eff->Play();
+            rec->SetHeatNum(-2);
             // ämé¿Ç…1âÒÇæÇØçƒê∂Ç≥ÇÍÇÈ
             Audio::Instance().PlaySE(ToDataPath("Data/Sound/SE_game_reaction_ice.wav").c_str());
         }
@@ -54,6 +56,7 @@ void water::Update(float elapsedTime)
             auto model = std::make_unique<Model>(waterpath.c_str());
             col->size.y = 50;
             modelrender->SetModel(std::move(model));
+            rec->SetHeatNum(-1);
             eff->Stop();
             Audio::Instance().PlaySE(ToDataPath("Data/Sound/SE_game_reaction_water.wav").c_str());
         }

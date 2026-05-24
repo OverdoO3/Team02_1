@@ -26753,7 +26753,7 @@
                         "data": {
                             "position": [
                                 -40.0,
-                                125.00001525878906,
+                                125.5,
                                 20.000001907348633
                             ],
                             "rotation": [
@@ -26793,7 +26793,7 @@
                     },
                     {
                         "data": {
-                            "StartPlay": false,
+                            "StartPlay": true,
                             "loop": true,
                             "offset": [
                                 0.0,

@@ -21933,6 +21933,21 @@
                             "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
                         },
                         "type": "ModelRender"
+                    },
+                    {
+                        "data": {
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                10.0,
+                                10.0,
+                                10.0
+                            ]
+                        },
+                        "type": "BoxCollider"
                     }
                 ],
                 "id": 8110,
@@ -22041,6 +22056,21 @@
                             "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
                         },
                         "type": "ModelRender"
+                    },
+                    {
+                        "data": {
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                10.0,
+                                10.0,
+                                10.0
+                            ]
+                        },
+                        "type": "BoxCollider"
                     }
                 ],
                 "id": 8110,
@@ -22236,6 +22266,21 @@
                             "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
                         },
                         "type": "ModelRender"
+                    },
+                    {
+                        "data": {
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                10.0,
+                                10.0,
+                                10.0
+                            ]
+                        },
+                        "type": "BoxCollider"
                     }
                 ],
                 "id": 8110,
@@ -22374,6 +22419,21 @@
                             "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
                         },
                         "type": "ModelRender"
+                    },
+                    {
+                        "data": {
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                10.0,
+                                10.0,
+                                10.0
+                            ]
+                        },
+                        "type": "BoxCollider"
                     }
                 ],
                 "id": 8110,
@@ -22482,6 +22542,21 @@
                             "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
                         },
                         "type": "ModelRender"
+                    },
+                    {
+                        "data": {
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                10.0,
+                                10.0,
+                                10.0
+                            ]
+                        },
+                        "type": "BoxCollider"
                     }
                 ],
                 "id": 8110,
@@ -31799,7 +31874,7 @@
                         "data": {
                             "position": [
                                 -29.999929428100586,
-                                94.99986267089844,
+                                95.5,
                                 0.9999988675117493
                             ],
                             "rotation": [
@@ -31839,7 +31914,7 @@
                     },
                     {
                         "data": {
-                            "StartPlay": false,
+                            "StartPlay": true,
                             "loop": true,
                             "offset": [
                                 0.0,
