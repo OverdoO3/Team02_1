@@ -16154,7 +16154,7 @@
                         "data": {
                             "position": [
                                 60.0,
-                                40.0,
+                                39.717552185058594,
                                 0.0
                             ],
                             "rotation": [
@@ -30070,9 +30070,9 @@
                                 0.0
                             ],
                             "size": [
-                                15.0,
+                                20.0,
                                 30.0,
-                                15.0
+                                20.0
                             ]
                         },
                         "type": "BoxCollider"
@@ -37504,7 +37504,7 @@
                     {
                         "data": {
                             "position": [
-                                29.999958038330078,
+                                29.99995994567871,
                                 40.0000114440918,
                                 -69.9998779296875
                             ],
@@ -38394,6 +38394,20 @@
                                 1.0,
                                 1.0,
                                 1.0
+                                39.999961853027344,
+                                40.0000114440918,
+                                -69.9998779296875
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                0.9999997615814209,
+                                1.0,
+                                0.9999997615814209
                             ]
                         },
                         "type": "Transform"
@@ -38481,6 +38495,58 @@
                 "name": "SOUSA",
                 "parent": -1,
                 "tag": 0,
+                            "ModelPath": "Data/Model/Stage/Demos/water_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    },
+                    {
+                        "data": {
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                10.0,
+                                30.0,
+                                10.0
+                            ]
+                        },
+                        "type": "BoxCollider"
+                    },
+                    {
+                        "data": {
+                            "radius": 10.0,
+                            "thermal": 0
+                        },
+                        "type": "ThermalBody"
+                    },
+                    {
+                        "data": {
+                            "heat": -1,
+                            "linkedLightIndex": -1
+                        },
+                        "type": "HeatReceiver"
+                    },
+                    {
+                        "data": {
+                            "StartPlay": false,
+                            "loop": false,
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "path": "",
+                            "scale": 1.0
+                        },
+                        "type": "EffectRender"
+                    }
+                ],
+                "id": 8140,
+                "name": "water(231)",
+                "parent": 8139,
+                "tag": 2,
                 "type": "Actor"
             }
         ]
