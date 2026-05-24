@@ -50,11 +50,11 @@ void CameraController::Update(float elapsedTime)
 		return;  // ‚±‚ÌƒtƒŒ[ƒ€‚Íˆ—‚µ‚È‚¢
 	}
 
-	if(InputC::KeyPressed(VK_TAB))
-	{
-		mouseLocked = !mouseLocked;
-		ShowCursor(!mouseLocked);
-	}
+	//if(InputC::KeyPressed(VK_TAB))
+	//{
+	//	mouseLocked = !mouseLocked;
+	//	ShowCursor(!mouseLocked);
+	//}
 	
 	if (mouseLocked)
 	{

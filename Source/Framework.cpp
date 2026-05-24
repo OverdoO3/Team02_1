@@ -47,7 +47,7 @@ Framework::Framework(HWND hWnd)
 	io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
 
 	//マウスカーソル初期化
-	mouseCursor = std::make_unique<MouseCursor>();
+	mouseCursor = std::make_unique<MouseCursor>(&engine.GetSceneManager());
 	mouseCursor->Initialize("Data/Sprite/MouseCursor.png");
 
 	engine.Initialize();
@@ -121,7 +121,8 @@ void Framework::Update(float elapsedTime)
 
 	if (mouseCursor)
 	{
-		mouseCursor->Update(hWnd);
+		auto& sm = engine.GetSceneManager();
+		mouseCursor->Update(hWnd, sm.IsPaused(), sm.IsLoading());
 	}
 
 	// エディタはポーズ中も動かせるように外に出す
@@ -180,10 +181,9 @@ void Framework::Render(float elapsedTime)
 
 #endif
 
-	while (ShowCursor(TRUE) < 0);
 	if (mouseCursor)
 	{
-		//mouseCursor->Draw(rc);
+		mouseCursor->Draw(rc);
 	}
 
 	Graphics::Instance().Present(syncInterval);
