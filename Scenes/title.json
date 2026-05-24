@@ -719,6 +719,4032 @@
                 "parent": -1,
                 "tag": 0,
                 "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                -15.024720191955566,
+                                -44.6002197265625,
+                                24.915393829345703
+                            ],
+                            "rotation": [
+                                -0.0,
+                                -0.04361938685178757,
+                                -0.0,
+                                0.9990482330322266
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    }
+                ],
+                "id": 62,
+                "name": "stage",
+                "parent": -1,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                -20.0,
+                                0.0,
+                                0.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 63,
+                "name": "dirt",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                -20.0,
+                                0.0,
+                                10.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 63,
+                "name": "dirt(1)",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                -20.0,
+                                0.0,
+                                20.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 63,
+                "name": "dirt(2)",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                -20.0,
+                                0.0,
+                                30.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 63,
+                "name": "dirt(3)",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                -10.0,
+                                0.0,
+                                0.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 63,
+                "name": "dirt(4)",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                -10.0,
+                                0.0,
+                                10.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 63,
+                "name": "dirt(5)",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                -10.0,
+                                0.0,
+                                20.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 63,
+                "name": "dirt(6)",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                -10.0,
+                                0.0,
+                                30.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 63,
+                "name": "dirt(7)",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 63,
+                "name": "dirt(8)",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                0.0,
+                                0.0,
+                                10.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 63,
+                "name": "dirt(9)",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                0.0,
+                                0.0,
+                                20.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 63,
+                "name": "dirt(10)",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                0.0,
+                                0.0,
+                                30.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 63,
+                "name": "dirt(11)",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                10.0,
+                                0.0,
+                                0.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 63,
+                "name": "dirt(12)",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                10.0,
+                                0.0,
+                                10.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 63,
+                "name": "dirt(13)",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                10.0,
+                                0.0,
+                                20.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 63,
+                "name": "dirt(14)",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                10.0,
+                                0.0,
+                                30.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 63,
+                "name": "dirt(15)",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                20.0,
+                                0.0,
+                                0.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 63,
+                "name": "dirt(16)",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                20.0,
+                                0.0,
+                                10.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 63,
+                "name": "dirt(17)",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                20.0,
+                                0.0,
+                                20.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 63,
+                "name": "dirt(18)",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                20.0,
+                                0.0,
+                                30.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 63,
+                "name": "dirt(19)",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                30.0,
+                                0.0,
+                                0.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 63,
+                "name": "dirt(20)",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                30.0,
+                                0.0,
+                                10.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 63,
+                "name": "dirt(21)",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                30.0,
+                                0.0,
+                                20.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 63,
+                "name": "dirt(22)",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                30.0,
+                                0.0,
+                                30.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 63,
+                "name": "dirt(23)",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                40.0,
+                                0.0,
+                                0.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 63,
+                "name": "dirt(24)",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                40.0,
+                                0.0,
+                                10.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 63,
+                "name": "dirt(25)",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                40.0,
+                                0.0,
+                                20.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 63,
+                "name": "dirt(26)",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                40.0,
+                                0.0,
+                                30.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 63,
+                "name": "dirt(27)",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                50.0,
+                                0.0,
+                                0.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 63,
+                "name": "dirt(28)",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                50.0,
+                                0.0,
+                                10.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 63,
+                "name": "dirt(29)",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                50.0,
+                                0.0,
+                                20.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 63,
+                "name": "dirt(30)",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                50.0,
+                                0.0,
+                                30.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 63,
+                "name": "dirt(31)",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                -20.0,
+                                10.0,
+                                0.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 63,
+                "name": "dirt(32)",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                -10.0,
+                                10.0,
+                                0.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 63,
+                "name": "dirt(33)",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                0.0,
+                                10.0,
+                                0.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 63,
+                "name": "dirt(34)",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                10.0,
+                                10.0,
+                                0.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 63,
+                "name": "dirt(35)",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                20.0,
+                                10.0,
+                                0.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 63,
+                "name": "dirt(36)",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                30.0,
+                                10.0,
+                                0.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 63,
+                "name": "dirt(37)",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                40.0,
+                                10.0,
+                                0.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 63,
+                "name": "dirt(38)",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                50.0,
+                                10.0,
+                                0.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 63,
+                "name": "dirt(39)",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                50.0,
+                                10.0,
+                                10.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 63,
+                "name": "dirt(40)",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                50.0,
+                                10.0,
+                                20.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 63,
+                "name": "dirt(41)",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                50.0,
+                                10.0,
+                                30.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 63,
+                "name": "dirt(42)",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                -20.0,
+                                10.0,
+                                10.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 63,
+                "name": "dirt(43)",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                -20.0,
+                                10.0,
+                                20.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 63,
+                "name": "dirt(44)",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                -20.0,
+                                10.0,
+                                30.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 63,
+                "name": "dirt(45)",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                -10.0,
+                                10.0,
+                                30.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 63,
+                "name": "dirt(46)",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                0.0,
+                                10.0,
+                                30.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 63,
+                "name": "dirt(47)",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                10.0,
+                                10.0,
+                                30.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 63,
+                "name": "dirt(48)",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                20.0,
+                                10.0,
+                                30.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 63,
+                "name": "dirt(49)",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                30.0,
+                                10.0,
+                                30.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 63,
+                "name": "dirt(50)",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                40.0,
+                                10.0,
+                                30.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 63,
+                "name": "dirt(51)",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                -20.0,
+                                20.0,
+                                0.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 63,
+                "name": "dirt(52)",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                -10.0,
+                                20.0,
+                                0.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 63,
+                "name": "dirt(53)",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                0.0,
+                                20.0,
+                                0.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 63,
+                "name": "dirt(54)",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                10.0,
+                                20.0,
+                                0.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 63,
+                "name": "dirt(55)",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                20.0,
+                                20.0,
+                                0.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 63,
+                "name": "dirt(56)",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                30.0,
+                                20.0,
+                                0.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 63,
+                "name": "dirt(57)",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                40.0,
+                                20.0,
+                                0.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 63,
+                "name": "dirt(58)",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                50.0,
+                                20.0,
+                                0.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 63,
+                "name": "dirt(59)",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                50.0,
+                                20.0,
+                                10.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 63,
+                "name": "dirt(60)",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                50.0,
+                                20.0,
+                                20.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 63,
+                "name": "dirt(61)",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                50.0,
+                                20.0,
+                                30.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 63,
+                "name": "dirt(62)",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                -20.0,
+                                20.0,
+                                10.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 63,
+                "name": "dirt(63)",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                -20.0,
+                                20.0,
+                                20.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 63,
+                "name": "dirt(64)",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                -20.0,
+                                20.0,
+                                30.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 63,
+                "name": "dirt(65)",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                -10.0,
+                                20.0,
+                                30.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 63,
+                "name": "dirt(66)",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                0.0,
+                                20.0,
+                                30.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 63,
+                "name": "dirt(67)",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                10.0,
+                                20.0,
+                                30.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 63,
+                "name": "dirt(68)",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                20.0,
+                                20.0,
+                                30.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 63,
+                "name": "dirt(69)",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                30.0,
+                                20.0,
+                                30.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 63,
+                "name": "dirt(70)",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                40.0,
+                                20.0,
+                                30.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 63,
+                "name": "dirt(71)",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                -20.0,
+                                30.0,
+                                10.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/grass_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 63,
+                "name": "dirt(72)",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                -20.0,
+                                30.0,
+                                0.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/grass_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 63,
+                "name": "dirt(73)",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                -20.0,
+                                30.0,
+                                20.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/grass_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 63,
+                "name": "dirt(74)",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                -20.0,
+                                30.0,
+                                30.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/grass_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 63,
+                "name": "dirt(75)",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                -10.0,
+                                30.0,
+                                0.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/grass_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 63,
+                "name": "dirt(76)",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                -10.0,
+                                30.0,
+                                10.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/grass_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 63,
+                "name": "dirt(77)",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                -10.0,
+                                30.0,
+                                20.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/grass_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 63,
+                "name": "dirt(78)",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                -10.0,
+                                30.0,
+                                30.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/grass_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 63,
+                "name": "dirt(79)",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                0.0,
+                                30.0,
+                                0.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/grass_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 63,
+                "name": "dirt(80)",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                0.0,
+                                30.0,
+                                10.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/grass_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 63,
+                "name": "dirt(81)",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                0.0,
+                                30.0,
+                                20.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/grass_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 63,
+                "name": "dirt(82)",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                0.0,
+                                30.0,
+                                30.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/grass_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 63,
+                "name": "dirt(83)",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                10.0,
+                                30.0,
+                                0.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/grass_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 63,
+                "name": "dirt(84)",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                10.0,
+                                30.0,
+                                10.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/grass_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 63,
+                "name": "dirt(85)",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                10.0,
+                                30.0,
+                                20.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/grass_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 63,
+                "name": "dirt(86)",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                10.0,
+                                30.0,
+                                30.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/grass_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 63,
+                "name": "dirt(87)",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                20.0,
+                                30.0,
+                                0.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/grass_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 63,
+                "name": "dirt(88)",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                20.0,
+                                30.0,
+                                10.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/grass_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 63,
+                "name": "dirt(89)",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                20.0,
+                                30.0,
+                                20.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/grass_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 63,
+                "name": "dirt(90)",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                20.0,
+                                30.0,
+                                30.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/grass_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 63,
+                "name": "dirt(91)",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                30.0,
+                                30.0,
+                                0.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/grass_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 63,
+                "name": "dirt(92)",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                30.0,
+                                30.0,
+                                10.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/grass_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 63,
+                "name": "dirt(93)",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                30.0,
+                                30.0,
+                                20.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/grass_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 63,
+                "name": "dirt(94)",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                30.0,
+                                30.0,
+                                30.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/grass_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 63,
+                "name": "dirt(95)",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                40.0,
+                                30.0,
+                                0.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/grass_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 63,
+                "name": "dirt(96)",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                40.0,
+                                30.0,
+                                10.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/grass_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 63,
+                "name": "dirt(97)",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                40.0,
+                                30.0,
+                                20.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/grass_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 63,
+                "name": "dirt(98)",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                40.0,
+                                30.0,
+                                30.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/grass_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 63,
+                "name": "dirt(99)",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                50.0,
+                                30.0,
+                                0.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/grass_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 63,
+                "name": "dirt(100)",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                50.0,
+                                30.0,
+                                10.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/grass_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 63,
+                "name": "dirt(101)",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                50.0,
+                                30.0,
+                                20.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/grass_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 63,
+                "name": "dirt(102)",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                50.0,
+                                30.0,
+                                30.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/grass_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 63,
+                "name": "dirt(103)",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                -20.000059127807617,
+                                32.99999237060547,
+                                19.000030517578125
+                            ],
+                            "rotation": [
+                                -0.0,
+                                -1.552203698906851e-08,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.200000524520874,
+                                1.1999999284744263,
+                                1.200000524520874
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/tree.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 63,
+                "name": "dirt(104)",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                -20.000259399414063,
+                                32.99998474121094,
+                                31.000272750854492
+                            ],
+                            "rotation": [
+                                -0.0,
+                                -3.0410522100510207e-08,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.899999976158142,
+                                1.899999976158142,
+                                1.899999976158142
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/tree.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 63,
+                "name": "dirt(105)",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                -4.999985694885254,
+                                32.99993896484375,
+                                31.000078201293945
+                            ],
+                            "rotation": [
+                                -0.0,
+                                -5.543586478751195e-09,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.2999999523162842,
+                                1.2999999523162842,
+                                1.2999999523162842
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/tree.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 63,
+                "name": "dirt(106)",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                31.999984741210938,
+                                35.49999237060547,
+                                19.999956130981445
+                            ],
+                            "rotation": [
+                                0.0,
+                                1.0,
+                                0.0,
+                                -1.5582890000587213e-07
+                            ],
+                            "scale": [
+                                1.5300023555755615,
+                                1.5299994945526123,
+                                1.5300023555755615
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/tent_hata.mdl"
+                        },
+                        "type": "ModelRender"
+                    },
+                    {
+                        "data": null,
+                        "type": "tent"
+                    }
+                ],
+                "id": 63,
+                "name": "dirt(107)",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                32.93837356567383,
+                                35.301795959472656,
+                                1.770294189453125
+                            ],
+                            "rotation": [
+                                0.0,
+                                0.9658812880516052,
+                                0.0,
+                                -0.25898540019989014
+                            ],
+                            "scale": [
+                                2.2000486850738525,
+                                2.199998140335083,
+                                2.2000486850738525
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/player/chara_motion.mdl"
+                        },
+                        "type": "ModelRender"
+                    },
+                    {
+                        "data": null,
+                        "type": "justDance"
+                    }
+                ],
+                "id": 63,
+                "name": "dirt(108)",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                -6.520458221435547,
+                                35.491844177246094,
+                                13.487003326416016
+                            ],
+                            "rotation": [
+                                -0.0,
+                                4.7896588029061604e-08,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.4000000953674316,
+                                1.399999976158142,
+                                1.4000000953674316
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/firewood.mdl"
+                        },
+                        "type": "ModelRender"
+                    },
+                    {
+                        "data": {
+                            "radius": 10.0,
+                            "thermal": 1
+                        },
+                        "type": "ThermalBody"
+                    },
+                    {
+                        "data": {
+                            "heat": 1,
+                            "linkedLightIndex": -1
+                        },
+                        "type": "HeatReceiver"
+                    },
+                    {
+                        "data": {
+                            "StartPlay": true,
+                            "loop": true,
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "path": "Data/Effects/firewood.efk",
+                            "scale": 11.0
+                        },
+                        "type": "EffectRender"
+                    }
+                ],
+                "id": 12,
+                "name": "firewood",
+                "parent": 62,
+                "tag": 0,
+                "type": "Actor"
             }
         ]
     }

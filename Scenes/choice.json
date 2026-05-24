@@ -2871,6 +2871,4356 @@
                 "parent": -1,
                 "tag": 0,
                 "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                10.0,
+                                -30.0,
+                                30.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                10.0,
+                                -30.0,
+                                20.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(4)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                10.0,
+                                -30.0,
+                                10.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(5)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                -46.967384338378906,
+                                -14.715842247009277,
+                                23.813852310180664
+                            ],
+                            "rotation": [
+                                0.0,
+                                -0.03489949554204941,
+                                0.0,
+                                0.9993908405303955
+                            ],
+                            "scale": [
+                                1.0000007152557373,
+                                0.9999999403953552,
+                                0.9999995827674866
+                            ]
+                        },
+                        "type": "Transform"
+                    }
+                ],
+                "id": 119,
+                "name": "stage",
+                "parent": -1,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                10.0,
+                                -30.0,
+                                0.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(6)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                20.0,
+                                -30.0,
+                                20.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(8)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                20.0,
+                                -30.0,
+                                10.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(9)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                20.0,
+                                -30.0,
+                                10.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(10)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                20.0,
+                                -30.0,
+                                0.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(11)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                30.0,
+                                -30.0,
+                                30.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(12)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                30.0,
+                                -30.0,
+                                20.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(13)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                30.0,
+                                -30.0,
+                                10.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(14)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                30.0,
+                                -30.0,
+                                10.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(15)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                30.0,
+                                -30.0,
+                                0.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(16)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                40.0,
+                                -30.0,
+                                30.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(17)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                40.0,
+                                -30.0,
+                                20.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(18)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                40.0,
+                                -30.0,
+                                10.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(19)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                40.0,
+                                -30.0,
+                                10.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(20)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                40.0,
+                                -30.0,
+                                0.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(21)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                50.0,
+                                -30.0,
+                                30.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(22)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                50.0,
+                                -30.0,
+                                20.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(23)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                50.0,
+                                -30.0,
+                                10.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(24)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                50.0,
+                                -30.0,
+                                10.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(25)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                60.0,
+                                -30.0,
+                                30.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(27)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                60.0,
+                                -30.0,
+                                20.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(28)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                60.0,
+                                -30.0,
+                                10.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(29)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                60.0,
+                                -30.0,
+                                10.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(30)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                70.0,
+                                -30.0,
+                                30.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(32)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                70.0,
+                                -30.0,
+                                20.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(33)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                70.0,
+                                -30.0,
+                                10.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(34)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                70.0,
+                                -30.0,
+                                10.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(35)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                80.0,
+                                -30.0,
+                                30.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(37)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                80.0,
+                                -30.0,
+                                10.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(39)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                50.0,
+                                -30.0,
+                                0.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(35)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                60.0,
+                                -30.0,
+                                0.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(36)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                70.0,
+                                -30.0,
+                                0.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(37)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                80.0,
+                                -30.0,
+                                0.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(38)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                80.0,
+                                -30.0,
+                                20.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(39)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                20.0,
+                                -30.0,
+                                30.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(40)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                10.0,
+                                -20.0,
+                                0.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(41)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                20.0,
+                                -20.0,
+                                0.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(42)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                30.0,
+                                -20.0,
+                                0.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(43)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                40.0,
+                                -20.0,
+                                0.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(44)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                50.0,
+                                -20.0,
+                                0.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(45)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                60.0,
+                                -20.0,
+                                0.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(46)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                70.0,
+                                -20.0,
+                                0.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(47)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                80.0,
+                                -20.0,
+                                0.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(48)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                80.0,
+                                -20.0,
+                                20.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(49)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                80.0,
+                                -20.0,
+                                30.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(50)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                70.0,
+                                -20.0,
+                                30.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(51)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                60.0,
+                                -20.0,
+                                30.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(52)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                50.0,
+                                -20.0,
+                                30.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(53)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                40.0,
+                                -20.0,
+                                30.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(54)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                30.0,
+                                -20.0,
+                                30.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(55)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                20.0,
+                                -20.0,
+                                30.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(56)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                10.0,
+                                -20.0,
+                                30.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(57)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                10.0,
+                                -20.0,
+                                10.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(58)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                10.0,
+                                -20.0,
+                                20.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(59)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                80.0,
+                                -20.0,
+                                10.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(60)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                80.0,
+                                -10.0,
+                                0.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(61)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                80.0,
+                                -10.0,
+                                0.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(62)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                80.0,
+                                -10.0,
+                                10.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(63)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                80.0,
+                                -10.0,
+                                20.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(64)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                80.0,
+                                -10.0,
+                                30.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(65)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                70.0,
+                                -10.0,
+                                0.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(66)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                60.0,
+                                -10.0,
+                                0.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(67)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                50.0,
+                                -10.0,
+                                0.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(68)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                40.0,
+                                -10.0,
+                                0.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(69)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                30.0,
+                                -10.0,
+                                0.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(70)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                20.0,
+                                -10.0,
+                                0.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(71)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                10.0,
+                                -10.0,
+                                0.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(72)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                10.0,
+                                -10.0,
+                                0.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(73)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                10.0,
+                                -10.0,
+                                10.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(74)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                10.0,
+                                -10.0,
+                                20.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(75)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                20.0,
+                                -10.0,
+                                30.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(76)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                30.0,
+                                -10.0,
+                                30.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(77)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                40.0,
+                                -10.0,
+                                30.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(78)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                50.0,
+                                -10.0,
+                                30.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(79)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                60.0,
+                                -10.0,
+                                30.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(80)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                70.0,
+                                -10.0,
+                                30.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(81)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                80.0,
+                                -10.0,
+                                30.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(82)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                10.0,
+                                -10.0,
+                                30.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(83)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                10.0,
+                                0.0,
+                                30.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/grass_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(84)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                10.0,
+                                0.0,
+                                20.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/grass_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(85)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                10.0,
+                                0.0,
+                                10.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/grass_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(86)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                10.0,
+                                0.0,
+                                0.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/grass_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(87)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                20.0,
+                                0.0,
+                                0.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/grass_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(88)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                20.0,
+                                0.0,
+                                10.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/grass_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(89)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                20.0,
+                                0.0,
+                                20.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/grass_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(90)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                20.0,
+                                0.0,
+                                30.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/grass_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(91)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                30.0,
+                                0.0,
+                                0.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/grass_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(92)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                30.0,
+                                0.0,
+                                10.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/grass_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(93)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                30.0,
+                                0.0,
+                                20.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/grass_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(94)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                30.0,
+                                0.0,
+                                30.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/grass_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(95)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                40.0,
+                                0.0,
+                                0.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/grass_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(96)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                40.0,
+                                0.0,
+                                10.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/grass_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(97)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                40.0,
+                                0.0,
+                                20.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/grass_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(98)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                40.0,
+                                0.0,
+                                30.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/grass_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(99)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                50.0,
+                                0.0,
+                                0.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/grass_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(100)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                50.0,
+                                0.0,
+                                10.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/grass_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(101)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                50.0,
+                                0.0,
+                                20.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/grass_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(102)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                50.0,
+                                0.0,
+                                30.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/grass_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(103)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                60.0,
+                                0.0,
+                                0.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/grass_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(104)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                60.0,
+                                0.0,
+                                10.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/grass_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(105)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                60.0,
+                                0.0,
+                                20.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/grass_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(106)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                60.0,
+                                0.0,
+                                30.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/grass_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(107)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                70.0,
+                                0.0,
+                                0.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/grass_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(108)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                70.0,
+                                0.0,
+                                10.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/grass_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(109)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                70.0,
+                                0.0,
+                                20.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/grass_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(110)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                70.0,
+                                0.0,
+                                30.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/grass_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(111)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                80.0,
+                                0.0,
+                                0.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/grass_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(112)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                80.0,
+                                0.0,
+                                10.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/grass_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(113)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                80.0,
+                                0.0,
+                                20.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/grass_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(114)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                80.0,
+                                0.0,
+                                30.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/grass_block.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(115)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                11.0,
+                                2.9999992847442627,
+                                28.999998092651367
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.899999976158142,
+                                1.899999976158142,
+                                1.899999976158142
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/tree.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(116)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                20.999996185302734,
+                                3.0,
+                                29.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.2999999523162842,
+                                1.2999999523162842,
+                                1.2999999523162842
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/tree.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(117)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                7.999995231628418,
+                                3.0,
+                                23.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.2000000476837158,
+                                1.2000000476837158,
+                                1.2000000476837158
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/tree.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 98,
+                "name": "NewActor(118)",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                22.67829704284668,
+                                6.999996662139893,
+                                14.688516616821289
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.5,
+                                1.5,
+                                1.5
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/firewood.mdl"
+                        },
+                        "type": "ModelRender"
+                    },
+                    {
+                        "data": {
+                            "radius": 10.0,
+                            "thermal": 0
+                        },
+                        "type": "ThermalBody"
+                    },
+                    {
+                        "data": {
+                            "heat": 0,
+                            "linkedLightIndex": -1
+                        },
+                        "type": "HeatReceiver"
+                    },
+                    {
+                        "data": {
+                            "StartPlay": false,
+                            "loop": true,
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "path": "Data/Effects/firewood.efk",
+                            "scale": 11.0
+                        },
+                        "type": "EffectRender"
+                    }
+                ],
+                "id": 12,
+                "name": "firewood",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                65.99896240234375,
+                                5.500000476837158,
+                                18.9544620513916
+                            ],
+                            "rotation": [
+                                0.0,
+                                0.9999998807907104,
+                                0.0,
+                                -0.0005178258288651705
+                            ],
+                            "scale": [
+                                1.529999017715454,
+                                1.5299980640411377,
+                                1.529999017715454
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/tent_hata.mdl"
+                        },
+                        "type": "ModelRender"
+                    },
+                    {
+                        "data": null,
+                        "type": "tent"
+                    }
+                ],
+                "id": 637,
+                "name": "tent",
+                "parent": 119,
+                "tag": 3,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                64.99739074707031,
+                                5.0000081062316895,
+                                -0.0015773737104609609
+                            ],
+                            "rotation": [
+                                0.0,
+                                1.0,
+                                0.0,
+                                -0.00024394308275077492
+                            ],
+                            "scale": [
+                                2.5000007152557373,
+                                2.499999523162842,
+                                2.5000007152557373
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/player/chara_motion.mdl"
+                        },
+                        "type": "ModelRender"
+                    },
+                    {
+                        "data": null,
+                        "type": "justDance"
+                    }
+                ],
+                "id": 263,
+                "name": "Play",
+                "parent": 119,
+                "tag": 0,
+                "type": "Actor"
             }
         ]
     }
