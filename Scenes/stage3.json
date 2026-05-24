@@ -28895,6 +28895,20 @@
                             ]
                         },
                         "type": "BoxCollider"
+                    },
+                    {
+                        "data": {
+                            "radius": 10.0,
+                            "thermal": 0
+                        },
+                        "type": "ThermalBody"
+                    },
+                    {
+                        "data": {
+                            "closeY": 40.0,
+                            "openY": 1.0
+                        },
+                        "type": "Bridge"
                     }
                 ],
                 "id": 9104,
@@ -28946,6 +28960,20 @@
                             ]
                         },
                         "type": "BoxCollider"
+                    },
+                    {
+                        "data": {
+                            "radius": 10.0,
+                            "thermal": 0
+                        },
+                        "type": "ThermalBody"
+                    },
+                    {
+                        "data": {
+                            "closeY": 40.0,
+                            "openY": 1.0
+                        },
+                        "type": "Bridge"
                     }
                 ],
                 "id": 9104,
@@ -28997,6 +29025,20 @@
                             ]
                         },
                         "type": "BoxCollider"
+                    },
+                    {
+                        "data": {
+                            "radius": 10.0,
+                            "thermal": 0
+                        },
+                        "type": "ThermalBody"
+                    },
+                    {
+                        "data": {
+                            "closeY": 40.0,
+                            "openY": 1.0
+                        },
+                        "type": "Bridge"
                     }
                 ],
                 "id": 9104,
@@ -29048,6 +29090,20 @@
                             ]
                         },
                         "type": "BoxCollider"
+                    },
+                    {
+                        "data": {
+                            "radius": 10.0,
+                            "thermal": 0
+                        },
+                        "type": "ThermalBody"
+                    },
+                    {
+                        "data": {
+                            "closeY": 40.0,
+                            "openY": 1.0
+                        },
+                        "type": "Bridge"
                     }
                 ],
                 "id": 9104,
@@ -32860,7 +32916,13 @@
                             "UseClickShift": false,
                             "UsePopUpClear": false,
                             "isFadeEnabled": false,
-                            "sprFadeSpeed": 2.0
+                            "rotSwingAmplitude": 0.0,
+                            "rotSwingEnabled": false,
+                            "rotSwingSpeed": 0.0,
+                            "sprFadeSpeed": 2.0,
+                            "swingAmplitude": 0.0,
+                            "swingLoop": false,
+                            "swingSpeed": 0.0
                         },
                         "type": "SpriteRender"
                     },
@@ -32970,7 +33032,13 @@
                             "UseClickShift": false,
                             "UsePopUpClear": false,
                             "isFadeEnabled": false,
-                            "sprFadeSpeed": 2.0
+                            "rotSwingAmplitude": 0.0,
+                            "rotSwingEnabled": false,
+                            "rotSwingSpeed": 0.0,
+                            "sprFadeSpeed": 2.0,
+                            "swingAmplitude": 0.0,
+                            "swingLoop": false,
+                            "swingSpeed": 0.0
                         },
                         "type": "SpriteRender"
                     },
@@ -33080,7 +33148,13 @@
                             "UseClickShift": false,
                             "UsePopUpClear": false,
                             "isFadeEnabled": false,
-                            "sprFadeSpeed": 2.0
+                            "rotSwingAmplitude": 0.0,
+                            "rotSwingEnabled": false,
+                            "rotSwingSpeed": 0.0,
+                            "sprFadeSpeed": 2.0,
+                            "swingAmplitude": 0.0,
+                            "swingLoop": false,
+                            "swingSpeed": 0.0
                         },
                         "type": "SpriteRender"
                     },
@@ -33190,7 +33264,13 @@
                             "UseClickShift": false,
                             "UsePopUpClear": false,
                             "isFadeEnabled": false,
-                            "sprFadeSpeed": 2.0
+                            "rotSwingAmplitude": 0.0,
+                            "rotSwingEnabled": false,
+                            "rotSwingSpeed": 0.0,
+                            "sprFadeSpeed": 2.0,
+                            "swingAmplitude": 0.0,
+                            "swingLoop": false,
+                            "swingSpeed": 0.0
                         },
                         "type": "SpriteRender"
                     },
@@ -33299,7 +33379,13 @@
                             "UseClickShift": false,
                             "UsePopUpClear": false,
                             "isFadeEnabled": false,
-                            "sprFadeSpeed": 2.0
+                            "rotSwingAmplitude": 0.0,
+                            "rotSwingEnabled": false,
+                            "rotSwingSpeed": 0.0,
+                            "sprFadeSpeed": 2.0,
+                            "swingAmplitude": 0.0,
+                            "swingLoop": false,
+                            "swingSpeed": 0.0
                         },
                         "type": "SpriteRender"
                     }
@@ -33401,7 +33487,13 @@
                             "UseClickShift": false,
                             "UsePopUpClear": true,
                             "isFadeEnabled": false,
-                            "sprFadeSpeed": 2.0
+                            "rotSwingAmplitude": 0.0,
+                            "rotSwingEnabled": false,
+                            "rotSwingSpeed": 0.0,
+                            "sprFadeSpeed": 2.0,
+                            "swingAmplitude": 0.0,
+                            "swingLoop": false,
+                            "swingSpeed": 0.0
                         },
                         "type": "SpriteRender"
                     }
@@ -33503,7 +33595,13 @@
                             "UseClickShift": false,
                             "UsePopUpClear": false,
                             "isFadeEnabled": true,
-                            "sprFadeSpeed": 4.099999904632568
+                            "rotSwingAmplitude": 0.0,
+                            "rotSwingEnabled": false,
+                            "rotSwingSpeed": 0.0,
+                            "sprFadeSpeed": 4.099999904632568,
+                            "swingAmplitude": 0.0,
+                            "swingLoop": false,
+                            "swingSpeed": 0.0
                         },
                         "type": "SpriteRender"
                     }
@@ -33605,7 +33703,13 @@
                             "UseClickShift": false,
                             "UsePopUpClear": false,
                             "isFadeEnabled": true,
-                            "sprFadeSpeed": 4.099999904632568
+                            "rotSwingAmplitude": 0.0,
+                            "rotSwingEnabled": false,
+                            "rotSwingSpeed": 0.0,
+                            "sprFadeSpeed": 4.099999904632568,
+                            "swingAmplitude": 0.0,
+                            "swingLoop": false,
+                            "swingSpeed": 0.0
                         },
                         "type": "SpriteRender"
                     }
@@ -33707,7 +33811,13 @@
                             "UseClickShift": false,
                             "UsePopUpClear": false,
                             "isFadeEnabled": false,
-                            "sprFadeSpeed": 2.0
+                            "rotSwingAmplitude": 0.0,
+                            "rotSwingEnabled": false,
+                            "rotSwingSpeed": 0.0,
+                            "sprFadeSpeed": 2.0,
+                            "swingAmplitude": 0.0,
+                            "swingLoop": false,
+                            "swingSpeed": 0.0
                         },
                         "type": "SpriteRender"
                     }
@@ -33809,7 +33919,13 @@
                             "UseClickShift": false,
                             "UsePopUpClear": false,
                             "isFadeEnabled": false,
-                            "sprFadeSpeed": 2.0
+                            "rotSwingAmplitude": 0.0,
+                            "rotSwingEnabled": false,
+                            "rotSwingSpeed": 0.0,
+                            "sprFadeSpeed": 2.0,
+                            "swingAmplitude": 0.0,
+                            "swingLoop": false,
+                            "swingSpeed": 0.0
                         },
                         "type": "SpriteRender"
                     }

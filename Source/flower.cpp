@@ -54,7 +54,6 @@ void flower::Update(float elapsedTime)
 		once = true;
 		model->PlayAnimation("bud_open", false);
 		//‰Ô‚ªŠJ‚­‰¹
-		Audio::Instance().PlaySE(ToDataPath("Data/Sound/SE_flower_open").c_str());
 		auto eff = owner->GetComponent<EffectRender>();
 		if (eff)
 		{
@@ -65,6 +64,7 @@ void flower::Update(float elapsedTime)
 	if (!model->GetAnimationPlaying() && isOpen && !once2)
 	{
 		boxCollider->size.y = saveY;
+		Audio::Instance().PlaySE(ToDataPath("Data/Sound/SE_flower_open.wav").c_str());
 		model->SetString(openPath);
 		model->PlayAnimation("flower_open", false);
 		once2 = true;

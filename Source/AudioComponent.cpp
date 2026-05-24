@@ -102,7 +102,6 @@ void AudioComponent::DrawInspector()
         if (ImGui::Button("Select File")) {
             std::string full = OpenDialog::OpenLoadFileDialog();
             if (!full.empty()) {
-                // š‚±‚±‚Å‘Š‘ÎƒpƒX‚É•ÏŠ·‚µ‚Ä‚©‚ç•Û‘¶‚·‚éI
                 m_filename = ToDataPath(full);
                 Load(m_filename.c_str());
             }
