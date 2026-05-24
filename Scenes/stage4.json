@@ -29490,192 +29490,6 @@
                     {
                         "data": {
                             "position": [
-                                39.99998474121094,
-                                44.999996185302734,
-                                -29.999980926513672
-                            ],
-                            "rotation": [
-                                -0.0,
-                                0.0,
-                                -0.0,
-                                1.0
-                            ],
-                            "scale": [
-                                1.1999999284744263,
-                                1.1999999284744263,
-                                1.1999999284744263
-                            ]
-                        },
-                        "type": "Transform"
-                    },
-                    {
-                        "data": {
-                            "ModelPath": "Data/Model/Stage/Demos/tree.mdl"
-                        },
-                        "type": "ModelRender"
-                    },
-                    {
-                        "data": {
-                            "offset": [
-                                0.0,
-                                0.0,
-                                0.0
-                            ],
-                            "size": [
-                                10.0,
-                                20.0,
-                                10.0
-                            ]
-                        },
-                        "type": "BoxCollider"
-                    },
-                    {
-                        "data": {
-                            "radius": 10.0,
-                            "thermal": 0
-                        },
-                        "type": "ThermalBody"
-                    },
-                    {
-                        "data": null,
-                        "type": "wood"
-                    }
-                ],
-                "id": 11,
-                "name": "tree(3)",
-                "parent": 8295,
-                "tag": 0,
-                "type": "Actor"
-            },
-            {
-                "components": [
-                    {
-                        "data": {
-                            "position": [
-                                49.99998474121094,
-                                44.999996185302734,
-                                -29.999980926513672
-                            ],
-                            "rotation": [
-                                -0.0,
-                                0.0,
-                                -0.0,
-                                1.0
-                            ],
-                            "scale": [
-                                1.1999999284744263,
-                                1.1999999284744263,
-                                1.1999999284744263
-                            ]
-                        },
-                        "type": "Transform"
-                    },
-                    {
-                        "data": {
-                            "ModelPath": "Data/Model/Stage/Demos/tree.mdl"
-                        },
-                        "type": "ModelRender"
-                    },
-                    {
-                        "data": {
-                            "offset": [
-                                0.0,
-                                0.0,
-                                0.0
-                            ],
-                            "size": [
-                                10.0,
-                                20.0,
-                                10.0
-                            ]
-                        },
-                        "type": "BoxCollider"
-                    },
-                    {
-                        "data": {
-                            "radius": 10.0,
-                            "thermal": 0
-                        },
-                        "type": "ThermalBody"
-                    },
-                    {
-                        "data": null,
-                        "type": "wood"
-                    }
-                ],
-                "id": 11,
-                "name": "tree(4)",
-                "parent": 8295,
-                "tag": 0,
-                "type": "Actor"
-            },
-            {
-                "components": [
-                    {
-                        "data": {
-                            "position": [
-                                59.9999885559082,
-                                44.999996185302734,
-                                -29.999980926513672
-                            ],
-                            "rotation": [
-                                -0.0,
-                                0.0,
-                                -0.0,
-                                1.0
-                            ],
-                            "scale": [
-                                1.1999999284744263,
-                                1.1999999284744263,
-                                1.1999999284744263
-                            ]
-                        },
-                        "type": "Transform"
-                    },
-                    {
-                        "data": {
-                            "ModelPath": "Data/Model/Stage/Demos/tree.mdl"
-                        },
-                        "type": "ModelRender"
-                    },
-                    {
-                        "data": {
-                            "offset": [
-                                0.0,
-                                0.0,
-                                0.0
-                            ],
-                            "size": [
-                                10.0,
-                                20.0,
-                                10.0
-                            ]
-                        },
-                        "type": "BoxCollider"
-                    },
-                    {
-                        "data": {
-                            "radius": 10.0,
-                            "thermal": 0
-                        },
-                        "type": "ThermalBody"
-                    },
-                    {
-                        "data": null,
-                        "type": "wood"
-                    }
-                ],
-                "id": 11,
-                "name": "tree(5)",
-                "parent": 8295,
-                "tag": 0,
-                "type": "Actor"
-            },
-            {
-                "components": [
-                    {
-                        "data": {
-                            "position": [
                                 30.0,
                                 50.0,
                                 -20.0
@@ -51742,7 +51556,7 @@
                         "data": {
                             "offset": [
                                 0.0,
-                                10.0,
+                                8.0,
                                 0.0
                             ],
                             "size": [
@@ -51777,7 +51591,7 @@
                     {
                         "data": {
                             "closeY": 40.0,
-                            "openY": 7.0
+                            "openY": 5.0
                         },
                         "type": "flower"
                     }
@@ -57792,6 +57606,234 @@
                 "id": 13622,
                 "name": "MUSIC1",
                 "parent": -1,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                60.00009536743164,
+                                43.99982452392578,
+                                -29.99992561340332
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.1059200763702393,
+                                1.1059200763702393,
+                                1.1059200763702393
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/tree.mdl"
+                        },
+                        "type": "ModelRender"
+                    },
+                    {
+                        "data": {
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                10.0,
+                                20.0,
+                                10.0
+                            ]
+                        },
+                        "type": "BoxCollider"
+                    },
+                    {
+                        "data": {
+                            "radius": 10.0,
+                            "thermal": 0
+                        },
+                        "type": "ThermalBody"
+                    },
+                    {
+                        "data": null,
+                        "type": "wood"
+                    },
+                    {
+                        "data": {
+                            "StartPlay": false,
+                            "loop": false,
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "path": "Data/Effects/tree_fire.efk",
+                            "scale": 1.0
+                        },
+                        "type": "EffectRender"
+                    }
+                ],
+                "id": 11,
+                "name": "tree(18)",
+                "parent": 8295,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                50.00008773803711,
+                                43.99982452392578,
+                                -29.99992561340332
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.1059200763702393,
+                                1.1059200763702393,
+                                1.1059200763702393
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/tree.mdl"
+                        },
+                        "type": "ModelRender"
+                    },
+                    {
+                        "data": {
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                10.0,
+                                20.0,
+                                10.0
+                            ]
+                        },
+                        "type": "BoxCollider"
+                    },
+                    {
+                        "data": {
+                            "radius": 10.0,
+                            "thermal": 0
+                        },
+                        "type": "ThermalBody"
+                    },
+                    {
+                        "data": null,
+                        "type": "wood"
+                    },
+                    {
+                        "data": {
+                            "StartPlay": false,
+                            "loop": false,
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "path": "Data/Effects/tree_fire.efk",
+                            "scale": 1.0
+                        },
+                        "type": "EffectRender"
+                    }
+                ],
+                "id": 11,
+                "name": "tree(19)",
+                "parent": 8295,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                40.000091552734375,
+                                43.99982452392578,
+                                -29.99992561340332
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.1059200763702393,
+                                1.1059200763702393,
+                                1.1059200763702393
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/tree.mdl"
+                        },
+                        "type": "ModelRender"
+                    },
+                    {
+                        "data": {
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                10.0,
+                                20.0,
+                                10.0
+                            ]
+                        },
+                        "type": "BoxCollider"
+                    },
+                    {
+                        "data": {
+                            "radius": 10.0,
+                            "thermal": 0
+                        },
+                        "type": "ThermalBody"
+                    },
+                    {
+                        "data": null,
+                        "type": "wood"
+                    },
+                    {
+                        "data": {
+                            "StartPlay": false,
+                            "loop": false,
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "path": "Data/Effects/tree_fire.efk",
+                            "scale": 1.0
+                        },
+                        "type": "EffectRender"
+                    }
+                ],
+                "id": 11,
+                "name": "tree(20)",
+                "parent": 8295,
                 "tag": 0,
                 "type": "Actor"
             }
