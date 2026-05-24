@@ -54,7 +54,7 @@ void flower::Update(float elapsedTime)
 		once = true;
 		model->PlayAnimation("bud_open", false);
 		//‰Ô‚ªŠJ‚­‰¹
-
+		Audio::Instance().PlaySE(ToDataPath("Data/Sound/SE_flower_open").c_str());
 		auto eff = owner->GetComponent<EffectRender>();
 		if (eff)
 		{
