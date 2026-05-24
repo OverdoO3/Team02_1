@@ -41610,6 +41610,21 @@
                             "ModelPath": "Data/Model/Stage/Demos/dirt_block.mdl"
                         },
                         "type": "ModelRender"
+                    },
+                    {
+                        "data": {
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                30.0,
+                                10.0,
+                                10.0
+                            ]
+                        },
+                        "type": "BoxCollider"
                     }
                 ],
                 "id": 62,
