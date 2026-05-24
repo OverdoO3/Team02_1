@@ -10,45 +10,35 @@ REGISTER_COMPONENT(ComponentID::SpriteRender,SpriteRender)
 
 void SpriteRender::Draw(RenderContext& rc)
 {
-    if (!owner)return;
-    if (m_isClickedHidden)return;
-    if (m_isOnlyWhileGoal && !m_isPopUp)return;
+    if (!owner) return;
+    if (m_isClickedHidden) return;
+    if (m_isOnlyWhileGoal && !m_isPopUp) return;
+
+    // 異常状態の描画制御
     if (m_showAbnormal)
     {
-        bool isNormal = true; // デフォルトは描画しない（Normal扱い）
+        bool isNormal = true;
         auto scene = owner->GetScene();
         if (scene)
         {
             for (auto& actor : scene->actors)
             {
-                if (actor->tag == 1) // プレイヤーのタグ
+                if (actor->tag == 1)
                 {
                     auto thermal = actor->GetComponent<ThermalBody>();
-                    if (thermal)
-                    {
-                        // 0以外（異常状態）なら描画許可
-                        if (thermal->GetHeat() != 0)
-                        {
-                            isNormal = false;
-                        }
-                    }
+                    if (thermal && thermal->GetHeat() != 0) isNormal = false;
                     break;
                 }
             }
         }
-
-        // Normal状態（またはプレイヤーが見つからない状態）ならスキップ
-        if (isNormal)
-        {
-            return;
-        }
+        if (isNormal) return;
     }
 
+    // 熱UI制御
     if (m_useHeatUI)
     {
         bool isNearAnyReceiver = false;
         auto scene = owner->GetScene();
-
         for (auto& actor : scene->actors)
         {
             auto receiver = actor->GetComponent<HeatReceiver>();
@@ -58,58 +48,36 @@ void SpriteRender::Draw(RenderContext& rc)
                 break;
             }
         }
-
         if (!isNearAnyReceiver) return;
     }
 
-
-    //ポーズUI制御
+    // ポーズUI制御
     if (m_isPauseUI)
     {
-        // ポーズ中ではない、かつ「アイリス演出中でもない」ならスキップ
-        if (!m_sceneManager || (!m_sceneManager->IsPaused() && m_irisMode == IrisMode::None))
-        {
-            return;
-        }
+        if (!m_sceneManager || (!m_sceneManager->IsPaused() && m_irisMode == IrisMode::None)) return;
     }
 
+    // Loading制御
     if (m_isOnlyWhileLoading)
     {
-        // 現在が「Loading（裏での読み込み中）」じゃないなら、文字ロゴは描画をスキップ
-        if (!m_sceneManager || m_sceneManager->GetLoadState() != SceneManager::LoadState::Loading)
-        {
-            return;
-        }
+        if (!m_sceneManager || m_sceneManager->GetLoadState() != SceneManager::LoadState::Loading) return;
     }
 
-    // ─── ⭕【修正版】Loadingスプライトの出し分け制御 ───
     if (m_isGameLoading || m_isTitleLoading)
     {
         std::string nextPath = m_sceneManager ? m_sceneManager->GetPendingScenePath() : "";
-
-        // 3. もし次のシーンが決まっているなら、その名前で出し分ける
         if (!nextPath.empty())
         {
             std::string lowerPath = nextPath;
             std::transform(lowerPath.begin(), lowerPath.end(), lowerPath.begin(), ::tolower);
-
             bool hasStage = (lowerPath.find("stage") != std::string::npos);
             bool hasTitle = (lowerPath.find("title") != std::string::npos);
-
-            // 自分はGame用なのに、次のシーンがStageじゃないなら更新しない（Title用が動くべき）
             if (m_isGameLoading && !hasStage) return;
-
-            // 自分はTitle用なのに、次のシーンがTitleじゃないなら更新しない（Game用が動くべき）
             if (m_isTitleLoading && !hasTitle) return;
         }
-        else
+        else if (m_irisMode == IrisMode::None)
         {
-            // 次のシーンのパスが空（＝遷移中ではない通常時）のとき
-            // もしアイリス演出も走っていない（None）なら、余計なUpdateは走らせない
-            if (m_irisMode == IrisMode::None)
-            {
-                return;
-            }
+            return;
         }
     }
 
@@ -118,7 +86,7 @@ void SpriteRender::Draw(RenderContext& rc)
     {
         DirectX::XMFLOAT3 worldPos = tran->GetWorldPosition();
         DirectX::XMFLOAT3 worldScale = tran->GetWorldScale();
-        DirectX::XMFLOAT3 worldRot = tran->GetWorldEulerAngles(); // オイラー角(Degree)を想定
+        DirectX::XMFLOAT3 worldRot = tran->GetWorldEulerAngles();
 
         float texW = spr->GetTextureWidth();
         float texH = spr->GetTextureHeight();
@@ -129,7 +97,6 @@ void SpriteRender::Draw(RenderContext& rc)
         float height = sh * m_editorScale * worldScale.y;
 
         ImVec2 screenOffset = ImGui::GetCursorScreenPos();
-
         float drawX = screenOffset.x + worldPos.x;
         float drawY = screenOffset.y + worldPos.y;
 
@@ -139,34 +106,36 @@ void SpriteRender::Draw(RenderContext& rc)
             drawY -= height * 0.5f;
         }
 
-        // キャッシュ（当たり判定用）
+        // ─── ⭕ ゆりかご揺れ（移動＋回転）の反映 ───
+        float swingAngleOffset = 0.0f;
+        if (m_swingLoop) {
+            drawX += sinf(m_cradleTimer * m_swingSpeed) * m_swingAmplitude;
+            if (m_rotSwingEnabled) {
+                swingAngleOffset = sinf(m_cradleTimer * m_rotSwingSpeed) * m_rotSwingAmplitude;
+            }
+        }
+
         m_lastDrawX = drawX;
         m_lastDrawY = drawY;
         m_lastDrawW = width;
         m_lastDrawH = height;
 
-        float totalAngle = m_editorAngleDeg + worldRot.z;
+        float totalAngle = m_editorAngleDeg + worldRot.z + swingAngleOffset;
 
-        // ─── 描画に使う色を決定する ───
+        // 色とアルファの計算
         DirectX::XMFLOAT4 finalColor = color;
-
         Actor* parent = owner->GetParent();
         if (parent) {
             if (auto* parentSpr = parent->GetComponent<SpriteRender>()) {
-                // 親がホバーフェード中なら、親のratioを自分のアルファに乗算する
-                if (parentSpr->m_hoverFade) {
-                    finalColor.w *= parentSpr->m_appearanceRatio;
-                }
+                if (parentSpr->m_hoverFade) finalColor.w *= parentSpr->m_appearanceRatio;
             }
         }
-        else {
-            // 親がいない（自分自身が親）なら、自分のratioを使う
-            if (m_hoverFade)
-                finalColor.w *= m_appearanceRatio;
+        else if (m_hoverFade) {
+            finalColor.w *= m_appearanceRatio;
         }
-
         finalColor.w *= m_fadeAlpha;
 
+        // 親座標系の計算
         parent = owner->GetParent();
         if (parent)
         {
@@ -177,17 +146,8 @@ void SpriteRender::Draw(RenderContext& rc)
                 DirectX::XMFLOAT3 parentPos = parentTran->GetWorldPosition();
                 DirectX::XMFLOAT3 parentScale = parentTran->GetWorldScale();
 
-                float parentTexW = parentSpr->GetSprite() ? parentSpr->GetSprite()->GetTextureWidth() : 0.0f;
-                float parentTexH = parentSpr->GetSprite() ? parentSpr->GetSprite()->GetTextureHeight() : 0.0f;
-                float parentSW = (parentSpr->GetSrcW() < 0.0f) ? parentTexW : parentSpr->GetSrcW();
-                float parentSH = (parentSpr->GetSrcH() < 0.0f) ? parentTexH : parentSpr->GetSrcH();
-                float parentW = parentSW * parentSpr->GetEditorScale() * parentScale.x;
-                float parentH = parentSH * parentSpr->GetEditorScale() * parentScale.y;
-
-                // 親のCenter座標
                 float parentCenterX = screenOffset.x + parentPos.x;
                 float parentCenterY = screenOffset.y + parentPos.y;
-                // Pivot::Centerなので中心がそのまま座標
 
                 float relX = drawX - parentCenterX;
                 float relY = drawY - parentCenterY;
@@ -201,65 +161,28 @@ void SpriteRender::Draw(RenderContext& rc)
             }
         }
 
+        // 既存の揺れ処理 (m_swingEnabled)
         if (m_swingEnabled)
         {
-            if (m_useSwingX)
-            {
-                float wave = m_swingXUseCos
-                    ? cosf((m_swingTimer + m_swingOffsetX) * m_swingSpeedX)
-                    : sinf((m_swingTimer + m_swingOffsetX) * m_swingSpeedX);
-                drawX += wave * m_swingAmplitudeX;
-            }
-            if (m_useSwingY)
-            {
-                float wave = m_swingYUseCos
-                    ? cosf((m_swingTimer + m_swingOffsetY) * m_swingSpeedY)
-                    : sinf((m_swingTimer + m_swingOffsetY) * m_swingSpeedY);
-                drawY += wave * m_swingAmplitudeY;
-            }
-            if (m_useSwingRot)
-            {
-                float wave = m_swingRotUseCos
-                    ? cosf(m_swingTimer * m_swingRotSpeed)
-                    : sinf(m_swingTimer * m_swingRotSpeed);
-                totalAngle += wave * m_swingRotAmplitude;
-            }
+            if (m_useSwingX) drawX += (m_swingXUseCos ? cosf((m_swingTimer + m_swingOffsetX) * m_swingSpeedX) : sinf((m_swingTimer + m_swingOffsetX) * m_swingSpeedX)) * m_swingAmplitudeX;
+            if (m_useSwingY) drawY += (m_swingYUseCos ? cosf((m_swingTimer + m_swingOffsetY) * m_swingSpeedY) : sinf((m_swingTimer + m_swingOffsetY) * m_swingSpeedY)) * m_swingAmplitudeY;
+            if (m_useSwingRot) totalAngle += (m_swingRotUseCos ? cosf(m_swingTimer * m_swingRotSpeed) : sinf(m_swingTimer * m_swingRotSpeed)) * m_swingRotAmplitude;
         }
 
+        // 描画
+        spr->Render(rc, drawX, drawY, worldPos.z, width, height, m_srcX, m_srcY, sw, sh, totalAngle, finalColor.x, finalColor.y, finalColor.z, finalColor.w);
 
-        // 実際の描画呼び出し
-        spr->Render(
-            rc,
-            drawX, drawY, worldPos.z,
-            width, height,
-            m_srcX, m_srcY,
-            sw, sh,
-            totalAngle,
-            finalColor.x, finalColor.y, finalColor.z, finalColor.w 
-        );
 #ifdef _DEBUG
         if (m_showCollider)
         {
-            // 当たり判定の枠もスケールさせる
             float debugLeft = screenOffset.x + worldPos.x + m_colliderOffsetX * worldScale.x;
             float debugTop = screenOffset.y + worldPos.y + m_colliderOffsetY * worldScale.y;
-            float debugW = m_colliderWidth * worldScale.x;
-            float debugH = m_colliderHeight * worldScale.y;
-
-            ImU32 colliderColor = m_isHovered
-                ? IM_COL32(255, 0, 0, 255)   // マウスが乗ったら赤
-                : IM_COL32(0, 255, 0, 255);  // 通常時は緑
-
-            ImGui::GetForegroundDrawList()->AddRect(
-                ImVec2(debugLeft, debugTop),
-                ImVec2(debugLeft + debugW, debugTop + debugH),
-                colliderColor, 
-                0.0f, 0xF, 2.0f
-            );
+            ImGui::GetForegroundDrawList()->AddRect(ImVec2(debugLeft, debugTop), ImVec2(debugLeft + m_colliderWidth * worldScale.x, debugTop + m_colliderHeight * worldScale.y), m_isHovered ? IM_COL32(255, 0, 0, 255) : IM_COL32(0, 255, 0, 255), 0.0f, 0xF, 2.0f);
         }
 #endif
     }
 }
+
 
 //void SpriteRender::Update(float elapsedTime)
 //{
@@ -335,7 +258,7 @@ void SpriteRender::Draw(RenderContext& rc)
 //}
 void SpriteRender::Update(float elapsedTime)
 {
-    
+    if (m_isClickedHidden)return;
     if (!owner) return;
 
 
@@ -404,6 +327,11 @@ void SpriteRender::Update(float elapsedTime)
         if (!m_sceneManager || !m_sceneManager->IsPaused()) return;
     }
 
+    if (m_swingLoop)
+    {
+        m_cradleTimer += elapsedTime; 
+    }
+
     // ─── 1. マウスのホバー判定 ───
     auto tran = owner->GetComponent<Transform>();
     if (tran && spr)
@@ -453,7 +381,9 @@ void SpriteRender::Update(float elapsedTime)
     // ─── Update 関数内のクリック判定箇所 ───
     if (m_isHovered && ImGui::IsMouseClicked(ImGuiMouseButton_Left))
     {
-        // 1. クリック回数を加算
+        std::string myPath = ToDataPath("Data/Sound/SE_button.wav");
+        Audio::Instance().PlaySE(myPath.c_str());
+
         m_currentClickCount++;
 
         // 2. スプライトシートをずらす処理
@@ -660,6 +590,14 @@ std::unique_ptr<Component> SpriteRender::Clone() const
     c->m_useClickShift = this->m_useClickShift;
     c->m_clickShiftCol = this->m_clickShiftCol;
     c->m_clickShiftRow = this->m_clickShiftRow;
+
+    c->m_swingLoop = this->m_swingLoop;
+    c->m_swingAmplitude = this->m_swingAmplitude;
+    c->m_swingSpeed = this->m_swingSpeed;
+    c->m_rotSwingEnabled = this->m_rotSwingEnabled;
+    c->m_rotSwingAmplitude = this->m_rotSwingAmplitude;
+    c->m_rotSwingSpeed = this->m_rotSwingSpeed;
+
     c->m_currentClickCount = 0;
 
 	return c;
@@ -743,6 +681,13 @@ void SpriteRender::Serialize(nlohmann::json& j) const
     j["UseClickShift"] = m_useClickShift;
     j["ClickShiftCol"] = m_clickShiftCol;
     j["ClickShiftRow"] = m_clickShiftRow;
+
+    j["swingLoop"] = m_swingLoop;
+    j["swingAmplitude"] = m_swingAmplitude;
+    j["swingSpeed"] = m_swingSpeed;
+    j["rotSwingEnabled"] = m_rotSwingEnabled;
+    j["rotSwingAmplitude"] = m_rotSwingAmplitude;
+    j["rotSwingSpeed"] = m_rotSwingSpeed;
 }
 
 void SpriteRender::DrawInspector()
@@ -947,7 +892,23 @@ void SpriteRender::DrawInspector()
         ImGui::DragFloat("Src H", &m_srcH, 1.0f, -1.0f, 4096.0f);
         ImGui::Text("(-1 = full texture)");
     }
+    if (ImGui::CollapsingHeader("Cradle Swing Settings"))
+    {
+        ImGui::Checkbox("Swing Loop", &m_swingLoop);
+        if (m_swingLoop)
+        {
+            ImGui::SliderFloat("Swing Amplitude", &m_swingAmplitude, 0.0f, 100.0f);
+            ImGui::SliderFloat("Swing Speed", &m_swingSpeed, 0.1f, 10.0f);
 
+            ImGui::Separator();
+            ImGui::Checkbox("Rotate Swing", &m_rotSwingEnabled);
+            if (m_rotSwingEnabled)
+            {
+                ImGui::SliderFloat("Rot Amplitude", &m_rotSwingAmplitude, 0.0f, 1.0f);
+                ImGui::SliderFloat("Rot Speed", &m_rotSwingSpeed, 0.1f, 10.0f);
+            }
+        }
+    }
     if (ImGui::CollapsingHeader("Animation Settings"))
     {
         ImGui::Checkbox("Loop Animation", &m_isLoop);
@@ -1161,6 +1122,14 @@ void SpriteRender::Deserialize(nlohmann::json& j)
     m_scaleLoopSpeed = j.value("ScaleLoopSpeed", 1.0f);
     m_scaleLoopAmplitude = j.value("ScaleLoopAmp", 0.1f);
     m_baseScaleForLoop = m_editorScale;
+
+    m_swingLoop = j.value("swingLoop",false);
+    m_swingAmplitude = j.value("swingAmplitude",0.0f);
+    m_swingSpeed = j.value("swingSpeed",0.0f);
+
+    m_rotSwingEnabled = j.value("rotSwingEnabled",false);
+    m_rotSwingAmplitude = j.value("rotSwingAmplitude",0.0f);
+    m_rotSwingSpeed = j.value("rotSwingSpeed",0.0f);
 }
 
 void SpriteRender::StartIrisOut()

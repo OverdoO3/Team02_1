@@ -3,6 +3,8 @@
 #include "Factory.h"
 #include "StateEffect.h"
 #include <EffectRender.h>
+#include "System/Audio.h"
+
 //								Å´Ç…ñºëOì¸ÇÍÇÈ
 REGISTER_COMPONENT(ComponentID::water, water)
 
@@ -16,53 +18,62 @@ void water::OnAwake(float elapsedTime)
 
 void water::Update(float elapsedTime)
 {
-	auto temp = owner->GetComponent<ThermalBody>();
-	if (!temp)return;
-	auto modelrender = owner->GetComponent<ModelRender>();
-	if (!modelrender)return;
-	auto eff = owner->GetComponent<EffectRender>();
-	if (!eff)return;
+    auto temp = owner->GetComponent<ThermalBody>();
+    if (!temp) return;
 
-	auto col = owner->GetComponent<BoxCollider>();
+    // 1. Ç‹Ç∏îMÇéÊìæ
+    int heat = temp->GetHeat();
 
-	if (temp->GetHeat() == currentTemp) return;
-	std::unique_ptr<Model> model;
-	switch (temp->GetHeat())
-	{
-	case -2:
- 		model = std::make_unique<Model>(icepath.c_str());
-		col->size.y = 10;
-		modelrender->SetModel(std::move(model));
-		eff->Play();
-		break;
-	case 1:
-		model = std::make_unique<Model>(waterpath.c_str());
-		col->size.y = 50;
-		modelrender->SetModel(std::move(model));
-		eff->Stop();
-		break;
-	default:
-		break;
-	}
+    // 2. ïœâªÇ™Ç»ÇØÇÍÇŒÇ±Ç±Ç≈èIóπÅiÇ±ÇÍÇ≈ÉãÅ[ÉvÇñhé~Åj
+    if (heat == currentTemp) return;
 
-	auto thermal = owner->GetComponent<ThermalBody>();
-	auto effectstate = owner->GetComponent<StateEffect>();
-	if (!effectstate)return;
-	if (!thermal)return;
-	switch (thermal->GetHeat())
-	{
-	case -2:
-		effectstate->enabled = true;
-		effectstate->SetState("ice");
-		break;
-	case 1:
-		effectstate->enabled = false;
-		break;
-	default:
-		break;
-	}
-	currentTemp = temp->GetHeat();
+    // 3. ïœâªÇ™Ç†Ç¡ÇΩÇÃÇ≈ÅAÇ‹Ç∏ÇÕílÇämíËÇ≥ÇπÇÈ
+    currentTemp = heat;
+
+    // 4. ïœâªÇµÇΩéûÇæÇØÇÃèàóù
+    auto modelrender = owner->GetComponent<ModelRender>();
+    auto eff = owner->GetComponent<EffectRender>();
+    auto col = owner->GetComponent<BoxCollider>();
+
+    if (modelrender && eff && col)
+    {
+        switch (heat)
+        {
+        case -2: // ïXÇ…Ç»Ç¡ÇΩèuä‘
+        {
+            auto model = std::make_unique<Model>(icepath.c_str());
+            col->size.y = 10;
+            modelrender->SetModel(std::move(model));
+            eff->Play();
+            // ämé¿Ç…1âÒÇæÇØçƒê∂Ç≥ÇÍÇÈ
+            Audio::Instance().PlaySE(ToDataPath("Data/Sound/SE_game_reaction_ice.wav").c_str());
+        }
+        break;
+        case 1: // êÖÇ…ñﬂÇ¡ÇΩèuä‘
+        {
+            auto model = std::make_unique<Model>(waterpath.c_str());
+            col->size.y = 50;
+            modelrender->SetModel(std::move(model));
+            eff->Stop();
+            Audio::Instance().PlaySE(ToDataPath("Data/Sound/SE_game_reaction_water.wav").c_str());
+        }
+        break;
+        }
+    }
+
+    auto effectstate = owner->GetComponent<StateEffect>();
+    if (effectstate)
+    {
+        if (heat == -2) {
+            effectstate->enabled = true;
+            effectstate->SetState("ice");
+        }
+        else if (heat == 1) {
+            effectstate->enabled = false;
+        }
+    }
 }
+
 
 void water::DrawInspector()
 {
@@ -78,5 +89,7 @@ void water::Deserialize(nlohmann::json& j)
 
 std::unique_ptr<Component> water::Clone() const
 {
-	return std::make_unique<water>();
+	auto h = std::make_unique<water>();
+	h->currentTemp = this->currentTemp; 
+	return h;
 }

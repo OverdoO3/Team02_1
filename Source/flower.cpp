@@ -2,6 +2,8 @@
 #include "Factory.h"
 #include "Actor.h"
 #include <EffectRender.h>
+#include "System/Audio.h"
+
 //								«‚É–¼‘O“ü‚ê‚é
 REGISTER_COMPONENT(ComponentID::flower, flower)
 
@@ -37,7 +39,11 @@ void flower::Update(float elapsedTime)
 		break;
 	case 1:
 		boxCollider->size.y = deathY;
-		death = true;
+		if (death == false) 
+		{
+			death = true;
+			Audio::Instance().PlaySE(ToDataPath("Data/Sound/SE_game_reaction_fire.wav").c_str());
+		}
 		break;
 	default:
 		break;
@@ -47,6 +53,8 @@ void flower::Update(float elapsedTime)
 	{
 		once = true;
 		model->PlayAnimation("bud_open", false);
+		//‰Ô‚ªŠJ‚­‰¹
+
 		auto eff = owner->GetComponent<EffectRender>();
 		if (eff)
 		{

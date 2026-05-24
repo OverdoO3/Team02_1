@@ -230,6 +230,13 @@ private:
     int m_clickShiftCol = 1;          // クリックごとにずらす列数
     int m_clickShiftRow = 0;          // クリックごとにずらす行数
 
+    bool m_swingLoop = false;        // インスペクターで切り替え可能にする
+    float m_swingAmplitude = 20.0f;  // 揺れる幅（ピクセル）
+    bool m_rotSwingEnabled = false;    // 回転揺れを使うか
+    float m_rotSwingAmplitude = 0.1f;  // 回転の幅（ラジアンに近い値）
+    float m_rotSwingSpeed = 2.0f;
+    float m_swingSpeed = 2.0f;       // 揺れる速さ
+    float m_cradleTimer = 0.0f;
 
     HeatTransfer* m_targetHeat = nullptr;
 };

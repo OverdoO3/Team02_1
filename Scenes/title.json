@@ -158,7 +158,13 @@
                             "UseClickShift": false,
                             "UsePopUpClear": false,
                             "isFadeEnabled": false,
-                            "sprFadeSpeed": 5.0
+                            "rotSwingAmplitude": 1.0,
+                            "rotSwingEnabled": true,
+                            "rotSwingSpeed": 5.6539998054504395,
+                            "sprFadeSpeed": 5.0,
+                            "swingAmplitude": 27.134000778198242,
+                            "swingLoop": true,
+                            "swingSpeed": 1.9110000133514404
                         },
                         "type": "SpriteRender"
                     }
@@ -260,7 +266,13 @@
                             "UseClickShift": false,
                             "UsePopUpClear": false,
                             "isFadeEnabled": false,
-                            "sprFadeSpeed": 5.0
+                            "rotSwingAmplitude": 0.0,
+                            "rotSwingEnabled": false,
+                            "rotSwingSpeed": 0.0,
+                            "sprFadeSpeed": 5.0,
+                            "swingAmplitude": 0.0,
+                            "swingLoop": false,
+                            "swingSpeed": 0.0
                         },
                         "type": "SpriteRender"
                     },
@@ -384,7 +396,13 @@
                             "UseClickShift": false,
                             "UsePopUpClear": false,
                             "isFadeEnabled": false,
-                            "sprFadeSpeed": 5.0
+                            "rotSwingAmplitude": 0.0,
+                            "rotSwingEnabled": false,
+                            "rotSwingSpeed": 0.0,
+                            "sprFadeSpeed": 5.0,
+                            "swingAmplitude": 0.0,
+                            "swingLoop": false,
+                            "swingSpeed": 0.0
                         },
                         "type": "SpriteRender"
                     },
@@ -508,7 +526,13 @@
                             "UseClickShift": false,
                             "UsePopUpClear": false,
                             "isFadeEnabled": false,
-                            "sprFadeSpeed": 5.0
+                            "rotSwingAmplitude": 0.0,
+                            "rotSwingEnabled": false,
+                            "rotSwingSpeed": 0.0,
+                            "sprFadeSpeed": 5.0,
+                            "swingAmplitude": 0.0,
+                            "swingLoop": false,
+                            "swingSpeed": 0.0
                         },
                         "type": "SpriteRender"
                     },
@@ -623,7 +647,13 @@
                             "UseClickShift": false,
                             "UsePopUpClear": false,
                             "isFadeEnabled": false,
-                            "sprFadeSpeed": 5.0
+                            "rotSwingAmplitude": 0.0,
+                            "rotSwingEnabled": false,
+                            "rotSwingSpeed": 0.0,
+                            "sprFadeSpeed": 5.0,
+                            "swingAmplitude": 0.0,
+                            "swingLoop": false,
+                            "swingSpeed": 0.0
                         },
                         "type": "SpriteRender"
                     },

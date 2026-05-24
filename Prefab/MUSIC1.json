@@ -1,0 +1,43 @@
+{
+    "components": [
+        {
+            "data": {
+                "position": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "rotation": [
+                    0.0,
+                    0.0,
+                    0.0,
+                    1.0
+                ],
+                "scale": [
+                    1.0,
+                    1.0,
+                    1.0
+                ]
+            },
+            "type": "Transform"
+        },
+        {
+            "data": {
+                "BGMPlayOnAwake": true,
+                "IsBGM": false,
+                "Loop": true,
+                "PlayOnAwake": true,
+                "PlayOnClick": false,
+                "PlayOnHover": false,
+                "Volume": 0.503000020980835,
+                "filename": "C:\\Users\\2250282\\Documents\\Team02_1\\Data\\Sound\\BGM_game.wav"
+            },
+            "type": "AudioComponent"
+        }
+    ],
+    "id": 13621,
+    "name": "MUSIC",
+    "parent": -1,
+    "tag": 0,
+    "type": "Actor"
+}

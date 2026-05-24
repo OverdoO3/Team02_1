@@ -2,6 +2,7 @@
 #include "Actor.h"
 #include "Factory.h"
 #include <EffectRender.h>
+#include "System/Audio.h"
 
 //								«‚É–¼‘O“ü‚ê‚é
 REGISTER_COMPONENT(ComponentID::wood, wood)
@@ -24,6 +25,9 @@ void wood::Update(float elapsedTime)
 		{
 			death = true;
 			eff->Play();
+
+			std::string soundPath = "Data/Sound/SE_game_reaction_fire.wav";
+			Audio::Instance().PlaySE(ToDataPath(soundPath).c_str());
 		}
 	}
 

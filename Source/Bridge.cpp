@@ -1,6 +1,7 @@
 #include "Bridge.h"
 #include "Factory.h"
 #include "Actor.h"
+#include "System/Audio.h"
 //								«‚É–¼‘O“ü‚ê‚é
 REGISTER_COMPONENT(ComponentID::Bridge, Bridge)
 
@@ -21,7 +22,11 @@ void Bridge::Update(float elapsedTime)
 	{
 	case 1:
 		boxCollider->size.y = deathY;
-		death = true;
+		if (death == false)
+		{
+			death = true;
+			Audio::Instance().PlaySE(ToDataPath("Data/Sound/SE_game_reaction_fire.wav").c_str());
+		}
 		break;
 	default:
 		break;

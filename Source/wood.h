@@ -19,6 +19,19 @@ public:
 
     std::unique_ptr<Component> Clone() const override;
 
+    std::string ToDataPath(const std::string& fullPath)
+    {
+        std::filesystem::path base = std::filesystem::absolute("Data");
+        std::filesystem::path target = std::filesystem::absolute(fullPath);
+
+        std::filesystem::path relative = std::filesystem::relative(target, base);
+
+        std::filesystem::path normalized = relative.lexically_normal();
+
+        return "Data/" + normalized.generic_string();
+    }
+
+
     COMPONENT_ID(wood)
 private:
     float timer = 1.0f;

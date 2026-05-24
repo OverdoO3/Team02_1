@@ -4,6 +4,7 @@
 #include "Actor.h"
 #include "ThermalBody.h"
 #include "Collision.h"
+#include "System/Audio.h"
 
 //								«‚É–¼‘O“ü‚ê‚é
 REGISTER_COMPONENT(ComponentID::HeatReceiver, HeatReceiver)
@@ -87,5 +88,15 @@ void HeatReceiver::SetHeatNum(int n)
         {
             renderer->SetLightEnabled(m_linkedLightIndex, (heatNum > 0));
         }
+
+        //std::string soundPath;
+        //if (heatNum == 1)      soundPath =  ToDataPath("Data/Sound/SE_game_reaction_fire.wav");  // ‰Š‚Ì‚Ì‰¹
+        //else if (heatNum == -1) soundPath = ToDataPath("Data/Sound/SE_game_reaction_water.wav"); // …i’Êíj‚Ì‰¹
+        //else if (heatNum == -2) soundPath = ToDataPath("Data/Sound/SE_game_reaction_ice.wav");   // •X‚Ì‚Ì‰¹
+
+        //if (!soundPath.empty())
+        //{
+        //    Audio::Instance().PlaySE(soundPath.c_str());
+        //}
     }
 }

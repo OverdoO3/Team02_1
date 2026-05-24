@@ -2,6 +2,7 @@
 #include "Factory.h"
 #include "Actor.h"
 #include <EffectRender.h>
+#include "System/Audio.h"
 
 //								↓に名前入れる
 REGISTER_COMPONENT(ComponentID::snowman, snowman)
@@ -17,7 +18,12 @@ void snowman::Update(float elapsedTime)
 	auto th = owner->GetComponent<ThermalBody>();
 	if (th->GetHeat() == 1)
 	{
-		death = true;
+		if (death == false)
+		{
+			death = true;
+			// 溶ける時の音（SE_game_reaction_fire.wavなどを指定）
+			Audio::Instance().PlaySE(ToDataPath("Data/Sound/SE_game_reaction_fire.wav").c_str());
+		}		
 		timer -= elapsedTime;
 	}
 

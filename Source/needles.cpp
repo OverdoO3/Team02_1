@@ -2,6 +2,7 @@
 #include "Actor.h"
 #include "Factory.h"
 #include <EffectRender.h>
+#include "System/Audio.h"
 
 //								«‚É–¼‘O“ü‚ê‚é
 REGISTER_COMPONENT(ComponentID::needles, needles)
@@ -27,7 +28,9 @@ void needles::Update(float elapsedTime)
 		{
 			death = true;
 			eff->Play();
+			Audio::Instance().PlaySE(ToDataPath("Data/Sound/SE_game_reaction_fire.wav").c_str());
 		}
+
 		break;
 	default:
 		break;
