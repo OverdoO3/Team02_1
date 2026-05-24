@@ -43,6 +43,7 @@ private:
 
     bool OnGround;
     float downhillOffset = 1.0f;
+    bool m_wasOnGround;
 
     float radius = 1.5f;
     float height = 1.5f;

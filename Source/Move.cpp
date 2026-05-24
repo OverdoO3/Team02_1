@@ -201,12 +201,17 @@ void Move::Update(float elapsedTime)
     //=========================
     if (onGround && hit.normal.y > 0.1f)
     {
+        if (!m_wasOnGround)
+        {
+            Audio::Instance().PlaySE(ToDataPath("Data/Sound/SE_game_landing.wav").c_str());
+        }
+
         float dot = Velocity.x * hit.normal.x
             + Velocity.y * hit.normal.y
             + Velocity.z * hit.normal.z;
 
         Velocity.x -= hit.normal.x * dot;
-        Velocity.y -= hit.normal.y * dot;  // ← Yも法線に沿って補正
+        Velocity.y -= hit.normal.y * dot;
         Velocity.z -= hit.normal.z * dot;
 
         nextPos.y = hit.point.y + radius;
@@ -225,6 +230,7 @@ void Move::Update(float elapsedTime)
         nextPos.y += Velocity.y * elapsedTime;
     }
 
+    m_wasOnGround = onGround;
     //=========================
     // 壁衝突（XZ）
     //=========================
@@ -330,9 +336,6 @@ void Move::Update(float elapsedTime)
             break;
         case Move::land:
         {
-            // ここで相対パス変換とSE再生
-            std::string myPath = ToDataPath("Data/Sound/SE_game_landing.wav");
-            Audio::Instance().PlaySE(myPath.c_str());
             model->PlayAnimation("land", true);
         }
         break;
