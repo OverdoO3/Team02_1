@@ -31,7 +31,8 @@ void flower::Update(float elapsedTime)
 	if (!boxCollider)return;
 	auto model = owner->GetComponent<ModelRender>();
 	if (!model)return;
-
+	auto eff = owner->GetComponent<EffectRender>();
+	if (!eff) return;
 	switch (temp->GetHeat())
 	{
 	case -1:
@@ -43,6 +44,8 @@ void flower::Update(float elapsedTime)
 		{
 			death = true;
 			Audio::Instance().PlaySE(ToDataPath("Data/Sound/SE_game_reaction_fire.wav").c_str());
+			eff->SetEffect(EffectManager::Instance().LoadEffect("./Data/Effects/tree_fire.efk"));
+			eff->Play();
 		}
 		break;
 	default:
