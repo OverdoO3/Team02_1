@@ -23,8 +23,6 @@ void Move::Update(float elapsedTime)
         m_goalTimer += elapsedTime;
         if (m_goalTimer >= 4.0f)
         {
-            std::string myPath = ToDataPath("Data/Sound/SE_game_clear.wav");
-            Audio::Instance().PlaySE(myPath.c_str());
 
             m_isTransitionStarted = true;
             auto* sceneManager = owner->GetScene()->sceneManager;
@@ -342,6 +340,12 @@ void Move::Update(float elapsedTime)
             model->PlayAnimation("fall", true);
             break;
         case Move::goal:
+
+        {
+            std::string myPath = ToDataPath("Data/Sound/SE_game_clear.wav");
+            Audio::Instance().PlaySE(myPath.c_str());
+        }
+
             model->PlayAnimation("goal", true);
             break;
         default:
