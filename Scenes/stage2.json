@@ -26459,7 +26459,7 @@
                                 0.0
                             ],
                             "path": "Data/Effects/snowman.efk",
-                            "scale": 1.0
+                            "scale": 3.0
                         },
                         "type": "EffectRender"
                     },
