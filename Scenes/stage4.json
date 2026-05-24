@@ -51530,7 +51530,7 @@
                             "position": [
                                 -15.000005722045898,
                                 125.0,
-                                25.000001907348633
+                                25.0000057220459
                             ],
                             "rotation": [
                                 -0.0,
@@ -51584,7 +51584,7 @@
                                 0.0
                             ],
                             "path": "Data/Effects/flower_open.efk",
-                            "scale": 1.0
+                            "scale": 2.0
                         },
                         "type": "EffectRender"
                     },
@@ -51607,9 +51607,9 @@
                     {
                         "data": {
                             "position": [
-                                -15.0,
-                                95.0,
-                                25.0
+                                0.0,
+                                -9.5,
+                                0.0
                             ],
                             "rotation": [
                                 -0.0,
@@ -51618,9 +51618,9 @@
                                 1.0
                             ],
                             "scale": [
-                                2.0,
                                 1.0,
-                                2.0
+                                1.0,
+                                1.0
                             ]
                         },
                         "type": "Transform"
@@ -51634,79 +51634,7 @@
                 ],
                 "id": 13601,
                 "name": "NewActor",
-                "parent": -1,
-                "tag": 0,
-                "type": "Actor"
-            },
-            {
-                "components": [
-                    {
-                        "data": {
-                            "position": [
-                                -15.0,
-                                105.0,
-                                25.0
-                            ],
-                            "rotation": [
-                                -0.0,
-                                0.0,
-                                -0.0,
-                                1.0
-                            ],
-                            "scale": [
-                                2.0,
-                                1.0,
-                                2.0
-                            ]
-                        },
-                        "type": "Transform"
-                    },
-                    {
-                        "data": {
-                            "ModelPath": "Data/Model/Stage/Demos/stem_obj.mdl"
-                        },
-                        "type": "ModelRender"
-                    }
-                ],
-                "id": 13601,
-                "name": "NewActor(344)",
-                "parent": -1,
-                "tag": 0,
-                "type": "Actor"
-            },
-            {
-                "components": [
-                    {
-                        "data": {
-                            "position": [
-                                -15.0,
-                                115.0,
-                                25.0
-                            ],
-                            "rotation": [
-                                -0.0,
-                                0.0,
-                                -0.0,
-                                1.0
-                            ],
-                            "scale": [
-                                2.0,
-                                1.0,
-                                2.0
-                            ]
-                        },
-                        "type": "Transform"
-                    },
-                    {
-                        "data": {
-                            "ModelPath": "Data/Model/Stage/Demos/stem_obj.mdl"
-                        },
-                        "type": "ModelRender"
-                    }
-                ],
-                "id": 13601,
-                "name": "NewActor(345)",
-                "parent": -1,
+                "parent": 9138,
                 "tag": 0,
                 "type": "Actor"
             },
@@ -57834,6 +57762,72 @@
                 "id": 11,
                 "name": "tree(20)",
                 "parent": 8295,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                0.0,
+                                -19.5,
+                                0.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/stem_obj.mdl"
+                        },
+                        "type": "ModelRender"
+                    }
+                ],
+                "id": 13601,
+                "name": "NewActor(345)",
+                "parent": 9138,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "rotation": [
+                                0.0,
+                                0.0,
+                                0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    }
+                ],
+                "id": 16365,
+                "name": "fl",
+                "parent": -1,
                 "tag": 0,
                 "type": "Actor"
             }

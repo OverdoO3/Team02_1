@@ -21,9 +21,15 @@ void CameraController::OnAwake(float elapsedTime)
 
 void CameraController::Update(float elapsedTime)
 {
-	
 	Scene* scene = owner->GetScene();
 	bool paused = scene && scene->sceneManager && scene->sceneManager->IsPaused();
+
+	if (scene->isClear)
+	{
+		targetGoal = scene->FindByTag(3)->GetComponent<Transform>()->GetWorldPosition();
+		focusTarget = Lerp(targetGoal, focusTarget, 0.1f);
+		distance = Lerp(distance, 100.0f, 0.1f);
+	}
 
 	if (paused)
 	{
