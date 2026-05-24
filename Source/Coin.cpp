@@ -39,32 +39,25 @@ void Coin::Update(float elapsedTime)
 	{
 		m_jumpTimer += elapsedTime;
 
-		// 1. 跳ねる移動（既存）
 		m_jumpVelocityY += -30.0f * elapsedTime;
 		auto pos = transform->GetWorldPosition();
 		pos.y += m_jumpVelocityY * elapsedTime;
 		transform->SetWorldPosition(pos);
 
-		// 2. 回転（既存）
 		auto rot = transform->GetEulerRotation();
 		rot.y += 20.0f * elapsedTime;
 		transform->SetRotationEuler(rot.x, rot.y, rot.z);
 
-		// 3. スケール演出（新規追加！）
-		// 0.0s～0.2sで大きくし、0.2s～0.8sで小さく消える
 		float scale = 1.0f;
 		if (m_jumpTimer < 0.2f) {
-			// 徐々に拡大 (1.0 -> 1.5)
 			scale = 1.0f + (m_jumpTimer / 0.2f) * 0.5f;
 		}
 		else {
-			// 徐々に縮小 (1.5 -> 0.0)
 			scale = 1.5f - ((m_jumpTimer - 0.2f) / 0.6f) * 1.5f;
 			if (scale < 0.0f) scale = 0.0f;
 		}
 		transform->SetLocalScale({ scale, scale, scale });
 
-		// 演出が終わったら無効化する
 		if (m_jumpTimer > 0.8f) {
 			if (auto* mr = owner->GetComponent<ModelRender>()) {
 				mr->enabled = false;
