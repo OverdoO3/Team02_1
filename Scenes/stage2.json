@@ -25383,6 +25383,20 @@
                     },
                     {
                         "data": {
+                            "StartPlay": false,
+                            "loop": false,
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "path": "",
+                            "scale": 1.0
+                        },
+                        "type": "EffectRender"
+                    },
+                    {
+                        "data": {
                             "closeY": 0.0,
                             "openY": 10.0
                         },
@@ -26199,6 +26213,20 @@
                     },
                     {
                         "data": {
+                            "StartPlay": false,
+                            "loop": false,
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "path": "",
+                            "scale": 1.0
+                        },
+                        "type": "EffectRender"
+                    },
+                    {
+                        "data": {
                             "closeY": 0.0,
                             "openY": 10.0
                         },
@@ -26261,6 +26289,20 @@
                             "thermal": 0
                         },
                         "type": "ThermalBody"
+                    },
+                    {
+                        "data": {
+                            "StartPlay": false,
+                            "loop": false,
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "path": "",
+                            "scale": 1.0
+                        },
+                        "type": "EffectRender"
                     },
                     {
                         "data": {
@@ -26329,6 +26371,20 @@
                     },
                     {
                         "data": {
+                            "StartPlay": false,
+                            "loop": false,
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "path": "",
+                            "scale": 1.0
+                        },
+                        "type": "EffectRender"
+                    },
+                    {
+                        "data": {
                             "closeY": 0.0,
                             "openY": 10.0
                         },
@@ -26391,6 +26447,20 @@
                             "thermal": 0
                         },
                         "type": "ThermalBody"
+                    },
+                    {
+                        "data": {
+                            "StartPlay": false,
+                            "loop": false,
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "path": "",
+                            "scale": 1.0
+                        },
+                        "type": "EffectRender"
                     },
                     {
                         "data": {
