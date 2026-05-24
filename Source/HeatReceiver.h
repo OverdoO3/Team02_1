@@ -32,7 +32,8 @@ public:
     bool IsPlayerNear() const { return m_isPlayerNear; }
 
     bool IsWasInside() const { return m_wasInside; }
-    void SetWasInside(bool isInside) { m_wasInside = isInside; }
+    void SetWasInside(bool v) { m_wasInside = v; }
+    void SetIsInside(bool v) { m_isInside = v; }
 
     std::string ToDataPath(const std::string& fullPath)
     {
@@ -57,4 +58,5 @@ private:
     ThermalBody* m_playerThermal = nullptr; // プレイヤーのThermalBodyをキャッシュ
     bool m_isPlayerNear = false;           // プレイヤーが近くにいるかのフラグ
     bool m_wasInside = false;
+    bool m_isInside = false;
 };

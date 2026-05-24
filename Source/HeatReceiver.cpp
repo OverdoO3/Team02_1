@@ -15,6 +15,11 @@ void HeatReceiver::OnAwake(float elapsedTime)
 
 void HeatReceiver::Update(float elapsedTime)
 {
+
+    //// 追加：ゲーム開始直後（例えば1秒以内）は判定をスキップする
+    //static float timeElapsed = 0.0f;
+    //timeElapsed += elapsedTime;
+    //if (timeElapsed < 1.0f) return;
     // 1. プレイヤーをまだ持っていないなら検索する
     if (!m_playerThermal)
     {
@@ -32,21 +37,24 @@ void HeatReceiver::Update(float elapsedTime)
         }
     }
 
-    // 2. プレイヤーが見つかっているなら距離判定
-    m_isPlayerNear = false;
+    bool isNowInside = false;
     if (m_playerThermal)
     {
         auto myPos = owner->GetComponent<Transform>()->GetWorldPosition();
         auto playerPos = m_playerThermal->GetOwner()->GetComponent<Transform>()->GetWorldPosition();
         if (Collision::IntersectSphereVsSphere(myPos, this->radius, playerPos, m_playerThermal->GetRadius()))
         {
-            m_isPlayerNear = true;
-        }
-        else
-        {
-            m_isPlayerNear = false; // これが重要！範囲外の時はちゃんと false に戻す
+            isNowInside = true;
         }
     }
+
+    // 範囲内の時
+    if (isNowInside && !m_wasInside)
+    {
+        Audio::Instance().PlaySE(ToDataPath("Data/Sound/SE_game_object_aim.wav").c_str());
+    }
+    m_wasInside = isNowInside;
+    m_isPlayerNear = isNowInside;   
 }
 
 void HeatReceiver::DrawInspector()
