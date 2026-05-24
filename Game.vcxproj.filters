@@ -395,6 +395,9 @@
     <ClInclude Include="Source\firewood.h">
       <Filter>Source\Components\Temp\TempObj</Filter>
     </ClInclude>
+    <ClInclude Include="justDance.h">
+      <Filter>Source\Components</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="External\imgui-docking\imgui.cpp">
@@ -630,6 +633,9 @@
     </ClCompile>
     <ClCompile Include="Source\firewood.cpp">
       <Filter>Source\Components\Temp\TempObj</Filter>
+    </ClCompile>
+    <ClCompile Include="justDance.cpp">
+      <Filter>Source\Components</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

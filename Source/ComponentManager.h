@@ -36,6 +36,7 @@ enum class ComponentID
     StageButtonComponent,
     Audio,
     firewood,
+    justDance,
     COUNT
 };
 

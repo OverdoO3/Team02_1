@@ -28,15 +28,15 @@
             0.0,
             1.0
         ],
-        "OutlineThickness": 0.019999999552965164,
+        "OutlineThickness": 0.03999999910593033,
         "PointLightIntensity": 6.0,
-        "ShadowAlpha": 0.6140000224113464,
+        "ShadowAlpha": 0.7200000286102295,
         "ShadowBasePos": [
             -4.699999809265137,
             70.0999984741211,
             0.0
         ],
-        "ShadowBias": 0.0003000000142492354,
+        "ShadowBias": 0.00011999999696854502,
         "ShadowFarClip": 1037.27001953125,
         "ShadowRange": 230.33200073242188
     }
