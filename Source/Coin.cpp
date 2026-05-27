@@ -22,7 +22,8 @@ void Coin::OnAwake(float elapsedTime)
 		{
 			if (auto* mr = owner->GetComponent<ModelRender>())
 			{
-				mr->enabled = false;
+				mr->SetShaderId(ShaderId::Dither);
+				mr->SetDitherAlpha(0.3f);
 			}
 		}
 	}

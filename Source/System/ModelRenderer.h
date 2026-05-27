@@ -23,6 +23,7 @@ enum class ShaderId
 	Shadow,
 	EnumCount,
 	Outline,
+	Dither,
 };
 
 class ModelRenderer
@@ -54,6 +55,8 @@ public:
     {
         DirectX::XMFLOAT4X4 world;
 		ID3D11ShaderResourceView* overrideSRV = nullptr;
+		//float ditherAlpha; 
+		//float padding[3];  
     };
 
 	void SetShaderId(ShaderId id) { shaderId = id; }
@@ -73,6 +76,7 @@ public:
 		currentLightPath = "Data/Lights/" + p.stem().string() + "_lights.json";
 	}
 	std::string GetCurrentLightPath() const { return currentLightPath; }
+	void SetDitherAlpha(float alpha) { m_ditherAlpha = alpha; }
 private:
 	struct CbScene
 	{
@@ -96,6 +100,12 @@ private:
         std::vector<InstanceData> instances;
     };
 
+	struct CbDither
+	{
+		float ditherAlpha;
+		DirectX::XMFLOAT3 padding;
+	};
+
     static constexpr int MAX_INSTANCES = 8192;
 
     std::unique_ptr<Shader> shaders[static_cast<int>(ShaderId::EnumCount)];
@@ -117,6 +127,8 @@ private:
 	Microsoft::WRL::ComPtr<ID3D11VertexShader> outlineVertexShader;
 	Microsoft::WRL::ComPtr<ID3D11PixelShader>  outlinePixelShader;
 	Microsoft::WRL::ComPtr<ID3D11RasterizerState> cullFrontRasterizerState;
+	Microsoft::WRL::ComPtr<ID3D11Buffer> ditherConstantBuffer;
+	Microsoft::WRL::ComPtr<ID3D11PixelShader> ditherPixelShader;
 
 	ShaderId shaderId = ShaderId::Lambert;
 
@@ -127,4 +139,6 @@ public:
 	ID3D11ShaderResourceView* instanceBufferSRV = nullptr;
     int debugInstanceCount = 0;
     std::unordered_map<const ModelResource*, BatchData> batches;
+	float m_ditherAlpha = 0.5f;
+
 };

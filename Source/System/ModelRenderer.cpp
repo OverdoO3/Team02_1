@@ -88,6 +88,12 @@ ModelRenderer::ModelRenderer(ID3D11Device* device)
 		"./Data/Shader/out_line_ps.cso",
 		outlinePixelShader.GetAddressOf());
 
+    //コイン半透明用
+    GpuResourceUtils::LoadPixelShader(
+        device,
+        "Data/Shader/DitherPS.cso",
+        ditherPixelShader.GetAddressOf());
+
 	// シェーダー生成
 	shaders[static_cast<int>(ShaderId::Basic)] = std::make_unique<BasicShader>(device);
 	shaders[static_cast<int>(ShaderId::Lambert)] = std::make_unique<LambertShader>(device);
@@ -141,6 +147,15 @@ ModelRenderer::ModelRenderer(ID3D11Device* device)
 
     HRESULT hr = device->CreateBuffer(&desc, nullptr, instanceBuffer.GetAddressOf());
     assert(SUCCEEDED(hr));
+
+    {
+        D3D11_BUFFER_DESC desc{};
+        desc.ByteWidth = sizeof(CbDither);
+        desc.Usage = D3D11_USAGE_DEFAULT;
+        desc.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
+        hr = device->CreateBuffer(&desc, nullptr, ditherConstantBuffer.GetAddressOf());
+        assert(SUCCEEDED(hr));
+    }
 
     //D3D11_SHADER_RESOURCE_VIEW_DESC srvDesc = {};
     //srvDesc.Format = DXGI_FORMAT_UNKNOWN;      // StructuredBufferはUNKNOWN必須
@@ -284,6 +299,24 @@ void ModelRenderer::FlushAll(const RenderContext& rc)
     {
         dc->VSSetShader(vertexShader.Get(), nullptr, 0);
         dc->PSSetShader(nullptr, nullptr, 0);
+    }
+    else if (shaderId == ShaderId::Dither)
+    {
+        dc->VSSetShader(vertexShader.Get(), nullptr, 0);
+        dc->PSSetShader(ditherPixelShader.Get(), nullptr, 0);
+
+        CbDither cbDither;
+        cbDither.ditherAlpha = m_ditherAlpha;
+
+        dc->UpdateSubresource(ditherConstantBuffer.Get(), 0, nullptr, &cbDither, 0, 0);
+        dc->PSSetConstantBuffers(6, 1, ditherConstantBuffer.GetAddressOf());
+
+        dc->OMSetDepthStencilState(
+            rc.renderState->GetDepthStencilState(DepthState::TestAndWrite), 0);
+        dc->RSSetState(
+            rc.renderState->GetRasterizerState(RasterizerState::SolidCullBack));
+        dc->OMSetBlendState(
+            rc.renderState->GetBlendState(BlendState::Opaque), nullptr, 0xFFFFFFFF);
     }
     else
     {

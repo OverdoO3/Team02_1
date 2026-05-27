@@ -66,6 +66,9 @@ public:
 	bool GetAnimationPlaying() { return animationPlaying; }
 
 	void SetPlayerTexture(const char* filename);
+
+	void SetDitherAlpha(float alpha) { m_ditherAlpha = alpha; }
+	float GetDitherAlpha() const { return m_ditherAlpha; }
 private:
 	std::unique_ptr<Model> model;
 	std::string modelpath;
@@ -81,4 +84,5 @@ private:
 	bool  randomRotationInitialized = false;
 public:
 	Microsoft::WRL::ComPtr<ID3D11ShaderResourceView> overrideSRV;
+	float m_ditherAlpha = 0.5f;
 };
