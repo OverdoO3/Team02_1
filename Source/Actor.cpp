@@ -1,6 +1,7 @@
 #include "Actor.h"
 #include "Camera.h"
 #include "Scene.h"
+#include <EffectRender.h>
 
 Actor::Actor()
 {
@@ -19,6 +20,11 @@ Actor::~Actor()
 		if (auto* col = dynamic_cast<Collider*>(comp.get()))
 		{
 			scene->physics.DeleteQueueAdd(col); // êÊÇ…ó\ñÒ
+		}
+
+		if (auto effect = dynamic_cast<EffectRender*>(comp.get()))
+		{
+			effect->Stop();
 		}
 	}
 }
