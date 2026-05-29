@@ -34,7 +34,7 @@ enum class BlendState
 	Additive,
 	Subtraction,
 	Multiply,
-
+	DitherTransparency,
 	EnumCount
 };
 

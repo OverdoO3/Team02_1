@@ -1,16 +1,5 @@
 #include "Lambert.hlsli"
 
-//struct VS_OUT
-//{
-//    float4 vertex : SV_POSITION;
-//    float2 texcoord : TEXCOORD;
-//    float3 normal : NORMAL;
-//    float3 position : POSITION;
-//    float3 tangent : TANGENT;
-//    float4 shadow_position : TEXCOORD1;
-//    float3 worldPos : TEXCOORD2;
-//};
-
 cbuffer CbDither : register(b6)
 {
     float ditherAlpha;
@@ -20,24 +9,31 @@ cbuffer CbDither : register(b6)
 Texture2D DiffuseMap : register(t0);
 SamplerState LinearSampler : register(s0);
 
-static const float bayer[4][4] =
+// 8x8 ディザ行列
+static const float bayer8x8[8][8] =
 {
-    0.0 / 16.0, 8.0 / 16.0, 2.0 / 16.0, 10.0 / 16.0,
-    12.0 / 16.0, 4.0 / 16.0, 14.0 / 16.0, 6.0 / 16.0,
-     3.0 / 16.0, 11.0 / 16.0, 1.0 / 16.0, 9.0 / 16.0,
-    15.0 / 16.0, 7.0 / 16.0, 13.0 / 16.0, 5.0 / 16.0
+    { 0, 48, 12, 60, 3, 51, 15, 63 },
+    { 32, 16, 44, 28, 35, 19, 47, 31 },
+    { 8, 56, 4, 52, 11, 59, 7, 55 },
+    { 40, 24, 36, 20, 43, 27, 39, 23 },
+    { 2, 50, 14, 62, 1, 49, 13, 61 },
+    { 34, 18, 46, 30, 33, 17, 45, 29 },
+    { 10, 58, 6, 54, 9, 57, 5, 53 },
+    { 42, 26, 38, 22, 41, 25, 37, 21 }
 };
 
 float4 main(VS_OUT pin) : SV_TARGET
 {
     float4 color = DiffuseMap.Sample(LinearSampler, pin.texcoord);
 
-    int x = (int) pin.vertex.x % 4;
-    int y = (int) pin.vertex.y % 4;
-    float threshold = bayer[y][x];
+    int px = ((int) pin.vertex.x) % 8;
+    int py = ((int) pin.vertex.y) % 8;
+    float threshold = bayer8x8[py][px] / 64.0;
 
     if (ditherAlpha < threshold)
         discard;
+    
+    color.a = 0.6f;
 
     return color;
 }

@@ -315,7 +315,7 @@ void ModelRenderer::FlushAll(const RenderContext& rc)
         dc->RSSetState(
             rc.renderState->GetRasterizerState(RasterizerState::SolidCullBack));
         dc->OMSetBlendState(
-            rc.renderState->GetBlendState(BlendState::Opaque), nullptr, 0xFFFFFFFF);
+            rc.renderState->GetBlendState(BlendState::DitherTransparency), nullptr, 0xFFFFFFFF);
     }
     else
     {

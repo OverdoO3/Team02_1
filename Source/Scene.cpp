@@ -348,10 +348,13 @@ void Scene::Render(CameraBase* camera, bool isEditor)
     // 3Dモデル描画
     for (auto& actor : actors)
     {
+        auto* mr = actor->GetComponent<ModelRender>();
+        if (mr && mr->GetShaderId() == ShaderId::Dither) continue;
+
         bool active = actor->setActive && (!actor->GetParent() || actor->GetParent()->setActive);
         if (active)
             actor->Render(rc, modelRenderer);
-    }
+    }   
     modelRenderer->SetShaderId(ShaderId::Lambert);
     modelRenderer->FlushAll(rc);
 
