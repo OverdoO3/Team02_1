@@ -55,8 +55,8 @@ public:
     {
         DirectX::XMFLOAT4X4 world;
 		ID3D11ShaderResourceView* overrideSRV = nullptr;
-		//float ditherAlpha; 
-		//float padding[3];  
+		ShaderId shaderId = ShaderId::Lambert;
+		float ditherAlpha = 1.0f;
     };
 
 	void SetShaderId(ShaderId id) { shaderId = id; }

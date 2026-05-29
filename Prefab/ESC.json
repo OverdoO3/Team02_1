@@ -3,8 +3,8 @@
         {
             "data": {
                 "position": [
-                    1710.0,
-                    960.0,
+                    1690.0,
+                    940.0,
                     0.0
                 ],
                 "rotation": [
@@ -24,6 +24,9 @@
         {
             "data": {
                 "AnimFrameCount": 1,
+                "ClickLimit": 1,
+                "ClickShiftCol": 1,
+                "ClickShiftRow": 0,
                 "ColHeight": 100.0,
                 "ColOffsetX": 0.0,
                 "ColOffsetY": 0.0,
@@ -60,8 +63,8 @@
                 "SplitX": 1,
                 "SplitY": 1,
                 "SpriteIndex": 0,
-                "SrcH": 34.0,
-                "SrcW": 243.0,
+                "SrcH": 69.0,
+                "SrcW": 303.0,
                 "SrcX": 0.0,
                 "SrcY": 0.0,
                 "SwingAmpX": 10.0,
@@ -83,9 +86,16 @@
                 "TargetRow": 0,
                 "TexturePath": "Data/Sprite/Game_text06.png",
                 "UseClickHide": false,
+                "UseClickShift": false,
                 "UsePopUpClear": false,
                 "isFadeEnabled": false,
-                "sprFadeSpeed": 2.0
+                "rotSwingAmplitude": 0.0,
+                "rotSwingEnabled": false,
+                "rotSwingSpeed": 0.0,
+                "sprFadeSpeed": 2.0,
+                "swingAmplitude": 0.0,
+                "swingLoop": false,
+                "swingSpeed": 0.0
             },
             "type": "SpriteRender"
         }

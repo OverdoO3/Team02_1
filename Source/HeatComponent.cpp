@@ -43,6 +43,8 @@ void HeatTransfer::Update(float elapsedTime)
 		} 
 	}
 	m_canAbsorb = false;
+	m_targetHeat = 0;
+
 	for (auto& actor : scene->actors)
 	{
 		auto Receiver = actor->GetComponent<HeatReceiver>();
@@ -56,6 +58,8 @@ void HeatTransfer::Update(float elapsedTime)
 			Receiver->GetRadius()))
 		{
 			m_canAbsorb = true;
+			m_targetHeat = Receiver->GetHeatNum();
+
 			break; // ˆê‚Â‚Å‚à”ÍˆÍ“à‚È‚çUIƒtƒ‰ƒOON‚ÅOK
 		}
 	}

@@ -173,23 +173,22 @@ ModelRenderer::ModelRenderer(ID3D11Device* device)
 //==============================
 void ModelRenderer::AddInstance(const Model* model, Actor* actor)
 {
-    auto t = actor->GetComponent<Transform>();
+    auto* t = actor->GetComponent<Transform>();
     if (!t) return;
 
-    InstanceData data{};
-    data.world = t->GetWorldMatrix();
+    InstanceData data;
+    XMStoreFloat4x4(&data.world, XMLoadFloat4x4(&t->GetWorldMatrix()));
 
-    auto modelRender = actor->GetComponent<ModelRender>();
-    if (modelRender && modelRender->overrideSRV)
+    auto* mr = actor->GetComponent<ModelRender>();
+    if (mr)
     {
-        data.overrideSRV = modelRender->overrideSRV.Get();
+        data.overrideSRV = mr->overrideSRV.Get();
+        data.shaderId = mr->GetShaderId();
+        data.ditherAlpha = mr->GetDitherAlpha();
     }
 
-    auto& batch = batches[model->GetResource()];
-    batch.representativeModel = model;
-    batch.instances.push_back(data);
-
-    debugInstanceCount++;
+    batches[model->GetResource()].instances.push_back(data);
+    batches[model->GetResource()].representativeModel = model;
 }
 //==============================
 // FlushAll（描画本体）
@@ -419,7 +418,19 @@ void ModelRenderer::FlushAll(const RenderContext& rc)
                             ? instances.instances[0].overrideSRV
                             : subset.material->shaderResourceView.Get();
 
-                        dc->PSSetShaderResources(0, 1, &srv); // ★ srv を使う
+                        // Dither シェーダー用のマテリアル単位パラメータ更新
+                        if (shaderId == ShaderId::Dither)
+                        {
+                            CbDither cbDither{};
+                            cbDither.ditherAlpha = m_ditherAlpha;
+
+                            dc->UpdateSubresource(ditherConstantBuffer.Get(), 0, nullptr, &cbDither, 0, 0);
+                            dc->PSSetConstantBuffers(6, 1, ditherConstantBuffer.GetAddressOf());
+                        }
+
+                        // 共通: テクスチャをピクセルシェーダにバインド
+                        dc->PSSetShaderResources(0, 1, &srv);
+
                         lastMaterial = subset.material;
                     }
                 }

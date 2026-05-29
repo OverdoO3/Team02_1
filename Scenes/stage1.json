@@ -41396,8 +41396,8 @@
                     {
                         "data": {
                             "position": [
-                                1710.0,
-                                960.0,
+                                1690.0,
+                                940.0,
                                 0.0
                             ],
                             "rotation": [
@@ -41456,8 +41456,8 @@
                             "SplitX": 1,
                             "SplitY": 1,
                             "SpriteIndex": 0,
-                            "SrcH": 34.0,
-                            "SrcW": 243.0,
+                            "SrcH": 69.0,
+                            "SrcW": 303.0,
                             "SrcX": 0.0,
                             "SrcY": 0.0,
                             "SwingAmpX": 10.0,
@@ -45224,6 +45224,124 @@
                 "id": 18,
                 "name": "NewActor(685)",
                 "parent": 15,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                900.0,
+                                600.0,
+                                0.0
+                            ],
+                            "rotation": [
+                                0.0,
+                                0.0,
+                                0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "AnimFrameCount": 1,
+                            "ClickLimit": 1,
+                            "ClickShiftCol": 1,
+                            "ClickShiftRow": 0,
+                            "ColHeight": 100.0,
+                            "ColOffsetX": 0.0,
+                            "ColOffsetY": 0.0,
+                            "ColWidth": 100.0,
+                            "ColorA": 1.0,
+                            "ColorB": 1.0,
+                            "ColorG": 1.0,
+                            "ColorR": 1.0,
+                            "EditorScale": 1.0,
+                            "FadeSpeed": 5.0,
+                            "FrameDuration": 0.10000000149011612,
+                            "HeatUI": false,
+                            "HoverColOffset": 1,
+                            "HoverFade": false,
+                            "HoverRowOffset": 0,
+                            "HoverShift": false,
+                            "IrisDuration": 1.0,
+                            "IrisTargetScale": 0.0,
+                            "IsGameLoading": false,
+                            "IsLoop": false,
+                            "IsOnlyWhileLoading": false,
+                            "IsPauseUI": false,
+                            "IsTitleLoading": false,
+                            "MaxPopScale": 1.5,
+                            "OnlyWhileGoal": false,
+                            "Pivot": 1,
+                            "PopUpDuration": 0.4000000059604645,
+                            "ScaleLoopAmp": 0.5,
+                            "ScaleLoopEnabled": false,
+                            "ScaleLoopSpeed": 2.0,
+                            "ShowAbnormal": false,
+                            "ShowCollider": true,
+                            "SortOrder": 0,
+                            "SplitX": 1,
+                            "SplitY": 3,
+                            "SpriteIndex": 3,
+                            "SrcH": 35.0,
+                            "SrcW": 185.0,
+                            "SrcX": 0.0,
+                            "SrcY": 0.0,
+                            "SwingAmpX": 10.0,
+                            "SwingAmpY": 10.0,
+                            "SwingEnabled": false,
+                            "SwingOffsetX": 0.0,
+                            "SwingOffsetY": 0.0,
+                            "SwingRotAmp": 5.0,
+                            "SwingRotSpeed": 1.0,
+                            "SwingRotUseCos": false,
+                            "SwingSpeedX": 1.0,
+                            "SwingSpeedY": 1.0,
+                            "SwingUseRot": false,
+                            "SwingUseX": false,
+                            "SwingUseY": false,
+                            "SwingXUseCos": false,
+                            "SwingYUseCos": true,
+                            "TargetCol": 0,
+                            "TargetRow": 0,
+                            "TexturePath": "Data/Sprite/Game_text08.png",
+                            "UseClickHide": false,
+                            "UseClickShift": false,
+                            "UsePopUpClear": false,
+                            "isFadeEnabled": false,
+                            "rotSwingAmplitude": 0.10000000149011612,
+                            "rotSwingEnabled": false,
+                            "rotSwingSpeed": 2.0,
+                            "sprFadeSpeed": 2.0,
+                            "swingAmplitude": 20.0,
+                            "swingLoop": false,
+                            "swingSpeed": 2.0
+                        },
+                        "type": "SpriteRender"
+                    },
+                    {
+                        "data": null,
+                        "type": "TempDisplayController"
+                    },
+                    {
+                        "data": {
+                            "LastHeat": 999
+                        },
+                        "type": "PlayerUIController"
+                    }
+                ],
+                "id": 13623,
+                "name": "NewActor",
+                "parent": -1,
                 "tag": 0,
                 "type": "Actor"
             }

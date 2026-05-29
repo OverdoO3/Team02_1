@@ -398,6 +398,12 @@
     <ClInclude Include="justDance.h">
       <Filter>Source\Components</Filter>
     </ClInclude>
+    <ClInclude Include="Source\TempDisplayController.h">
+      <Filter>Source\Components\Temp\TempObj</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\PlayerUIController.h">
+      <Filter>Source\Components\Temp</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="External\imgui-docking\imgui.cpp">
@@ -636,6 +642,12 @@
     </ClCompile>
     <ClCompile Include="justDance.cpp">
       <Filter>Source\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\TempDisplayController.cpp">
+      <Filter>Source\Components\Temp\TempObj</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\PlayerUIController.cpp">
+      <Filter>Source\Components\Temp</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

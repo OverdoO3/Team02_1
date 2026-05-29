@@ -355,6 +355,16 @@ void Scene::Render(CameraBase* camera, bool isEditor)
     modelRenderer->SetShaderId(ShaderId::Lambert);
     modelRenderer->FlushAll(rc);
 
+    // Ditherパス（取得済みコインのみ）
+    modelRenderer->SetShaderId(ShaderId::Dither);
+    for (auto& actor : actors)
+    {
+        auto* mr = actor->GetComponent<ModelRender>();
+        if (mr && mr->GetShaderId() == ShaderId::Dither)
+            actor->Render(rc, modelRenderer);
+    }
+    modelRenderer->FlushAll(rc);
+
     // ─── アウトライン描画のループ ───
     HeatTransfer* playerHeatTransfer = nullptr;
     

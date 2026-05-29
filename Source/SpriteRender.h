@@ -90,7 +90,18 @@ public:
 
     void SetSrcX(float srcX) { m_srcX = srcX; }
     void SetSrcY(float srcY) { m_srcY = srcY; }
-    void SetTargetCol(int col) { m_targetCol = col; }
+    void SetTargetCol(int col)
+    {
+        m_targetCol = col;
+        //UpdateUV(); // 座標計算を関数化してここで呼ぶ
+    }
+
+    void SetTargetRow(int row)
+    {
+        m_targetRow = row;
+       // UpdateUV();
+    }
+    //void UpdateUV();
 
     bool IsClickCompleted()const
     {
