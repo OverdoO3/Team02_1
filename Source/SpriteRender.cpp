@@ -39,6 +39,8 @@ void SpriteRender::Draw(RenderContext& rc)
     {
         bool isNearAnyReceiver = false;
         auto scene = owner->GetScene();
+
+
         for (auto& actor : scene->actors)
         {
             auto receiver = actor->GetComponent<HeatReceiver>();

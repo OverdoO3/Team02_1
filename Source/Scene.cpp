@@ -379,7 +379,6 @@ void Scene::Render(CameraBase* camera, bool isEditor)
         }
     }
 
-    // 1. 全オブジェクトの基本アウトライン（黒・標準サイズ）
     rc.outlineParams.outlineThickness = m_outlineThickness;
     rc.outlineColor.outlineColor = m_outlineColor;
     modelRenderer->SetShaderId(ShaderId::Outline);
@@ -402,7 +401,6 @@ void Scene::Render(CameraBase* camera, bool isEditor)
                 isInside = true;
         }
 
-        // 基本の黒い枠は「接近中ではない」ものだけに描く
         if (mr && !isInside)
         {
             actor->Render(rc, modelRenderer);
@@ -410,7 +408,6 @@ void Scene::Render(CameraBase* camera, bool isEditor)
     }
     modelRenderer->FlushAll(rc); // ここで「接近していない物」の黒い枠を確定
 
-    // 2. 範囲内対象用アウトライン（太い・色付き）
     rc.outlineColor.outlineColor = DirectX::XMFLOAT4(1.0f, 1.0f, 1.0f, 1.0f);
     rc.outlineParams.outlineThickness = 0.4f;
     modelRenderer->SetShaderId(ShaderId::Outline);
