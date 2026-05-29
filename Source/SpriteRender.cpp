@@ -5,6 +5,7 @@
 #include "ThermalBody.h"
 #include "Actor.h"
 #include "System/Audio.h"
+#include "firewood.h"
 
 REGISTER_COMPONENT(ComponentID::SpriteRender,SpriteRender)
 
@@ -37,20 +38,30 @@ void SpriteRender::Draw(RenderContext& rc)
     // 熱UI制御
     if (m_useHeatUI)
     {
-        bool isNearAnyReceiver = false;
+        bool showUI = false;
         auto scene = owner->GetScene();
 
-
-        for (auto& actor : scene->actors)
+        if (scene)
         {
-            auto receiver = actor->GetComponent<HeatReceiver>();
-            if (receiver && receiver->IsPlayerNear())
+            for (auto& actor : scene->actors)
             {
-                isNearAnyReceiver = true;
-                break;
+                auto receiver = actor->GetComponent<HeatReceiver>();
+
+                // プレイヤーの近くにあるかチェック
+                if (receiver && receiver->IsPlayerNear())
+                {
+                    auto fw = actor->GetComponent<firewood>();
+
+                    if (!fw || fw->GetFire())
+                    {
+                        showUI = true;
+                        break;
+                    }
+                }
             }
         }
-        if (!isNearAnyReceiver) return;
+
+        if (!showUI) return;
     }
 
     // ポーズUI制御
