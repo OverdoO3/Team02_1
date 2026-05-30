@@ -37,6 +37,7 @@ enum class ComponentID
     Audio,
     firewood,
     justDance,
+    breath,
     COUNT
 };
 

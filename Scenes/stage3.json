@@ -32156,7 +32156,7 @@
                                 0.0
                             ],
                             "path": "Data/Effects/coin_get.efk",
-                            "scale": 1.0
+                            "scale": 2.0
                         },
                         "type": "EffectRender"
                     },
@@ -32213,7 +32213,7 @@
                                 0.0
                             ],
                             "path": "Data/Effects/coin_get.efk",
-                            "scale": 1.0
+                            "scale": 2.0
                         },
                         "type": "EffectRender"
                     },
@@ -32270,7 +32270,7 @@
                                 0.0
                             ],
                             "path": "Data/Effects/coin_get.efk",
-                            "scale": 1.0
+                            "scale": 2.0
                         },
                         "type": "EffectRender"
                     },
@@ -33928,6 +33928,17 @@
                     },
                     {
                         "data": {
+                            "radius": 10.0,
+                            "thermal": 0
+                        },
+                        "type": "ThermalBody"
+                    },
+                    {
+                        "data": null,
+                        "type": "HeatTransfer"
+                    },
+                    {
+                        "data": {
                             "StartPlay": false,
                             "loop": false,
                             "offset": [
@@ -33951,6 +33962,10 @@
                             "loop": false
                         },
                         "type": "StateEffect"
+                    },
+                    {
+                        "data": null,
+                        "type": "breath"
                     }
                 ],
                 "id": 13620,

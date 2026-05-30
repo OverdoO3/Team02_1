@@ -395,8 +395,11 @@
     <ClInclude Include="Source\firewood.h">
       <Filter>Source\Components\Temp\TempObj</Filter>
     </ClInclude>
-    <ClInclude Include="justDance.h">
+    <ClInclude Include="Source\justDance.h">
       <Filter>Source\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\breath.h">
+      <Filter>Source\Components\Temp\TempObj</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -634,8 +637,11 @@
     <ClCompile Include="Source\firewood.cpp">
       <Filter>Source\Components\Temp\TempObj</Filter>
     </ClCompile>
-    <ClCompile Include="justDance.cpp">
+    <ClCompile Include="Source\justDance.cpp">
       <Filter>Source\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\breath.cpp">
+      <Filter>Source\Components\Temp\TempObj</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -32,6 +32,7 @@ void HeatTransfer::Update(float elapsedTime)
 		auto toTransform = actor->GetComponent<Transform>();
 		auto transform = owner->GetComponent<Transform>();
 
+		if (actor->tag == 1)continue;
 		if (Collision::IntersectSphereVsSphere(transform->GetWorldPosition(),
 			thermal->GetRadius(),
 			toTransform->GetWorldPosition(),
@@ -92,27 +93,42 @@ void HeatTransfer::Update(float elapsedTime)
 		}
 		if (!success && thermal->GetHeat() != 0)
 		{
-			owner->GetComponent<ModelRender>()->PlayAnimation("in_out", false);
+			auto m = owner->GetComponent<ModelRender>();
+			if (m)
+			{
+				m->PlayAnimation("in_out", false);
+			}
 
+			auto child = owner->GetChildren();
 			switch (thermal->GetHeat())
 			{
 			case -2:
 			{
-				owner->GetChildren().front()->GetComponent<StateEffect>()->SetState("icebreath");
+				if (!child.empty())
+				{
+					child.front()->GetComponent<StateEffect>()->SetState("icebreath");
+				}
+
 				std::string myPath = ToDataPath("Data/Sound/SE_game_breath_ice.wav");
 				Audio::Instance().PlaySE(myPath.c_str());
 			}
 				break;
 			case -1:
 			{
-				owner->GetChildren().front()->GetComponent<StateEffect>()->SetState("waterbreath");
+				if (!child.empty())
+				{
+					child.front()->GetComponent<StateEffect>()->SetState("waterbreath");
+				}
 				std::string myPath = ToDataPath("Data/Sound/SE_game_breath_water.wav");
 				Audio::Instance().PlaySE(myPath.c_str());
 				break;
 			}
 			case 1:
 			{
-				owner->GetChildren().front()->GetComponent<StateEffect>()->SetState("hotbreath");
+				if (!child.empty())
+				{
+					child.front()->GetComponent<StateEffect>()->SetState("hotbreath");
+				}
 				std::string myPath = ToDataPath("Data/Sound/SE_game_breath_fire.wav");
 				Audio::Instance().PlaySE(myPath.c_str());
 			}
@@ -121,10 +137,13 @@ void HeatTransfer::Update(float elapsedTime)
 			default:
 				break;
 			}
-
+			if (!child.empty())
+			{
+				owner->GetChildren().front()->GetComponent<ThermalBody>()->SetHeat(thermal->GetHeat());
+			}
+			
 			thermal->SetHeat(0);
 		}
-		
 	}
 
 
