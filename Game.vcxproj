@@ -489,6 +489,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\Desktop\2年生\x3dgp.10\skinned_mesh.hlsli" />
     <None Include="Shader\Basic.hlsli" />
     <None Include="Shader\bloom.hlsli" />
     <None Include="Shader\fullscreen_quad.hlsli" />

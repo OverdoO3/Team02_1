@@ -3,8 +3,8 @@
         {
             "data": {
                 "position": [
-                    -56.0,
-                    870.0,
+                    900.0,
+                    600.0,
                     0.0
                 ],
                 "rotation": [
@@ -52,7 +52,7 @@
                 "IsTitleLoading": false,
                 "MaxPopScale": 1.5,
                 "OnlyWhileGoal": false,
-                "Pivot": 0,
+                "Pivot": 1,
                 "PopUpDuration": 0.4000000059604645,
                 "ScaleLoopAmp": 0.5,
                 "ScaleLoopEnabled": false,
@@ -61,10 +61,10 @@
                 "ShowCollider": true,
                 "SortOrder": 0,
                 "SplitX": 1,
-                "SplitY": 1,
-                "SpriteIndex": 0,
-                "SrcH": 106.0,
-                "SrcW": 365.0,
+                "SplitY": 3,
+                "SpriteIndex": 3,
+                "SrcH": 35.0,
+                "SrcW": 185.0,
                 "SrcX": 0.0,
                 "SrcY": 0.0,
                 "SwingAmpX": 10.0,
@@ -84,7 +84,7 @@
                 "SwingYUseCos": true,
                 "TargetCol": 0,
                 "TargetRow": 0,
-                "TexturePath": "Data/Sprite/Game_text01.png",
+                "TexturePath": "Data/Sprite/Game_text08.png",
                 "UseClickHide": false,
                 "UseClickShift": false,
                 "UsePopUpClear": false,
@@ -98,10 +98,20 @@
                 "swingSpeed": 2.0
             },
             "type": "SpriteRender"
+        },
+        {
+            "data": null,
+            "type": "TempDisplayController"
+        },
+        {
+            "data": {
+                "LastHeat": 999
+            },
+            "type": "PlayerUIController"
         }
     ],
-    "id": 13625,
-    "name": "SONSA1",
+    "id": 13623,
+    "name": "thermalSpr",
     "parent": -1,
     "tag": 0,
     "type": "Actor"

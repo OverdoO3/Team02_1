@@ -681,6 +681,9 @@
     <None Include="Shader\lights.hlsli">
       <Filter>Shader</Filter>
     </None>
+    <None Include="..\..\Desktop\2年生\x3dgp.10\skinned_mesh.hlsli">
+      <Filter>Shader</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Shader\SpriteVS.hlsl">
