@@ -25,7 +25,7 @@ void ModelRender::Render(RenderContext& rc, ModelRenderer* renderer)
 void ModelRender::OnAwake(float elapsedTime)
 {
 	std::string name = model->GetResource()->GetMaterials().front().textureFilename;
-	if (name == "dirt_block.png")
+	if (name == "dirt_block.fbm\dirt_block.png")
 	{
 		float rotations[] = { 0.0f, 90.0f, 180.0f, 270.0f };
 		float angle = rotations[rand() % 4] * (DirectX::XM_PI / 180.0f);

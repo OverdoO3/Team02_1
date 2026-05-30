@@ -53600,6 +53600,13 @@
                         "type": "Transform"
                     },
                     {
+                        "data": {
+                            "radius": 10.0,
+                            "thermal": 0
+                        },
+                        "type": "ThermalBody"
+                    },
+                    {
                         "data": null,
                         "type": "HeatTransfer"
                     },
