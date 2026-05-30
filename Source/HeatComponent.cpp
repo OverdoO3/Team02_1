@@ -7,6 +7,7 @@
 #include "ThermalBody.h"
 #include <EffectRender.h>
 #include "System/Audio.h"
+#include "firewood.h"
 
 REGISTER_COMPONENT(ComponentID::HeatTransfer, HeatTransfer)
 
@@ -45,6 +46,8 @@ void HeatTransfer::Update(float elapsedTime)
 	m_canAbsorb = false;
 	m_targetHeat = 0;
 
+	Actor* priorityTarget = nullptr;
+
 	for (auto& actor : scene->actors)
 	{
 		auto Receiver = actor->GetComponent<HeatReceiver>();
@@ -57,6 +60,14 @@ void HeatTransfer::Update(float elapsedTime)
 			toTransform->GetWorldPosition(),
 			Receiver->GetRadius()))
 		{
+			auto fw = actor->GetComponent<firewood>();
+			// ‰Š‚ª‚ ‚èA‚©‚Â”R‚¦‚Ä‚¢‚é‚È‚çÅ—Dæ‚ÅŠm’èI
+			if (fw && fw->GetFire()) {
+				m_canAbsorb = true;
+				m_targetHeat = Receiver->GetHeatNum();
+				break;
+			}
+
 			m_canAbsorb = true;
 			m_targetHeat = Receiver->GetHeatNum();
 
@@ -68,33 +79,43 @@ void HeatTransfer::Update(float elapsedTime)
 	if (InputC::KeyPressed(VK_LBUTTON))
 	{
 		bool success = false;
-		for (auto& actor : scene->actors)
-		{
+		Actor* bestActor = nullptr;
+
+		// 1. ‚Ü‚¸‰Š‚ª‚ ‚é‚©‚¾‚¯‚ð’T‚·
+		for (auto& actor : scene->actors) {
 			auto Receiver = actor->GetComponent<HeatReceiver>();
 			if (!Receiver) continue;
-			auto toTransform = actor->GetComponent<Transform>();
-			auto transform = owner->GetComponent<Transform>();
-
-			if (Collision::IntersectSphereVsSphere(transform->GetWorldPosition(),
-				thermal->GetRadius(),
-				toTransform->GetWorldPosition(),
-				Receiver->GetRadius()))
-			{
-				thermal->SetHeat(Receiver->GetHeatNum());
-				auto th = actor->GetComponent<ThermalBody>();
-				if (th->GetHeat() == 1)
-				{
-					th->SetHeat(0);
-					auto a = actor->GetComponent<EffectRender>();
-					if (a)
-					{
-						a->Stop();
-					}
-				}
-				success = true;
+			auto fw = actor->GetComponent<firewood>();
+			if (fw && fw->GetFire() && Collision::IntersectSphereVsSphere(owner->GetComponent<Transform>()->GetWorldPosition(), thermal->GetRadius(), actor->GetComponent<Transform>()->GetWorldPosition(), Receiver->GetRadius())) {
+				bestActor = actor.get();
+				break; // ‰Š—Dæ
 			}
 		}
-		if (!success && thermal->GetHeat() != 0)
+
+		// 2. ‰Š‚ª‚È‚©‚Á‚½‚çA”ÍˆÍ“à‚Ì‰½‚©‚ð’T‚·
+		if (!bestActor) {
+			for (auto& actor : scene->actors) {
+				auto Receiver = actor->GetComponent<HeatReceiver>();
+				if (!Receiver) continue;
+				if (Collision::IntersectSphereVsSphere(owner->GetComponent<Transform>()->GetWorldPosition(), thermal->GetRadius(), actor->GetComponent<Transform>()->GetWorldPosition(), Receiver->GetRadius())) {
+					bestActor = actor.get();
+					break;
+				}
+			}
+		}
+
+		if (bestActor) {
+			auto Receiver = bestActor->GetComponent<HeatReceiver>();
+			thermal->SetHeat(Receiver->GetHeatNum());
+			auto th = bestActor->GetComponent<ThermalBody>();
+			if (th && th->GetHeat() == 1) {
+				th->SetHeat(0);
+				auto a = bestActor->GetComponent<EffectRender>();
+				if (a) a->Stop();
+			}
+			success = true;
+		}
+			if (!success && thermal->GetHeat() != 0)
 		{
 			owner->GetComponent<ModelRender>()->PlayAnimation("in_out", false);
 
