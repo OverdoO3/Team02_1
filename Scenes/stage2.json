@@ -26245,7 +26245,7 @@
                         "data": {
                             "position": [
                                 60.0,
-                                78.95710754394531,
+                                79.95710754394531,
                                 88.0
                             ],
                             "rotation": [
@@ -26314,164 +26314,6 @@
                 ],
                 "id": 4332,
                 "name": "flower(4)",
-                "parent": 8107,
-                "tag": 0,
-                "type": "Actor"
-            },
-            {
-                "components": [
-                    {
-                        "data": {
-                            "position": [
-                                70.0,
-                                77.95710754394531,
-                                88.0
-                            ],
-                            "rotation": [
-                                -0.0,
-                                0.0,
-                                -0.0,
-                                1.0
-                            ],
-                            "scale": [
-                                1.0,
-                                1.0,
-                                1.0
-                            ]
-                        },
-                        "type": "Transform"
-                    },
-                    {
-                        "data": {
-                            "ModelPath": "Data/Model/Stage/Demos/flower_obj.mdl"
-                        },
-                        "type": "ModelRender"
-                    },
-                    {
-                        "data": {
-                            "offset": [
-                                0.0,
-                                0.0,
-                                0.0
-                            ],
-                            "size": [
-                                20.0,
-                                40.0,
-                                20.0
-                            ]
-                        },
-                        "type": "BoxCollider"
-                    },
-                    {
-                        "data": {
-                            "radius": 10.0,
-                            "thermal": 0
-                        },
-                        "type": "ThermalBody"
-                    },
-                    {
-                        "data": {
-                            "StartPlay": false,
-                            "loop": false,
-                            "offset": [
-                                0.0,
-                                0.0,
-                                0.0
-                            ],
-                            "path": "",
-                            "scale": 1.0
-                        },
-                        "type": "EffectRender"
-                    },
-                    {
-                        "data": {
-                            "closeY": 0.0,
-                            "openY": 10.0
-                        },
-                        "type": "flower"
-                    }
-                ],
-                "id": 4332,
-                "name": "flower(5)",
-                "parent": 8107,
-                "tag": 0,
-                "type": "Actor"
-            },
-            {
-                "components": [
-                    {
-                        "data": {
-                            "position": [
-                                80.0,
-                                76.95710754394531,
-                                88.0
-                            ],
-                            "rotation": [
-                                -0.0,
-                                0.0,
-                                -0.0,
-                                1.0
-                            ],
-                            "scale": [
-                                1.0,
-                                1.0,
-                                1.0
-                            ]
-                        },
-                        "type": "Transform"
-                    },
-                    {
-                        "data": {
-                            "ModelPath": "Data/Model/Stage/Demos/flower_obj.mdl"
-                        },
-                        "type": "ModelRender"
-                    },
-                    {
-                        "data": {
-                            "offset": [
-                                0.0,
-                                0.0,
-                                0.0
-                            ],
-                            "size": [
-                                20.0,
-                                40.0,
-                                20.0
-                            ]
-                        },
-                        "type": "BoxCollider"
-                    },
-                    {
-                        "data": {
-                            "radius": 10.0,
-                            "thermal": 0
-                        },
-                        "type": "ThermalBody"
-                    },
-                    {
-                        "data": {
-                            "StartPlay": false,
-                            "loop": false,
-                            "offset": [
-                                0.0,
-                                0.0,
-                                0.0
-                            ],
-                            "path": "",
-                            "scale": 1.0
-                        },
-                        "type": "EffectRender"
-                    },
-                    {
-                        "data": {
-                            "closeY": 0.0,
-                            "openY": 10.0
-                        },
-                        "type": "flower"
-                    }
-                ],
-                "id": 4332,
-                "name": "flower(6)",
                 "parent": 8107,
                 "tag": 0,
                 "type": "Actor"
@@ -36224,6 +36066,164 @@
                 "id": 13625,
                 "name": "SONSA1",
                 "parent": -1,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                70.0,
+                                79.95710754394531,
+                                88.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/flower_obj.mdl"
+                        },
+                        "type": "ModelRender"
+                    },
+                    {
+                        "data": {
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                20.0,
+                                40.0,
+                                20.0
+                            ]
+                        },
+                        "type": "BoxCollider"
+                    },
+                    {
+                        "data": {
+                            "radius": 10.0,
+                            "thermal": 0
+                        },
+                        "type": "ThermalBody"
+                    },
+                    {
+                        "data": {
+                            "StartPlay": false,
+                            "loop": false,
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "path": "",
+                            "scale": 1.0
+                        },
+                        "type": "EffectRender"
+                    },
+                    {
+                        "data": {
+                            "closeY": 0.0,
+                            "openY": 10.0
+                        },
+                        "type": "flower"
+                    }
+                ],
+                "id": 4332,
+                "name": "flower(6)",
+                "parent": 8107,
+                "tag": 0,
+                "type": "Actor"
+            },
+            {
+                "components": [
+                    {
+                        "data": {
+                            "position": [
+                                80.0,
+                                74.95710754394531,
+                                88.0
+                            ],
+                            "rotation": [
+                                -0.0,
+                                0.0,
+                                -0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        "type": "Transform"
+                    },
+                    {
+                        "data": {
+                            "ModelPath": "Data/Model/Stage/Demos/flower_obj.mdl"
+                        },
+                        "type": "ModelRender"
+                    },
+                    {
+                        "data": {
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                20.0,
+                                40.0,
+                                20.0
+                            ]
+                        },
+                        "type": "BoxCollider"
+                    },
+                    {
+                        "data": {
+                            "radius": 10.0,
+                            "thermal": 0
+                        },
+                        "type": "ThermalBody"
+                    },
+                    {
+                        "data": {
+                            "StartPlay": false,
+                            "loop": false,
+                            "offset": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "path": "",
+                            "scale": 1.0
+                        },
+                        "type": "EffectRender"
+                    },
+                    {
+                        "data": {
+                            "closeY": 0.0,
+                            "openY": 10.0
+                        },
+                        "type": "flower"
+                    }
+                ],
+                "id": 4332,
+                "name": "flower(6)",
+                "parent": 8107,
                 "tag": 0,
                 "type": "Actor"
             }
