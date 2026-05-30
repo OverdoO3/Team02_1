@@ -289,6 +289,7 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="Source\PlayerUIController.h" />
     <ClInclude Include="Source\Prefab.h" />
     <ClInclude Include="Source\PrefabManager.h" />
     <ClInclude Include="Source\PlayerUIRotator.h" />
@@ -338,6 +339,7 @@
     <ClInclude Include="Source\System\Shader.h" />
     <ClInclude Include="Source\System\ShapeRenderer.h" />
     <ClInclude Include="Source\System\Sprite.h" />
+    <ClInclude Include="Source\TempDisplayController.h" />
     <ClInclude Include="Source\tent.h">
       <SubType>
       </SubType>
@@ -425,6 +427,7 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="Source\PlayerUIController.cpp" />
     <ClCompile Include="Source\PrefabManager.cpp" />
     <ClCompile Include="Source\PlayerUIRotator.cpp" />
     <ClCompile Include="Source\RayCast.cpp" />
@@ -468,6 +471,7 @@
     <ClCompile Include="Source\System\RenderState.cpp" />
     <ClCompile Include="Source\System\ShapeRenderer.cpp" />
     <ClCompile Include="Source\System\Sprite.cpp" />
+    <ClCompile Include="Source\TempDisplayController.cpp" />
     <ClCompile Include="Source\tent.cpp">
       <SubType>
       </SubType>
@@ -487,6 +491,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\Desktop\2年生\x3dgp.10\skinned_mesh.hlsli" />
     <None Include="Shader\Basic.hlsli" />
     <None Include="Shader\bloom.hlsli" />
     <None Include="Shader\fullscreen_quad.hlsli" />
@@ -510,6 +515,12 @@
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">Vertex</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Vertex</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">Vertex</ShaderType>
+    </FxCompile>
+    <FxCompile Include="Shader\DitherPS.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Pixel</ShaderType>
     </FxCompile>
     <FxCompile Include="Shader\final_pass_ps.hlsl">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>

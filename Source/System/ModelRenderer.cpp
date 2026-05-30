@@ -88,6 +88,12 @@ ModelRenderer::ModelRenderer(ID3D11Device* device)
 		"./Data/Shader/out_line_ps.cso",
 		outlinePixelShader.GetAddressOf());
 
+    //コイン半透明用
+    GpuResourceUtils::LoadPixelShader(
+        device,
+        "Data/Shader/DitherPS.cso",
+        ditherPixelShader.GetAddressOf());
+
 	// シェーダー生成
 	shaders[static_cast<int>(ShaderId::Basic)] = std::make_unique<BasicShader>(device);
 	shaders[static_cast<int>(ShaderId::Lambert)] = std::make_unique<LambertShader>(device);
@@ -142,6 +148,15 @@ ModelRenderer::ModelRenderer(ID3D11Device* device)
     HRESULT hr = device->CreateBuffer(&desc, nullptr, instanceBuffer.GetAddressOf());
     assert(SUCCEEDED(hr));
 
+    {
+        D3D11_BUFFER_DESC desc{};
+        desc.ByteWidth = sizeof(CbDither);
+        desc.Usage = D3D11_USAGE_DEFAULT;
+        desc.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
+        hr = device->CreateBuffer(&desc, nullptr, ditherConstantBuffer.GetAddressOf());
+        assert(SUCCEEDED(hr));
+    }
+
     //D3D11_SHADER_RESOURCE_VIEW_DESC srvDesc = {};
     //srvDesc.Format = DXGI_FORMAT_UNKNOWN;      // StructuredBufferはUNKNOWN必須
     //srvDesc.ViewDimension = D3D11_SRV_DIMENSION_BUFFER;
@@ -158,23 +173,22 @@ ModelRenderer::ModelRenderer(ID3D11Device* device)
 //==============================
 void ModelRenderer::AddInstance(const Model* model, Actor* actor)
 {
-    auto t = actor->GetComponent<Transform>();
+    auto* t = actor->GetComponent<Transform>();
     if (!t) return;
 
-    InstanceData data{};
-    data.world = t->GetWorldMatrix();
+    InstanceData data;
+    XMStoreFloat4x4(&data.world, XMLoadFloat4x4(&t->GetWorldMatrix()));
 
-    auto modelRender = actor->GetComponent<ModelRender>();
-    if (modelRender && modelRender->overrideSRV)
+    auto* mr = actor->GetComponent<ModelRender>();
+    if (mr)
     {
-        data.overrideSRV = modelRender->overrideSRV.Get();
+        data.overrideSRV = mr->overrideSRV.Get();
+        data.shaderId = mr->GetShaderId();
+        data.ditherAlpha = mr->GetDitherAlpha();
     }
 
-    auto& batch = batches[model->GetResource()];
-    batch.representativeModel = model;
-    batch.instances.push_back(data);
-
-    debugInstanceCount++;
+    batches[model->GetResource()].instances.push_back(data);
+    batches[model->GetResource()].representativeModel = model;
 }
 //==============================
 // FlushAll（描画本体）
@@ -285,6 +299,24 @@ void ModelRenderer::FlushAll(const RenderContext& rc)
         dc->VSSetShader(vertexShader.Get(), nullptr, 0);
         dc->PSSetShader(nullptr, nullptr, 0);
     }
+    else if (shaderId == ShaderId::Dither)
+    {
+        dc->VSSetShader(vertexShader.Get(), nullptr, 0);
+        dc->PSSetShader(ditherPixelShader.Get(), nullptr, 0);
+
+        CbDither cbDither;
+        cbDither.ditherAlpha = m_ditherAlpha;
+
+        dc->UpdateSubresource(ditherConstantBuffer.Get(), 0, nullptr, &cbDither, 0, 0);
+        dc->PSSetConstantBuffers(6, 1, ditherConstantBuffer.GetAddressOf());
+
+        dc->OMSetDepthStencilState(
+            rc.renderState->GetDepthStencilState(DepthState::TestAndWrite), 0);
+        dc->RSSetState(
+            rc.renderState->GetRasterizerState(RasterizerState::SolidCullBack));
+        dc->OMSetBlendState(
+            rc.renderState->GetBlendState(BlendState::DitherTransparency), nullptr, 0xFFFFFFFF);
+    }
     else
     {
         // Lambert など通常シェーダー
@@ -386,7 +418,19 @@ void ModelRenderer::FlushAll(const RenderContext& rc)
                             ? instances.instances[0].overrideSRV
                             : subset.material->shaderResourceView.Get();
 
-                        dc->PSSetShaderResources(0, 1, &srv); // ★ srv を使う
+                        // Dither シェーダー用のマテリアル単位パラメータ更新
+                        if (shaderId == ShaderId::Dither)
+                        {
+                            CbDither cbDither{};
+                            cbDither.ditherAlpha = m_ditherAlpha;
+
+                            dc->UpdateSubresource(ditherConstantBuffer.Get(), 0, nullptr, &cbDither, 0, 0);
+                            dc->PSSetConstantBuffers(6, 1, ditherConstantBuffer.GetAddressOf());
+                        }
+
+                        // 共通: テクスチャをピクセルシェーダにバインド
+                        dc->PSSetShaderResources(0, 1, &srv);
+
                         lastMaterial = subset.material;
                     }
                 }

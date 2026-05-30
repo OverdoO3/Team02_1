@@ -348,81 +348,93 @@ void Scene::Render(CameraBase* camera, bool isEditor)
     // 3Dモデル描画
     for (auto& actor : actors)
     {
+        auto* mr = actor->GetComponent<ModelRender>();
+        if (mr && mr->GetShaderId() == ShaderId::Dither) continue;
+
         bool active = actor->setActive && (!actor->GetParent() || actor->GetParent()->setActive);
         if (active)
             actor->Render(rc, modelRenderer);
-    }
+    }   
     modelRenderer->SetShaderId(ShaderId::Lambert);
     modelRenderer->FlushAll(rc);
 
-    // ─── アウトライン描画のループ ───
+    // Ditherパス（取得済みコインのみ）
+    modelRenderer->SetShaderId(ShaderId::Dither);
+    for (auto& actor : actors)
+    {
+        auto* mr = actor->GetComponent<ModelRender>();
+        if (mr && mr->GetShaderId() == ShaderId::Dither)
+            actor->Render(rc, modelRenderer);
+    }
+    modelRenderer->FlushAll(rc);
+
+    // ─── アウトライン描画 ───
     HeatTransfer* playerHeatTransfer = nullptr;
-    
     for (auto& actor : actors)
     {
         if (auto ht = actor->GetComponent<HeatTransfer>())
         {
             playerHeatTransfer = ht;
-            break; // 見つかったらループを抜ける
+            break;
         }
     }
 
-    // ─── Scene.cpp のアウトライン描画ループ ───
+    rc.outlineParams.outlineThickness = m_outlineThickness;
+    rc.outlineColor.outlineColor = m_outlineColor;
+    modelRenderer->SetShaderId(ShaderId::Outline);
+
     for (auto& actor : actors)
     {
         bool active = actor->setActive && (!actor->GetParent() || actor->GetParent()->setActive);
         if (!active) continue;
+        auto mr = actor->GetComponent<ModelRender>();
+        if (!mr || mr->GetShaderId() == ShaderId::Dither) continue;
 
-        auto modelRender = actor->GetComponent<ModelRender>();
         auto receiver = actor->GetComponent<HeatReceiver>();
 
-        // 計算済みの「範囲内判定(m_isPlayerNear)」を信じて描画する
-        if (modelRender && receiver && receiver->IsPlayerNear())
+        // 接近中の対象かチェック
+        bool isInside = false;
+        if (playerHeatTransfer && receiver)
+        {
+            auto& insideList = playerHeatTransfer->GetInsideActors();
+            if (std::find(insideList.begin(), insideList.end(), actor.get()) != insideList.end())
+                isInside = true;
+        }
+
+        if (mr && !isInside)
         {
             actor->Render(rc, modelRenderer);
         }
     }
-    rc.outlineParams.outlineThickness = m_outlineThickness;
-    rc.outlineColor.outlineColor = m_outlineColor;
-    modelRenderer->SetShaderId(ShaderId::Outline);
-    modelRenderer->FlushAll(rc);    
+    modelRenderer->FlushAll(rc); // ここで「接近していない物」の黒い枠を確定
 
-    // --- アウトライン描画用コピペテンプレート ---
+    rc.outlineColor.outlineColor = DirectX::XMFLOAT4(1.0f, 1.0f, 1.0f, 1.0f);
+    rc.outlineParams.outlineThickness = 0.4f;
+    modelRenderer->SetShaderId(ShaderId::Outline);
+
     for (auto& actor : actors)
     {
-        // 非アクティブなアクターは除外
         bool active = actor->setActive && (!actor->GetParent() || actor->GetParent()->setActive);
         if (!active) continue;
 
-        auto modelRender = actor->GetComponent<ModelRender>();
-        if (modelRender)
+        auto mr = actor->GetComponent<ModelRender>();
+        auto receiver = actor->GetComponent<HeatReceiver>();
+
+        bool isInside = false;
+        if (playerHeatTransfer && receiver)
         {
-            // 判定ロジック: HeatReceiverを持っているか？
-            auto heatReceiver = actor->GetComponent<HeatReceiver>();
-            bool isInside = false;
+            auto& insideList = playerHeatTransfer->GetInsideActors();
+            if (std::find(insideList.begin(), insideList.end(), actor.get()) != insideList.end())
+                isInside = true;
+        }
 
-            // playerHeatTransferはループの外で取得済みの前提
-            if (playerHeatTransfer && heatReceiver)
-            {
-                auto& insideList = playerHeatTransfer->GetInsideActors();
-                if (std::find(insideList.begin(), insideList.end(), actor.get()) != insideList.end())
-                {
-                    isInside = true;
-                }
-            }
-
-            // ここで描画条件を分ける（例：範囲内の時だけ特定シェーダーで描画）
-            if (heatReceiver && isInside)
-            {
-                actor->Render(rc, modelRenderer);
-            }
+        // 範囲内の物だけ「太い枠」を描く
+        if (mr && isInside)
+        {
+            actor->Render(rc, modelRenderer);
         }
     }
-    rc.outlineColor.outlineColor = DirectX::XMFLOAT4(1.0f, 1.0f, 1.0f, 1.0f);
-    rc.outlineParams.outlineThickness = 0.4f; // 範囲内のときだけ太くする
-    modelRenderer->SetShaderId(ShaderId::Outline);
-    modelRenderer->FlushAll(rc); // 範囲内オブジェクトの描画を確定
-
+    modelRenderer->FlushAll(rc); // ここで「接近中の物」の特別な枠を確定
     // エフェクト
     EffectManager::Instance().Render(rc.view, rc.projection);
 

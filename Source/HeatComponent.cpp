@@ -7,6 +7,7 @@
 #include "ThermalBody.h"
 #include <EffectRender.h>
 #include "System/Audio.h"
+#include "firewood.h"
 
 REGISTER_COMPONENT(ComponentID::HeatTransfer, HeatTransfer)
 
@@ -23,7 +24,6 @@ void HeatTransfer::Update(float elapsedTime)
 
 	m_insideActors.clear();
 
-
 	for (auto& actor : scene->actors)
 	{
 		auto toThermal = actor->GetComponent<ThermalBody>();
@@ -38,12 +38,16 @@ void HeatTransfer::Update(float elapsedTime)
 			toTransform->GetWorldPosition(),
 			toThermal->GetRadius()))
 		{
-			if(thermal->GetHeat() != 0)
-			toThermal->SetHeat(thermal->GetHeat());
+			if (thermal->GetHeat() != 0)
+				toThermal->SetHeat(thermal->GetHeat());
 			m_insideActors.push_back(actor.get());
-		} 
+		}
 	}
 	m_canAbsorb = false;
+	m_targetHeat = 0;
+
+	Actor* priorityTarget = nullptr;
+
 	for (auto& actor : scene->actors)
 	{
 		auto Receiver = actor->GetComponent<HeatReceiver>();
@@ -56,40 +60,67 @@ void HeatTransfer::Update(float elapsedTime)
 			toTransform->GetWorldPosition(),
 			Receiver->GetRadius()))
 		{
+			auto fw = actor->GetComponent<firewood>();
+			if (fw && fw->GetFire())
+			{
+				m_canAbsorb = true;
+				m_targetHeat = Receiver->GetHeatNum();
+				break;
+			}
+
 			m_canAbsorb = true;
-			break; // 一つでも範囲内ならUIフラグONでOK
+			m_targetHeat = Receiver->GetHeatNum();
+
+			break;
 		}
 	}
 
-	
 	if (InputC::KeyPressed(VK_LBUTTON))
 	{
 		bool success = false;
+		Actor* bestActor = nullptr;
+
 		for (auto& actor : scene->actors)
 		{
 			auto Receiver = actor->GetComponent<HeatReceiver>();
 			if (!Receiver) continue;
-			auto toTransform = actor->GetComponent<Transform>();
-			auto transform = owner->GetComponent<Transform>();
-
-			if (Collision::IntersectSphereVsSphere(transform->GetWorldPosition(),
-				thermal->GetRadius(),
-				toTransform->GetWorldPosition(),
-				Receiver->GetRadius()))
+			auto fw = actor->GetComponent<firewood>();
+			if (fw && fw->GetFire() && Collision::IntersectSphereVsSphere(owner->GetComponent<Transform>()->GetWorldPosition(), thermal->GetRadius(), actor->GetComponent<Transform>()->GetWorldPosition(), Receiver->GetRadius()))
 			{
-				thermal->SetHeat(Receiver->GetHeatNum());
-				auto th = actor->GetComponent<ThermalBody>();
-				if (th->GetHeat() == 1)
-				{
-					th->SetHeat(0);
-					auto a = actor->GetComponent<EffectRender>();
-					if (a)
-					{
-						a->Stop();
-					}
-				}
-				success = true;
+				bestActor = actor.get();
+				break;
 			}
+		}
+
+		if (!bestActor)
+		{
+			for (auto& actor : scene->actors)
+			{
+				auto Receiver = actor->GetComponent<HeatReceiver>();
+				if (!Receiver) continue;
+				if (Collision::IntersectSphereVsSphere(owner->GetComponent<Transform>()->GetWorldPosition(), thermal->GetRadius(), actor->GetComponent<Transform>()->GetWorldPosition(), Receiver->GetRadius()))
+				{
+					bestActor = actor.get();
+					break;
+				}
+			}
+		}
+
+		if (bestActor)
+		{
+			auto Receiver = bestActor->GetComponent<HeatReceiver>();
+			thermal->SetHeat(Receiver->GetHeatNum());
+			auto th = bestActor->GetComponent<ThermalBody>();
+			if (th && th->GetHeat() == 1)
+			{
+				th->SetHeat(0);
+				auto a = bestActor->GetComponent<EffectRender>();
+				if (a)
+				{
+					a->Stop();
+				}
+			}
+			success = true;
 		}
 		if (!success && thermal->GetHeat() != 0)
 		{
@@ -112,7 +143,7 @@ void HeatTransfer::Update(float elapsedTime)
 				std::string myPath = ToDataPath("Data/Sound/SE_game_breath_ice.wav");
 				Audio::Instance().PlaySE(myPath.c_str());
 			}
-				break;
+			break;
 			case -1:
 			{
 				if (!child.empty())
@@ -145,7 +176,6 @@ void HeatTransfer::Update(float elapsedTime)
 			thermal->SetHeat(0);
 		}
 	}
-
 
 	auto effectstate = owner->GetComponent<StateEffect>();
 	if (!effectstate) return;
@@ -182,7 +212,6 @@ void HeatTransfer::Update(float elapsedTime)
 		break;
 		}
 
-		// 最後に現在の状態を保存して、次フレームと比較できるようにする
 		m_prevHeat = thermal->GetHeat();
 	}
 }

@@ -37,6 +37,8 @@ enum class ComponentID
     Audio,
     firewood,
     justDance,
+    TempDisplayController,
+    PlayerUIController,
     breath,
     COUNT
 };

@@ -21,6 +21,7 @@ public:
     std::vector<Actor*> m_insideActors;
     const std::vector<Actor*>& GetInsideActors() const { return m_insideActors; }
     bool GetCanAbsorb() const { return m_canAbsorb; }
+    int GetTargetHeat() const { return m_targetHeat; }
 
     std::string ToDataPath(const std::string& fullPath)
     {
@@ -39,4 +40,6 @@ public:
 private:
     bool m_canAbsorb = false;
     int m_prevHeat = 0;
+    int m_targetHeat = 0;
+
 };

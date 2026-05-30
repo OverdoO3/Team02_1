@@ -47,5 +47,8 @@ private:
 	std::unique_ptr<MouseCursor> mouseCursor;
 	//Œx–h~—p
 	std::unique_ptr<MouseGuard> mouseGuard;
+	//‘å–ƒ
+	float ResetTimer = 0.0f;
+	
 };
 

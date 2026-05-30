@@ -14,6 +14,10 @@ void ModelRender::Render(RenderContext& rc, ModelRenderer* renderer)
 	auto t = owner->GetComponent<Transform>();
 	if (!t) return;
 
+	//Dither‚Ìê‡
+	if (shaderId == ShaderId::Dither)
+		renderer->SetDitherAlpha(m_ditherAlpha);
+
 	// Instance“o˜^‚¾‚¯‚·‚éi•`‰æ‚Í‚µ‚È‚¢j
 	renderer->AddInstance(model.get(), owner);
 }

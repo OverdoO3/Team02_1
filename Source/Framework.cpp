@@ -102,6 +102,32 @@ void Framework::Update(float elapsedTime)
 
 	LogManager::Instance().DrawLogWindow();
 
+	auto& sm = engine.GetSceneManager();
+	std::string path = sm.GetCurrentScenePath();
+	bool isStageScene = (path.find("stage") != std::string::npos);
+
+	if (isStageScene && !sm.IsPaused())
+	{
+		// GetAsyncKeyStateでRキーを判定
+		if (::GetAsyncKeyState('R') & 0x8000)
+		{
+			ResetTimer += elapsedTime;
+
+			// 1秒長押しでリセット処理をトリガー
+			if (ResetTimer >= 1.0f)
+			{
+				// ご提示の「リセット処理」をここに適用
+				sm.SetPause(false);
+				sm.RequestSceneChange(sm.GetCurrentScenePath());
+
+				ResetTimer = 0.0f; // 実行後にリセット
+			}
+		}
+		else
+		{
+			ResetTimer = 0.0f; // 離したらリセット
+		}
+	}
 	// ポーズ中でない場合のみゲームを更新
 	if (!isPaused)
 	{
@@ -121,8 +147,11 @@ void Framework::Update(float elapsedTime)
 
 	if (mouseCursor)
 	{
+#ifndef _DEBUG
+		// リリース版のときだけ更新（自作カーソルの描画フラグ制御など）
 		auto& sm = engine.GetSceneManager();
 		mouseCursor->Update(hWnd, sm.IsPaused(), sm.IsLoading());
+#endif
 	}
 
 	// エディタはポーズ中も動かせるように外に出す

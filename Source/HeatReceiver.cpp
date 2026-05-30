@@ -5,12 +5,31 @@
 #include "ThermalBody.h"
 #include "Collision.h"
 #include "System/Audio.h"
+#include "TempDisplayController.h"
 
 //								↓に名前入れる
 REGISTER_COMPONENT(ComponentID::HeatReceiver, HeatReceiver)
 
 void HeatReceiver::OnAwake(float elapsedTime)
 {
+    if (owner)
+    {
+        // 自分自身か、自分の子供からTempDisplayControllerを探す
+        auto display = owner->GetComponent<TempDisplayController>();
+        if (!display)
+        {
+            for (auto& child : owner->GetChildren())
+            {
+                display = child->GetComponent<TempDisplayController>();
+                if (display) break;
+            }
+        }
+
+        if (display)
+        {
+            display->SetTemperature(heatNum);
+        }
+    }
 }
 
 void HeatReceiver::Update(float elapsedTime)
@@ -59,8 +78,13 @@ void HeatReceiver::Update(float elapsedTime)
 
 void HeatReceiver::DrawInspector()
 {
-    ImGui::InputInt("heat", &heatNum);
-    ImGui::SliderInt("Linked Light Index", &m_linkedLightIndex, -1, 7); // 追加
+    // インスペクターで値を直接いじった時も、即座に画像が切り替わるように SetHeatNum を通す
+    int tempHeat = heatNum;
+    if (ImGui::InputInt("heat", &tempHeat))
+    {
+        SetHeatNum(tempHeat);
+    }
+    ImGui::SliderInt("Linked Light Index", &m_linkedLightIndex, -1, 7);
 }
 
 void HeatReceiver::Serialize(nlohmann::json& j) const
@@ -106,5 +130,26 @@ void HeatReceiver::SetHeatNum(int n)
         //{
         //    Audio::Instance().PlaySE(soundPath.c_str());
         //}
+        if (owner)
+        {
+            // まず自分自身（同じActor）に付いているか探す
+            auto display = owner->GetComponent<TempDisplayController>();
+
+            // 自分にない場合は、自分の子オブジェクト（UIなど）から探す
+            if (!display)
+            {
+                for (auto& child : owner->GetChildren())
+                {
+                    display = child->GetComponent<TempDisplayController>();
+                    if (display) break;
+                }
+            }
+
+            // 見つかった「自分専用の表示機」だけをピンポイントで切り替える
+            if (display)
+            {
+                display->SetTemperature(heatNum);
+            }
+        }
     }
 }
